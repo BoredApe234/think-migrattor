@@ -38,9 +38,10 @@ public class AuxVariable extends BaseEntity {
 	@Column(name = "variable_name")
 	private String variableName;
 
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "variable_type")
-	private AppConstants.VariableType variableType;
+	private String variableType;
+//	private AppConstants.VariableType variableType;
 
 
 	@Column(name = "defult_value")
@@ -81,11 +82,11 @@ public class AuxVariable extends BaseEntity {
 		this.variableName = variableName;
 	}
 
-	public AppConstants.VariableType getVariableType() {
+	public String getVariableType() {
 		return variableType;
 	}
 
-	public void setVariableType(AppConstants.VariableType variableType) {
+	public void setVariableType(String variableType) {
 		this.variableType = variableType;
 	}
 
