@@ -1,6 +1,7 @@
 package com.mps.think.setup.model;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,7 +35,7 @@ public class PaymentBreakdown extends BaseEntity {
 	private String rateCard;
 	
 	@Column(name = "effective_date")
-	private String effectiveDate;
+	private Date effectiveDate;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "payment_status")
@@ -63,7 +64,7 @@ public class PaymentBreakdown extends BaseEntity {
 	
 	@Column(name = "net_amount")
 	private BigDecimal netAmount;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -88,11 +89,11 @@ public class PaymentBreakdown extends BaseEntity {
 		this.rateCard = rateCard;
 	}
 
-	public String getEffectiveDate() {
+	public Date getEffectiveDate() {
 		return effectiveDate;
 	}
 
-	public void setEffectiveDate(String effectiveDate) {
+	public void setEffectiveDate(Date effectiveDate) {
 		this.effectiveDate = effectiveDate;
 	}
 
@@ -167,6 +168,7 @@ public class PaymentBreakdown extends BaseEntity {
 	public void setNetAmount(BigDecimal netAmount) {
 		this.netAmount = netAmount;
 	}
-
+	
+	
 
 }

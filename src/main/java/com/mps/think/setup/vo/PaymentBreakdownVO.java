@@ -1,6 +1,7 @@
 package com.mps.think.setup.vo;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 public class PaymentBreakdownVO {
 	
@@ -10,7 +11,7 @@ public class PaymentBreakdownVO {
 	
 	private String rateCard;
 	
-	private String effectiveDate;
+	private Date effectiveDate;
 	
 	private String paymentStatus;
 	
@@ -54,11 +55,11 @@ public class PaymentBreakdownVO {
 		this.rateCard = rateCard;
 	}
 
-	public String getEffectiveDate() {
+	public Date getEffectiveDate() {
 		return effectiveDate;
 	}
 
-	public void setEffectiveDate(String effectiveDate) {
+	public void setEffectiveDate(Date effectiveDate) {
 		this.effectiveDate = effectiveDate;
 	}
 
@@ -133,5 +134,7 @@ public class PaymentBreakdownVO {
 	public void setNetAmount(BigDecimal netAmount) {
 		this.netAmount = netAmount;
 	}
+
+	
 
 }

@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -31,8 +33,9 @@ public class Order extends BaseEntity {
 	@Column(name = "order_id")
 	private Integer orderId;
 	
-	@Column(name = "customer_id")
-	private Integer customerId;
+	@ManyToOne
+	@JoinColumn(name = "customer_id", referencedColumnName = "id")
+	private CustomerDetails customerId;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "order_type")
@@ -74,11 +77,11 @@ public class Order extends BaseEntity {
 		this.orderId = orderId;
 	}
 
-	public Integer getCustomerId() {
+	public CustomerDetails getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(Integer customerId) {
+	public void setCustomerId(CustomerDetails customerId) {
 		this.customerId = customerId;
 	}
 
@@ -145,6 +148,9 @@ public class Order extends BaseEntity {
 	public void setAuxiliaryInformation(OrderAuxiliaryInformation auxiliaryInformation) {
 		this.auxiliaryInformation = auxiliaryInformation;
 	}
+
+	
+	
 	
 	
 }

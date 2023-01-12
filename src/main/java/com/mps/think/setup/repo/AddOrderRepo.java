@@ -10,6 +10,8 @@ import com.mps.think.setup.model.Order;
 @Repository
 public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	
-	public List<Order> findAllByCustomerId(Integer customerId) throws Exception;
+//	public List<Order> findAllByCustomerId(Integer customerId) throws Exception;
+	
+	public List<Order> findByCustomerIdCustomerId(Integer customerId) throws Exception;
 
 }

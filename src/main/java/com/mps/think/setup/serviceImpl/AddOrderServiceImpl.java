@@ -35,7 +35,8 @@ public class AddOrderServiceImpl implements AddOrderService {
 
 	@Override
 	public List<Order> getAllOrderByCustomerId(Integer customerId) throws Exception {
-		return addOrderRepo.findAllByCustomerId(customerId);
+//		return addOrderRepo.findAllByCustomerId(customerId);
+		return addOrderRepo.findByCustomerIdCustomerId(customerId);
 	}
 
 	@Override
