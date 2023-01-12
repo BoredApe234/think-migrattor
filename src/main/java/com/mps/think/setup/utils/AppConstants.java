@@ -71,7 +71,7 @@ public class AppConstants {
 	}
 	
 	public enum VariableType {
-		String("String"), Integer("Integer"), Boolean("Boolean");
+		Text("Text"), Number("Number"), Email("Email"),Date("Date");
 		private String displayName;
 
 		VariableType(String displayName) {
