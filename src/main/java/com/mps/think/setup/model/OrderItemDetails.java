@@ -25,8 +25,8 @@ public class OrderItemDetails extends BaseEntity {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "publisher_id")
-	private Integer publisherId;
+//	@Column(name = "publisher_id")
+//	private Integer publisherId;
 	
 	@Column(name = "effective_date")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -56,14 +56,6 @@ public class OrderItemDetails extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getPublisherId() {
-		return publisherId;
-	}
-
-	public void setPublisherId(Integer publisherId) {
-		this.publisherId = publisherId;
 	}
 
 	public Date getEffectiveDate() {

@@ -1,10 +1,12 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.Publisher;
+
 public class OrderOptionsVO {
 
 	private Integer id;
 
-	private Integer publisherId;
+//	private Integer publisherId;
 
 	private String subscriptionCalculation;
 
@@ -38,14 +40,6 @@ public class OrderOptionsVO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getPublisherId() {
-		return publisherId;
-	}
-
-	public void setPublisherId(Integer publisherId) {
-		this.publisherId = publisherId;
 	}
 
 	public String getSubscriptionCalculation() {
@@ -151,5 +145,6 @@ public class OrderOptionsVO {
 	public void setNumOfIssues(String numOfIssues) {
 		this.numOfIssues = numOfIssues;
 	}
+
 
 }

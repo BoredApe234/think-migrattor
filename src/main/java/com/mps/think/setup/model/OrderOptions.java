@@ -21,8 +21,8 @@ public class OrderOptions extends BaseEntity {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "publisher_id")
-	private Integer publisherId;
+//	@Column(name = "publisher_id")
+//	private Integer publisherId;
 	
 	@Column(name = "subscription_calculation")
 	private String subscriptionCalculation;
@@ -62,7 +62,7 @@ public class OrderOptions extends BaseEntity {
 	
 	@Column(name = "number_of_issues")
 	private String numOfIssues;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -119,12 +119,20 @@ public class OrderOptions extends BaseEntity {
 		this.segmentedOrder = segmentedOrder;
 	}
 
-	public Integer getPublisherId() {
-		return publisherId;
+	public String getGraceQuanitity() {
+		return graceQuanitity;
 	}
 
-	public void setPublisherId(Integer publisherId) {
-		this.publisherId = publisherId;
+	public void setGraceQuanitity(String graceQuanitity) {
+		this.graceQuanitity = graceQuanitity;
+	}
+
+	public String getTrialType() {
+		return trialType;
+	}
+
+	public void setTrialType(String trialType) {
+		this.trialType = trialType;
 	}
 
 	public String getMedia() {
@@ -157,22 +165,6 @@ public class OrderOptions extends BaseEntity {
 
 	public void setRotation(String rotation) {
 		this.rotation = rotation;
-	}
-
-	public String getGraceQuanitity() {
-		return graceQuanitity;
-	}
-
-	public void setGraceQuanitity(String graceQuanitity) {
-		this.graceQuanitity = graceQuanitity;
-	}
-
-	public String getTrialType() {
-		return trialType;
-	}
-
-	public void setTrialType(String trialType) {
-		this.trialType = trialType;
 	}
 
 	public String getNumOfIssues() {

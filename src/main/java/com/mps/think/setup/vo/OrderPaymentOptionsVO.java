@@ -1,10 +1,12 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.Publisher;
+
 public class OrderPaymentOptionsVO {
 
 	private Integer id;
 
-	private Integer publisherId;
+//	private Integer publisherId;
 
 	private String proformaOptions;
 
@@ -19,6 +21,8 @@ public class OrderPaymentOptionsVO {
 	private Boolean chargeShipping;
 
 	private Boolean taxable;
+	
+	private Boolean isActive;
 
 	public Integer getId() {
 		return id;
@@ -26,14 +30,6 @@ public class OrderPaymentOptionsVO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getPublisherId() {
-		return publisherId;
-	}
-
-	public void setPublisherId(Integer publisherId) {
-		this.publisherId = publisherId;
 	}
 
 	public String getProformaOptions() {
@@ -91,7 +87,14 @@ public class OrderPaymentOptionsVO {
 	public void setTaxable(Boolean taxable) {
 		this.taxable = taxable;
 	}
-	
-	
+
+	public Boolean getIsActive() {
+		return isActive;
+	}
+
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
+
 	
 }

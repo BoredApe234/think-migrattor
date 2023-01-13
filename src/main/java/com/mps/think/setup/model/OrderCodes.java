@@ -21,8 +21,8 @@ public class OrderCodes extends BaseEntity {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "publisher_id")
-	private Integer publisherId;
+//	@Column(name = "publisher_id")
+//	private Integer publisherId;
 	
 	@Column(name = "order_code")
 	private String orderCode;
@@ -45,8 +45,8 @@ public class OrderCodes extends BaseEntity {
 	@Column(name = "order_class_id")
 	private String orderClassId;
 
-	@Column(name = "is_active")
-	private Boolean active;
+//	@Column(name = "is_active")
+//	private Boolean active;
 	
 	@Column(name = "rate_card")
 	private String rateCard;
@@ -60,14 +60,6 @@ public class OrderCodes extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getPublisherId() {
-		return publisherId;
-	}
-
-	public void setPublisherId(Integer publisherId) {
-		this.publisherId = publisherId;
 	}
 
 	public String getOrderCode() {
@@ -110,7 +102,6 @@ public class OrderCodes extends BaseEntity {
 		this.orderClassId = orderClassId;
 	}
 
-
 	public String getRateCard() {
 		return rateCard;
 	}
@@ -127,12 +118,6 @@ public class OrderCodes extends BaseEntity {
 		this.discountCard = discountCard;
 	}
 
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
-
+	
+	
 }

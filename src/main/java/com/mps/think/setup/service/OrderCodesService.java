@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.OrderCodes;
+import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.model.OrderItemDetails;
 import com.mps.think.setup.model.OrderOptions;
 import com.mps.think.setup.model.OrderPackageOptions;
@@ -15,20 +16,23 @@ import com.mps.think.setup.vo.OrderCodesSuperVO;
 @Service
 public interface OrderCodesService {
 	
-	public OrderCodesSuperVO createOrderCodes(OrderCodesSuperVO orderCodes);
-	public OrderCodesSuperVO updateOrderCodes(OrderCodesSuperVO orderCodes);
-	public Map<String, Object> getOrderByPublisherId(Integer publisherId);
+	public OrderCodesSuper saveOrderCodes(OrderCodesSuperVO orderCodes);
+	public OrderCodesSuper updateOrderCodes(OrderCodesSuperVO orderCodes);
+	public List<OrderCodesSuper> getOrderByPublisherId(Integer publisherId);
 
-	public OrderCodes getOrderCodesById(Integer orderCodeID);
+	public OrderCodesSuper getOrderCodesById(Integer orderCodeID);
 	public OrderItemDetails getOrderItemDetailsById(Integer itemDetailsId);
 	public OrderOptions getOrderOptionsById(Integer orderOptionsId);
 	public OrderPackageOptions getOrderPackageOptionsById(Integer orderPkgId);
 	public OrderPaymentOptions getOrderPaymentOptionsById(Integer orderPaymentId);
 	
+//	public List<OrderCodesSuper> getOrderCodesByOrderClassId(Integer orderClassId);
+	public List<OrderCodesSuper> getOrderCodesByParentId(Integer parentId);
+	
 	// to fetch the record of all order codes...
 	public List<OrderCodes> getAllOrderCodes();
 	
 	// to delete the order
-	public OrderCodesSuperVO deleteOrderCode(Integer id);
+	public OrderCodesSuper deleteOrderCode(Integer id);
 	
 }

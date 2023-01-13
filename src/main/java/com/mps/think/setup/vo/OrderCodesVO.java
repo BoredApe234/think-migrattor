@@ -1,10 +1,12 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.Publisher;
+
 public class OrderCodesVO {
 	
 	private Integer id;
 	
-	private Integer publisherId;
+//	private Integer publisherId;
 	
 	private String orderCode;
 	
@@ -22,7 +24,7 @@ public class OrderCodesVO {
 	
 	private String orderClassId;
 
-	private Boolean active;
+//	private Boolean active;
 	
 	private String rateCard;
 	
@@ -34,14 +36,6 @@ public class OrderCodesVO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getPublisherId() {
-		return publisherId;
-	}
-
-	public void setPublisherId(Integer publisherId) {
-		this.publisherId = publisherId;
 	}
 
 	public String getOrderCode() {
@@ -84,14 +78,6 @@ public class OrderCodesVO {
 		this.orderClassId = orderClassId;
 	}
 
-	public Boolean getActive() {
-		return active;
-	}
-
-	public void setActive(Boolean active) {
-		this.active = active;
-	}
-
 	public String getRateCard() {
 		return rateCard;
 	}
@@ -108,5 +94,5 @@ public class OrderCodesVO {
 		this.discountCard = discountCard;
 	}
 
-
+	
 }
