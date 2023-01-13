@@ -100,6 +100,9 @@ public class Addresses  extends BaseEntity{
 	
 	@Column(name = "selectionTo")
 	private String selectionTo;
+	
+	@Column(name = "address_aux_json")
+	private String addressAuxJSON;
 
 	public Integer getAddressId() {
 		return addressId;
@@ -269,6 +272,14 @@ public class Addresses  extends BaseEntity{
 		this.selectionTo = selectionTo;
 	}
 
+	public String getAddressAuxJSON() {
+		return addressAuxJSON;
+	}
+
+	public void setAddressAuxJSON(String addressAuxJSON) {
+		this.addressAuxJSON = addressAuxJSON;
+	}
+
 	@Override
 	public String toString() {
 		return "Addresses [addressId=" + addressId + ", addressName=" + addressName + ", addressType=" + addressType
@@ -277,19 +288,7 @@ public class Addresses  extends BaseEntity{
 				+ zipCode + ", city=" + city + ", state=" + state + ", country=" + country + ", countryCode="
 				+ countryCode + ", phone=" + phone + ", validFrom=" + validFrom + ", validTo=" + validTo
 				+ ", frequency=" + frequency + ", selectionFrom=" + selectionFrom + ", selectionTo=" + selectionTo
-				+ "]";
+				+ ", addressAuxJSON=" + addressAuxJSON + "]";
 	}
-
-//	@Override
-//	public String toString() {
-//		return "Addresses [addressId=" + addressId + ", cusId=" + cusId + ", addressName=" + addressName
-//				+ ", addressType=" + addressType + ", addressCategory=" + addressCategory + ", status=" + status
-//				+ ", primaryAddress=" + primaryAddress + ", name=" + name + ", addressLine1=" + addressLine1
-//				+ ", addressLine2=" + addressLine2 + ", zipCode=" + zipCode + ", city=" + city + ", state=" + state
-//				+ ", country=" + country + ", countryCode=" + countryCode + ", phone=" + phone + ", validFrom="
-//				+ validFrom + ", validTo=" + validTo + ", frequency=" + frequency + ", selectionFrom=" + selectionFrom
-//				+ ", selectionTo=" + selectionTo + "]";
-//	}
-
-
+	
 }

@@ -30,18 +30,13 @@ public class AddressesVO {
 	private Frequency frequency;
 	private String selectionFrom;
 	private String selectionTo;
+	private String addressAuxJSON;
 	public Integer getAddressId() {
 		return addressId;
 	}
 	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
 	}
-//	public CustomerDetails getCusId() {
-//		return cusId;
-//	}
-//	public void setCusId(CustomerDetails cusId) {
-//		this.cusId = cusId;
-//	}
 
 	public String getAddressName() {
 		return addressName;
@@ -157,6 +152,13 @@ public class AddressesVO {
 	public void setSelectionTo(String selectionTo) {
 		this.selectionTo = selectionTo;
 	}
+	
+	public String getAddressAuxJSON() {
+		return addressAuxJSON;
+	}
+	public void setAddressAuxJSON(String addressAuxJSON) {
+		this.addressAuxJSON = addressAuxJSON;
+	}
 	@Override
 	public String toString() {
 		return "AddressesVO [addressId=" + addressId + ", addressName=" + addressName + ", addressType=" + addressType
@@ -165,11 +167,7 @@ public class AddressesVO {
 				+ zipCode + ", city=" + city + ", state=" + state + ", country=" + country + ", countryCode="
 				+ countryCode + ", phone=" + phone + ", validFrom=" + validFrom + ", validTo=" + validTo
 				+ ", frequency=" + frequency + ", selectionFrom=" + selectionFrom + ", selectionTo=" + selectionTo
-				+ "]";
+				+ ", addressAuxJSON=" + addressAuxJSON + "]";
 	}
-	
-
-	
-	
 
 }

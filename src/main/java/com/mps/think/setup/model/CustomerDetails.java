@@ -133,6 +133,9 @@ public class CustomerDetails  extends BaseEntity{
 	@Column(name = "paymentThreshold")
 	private String paymentThreshold;
 	
+	@Column(name = "cust_aux_field_json")
+	private String custAuxFieldJSON;
+	
 	@OneToMany
 	@JoinTable(name = "customer_addresses", joinColumns = {
 			@JoinColumn(name = "customer_id", insertable = false, updatable = false) }, inverseJoinColumns = {
@@ -379,6 +382,14 @@ public class CustomerDetails  extends BaseEntity{
 		this.customerAddresses = customerAddresses;
 	}
 
+	public String getCustAuxFieldJSON() {
+		return custAuxFieldJSON;
+	}
+
+	public void setCustAuxFieldJSON(String custAuxFieldJSON) {
+		this.custAuxFieldJSON = custAuxFieldJSON;
+	}
+
 	@Override
 	public String toString() {
 		return "CustomerDetails [customerId=" + customerId + ", customerCategory=" + customerCategory + ", salutation="
@@ -391,8 +402,8 @@ public class CustomerDetails  extends BaseEntity{
 				+ ", parentInstitutionalId=" + parentInstitutionalId + ", chargeTaxOn=" + chargeTaxOn
 				+ ", paymentOptions=" + paymentOptions + ", configurationOptionsforOrders="
 				+ configurationOptionsforOrders + ", newOrderCommission=" + newOrderCommission + ", renewalCommission="
-				+ renewalCommission + ", paymentThreshold=" + paymentThreshold + ", customerAddresses="
-				+ customerAddresses + "]";
+				+ renewalCommission + ", paymentThreshold=" + paymentThreshold + ", custAuxFieldJSON="
+				+ custAuxFieldJSON + ", customerAddresses=" + customerAddresses + "]";
 	}
 
 }
