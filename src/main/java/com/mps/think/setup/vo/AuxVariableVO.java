@@ -19,7 +19,7 @@ public class AuxVariableVO {
 
 	private String variableName;
 
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	private AppConstants.VariableType variableType;
 
 
