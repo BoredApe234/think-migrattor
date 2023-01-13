@@ -40,6 +40,7 @@ public class CustomerDetailsVO {
 	private String newOrderCommission;
 	private String renewalCommission;
 	private String paymentThreshold;
+	private String custAuxFieldJSON;
 	private List<CustomerAddresses> customerAddresses;
 	
 	public Integer getCustomerId() {
@@ -222,6 +223,13 @@ public class CustomerDetailsVO {
 	public void setCustomerAddresses(List<CustomerAddresses> customerAddresses) {
 		this.customerAddresses = customerAddresses;
 	}
+	
+	public String getCustAuxFieldJSON() {
+		return custAuxFieldJSON;
+	}
+	public void setCustAuxFieldJSON(String custAuxFieldJSON) {
+		this.custAuxFieldJSON = custAuxFieldJSON;
+	}
 	@Override
 	public String toString() {
 		return "CustomerDetailsVO [customerId=" + customerId + ", customerCategory=" + customerCategory
@@ -235,7 +243,7 @@ public class CustomerDetailsVO {
 				+ parentInstitutionalId + ", chargeTaxOn=" + chargeTaxOn + ", paymentOptions=" + paymentOptions
 				+ ", configurationOptionsforOrders=" + configurationOptionsforOrders + ", newOrderCommission="
 				+ newOrderCommission + ", renewalCommission=" + renewalCommission + ", paymentThreshold="
-				+ paymentThreshold + ", customerAddresses=" + customerAddresses + "]";
+				+ paymentThreshold + ", custAuxFieldJSON=" + custAuxFieldJSON + ", customerAddresses="
+				+ customerAddresses + "]";
 	}
-	
 }

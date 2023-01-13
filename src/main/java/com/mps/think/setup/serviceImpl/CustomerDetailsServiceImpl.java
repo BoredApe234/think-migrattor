@@ -67,6 +67,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		cd.setRenewalCommission(customerDetails.getRenewalCommission());
 		cd.setPaymentOptions(customerDetails.getPaymentOptions());
 		cd.setChargeTaxOn(customerDetails.getChargeTaxOn());
+		cd.setCustAuxFieldJSON(customerDetails.getCustAuxFieldJSON());
 //==============================================================================================================			
 //		customerDetails.setCustomerId(cd.getCustomerId());	
 		customerDetailsRepo.saveAndFlush(cd);
@@ -119,6 +120,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		cd.setRenewalCommission(customerDetails.getRenewalCommission());
 		cd.setPaymentOptions(customerDetails.getPaymentOptions());
 		cd.setChargeTaxOn(customerDetails.getChargeTaxOn());
+		cd.setCustAuxFieldJSON(customerDetails.getCustAuxFieldJSON());
 		customerDetailsRepo.saveAndFlush(cd);
 		
 		for (CustomerAddresses customerAddresses : customerDetails.getCustomerAddresses()) {

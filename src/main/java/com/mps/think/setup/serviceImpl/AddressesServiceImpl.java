@@ -51,6 +51,7 @@ public class AddressesServiceImpl implements AddressService  {
 		data.setValidFrom(addresses.getValidFrom());
 		data.setValidTo(addresses.getValidTo());
 		data.setFrequency(addresses.getFrequency());
+		data.setAddressAuxJSON(addresses.getAddressAuxJSON());
 //		data.setSelectionFrom(addresses.getSelectionFrom());
 //		data.setSelectionTo(addresses.getSelectionTo());
 		if (addresses.getFrequency()==Frequency.EveryYear) {
@@ -94,6 +95,7 @@ public class AddressesServiceImpl implements AddressService  {
 		data.setSelectionFrom(addresses.getSelectionFrom());
 		data.setSelectionTo(addresses.getSelectionTo());
 		}
+		data.setAddressAuxJSON(addresses.getAddressAuxJSON());
 		addressRepo.saveAndFlush(data);
 		return addresses;
 	}
