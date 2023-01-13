@@ -37,7 +37,6 @@ public class AddressesVO {
 	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
 	}
-
 	public String getAddressName() {
 		return addressName;
 	}

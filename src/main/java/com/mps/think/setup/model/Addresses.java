@@ -289,6 +289,5 @@ public class Addresses  extends BaseEntity{
 				+ countryCode + ", phone=" + phone + ", validFrom=" + validFrom + ", validTo=" + validTo
 				+ ", frequency=" + frequency + ", selectionFrom=" + selectionFrom + ", selectionTo=" + selectionTo
 				+ ", addressAuxJSON=" + addressAuxJSON + "]";
-	}
-	
+	}	
 }

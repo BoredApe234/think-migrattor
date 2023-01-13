@@ -43,8 +43,9 @@ public class IssueGeneration extends BaseEntity {
 	private OrderCodes oderCode;
 
 	// oder class mapping will be there
-	@Column(name = "order_class_id")
-	private String orderClassId;
+	@OneToOne
+	@JoinColumn(name = "order_class_id", referencedColumnName = "oc_id")
+	private OrderClass orderClassId;
 
 	@Column(name = "is_active")
 	private Boolean active;
@@ -131,11 +132,12 @@ public class IssueGeneration extends BaseEntity {
 		this.oderCode = oderCode;
 	}
 
-	public String getOrderClassId() {
+
+	public OrderClass getOrderClassId() {
 		return orderClassId;
 	}
 
-	public void setOrderClassId(String orderClassId) {
+	public void setOrderClassId(OrderClass orderClassId) {
 		this.orderClassId = orderClassId;
 	}
 

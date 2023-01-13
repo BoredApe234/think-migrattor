@@ -64,21 +64,6 @@ public class EnumModelVO {
 		}
 		
 	}
-
-	public static enum OrderClasses  {
-
-		SAMPLE_1("SAMPLE_1"),SAMPLE_2("SAMPLE_2"),SAMPLE_3("SAMPLE_3");
-
-	    private final String displayOrderClasses;
-
-	    OrderClasses(String displayOrderClasses) {
-	        this.displayOrderClasses = displayOrderClasses;
-	    }
-
-	    public String getDisplayName() {
-	        return displayOrderClasses;
-	    }
-	}
 	
 	public static enum StartType  {
 
@@ -234,6 +219,51 @@ public class EnumModelVO {
 			        return displayChargeTaxOn;
 			    }
 
+		}
+	 
+	 public static enum PaymentStatus  {
+
+			Pending("Pending"),Completed("Completed"),Cancelled("Cancelled");
+
+		    private final String displaypaymentStatus;
+
+		    PaymentStatus(String displaypaymentStatus) {
+				this.displaypaymentStatus = displaypaymentStatus;
+			}
+
+			public String getDisplayName() {
+		        return displaypaymentStatus;
+		    }
+		}
+	 
+	 public static enum OrderStatus  {
+
+			Active("Active"),Inactive("Inactive"),Pending("Pending");
+
+		    private final String displayOrderStatus;
+
+		    OrderStatus(String displayOrderStatus) {
+				this.displayOrderStatus = displayOrderStatus;
+			}
+
+			public String getDisplayName() {
+		        return displayOrderStatus;
+		    }
+		}
+	 
+	 public static enum OrderType  {
+
+			SingleCopyOrder("SingleCopyOrder"),BasicPackageOrder("BasicPackageOrder"),DateBasedSubscriptionOrder("DateBasedOrder"),IssueBasedSubscriptionOrder("IssueBasedSubscriptionOrder");
+
+		    private final String displayOrderType ;
+
+		    OrderType(String displayOrderType ) {
+				this.displayOrderType  = displayOrderType ;
+			}
+
+			public String getDisplayName() {
+		        return displayOrderType ;
+		    }
 		}
 
 }

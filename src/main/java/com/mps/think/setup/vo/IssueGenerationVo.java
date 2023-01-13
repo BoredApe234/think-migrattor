@@ -16,7 +16,7 @@ public class IssueGenerationVo {
 
 	private OrderCodesVO oderCodeVo;
 
-	private String orderClassId;
+	private OrderClassVO orderClassId;
 
 	private Boolean active;
 
@@ -84,11 +84,12 @@ public class IssueGenerationVo {
 		IssuesAppearonEvery = issuesAppearonEvery;
 	}
 
-	public String getOrderClassId() {
+	
+	public OrderClassVO getOrderClassId() {
 		return orderClassId;
 	}
 
-	public void setOrderClassId(String orderClassId) {
+	public void setOrderClassId(OrderClassVO orderClassId) {
 		this.orderClassId = orderClassId;
 	}
 
