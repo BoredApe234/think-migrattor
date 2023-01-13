@@ -7,8 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
-import com.mps.think.setup.model.CommodityCodes;
-import com.mps.think.setup.model.Publisher;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.SourceCode;
 import com.mps.think.setup.repo.SourceCodeRepo;
 import com.mps.think.setup.service.SourceCodeService;
@@ -31,28 +30,11 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 
 	@Override
 	public SourceCodeVO saveSourceCode(SourceCodeVO sourceCode) {
-		SourceCode data = new SourceCode();
-		data.setDescription(sourceCode.getDescription());
-		data.setOrderCode(sourceCode.getOrderCode());
-		data.setOrderCodeType(sourceCode.getOrderCodeType());
-		data.setOcId(sourceCode.getOcId());
-		data.setIsActive(sourceCode.getIsActive());
-		data.setQuantity(sourceCode.getQuantity());
-//		data.setGenerated(sourceCode.getGenerated());
-		data.setGeneric_agency(sourceCode.getGeneric_agency());
-		data.setIs_ddp(sourceCode.getIs_ddp());
-		data.setSourceCode(sourceCode.getSourceCode());
-//		data.setsCodeType(sourceCode.getsCodeType());
-		data.setsCodeType(sourceCode.getsCodeType());
-		data.setState_Break(sourceCode.getState_Break());
-		if (sourceCode.getState_Break()==true) {
-			data.setCost(sourceCode.getCost());	
-		}
-		sourceCode.setSourceCodeId(data.getSourceCodeId());
-		Publisher publisher=new Publisher();
-		publisher.setId(sourceCode.getPubId().getId());
-		data.setPubId(publisher);
-		sourceCodeRepo.saveAndFlush(data);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		SourceCode newSourceCode = mapper.convertValue(sourceCode, SourceCode.class);
+		sourceCodeRepo.saveAndFlush(newSourceCode);
+		
 		return sourceCode;
 	}
 
@@ -67,27 +49,9 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 
 	@Override
 	public SourceCodeVO updateSourceCode(SourceCodeVO sourceCode) {
-		SourceCode data = new SourceCode();
-		data.setSourceCodeId(sourceCode.getSourceCodeId());
-		Publisher publisher=new Publisher();
-		publisher.setId(sourceCode.getPubId().getId());
-		data.setPubId(publisher);
-		data.setDescription(sourceCode.getDescription());
-		data.setOrderCode(sourceCode.getOrderCode());
-		data.setOrderCodeType(sourceCode.getOrderCodeType());
-		data.setQuantity(sourceCode.getQuantity());
-		data.setOcId(sourceCode.getOcId());
-		data.setIsActive(sourceCode.getIsActive());
-//		data.setGenerated(sourceCode.getGenerated());
-		data.setGeneric_agency(sourceCode.getGeneric_agency());
-		data.setIs_ddp(sourceCode.getIs_ddp());
-		data.setSourceCode(sourceCode.getSourceCode());
-		data.setsCodeType(sourceCode.getsCodeType());
-		data.setState_Break(sourceCode.getState_Break());
-		if (sourceCode.getState_Break()==true) {
-			data.setCost(sourceCode.getCost());	
-		}
-		sourceCodeRepo.saveAndFlush(data);
+		ObjectMapper mapper = new ObjectMapper();
+		SourceCode sourceCodeToUpdate = mapper.convertValue(sourceCode, SourceCode.class);
+		sourceCodeRepo.saveAndFlush(sourceCodeToUpdate);
 		return sourceCode;
 	}
 
@@ -98,31 +62,14 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 		return delete;
 	}
 
-	
+	@Override
+	public List<SourceCode> findSourceCodeByParentId(Integer parentId) {
+		return sourceCodeRepo.findByParentIDParentID(parentId);
+	}
 
 //	@Override
-//	public SourceCodeVO saveSourceCode(SourceCodeVO sourceCode) {
-//		SourceCode data = new SourceCode();
-//		data.setOcId(sourceCode.getOcId());
-//		data.setDescription(sourceCode.getDescription());
-//		data.setOrderCode(sourceCode.getOrderCode());
-//		data.setOrderCodeType(sourceCode.getOrderCodeType());
-//		data.setIsActive(sourceCode.getIsActive());
-//		data.setGenerated(sourceCode.getGenerated());
-//		data.setGeneric_agency(sourceCode.getGeneric_agency());
-//		data.setIs_ddp(sourceCode.getIs_ddp());
-//		data.setSourceCode(sourceCode.getSourceCode());
-//		data.setsCodeType(sourceCode.getsCodeType());
-//		data.setState_Break(sourceCode.getState_Break());
-//	    data.setCost(sourceCode.getCost());
-//	    sourceCode.setSourceCodeId(data.getSourceCodeId());
-//	    Publisher publisher=new Publisher();
-//	    publisher.setId(sourceCode.getPubId().getId());
-//	    data.setPubId(publisher);
-//	    sourceCodeRepo.saveAndFlush(data);
-//		return sourceCode;
+//	public List<SourceCode> findSourceCodeByChildId(Integer childId) {
+//		return sourceCodeRepo.findByChildIDChildId(childId);
 //	}
-
-
 
 }

@@ -97,20 +97,21 @@ public class EnumModelVO {
 	    }
 	}
 	
-	public static enum source_code_type  {
+	public static enum Source_code_type  {
 
-		Zero("Basic"),One("Package "),Two("Dual "),Three("Catalog"),four("Generic"),five("Shipping ");
+		Zero("Basic"),One("Package"),Two("Dual"),Three("Catalog"),four("Generic"),five("Shipping");
 
-	    private final String displaysource_code_type;
+		private String displayName;
 
-	    source_code_type(String displaysource_code_type) {
-	        this.displaysource_code_type = displaysource_code_type;
+		Source_code_type(String displayName) {
+	        this.displayName = displayName;
 	    }
 
-	    public String getDisplayName() {
-	        return displaysource_code_type;
-	    }
+	    public String displayName() { return displayName; }
+
+	    @Override public String toString() { return displayName; }
 	}
+	
 //	======================================================================================
 	public static enum AddressType {
 		

@@ -1,16 +1,21 @@
 package com.mps.think.setup.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mps.think.setup.service.SourceCodeService;
-import com.mps.think.setup.vo.EnumModelVO.source_code_type;
+
+import com.mps.think.setup.vo.EnumModelVO.Source_code_type;
 import com.mps.think.setup.vo.SourceCodeVO;
 
 @RestController
@@ -46,8 +51,22 @@ public class SourceCodeController {
 	}
 	
 	@GetMapping("/findAllsource_code_type")
-	public ResponseEntity<?> getAllsource_code_type() {
-		return ResponseEntity.ok(source_code_type.values());
+	public ResponseEntity<?> getAllSource_code_type() {
+		List<String> list= new ArrayList<>();
+		for(Source_code_type data:Source_code_type.values()) {
+			list.add(data.displayName());
+		}
+		return ResponseEntity.ok(list);
 	}
+	
+	@GetMapping("/getAllSourceCodeByParentId/{parentId}")
+	public ResponseEntity<?> findSourceCodeByParentId(@PathVariable("parentId") Integer parentId) throws Exception {
+		return ResponseEntity.ok(sourceCodeService.findSourceCodeByParentId(parentId));
+	}
+	
+//	@GetMapping("/getAllSourceCodeByChildId/{childId}")
+//	public ResponseEntity<?>  findSourceCodeByChildId(@PathVariable("childId") Integer childId) throws Exception {
+//		return ResponseEntity.ok(sourceCodeService.findSourceCodeByChildId(childId));
+//	}
 
 }
