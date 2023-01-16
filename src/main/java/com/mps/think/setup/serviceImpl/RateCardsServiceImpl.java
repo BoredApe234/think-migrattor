@@ -83,4 +83,9 @@ public class RateCardsServiceImpl implements RateCardsService {
 		return delete;
 	}
 
+	@Override
+	public List<RateCards> getAllRateCardsByParentID(Integer parentID) throws Exception {
+		return rateCardsRepo.findByParentIdParentID(parentID);
+	}
+
 }
