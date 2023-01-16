@@ -35,6 +35,8 @@ public class IssueGenerationVo {
 	private String issueFormat;
 
 	private String issue_volume;
+	
+	private String dateoftheMonthYear;
 
 	public Integer getId() {
 		return id;
@@ -172,6 +174,8 @@ public class IssueGenerationVo {
 	public void setOderCodeVo(OrderCodesVO oderCodeVo) {
 		this.oderCodeVo = oderCodeVo;
 	}
+	
+	
 
 	@Override
 	public String toString() {
@@ -181,7 +185,7 @@ public class IssueGenerationVo {
 				+ orderClassId + ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
 				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
 				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issue_volume=" + issue_volume
-				+ "]";
+				+ ", dateoftheMonthYear=" + dateoftheMonthYear + "]";
 	}
 
 }
