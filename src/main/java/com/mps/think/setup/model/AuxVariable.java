@@ -2,16 +2,12 @@ package com.mps.think.setup.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.mps.think.setup.utils.AppConstants;
 
 @Table(name = "aux_variable")
 @Entity
@@ -38,9 +34,10 @@ public class AuxVariable extends BaseEntity {
 	@Column(name = "variable_name")
 	private String variableName;
 
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "variable_type")
-	private AppConstants.VariableType variableType;
+	private String variableType;
+//	private AppConstants.VariableType variableType;
 
 
 	@Column(name = "defult_value")
@@ -81,11 +78,11 @@ public class AuxVariable extends BaseEntity {
 		this.variableName = variableName;
 	}
 
-	public AppConstants.VariableType getVariableType() {
+	public String getVariableType() {
 		return variableType;
 	}
 
-	public void setVariableType(AppConstants.VariableType variableType) {
+	public void setVariableType(String variableType) {
 		this.variableType = variableType;
 	}
 

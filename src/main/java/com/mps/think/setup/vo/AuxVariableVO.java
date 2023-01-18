@@ -1,10 +1,6 @@
 package com.mps.think.setup.vo;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
 import com.mps.think.setup.model.Publisher;
-import com.mps.think.setup.utils.AppConstants;
 
 public class AuxVariableVO {
 
@@ -19,8 +15,9 @@ public class AuxVariableVO {
 
 	private String variableName;
 
-	@Enumerated(EnumType.STRING)
-	private AppConstants.VariableType variableType;
+//	@Enumerated(EnumType.STRING)
+//	private AppConstants.VariableType variableType;
+	private String variableType;
 
 
 	private String defultValue;
@@ -59,11 +56,11 @@ public class AuxVariableVO {
 		this.variableName = variableName;
 	}
 
-	public AppConstants.VariableType getVariableType() {
+	public String getVariableType() {
 		return variableType;
 	}
 
-	public void setVariableType(AppConstants.VariableType variableType) {
+	public void setVariableType(String variableType) {
 		this.variableType = variableType;
 	}
 

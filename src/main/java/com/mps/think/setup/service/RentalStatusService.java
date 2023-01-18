@@ -3,7 +3,6 @@ package com.mps.think.setup.service;
 import java.util.List;
 
 import com.mps.think.setup.model.RentalStatus;
-import com.mps.think.setup.model.TaxType;
 import com.mps.think.setup.vo.RentalStatusVO;
 
 public interface RentalStatusService {

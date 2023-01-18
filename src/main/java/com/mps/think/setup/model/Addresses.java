@@ -9,8 +9,6 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -100,6 +98,9 @@ public class Addresses  extends BaseEntity{
 	
 	@Column(name = "selectionTo")
 	private String selectionTo;
+	
+	@Column(name = "address_aux_json")
+	private String addressAuxJSON;
 
 	public Integer getAddressId() {
 		return addressId;
@@ -269,6 +270,14 @@ public class Addresses  extends BaseEntity{
 		this.selectionTo = selectionTo;
 	}
 
+	public String getAddressAuxJSON() {
+		return addressAuxJSON;
+	}
+
+	public void setAddressAuxJSON(String addressAuxJSON) {
+		this.addressAuxJSON = addressAuxJSON;
+	}
+
 	@Override
 	public String toString() {
 		return "Addresses [addressId=" + addressId + ", addressName=" + addressName + ", addressType=" + addressType
@@ -277,21 +286,6 @@ public class Addresses  extends BaseEntity{
 				+ zipCode + ", city=" + city + ", state=" + state + ", country=" + country + ", countryCode="
 				+ countryCode + ", phone=" + phone + ", validFrom=" + validFrom + ", validTo=" + validTo
 				+ ", frequency=" + frequency + ", selectionFrom=" + selectionFrom + ", selectionTo=" + selectionTo
-				+ "]";
-	}
-
-	
-
-//	@Override
-//	public String toString() {
-//		return "Addresses [addressId=" + addressId + ", cusId=" + cusId + ", addressName=" + addressName
-//				+ ", addressType=" + addressType + ", addressCategory=" + addressCategory + ", status=" + status
-//				+ ", primaryAddress=" + primaryAddress + ", name=" + name + ", addressLine1=" + addressLine1
-//				+ ", addressLine2=" + addressLine2 + ", zipCode=" + zipCode + ", city=" + city + ", state=" + state
-//				+ ", country=" + country + ", countryCode=" + countryCode + ", phone=" + phone + ", validFrom="
-//				+ validFrom + ", validTo=" + validTo + ", frequency=" + frequency + ", selectionFrom=" + selectionFrom
-//				+ ", selectionTo=" + selectionTo + "]";
-//	}
-
-
+				+ ", addressAuxJSON=" + addressAuxJSON + "]";
+	}	
 }

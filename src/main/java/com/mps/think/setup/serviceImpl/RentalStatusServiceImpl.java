@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
 import com.mps.think.setup.model.RentalStatus;
-import com.mps.think.setup.model.TaxType;
 import com.mps.think.setup.repo.RentalStatusRepo;
 import com.mps.think.setup.service.RentalStatusService;
 import com.mps.think.setup.vo.RentalStatusVO;

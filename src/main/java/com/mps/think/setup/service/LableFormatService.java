@@ -2,7 +2,6 @@ package com.mps.think.setup.service;
 
 import java.util.List;
 
-
 import com.mps.think.setup.model.LableFormat;
 import com.mps.think.setup.vo.LableFormatVO;
 

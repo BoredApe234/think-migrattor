@@ -1,7 +1,6 @@
 package com.mps.think.setup.serviceImpl;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +66,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		cd.setRenewalCommission(customerDetails.getRenewalCommission());
 		cd.setPaymentOptions(customerDetails.getPaymentOptions());
 		cd.setChargeTaxOn(customerDetails.getChargeTaxOn());
+		cd.setCustAuxFieldJSON(customerDetails.getCustAuxFieldJSON());
 //==============================================================================================================			
 //		customerDetails.setCustomerId(cd.getCustomerId());	
 		customerDetailsRepo.saveAndFlush(cd);
@@ -119,6 +119,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		cd.setRenewalCommission(customerDetails.getRenewalCommission());
 		cd.setPaymentOptions(customerDetails.getPaymentOptions());
 		cd.setChargeTaxOn(customerDetails.getChargeTaxOn());
+		cd.setCustAuxFieldJSON(customerDetails.getCustAuxFieldJSON());
 		customerDetailsRepo.saveAndFlush(cd);
 		
 		for (CustomerAddresses customerAddresses : customerDetails.getCustomerAddresses()) {

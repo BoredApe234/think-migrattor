@@ -1,5 +1,7 @@
 package com.mps.think.setup.model;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,10 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
 import com.mps.think.setup.vo.EnumModelVO.OrderType;
 
@@ -61,11 +64,19 @@ public class Order extends BaseEntity {
 	@JoinColumn(name = "delivery_options_id", referencedColumnName = "id" )
 	private OrderDeliveryOptions deliveryAndBillingOptions;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name = "order_address_id", referencedColumnName = "id" )
-	private OrderAddressMapping orderAddress;
+//	@OneToOne(cascade=CascadeType.ALL)
+//	@JoinColumn(name = "order_address_id", referencedColumnName = "id" )
+//	private OrderAddressMapping orderAddress;
 	
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToMany(
+	        mappedBy = "order",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true
+	    )
+	@JsonManagedReference
+	private List<OrderAddressMapping> orderAddresses;
+	
+	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH})
 	@JoinColumn(name = "auxiliary_information_id", referencedColumnName = "id" )
 	private OrderAuxiliaryInformation auxiliaryInformation;
 
@@ -133,12 +144,12 @@ public class Order extends BaseEntity {
 		this.deliveryAndBillingOptions = deliveryAndBillingOptions;
 	}
 
-	public OrderAddressMapping getOrderAddress() {
-		return orderAddress;
+	public List<OrderAddressMapping> getOrderAddresses() {
+		return orderAddresses;
 	}
 
-	public void setOrderAddress(OrderAddressMapping orderAddress) {
-		this.orderAddress = orderAddress;
+	public void setOrderAddresses(List<OrderAddressMapping> orderAddresses) {
+		this.orderAddresses = orderAddresses;
 	}
 
 	public OrderAuxiliaryInformation getAuxiliaryInformation() {
@@ -149,8 +160,4 @@ public class Order extends BaseEntity {
 		this.auxiliaryInformation = auxiliaryInformation;
 	}
 
-	
-	
-	
-	
 }

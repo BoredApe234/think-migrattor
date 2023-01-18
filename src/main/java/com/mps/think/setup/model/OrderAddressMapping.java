@@ -6,9 +6,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Table(name = "order_address_mapping")
 @Entity
@@ -42,6 +44,11 @@ public class OrderAddressMapping extends BaseEntity {
 	
 	@Column(name = "renewal_address")
 	private Boolean renewalAddress;
+	
+	@ManyToOne
+    @JoinColumn(name = "order_id")
+	@JsonBackReference
+    private Order order;
 
 	public Integer getId() {
 		return id;
@@ -51,13 +58,13 @@ public class OrderAddressMapping extends BaseEntity {
 		this.id = id;
 	}
 
-//	public Integer getAddressId() {
-//		return addressId;
-//	}
-//
-//	public void setAddressId(Integer addressId) {
-//		this.addressId = addressId;
-//	}
+	public Addresses getAddress() {
+		return address;
+	}
+
+	public void setAddress(Addresses address) {
+		this.address = address;
+	}
 
 	public Boolean getShippingAddress() {
 		return shippingAddress;
@@ -83,20 +90,20 @@ public class OrderAddressMapping extends BaseEntity {
 		this.alternateAddress = alternateAddress;
 	}
 
-	public Addresses getAddress() {
-		return address;
-	}
-
-	public void setAddress(Addresses address) {
-		this.address = address;
-	}
-
 	public Boolean getRenewalAddress() {
 		return renewalAddress;
 	}
 
 	public void setRenewalAddress(Boolean renewalAddress) {
 		this.renewalAddress = renewalAddress;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 }

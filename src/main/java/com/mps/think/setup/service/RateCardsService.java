@@ -1,6 +1,7 @@
 package com.mps.think.setup.service;
 
 import java.util.List;
+
 import com.mps.think.setup.model.RateCards;
 import com.mps.think.setup.vo.RateCardsVO;
 
@@ -15,5 +16,7 @@ public interface RateCardsService {
 	public RateCards findbyrcId(Integer rcId);
 	
 	public RateCards deleteByrcId(Integer rcId);
+	
+	public List<RateCards> getAllRateCardsByParentID(Integer parentID) throws Exception;
 
 }

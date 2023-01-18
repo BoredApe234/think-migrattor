@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mps.think.setup.model.ShippingMethod;
 import com.mps.think.setup.service.ShippingMethodService;
 import com.mps.think.setup.vo.ShippingMethodVO;
 

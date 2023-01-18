@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
 import com.mps.think.setup.service.RateCardsRenewalsService;
+import com.mps.think.setup.vo.EnumModelVO.Currency;
 import com.mps.think.setup.vo.RateCardsRenewalsVO;
 
 
@@ -48,6 +48,11 @@ public class RateCardsRenewalsController {
 	@PostMapping("/findAllRateCardsRenewalsByRateCardsId")
 	public ResponseEntity<?> findAllRateCardsByRateCardsRenewalsId(@RequestBody Integer id) {
 		return ResponseEntity.ok(rateCardsRenewalsService.getAllRateCardsRenewalsByRcId(id));
+	}
+	
+	@GetMapping("/findAllCurrency")
+	public ResponseEntity<?> getAllCurrency() {
+		return ResponseEntity.ok(Currency.values());
 	}
 
 }

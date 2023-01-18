@@ -75,7 +75,13 @@ public class IssueGeneration extends BaseEntity {
 
 	@Column(name = "issue_volume")
 	private String issue_volume;
-
+	
+	@Column(name = "issue_date")
+	private String issueDate;
+	
+	@Column(name = "date_ofthe_month_year")
+	private String dateoftheMonthYear;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -217,6 +223,24 @@ public class IssueGeneration extends BaseEntity {
 		return serialVersionUID;
 	}
 
+	
+	public String getDateoftheMonthYear() {
+		return dateoftheMonthYear;
+	}
+
+	public void setDateoftheMonthYear(String dateoftheMonthYear) {
+		this.dateoftheMonthYear = dateoftheMonthYear;
+	}
+	
+
+	public String getIssueDate() {
+		return issueDate;
+	}
+
+	public void setIssueDate(String issueDate) {
+		this.issueDate = issueDate;
+	}
+
 	@Override
 	public String toString() {
 		return "IssueGeneration [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
@@ -225,7 +249,7 @@ public class IssueGeneration extends BaseEntity {
 				+ orderClassId + ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
 				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
 				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issue_volume=" + issue_volume
-				+ "]";
+				+ ", issueDate=" + issueDate + ", dateoftheMonthYear=" + dateoftheMonthYear + "]";
 	}
 
 }

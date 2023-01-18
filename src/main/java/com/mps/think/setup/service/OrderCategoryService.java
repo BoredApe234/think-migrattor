@@ -2,9 +2,7 @@ package com.mps.think.setup.service;
 
 import java.util.List;
 
-import com.mps.think.setup.model.CustomerCategory;
 import com.mps.think.setup.model.OrderCategory;
-import com.mps.think.setup.vo.CustomerCategoryVO;
 import com.mps.think.setup.vo.OrderCategoryVO;
 
 public interface OrderCategoryService {
