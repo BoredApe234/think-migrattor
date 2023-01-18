@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.TaxRateCategory;
-import com.mps.think.setup.model.TaxType;
 import com.mps.think.setup.repo.TaxRateCategoryRepo;
 import com.mps.think.setup.service.TaxRateCategoryService;
 import com.mps.think.setup.vo.TaxRateCategoryVO;

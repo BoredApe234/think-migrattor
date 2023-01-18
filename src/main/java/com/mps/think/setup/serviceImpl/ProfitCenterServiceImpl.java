@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
-import com.mps.think.setup.model.CreditStatus;
 import com.mps.think.setup.model.ProfitCenter;
 import com.mps.think.setup.repo.ProfitCenterRepo;
 import com.mps.think.setup.service.ProfitCenterService;

@@ -14,11 +14,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mps.think.setup.serviceImpl.AuxServiceImpl;
 import com.mps.think.setup.utils.AppConstants.AuxCategory;
-import com.mps.think.setup.utils.AppConstants.GenerationMethod;
 import com.mps.think.setup.utils.AppConstants.VariableType;
-import com.mps.think.setup.utils.AppConstants.codeGen;
 import com.mps.think.setup.vo.AuxVariableVO;
-import com.mps.think.setup.vo.EnumModelVO.ConfigurationOptionsforOrders;
 
 @RestController
 @CrossOrigin

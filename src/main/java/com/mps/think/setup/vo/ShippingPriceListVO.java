@@ -1,7 +1,6 @@
 package com.mps.think.setup.vo;
 
 import com.mps.think.setup.model.Publisher;
-import com.mps.think.setup.model.ShippingMethod;
 
 public class ShippingPriceListVO {
 

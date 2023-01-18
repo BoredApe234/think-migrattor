@@ -6,7 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.model.RenewalCard;
 import com.mps.think.setup.repo.RenewalCardRepo;
 import com.mps.think.setup.service.RenewalCardService;

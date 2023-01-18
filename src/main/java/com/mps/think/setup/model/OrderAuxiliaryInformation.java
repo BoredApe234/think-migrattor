@@ -21,17 +21,8 @@ public class OrderAuxiliaryInformation extends BaseEntity {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "sales_representative")
-	private String salesRepresentative;
-	
-	@Column(name = "eye_color")
-	private String eyeColor;
-	
-	@Column(name = "height")
-	private String height;
-	
-	@Column(name = "document_reference")
-	private String documentReference;
+	@Column(name = "order_aux_json")
+	private String orderAuxJSON;
 
 	public Integer getId() {
 		return id;
@@ -41,36 +32,12 @@ public class OrderAuxiliaryInformation extends BaseEntity {
 		this.id = id;
 	}
 
-	public String getSalesRepresentative() {
-		return salesRepresentative;
+	public String getOrderAuxJSON() {
+		return orderAuxJSON;
 	}
 
-	public void setSalesRepresentative(String salesRepresentative) {
-		this.salesRepresentative = salesRepresentative;
+	public void setOrderAuxJSON(String orderAuxJSON) {
+		this.orderAuxJSON = orderAuxJSON;
 	}
-
-	public String getEyeColor() {
-		return eyeColor;
-	}
-
-	public void setEyeColor(String eyeColor) {
-		this.eyeColor = eyeColor;
-	}
-
-	public String getHeight() {
-		return height;
-	}
-
-	public void setHeight(String height) {
-		this.height = height;
-	}
-
-	public String getDocumentReference() {
-		return documentReference;
-	}
-
-	public void setDocumentReference(String documentReference) {
-		this.documentReference = documentReference;
-	}
-
+	
 }

@@ -2,7 +2,6 @@ package com.mps.think.setup.vo;
 
 import java.util.Date;
 
-import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.vo.EnumModelVO.AddressCategory;
 import com.mps.think.setup.vo.EnumModelVO.AddressType;
 import com.mps.think.setup.vo.EnumModelVO.Frequency;

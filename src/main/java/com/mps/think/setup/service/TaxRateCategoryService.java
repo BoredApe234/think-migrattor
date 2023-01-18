@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.TaxRateCategory;
-import com.mps.think.setup.model.TaxType;
 import com.mps.think.setup.vo.TaxRateCategoryVO;
 
 @Service

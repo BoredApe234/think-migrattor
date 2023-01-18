@@ -8,9 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.DiscountCardKeyInfo;
-import com.mps.think.setup.model.EffectiveDatesForDiscount;
 import com.mps.think.setup.repo.DiscountCardKeyInfoRepo;
-import com.mps.think.setup.repo.EffectiveDatesForDiscountRepo;
 import com.mps.think.setup.service.DiscountCardKeyInfoService;
 import com.mps.think.setup.service.EffectiveDatesForDiscountService;
 import com.mps.think.setup.vo.DiscountCardKeyInfoVO;

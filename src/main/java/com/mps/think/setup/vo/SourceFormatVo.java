@@ -1,10 +1,5 @@
 package com.mps.think.setup.vo;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
-import com.mps.think.setup.utils.AppConstants;
-
 public class SourceFormatVo  {
 
 	

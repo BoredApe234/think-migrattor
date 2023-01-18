@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.mps.think.setup.serviceImpl.SourceFormatSegmentServiceImpl;
 import com.mps.think.setup.utils.AppConstants.GenerationFunction;
 import com.mps.think.setup.utils.AppConstants.GenerationMethod;
-import com.mps.think.setup.utils.AppConstants.codeGen;
 import com.mps.think.setup.vo.SourceFormatSegmentVo;
 
 @RestController

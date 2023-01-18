@@ -1,6 +1,5 @@
 package com.mps.think.setup.serviceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +10,6 @@ import com.mps.think.setup.model.Addresses;
 import com.mps.think.setup.model.CustomerAddresses;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.repo.AddressesRepo;
-import com.mps.think.setup.repo.CustomerDetailsRepo;
 import com.mps.think.setup.service.AddressService;
 import com.mps.think.setup.vo.AddressesVO;
 import com.mps.think.setup.vo.EnumModelVO.Frequency;

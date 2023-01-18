@@ -8,10 +8,8 @@ import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
 import com.mps.think.setup.model.CancelReasons;
-import com.mps.think.setup.model.CustomerCategory;
 import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.repo.CancelReasonsRepo;
-import com.mps.think.setup.repo.CustomerCategoryRepo;
 import com.mps.think.setup.service.CancelReasonsService;
 import com.mps.think.setup.vo.CancelReasonsVO;
 @Service

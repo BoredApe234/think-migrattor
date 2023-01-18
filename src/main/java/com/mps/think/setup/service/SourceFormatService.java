@@ -3,7 +3,6 @@ package com.mps.think.setup.service;
 import java.util.List;
 
 import com.mps.think.setup.model.SourceFormat;
-
 import com.mps.think.setup.vo.SourceFormatVo;
 
 public interface SourceFormatService {
