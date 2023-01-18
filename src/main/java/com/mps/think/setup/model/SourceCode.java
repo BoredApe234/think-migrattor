@@ -11,13 +11,6 @@ import javax.persistence.ManyToOne;
 
 import javax.persistence.Table;
 
-<<<<<<< HEAD
-
-
-=======
-import com.mps.think.setup.vo.EnumModelVO.source_code_type;
->>>>>>> fe14b165d73746ddc94ff927721423f7523ece6c
-
 @Table(name = "source_Code")
 @Entity
 public class SourceCode extends BaseEntity {
