@@ -175,7 +175,14 @@ public class IssueGenerationVo {
 		this.oderCodeVo = oderCodeVo;
 	}
 	
-	
+
+	public String getDateoftheMonthYear() {
+		return dateoftheMonthYear;
+	}
+
+	public void setDateoftheMonthYear(String dateoftheMonthYear) {
+		this.dateoftheMonthYear = dateoftheMonthYear;
+	}
 
 	@Override
 	public String toString() {
