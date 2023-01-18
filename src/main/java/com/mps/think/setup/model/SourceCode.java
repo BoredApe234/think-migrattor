@@ -2,16 +2,21 @@ package com.mps.think.setup.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
+
 import javax.persistence.Table;
 
+<<<<<<< HEAD
+
+
+=======
 import com.mps.think.setup.vo.EnumModelVO.source_code_type;
+>>>>>>> fe14b165d73746ddc94ff927721423f7523ece6c
 
 @Table(name = "source_Code")
 @Entity
@@ -24,41 +29,49 @@ public class SourceCode extends BaseEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "sourceCodeId")
+	@Column(name = "sourc_code_id")
 	private Integer sourceCodeId;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "pub_id", referencedColumnName = "id")
 	private Publisher pubId;
+	
+	@ManyToOne
+	@JoinColumn(name = "parent_id", referencedColumnName = "parent_id")
+	private ParentClass parentID;
+	
+//	@ManyToOne
+//	@JoinColumn(name = "child_id", referencedColumnName = "child_id")
+//	private ChildClass childID;
 	
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "orderCode")
+	@Column(name = "order_code")
 	private String orderCode;
 	
-	@Column(name = "orderCodeType")
-	private String orderCodeType;
+	@Column(name = "order_code_type")
+	private String order_code_type;
 	
 	@Column(name = "quantity")
-	private String quantity;
+	private Integer quantity;
 	
 //	=====================================================================================================	
 //	need to change integer to order class name and join column with order class id
 	@Column(name="oc_id")
 	private Integer ocId;
 	
-	@Column(name = "isActive")
+	@Column(name = "is_active")
 	private Boolean isActive;
 	
-	@Column(name = "stateBreak")
+	@Column(name = "state_break")
 	private Boolean state_Break;
 	
 	@Column(name = "cost")
 	private Integer cost;
-//	
-//	@Column(name = "generated")
-//	private Boolean generated;
+	
+	@Column(name = "is_generated")
+	private Boolean isGenerated;
 	
 	@Column(name="generic_agency")
 	private Integer generic_agency;
@@ -66,12 +79,25 @@ public class SourceCode extends BaseEntity {
 	@Column(name="is_ddp")
 	private Integer is_ddp;
 	
-	@Column(name="sourceCode")
+	@Column(name="source_code")
 	private String sourceCode;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "sCodeType")
-	private source_code_type sCodeType;
+	
+	@Column(name = "source_code_type")
+	private String sourceCodeType;
+
+//	These are dropdown fields ===============
+	@Column(name="source_code_format")
+	private String sourceCodeFormat;
+	
+	@Column(name="rate_card")
+	private String rateCard;
+	
+	@Column(name="discount")
+	private Integer discount;
+	
+	@Column(name="shipping_price_list")
+	private Integer shippingPriceList;
 
 	public Integer getSourceCodeId() {
 		return sourceCodeId;
@@ -81,13 +107,21 @@ public class SourceCode extends BaseEntity {
 		this.sourceCodeId = sourceCodeId;
 	}
 
-	public Publisher getPubId() {
-		return pubId;
+	public ParentClass getParentID() {
+		return parentID;
 	}
 
-	public void setPubId(Publisher pubId) {
-		this.pubId = pubId;
+	public void setParentID(ParentClass parentID) {
+		this.parentID = parentID;
 	}
+
+//	public ChildClass getChildID() {
+//		return childID;
+//	}
+//
+//	public void setChildID(ChildClass childID) {
+//		this.childID = childID;
+//	}
 
 	public String getDescription() {
 		return description;
@@ -105,12 +139,12 @@ public class SourceCode extends BaseEntity {
 		this.orderCode = orderCode;
 	}
 
-	public String getOrderCodeType() {
-		return orderCodeType;
+	public Integer getQuantity() {
+		return quantity;
 	}
 
-	public void setOrderCodeType(String orderCodeType) {
-		this.orderCodeType = orderCodeType;
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 
 	public Integer getOcId() {
@@ -145,6 +179,14 @@ public class SourceCode extends BaseEntity {
 		this.cost = cost;
 	}
 
+	public Boolean getIsGenerated() {
+		return isGenerated;
+	}
+
+	public void setIsGenerated(Boolean isGenerated) {
+		this.isGenerated = isGenerated;
+	}
+
 	public Integer getGeneric_agency() {
 		return generic_agency;
 	}
@@ -169,29 +211,75 @@ public class SourceCode extends BaseEntity {
 		this.sourceCode = sourceCode;
 	}
 
-	public source_code_type getsCodeType() {
-		return sCodeType;
+	public String getSourceCodeType() {
+		return sourceCodeType;
 	}
 
-	public void setsCodeType(source_code_type sCodeType) {
-		this.sCodeType = sCodeType;
+	public void setSourceCodeType(String sourceCodeType) {
+		this.sourceCodeType = sourceCodeType;
 	}
 
-	
-	public String getQuantity() {
-		return quantity;
+	public String getSourceCodeFormat() {
+		return sourceCodeFormat;
 	}
 
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
+	public void setSourceCodeFormat(String sourceCodeFormat) {
+		this.sourceCodeFormat = sourceCodeFormat;
+	}
+
+	public String getRateCard() {
+		return rateCard;
+	}
+
+	public void setRateCard(String rateCard) {
+		this.rateCard = rateCard;
+	}
+
+	public Integer getDiscount() {
+		return discount;
+	}
+
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
+	}
+
+	public Integer getShippingPriceList() {
+		return shippingPriceList;
+	}
+
+	public void setShippingPriceList(Integer shippingPriceList) {
+		this.shippingPriceList = shippingPriceList;
+	}
+
+	public String getOrder_code_type() {
+		return order_code_type;
+	}
+
+	public void setOrder_code_type(String order_code_type) {
+		this.order_code_type = order_code_type;
+	}
+
+	public Publisher getPubId() {
+		return pubId;
+	}
+
+	public void setPubId(Publisher pubId) {
+		this.pubId = pubId;
 	}
 
 	@Override
 	public String toString() {
-		return "SourceCode [sourceCodeId=" + sourceCodeId + ", pubId=" + pubId + ", description=" + description
-				+ ", orderCode=" + orderCode + ", orderCodeType=" + orderCodeType + ", quantity=" + quantity + ", ocId="
-				+ ocId + ", isActive=" + isActive + ", state_Break=" + state_Break + ", cost=" + cost
-				+ ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCode=" + sourceCode
-				+ ", sCodeType=" + sCodeType + "]";
+		return "SourceCode [sourceCodeId=" + sourceCodeId + ", pubId=" + pubId + ", parentID=" + parentID
+				+ ", description=" + description + ", orderCode=" + orderCode + ", order_code_type=" + order_code_type
+				+ ", quantity=" + quantity + ", ocId=" + ocId + ", isActive=" + isActive + ", state_Break="
+				+ state_Break + ", cost=" + cost + ", isGenerated=" + isGenerated + ", generic_agency=" + generic_agency
+				+ ", is_ddp=" + is_ddp + ", sourceCode=" + sourceCode + ", sourceCodeType=" + sourceCodeType
+				+ ", sourceCodeFormat=" + sourceCodeFormat + ", rateCard=" + rateCard + ", discount=" + discount
+				+ ", shippingPriceList=" + shippingPriceList + "]";
 	}
+
+	
+
+	
+	
 }

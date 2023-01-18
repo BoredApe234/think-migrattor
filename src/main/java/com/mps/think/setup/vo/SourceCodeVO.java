@@ -1,38 +1,55 @@
 package com.mps.think.setup.vo;
 
+
+
+//import com.mps.think.setup.model.ChildClass;
+import com.mps.think.setup.model.ParentClass;
 import com.mps.think.setup.model.Publisher;
-//import com.mps.think.setup.vo.EnumModelVO.Source_code_type;
-import com.mps.think.setup.vo.EnumModelVO.source_code_type;
+
+
+
 
 public class SourceCodeVO {
 	
 	private Integer sourceCodeId;
 	private Publisher pubId;
+	private ParentClass parentID;
+//	private ChildClass childID;
 	private String description;
 	private String orderCode;
-	private String orderCodeType;
-	private String quantity;
+	private String order_code_type;
+	private Integer quantity;
 	private Integer ocId;
 	private Boolean isActive;
 	private Boolean state_Break;
 	private Integer cost;
-//	private Boolean generated;
+	private Boolean isGenerated;
 	private Integer generic_agency;
 	private Integer is_ddp;
-	private source_code_type sCodeType;
+	private String sourceCodeType;
 	private String sourceCode;
+    private String sourceCodeFormat;
+	private String rateCard;
+	private Integer discount;
+	private Integer shippingPriceList;
 	public Integer getSourceCodeId() {
 		return sourceCodeId;
 	}
 	public void setSourceCodeId(Integer sourceCodeId) {
 		this.sourceCodeId = sourceCodeId;
 	}
-	public Publisher getPubId() {
-		return pubId;
+	public ParentClass getParentID() {
+		return parentID;
 	}
-	public void setPubId(Publisher pubId) {
-		this.pubId = pubId;
+	public void setParentID(ParentClass parentID) {
+		this.parentID = parentID;
 	}
+//	public ChildClass getChildID() {
+//		return childID;
+//	}
+//	public void setChildID(ChildClass childID) {
+//		this.childID = childID;
+//	}
 	public String getDescription() {
 		return description;
 	}
@@ -45,11 +62,12 @@ public class SourceCodeVO {
 	public void setOrderCode(String orderCode) {
 		this.orderCode = orderCode;
 	}
-	public String getOrderCodeType() {
-		return orderCodeType;
+	
+	public Integer getQuantity() {
+		return quantity;
 	}
-	public void setOrderCodeType(String orderCodeType) {
-		this.orderCodeType = orderCodeType;
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 	public Integer getOcId() {
 		return ocId;
@@ -75,6 +93,12 @@ public class SourceCodeVO {
 	public void setCost(Integer cost) {
 		this.cost = cost;
 	}
+	public Boolean getIsGenerated() {
+		return isGenerated;
+	}
+	public void setIsGenerated(Boolean isGenerated) {
+		this.isGenerated = isGenerated;
+	}
 	public Integer getGeneric_agency() {
 		return generic_agency;
 	}
@@ -87,32 +111,67 @@ public class SourceCodeVO {
 	public void setIs_ddp(Integer is_ddp) {
 		this.is_ddp = is_ddp;
 	}
-	public source_code_type getsCodeType() {
-		return sCodeType;
-	}
-	public void setsCodeType(source_code_type sCodeType) {
-		this.sCodeType = sCodeType;
-	}
+	
 	public String getSourceCode() {
 		return sourceCode;
 	}
 	public void setSourceCode(String sourceCode) {
 		this.sourceCode = sourceCode;
 	}
-	
-	public String getQuantity() {
-		return quantity;
+	public String getSourceCodeFormat() {
+		return sourceCodeFormat;
 	}
-	public void setQuantity(String quantity) {
-		this.quantity = quantity;
+	public void setSourceCodeFormat(String sourceCodeFormat) {
+		this.sourceCodeFormat = sourceCodeFormat;
+	}
+	public String getRateCard() {
+		return rateCard;
+	}
+	public void setRateCard(String rateCard) {
+		this.rateCard = rateCard;
+	}
+	public Integer getDiscount() {
+		return discount;
+	}
+	public void setDiscount(Integer discount) {
+		this.discount = discount;
+	}
+	public Integer getShippingPriceList() {
+		return shippingPriceList;
+	}
+	public void setShippingPriceList(Integer shippingPriceList) {
+		this.shippingPriceList = shippingPriceList;
+	}
+	public String getSourceCodeType() {
+		return sourceCodeType;
+	}
+	public void setSourceCodeType(String sourceCodeType) {
+		this.sourceCodeType = sourceCodeType;
+	}
+	public String getOrder_code_type() {
+		return order_code_type;
+	}
+	public void setOrder_code_type(String order_code_type) {
+		this.order_code_type = order_code_type;
+	}
+	public Publisher getPubId() {
+		return pubId;
+	}
+	public void setPubId(Publisher pubId) {
+		this.pubId = pubId;
 	}
 	@Override
 	public String toString() {
-		return "SourceCodeVO [sourceCodeId=" + sourceCodeId + ", pubId=" + pubId + ", description=" + description
-				+ ", orderCode=" + orderCode + ", orderCodeType=" + orderCodeType + ", quantity=" + quantity + ", ocId="
-				+ ocId + ", isActive=" + isActive + ", state_Break=" + state_Break + ", cost=" + cost
-				+ ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sCodeType=" + sCodeType
-				+ ", sourceCode=" + sourceCode + "]";
+		return "SourceCodeVO [sourceCodeId=" + sourceCodeId + ", pubId=" + pubId + ", parentID=" + parentID
+				+ ", description=" + description + ", orderCode=" + orderCode + ", order_code_type=" + order_code_type
+				+ ", quantity=" + quantity + ", ocId=" + ocId + ", isActive=" + isActive + ", state_Break="
+				+ state_Break + ", cost=" + cost + ", isGenerated=" + isGenerated + ", generic_agency=" + generic_agency
+				+ ", is_ddp=" + is_ddp + ", sourceCodeType=" + sourceCodeType + ", sourceCode=" + sourceCode
+				+ ", sourceCodeFormat=" + sourceCodeFormat + ", rateCard=" + rateCard + ", discount=" + discount
+				+ ", shippingPriceList=" + shippingPriceList + "]";
 	}
+	
+	
+	
 	
 }
