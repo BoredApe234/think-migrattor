@@ -1,8 +1,9 @@
 package com.mps.think.setup.vo;
 
+
+
 import com.mps.think.setup.model.Publisher;
-import com.mps.think.setup.vo.EnumModelVO.InstallmentTerm;
-import com.mps.think.setup.vo.EnumModelVO.StartType;
+
 
 public class TermsVO {
 	
@@ -17,8 +18,8 @@ public class TermsVO {
 	private Integer duration;
 	private String unitsInDuration;
 	private String volumeGroupsToSpan;
-	private StartType startType;
-	private InstallmentTerm installmentterm;
+    private String startType;
+	private String installmentterm;
 	public Integer getTermsId() {
 		return termsId;
 	}
@@ -85,25 +86,18 @@ public class TermsVO {
 	public void setVolumeGroupsToSpan(String volumeGroupsToSpan) {
 		this.volumeGroupsToSpan = volumeGroupsToSpan;
 	}
-	public StartType getStartType() {
+	public String getStartType() {
 		return startType;
 	}
-	public void setStartType(StartType startType) {
+	public void setStartType(String startType) {
 		this.startType = startType;
 	}
-	public InstallmentTerm getInstallmentterm() {
+	public String getInstallmentterm() {
 		return installmentterm;
 	}
-	public void setInstallmentterm(InstallmentTerm installmentterm) {
+	public void setInstallmentterm(String installmentterm) {
 		this.installmentterm = installmentterm;
 	}
-	@Override
-	public String toString() {
-		return "TermsVO [termsId=" + termsId + ", pubId=" + pubId + ", term=" + term + ", description=" + description
-				+ ", segmented=" + segmented + ", segment=" + segment + ", unitsPerSegment=" + unitsPerSegment
-				+ ", quantity=" + quantity + ", duration=" + duration + ", unitsInDuration=" + unitsInDuration
-				+ ", volumeGroupsToSpan=" + volumeGroupsToSpan + ", startType=" + startType + ", installmentterm="
-				+ installmentterm + "]";
-	}
-
+	
+	
 }

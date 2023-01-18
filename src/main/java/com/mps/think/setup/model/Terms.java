@@ -59,13 +59,11 @@ public class Terms extends BaseEntity{
 	@Column(name = "volumeGroupsToSpan")
 	private String volumeGroupsToSpan;
 	
-	@Enumerated(EnumType.STRING)
 	@Column(name = "startType")
-	private StartType startType;
+	private String startType;
 	
-	@Enumerated(EnumType.STRING)
 	@Column(name = "installmentterm")
-	private InstallmentTerm installmentterm;
+	private String installmentterm;
 
 	public Integer getTermsId() {
 		return termsId;
@@ -155,30 +153,23 @@ public class Terms extends BaseEntity{
 		this.volumeGroupsToSpan = volumeGroupsToSpan;
 	}
 
-	public StartType getStartType() {
+	public String getStartType() {
 		return startType;
 	}
 
-	public void setStartType(StartType startType) {
+	public void setStartType(String startType) {
 		this.startType = startType;
 	}
 
-	public InstallmentTerm getInstallmentterm() {
+	public String getInstallmentterm() {
 		return installmentterm;
 	}
 
-	public void setInstallmentterm(InstallmentTerm installmentterm) {
+	public void setInstallmentterm(String installmentterm) {
 		this.installmentterm = installmentterm;
 	}
 
-	@Override
-	public String toString() {
-		return "Terms [termsId=" + termsId + ", pubId=" + pubId + ", term=" + term + ", description=" + description
-				+ ", segmented=" + segmented + ", segment=" + segment + ", unitsPerSegment=" + unitsPerSegment
-				+ ", quantity=" + quantity + ", duration=" + duration + ", unitsInDuration=" + unitsInDuration
-				+ ", volumeGroupsToSpan=" + volumeGroupsToSpan + ", startType=" + startType + ", installmentterm="
-				+ installmentterm + "]";
-	}
+	
 	
 	
 }
