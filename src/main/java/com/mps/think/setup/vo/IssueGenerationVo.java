@@ -34,6 +34,8 @@ public class IssueGenerationVo {
 
 	private String issueFormat;
 
+	private String issueDate;
+	
 	private String issue_volume;
 	
 	private String dateoftheMonthYear;
@@ -182,6 +184,15 @@ public class IssueGenerationVo {
 
 	public void setDateoftheMonthYear(String dateoftheMonthYear) {
 		this.dateoftheMonthYear = dateoftheMonthYear;
+	}
+
+	
+	public String getIssueDate() {
+		return issueDate;
+	}
+
+	public void setIssueDate(String issueDate) {
+		this.issueDate = issueDate;
 	}
 
 	@Override

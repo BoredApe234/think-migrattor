@@ -76,6 +76,9 @@ public class IssueGeneration extends BaseEntity {
 	@Column(name = "issue_volume")
 	private String issue_volume;
 	
+	@Column(name = "issue_date")
+	private String issueDate;
+	
 	@Column(name = "date_ofthe_month_year")
 	private String dateoftheMonthYear;
 	
@@ -228,6 +231,15 @@ public class IssueGeneration extends BaseEntity {
 	public void setDateoftheMonthYear(String dateoftheMonthYear) {
 		this.dateoftheMonthYear = dateoftheMonthYear;
 	}
+	
+
+	public String getIssueDate() {
+		return issueDate;
+	}
+
+	public void setIssueDate(String issueDate) {
+		this.issueDate = issueDate;
+	}
 
 	@Override
 	public String toString() {
@@ -237,7 +249,7 @@ public class IssueGeneration extends BaseEntity {
 				+ orderClassId + ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
 				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
 				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issue_volume=" + issue_volume
-				+ ", dateoftheMonthYear=" + dateoftheMonthYear + "]";
+				+ ", issueDate=" + issueDate + ", dateoftheMonthYear=" + dateoftheMonthYear + "]";
 	}
 
 }
