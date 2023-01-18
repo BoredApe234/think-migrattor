@@ -67,24 +67,24 @@ public class EnumModelVO {
 	
 	public static enum StartType  {
 
-		ANY_TIME_START("ANY_TIME_START"),VOLUME_GROUP_START("VOLUME_GROUP_START"),DATA_BASED_WITH_ISSUES("DATA_BASED_WITH_ISSUES")
-	    ,DATA_BASED_WITH_NO_ISSUES("DATA_BASED_WITH_NO_ISSUES"),DATA_BASED_WITH_UNITS("DATA_BASED_WITH_NO_ISSUES"),
-		DATE_BASED_WITH_UNITS("DATE_BASED_WITH_UNITS"), UNIT_BASED_NO_TIME("UNIT_BASED_NO_TIME"),ANY("ANY");
+		ANYTIME_START("ANYTIME START"),VOLUME_GROUP_START("VOLUME GROUP START"),DATE_BASED_WITH_ISSUES("DATE BASED WITH ISSUES")
+	    ,DATE_BASED_WITH_NO_ISSUES("DATE BASED WITH NO ISSUES"),DATE_BASED_WITH_UNITS("DATE BASED WITH UNITS"),
+		 UNIT_BASED_NO_TIME("UNIT BASED NO TIME"),ANY("ANY");
 
-	    private final String displayStartType;
+		 private final String displayStartType;
 
-	    StartType(String displayStartType) {
-	        this.displayStartType = displayStartType;
-	    }
+		 StartType(String displayStartType) {
+		        this.displayStartType = displayStartType;
+		    }
 
-	    public String getDisplayName() {
-	        return displayStartType;
-	    }
+		    public String getDisplayName() {
+		        return displayStartType;
+		    }
 	}
 	
 	public static enum InstallmentTerm  {
 
-		MONTHLY("MONTHLY"),YEARLY("YEARLY"),HALF_YEARLY("HALF_YEARLY");
+		MONTHLY("MONTHLY"),YEARLY("YEARLY"),HALF_YEARLY("HALF YEARLY");
 
 	    private final String displayInstallmentTerm;
 
@@ -99,7 +99,7 @@ public class EnumModelVO {
 	
 	public static enum source_code_type  {
 
-		Zero("Basic"),One("Package "),Two("Dual "),Three("Catalog"),four("Generic"),five("Shipping ");
+		Zero("Basic"),One("Package"),Two("Dual"),Three("Catalog"),four("Generic"),five("Shipping");
 
 	    private final String displaysource_code_type;
 
