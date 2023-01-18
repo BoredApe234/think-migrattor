@@ -11,7 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-
 import com.mps.think.setup.vo.EnumModelVO.source_code_type;
 
 @Table(name = "source_Code")

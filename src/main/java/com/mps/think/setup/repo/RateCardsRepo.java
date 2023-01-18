@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-
 import com.mps.think.setup.model.RateCards;
 
 public interface RateCardsRepo extends JpaRepository<RateCards , Integer> {

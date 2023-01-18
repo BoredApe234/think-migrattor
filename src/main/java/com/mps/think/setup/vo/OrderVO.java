@@ -1,6 +1,9 @@
 package com.mps.think.setup.vo;
 
+import java.util.List;
+
 import com.mps.think.setup.model.CustomerDetails;
+import com.mps.think.setup.model.OrderAddressMapping;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
 import com.mps.think.setup.vo.EnumModelVO.OrderType;
 
@@ -22,7 +25,7 @@ public class OrderVO {
 		
 	private OrderDeliveryOptionsVO deliveryAndBillingOptions;
 	
-	private OrderAddressMappingVO orderAddress;
+	private List<OrderAddressMappingVO> orderAddresses;
 	
 	private OrderAuxiliaryInformationVO auxiliaryInformation;
 
@@ -90,14 +93,6 @@ public class OrderVO {
 		this.deliveryAndBillingOptions = deliveryAndBillingOptions;
 	}
 
-	public OrderAddressMappingVO getOrderAddress() {
-		return orderAddress;
-	}
-
-	public void setOrderAddress(OrderAddressMappingVO orderAddress) {
-		this.orderAddress = orderAddress;
-	}
-
 	public OrderAuxiliaryInformationVO getAuxiliaryInformation() {
 		return auxiliaryInformation;
 	}
@@ -106,6 +101,14 @@ public class OrderVO {
 		this.auxiliaryInformation = auxiliaryInformation;
 	}
 
-	
+	public List<OrderAddressMappingVO> getOrderAddresses() {
+		return orderAddresses;
+	}
+
+	public void setOrderAddresses(List<OrderAddressMappingVO> orderAddresses) {
+		this.orderAddresses = orderAddresses;
+	}
+
+
 
 }

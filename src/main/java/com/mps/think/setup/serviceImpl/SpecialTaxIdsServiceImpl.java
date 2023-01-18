@@ -6,8 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.SpecialTaxIds;
-import com.mps.think.setup.model.TaxRateCategory;
-import com.mps.think.setup.model.UnitBasedSubscription;
 import com.mps.think.setup.repo.SpecialTaxIdsRepo;
 import com.mps.think.setup.service.SpecialTaxIdsService;
 import com.mps.think.setup.vo.SpecialTaxIdsVO;

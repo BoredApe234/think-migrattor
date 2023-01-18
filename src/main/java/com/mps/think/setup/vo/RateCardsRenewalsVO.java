@@ -2,8 +2,6 @@ package com.mps.think.setup.vo;
 
 import java.util.Date;
 
-
-
 import com.mps.think.setup.model.RateCards;
 import com.mps.think.setup.vo.EnumModelVO.Currency;
 

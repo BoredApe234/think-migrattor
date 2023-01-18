@@ -19,8 +19,9 @@ public class AddOrderServiceImpl implements AddOrderService {
 
 	@Override
 	public Order saveOrder(OrderVO order) throws Exception {
-		ObjectMapper m = new ObjectMapper();
-		return addOrderRepo.save(m.convertValue(order, Order.class));
+		ObjectMapper mapper = new ObjectMapper();
+		Order newOrder = mapper.convertValue(order, Order.class);
+		return addOrderRepo.saveAndFlush(newOrder);
 	}
 
 	@Override

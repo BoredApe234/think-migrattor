@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
-import com.mps.think.setup.model.CommodityCodes;
 import com.mps.think.setup.model.Jurisdictions;
 import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.repo.JurisdictionsRepo;

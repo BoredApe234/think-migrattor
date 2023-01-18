@@ -13,7 +13,6 @@ import javax.persistence.Table;
 
 import com.mps.think.setup.vo.EnumModelVO.InstallmentTerm;
 import com.mps.think.setup.vo.EnumModelVO.StartType;
-import com.mps.think.setup.vo.EnumModelVO.TimeZone;
 
 @Table(name = "termsTable")
 @Entity
