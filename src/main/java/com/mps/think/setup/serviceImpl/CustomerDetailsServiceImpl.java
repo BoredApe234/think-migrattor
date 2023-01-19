@@ -1,5 +1,6 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -160,6 +161,16 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 			}
 			tempCustomer.setCustomerAddresses(tempCustomerAddress);
 			return tempCustomer;
+	}
+
+	@Override
+	public List<CustomerDetails> findAllCustomersWithAddresses() {
+		List<CustomerDetails> allCustomerDetails = new ArrayList<>();
+		getAllCustomerDetails().forEach(customer -> {
+			CustomerDetails cs = findbyCustomerDetailsId(customer.getCustomerId());
+			allCustomerDetails.add(cs);
+		});
+		return allCustomerDetails;
 	}
 
 }
