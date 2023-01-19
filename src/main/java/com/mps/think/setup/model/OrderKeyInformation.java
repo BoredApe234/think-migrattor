@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -25,13 +27,13 @@ public class OrderKeyInformation extends BaseEntity {
 	@Column(name = "id")
 	private Integer id;
 	
-	// need to mapped to order code entity
-	@Column(name = "order_code")
-	private String orderCode;
+	@ManyToOne
+	@JoinColumn(name = "order_code_id", referencedColumnName = "id")
+	private OrderCodesSuper orderCode;
 	
-	// need to mapped to source code entity
-	@Column(name = "source_code")
-	private String sourceCode;
+	@ManyToOne
+	@JoinColumn(name = "sourc_code_id")
+	private SourceCode sourceCode;
 	
 	@Column(name = "order_category")
 	private String orderCategory;
@@ -58,22 +60,6 @@ public class OrderKeyInformation extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getOrderCode() {
-		return orderCode;
-	}
-
-	public void setOrderCode(String orderCode) {
-		this.orderCode = orderCode;
-	}
-
-	public String getSourceCode() {
-		return sourceCode;
-	}
-
-	public void setSourceCode(String sourceCode) {
-		this.sourceCode = sourceCode;
 	}
 
 	public String getOrderCategory() {
@@ -122,6 +108,22 @@ public class OrderKeyInformation extends BaseEntity {
 
 	public void setAgentReferenceNum(Long agentReferenceNum) {
 		this.agentReferenceNum = agentReferenceNum;
+	}
+
+	public SourceCode getSourceCode() {
+		return sourceCode;
+	}
+
+	public void setSourceCode(SourceCode sourceCode) {
+		this.sourceCode = sourceCode;
+	}
+
+	public OrderCodesSuper getOrderCode() {
+		return orderCode;
+	}
+
+	public void setOrderCode(OrderCodesSuper orderCode) {
+		this.orderCode = orderCode;
 	}
 
 }

@@ -1,5 +1,8 @@
 package com.mps.think.setup.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -60,7 +63,11 @@ public class AddOrderController {
 	
 	@GetMapping("/findAllOrderType")
 	public ResponseEntity<?> getAllOrderType() {
-		return ResponseEntity.ok(OrderType.values());
+		List<String> list= new ArrayList<>();
+		for(OrderType data:OrderType.values()) {
+			list.add(data.getDisplayName());
+		}
+		return ResponseEntity.ok(list);
 	}
 
 }

@@ -3,9 +3,7 @@ package com.mps.think.setup.vo;
 import java.util.List;
 
 import com.mps.think.setup.model.CustomerDetails;
-import com.mps.think.setup.model.OrderAddressMapping;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
-import com.mps.think.setup.vo.EnumModelVO.OrderType;
 
 public class OrderVO {
 	
@@ -13,7 +11,7 @@ public class OrderVO {
 	
 	private CustomerDetails customerId;
 	
-	private OrderType orderType;
+	private String orderType;
 	
 	private OrderStatus orderStatus;
 	
@@ -43,14 +41,6 @@ public class OrderVO {
 
 	public void setCustomerId(CustomerDetails customerId) {
 		this.customerId = customerId;
-	}
-
-	public OrderType getOrderType() {
-		return orderType;
-	}
-
-	public void setOrderType(OrderType orderType) {
-		this.orderType = orderType;
 	}
 
 	public OrderStatus getOrderStatus() {
@@ -107,6 +97,14 @@ public class OrderVO {
 
 	public void setOrderAddresses(List<OrderAddressMappingVO> orderAddresses) {
 		this.orderAddresses = orderAddresses;
+	}
+
+	public String getOrderType() {
+		return orderType;
+	}
+
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
 	}
 
 
