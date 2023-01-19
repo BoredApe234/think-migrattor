@@ -254,7 +254,7 @@ public class EnumModelVO {
 	 
 	 public static enum OrderType  {
 
-			SingleCopyOrder("SingleCopyOrder"),BasicPackageOrder("BasicPackageOrder"),DateBasedSubscriptionOrder("DateBasedOrder"),IssueBasedSubscriptionOrder("IssueBasedSubscriptionOrder");
+			SingleCopyOrder("Single Copy Order"),BasicPackageOrder("Basic Package Order"),DateBasedSubscriptionOrder("Date Based Order"),IssueBasedSubscriptionOrder("Issue Based Subscription Order");
 
 		    private final String displayOrderType ;
 

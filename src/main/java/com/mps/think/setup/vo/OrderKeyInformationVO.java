@@ -2,13 +2,16 @@ package com.mps.think.setup.vo;
 
 import java.util.Date;
 
+import com.mps.think.setup.model.OrderCodesSuper;
+import com.mps.think.setup.model.SourceCode;
+
 public class OrderKeyInformationVO {
 
 	private Integer id;
 
-	private String orderCode;
+	private OrderCodesSuper orderCode;
 
-	private String sourceCode;
+	private SourceCode sourceCode;
 
 	private String orderCategory;
 
@@ -28,22 +31,6 @@ public class OrderKeyInformationVO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getOrderCode() {
-		return orderCode;
-	}
-
-	public void setOrderCode(String orderCode) {
-		this.orderCode = orderCode;
-	}
-
-	public String getSourceCode() {
-		return sourceCode;
-	}
-
-	public void setSourceCode(String sourceCode) {
-		this.sourceCode = sourceCode;
 	}
 
 	public String getOrderCategory() {
@@ -92,6 +79,22 @@ public class OrderKeyInformationVO {
 
 	public void setAgentReferenceNum(Long agentReferenceNum) {
 		this.agentReferenceNum = agentReferenceNum;
+	}
+
+	public SourceCode getSourceCode() {
+		return sourceCode;
+	}
+
+	public void setSourceCode(SourceCode sourceCode) {
+		this.sourceCode = sourceCode;
+	}
+
+	public OrderCodesSuper getOrderCode() {
+		return orderCode;
+	}
+
+	public void setOrderCode(OrderCodesSuper orderCode) {
+		this.orderCode = orderCode;
 	}
 
 }

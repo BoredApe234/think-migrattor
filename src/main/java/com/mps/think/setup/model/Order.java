@@ -18,8 +18,6 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
-import com.mps.think.setup.vo.EnumModelVO.OrderType;
-
 
 
 @Table(name = "order_parent")
@@ -40,9 +38,8 @@ public class Order extends BaseEntity {
 	@JoinColumn(name = "customer_id", referencedColumnName = "id")
 	private CustomerDetails customerId;
 	
-	@Enumerated(EnumType.STRING)
 	@Column(name = "order_type")
-	private OrderType orderType;
+	private String orderType;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "orderStatus")
@@ -94,14 +91,6 @@ public class Order extends BaseEntity {
 
 	public void setCustomerId(CustomerDetails customerId) {
 		this.customerId = customerId;
-	}
-
-	public OrderType getOrderType() {
-		return orderType;
-	}
-
-	public void setOrderType(OrderType orderType) {
-		this.orderType = orderType;
 	}
 
 	public OrderStatus getOrderStatus() {
@@ -158,6 +147,14 @@ public class Order extends BaseEntity {
 
 	public void setAuxiliaryInformation(OrderAuxiliaryInformation auxiliaryInformation) {
 		this.auxiliaryInformation = auxiliaryInformation;
+	}
+
+	public String getOrderType() {
+		return orderType;
+	}
+
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
 	}
 
 }
