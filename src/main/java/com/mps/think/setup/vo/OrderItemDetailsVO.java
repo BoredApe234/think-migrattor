@@ -2,13 +2,15 @@ package com.mps.think.setup.vo;
 
 import java.util.Date;
 
+import com.mps.think.setup.model.Publisher;
+
 
 public class OrderItemDetailsVO {
 
 	private Integer id;
 
-	private Integer publisherId;
-
+//	private Integer publisherId;
+	
 	private Date effectiveDate;
 
 	private String itemType;
@@ -29,14 +31,6 @@ public class OrderItemDetailsVO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getPublisherId() {
-		return publisherId;
-	}
-
-	public void setPublisherId(Integer publisherId) {
-		this.publisherId = publisherId;
 	}
 
 	public Date getEffectiveDate() {
@@ -94,5 +88,5 @@ public class OrderItemDetailsVO {
 	public void setCommodityCode(String commodityCode) {
 		this.commodityCode = commodityCode;
 	}
-
+	
 }

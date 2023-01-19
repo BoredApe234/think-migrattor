@@ -21,8 +21,8 @@ public class OrderPaymentOptions extends BaseEntity {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "publisher_id")
-	private Integer publisherId;
+//	@Column(name = "publisher_id")
+//	private Integer publisherId;
 	
 	@Column(name = "proforma_options")
 	private String proformaOptions;
@@ -44,6 +44,9 @@ public class OrderPaymentOptions extends BaseEntity {
 
 	@Column(name = "taxable")
 	private Boolean taxable;
+	
+	@Column(name = "is_active")
+	private Boolean isActive;
 
 	public Integer getId() {
 		return id;
@@ -109,12 +112,13 @@ public class OrderPaymentOptions extends BaseEntity {
 		this.taxable = taxable;
 	}
 
-	public Integer getPublisherId() {
-		return publisherId;
+	public Boolean getIsActive() {
+		return isActive;
 	}
 
-	public void setPublisherId(Integer publisherId) {
-		this.publisherId = publisherId;
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
+
 
 }

@@ -28,7 +28,7 @@ public class OrderCodesController {
 	
 	@PostMapping("/orderCodes")
 	public ResponseEntity<?> createOrderCodes(@RequestBody OrderCodesSuperVO orderCodes) {
-		return ResponseEntity.ok(orderCodesService.createOrderCodes(orderCodes));
+		return ResponseEntity.ok(orderCodesService.saveOrderCodes(orderCodes));
 	}
 	
 	@PutMapping("/orderCodes")
@@ -37,7 +37,7 @@ public class OrderCodesController {
 	}
 	
 	@GetMapping("/getOrderCodes/{orderCodeId}")
-	public ResponseEntity<?> getOrderCodesById(Integer orderCodeID) {
+	public ResponseEntity<?> getOrderCodesById(@PathVariable("orderCodeId") Integer orderCodeID) {
 		return ResponseEntity.ok(orderCodesService.getOrderCodesById(orderCodeID));
 	}
 
@@ -45,19 +45,29 @@ public class OrderCodesController {
 	public ResponseEntity<?> getOrderItemDetailsById(Integer itemDetailsId) {
 		return ResponseEntity.ok(orderCodesService.getOrderItemDetailsById(itemDetailsId));
 	}
+	
+//	@GetMapping("/getOrderCodesByOrderClassId/{orderClassId}")
+//	public ResponseEntity<?> getOrderCodesByOrderClassId(@PathVariable("orderClassId") Integer orderClassId) {
+//		return ResponseEntity.ok(orderCodesService.getOrderCodesByOrderClassId(orderClassId));
+//	}
+	
+	@GetMapping("/getOrderCodesByParentId/{parentId}")
+	public ResponseEntity<?> getOrderCodesByParentId(@PathVariable("parentId") Integer parentId) {
+		return ResponseEntity.ok(orderCodesService.getOrderCodesByParentId(parentId));
+	}
 
 	@GetMapping("/getOrderOptions/{orderOptionsId}")
-	public ResponseEntity<?> getOrderOptionsById(Integer orderOptionsId) {
+	public ResponseEntity<?> getOrderOptionsById(@PathVariable("orderOptionsId") Integer orderOptionsId) {
 		return ResponseEntity.ok(orderCodesService.getOrderOptionsById(orderOptionsId));
 	}
 
 	@GetMapping("/getOrderPackageOptions/{orderPkgId}")
-	public ResponseEntity<?> getOrderPackageOptionsById(Integer orderPkgId) {
+	public ResponseEntity<?> getOrderPackageOptionsById(@PathVariable("orderPkgId") Integer orderPkgId) {
 		return ResponseEntity.ok(orderCodesService.getOrderPackageOptionsById(orderPkgId));
 	}
 
 	@GetMapping("/getOrderPaymentOptions/{orderPaymentId}")
-	public ResponseEntity<?> getOrderPaymentOptionsById(Integer orderPaymentId) {
+	public ResponseEntity<?> getOrderPaymentOptionsById(@PathVariable("orderPaymentId") Integer orderPaymentId) {
 		return ResponseEntity.ok(orderCodesService.getOrderPaymentOptionsById(orderPaymentId));
 	}
 	

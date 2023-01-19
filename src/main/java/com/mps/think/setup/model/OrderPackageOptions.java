@@ -21,8 +21,8 @@ public class OrderPackageOptions extends BaseEntity {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "publisher_id")
-	private Integer publisherId;
+//	@Column(name = "publisher_id")
+//	private Integer publisherId;
 	
 	@Column(name = "premium_options")
 	private String premiumOptions;
@@ -64,13 +64,5 @@ public class OrderPackageOptions extends BaseEntity {
 	public void setPackageOnly(Boolean packageOnly) {
 		this.packageOnly = packageOnly;
 	}
-
-	public Integer getPublisherId() {
-		return publisherId;
-	}
-
-	public void setPublisherId(Integer publisherId) {
-		this.publisherId = publisherId;
-	}
-
+	
 }
