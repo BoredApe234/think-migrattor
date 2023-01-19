@@ -14,5 +14,7 @@ public interface CustomerDetailsService {
 	public CustomerDetailsVO updateCustomerDetails(CustomerDetailsVO customerDetails);
 
 	public CustomerDetails findbyCustomerDetailsId(Integer customerId);
+	
+	public List<CustomerDetails> findAllCustomersWithAddresses();
 
 }

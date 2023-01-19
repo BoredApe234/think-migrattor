@@ -62,5 +62,10 @@ public class CustomerDetailsController {
 	public ResponseEntity<?> getAllChargeTaxOn() {
 		return ResponseEntity.ok(ChargeTaxOn.values());
 	}
+	
+	@GetMapping("/getAllCustomerWithAddresses")
+	public ResponseEntity<?> getAllCustomerDetailsWithAddresses() {
+		return ResponseEntity.ok(customerDetailsService.findAllCustomersWithAddresses());
+	}
 
 }
