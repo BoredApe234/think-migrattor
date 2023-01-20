@@ -36,6 +36,8 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue.setIssueFormat(issueGeneration.getIssueFormat());
 		issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery());
 		issue.setNumberOfIssue(issueGeneration.getNumberOfIssue());
+		issue.setIssueDate(issueGeneration.getIssueDate());
+		issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
 		// OrderCodes id added
 		OrderCodes ocode = new OrderCodes();
 		ocode.setId(issueGeneration.getOderCodeVo().getId());
@@ -66,6 +68,8 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue.setIssueFormat(issueGeneration.getIssueFormat());
 		issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery());
 		issue.setNumberOfIssue(issueGeneration.getNumberOfIssue());
+		issue.setIssueDate(issueGeneration.getIssueDate());
+		issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
 		// OrderCodes id added
 		OrderCodes ocode = new OrderCodes();
 		ocode.setId(issueGeneration.getOderCodeVo().getId());
