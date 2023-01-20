@@ -31,13 +31,14 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue.setActive(issueGeneration.getActive());
 		issue.setDiscountCard(issueGeneration.getDiscountCard());
 		issue.setFrequencyOfGeneration(issueGeneration.getFrequencyOfGeneration());
-		issue.setIssue_volume(issue.getIssue_volume());
+		issue.setIssue_volume(issueGeneration.getIssue_volume());
 		issue.setIssueCaption(issueGeneration.getIssueCaption());
 		issue.setIssueFormat(issueGeneration.getIssueFormat());
 		issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery());
 		issue.setNumberOfIssue(issueGeneration.getNumberOfIssue());
 		issue.setIssueDate(issueGeneration.getIssueDate());
 		issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
+		issue.setChangeDate(issueGeneration.getChangeDate());
 		// OrderCodes id added
 		OrderCodes ocode = new OrderCodes();
 		ocode.setId(issueGeneration.getOderCodeVo().getId());
@@ -63,13 +64,14 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue.setActive(issueGeneration.getActive());
 		issue.setDiscountCard(issueGeneration.getDiscountCard());
 		issue.setFrequencyOfGeneration(issueGeneration.getFrequencyOfGeneration());
-		issue.setIssue_volume(issue.getIssue_volume());
+		issue.setIssue_volume(issueGeneration.getIssue_volume());
 		issue.setIssueCaption(issueGeneration.getIssueCaption());
 		issue.setIssueFormat(issueGeneration.getIssueFormat());
 		issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery());
 		issue.setNumberOfIssue(issueGeneration.getNumberOfIssue());
 		issue.setIssueDate(issueGeneration.getIssueDate());
 		issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
+		issue.setChangeDate(issueGeneration.getChangeDate());
 		// OrderCodes id added
 		OrderCodes ocode = new OrderCodes();
 		ocode.setId(issueGeneration.getOderCodeVo().getId());
