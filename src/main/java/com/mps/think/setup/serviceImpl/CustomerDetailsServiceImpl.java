@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.Addresses;
@@ -171,6 +173,11 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 			allCustomerDetails.add(cs);
 		});
 		return allCustomerDetails;
+	}
+
+	@Override
+	public Page<CustomerDetails> getAllCustomerDetailsForSearch(String firstName, String lastName, Pageable page) {
+		return customerDetailsRepo.getAllCustomerDetailsForSearch(firstName, lastName, page);
 	}
 
 }
