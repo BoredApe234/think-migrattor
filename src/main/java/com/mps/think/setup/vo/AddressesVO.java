@@ -12,7 +12,7 @@ public class AddressesVO {
 //	private CustomerDetails cusId;
 	private String addressName;
 	private AddressType addressType;
-	private AddressCategory addressCategory;
+	private String addressCategory;
 	private Boolean status;
 	private Boolean primaryAddress;
 	private String name;
@@ -26,7 +26,7 @@ public class AddressesVO {
 	private String phone;
 	private Date validFrom;
 	private Date validTo;
-	private Frequency frequency;
+	private String frequency;
 	private String selectionFrom;
 	private String selectionTo;
 	private String addressAuxJSON;
@@ -48,10 +48,10 @@ public class AddressesVO {
 	public void setAddressType(AddressType addressType) {
 		this.addressType = addressType;
 	}
-	public AddressCategory getAddressCategory() {
+	public String getAddressCategory() {
 		return addressCategory;
 	}
-	public void setAddressCategory(AddressCategory addressCategory) {
+	public void setAddressCategory(String addressCategory) {
 		this.addressCategory = addressCategory;
 	}
 	public Boolean getStatus() {
@@ -132,10 +132,11 @@ public class AddressesVO {
 	public void setValidTo(Date validTo) {
 		this.validTo = validTo;
 	}
-	public Frequency getFrequency() {
+	
+	public String getFrequency() {
 		return frequency;
 	}
-	public void setFrequency(Frequency frequency) {
+	public void setFrequency(String frequency) {
 		this.frequency = frequency;
 	}
 	public String getSelectionFrom() {
@@ -150,7 +151,6 @@ public class AddressesVO {
 	public void setSelectionTo(String selectionTo) {
 		this.selectionTo = selectionTo;
 	}
-	
 	public String getAddressAuxJSON() {
 		return addressAuxJSON;
 	}
@@ -167,5 +167,9 @@ public class AddressesVO {
 				+ ", frequency=" + frequency + ", selectionFrom=" + selectionFrom + ", selectionTo=" + selectionTo
 				+ ", addressAuxJSON=" + addressAuxJSON + "]";
 	}
+	
+	
+	
+	
 
 }

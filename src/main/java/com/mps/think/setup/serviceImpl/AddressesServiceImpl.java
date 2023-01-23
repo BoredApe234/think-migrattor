@@ -52,10 +52,10 @@ public class AddressesServiceImpl implements AddressService  {
 		data.setAddressAuxJSON(addresses.getAddressAuxJSON());
 //		data.setSelectionFrom(addresses.getSelectionFrom());
 //		data.setSelectionTo(addresses.getSelectionTo());
-		if (addresses.getFrequency()==Frequency.EveryYear) {
-			data.setSelectionFrom(addresses.getSelectionFrom());
-			data.setSelectionTo(addresses.getSelectionTo());
-		}
+//		if (addresses.getFrequency()==Frequency.EveryYear) {
+		data.setSelectionFrom(addresses.getSelectionFrom());
+		data.setSelectionTo(addresses.getSelectionTo());
+//		}
 		addresses.setAddressId(data.getAddressId());
 //		CustomerDetails customerDetails = new CustomerDetails();
 //		customerDetails.setCustomerId(addresses.get);
@@ -89,10 +89,10 @@ public class AddressesServiceImpl implements AddressService  {
 		data.setValidFrom(addresses.getValidFrom());
 		data.setValidTo(addresses.getValidTo());
 		data.setFrequency(addresses.getFrequency());
-		if (addresses.getFrequency()==Frequency.EveryYear) {
+//		if (addresses.getFrequency()==Frequency.EveryYear) {
 		data.setSelectionFrom(addresses.getSelectionFrom());
 		data.setSelectionTo(addresses.getSelectionTo());
-		}
+//		}
 		data.setAddressAuxJSON(addresses.getAddressAuxJSON());
 		addressRepo.saveAndFlush(data);
 		return addresses;

@@ -44,9 +44,8 @@ public class Addresses  extends BaseEntity{
 	@Column(name = "addressType")
 	private AddressType addressType;
 	
-	@Enumerated(EnumType.STRING)
 	@Column(name = "addressCategory")
-	private AddressCategory addressCategory;
+	private String addressCategory;
 	
 	@Column(name = "status")
 	private Boolean status;
@@ -89,9 +88,8 @@ public class Addresses  extends BaseEntity{
 	@Column(name = "validTo")
 	private Date validTo;
 	
-	@Enumerated(EnumType.STRING)
 	@Column(name = "frequency")
-	private Frequency frequency;
+	private String frequency;
 	
 	@Column(name = "selectionFrom")
 	private String selectionFrom;
@@ -134,11 +132,11 @@ public class Addresses  extends BaseEntity{
 		this.addressType = addressType;
 	}
 
-	public AddressCategory getAddressCategory() {
+	public String getAddressCategory() {
 		return addressCategory;
 	}
 
-	public void setAddressCategory(AddressCategory addressCategory) {
+	public void setAddressCategory(String addressCategory) {
 		this.addressCategory = addressCategory;
 	}
 
@@ -246,11 +244,11 @@ public class Addresses  extends BaseEntity{
 		this.validTo = validTo;
 	}
 
-	public Frequency getFrequency() {
+	public String getFrequency() {
 		return frequency;
 	}
 
-	public void setFrequency(Frequency frequency) {
+	public void setFrequency(String frequency) {
 		this.frequency = frequency;
 	}
 
@@ -287,5 +285,9 @@ public class Addresses  extends BaseEntity{
 				+ countryCode + ", phone=" + phone + ", validFrom=" + validFrom + ", validTo=" + validTo
 				+ ", frequency=" + frequency + ", selectionFrom=" + selectionFrom + ", selectionTo=" + selectionTo
 				+ ", addressAuxJSON=" + addressAuxJSON + "]";
-	}	
+	}
+
+	
+
+		
 }
