@@ -35,4 +35,6 @@ public interface OrderCodesService {
 	// to delete the order
 	public OrderCodesSuper deleteOrderCode(Integer id);
 	
+	public List<OrderCodesSuper> getAllCompleteOrderCodes();
+	
 }
