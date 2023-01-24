@@ -26,6 +26,9 @@ public class ParentClass extends BaseEntity {
 	@Column(name = "parent_name")
 	private String parentName;
 	
+	@Column(name="oc_type")
+	private String ocType;
+	
 	@OneToOne
 	@JoinColumn(name = "oc_id", referencedColumnName = "oc_id")
 	private OrderClass ocId;
@@ -53,10 +56,22 @@ public class ParentClass extends BaseEntity {
 	public void setOcId(OrderClass ocId) {
 		this.ocId = ocId;
 	}
+	
+
+	public String getOcType() {
+		return ocType;
+	}
+
+	public void setOcType(String ocType) {
+		this.ocType = ocType;
+	}
 
 	@Override
 	public String toString() {
-		return "ParentClass [parentID=" + parentID + ", parentName=" + parentName + ", ocId=" + ocId + "]";
+		return "ParentClass [parentID=" + parentID + ", parentName=" + parentName + ", ocType=" + ocType + ", ocId="
+				+ ocId + "]";
 	}
+
+	
 
 }
