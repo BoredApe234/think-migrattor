@@ -112,7 +112,7 @@ public class EnumModelVO {
 	    @Override public String toString() { return displayName; }
 	}
 	
-//	======================================================================================
+
 	public static enum AddressType {
 		
 		 Business("Business"),Residential("Residential");
@@ -264,6 +264,20 @@ public class EnumModelVO {
 
 			public String getDisplayName() {
 		        return displayOrderType ;
+		    }
+		}
+	 public static enum ItemType  {
+
+			Issue("Issue"),Day("Day");
+
+		    private final String displayItemType ;
+
+		    ItemType(String displayItemType ) {
+				this.displayItemType  = displayItemType ;
+			}
+
+			public String getDisplayName() {
+		        return displayItemType ;
 		    }
 		}
 

@@ -7,7 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mps.think.setup.model.RateCards;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.RateCardsRenewals;
 import com.mps.think.setup.repo.RateCardsRenewalsRepo;
 import com.mps.think.setup.service.RateCardsRenewalsService;
@@ -26,57 +26,20 @@ public class RateCardsRenewalsServiceImpl implements RateCardsRenewalsService{
 
 	@Override
 	public RateCardsRenewalsVO saveRateCardsRenewals(RateCardsRenewalsVO rateCardsRenewals) {
-		RateCardsRenewals data = new RateCardsRenewals();
-		data.setEffectiveDate(rateCardsRenewals.getEffectiveDate());
-		data.setDefaultPricePerDay(rateCardsRenewals.getDefaultPricePerDay());
-		data.setDefaultPricePerItem(rateCardsRenewals.getDefaultPricePerItem());
-		data.setRenewalExpiryDate(rateCardsRenewals.getRenewalExpiryDate());
-		data.setEffectiveDateDescription(rateCardsRenewals.getEffectiveDateDescription());
-		data.setTotalPrice(rateCardsRenewals.getTotalPrice());
-		data.setBasicPrice(rateCardsRenewals.getBasicPrice());
-		data.setCurrency(rateCardsRenewals.getCurrency());
-		data.setItemsType(rateCardsRenewals.getItemsType());
-		data.setItems(rateCardsRenewals.getItems());
-		data.setUnitPrice(rateCardsRenewals.getBasicPrice()/rateCardsRenewals.getItems());
-		data.setSpecialPrice(rateCardsRenewals.getSpecialPrice());
-		data.setQuantityDiscount(rateCardsRenewals.getQuantityDiscount());
-		data.setToQuantity(rateCardsRenewals.getToQuantity());
-		data.setFromQuantity(rateCardsRenewals.getFromQuantity());
-		data.setValidForRegions(rateCardsRenewals.getValidForRegions());
-//		rateCardsRenewals.setRenewalId(data.getRenewalId());
-		rateCardsRenewals.setId(data.getId());
-		RateCards rateCards = new RateCards();
-		rateCards.setRcId(rateCardsRenewals.getRenewalId().getRcId());
-		data.setRenewalId(rateCards);
-		rateCardsRenewalsRepo.saveAndFlush(data);
+		ObjectMapper mapper = new ObjectMapper();
+		RateCardsRenewals newrateCardsRenewals= mapper.convertValue(rateCardsRenewals, RateCardsRenewals.class);
+		rateCardsRenewalsRepo.saveAndFlush(newrateCardsRenewals);
 		return rateCardsRenewals;
+		
 	}
 
 	@Override
 	public RateCardsRenewalsVO updateRateCardsRenewals(RateCardsRenewalsVO rateCardsRenewals) {
-		RateCardsRenewals data = findbyRateCardsRenewalsId( rateCardsRenewals.getId());
-		data.setEffectiveDate(rateCardsRenewals.getEffectiveDate());
-		data.setDefaultPricePerDay(rateCardsRenewals.getDefaultPricePerDay());
-		data.setDefaultPricePerItem(rateCardsRenewals.getDefaultPricePerItem());
-		data.setRenewalExpiryDate(rateCardsRenewals.getRenewalExpiryDate());
-		data.setEffectiveDateDescription(rateCardsRenewals.getEffectiveDateDescription());
-		data.setTotalPrice(rateCardsRenewals.getTotalPrice());
-		data.setBasicPrice(rateCardsRenewals.getBasicPrice());
-		data.setCurrency(rateCardsRenewals.getCurrency());
-		data.setItemsType(rateCardsRenewals.getItemsType());
-		data.setItems(rateCardsRenewals.getItems());
-		data.setUnitPrice(rateCardsRenewals.getBasicPrice()/rateCardsRenewals.getItems());
-		data.setSpecialPrice(rateCardsRenewals.getSpecialPrice());
-		data.setQuantityDiscount(rateCardsRenewals.getQuantityDiscount());
-		data.setToQuantity(rateCardsRenewals.getToQuantity());
-		data.setFromQuantity(rateCardsRenewals.getFromQuantity());
-		data.setValidForRegions(rateCardsRenewals.getValidForRegions());
-		rateCardsRenewals.setRenewalId(data.getRenewalId());
-		RateCards rateCards = new RateCards();
-		rateCards.setRcId(rateCardsRenewals.getRenewalId().getRcId());
-		data.setRenewalId(rateCards);
-		rateCardsRenewalsRepo.saveAndFlush(data);
+		ObjectMapper mapper = new ObjectMapper();
+		RateCardsRenewals rateCardsRenewalsToUpdate = mapper.convertValue(rateCardsRenewals, RateCardsRenewals.class);
+		rateCardsRenewalsRepo.saveAndFlush(rateCardsRenewalsToUpdate);
 		return rateCardsRenewals;
+		
 	}
 
 	@Override
