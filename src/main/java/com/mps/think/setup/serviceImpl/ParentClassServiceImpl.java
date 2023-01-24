@@ -26,6 +26,7 @@ public class ParentClassServiceImpl implements ParentClassService{
 	public ParentClassVO saveParentClass(ParentClassVO parentClassVO) {
 		ParentClass data=new ParentClass();
 		data.setParentName(parentClassVO.getParentName());
+		data.setOcType(parentClassVO.getParentName());
 		OrderClass oc=new OrderClass();
 		oc.setOcId(parentClassVO.getOcId().getOcId());
 		data.setOcId(oc);

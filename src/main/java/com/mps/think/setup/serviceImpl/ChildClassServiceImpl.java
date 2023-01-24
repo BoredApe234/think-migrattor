@@ -25,6 +25,7 @@ public class ChildClassServiceImpl implements ChildClassService {
 	public ChildClassVO saveChildClass(ChildClassVO childClassVO) {
 		ChildClass data=new ChildClass();
 		data.setChildName(childClassVO.getChildName());
+		data.setOcType(childClassVO.getChildName());
 		ParentClass parent=new ParentClass();
 		parent.setParentID(childClassVO.getParentId().getParentID());
 		data.setParentId(parent);

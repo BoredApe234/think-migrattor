@@ -25,18 +25,7 @@ public class SubChildClassServiceImpl implements SubChildClassService{
 
 		SubChildClass data=new SubChildClass();
 		data.setSubChildName(subChildClassVO.getSubChildName());
-		data.setLabel(subChildClassVO.getLabel());
-		data.setDescription(subChildClassVO.getDescription());
-		data.setRevenueRecorded(subChildClassVO.getRevenueRecorded());
-		data.setRecordRevenuePeriod(subChildClassVO.getRecordRevenuePeriod());
-		data.setCancelCreditOnOrderCancel(subChildClassVO.isCancelCreditOnOrderCancel());
-		data.setSourceCode(subChildClassVO.getSourceCode());
-		data.setSourceCodeFormat(subChildClassVO.getSourceCodeFormat());
-		data.setRenewalSCFormat(subChildClassVO.getRenewalSCFormat());
-		data.setProfitCenter(subChildClassVO.getProfitCenter());
-		data.setPaymentThreshold(subChildClassVO.getPaymentThreshold());
-		data.setReasonableGap(subChildClassVO.getReasonableGap());
-		data.setActiveOrderHandling(subChildClassVO.getActiveOrderHandling());
+		data.setOcType(subChildClassVO.getSubChildName());
 		ChildClass child=new ChildClass();
 		child.setChildId(subChildClassVO.getChildClassId().getChildId());
 		data.setChildClassId(child);
@@ -50,18 +39,6 @@ public class SubChildClassServiceImpl implements SubChildClassService{
 		SubChildClass data=new SubChildClass();
 		data.setSubChildId(subChildClassVO.getSubChildId());
 		data.setSubChildName(subChildClassVO.getSubChildName());
-		data.setLabel(subChildClassVO.getLabel());
-		data.setDescription(subChildClassVO.getDescription());
-		data.setRevenueRecorded(subChildClassVO.getRevenueRecorded());
-		data.setRecordRevenuePeriod(subChildClassVO.getRecordRevenuePeriod());
-		data.setCancelCreditOnOrderCancel(subChildClassVO.isCancelCreditOnOrderCancel());
-		data.setSourceCode(subChildClassVO.getSourceCode());
-		data.setSourceCodeFormat(subChildClassVO.getSourceCodeFormat());
-		data.setRenewalSCFormat(subChildClassVO.getRenewalSCFormat());
-		data.setProfitCenter(subChildClassVO.getProfitCenter());
-		data.setPaymentThreshold(subChildClassVO.getPaymentThreshold());
-		data.setReasonableGap(subChildClassVO.getReasonableGap());
-		data.setActiveOrderHandling(subChildClassVO.getActiveOrderHandling());
 		ChildClass child=new ChildClass();
 		child.setChildId(subChildClassVO.getChildClassId().getChildId());
 		data.setChildClassId(child);

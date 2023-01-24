@@ -9,6 +9,8 @@ public class ChildClassVO {
 	private String childName;
 	
 	private ParentClass parentId;
+	
+	private String ocType;
 
 	public Integer getChildId() {
 		return childId;
@@ -34,11 +36,18 @@ public class ChildClassVO {
 		this.parentId = parentId;
 	}
 
-	@Override
-	public String toString() {
-		return "ChildClassVO [childId=" + childId + ", childName=" + childName + ", parentId=" + parentId + "]";
+	public String getOcType() {
+		return ocType;
 	}
 
-	
+	public void setOcType(String ocType) {
+		this.ocType = ocType;
+	}
+
+	@Override
+	public String toString() {
+		return "ChildClassVO [childId=" + childId + ", childName=" + childName + ", parentId=" + parentId + ", ocType="
+				+ ocType + "]";
+	}
 	
 }
