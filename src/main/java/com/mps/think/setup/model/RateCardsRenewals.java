@@ -33,46 +33,24 @@ public class RateCardsRenewals extends BaseEntity {
 	@JoinColumn(name = "rc_id", referencedColumnName = "rcId")
 	private RateCards renewalId;
 	
-	@Column(name = "effectiveDate")
-	private Date effectiveDate;
-	
-	@Column(name = "defaultPricePerItem")
-	private Float defaultPricePerItem;
-	
-	@Column(name = "defaultPricePerDay")
-	private Float defaultPricePerDay;
-	
-	@Column(name = "renewalExpiryDate")
-	private Date renewalExpiryDate;
-	
-	@Column(name = "effectiveDateDescription")
-	private String effectiveDateDescription;
-	
-	@Column(name = "totalPrice")
-	private Float totalPrice;
-	
 	@Column(name = "basicPrice")
 	private Float basicPrice;
+	
+	@Column(name = "noofItem")
+	private Integer noOfItem;
+	
+	@Column(name = "unitPrice")
+	private Float unitPrice;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "currency")
 	private Currency currency;
 	
-	@Column(name = "itemsType")
-	private String itemsType;
+	@Column(name = "validfrom")
+	private Date validFrom;
 	
-	@Column(name = "items")
-	private Float items;
-
-//	calculated field: Basic Price/# Items
-	@Column(name = "unitPrice")
-	private Float unitPrice;
-	
-	@Column(name = "specialPrice")
-	private Float specialPrice;
-	
-	@Column(name = "quantityDiscount")
-	private Float quantityDiscount;
+	@Column(name = "validto")
+	private Date validTo;
 	
 	@Column(name = "fromQuantity")
 	private Integer fromQuantity;
@@ -82,6 +60,9 @@ public class RateCardsRenewals extends BaseEntity {
 	
 	@Column(name = "validForRegions")
 	private String validForRegions;
+	
+	@Column(name = "renewalExpiryDate")
+	private Date renewalExpiryDate;
 
 	public Integer getId() {
 		return id;
@@ -99,54 +80,6 @@ public class RateCardsRenewals extends BaseEntity {
 		this.renewalId = renewalId;
 	}
 
-	public Date getEffectiveDate() {
-		return effectiveDate;
-	}
-
-	public void setEffectiveDate(Date effectiveDate) {
-		this.effectiveDate = effectiveDate;
-	}
-
-	public Float getDefaultPricePerItem() {
-		return defaultPricePerItem;
-	}
-
-	public void setDefaultPricePerItem(Float defaultPricePerItem) {
-		this.defaultPricePerItem = defaultPricePerItem;
-	}
-
-	public Float getDefaultPricePerDay() {
-		return defaultPricePerDay;
-	}
-
-	public void setDefaultPricePerDay(Float defaultPricePerDay) {
-		this.defaultPricePerDay = defaultPricePerDay;
-	}
-
-	public Date getRenewalExpiryDate() {
-		return renewalExpiryDate;
-	}
-
-	public void setRenewalExpiryDate(Date renewalExpiryDate) {
-		this.renewalExpiryDate = renewalExpiryDate;
-	}
-
-	public String getEffectiveDateDescription() {
-		return effectiveDateDescription;
-	}
-
-	public void setEffectiveDateDescription(String effectiveDateDescription) {
-		this.effectiveDateDescription = effectiveDateDescription;
-	}
-
-	public Float getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(Float totalPrice) {
-		this.totalPrice = totalPrice;
-	}
-
 	public Float getBasicPrice() {
 		return basicPrice;
 	}
@@ -155,28 +88,12 @@ public class RateCardsRenewals extends BaseEntity {
 		this.basicPrice = basicPrice;
 	}
 
-	public Currency getCurrency() {
-		return currency;
+	public Integer getNoOfItem() {
+		return noOfItem;
 	}
 
-	public void setCurrency(Currency currency) {
-		this.currency = currency;
-	}
-
-	public String getItemsType() {
-		return itemsType;
-	}
-
-	public void setItemsType(String itemsType) {
-		this.itemsType = itemsType;
-	}
-
-	public Float getItems() {
-		return items;
-	}
-
-	public void setItems(Float items) {
-		this.items = items;
+	public void setNoOfItem(Integer noOfItem) {
+		this.noOfItem = noOfItem;
 	}
 
 	public Float getUnitPrice() {
@@ -187,20 +104,28 @@ public class RateCardsRenewals extends BaseEntity {
 		this.unitPrice = unitPrice;
 	}
 
-	public Float getSpecialPrice() {
-		return specialPrice;
+	public Currency getCurrency() {
+		return currency;
 	}
 
-	public void setSpecialPrice(Float specialPrice) {
-		this.specialPrice = specialPrice;
+	public void setCurrency(Currency currency) {
+		this.currency = currency;
 	}
 
-	public Float getQuantityDiscount() {
-		return quantityDiscount;
+	public Date getValidFrom() {
+		return validFrom;
 	}
 
-	public void setQuantityDiscount(Float quantityDiscount) {
-		this.quantityDiscount = quantityDiscount;
+	public void setValidFrom(Date validFrom) {
+		this.validFrom = validFrom;
+	}
+
+	public Date getValidTo() {
+		return validTo;
+	}
+
+	public void setValidTo(Date validTo) {
+		this.validTo = validTo;
 	}
 
 	public Integer getFromQuantity() {
@@ -227,18 +152,13 @@ public class RateCardsRenewals extends BaseEntity {
 		this.validForRegions = validForRegions;
 	}
 
-	@Override
-	public String toString() {
-		return "RateCardsRenewals [id=" + id + ", renewalId=" + renewalId + ", effectiveDate=" + effectiveDate
-				+ ", defaultPricePerItem=" + defaultPricePerItem + ", defaultPricePerDay=" + defaultPricePerDay
-				+ ", renewalExpiryDate=" + renewalExpiryDate + ", effectiveDateDescription=" + effectiveDateDescription
-				+ ", totalPrice=" + totalPrice + ", basicPrice=" + basicPrice + ", currency=" + currency
-				+ ", itemsType=" + itemsType + ", items=" + items + ", unitPrice=" + unitPrice + ", specialPrice="
-				+ specialPrice + ", quantityDiscount=" + quantityDiscount + ", fromQuantity=" + fromQuantity
-				+ ", toQuantity=" + toQuantity + ", validForRegions=" + validForRegions + "]";
+	public Date getRenewalExpiryDate() {
+		return renewalExpiryDate;
 	}
 
-	
+	public void setRenewalExpiryDate(Date renewalExpiryDate) {
+		this.renewalExpiryDate = renewalExpiryDate;
+	}
 	
 	
 

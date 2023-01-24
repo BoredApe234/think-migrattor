@@ -13,8 +13,10 @@ public class RateCardsVO {
 	private Integer rateClassId;
 	private String rateCard;
 	private String description;
-	private String orderClasses;
+//	private String orderClasses;
+	private String itemtype;
 	private Boolean useForPackage;
+	private Float defaultPricePerItem;
 	public Integer getRcId() {
 		return rcId;
 	}
@@ -51,11 +53,11 @@ public class RateCardsVO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public String getOrderClasses() {
-		return orderClasses;
+	public String getItemtype() {
+		return itemtype;
 	}
-	public void setOrderClasses(String orderClasses) {
-		this.orderClasses = orderClasses;
+	public void setItemtype(String itemtype) {
+		this.itemtype = itemtype;
 	}
 	public Boolean getUseForPackage() {
 		return useForPackage;
@@ -63,13 +65,23 @@ public class RateCardsVO {
 	public void setUseForPackage(Boolean useForPackage) {
 		this.useForPackage = useForPackage;
 	}
+	public Float getDefaultPricePerItem() {
+		return defaultPricePerItem;
+	}
+	public void setDefaultPricePerItem(Float defaultPricePerItem) {
+		this.defaultPricePerItem = defaultPricePerItem;
+	}
 	@Override
 	public String toString() {
 		return "RateCardsVO [rcId=" + rcId + ", parentId=" + parentId + ", rateClassEffectiveSequence="
 				+ rateClassEffectiveSequence + ", rateClassId=" + rateClassId + ", rateCard=" + rateCard
-				+ ", description=" + description + ", orderClasses=" + orderClasses + ", useForPackage=" + useForPackage
-				+ "]";
+				+ ", description=" + description + ", itemtype=" + itemtype + ", useForPackage=" + useForPackage
+				+ ", defaultPricePerItem=" + defaultPricePerItem + "]";
 	}
+	
+	
+	
+	
 	
 	
 }

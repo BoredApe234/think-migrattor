@@ -39,11 +39,17 @@ public class RateCards extends BaseEntity {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "orderClasses")
-	private String orderClasses;
+//	@Column(name = "orderClasses")
+//	private String orderClasses;
 	
 	@Column(name = "useForPackage")
 	private Boolean useForPackage;
+	
+	@Column(name = "itemtype")
+	private String itemtype;
+	
+	@Column(name = "defaultPricePerItem")
+	private Float defaultPricePerItem;
 
 	public Integer getRcId() {
 		return rcId;
@@ -93,13 +99,13 @@ public class RateCards extends BaseEntity {
 		this.description = description;
 	}
 
-	public String getOrderClasses() {
-		return orderClasses;
-	}
-
-	public void setOrderClasses(String orderClasses) {
-		this.orderClasses = orderClasses;
-	}
+//	public String getOrderClasses() {
+//		return orderClasses;
+//	}
+//
+//	public void setOrderClasses(String orderClasses) {
+//		this.orderClasses = orderClasses;
+//	}
 
 	public Boolean getUseForPackage() {
 		return useForPackage;
@@ -109,13 +115,39 @@ public class RateCards extends BaseEntity {
 		this.useForPackage = useForPackage;
 	}
 
+	public String getItemtype() {
+		return itemtype;
+	}
+
+	public void setItemtype(String itemtype) {
+		this.itemtype = itemtype;
+	}
+
+	public Float getDefaultPricePerItem() {
+		return defaultPricePerItem;
+	}
+
+	public void setDefaultPricePerItem(Float defaultPricePerItem) {
+		this.defaultPricePerItem = defaultPricePerItem;
+	}
+
 	@Override
 	public String toString() {
 		return "RateCards [rcId=" + rcId + ", parentId=" + parentId + ", rateClassEffectiveSequence="
 				+ rateClassEffectiveSequence + ", rateClassId=" + rateClassId + ", rateCard=" + rateCard
-				+ ", description=" + description + ", orderClasses=" + orderClasses + ", useForPackage=" + useForPackage
-				+ "]";
+				+ ", description=" + description + ", useForPackage=" + useForPackage + ", itemtype=" + itemtype
+				+ ", defaultPricePerItem=" + defaultPricePerItem + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "RateCards [rcId=" + rcId + ", parentId=" + parentId + ", rateClassEffectiveSequence="
+//				+ rateClassEffectiveSequence + ", rateClassId=" + rateClassId + ", rateCard=" + rateCard
+//				+ ", description=" + description + ", orderClasses=" + orderClasses + ", useForPackage=" + useForPackage
+//				+ ", itemtype=" + itemtype + ", defaultPricePerItem=" + defaultPricePerItem + "]";
+//	}
+
+	
 
 	
 	
