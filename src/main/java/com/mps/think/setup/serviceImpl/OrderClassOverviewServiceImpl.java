@@ -22,6 +22,12 @@ public class OrderClassOverviewServiceImpl implements OrderClassOverviewService 
 	public OrderClassOverviewVO saveOrderClassOverview(OrderClassOverviewVO overview) {
 		ObjectMapper mapper = new ObjectMapper();
 		OrderClassOverview newOverview = mapper.convertValue(overview, OrderClassOverview.class);
+		if (overview.getChild().getChildId() == 0) {
+			newOverview.setChild(null);
+		}
+		if (overview.getSubChild().getSubChildId() == 0) {
+			newOverview.setSubChild(null);
+		}
 		orderClassOverviewRepo.saveAndFlush(newOverview);
 		return overview;
 	}
@@ -29,8 +35,14 @@ public class OrderClassOverviewServiceImpl implements OrderClassOverviewService 
 	@Override
 	public OrderClassOverviewVO updateOrderClassOverview(OrderClassOverviewVO overview) {
 		ObjectMapper mapper = new ObjectMapper();
-		OrderClassOverview updatedOverview = mapper.convertValue(overview, OrderClassOverview.class);
-		orderClassOverviewRepo.saveAndFlush(updatedOverview);
+		OrderClassOverview newOverview = mapper.convertValue(overview, OrderClassOverview.class);
+		if (overview.getChild().getChildId() == 0) {
+			newOverview.setChild(null);
+		}
+		if (overview.getSubChild().getSubChildId() == 0) {
+			newOverview.setSubChild(null);
+		}
+		orderClassOverviewRepo.saveAndFlush(newOverview);
 		return overview;
 	}
 

@@ -21,7 +21,7 @@ public class OrderClassOverviewVO {
 
 	private String label;
 
-	private String desctiption;
+	private String description;
 
 	private OrderClass orderClass;
 
@@ -101,12 +101,12 @@ public class OrderClassOverviewVO {
 		this.label = label;
 	}
 
-	public String getDesctiption() {
-		return desctiption;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesctiption(String desctiption) {
-		this.desctiption = desctiption;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public OrderClass getOrderClass() {
