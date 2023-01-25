@@ -33,6 +33,13 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		SourceCode newSourceCode = mapper.convertValue(sourceCode, SourceCode.class);
+		if(sourceCode.getChildID().getChildId()==0){
+			newSourceCode.setChildID(null);
+		}
+		
+		if(sourceCode.getSubChildID().getSubChildId()==0){
+			newSourceCode.setSubChildID(null);
+		}
 		sourceCodeRepo.saveAndFlush(newSourceCode);
 		
 		return sourceCode;
@@ -51,6 +58,13 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 	public SourceCodeVO updateSourceCode(SourceCodeVO sourceCode) {
 		ObjectMapper mapper = new ObjectMapper();
 		SourceCode sourceCodeToUpdate = mapper.convertValue(sourceCode, SourceCode.class);
+		if(sourceCode.getChildID().getChildId()==0){
+			sourceCodeToUpdate.setChildID(null);
+		}
+		
+		if(sourceCode.getSubChildID().getSubChildId()==0){
+			sourceCodeToUpdate.setSubChildID(null);
+		}
 		sourceCodeRepo.saveAndFlush(sourceCodeToUpdate);
 		return sourceCode;
 	}

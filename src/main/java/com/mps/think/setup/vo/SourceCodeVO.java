@@ -1,25 +1,19 @@
 package com.mps.think.setup.vo;
-
-
-
-//import com.mps.think.setup.model.ChildClass;
+import com.mps.think.setup.model.ChildClass;
+import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.ParentClass;
-import com.mps.think.setup.model.Publisher;
-
-
-
-
+import com.mps.think.setup.model.SubChildClass;
 public class SourceCodeVO {
 	
 	private Integer sourceCodeId;
-	private Publisher pubId;
+	private OrderClass ocId;
 	private ParentClass parentID;
-//	private ChildClass childID;
+	private ChildClass childID;
+	private SubChildClass subChildID;
 	private String description;
 	private String orderCode;
 	private String order_code_type;
 	private Integer quantity;
-	private Integer ocId;
 	private Boolean isActive;
 	private Boolean state_Break;
 	private Integer cost;
@@ -38,18 +32,30 @@ public class SourceCodeVO {
 	public void setSourceCodeId(Integer sourceCodeId) {
 		this.sourceCodeId = sourceCodeId;
 	}
+	public OrderClass getOcId() {
+		return ocId;
+	}
+	public void setOcId(OrderClass ocId) {
+		this.ocId = ocId;
+	}
 	public ParentClass getParentID() {
 		return parentID;
 	}
 	public void setParentID(ParentClass parentID) {
 		this.parentID = parentID;
 	}
-//	public ChildClass getChildID() {
-//		return childID;
-//	}
-//	public void setChildID(ChildClass childID) {
-//		this.childID = childID;
-//	}
+	public ChildClass getChildID() {
+		return childID;
+	}
+	public void setChildID(ChildClass childID) {
+		this.childID = childID;
+	}
+	public SubChildClass getSubChildID() {
+		return subChildID;
+	}
+	public void setSubChildID(SubChildClass subChildID) {
+		this.subChildID = subChildID;
+	}
 	public String getDescription() {
 		return description;
 	}
@@ -62,18 +68,17 @@ public class SourceCodeVO {
 	public void setOrderCode(String orderCode) {
 		this.orderCode = orderCode;
 	}
-	
+	public String getOrder_code_type() {
+		return order_code_type;
+	}
+	public void setOrder_code_type(String order_code_type) {
+		this.order_code_type = order_code_type;
+	}
 	public Integer getQuantity() {
 		return quantity;
 	}
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
-	}
-	public Integer getOcId() {
-		return ocId;
-	}
-	public void setOcId(Integer ocId) {
-		this.ocId = ocId;
 	}
 	public Boolean getIsActive() {
 		return isActive;
@@ -111,7 +116,12 @@ public class SourceCodeVO {
 	public void setIs_ddp(Integer is_ddp) {
 		this.is_ddp = is_ddp;
 	}
-	
+	public String getSourceCodeType() {
+		return sourceCodeType;
+	}
+	public void setSourceCodeType(String sourceCodeType) {
+		this.sourceCodeType = sourceCodeType;
+	}
 	public String getSourceCode() {
 		return sourceCode;
 	}
@@ -142,36 +152,14 @@ public class SourceCodeVO {
 	public void setShippingPriceList(Integer shippingPriceList) {
 		this.shippingPriceList = shippingPriceList;
 	}
-	public String getSourceCodeType() {
-		return sourceCodeType;
-	}
-	public void setSourceCodeType(String sourceCodeType) {
-		this.sourceCodeType = sourceCodeType;
-	}
-	public String getOrder_code_type() {
-		return order_code_type;
-	}
-	public void setOrder_code_type(String order_code_type) {
-		this.order_code_type = order_code_type;
-	}
-	public Publisher getPubId() {
-		return pubId;
-	}
-	public void setPubId(Publisher pubId) {
-		this.pubId = pubId;
-	}
 	@Override
 	public String toString() {
-		return "SourceCodeVO [sourceCodeId=" + sourceCodeId + ", pubId=" + pubId + ", parentID=" + parentID
-				+ ", description=" + description + ", orderCode=" + orderCode + ", order_code_type=" + order_code_type
-				+ ", quantity=" + quantity + ", ocId=" + ocId + ", isActive=" + isActive + ", state_Break="
-				+ state_Break + ", cost=" + cost + ", isGenerated=" + isGenerated + ", generic_agency=" + generic_agency
-				+ ", is_ddp=" + is_ddp + ", sourceCodeType=" + sourceCodeType + ", sourceCode=" + sourceCode
-				+ ", sourceCodeFormat=" + sourceCodeFormat + ", rateCard=" + rateCard + ", discount=" + discount
-				+ ", shippingPriceList=" + shippingPriceList + "]";
+		return "SourceCodeVO [sourceCodeId=" + sourceCodeId + ", ocId=" + ocId + ", parentID=" + parentID + ", childID="
+				+ childID + ", subChildID=" + subChildID + ", description=" + description + ", orderCode=" + orderCode
+				+ ", order_code_type=" + order_code_type + ", quantity=" + quantity + ", isActive=" + isActive
+				+ ", state_Break=" + state_Break + ", cost=" + cost + ", isGenerated=" + isGenerated
+				+ ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCodeType=" + sourceCodeType
+				+ ", sourceCode=" + sourceCode + ", sourceCodeFormat=" + sourceCodeFormat + ", rateCard=" + rateCard
+				+ ", discount=" + discount + ", shippingPriceList=" + shippingPriceList + "]";
 	}
-	
-	
-	
-	
 }
