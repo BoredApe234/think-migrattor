@@ -51,4 +51,24 @@ public class OrderClassOverviewController {
 		return ResponseEntity.ok(orderClassOverviewService.getAllOrderClassOverviewByPubId(pubId));
 	}
 	
+	@GetMapping("/findOrderClassOverviewByChildId/{childId}")
+	public ResponseEntity<?> findOrderClassOverviewByChildId(@PathVariable("childId") Integer childId) {
+		return ResponseEntity.ok(orderClassOverviewService.getAllOrderClassOverviewByChildId(childId));
+	}
+	
+	@GetMapping("/findOrderClassOverviewBySubChildId/{subChildId}")
+	public ResponseEntity<?> findOrderClassOverviewBySubChildId(@PathVariable("subChildId") Integer subChildId) {
+		return ResponseEntity.ok(orderClassOverviewService.getAllOrderClassOverviewBySubChildId(subChildId));
+	}
+	
+	@GetMapping("/findOrderClassOverviewByOcId/{ocId}")
+	public ResponseEntity<?> findOrderClassOverviewByOcId(@PathVariable Integer ocId) {
+		return ResponseEntity.ok(orderClassOverviewService.getAllOrderClassOverviewByOrderClassId(ocId));
+	}
+	
+	@GetMapping("/findAllOrderClassOverview")
+	public ResponseEntity<?> findAllOrderClassOverview() {
+		return ResponseEntity.ok(orderClassOverviewService.getAllOrderClassOverview());
+	}
+	
 }

@@ -1,57 +1,64 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.ChildClass;
+import com.mps.think.setup.model.OrderClass;
+import com.mps.think.setup.model.ParentClass;
 import com.mps.think.setup.model.Publisher;
+import com.mps.think.setup.model.SourceCode;
+import com.mps.think.setup.model.SubChildClass;
 
 public class OrderClassOverviewVO {
 
 	private Integer id;
-	
-	private Integer parentId;
-	
+
+	private ParentClass parent;
+
+	private ChildClass child;
+
+	private SubChildClass subChild;
+
 	// key information
-	
+
 	private String label;
-	
+
 	private String desctiption;
-	
-	private String orderClass;
-	
-	private String parent; // need to change
-	
+
+	private OrderClass orderClass;
+
 	private String revenueRecorded;
-	
+
 	private String recordRevenueSubsPartWay;
-	
+
 	private Boolean cancelCredit;
-	
+
 	//
 
 	// Source codes
-	
-	private String sourceCode;
-	
+
+	private SourceCode sourceCode;
+
 	private String sourceCodeFormat;
-	
+
 	private String renewalSCFormat;
-	
+
 	//
-	
+
 	// payments
-	
+
 	private String profitCenter;
-	
+
 	private String paymentThreshold;
-	
+
 	//
-	
+
 	// Other options
-	
+
 	private String reasonableGap;
-	
+
 	private String activeOrderHandling;
-	
+
 	//
-	
+
 	private Publisher publisher;
 
 	public Integer getId() {
@@ -62,12 +69,28 @@ public class OrderClassOverviewVO {
 		this.id = id;
 	}
 
-	public Integer getParentId() {
-		return parentId;
+	public ParentClass getParent() {
+		return parent;
 	}
 
-	public void setParentId(Integer parentId) {
-		this.parentId = parentId;
+	public void setParent(ParentClass parent) {
+		this.parent = parent;
+	}
+
+	public ChildClass getChild() {
+		return child;
+	}
+
+	public void setChild(ChildClass child) {
+		this.child = child;
+	}
+
+	public SubChildClass getSubChild() {
+		return subChild;
+	}
+
+	public void setSubChild(SubChildClass subChild) {
+		this.subChild = subChild;
 	}
 
 	public String getLabel() {
@@ -86,20 +109,12 @@ public class OrderClassOverviewVO {
 		this.desctiption = desctiption;
 	}
 
-	public String getOrderClass() {
+	public OrderClass getOrderClass() {
 		return orderClass;
 	}
 
-	public void setOrderClass(String orderClass) {
+	public void setOrderClass(OrderClass orderClass) {
 		this.orderClass = orderClass;
-	}
-
-	public String getParent() {
-		return parent;
-	}
-
-	public void setParent(String parent) {
-		this.parent = parent;
 	}
 
 	public String getRevenueRecorded() {
@@ -126,11 +141,11 @@ public class OrderClassOverviewVO {
 		this.cancelCredit = cancelCredit;
 	}
 
-	public String getSourceCode() {
+	public SourceCode getSourceCode() {
 		return sourceCode;
 	}
 
-	public void setSourceCode(String sourceCode) {
+	public void setSourceCode(SourceCode sourceCode) {
 		this.sourceCode = sourceCode;
 	}
 
@@ -189,8 +204,6 @@ public class OrderClassOverviewVO {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
-	
-	//
-	
+
 	
 }
