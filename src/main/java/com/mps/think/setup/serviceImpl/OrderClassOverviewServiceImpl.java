@@ -36,7 +36,7 @@ public class OrderClassOverviewServiceImpl implements OrderClassOverviewService 
 
 	@Override
 	public List<OrderClassOverview> getAllOrderClassOverviewByParentId(Integer parentId) {
-		return orderClassOverviewRepo.findByParentId(parentId);
+		return orderClassOverviewRepo.findByParentParentID(parentId);
 	}
 
 	@Override
@@ -61,6 +61,26 @@ public class OrderClassOverviewServiceImpl implements OrderClassOverviewService 
 	@Override
 	public List<OrderClassOverview> getAllOrderClassOverviewByPubId(Integer pubId) {
 		return orderClassOverviewRepo.findByPublisherId(pubId);
+	}
+
+	@Override
+	public List<OrderClassOverview> getAllOrderClassOverviewByChildId(Integer childId) {
+		return orderClassOverviewRepo.findByChildChildId(childId);
+	}
+
+	@Override
+	public List<OrderClassOverview> getAllOrderClassOverviewBySubChildId(Integer subChildId) {
+		return orderClassOverviewRepo.findBySubChildSubChildId(subChildId);
+	}
+
+	@Override
+	public List<OrderClassOverview> getAllOrderClassOverview() {
+		return orderClassOverviewRepo.findAll();
+	}
+
+	@Override
+	public List<OrderClassOverview> getAllOrderClassOverviewByOrderClassId(Integer ocId) {
+		return orderClassOverviewRepo.findByOrderClassOcId(ocId);
 	}
 
 }

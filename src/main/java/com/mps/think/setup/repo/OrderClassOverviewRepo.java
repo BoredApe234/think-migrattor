@@ -9,9 +9,15 @@ import com.mps.think.setup.model.OrderClassOverview;
 
 @Repository
 public interface OrderClassOverviewRepo extends JpaRepository<OrderClassOverview, Integer> {
-
-	public List<OrderClassOverview> findByParentId(Integer parentId);
 	
 	public List<OrderClassOverview> findByPublisherId(Integer id);
+	
+	public List<OrderClassOverview> findByParentParentID(Integer parentId);
+	
+	public List<OrderClassOverview> findByChildChildId(Integer childId);
+	
+	public List<OrderClassOverview> findBySubChildSubChildId(Integer childId);	
+	
+	public List<OrderClassOverview> findByOrderClassOcId(Integer orId);
 	
 }

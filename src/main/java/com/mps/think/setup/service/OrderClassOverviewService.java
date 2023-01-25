@@ -19,4 +19,12 @@ public interface OrderClassOverviewService {
 	
 	public List<OrderClassOverview> getAllOrderClassOverviewByPubId(Integer pubId);
 	
+	public List<OrderClassOverview> getAllOrderClassOverviewByChildId(Integer childId);
+	
+	public List<OrderClassOverview> getAllOrderClassOverviewBySubChildId(Integer subChildId);
+	
+	public List<OrderClassOverview> getAllOrderClassOverview();
+	
+	public List<OrderClassOverview> getAllOrderClassOverviewByOrderClassId(Integer ocId);
+	
 }

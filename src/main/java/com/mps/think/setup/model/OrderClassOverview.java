@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,9 +23,18 @@ public class OrderClassOverview extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
+
+	@ManyToOne
+	@JoinColumn(name = "parent_id")
+	private ParentClass parent;
 	
-	@Column(name = "parent_id")
-	private Integer parentId;
+	@OneToOne
+	@JoinColumn(name = "child_id")
+	private ChildClass child;
+	
+	@OneToOne
+	@JoinColumn(name = "sub_child_id", referencedColumnName = "subchild_id")
+	private SubChildClass subChild;
 	
 	// key information
 	
@@ -32,13 +42,11 @@ public class OrderClassOverview extends BaseEntity {
 	private String label;
 	
 	@Column(name = "description")
-	private String desctiption;
-	
-	@Column(name = "order_class")
-	private String orderClass;
-	
-	@Column(name = "parent")
-	private String parent; // need to change
+	private String description;
+
+	@ManyToOne
+	@JoinColumn(name = "order_class_id", referencedColumnName = "oc_id")
+	private OrderClass orderClass;
 	
 	@Column(name = "revenue_recorded")
 	private String revenueRecorded;
@@ -52,9 +60,10 @@ public class OrderClassOverview extends BaseEntity {
 	//
 
 	// Source codes
-	
-	@Column(name = "source_code")
-	private String sourceCode;
+
+	@ManyToOne
+	@JoinColumn(name = "source_code_id", referencedColumnName = "sourc_code_id")
+	private SourceCode sourceCode;
 	
 	@Column(name = "source_code_format")
 	private String sourceCodeFormat;
@@ -96,12 +105,28 @@ public class OrderClassOverview extends BaseEntity {
 		this.id = id;
 	}
 
-	public Integer getParentId() {
-		return parentId;
+	public ParentClass getParent() {
+		return parent;
 	}
 
-	public void setParentId(Integer parentId) {
-		this.parentId = parentId;
+	public void setParent(ParentClass parent) {
+		this.parent = parent;
+	}
+
+	public ChildClass getChild() {
+		return child;
+	}
+
+	public void setChild(ChildClass child) {
+		this.child = child;
+	}
+
+	public SubChildClass getSubChild() {
+		return subChild;
+	}
+
+	public void setSubChild(SubChildClass subChild) {
+		this.subChild = subChild;
 	}
 
 	public String getLabel() {
@@ -112,28 +137,20 @@ public class OrderClassOverview extends BaseEntity {
 		this.label = label;
 	}
 
-	public String getDesctiption() {
-		return desctiption;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDesctiption(String desctiption) {
-		this.desctiption = desctiption;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
-	public String getOrderClass() {
+	public OrderClass getOrderClass() {
 		return orderClass;
 	}
 
-	public void setOrderClass(String orderClass) {
+	public void setOrderClass(OrderClass orderClass) {
 		this.orderClass = orderClass;
-	}
-
-	public String getParent() {
-		return parent;
-	}
-
-	public void setParent(String parent) {
-		this.parent = parent;
 	}
 
 	public String getRevenueRecorded() {
@@ -160,11 +177,11 @@ public class OrderClassOverview extends BaseEntity {
 		this.cancelCredit = cancelCredit;
 	}
 
-	public String getSourceCode() {
+	public SourceCode getSourceCode() {
 		return sourceCode;
 	}
 
-	public void setSourceCode(String sourceCode) {
+	public void setSourceCode(SourceCode sourceCode) {
 		this.sourceCode = sourceCode;
 	}
 
@@ -223,7 +240,6 @@ public class OrderClassOverview extends BaseEntity {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
-	
-	//
+
 	
 }
