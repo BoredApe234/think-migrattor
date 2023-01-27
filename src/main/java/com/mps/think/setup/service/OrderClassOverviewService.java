@@ -7,9 +7,9 @@ import com.mps.think.setup.vo.OrderClassOverviewVO;
 
 public interface OrderClassOverviewService {
 
-	public OrderClassOverviewVO saveOrderClassOverview(OrderClassOverviewVO overview);
+	public OrderClassOverview saveOrderClassOverview(OrderClassOverviewVO overview);
 	
-	public OrderClassOverviewVO updateOrderClassOverview(OrderClassOverviewVO overview);
+	public OrderClassOverview updateOrderClassOverview(OrderClassOverviewVO overview);
 	
 	public List<OrderClassOverview> getAllOrderClassOverviewByParentId(Integer parentId);
 	
