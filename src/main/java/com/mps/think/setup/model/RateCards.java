@@ -27,6 +27,14 @@ public class RateCards extends BaseEntity {
 	@JoinColumn(name = "parent_id", referencedColumnName = "parent_id")
 	private ParentClass parentId;
 	
+	@ManyToOne
+	@JoinColumn(name = "child_id", referencedColumnName = "child_id")
+	private ChildClass childId;
+	
+	@ManyToOne
+	@JoinColumn(name = "subchild_id", referencedColumnName = "subchild_id")
+	private SubChildClass subChildId;
+	
 	@Column(name = "rateClassEffectiveSequence")
 	private Integer rateClassEffectiveSequence;
 	
@@ -38,9 +46,6 @@ public class RateCards extends BaseEntity {
 	
 	@Column(name = "description")
 	private String description;
-	
-//	@Column(name = "orderClasses")
-//	private String orderClasses;
 	
 	@Column(name = "useForPackage")
 	private Boolean useForPackage;
@@ -65,6 +70,22 @@ public class RateCards extends BaseEntity {
 
 	public void setParentId(ParentClass parentId) {
 		this.parentId = parentId;
+	}
+
+	public ChildClass getChildId() {
+		return childId;
+	}
+
+	public void setChildId(ChildClass childId) {
+		this.childId = childId;
+	}
+
+	public SubChildClass getSubChildId() {
+		return subChildId;
+	}
+
+	public void setSubChildId(SubChildClass subChildId) {
+		this.subChildId = subChildId;
 	}
 
 	public Integer getRateClassEffectiveSequence() {
@@ -99,14 +120,6 @@ public class RateCards extends BaseEntity {
 		this.description = description;
 	}
 
-//	public String getOrderClasses() {
-//		return orderClasses;
-//	}
-//
-//	public void setOrderClasses(String orderClasses) {
-//		this.orderClasses = orderClasses;
-//	}
-
 	public Boolean getUseForPackage() {
 		return useForPackage;
 	}
@@ -130,23 +143,10 @@ public class RateCards extends BaseEntity {
 	public void setDefaultPricePerItem(Float defaultPricePerItem) {
 		this.defaultPricePerItem = defaultPricePerItem;
 	}
+	
+	
 
-	@Override
-	public String toString() {
-		return "RateCards [rcId=" + rcId + ", parentId=" + parentId + ", rateClassEffectiveSequence="
-				+ rateClassEffectiveSequence + ", rateClassId=" + rateClassId + ", rateCard=" + rateCard
-				+ ", description=" + description + ", useForPackage=" + useForPackage + ", itemtype=" + itemtype
-				+ ", defaultPricePerItem=" + defaultPricePerItem + "]";
-	}
-
-//	@Override
-//	public String toString() {
-//		return "RateCards [rcId=" + rcId + ", parentId=" + parentId + ", rateClassEffectiveSequence="
-//				+ rateClassEffectiveSequence + ", rateClassId=" + rateClassId + ", rateCard=" + rateCard
-//				+ ", description=" + description + ", orderClasses=" + orderClasses + ", useForPackage=" + useForPackage
-//				+ ", itemtype=" + itemtype + ", defaultPricePerItem=" + defaultPricePerItem + "]";
-//	}
-
+	
 	
 
 	

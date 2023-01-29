@@ -34,6 +34,12 @@ public class RateCardsServiceImpl implements RateCardsService {
 	public RateCardsVO saveRateCards(RateCardsVO rateCards) {
 		ObjectMapper mapper = new ObjectMapper();
 		RateCards newRateCards = mapper.convertValue(rateCards, RateCards.class);
+		if (rateCards.getChildId() == null || rateCards.getChildId().getChildId() == 0) {
+			newRateCards.setChildId(null);
+		}
+		if (rateCards.getSubChildId() == null || rateCards.getSubChildId().getSubChildId() == 0) {
+			newRateCards.setSubChildId(null);
+		}
 		rateCardsRepo.saveAndFlush(newRateCards);
 		return rateCards;
 	}
@@ -42,6 +48,12 @@ public class RateCardsServiceImpl implements RateCardsService {
 	public RateCardsVO updateRateCards(RateCardsVO rateCards) {
 		ObjectMapper mapper = new ObjectMapper();
 		RateCards rateCardsToUpdate = mapper.convertValue(rateCards, RateCards.class);
+		if (rateCards.getChildId() == null || rateCards.getChildId().getChildId() == 0) {
+			rateCardsToUpdate.setChildId(null);
+		}
+		if (rateCards.getSubChildId() == null || rateCards.getSubChildId().getSubChildId() == 0) {
+			rateCardsToUpdate.setSubChildId(null);
+		}
 		rateCardsRepo.saveAndFlush(rateCardsToUpdate);
 		return rateCards;
 	}
@@ -65,6 +77,18 @@ public class RateCardsServiceImpl implements RateCardsService {
 	@Override
 	public List<RateCards> getAllRateCardsByParentID(Integer parentID) throws Exception {
 		return rateCardsRepo.findByParentIdParentID(parentID);
+	}
+
+	@Override
+	public List<RateCards> getAllRateCardsByChildID(Integer childId) throws Exception {
+		// TODO Auto-generated method stub
+		return rateCardsRepo.findByChildIdChildId(childId);
+	}
+
+	@Override
+	public List<RateCards> getAllRateCardsBySubChildId(Integer subChildId) throws Exception {
+		// TODO Auto-generated method stub
+		return rateCardsRepo.findBySubChildIdSubChildId(subChildId);
 	}
 
 }
