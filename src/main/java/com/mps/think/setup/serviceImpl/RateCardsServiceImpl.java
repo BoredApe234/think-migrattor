@@ -40,7 +40,8 @@ public class RateCardsServiceImpl implements RateCardsService {
 		if (rateCards.getSubChildId() == null || rateCards.getSubChildId().getSubChildId() == 0) {
 			newRateCards.setSubChildId(null);
 		}
-		rateCardsRepo.saveAndFlush(newRateCards);
+		RateCards data=rateCardsRepo.saveAndFlush(newRateCards);
+		rateCards.setRcId(data.getRcId());
 		return rateCards;
 	}
 
@@ -54,7 +55,8 @@ public class RateCardsServiceImpl implements RateCardsService {
 		if (rateCards.getSubChildId() == null || rateCards.getSubChildId().getSubChildId() == 0) {
 			rateCardsToUpdate.setSubChildId(null);
 		}
-		rateCardsRepo.saveAndFlush(rateCardsToUpdate);
+		RateCards data=rateCardsRepo.saveAndFlush(rateCardsToUpdate);
+		rateCards.setRcId(data.getRcId());
 		return rateCards;
 	}
 
