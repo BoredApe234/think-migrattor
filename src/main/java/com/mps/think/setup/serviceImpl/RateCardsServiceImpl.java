@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
-import com.mps.think.setup.model.ParentClass;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import com.mps.think.setup.model.RateCards;
+
 import com.mps.think.setup.repo.RateCardsRepo;
 import com.mps.think.setup.service.RateCardsService;
 import com.mps.think.setup.vo.RateCardsVO;
@@ -30,40 +32,31 @@ public class RateCardsServiceImpl implements RateCardsService {
 
 	@Override
 	public RateCardsVO saveRateCards(RateCardsVO rateCards) {
-		RateCards rc = new RateCards();
-		rc.setRateCard(rateCards.getRateCard());
-		rc.setDescription(rateCards.getDescription());
-		rc.setOrderClasses(rateCards.getOrderClasses());
-		rc.setRateClassEffectiveSequence(rateCards.getRateClassEffectiveSequence());
-		rc.setRateClassId(rateCards.getRateClassId());
-		rc.setUseForPackage(rateCards.getUseForPackage());
-		rateCards.setRcId(rc.getRcId());
-		ParentClass parentClass=new ParentClass();
-		parentClass.setParentID(rateCards.getParentId().getParentID());
-		rc.setParentId(parentClass);
-//		publisher.setId(rateCards.getPubId().getId());
-//		rc.setPubId(publisher);
-		rateCardsRepo.saveAndFlush(rc);
+		ObjectMapper mapper = new ObjectMapper();
+		RateCards newRateCards = mapper.convertValue(rateCards, RateCards.class);
+		if (rateCards.getChildId() == null || rateCards.getChildId().getChildId() == 0) {
+			newRateCards.setChildId(null);
+		}
+		if (rateCards.getSubChildId() == null || rateCards.getSubChildId().getSubChildId() == 0) {
+			newRateCards.setSubChildId(null);
+		}
+		RateCards data=rateCardsRepo.saveAndFlush(newRateCards);
+		rateCards.setRcId(data.getRcId());
 		return rateCards;
 	}
 
 	@Override
 	public RateCardsVO updateRateCards(RateCardsVO rateCards) {
-		RateCards rc = findbyrcId(rateCards.getRcId());
-		rc.setRateCard(rateCards.getRateCard());
-		rc.setDescription(rateCards.getDescription());
-		rc.setOrderClasses(rateCards.getOrderClasses());
-		rc.setRateClassEffectiveSequence(rateCards.getRateClassEffectiveSequence());
-		rc.setRateClassId(rateCards.getRateClassId());
-		rc.setUseForPackage(rateCards.getUseForPackage());
-		rateCards.setRcId(rc.getRcId());
-		ParentClass parentClass=new ParentClass();
-		parentClass.setParentID(rateCards.getParentId().getParentID());
-		rc.setParentId(parentClass);
-//		Publisher publisher=new Publisher();
-//		publisher.setId(rateCards.getPubId().getId());
-//		rc.setPubId(publisher);
-		rateCardsRepo.saveAndFlush(rc);
+		ObjectMapper mapper = new ObjectMapper();
+		RateCards rateCardsToUpdate = mapper.convertValue(rateCards, RateCards.class);
+		if (rateCards.getChildId() == null || rateCards.getChildId().getChildId() == 0) {
+			rateCardsToUpdate.setChildId(null);
+		}
+		if (rateCards.getSubChildId() == null || rateCards.getSubChildId().getSubChildId() == 0) {
+			rateCardsToUpdate.setSubChildId(null);
+		}
+		RateCards data=rateCardsRepo.saveAndFlush(rateCardsToUpdate);
+		rateCards.setRcId(data.getRcId());
 		return rateCards;
 	}
 
@@ -86,6 +79,18 @@ public class RateCardsServiceImpl implements RateCardsService {
 	@Override
 	public List<RateCards> getAllRateCardsByParentID(Integer parentID) throws Exception {
 		return rateCardsRepo.findByParentIdParentID(parentID);
+	}
+
+	@Override
+	public List<RateCards> getAllRateCardsByChildID(Integer childId) throws Exception {
+		// TODO Auto-generated method stub
+		return rateCardsRepo.findByChildIdChildId(childId);
+	}
+
+	@Override
+	public List<RateCards> getAllRateCardsBySubChildId(Integer subChildId) throws Exception {
+		// TODO Auto-generated method stub
+		return rateCardsRepo.findBySubChildIdSubChildId(subChildId);
 	}
 
 }

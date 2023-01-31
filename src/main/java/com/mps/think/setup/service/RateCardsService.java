@@ -18,5 +18,9 @@ public interface RateCardsService {
 	public RateCards deleteByrcId(Integer rcId);
 	
 	public List<RateCards> getAllRateCardsByParentID(Integer parentID) throws Exception;
+	
+	public List<RateCards> getAllRateCardsByChildID(Integer childId) throws Exception;
+	
+	public List<RateCards> getAllRateCardsBySubChildId(Integer subChildId) throws Exception;
 
 }

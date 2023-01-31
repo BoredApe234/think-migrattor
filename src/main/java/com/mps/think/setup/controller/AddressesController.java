@@ -1,5 +1,8 @@
 package com.mps.think.setup.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -14,6 +17,7 @@ import com.mps.think.setup.vo.AddressesVO;
 import com.mps.think.setup.vo.EnumModelVO.AddressCategory;
 import com.mps.think.setup.vo.EnumModelVO.AddressType;
 import com.mps.think.setup.vo.EnumModelVO.Frequency;
+import com.mps.think.setup.vo.EnumModelVO.OrderType;
 
 @RestController
 @CrossOrigin
@@ -54,12 +58,20 @@ public class AddressesController {
 	
 	@GetMapping("/findAllAddressCategory")
 	public ResponseEntity<?> getAllAddressCategory() {
-		return ResponseEntity.ok(AddressCategory.values());
+		List<String> list= new ArrayList<>();
+		for(AddressCategory data:AddressCategory.values()) {
+			list.add(data.getDisplayName());
+		}
+		return ResponseEntity.ok(list);
 	}
 	
 	@GetMapping("/findAllFrequency")
 	public ResponseEntity<?> getAllFrequency() {
-		return ResponseEntity.ok(Frequency.values());
+		List<String> list= new ArrayList<>();
+		for(Frequency data:Frequency.values()) {
+			list.add(data.getDisplayName());
+		}
+		return ResponseEntity.ok(list);
 	}
 	
 	@PostMapping("/updatePrimaryAddressbyCustId")

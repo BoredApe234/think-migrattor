@@ -39,6 +39,16 @@ public class IssueGenerationVo {
 	private String issue_volume;
 	
 	private String dateoftheMonthYear;
+	
+	private Integer seqOfIssue;
+
+	public Integer getSeqOfIssue() {
+		return seqOfIssue;
+	}
+
+	public void setSeqOfIssue(Integer seqOfIssue) {
+		this.seqOfIssue = seqOfIssue;
+	}
 
 	public Integer getId() {
 		return id;
@@ -194,6 +204,8 @@ public class IssueGenerationVo {
 	public void setIssueDate(String issueDate) {
 		this.issueDate = issueDate;
 	}
+	
+	
 
 	@Override
 	public String toString() {
@@ -202,8 +214,9 @@ public class IssueGenerationVo {
 				+ ", IssuesAppearonEvery=" + IssuesAppearonEvery + ", oderCodeVo=" + oderCodeVo + ", orderClassId="
 				+ orderClassId + ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
 				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
-				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issue_volume=" + issue_volume
-				+ ", dateoftheMonthYear=" + dateoftheMonthYear + "]";
+				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issueDate=" + issueDate
+				+ ", issue_volume=" + issue_volume + ", dateoftheMonthYear=" + dateoftheMonthYear + ", seqOfIssue="
+				+ seqOfIssue + "]";
 	}
 
 }

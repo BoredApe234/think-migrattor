@@ -112,7 +112,7 @@ public class EnumModelVO {
 	    @Override public String toString() { return displayName; }
 	}
 	
-//	======================================================================================
+
 	public static enum AddressType {
 		
 		 Business("Business"),Residential("Residential");
@@ -130,7 +130,7 @@ public class EnumModelVO {
 	}
 		public static enum AddressCategory {
 			
-			ShippingAddress("ShippingAddress") ,BillingAddress("BillingAddress"),RenewalAddress("RenewalAddress"),AlternateAddress("AlternateAddress");
+			ShippingAddress("Shipping Address") ,BillingAddress("Billing Address"),RenewalAddress("Renewal Address"),AlternateAddress("Alternate Address");
 
 			    private final String displayAddressCategory;
 
@@ -145,7 +145,7 @@ public class EnumModelVO {
 		}
 		public static enum Frequency {
 			
-			 EveryYear("EveryYear"),None("None");
+			 EveryYear("Every Year"),None("None");
 
 			    private final String displayFrequency;
 
@@ -264,6 +264,20 @@ public class EnumModelVO {
 
 			public String getDisplayName() {
 		        return displayOrderType ;
+		    }
+		}
+	 public static enum ItemType  {
+
+			Issue("Issue"),Day("Day");
+
+		    private final String displayItemType ;
+
+		    ItemType(String displayItemType ) {
+				this.displayItemType  = displayItemType ;
+			}
+
+			public String getDisplayName() {
+		        return displayItemType ;
 		    }
 		}
 

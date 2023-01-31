@@ -19,24 +19,36 @@ public class OrderClassOverviewServiceImpl implements OrderClassOverviewService 
 	private OrderClassOverviewRepo orderClassOverviewRepo;
 	
 	@Override
-	public OrderClassOverviewVO saveOrderClassOverview(OrderClassOverviewVO overview) {
+	public OrderClassOverview saveOrderClassOverview(OrderClassOverviewVO overview) {
 		ObjectMapper mapper = new ObjectMapper();
 		OrderClassOverview newOverview = mapper.convertValue(overview, OrderClassOverview.class);
+		if (overview.getChild() == null || overview.getChild().getChildId() == 0) {
+			newOverview.setChild(null);
+		}
+		if (overview.getSubChild() == null || overview.getSubChild().getSubChildId() == 0) {
+			newOverview.setSubChild(null);
+		}
 		orderClassOverviewRepo.saveAndFlush(newOverview);
-		return overview;
+		return newOverview;
 	}
 
 	@Override
-	public OrderClassOverviewVO updateOrderClassOverview(OrderClassOverviewVO overview) {
+	public OrderClassOverview updateOrderClassOverview(OrderClassOverviewVO overview) {
 		ObjectMapper mapper = new ObjectMapper();
-		OrderClassOverview updatedOverview = mapper.convertValue(overview, OrderClassOverview.class);
-		orderClassOverviewRepo.saveAndFlush(updatedOverview);
-		return overview;
+		OrderClassOverview newOverview = mapper.convertValue(overview, OrderClassOverview.class);
+		if (overview.getChild() == null || overview.getChild().getChildId() == 0) {
+			newOverview.setChild(null);
+		}
+		if (overview.getSubChild() == null || overview.getSubChild().getSubChildId() == 0) {
+			newOverview.setSubChild(null);
+		}
+		orderClassOverviewRepo.saveAndFlush(newOverview);
+		return newOverview;
 	}
 
 	@Override
 	public List<OrderClassOverview> getAllOrderClassOverviewByParentId(Integer parentId) {
-		return orderClassOverviewRepo.findByParentId(parentId);
+		return orderClassOverviewRepo.findByParentParentID(parentId);
 	}
 
 	@Override
@@ -61,6 +73,26 @@ public class OrderClassOverviewServiceImpl implements OrderClassOverviewService 
 	@Override
 	public List<OrderClassOverview> getAllOrderClassOverviewByPubId(Integer pubId) {
 		return orderClassOverviewRepo.findByPublisherId(pubId);
+	}
+
+	@Override
+	public List<OrderClassOverview> getAllOrderClassOverviewByChildId(Integer childId) {
+		return orderClassOverviewRepo.findByChildChildId(childId);
+	}
+
+	@Override
+	public List<OrderClassOverview> getAllOrderClassOverviewBySubChildId(Integer subChildId) {
+		return orderClassOverviewRepo.findBySubChildSubChildId(subChildId);
+	}
+
+	@Override
+	public List<OrderClassOverview> getAllOrderClassOverview() {
+		return orderClassOverviewRepo.findAll();
+	}
+
+	@Override
+	public List<OrderClassOverview> getAllOrderClassOverviewByOrderClassId(Integer ocId) {
+		return orderClassOverviewRepo.findByOrderClassOcId(ocId);
 	}
 
 }

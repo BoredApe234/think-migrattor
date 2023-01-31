@@ -95,6 +95,11 @@ public class OrderCodesServiceImpl implements OrderCodesService {
 		return orderCodesSuperRepo.findByParentParentID(parentId);
 	}
 
+	@Override
+	public List<OrderCodesSuper> getAllCompleteOrderCodes() {
+		return orderCodesSuperRepo.findAll();
+	}
+
 //	@Override
 //	public List<OrderCodesSuper> getOrderCodesByOrderClassId(Integer orderClassId) {
 //		return orderCodesSuperRepo.findByOrderClassId(orderClassId);

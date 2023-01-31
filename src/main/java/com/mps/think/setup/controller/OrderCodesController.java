@@ -80,5 +80,10 @@ public class OrderCodesController {
 	public ResponseEntity<?> deleteOrderCode(@RequestBody Integer id) {
 		return ResponseEntity.ok(orderCodesService.deleteOrderCode(id));
 	}
+	
+	@GetMapping("/getAllCompleteOrderCodes")
+	public ResponseEntity<?> getAllCompleteOrderCodes() {
+		return ResponseEntity.ok(orderCodesService.getAllCompleteOrderCodes());
+	}
 
 }

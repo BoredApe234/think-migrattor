@@ -1,8 +1,6 @@
 package com.mps.think.setup.model;
-// source code
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,16 +24,20 @@ public class SourceCode extends BaseEntity {
 	private Integer sourceCodeId;
 	
 	@ManyToOne
-	@JoinColumn(name = "pub_id", referencedColumnName = "id")
-	private Publisher pubId;
+	@JoinColumn(name = "oc_id", referencedColumnName = "oc_id")
+	private OrderClass ocId;
 	
 	@ManyToOne
 	@JoinColumn(name = "parent_id", referencedColumnName = "parent_id")
 	private ParentClass parentID;
 	
-//	@ManyToOne
-//	@JoinColumn(name = "child_id", referencedColumnName = "child_id")
-//	private ChildClass childID;
+	@ManyToOne
+	@JoinColumn(name = "child_id", referencedColumnName = "child_id")
+	private ChildClass childID;
+	
+	@ManyToOne
+	@JoinColumn(name = "sub_child_id", referencedColumnName = "subchild_id")
+	private SubChildClass subChildID;
 	
 	@Column(name = "description")
 	private String description;
@@ -48,11 +50,6 @@ public class SourceCode extends BaseEntity {
 	
 	@Column(name = "quantity")
 	private Integer quantity;
-	
-//	=====================================================================================================	
-//	need to change integer to order class name and join column with order class id
-	@Column(name="oc_id")
-	private Integer ocId;
 	
 	@Column(name = "is_active")
 	private Boolean isActive;
@@ -100,6 +97,14 @@ public class SourceCode extends BaseEntity {
 		this.sourceCodeId = sourceCodeId;
 	}
 
+	public OrderClass getOcId() {
+		return ocId;
+	}
+
+	public void setOcId(OrderClass ocId) {
+		this.ocId = ocId;
+	}
+
 	public ParentClass getParentID() {
 		return parentID;
 	}
@@ -108,13 +113,21 @@ public class SourceCode extends BaseEntity {
 		this.parentID = parentID;
 	}
 
-//	public ChildClass getChildID() {
-//		return childID;
-//	}
-//
-//	public void setChildID(ChildClass childID) {
-//		this.childID = childID;
-//	}
+	public ChildClass getChildID() {
+		return childID;
+	}
+
+	public void setChildID(ChildClass childID) {
+		this.childID = childID;
+	}
+
+	public SubChildClass getSubChildID() {
+		return subChildID;
+	}
+
+	public void setSubChildID(SubChildClass subChildID) {
+		this.subChildID = subChildID;
+	}
 
 	public String getDescription() {
 		return description;
@@ -132,20 +145,20 @@ public class SourceCode extends BaseEntity {
 		this.orderCode = orderCode;
 	}
 
+	public String getOrder_code_type() {
+		return order_code_type;
+	}
+
+	public void setOrder_code_type(String order_code_type) {
+		this.order_code_type = order_code_type;
+	}
+
 	public Integer getQuantity() {
 		return quantity;
 	}
 
 	public void setQuantity(Integer quantity) {
 		this.quantity = quantity;
-	}
-
-	public Integer getOcId() {
-		return ocId;
-	}
-
-	public void setOcId(Integer ocId) {
-		this.ocId = ocId;
 	}
 
 	public Boolean getIsActive() {
@@ -244,35 +257,14 @@ public class SourceCode extends BaseEntity {
 		this.shippingPriceList = shippingPriceList;
 	}
 
-	public String getOrder_code_type() {
-		return order_code_type;
-	}
-
-	public void setOrder_code_type(String order_code_type) {
-		this.order_code_type = order_code_type;
-	}
-
-	public Publisher getPubId() {
-		return pubId;
-	}
-
-	public void setPubId(Publisher pubId) {
-		this.pubId = pubId;
-	}
-
 	@Override
 	public String toString() {
-		return "SourceCode [sourceCodeId=" + sourceCodeId + ", pubId=" + pubId + ", parentID=" + parentID
-				+ ", description=" + description + ", orderCode=" + orderCode + ", order_code_type=" + order_code_type
-				+ ", quantity=" + quantity + ", ocId=" + ocId + ", isActive=" + isActive + ", state_Break="
-				+ state_Break + ", cost=" + cost + ", isGenerated=" + isGenerated + ", generic_agency=" + generic_agency
-				+ ", is_ddp=" + is_ddp + ", sourceCode=" + sourceCode + ", sourceCodeType=" + sourceCodeType
-				+ ", sourceCodeFormat=" + sourceCodeFormat + ", rateCard=" + rateCard + ", discount=" + discount
-				+ ", shippingPriceList=" + shippingPriceList + "]";
+		return "SourceCode [sourceCodeId=" + sourceCodeId + ", ocId=" + ocId + ", parentID=" + parentID + ", childID="
+				+ childID + ", subChildID=" + subChildID + ", description=" + description + ", orderCode=" + orderCode
+				+ ", order_code_type=" + order_code_type + ", quantity=" + quantity + ", isActive=" + isActive
+				+ ", state_Break=" + state_Break + ", cost=" + cost + ", isGenerated=" + isGenerated
+				+ ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCode=" + sourceCode
+				+ ", sourceCodeType=" + sourceCodeType + ", sourceCodeFormat=" + sourceCodeFormat + ", rateCard="
+				+ rateCard + ", discount=" + discount + ", shippingPriceList=" + shippingPriceList + "]";
 	}
-
-	
-
-	
-	
 }
