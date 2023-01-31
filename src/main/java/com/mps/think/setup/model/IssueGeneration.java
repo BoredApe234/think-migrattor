@@ -82,6 +82,17 @@ public class IssueGeneration extends BaseEntity {
 	@Column(name = "date_ofthe_month_year")
 	private String dateoftheMonthYear;
 	
+	@Column(name="seq_of_issue")
+	private Integer seqOfIssue;
+	
+	public Integer getSeqOfIssue() {
+		return seqOfIssue;
+	}
+
+	public void setSeqOfIssue(Integer seqOfIssue) {
+		this.seqOfIssue = seqOfIssue;
+	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -249,7 +260,8 @@ public class IssueGeneration extends BaseEntity {
 				+ orderClassId + ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
 				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
 				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issue_volume=" + issue_volume
-				+ ", issueDate=" + issueDate + ", dateoftheMonthYear=" + dateoftheMonthYear + "]";
+				+ ", issueDate=" + issueDate + ", dateoftheMonthYear=" + dateoftheMonthYear + ", seqOfIssue="
+				+ seqOfIssue + "]";
 	}
 
 }
