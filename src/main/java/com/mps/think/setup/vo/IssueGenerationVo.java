@@ -204,6 +204,8 @@ public class IssueGenerationVo {
 	public void setIssueDate(String issueDate) {
 		this.issueDate = issueDate;
 	}
+	
+	
 
 	@Override
 	public String toString() {
