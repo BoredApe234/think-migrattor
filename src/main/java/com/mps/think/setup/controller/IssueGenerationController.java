@@ -27,6 +27,10 @@ public class IssueGenerationController {
 	public ResponseEntity<?> saveIssueGenerationVo(@RequestBody IssueGenerationVo issueGenerationVo) {
 		return ResponseEntity.ok(issueGenerationServiceImpl.saveIssueGenerationVo(issueGenerationVo));
 	}
+	@PostMapping("/generateIssue")
+	public ResponseEntity<?> generateIssueGenerationVo(@RequestBody IssueGenerationVo issueGenerationVo) {
+		return ResponseEntity.ok(issueGenerationServiceImpl.generateIssueGenerationVo(issueGenerationVo));
+	}
 
 	@PostMapping("/updateIssueGeneration")
 	public ResponseEntity<?> updateIssueGeneration(@RequestBody IssueGenerationVo issueGenerationVo) {

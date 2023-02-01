@@ -91,7 +91,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 			issue.setVolumeCaption(issueGeneration.getVolumeCaption());
 			issue.setVolumeFormat(issueGeneration.getVolumeFormat());
 			issue = issueGenerationRepo.save(issue);
-			issueGeneration.setId(issue.getId());
+//			issueGeneration.setId(issue.getId());
 
 		}
 		return issueGeneration;
@@ -99,6 +99,39 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 
 	@Override
 	public IssueGenerationVo updateIssueGenerationVo(IssueGenerationVo issueGeneration) {
+		IssueGeneration issue = new IssueGeneration();
+		issue.setId(issueGeneration.getId());
+		issue.setActive(issueGeneration.getActive());
+		issue.setDiscountCard(issueGeneration.getDiscountCard());
+		issue.setFrequencyOfGeneration(issueGeneration.getFrequencyOfGeneration());
+		issue.setIssue_volume(issueGeneration.getIssue_volume());
+		issue.setIssueCaption(issueGeneration.getIssueCaption());
+		issue.setIssueFormat(issueGeneration.getIssueFormat());
+		issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery());
+		issue.setNumberOfIssue(issueGeneration.getNumberOfIssue());
+		issue.setIssueDate(issueGeneration.getIssueDate());
+		issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
+		issue.setChangeDate(issueGeneration.getChangeDate());
+		issue.setSeqOfIssue(issueGeneration.getSeqOfIssue());
+		// OrderCodes id added
+		OrderCodes ocode = new OrderCodes();
+		ocode.setId(issueGeneration.getOderCodeVo().getId());
+		issue.setOderCode(ocode);
+		/// oderclass id
+		OrderClass oc = new OrderClass();
+		oc.setOcId(issueGeneration.getOrderClassId().getOcId());
+		issue.setOrderClassId(oc);
+		issue.setOrderType(issueGeneration.getOrderType());
+		issue.setPeriodicity(issueGeneration.getPeriodicity());
+		issue.setRateCard(issueGeneration.getRateCard());
+		issue.setVolumeCaption(issueGeneration.getVolumeCaption());
+		issue.setVolumeFormat(issueGeneration.getVolumeFormat());
+		issue = issueGenerationRepo.save(issue);
+		return issueGeneration;
+	}
+	
+	@Override
+	public IssueGenerationVo generateIssueGenerationVo(IssueGenerationVo issueGeneration) {
 		IssueGeneration issue = new IssueGeneration();
 		issue.setId(issueGeneration.getId());
 		issue.setActive(issueGeneration.getActive());
