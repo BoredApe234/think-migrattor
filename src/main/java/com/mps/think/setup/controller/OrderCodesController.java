@@ -85,5 +85,15 @@ public class OrderCodesController {
 	public ResponseEntity<?> getAllCompleteOrderCodes() {
 		return ResponseEntity.ok(orderCodesService.getAllCompleteOrderCodes());
 	}
+	
+	@GetMapping("/getAllOrderCodesByChildId/{childId}")
+	public ResponseEntity<?> getAllOrderCodesByChildId(@PathVariable("childId") Integer childId) {
+		return ResponseEntity.ok(orderCodesService.getAllOrderCodesByChildClassId(childId));
+	}
+	
+	@GetMapping("/getAllOrderCodesByOrderClassId/{ocId}")
+	public ResponseEntity<?> getAllOrderCodesByOrderClassId(@PathVariable("ocId") Integer ocId) {
+		return ResponseEntity.ok(orderCodesService.getAllOrderCodesByOrderClassId(ocId));
+	}
 
 }

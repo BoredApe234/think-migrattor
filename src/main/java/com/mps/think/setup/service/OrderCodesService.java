@@ -37,4 +37,8 @@ public interface OrderCodesService {
 	
 	public List<OrderCodesSuper> getAllCompleteOrderCodes();
 	
+	public List<OrderCodesSuper> getAllOrderCodesByOrderClassId(Integer ocId);
+	
+	public List<OrderCodesSuper> getAllOrderCodesByChildClassId(Integer childId);
+	
 }

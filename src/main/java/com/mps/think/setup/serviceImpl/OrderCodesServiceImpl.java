@@ -100,6 +100,16 @@ public class OrderCodesServiceImpl implements OrderCodesService {
 		return orderCodesSuperRepo.findAll();
 	}
 
+	@Override
+	public List<OrderCodesSuper> getAllOrderCodesByOrderClassId(Integer ocId) {
+		return orderCodesSuperRepo.findByOrderClassOcId(ocId);
+	}
+
+	@Override
+	public List<OrderCodesSuper> getAllOrderCodesByChildClassId(Integer childId) {
+		return orderCodesSuperRepo.findByChildChildId(childId);
+	}
+
 //	@Override
 //	public List<OrderCodesSuper> getOrderCodesByOrderClassId(Integer orderClassId) {
 //		return orderCodesSuperRepo.findByOrderClassId(orderClassId);

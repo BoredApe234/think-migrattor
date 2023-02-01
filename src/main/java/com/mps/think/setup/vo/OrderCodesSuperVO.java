@@ -1,5 +1,10 @@
 package com.mps.think.setup.vo;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.mps.think.setup.model.ChildClass;
+import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.ParentClass;
 import com.mps.think.setup.model.Publisher;
 
@@ -12,6 +17,10 @@ public class OrderCodesSuperVO {
 //	private Integer orderClassId;
 	
 	private ParentClass parent;
+
+	private ChildClass child;
+
+	private OrderClass orderClass;
 
 	private OrderCodesVO orderCodes;
 
@@ -93,6 +102,22 @@ public class OrderCodesSuperVO {
 
 	public void setParent(ParentClass parent) {
 		this.parent = parent;
+	}
+
+	public ChildClass getChild() {
+		return child;
+	}
+
+	public void setChild(ChildClass child) {
+		this.child = child;
+	}
+
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
 	}
 	
 }
