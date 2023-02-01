@@ -15,4 +15,6 @@ public interface IssueGenerationService {
 
 	public IssueGeneration findbyIssueId(Integer issueId);
 
+	IssueGenerationVo generateIssueGenerationVo(IssueGenerationVo issueGeneration);
+
 }
