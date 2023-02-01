@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,13 +30,13 @@ public class CustomerDetailsController {
 		return ResponseEntity.ok(customerDetailsService.getAllCustomerDetails());
 	}
 
-	@GetMapping("/getAllCustomersForSearch")
-	public ResponseEntity<?> getAllCustomerDetailsForSearch(@RequestParam(required = false) String firstName,
-			@RequestParam(required = false) String lastName, @RequestParam(defaultValue = "0") Integer page,
-			@RequestParam(defaultValue = "5") Integer size) {
-		return ResponseEntity.ok(
-				customerDetailsService.getAllCustomerDetailsForSearch(firstName, lastName, PageRequest.of(page, size)));
-	}
+//	@GetMapping("/getAllCustomersForSearch")
+//	public ResponseEntity<?> getAllCustomerDetailsForSearch(@RequestParam(required = false) String firstName,
+//			@RequestParam(required = false) String lastName, @RequestParam(defaultValue = "0") Integer page,
+//			@RequestParam(defaultValue = "5") Integer size) {
+//		return ResponseEntity.ok(
+//				customerDetailsService.getAllCustomerDetailsForSearch(firstName, lastName, PageRequest.of(page, size)));
+//	}
 
 	@PostMapping("/saveCustomer")
 	public ResponseEntity<?> savecustomerDetails(@RequestBody CustomerDetailsVO customerId) {
@@ -71,10 +72,17 @@ public class CustomerDetailsController {
 	public ResponseEntity<?> getAllChargeTaxOn() {
 		return ResponseEntity.ok(ChargeTaxOn.values());
 	}
-
-	@GetMapping("/getAllCustomerWithAddresses")
-	public ResponseEntity<?> getAllCustomerDetailsWithAddresses() {
-		return ResponseEntity.ok(customerDetailsService.findAllCustomersWithAddresses());
+	
+	@DeleteMapping("/deleteCustomerById")
+	public ResponseEntity<?> deleteCustomerById(@RequestBody Integer customerId) {
+		return ResponseEntity.ok(customerDetailsService.deleteCustomer(customerId));
 	}
 
+	@GetMapping("/getAllCustomerDetailsForSearch")
+	public ResponseEntity<?> getAllCustomerDetailsForSearch(@RequestParam(required = false) String search, @RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) {
+		return ResponseEntity.ok(
+				customerDetailsService.getAllCustomerDetailsForSearch(search, PageRequest.of(page, size)));
+	}
 }
+

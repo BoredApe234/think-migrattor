@@ -74,10 +74,10 @@ public class AddressesController {
 		return ResponseEntity.ok(list);
 	}
 	
-	@PostMapping("/updatePrimaryAddressbyCustId")
-	public ResponseEntity<?> updatePrimaryAddressbyCustId(Integer customerId, Integer addressId) {
-		return ResponseEntity.ok(addressService.updatePrimaryAddressbyCustId(customerId, addressId));
-	}
+//	@PostMapping("/updatePrimaryAddressbyCustId")
+//	public ResponseEntity<?> updatePrimaryAddressbyCustId(Integer customerId, Integer addressId) {
+//		return ResponseEntity.ok(addressService.updatePrimaryAddressbyCustId(customerId, addressId));
+//	}
 //	=============================================================================
 	
 //	@PostMapping("/findAllAddressesByCustomerId")

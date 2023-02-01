@@ -1,15 +1,19 @@
 package com.mps.think.setup.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-@Table(name = "customer_addresses")
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
+
+@Table(name = "customer_addresses_mapping")
 @Entity
 public class CustomerAddresses extends BaseEntity {
 	/**
@@ -21,15 +25,15 @@ public class CustomerAddresses extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	
-	@Column(name = "customer_id")
-	private Integer customerId;
-	
-	@Column(name = "addresses_id")
-	private Integer addressesId;
 
-	@Transient
-	private List<Addresses> addressess;
+	@OneToOne
+	@JoinColumn(name = "address_id")
+	private Addresses address;
+	
+	@ManyToOne
+    @JoinColumn(name = "customer_id")
+	@JsonBackReference
+	private CustomerDetails customer;
 
 	public Integer getId() {
 		return id;
@@ -39,34 +43,21 @@ public class CustomerAddresses extends BaseEntity {
 		this.id = id;
 	}
 
-	public Integer getCustomerId() {
-		return customerId;
+	public Addresses getAddress() {
+		return address;
 	}
 
-	public void setCustomerId(Integer customerId) {
-		this.customerId = customerId;
+	public void setAddress(Addresses address) {
+		this.address = address;
 	}
 
-	public Integer getAddressesId() {
-		return addressesId;
+	public CustomerDetails getCustomer() {
+		return customer;
 	}
 
-	public void setAddressesId(Integer addressesId) {
-		this.addressesId = addressesId;
+	public void setCustomer(CustomerDetails customer) {
+		this.customer = customer;
 	}
 
-	public List<Addresses> getAddressess() {
-		return addressess;
-	}
-
-	public void setAddressess(List<Addresses> addressess) {
-		this.addressess = addressess;
-	}
-
-	@Override
-	public String toString() {
-		return "CustomerAddresses [id=" + id + ", customerId=" + customerId + ", addressesId=" + addressesId
-				+ ", addressess=" + addressess + "]";
-	}
 
 }

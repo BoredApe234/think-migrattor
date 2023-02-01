@@ -14,10 +14,22 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 
 	public CustomerDetails findBycustomerId(Integer customerId);
 
-	@Query("SELECT c From CustomerDetails c WHERE " 
-			+ "(c.fname LIKE '%'||:firstName||'%' OR :firstName IS NULL)"
-			+ "AND (c.lname LIKE '%'||:lastName||'%' OR :lastName IS NULL)")
-	public Page<CustomerDetails> getAllCustomerDetailsForSearch(@Param("firstName") String firstName,
-			@Param("lastName") String lastName, Pageable page);
+//	@Query("SELECT c From CustomerDetails c WHERE " 
+//			+ "(c.fname LIKE '%'||:firstName||'%' OR :firstName IS NULL)"
+//			+ "AND (c.lname LIKE '%'||:lastName||'%' OR :lastName IS NULL)")
+//	public Page<CustomerDetails> getAllCustomerDetailsForSearch(@Param("firstName") String firstName,
+//			@Param("lastName") String lastName, Pageable page);
+	
+	@Query("SELECT cd FROM CustomerDetails cd JOIN cd.customerAddresses cda JOIN cda.address cadd WHERE "
+			+ "CONCAT(cadd.addressName, ' ', cadd.addressId, ' ', cadd.name, ' ', cadd.city, ' ', cadd.countryCode, ' ' ,cadd.addressType, ' ' ,cadd.addressLine1,' ', cadd.addressLine2, ' '"
+			+ ",cadd.state,' ',cadd.addressCategory, ' ',cadd.country, ' ', cadd.frequency, ' ', cadd.phone, ' '"
+			+ ", cadd.addressAuxJSON) LIKE '%'||:search||'%' OR "
+			+ "cadd.zipCode LIKE '%'||:search||'%' OR "
+			+ "cd.customerId LIKE '%'||:search||'%' OR "
+			+ "cd.fax LIKE '%'||:search||'%' OR "
+			+ "cd.institutionalId LIKE '%'||:search||'%' OR "
+			+ "cd.parentInstitutionalId LIKE '%'||:search||'%' OR "
+			+ "CONCAT(cd.fname, ' ', cd.lname, ' ', cd.company, ' ', cd.department, ' ', cd.email, ' ' ,cd.initialName, ' ',cd.suffix, ' ', cd.countryCode, ' ', cd.primaryPhone, ' ', cd.mobileNumber, ' ', cd.taxId, ' ', cd.secondaryEmail, ' ',cd.secondaryPhone, ' ',cd. listRental, ' ', cd.salesRepresentative, ' ', cd.creditStatus, ' ', cd.fax, ' ',cd.newOrderCommission, ' ', cd.renewalCommission, ' ',cd.paymentThreshold, ' ',cd.custAuxFieldJSON) LIKE '%'||:search||'%'")
+	public Page<CustomerDetails> getAllCustomerDetailsForSearchSingle(@Param("search") String search, Pageable page);
 
 }

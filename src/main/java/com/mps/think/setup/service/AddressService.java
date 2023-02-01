@@ -20,7 +20,7 @@ public interface AddressService {
 	
 	public Addresses deleteByAddressesId(Integer addressesId);
 
-	Addresses updatePrimaryAddressbyCustId(Integer customerId, Integer addressId);
+//	Addresses updatePrimaryAddressbyCustId(Integer customerId, Integer addressId);
 	
 //	public List<Addresses> getAllAddressesByCustomerId(Integer cusId);
 

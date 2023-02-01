@@ -12,7 +12,8 @@ public interface CustomerDetailsService {
 	
 	public List<CustomerDetails> getAllCustomerDetails();
 	
-	public Page<CustomerDetails> getAllCustomerDetailsForSearch(String firstName, String lastName, Pageable page);
+//	public Page<CustomerDetails> getAllCustomerDetailsForSearch(String firstName, String lastName, Pageable page);
+	public Page<CustomerDetails> getAllCustomerDetailsForSearch(String search, Pageable page);
 
 	public CustomerDetailsVO saveCustomerDetails(CustomerDetailsVO customerDetails);
 
@@ -20,6 +21,6 @@ public interface CustomerDetailsService {
 
 	public CustomerDetails findbyCustomerDetailsId(Integer customerId);
 	
-	public List<CustomerDetails> findAllCustomersWithAddresses();
+	public CustomerDetails deleteCustomer(Integer customerId);
 
 }
