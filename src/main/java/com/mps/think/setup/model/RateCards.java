@@ -35,6 +35,10 @@ public class RateCards extends BaseEntity {
 	@JoinColumn(name = "subchild_id", referencedColumnName = "subchild_id")
 	private SubChildClass subChildId;
 	
+	@ManyToOne
+	@JoinColumn(name = "oc_id", referencedColumnName = "oc_id")
+	private OrderClass ocId;
+	
 	@Column(name = "rateClassEffectiveSequence")
 	private Integer rateClassEffectiveSequence;
 	
@@ -86,6 +90,14 @@ public class RateCards extends BaseEntity {
 
 	public void setSubChildId(SubChildClass subChildId) {
 		this.subChildId = subChildId;
+	}
+
+	public OrderClass getOcId() {
+		return ocId;
+	}
+
+	public void setOcId(OrderClass ocId) {
+		this.ocId = ocId;
 	}
 
 	public Integer getRateClassEffectiveSequence() {
@@ -143,12 +155,8 @@ public class RateCards extends BaseEntity {
 	public void setDefaultPricePerItem(Float defaultPricePerItem) {
 		this.defaultPricePerItem = defaultPricePerItem;
 	}
-	
-	
 
 	
-	
-
 	
 	
 }
