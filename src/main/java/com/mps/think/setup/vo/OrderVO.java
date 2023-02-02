@@ -3,6 +3,7 @@ package com.mps.think.setup.vo;
 import java.util.List;
 
 import com.mps.think.setup.model.CustomerDetails;
+import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
 
 public class OrderVO {
@@ -10,6 +11,8 @@ public class OrderVO {
 	private Integer orderId;
 	
 	private CustomerDetails customerId;
+	
+	private OrderClass orderClass;
 	
 	private String orderType;
 	
@@ -105,6 +108,14 @@ public class OrderVO {
 
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
+	}
+
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
 	}
 
 
