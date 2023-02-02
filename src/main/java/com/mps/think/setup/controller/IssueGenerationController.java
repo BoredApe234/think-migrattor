@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mps.think.setup.serviceImpl.IssueGenerationServiceImpl;
@@ -23,13 +24,20 @@ public class IssueGenerationController {
 		return ResponseEntity.ok(issueGenerationServiceImpl.findAllIssueGenerationVo());
 	}
 
-	@PostMapping("/saveIssueGeneration")
-	public ResponseEntity<?> saveIssueGenerationVo(@RequestBody IssueGenerationVo issueGenerationVo) {
-		return ResponseEntity.ok(issueGenerationServiceImpl.saveIssueGenerationVo(issueGenerationVo));
+//	@PostMapping("/saveIssueGeneration")
+//	public ResponseEntity<?> saveIssueGenerationVo(@RequestBody IssueGenerationVo issueGenerationVo) {
+//		return ResponseEntity.ok(issueGenerationServiceImpl.saveIssueGenerationVo(issueGenerationVo));
+//	}
+	
+	//Supplementary issue
+	@PostMapping("/insertIssueGeneration")
+	public ResponseEntity<?> insertIssueGenerationVo(@RequestBody IssueGenerationVo issueGenerationVo) {
+		return ResponseEntity.ok(issueGenerationServiceImpl.insertIssueGenerationVo(issueGenerationVo));
 	}
+	
 	@PostMapping("/generateIssue")
-	public ResponseEntity<?> generateIssueGenerationVo(@RequestBody IssueGenerationVo issueGenerationVo) {
-		return ResponseEntity.ok(issueGenerationServiceImpl.generateIssueGenerationVo(issueGenerationVo));
+	public ResponseEntity<?> generateIssueGenerationVo(@RequestBody IssueGenerationVo issueGenerationVo, int ocId) {
+		return ResponseEntity.ok(issueGenerationServiceImpl.generateIssueGenerationVo(issueGenerationVo,ocId));
 	}
 
 	@PostMapping("/updateIssueGeneration")
@@ -40,6 +48,11 @@ public class IssueGenerationController {
 	@PostMapping("/findbyIssueId")
 	public ResponseEntity<?> findbyIssueId(@RequestBody Integer issueId) {
 		return ResponseEntity.ok(issueGenerationServiceImpl.findbyIssueId(issueId));
+	}
+	
+	@GetMapping("/findMaxSeqIssue")
+	public ResponseEntity<?> findMaxSeqIssue() {
+		return ResponseEntity.ok(issueGenerationServiceImpl.findMaxSeqIssue());
 	}
 
 }
