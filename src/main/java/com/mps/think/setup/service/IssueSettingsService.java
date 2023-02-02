@@ -10,8 +10,8 @@ public interface IssueSettingsService {
 
 	public IssueSettingsVO saveIssueSetting(IssueSettingsVO issueSettingsVO);
 
-	public IssueSettingsVO updateIssueSetting(IssueSettingsVO IssueSettingsVO);
+	public IssueSettingsVO updateIssueSetting(IssueSettingsVO issueSettingsVO);
 
-	public IssueSettings findbyIssueSettingId(Integer IssueSettingId);
+	public IssueSettings findbyIssueSettingId(Integer issueSettingId);
 
 }

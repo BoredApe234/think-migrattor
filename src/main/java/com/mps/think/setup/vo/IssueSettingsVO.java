@@ -1,4 +1,6 @@
 package com.mps.think.setup.vo;
+import javax.persistence.Column;
+
 import com.mps.think.setup.model.ChildClass;
 import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.ParentClass;
@@ -18,6 +20,10 @@ public class IssueSettingsVO {
 	private String issuesAppearonEvery;
 	
 	private String dwmOfThewmy;
+	
+	private String nthDay;
+	
+	private String dayOfTheMonth;
 	
 //	Enumeration Generation
 	
@@ -88,6 +94,22 @@ public class IssueSettingsVO {
 
 	public void setDwmOfThewmy(String dwmOfThewmy) {
 		this.dwmOfThewmy = dwmOfThewmy;
+	}
+
+	public String getNthDay() {
+		return nthDay;
+	}
+
+	public void setNthDay(String nthDay) {
+		this.nthDay = nthDay;
+	}
+
+	public String getDayOfTheMonth() {
+		return dayOfTheMonth;
+	}
+
+	public void setDayOfTheMonth(String dayOfTheMonth) {
+		this.dayOfTheMonth = dayOfTheMonth;
 	}
 
 	public String getVolumeCaption() {
@@ -174,12 +196,11 @@ public class IssueSettingsVO {
 	public String toString() {
 		return "IssueSettingsVO [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
 				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", issuesAppearonEvery="
-				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", volumeCaption=" + volumeCaption
-				+ ", volumeFormat=" + volumeFormat + ", changDate=" + changDate + ", issueCaption=" + issueCaption
-				+ ", issueFormat=" + issueFormat + ", issuesOrVolume=" + issuesOrVolume + ", orderClassId="
-				+ orderClassId + ", parentClassId=" + parentClassId + ", childClassId=" + childClassId
-				+ ", subChildClassId=" + subChildClassId + "]";
+				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", nthDay=" + nthDay + ", dayOfTheMonth="
+				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changDate="
+				+ changDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issuesOrVolume="
+				+ issuesOrVolume + ", orderClassId=" + orderClassId + ", parentClassId=" + parentClassId
+				+ ", childClassId=" + childClassId + ", subChildClassId=" + subChildClassId + "]";
 	}
 
-	
 }
