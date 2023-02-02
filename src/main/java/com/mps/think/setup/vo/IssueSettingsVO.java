@@ -1,5 +1,4 @@
 package com.mps.think.setup.vo;
-import javax.persistence.Column;
 
 import com.mps.think.setup.model.ChildClass;
 import com.mps.think.setup.model.OrderClass;
@@ -31,7 +30,7 @@ public class IssueSettingsVO {
 	
 	private String volumeFormat;
 	
-	private String changDate;
+	private String changeDate;
 	
 	private String issueCaption;
 	
@@ -128,12 +127,12 @@ public class IssueSettingsVO {
 		this.volumeFormat = volumeFormat;
 	}
 
-	public String getChangDate() {
-		return changDate;
+	public String getChangeDate() {
+		return changeDate;
 	}
 
-	public void setChangDate(String changDate) {
-		this.changDate = changDate;
+	public void setChangeDate(String changeDate) {
+		this.changeDate = changeDate;
 	}
 
 	public String getIssueCaption() {
@@ -197,10 +196,11 @@ public class IssueSettingsVO {
 		return "IssueSettingsVO [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
 				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", issuesAppearonEvery="
 				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", nthDay=" + nthDay + ", dayOfTheMonth="
-				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changDate="
-				+ changDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issuesOrVolume="
-				+ issuesOrVolume + ", orderClassId=" + orderClassId + ", parentClassId=" + parentClassId
-				+ ", childClassId=" + childClassId + ", subChildClassId=" + subChildClassId + "]";
+				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat
+				+ ", changeDate=" + changeDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat
+				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + ", parentClassId="
+				+ parentClassId + ", childClassId=" + childClassId + ", subChildClassId=" + subChildClassId + "]";
 	}
+
 
 }
