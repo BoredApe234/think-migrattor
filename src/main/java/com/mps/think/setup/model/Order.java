@@ -38,6 +38,10 @@ public class Order extends BaseEntity {
 	@JoinColumn(name = "customer_id", referencedColumnName = "id")
 	private CustomerDetails customerId;
 	
+	@ManyToOne
+	@JoinColumn(name = "order_class_id", referencedColumnName = "oc_id")
+	private OrderClass orderClass;
+	
 	@Column(name = "order_type")
 	private String orderType;
 	
@@ -155,6 +159,14 @@ public class Order extends BaseEntity {
 
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
+	}
+
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
 	}
 
 }

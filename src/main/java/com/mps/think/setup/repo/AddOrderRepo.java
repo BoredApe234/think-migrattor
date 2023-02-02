@@ -18,6 +18,8 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 //	public List<Order> findAllByCustomerId(Integer customerId) throws Exception;
 	
 	public List<Order> findByCustomerIdCustomerId(Integer customerId) throws Exception;
+	
+	public List<Order> findByOrderClassOcId(Integer ocId) throws Exception;
 
 	@Query("SELECT o FROM Order o JOIN o.customerId cus JOIN o.keyOrderInformation keyInfo WHERE "
 			+ "(o.orderStatus LIKE '%'||:orderStatus||'%' OR :orderStatus IS NULL) "
