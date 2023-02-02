@@ -42,6 +42,10 @@ public class OrderCodesSuper extends BaseEntity {
 	private ChildClass child;
 	
 	@ManyToOne
+	@JoinColumn(name = "sub_child_id", referencedColumnName = "subchild_id")
+	private SubChildClass subChild;
+	
+	@ManyToOne
 	@JoinColumn(name = "order_class_id", referencedColumnName = "oc_id")
 	private OrderClass orderClass;
 	
@@ -151,6 +155,14 @@ public class OrderCodesSuper extends BaseEntity {
 
 	public void setOrderClass(OrderClass orderClass) {
 		this.orderClass = orderClass;
+	}
+
+	public SubChildClass getSubChild() {
+		return subChild;
+	}
+
+	public void setSubChild(SubChildClass subChild) {
+		this.subChild = subChild;
 	}
 
 	
