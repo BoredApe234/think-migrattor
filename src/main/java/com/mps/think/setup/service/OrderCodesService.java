@@ -41,4 +41,6 @@ public interface OrderCodesService {
 	
 	public List<OrderCodesSuper> getAllOrderCodesByChildClassId(Integer childId);
 	
+	public List<OrderCodesSuper> getAllOrderCodesBySubChildId(Integer subChildId);
+	
 }

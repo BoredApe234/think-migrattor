@@ -29,6 +29,12 @@ public class OrderCodesServiceImpl implements OrderCodesService {
 	public OrderCodesSuper saveOrderCodes(OrderCodesSuperVO orderCodes) {
 		ObjectMapper mapper = new ObjectMapper();
 		OrderCodesSuper newOrderCode = mapper.convertValue(orderCodes, OrderCodesSuper.class);
+		if (orderCodes.getChild() != null || orderCodes.getChild().getChildId() == 0) {
+			newOrderCode.setChild(null);
+		}
+		if (orderCodes.getSubChild() != null || orderCodes.getSubChild().getSubChildId() == 0) {
+			newOrderCode.setSubChild(null);
+		}
 		orderCodesSuperRepo.saveAndFlush(newOrderCode);
 		return newOrderCode;
 	}
@@ -37,6 +43,12 @@ public class OrderCodesServiceImpl implements OrderCodesService {
 	public OrderCodesSuper updateOrderCodes(OrderCodesSuperVO orderCodes) {
 		ObjectMapper mapper = new ObjectMapper();
 		OrderCodesSuper orderCodeToUpdate = mapper.convertValue(orderCodes, OrderCodesSuper.class);
+		if (orderCodes.getChild() != null || orderCodes.getChild().getChildId() == 0) {
+			orderCodeToUpdate.setChild(null);
+		}
+		if (orderCodes.getSubChild() != null || orderCodes.getSubChild().getSubChildId() == 0) {
+			orderCodeToUpdate.setSubChild(null);
+		}
 		orderCodesSuperRepo.saveAndFlush(orderCodeToUpdate);
 		return orderCodeToUpdate;
 	}
@@ -110,9 +122,10 @@ public class OrderCodesServiceImpl implements OrderCodesService {
 		return orderCodesSuperRepo.findByChildChildId(childId);
 	}
 
-//	@Override
-//	public List<OrderCodesSuper> getOrderCodesByOrderClassId(Integer orderClassId) {
-//		return orderCodesSuperRepo.findByOrderClassId(orderClassId);
-//	}
+	@Override
+	public List<OrderCodesSuper> getAllOrderCodesBySubChildId(Integer subChildId) {
+		return orderCodesSuperRepo.findBySubChildSubChildId(subChildId);
+	}
+
 
 }
