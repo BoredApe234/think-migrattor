@@ -3,6 +3,7 @@ package com.mps.think.setup.vo;
 
 
 import com.mps.think.setup.model.ChildClass;
+import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.ParentClass;
 import com.mps.think.setup.model.SubChildClass;
 
@@ -13,6 +14,7 @@ public class RateCardsVO {
     private ParentClass parentId;
     private ChildClass childId;
     private SubChildClass subChildId;
+    private OrderClass ocId;
 	private Integer rateClassEffectiveSequence;
 	private Integer rateClassId;
 	private String rateCard;
@@ -43,6 +45,12 @@ public class RateCardsVO {
 	}
 	public void setSubChildId(SubChildClass subChildId) {
 		this.subChildId = subChildId;
+	}
+	public OrderClass getOcId() {
+		return ocId;
+	}
+	public void setOcId(OrderClass ocId) {
+		this.ocId = ocId;
 	}
 	public Integer getRateClassEffectiveSequence() {
 		return rateClassEffectiveSequence;
@@ -86,6 +94,7 @@ public class RateCardsVO {
 	public void setDefaultPricePerItem(Float defaultPricePerItem) {
 		this.defaultPricePerItem = defaultPricePerItem;
 	}
+	
 	
 	
 	
