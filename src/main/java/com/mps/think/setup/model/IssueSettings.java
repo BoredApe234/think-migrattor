@@ -40,6 +40,12 @@ public class IssueSettings extends BaseEntity{
 	@Column(name = "dwm_of_the_wmy")
 	private String dwmOfThewmy;
 	
+	@Column(name = "nth_day")
+	private String nthDay;
+	
+	@Column(name = "day_of_the_month")
+	private String dayOfTheMonth;
+	
 //	Enumeration Generation
 	
 	@Column(name="volume_caption")
@@ -123,6 +129,22 @@ public class IssueSettings extends BaseEntity{
 
 	public void setDwmOfThewmy(String dwmOfThewmy) {
 		this.dwmOfThewmy = dwmOfThewmy;
+	}
+
+	public String getNthDay() {
+		return nthDay;
+	}
+
+	public void setNthDay(String nthDay) {
+		this.nthDay = nthDay;
+	}
+
+	public String getDayOfTheMonth() {
+		return dayOfTheMonth;
+	}
+
+	public void setDayOfTheMonth(String dayOfTheMonth) {
+		this.dayOfTheMonth = dayOfTheMonth;
 	}
 
 	public String getVolumeCaption() {
@@ -209,12 +231,13 @@ public class IssueSettings extends BaseEntity{
 	public String toString() {
 		return "IssueSettings [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
 				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", issuesAppearonEvery="
-				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", volumeCaption=" + volumeCaption
-				+ ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate + ", issueCaption=" + issueCaption
-				+ ", issueFormat=" + issueFormat + ", issuesOrVolume=" + issuesOrVolume + ", orderClassId="
-				+ orderClassId + ", parentClassId=" + parentClassId + ", childClassId=" + childClassId
-				+ ", subChildClassId=" + subChildClassId + "]";
+				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", nthDay=" + nthDay + ", dayOfTheMonth="
+				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat
+				+ ", changeDate=" + changeDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat
+				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + ", parentClassId="
+				+ parentClassId + ", childClassId=" + childClassId + ", subChildClassId=" + subChildClassId + "]";
 	}
 
+	
 	
 }	
