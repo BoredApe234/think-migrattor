@@ -70,18 +70,6 @@ public class IssueSettings extends BaseEntity{
 	@OneToOne
 	@JoinColumn(name = "order_class_id", referencedColumnName = "oc_id")
 	private OrderClass orderClassId;
-	
-	@OneToOne
-	@JoinColumn(name = "parent_class_id", referencedColumnName = "parent_id")
-	private ParentClass parentClassId;
-	
-	@OneToOne
-	@JoinColumn(name = "child_class_id", referencedColumnName = "child_id")
-	private ChildClass childClassId;
-	
-	@OneToOne
-	@JoinColumn(name = "subchild_class_id", referencedColumnName = "subchild_id")
-	private SubChildClass subChildClassId;
 
 	public Integer getId() {
 		return id;
@@ -203,30 +191,6 @@ public class IssueSettings extends BaseEntity{
 		this.orderClassId = orderClassId;
 	}
 
-	public ParentClass getParentClassId() {
-		return parentClassId;
-	}
-
-	public void setParentClassId(ParentClass parentClassId) {
-		this.parentClassId = parentClassId;
-	}
-
-	public ChildClass getChildClassId() {
-		return childClassId;
-	}
-
-	public void setChildClassId(ChildClass childClassId) {
-		this.childClassId = childClassId;
-	}
-
-	public SubChildClass getSubChildClassId() {
-		return subChildClassId;
-	}
-
-	public void setSubChildClassId(SubChildClass subChildClassId) {
-		this.subChildClassId = subChildClassId;
-	}
-
 	@Override
 	public String toString() {
 		return "IssueSettings [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
@@ -234,10 +198,7 @@ public class IssueSettings extends BaseEntity{
 				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", nthDay=" + nthDay + ", dayOfTheMonth="
 				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat
 				+ ", changeDate=" + changeDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat
-				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + ", parentClassId="
-				+ parentClassId + ", childClassId=" + childClassId + ", subChildClassId=" + subChildClassId + "]";
+				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + "]";
 	}
-
-	
 	
 }	

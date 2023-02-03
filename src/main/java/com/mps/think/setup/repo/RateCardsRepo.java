@@ -10,10 +10,4 @@ public interface RateCardsRepo extends JpaRepository<RateCards , Integer> {
 	
 	public RateCards findByRcId(Integer rcId);
 	
-	public List<RateCards> findByParentIdParentID(Integer parentID) throws Exception;
-	
-	public List<RateCards> findByChildIdChildId(Integer childId) throws Exception;
-	
-	public List<RateCards> findBySubChildIdSubChildId(Integer subChildId) throws Exception;
-
 }

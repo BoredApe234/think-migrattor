@@ -30,21 +30,6 @@ public class OrderCodesSuper extends BaseEntity {
 	@JoinColumn(name = "publisher_id", referencedColumnName = "id")
 	private Publisher publisher;
 	
-//	@Column(name = "order_class_id")
-//	private Integer orderClassId;
-	
-	@ManyToOne
-	@JoinColumn(name = "order_code_parent_id", referencedColumnName = "parent_id")
-	private ParentClass parent;
-	
-	@ManyToOne
-	@JoinColumn(name = "order_code_child_id", referencedColumnName = "child_id")
-	private ChildClass child;
-	
-	@ManyToOne
-	@JoinColumn(name = "sub_child_id", referencedColumnName = "subchild_id")
-	private SubChildClass subChild;
-	
 	@ManyToOne
 	@JoinColumn(name = "order_class_id", referencedColumnName = "oc_id")
 	private OrderClass orderClass;
@@ -85,13 +70,13 @@ public class OrderCodesSuper extends BaseEntity {
 		this.publisher = publisher;
 	}
 
-//	public Integer getOrderClassId() {
-//		return orderClassId;
-//	}
-//
-//	public void setOrderClassId(Integer orderClassId) {
-//		this.orderClassId = orderClassId;
-//	}
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
+	}
 
 	public OrderCodes getOrderCodes() {
 		return orderCodes;
@@ -133,36 +118,11 @@ public class OrderCodesSuper extends BaseEntity {
 		this.orderPackageOptions = orderPackageOptions;
 	}
 
-	public ParentClass getParent() {
-		return parent;
-	}
-
-	public void setParent(ParentClass parent) {
-		this.parent = parent;
-	}
-
-	public ChildClass getChild() {
-		return child;
-	}
-
-	public void setChild(ChildClass child) {
-		this.child = child;
-	}
-
-	public OrderClass getOrderClass() {
-		return orderClass;
-	}
-
-	public void setOrderClass(OrderClass orderClass) {
-		this.orderClass = orderClass;
-	}
-
-	public SubChildClass getSubChild() {
-		return subChild;
-	}
-
-	public void setSubChild(SubChildClass subChild) {
-		this.subChild = subChild;
+	@Override
+	public String toString() {
+		return "OrderCodesSuper [id=" + id + ", publisher=" + publisher + ", orderClass=" + orderClass + ", orderCodes="
+				+ orderCodes + ", orderItemDetails=" + orderItemDetails + ", orderPaymentOptions=" + orderPaymentOptions
+				+ ", orderOptions=" + orderOptions + ", orderPackageOptions=" + orderPackageOptions + "]";
 	}
 
 	

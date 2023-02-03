@@ -9,11 +9,11 @@ public interface AuxService {
 
 	public List<AuxVariable> findAllAuxVariable();
 
-	public AuxVariableVO saveAuxVariable(AuxVariableVO auxStatus);
+	public AuxVariableVO saveAuxVariable(AuxVariableVO auxVariableVO);
 
-	public AuxVariableVO updateAuxVariable(AuxVariableVO auxStatus);
+	public AuxVariableVO updateAuxVariable(AuxVariableVO auxVariableVO);
 
-	public AuxVariable findbyAuxId(Integer auxId);
+	public AuxVariable findbyAuxId(Integer id);
 	
 	public AuxVariable deleteByAuxVariableId(Integer auxId);
 

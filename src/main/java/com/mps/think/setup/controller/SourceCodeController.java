@@ -59,14 +59,5 @@ public class SourceCodeController {
 		return ResponseEntity.ok(list);
 	}
 	
-	@GetMapping("/getAllSourceCodeByParentId/{parentId}")
-	public ResponseEntity<?> findSourceCodeByParentId(@PathVariable("parentId") Integer parentId) throws Exception {
-		return ResponseEntity.ok(sourceCodeService.findSourceCodeByParentId(parentId));
-	}
-	
-//	@GetMapping("/getAllSourceCodeByChildId/{childId}")
-//	public ResponseEntity<?>  findSourceCodeByChildId(@PathVariable("childId") Integer childId) throws Exception {
-//		return ResponseEntity.ok(sourceCodeService.findSourceCodeByChildId(childId));
-//	}
 
 }

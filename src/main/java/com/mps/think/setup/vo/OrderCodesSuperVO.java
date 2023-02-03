@@ -1,24 +1,13 @@
 package com.mps.think.setup.vo;
 
-import com.mps.think.setup.model.ChildClass;
 import com.mps.think.setup.model.OrderClass;
-import com.mps.think.setup.model.ParentClass;
 import com.mps.think.setup.model.Publisher;
-import com.mps.think.setup.model.SubChildClass;
 
 public class OrderCodesSuperVO {
 
 	private Integer id;
 
 	private Publisher publisher;
-
-//	private Integer orderClassId;
-	
-	private ParentClass parent;
-
-	private ChildClass child;
-	
-	private SubChildClass subChild;
 
 	private OrderClass orderClass;
 
@@ -40,13 +29,21 @@ public class OrderCodesSuperVO {
 		this.id = id;
 	}
 
-//	public Integer getOrderClassId() {
-//		return orderClassId;
-//	}
-//
-//	public void setOrderClassId(Integer orderClassId) {
-//		this.orderClassId = orderClassId;
-//	}
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
+	}
 
 	public OrderCodesVO getOrderCodes() {
 		return orderCodes;
@@ -88,44 +85,13 @@ public class OrderCodesSuperVO {
 		this.orderPackageOptions = orderPackageOptions;
 	}
 
-	public Publisher getPublisher() {
-		return publisher;
+	@Override
+	public String toString() {
+		return "OrderCodesSuperVO [id=" + id + ", publisher=" + publisher + ", orderClass=" + orderClass
+				+ ", orderCodes=" + orderCodes + ", orderItemDetails=" + orderItemDetails + ", orderPaymentOptions="
+				+ orderPaymentOptions + ", orderOptions=" + orderOptions + ", orderPackageOptions="
+				+ orderPackageOptions + "]";
 	}
 
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
-	}
-
-	public ParentClass getParent() {
-		return parent;
-	}
-
-	public void setParent(ParentClass parent) {
-		this.parent = parent;
-	}
-
-	public ChildClass getChild() {
-		return child;
-	}
-
-	public void setChild(ChildClass child) {
-		this.child = child;
-	}
-
-	public OrderClass getOrderClass() {
-		return orderClass;
-	}
-
-	public void setOrderClass(OrderClass orderClass) {
-		this.orderClass = orderClass;
-	}
-
-	public SubChildClass getSubChild() {
-		return subChild;
-	}
-
-	public void setSubChild(SubChildClass subChild) {
-		this.subChild = subChild;
-	}
 	
 }

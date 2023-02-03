@@ -22,12 +22,6 @@ public class OrderClassOverviewServiceImpl implements OrderClassOverviewService 
 	public OrderClassOverview saveOrderClassOverview(OrderClassOverviewVO overview) {
 		ObjectMapper mapper = new ObjectMapper();
 		OrderClassOverview newOverview = mapper.convertValue(overview, OrderClassOverview.class);
-		if (overview.getChild() == null || overview.getChild().getChildId() == 0) {
-			newOverview.setChild(null);
-		}
-		if (overview.getSubChild() == null || overview.getSubChild().getSubChildId() == 0) {
-			newOverview.setSubChild(null);
-		}
 		orderClassOverviewRepo.saveAndFlush(newOverview);
 		return newOverview;
 	}
@@ -36,20 +30,11 @@ public class OrderClassOverviewServiceImpl implements OrderClassOverviewService 
 	public OrderClassOverview updateOrderClassOverview(OrderClassOverviewVO overview) {
 		ObjectMapper mapper = new ObjectMapper();
 		OrderClassOverview newOverview = mapper.convertValue(overview, OrderClassOverview.class);
-		if (overview.getChild() == null || overview.getChild().getChildId() == 0) {
-			newOverview.setChild(null);
-		}
-		if (overview.getSubChild() == null || overview.getSubChild().getSubChildId() == 0) {
-			newOverview.setSubChild(null);
-		}
 		orderClassOverviewRepo.saveAndFlush(newOverview);
 		return newOverview;
 	}
 
-	@Override
-	public List<OrderClassOverview> getAllOrderClassOverviewByParentId(Integer parentId) {
-		return orderClassOverviewRepo.findByParentParentID(parentId);
-	}
+
 
 	@Override
 	public OrderClassOverview deleteOrderClassOverviewById(Integer id) {
@@ -73,16 +58,6 @@ public class OrderClassOverviewServiceImpl implements OrderClassOverviewService 
 	@Override
 	public List<OrderClassOverview> getAllOrderClassOverviewByPubId(Integer pubId) {
 		return orderClassOverviewRepo.findByPublisherId(pubId);
-	}
-
-	@Override
-	public List<OrderClassOverview> getAllOrderClassOverviewByChildId(Integer childId) {
-		return orderClassOverviewRepo.findByChildChildId(childId);
-	}
-
-	@Override
-	public List<OrderClassOverview> getAllOrderClassOverviewBySubChildId(Integer subChildId) {
-		return orderClassOverviewRepo.findBySubChildSubChildId(subChildId);
 	}
 
 	@Override

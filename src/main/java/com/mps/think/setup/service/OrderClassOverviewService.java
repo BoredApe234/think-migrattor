@@ -11,17 +11,11 @@ public interface OrderClassOverviewService {
 	
 	public OrderClassOverview updateOrderClassOverview(OrderClassOverviewVO overview);
 	
-	public List<OrderClassOverview> getAllOrderClassOverviewByParentId(Integer parentId);
-	
 	public OrderClassOverview deleteOrderClassOverviewById(Integer id);
 	
 	public OrderClassOverview findOrderClassOverviewById(Integer id);
 	
 	public List<OrderClassOverview> getAllOrderClassOverviewByPubId(Integer pubId);
-	
-	public List<OrderClassOverview> getAllOrderClassOverviewByChildId(Integer childId);
-	
-	public List<OrderClassOverview> getAllOrderClassOverviewBySubChildId(Integer subChildId);
 	
 	public List<OrderClassOverview> getAllOrderClassOverview();
 	

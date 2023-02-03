@@ -11,15 +11,8 @@ import com.mps.think.setup.model.OrderCodesSuper;
 public interface OrderCodesSuperRepo extends JpaRepository<OrderCodesSuper, Integer> {
 
 	List<OrderCodesSuper> findByPublisherId(Integer id);
-	
-//	List<OrderCodesSuper> findByOrderClassId(Integer orderClassId);
-	
-	List<OrderCodesSuper> findByParentParentID(Integer parentId);
-	
-	List<OrderCodesSuper> findByChildChildId(Integer childId);
+
 	
 	List<OrderCodesSuper> findByOrderClassOcId(Integer ocId);
-	
-	List<OrderCodesSuper> findBySubChildSubChildId(Integer subChildId);
 	
 }

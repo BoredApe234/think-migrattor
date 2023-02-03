@@ -1,9 +1,6 @@
 package com.mps.think.setup.vo;
 
-import com.mps.think.setup.model.ChildClass;
 import com.mps.think.setup.model.OrderClass;
-import com.mps.think.setup.model.ParentClass;
-import com.mps.think.setup.model.SubChildClass;
 
 public class IssueSettingsVO {
 	
@@ -40,12 +37,6 @@ public class IssueSettingsVO {
 
 	// order class mapping will be there
 	private OrderClass orderClassId;
-	
-	private ParentClass parentClassId;
-	
-	private ChildClass childClassId;
-	
-	private SubChildClass subChildClassId;
 
 	public Integer getId() {
 		return id;
@@ -167,30 +158,6 @@ public class IssueSettingsVO {
 		this.orderClassId = orderClassId;
 	}
 
-	public ParentClass getParentClassId() {
-		return parentClassId;
-	}
-
-	public void setParentClassId(ParentClass parentClassId) {
-		this.parentClassId = parentClassId;
-	}
-
-	public ChildClass getChildClassId() {
-		return childClassId;
-	}
-
-	public void setChildClassId(ChildClass childClassId) {
-		this.childClassId = childClassId;
-	}
-
-	public SubChildClass getSubChildClassId() {
-		return subChildClassId;
-	}
-
-	public void setSubChildClassId(SubChildClass subChildClassId) {
-		this.subChildClassId = subChildClassId;
-	}
-
 	@Override
 	public String toString() {
 		return "IssueSettingsVO [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
@@ -198,8 +165,7 @@ public class IssueSettingsVO {
 				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", nthDay=" + nthDay + ", dayOfTheMonth="
 				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat
 				+ ", changeDate=" + changeDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat
-				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + ", parentClassId="
-				+ parentClassId + ", childClassId=" + childClassId + ", subChildClassId=" + subChildClassId + "]";
+				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + "]";
 	}
 
 

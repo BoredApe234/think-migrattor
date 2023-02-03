@@ -24,18 +24,6 @@ public class RateCards extends BaseEntity {
 	private Integer rcId;
 	
 	@ManyToOne
-	@JoinColumn(name = "parent_id", referencedColumnName = "parent_id")
-	private ParentClass parentId;
-	
-	@ManyToOne
-	@JoinColumn(name = "child_id", referencedColumnName = "child_id")
-	private ChildClass childId;
-	
-	@ManyToOne
-	@JoinColumn(name = "subchild_id", referencedColumnName = "subchild_id")
-	private SubChildClass subChildId;
-	
-	@ManyToOne
 	@JoinColumn(name = "oc_id", referencedColumnName = "oc_id")
 	private OrderClass ocId;
 	
@@ -66,30 +54,6 @@ public class RateCards extends BaseEntity {
 
 	public void setRcId(Integer rcId) {
 		this.rcId = rcId;
-	}
-
-	public ParentClass getParentId() {
-		return parentId;
-	}
-
-	public void setParentId(ParentClass parentId) {
-		this.parentId = parentId;
-	}
-
-	public ChildClass getChildId() {
-		return childId;
-	}
-
-	public void setChildId(ChildClass childId) {
-		this.childId = childId;
-	}
-
-	public SubChildClass getSubChildId() {
-		return subChildId;
-	}
-
-	public void setSubChildId(SubChildClass subChildId) {
-		this.subChildId = subChildId;
 	}
 
 	public OrderClass getOcId() {
@@ -156,7 +120,13 @@ public class RateCards extends BaseEntity {
 		this.defaultPricePerItem = defaultPricePerItem;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "RateCards [rcId=" + rcId + ", ocId=" + ocId + ", rateClassEffectiveSequence="
+				+ rateClassEffectiveSequence + ", rateClassId=" + rateClassId + ", rateCard=" + rateCard
+				+ ", description=" + description + ", useForPackage=" + useForPackage + ", itemtype=" + itemtype
+				+ ", defaultPricePerItem=" + defaultPricePerItem + "]";
+	}
+
 	
 }

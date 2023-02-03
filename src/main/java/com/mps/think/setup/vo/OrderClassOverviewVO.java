@@ -1,21 +1,12 @@
 package com.mps.think.setup.vo;
 
-import com.mps.think.setup.model.ChildClass;
 import com.mps.think.setup.model.OrderClass;
-import com.mps.think.setup.model.ParentClass;
 import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.model.SourceCode;
-import com.mps.think.setup.model.SubChildClass;
 
 public class OrderClassOverviewVO {
 
 	private Integer id;
-
-	private ParentClass parent;
-
-	private ChildClass child;
-
-	private SubChildClass subChild;
 
 	// key information
 
@@ -67,30 +58,6 @@ public class OrderClassOverviewVO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public ParentClass getParent() {
-		return parent;
-	}
-
-	public void setParent(ParentClass parent) {
-		this.parent = parent;
-	}
-
-	public ChildClass getChild() {
-		return child;
-	}
-
-	public void setChild(ChildClass child) {
-		this.child = child;
-	}
-
-	public SubChildClass getSubChild() {
-		return subChild;
-	}
-
-	public void setSubChild(SubChildClass subChild) {
-		this.subChild = subChild;
 	}
 
 	public String getLabel() {
@@ -203,6 +170,16 @@ public class OrderClassOverviewVO {
 
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderClassOverviewVO [id=" + id + ", label=" + label + ", description=" + description + ", orderClass="
+				+ orderClass + ", revenueRecorded=" + revenueRecorded + ", recordRevenueSubsPartWay="
+				+ recordRevenueSubsPartWay + ", cancelCredit=" + cancelCredit + ", sourceCode=" + sourceCode
+				+ ", sourceCodeFormat=" + sourceCodeFormat + ", renewalSCFormat=" + renewalSCFormat + ", profitCenter="
+				+ profitCenter + ", paymentThreshold=" + paymentThreshold + ", reasonableGap=" + reasonableGap
+				+ ", activeOrderHandling=" + activeOrderHandling + ", publisher=" + publisher + "]";
 	}
 
 	
