@@ -132,6 +132,12 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue.setRateCard(issueGeneration.getRateCard());
 		issue.setVolumeCaption(issueGeneration.getVolumeCaption());
 		issue.setVolumeFormat(issueGeneration.getVolumeFormat());
+		issue.setIssueURL(issueGeneration.getIssueURL());
+		issue.setAnalysed(issueGeneration.getAnalysed());
+		issue.setFrozen(issueGeneration.getFrozen());
+		issue.setInventoryID(issueGeneration.getInventoryID());
+		issue.setClosed(issueGeneration.getClosed());
+		issue.setRevenueGenerating(issueGeneration.getRevenueGenerating());
 		issue = issueGenerationRepo.save(issue);
 		return issueGeneration;
 	}
