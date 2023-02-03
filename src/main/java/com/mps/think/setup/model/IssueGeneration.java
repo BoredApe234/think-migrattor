@@ -89,10 +89,10 @@ public class IssueGeneration extends BaseEntity {
 	private String issueURL;
 	
 	@Column(name="analysed")
-	private String analysed;
+	private boolean analysed;
 	
 	@Column(name="frozen")
-	private String frozen;
+	private boolean frozen;
 	
 	@Column(name="inventory_id")
 	private String inventoryID;
@@ -271,19 +271,19 @@ public class IssueGeneration extends BaseEntity {
 		this.issueURL = issueURL;
 	}
 
-	public String getAnalysed() {
+	public boolean getAnalysed() {
 		return analysed;
 	}
 
-	public void setAnalysed(String analysed) {
+	public void setAnalysed(boolean analysed) {
 		this.analysed = analysed;
 	}
 
-	public String getFrozen() {
+	public boolean getFrozen() {
 		return frozen;
 	}
 
-	public void setFrozen(String frozen) {
+	public void setFrozen(boolean frozen) {
 		this.frozen = frozen;
 	}
 
