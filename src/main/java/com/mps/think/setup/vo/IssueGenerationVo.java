@@ -46,9 +46,9 @@ public class IssueGenerationVo {
 
 	private String issueURL;
 
-	private String analysed;
+	private boolean analysed;
 
-	private String frozen;
+	private boolean frozen;
 
 	private String inventoryID;
 
@@ -224,19 +224,19 @@ public class IssueGenerationVo {
 		this.issueURL = issueURL;
 	}
 
-	public String getAnalysed() {
+	public boolean getAnalysed() {
 		return analysed;
 	}
 
-	public void setAnalysed(String analysed) {
+	public void setAnalysed(boolean analysed) {
 		this.analysed = analysed;
 	}
 
-	public String getFrozen() {
+	public boolean getFrozen() {
 		return frozen;
 	}
 
-	public void setFrozen(String frozen) {
+	public void setFrozen(boolean frozen) {
 		this.frozen = frozen;
 	}
 

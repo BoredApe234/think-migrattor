@@ -3,6 +3,7 @@ package com.mps.think.setup.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -54,5 +55,9 @@ public class IssueGenerationController {
 	public ResponseEntity<?> findMaxSeqIssue() {
 		return ResponseEntity.ok(issueGenerationServiceImpl.findMaxSeqIssue());
 	}
-
+	
+	@DeleteMapping("/deleteIssuebyId")
+	public ResponseEntity<?> deleteIssueCode(@RequestBody Integer IssueId) {
+		return ResponseEntity.ok(issueGenerationServiceImpl.deleteIssueById(IssueId));
+	}
 }

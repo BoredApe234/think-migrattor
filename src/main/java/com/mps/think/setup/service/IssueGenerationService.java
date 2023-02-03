@@ -3,6 +3,7 @@ package com.mps.think.setup.service;
 import java.util.List;
 
 import com.mps.think.setup.model.IssueGeneration;
+import com.mps.think.setup.model.SourceCode;
 import com.mps.think.setup.vo.IssueGenerationVo;
 
 public interface IssueGenerationService {
@@ -20,5 +21,6 @@ public interface IssueGenerationService {
 	IssueGenerationVo generateIssueGenerationVo(IssueGenerationVo issueGeneration,int ocId);
 
 	IssueGenerationVo insertIssueGenerationVo(IssueGenerationVo issueGeneration);
+	public IssueGeneration deleteIssueById(Integer sourceCodeId);
 
 }

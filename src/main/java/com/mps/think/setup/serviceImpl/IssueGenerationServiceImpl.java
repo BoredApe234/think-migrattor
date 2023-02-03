@@ -9,6 +9,7 @@ import com.mps.think.setup.model.IssueGeneration;
 import com.mps.think.setup.model.IssueSettings;
 import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.OrderCodes;
+import com.mps.think.setup.model.SourceCode;
 import com.mps.think.setup.repo.IssueGenerationRepo;
 import com.mps.think.setup.repo.IssueSettingsRepo;
 import com.mps.think.setup.service.IssueGenerationService;
@@ -261,8 +262,14 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 	@Override
 	public int findMaxSeqIssue() {
 		int data = issueGenerationRepo.findMaxSeqOfIssue();
-		System.out.println("!!!!!!!!!!!!!!! : "+data);
 		return data;
+	}
+
+	@Override
+	public IssueGeneration deleteIssueById(Integer issueId) {
+		IssueGeneration delete = findbyIssueId(issueId);
+		issueGenerationRepo.delete(delete);
+		return delete;
 	}
 
 }
