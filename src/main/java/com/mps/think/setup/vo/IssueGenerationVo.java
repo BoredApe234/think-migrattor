@@ -1,5 +1,7 @@
 package com.mps.think.setup.vo;
 
+import javax.persistence.Column;
+
 public class IssueGenerationVo {
 
 	private Integer id;
@@ -35,20 +37,24 @@ public class IssueGenerationVo {
 	private String issueFormat;
 
 	private String issueDate;
-	
+
 	private String issue_volume;
-	
+
 	private String dateoftheMonthYear;
-	
+
 	private Integer seqOfIssue;
 
-	public Integer getSeqOfIssue() {
-		return seqOfIssue;
-	}
+	private String issueURL;
 
-	public void setSeqOfIssue(Integer seqOfIssue) {
-		this.seqOfIssue = seqOfIssue;
-	}
+	private String analysed;
+
+	private String frozen;
+
+	private String inventoryID;
+
+	private String closed;
+
+	private String revenueGenerating;
 
 	public Integer getId() {
 		return id;
@@ -98,7 +104,14 @@ public class IssueGenerationVo {
 		IssuesAppearonEvery = issuesAppearonEvery;
 	}
 
-	
+	public OrderCodesVO getOderCodeVo() {
+		return oderCodeVo;
+	}
+
+	public void setOderCodeVo(OrderCodesVO oderCodeVo) {
+		this.oderCodeVo = oderCodeVo;
+	}
+
 	public OrderClassVO getOrderClassId() {
 		return orderClassId;
 	}
@@ -171,6 +184,14 @@ public class IssueGenerationVo {
 		this.issueFormat = issueFormat;
 	}
 
+	public String getIssueDate() {
+		return issueDate;
+	}
+
+	public void setIssueDate(String issueDate) {
+		this.issueDate = issueDate;
+	}
+
 	public String getIssue_volume() {
 		return issue_volume;
 	}
@@ -178,15 +199,6 @@ public class IssueGenerationVo {
 	public void setIssue_volume(String issue_volume) {
 		this.issue_volume = issue_volume;
 	}
-
-	public OrderCodesVO getOderCodeVo() {
-		return oderCodeVo;
-	}
-
-	public void setOderCodeVo(OrderCodesVO oderCodeVo) {
-		this.oderCodeVo = oderCodeVo;
-	}
-	
 
 	public String getDateoftheMonthYear() {
 		return dateoftheMonthYear;
@@ -196,16 +208,61 @@ public class IssueGenerationVo {
 		this.dateoftheMonthYear = dateoftheMonthYear;
 	}
 
-	
-	public String getIssueDate() {
-		return issueDate;
+	public Integer getSeqOfIssue() {
+		return seqOfIssue;
 	}
 
-	public void setIssueDate(String issueDate) {
-		this.issueDate = issueDate;
+	public void setSeqOfIssue(Integer seqOfIssue) {
+		this.seqOfIssue = seqOfIssue;
 	}
-	
-	
+
+	public String getIssueURL() {
+		return issueURL;
+	}
+
+	public void setIssueURL(String issueURL) {
+		this.issueURL = issueURL;
+	}
+
+	public String getAnalysed() {
+		return analysed;
+	}
+
+	public void setAnalysed(String analysed) {
+		this.analysed = analysed;
+	}
+
+	public String getFrozen() {
+		return frozen;
+	}
+
+	public void setFrozen(String frozen) {
+		this.frozen = frozen;
+	}
+
+	public String getInventoryID() {
+		return inventoryID;
+	}
+
+	public void setInventoryID(String inventoryID) {
+		this.inventoryID = inventoryID;
+	}
+
+	public String getClosed() {
+		return closed;
+	}
+
+	public void setClosed(String closed) {
+		this.closed = closed;
+	}
+
+	public String getRevenueGenerating() {
+		return revenueGenerating;
+	}
+
+	public void setRevenueGenerating(String revenueGenerating) {
+		this.revenueGenerating = revenueGenerating;
+	}
 
 	@Override
 	public String toString() {
@@ -216,7 +273,10 @@ public class IssueGenerationVo {
 				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
 				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issueDate=" + issueDate
 				+ ", issue_volume=" + issue_volume + ", dateoftheMonthYear=" + dateoftheMonthYear + ", seqOfIssue="
-				+ seqOfIssue + "]";
+				+ seqOfIssue + ", issueURL=" + issueURL + ", analysed=" + analysed + ", frozen=" + frozen
+				+ ", inventoryID=" + inventoryID + ", closed=" + closed + ", revenueGenerating=" + revenueGenerating
+				+ "]";
 	}
 
+	
 }
