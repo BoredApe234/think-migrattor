@@ -69,5 +69,10 @@ public class AddOrderController {
 		}
 		return ResponseEntity.ok(list);
 	}
+	
+	@GetMapping("/getAllOrdersByOrderClassId/{ocIc}")
+	public ResponseEntity<?> getAllOrdersByOrderClassId(@PathVariable("ocIc") Integer ocIc) throws Exception {
+		return ResponseEntity.ok(addOrderService.getAllOrdersByOrderClassId(ocIc));
+	}
 
 }

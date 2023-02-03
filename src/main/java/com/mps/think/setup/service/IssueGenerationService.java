@@ -14,5 +14,11 @@ public interface IssueGenerationService {
 	public IssueGenerationVo updateIssueGenerationVo(IssueGenerationVo issueGeneration);
 
 	public IssueGeneration findbyIssueId(Integer issueId);
+	
+	public int findMaxSeqIssue();
+
+	IssueGenerationVo generateIssueGenerationVo(IssueGenerationVo issueGeneration,int ocId);
+
+	IssueGenerationVo insertIssueGenerationVo(IssueGenerationVo issueGeneration);
 
 }

@@ -85,13 +85,23 @@ public class IssueGeneration extends BaseEntity {
 	@Column(name="seq_of_issue")
 	private Integer seqOfIssue;
 	
-	public Integer getSeqOfIssue() {
-		return seqOfIssue;
-	}
-
-	public void setSeqOfIssue(Integer seqOfIssue) {
-		this.seqOfIssue = seqOfIssue;
-	}
+	@Column(name="issue_url")
+	private String issueURL;
+	
+	@Column(name="analysed")
+	private String analysed;
+	
+	@Column(name="frozen")
+	private String frozen;
+	
+	@Column(name="inventory_id")
+	private String inventoryID;
+	
+	@Column(name="closed")
+	private String closed;
+	
+	@Column(name="revenue_generating")
+	private String revenueGenerating;
 
 	public Integer getId() {
 		return id;
@@ -148,7 +158,6 @@ public class IssueGeneration extends BaseEntity {
 	public void setOderCode(OrderCodes oderCode) {
 		this.oderCode = oderCode;
 	}
-
 
 	public OrderClass getOrderClassId() {
 		return orderClassId;
@@ -230,11 +239,14 @@ public class IssueGeneration extends BaseEntity {
 		this.issue_volume = issue_volume;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getIssueDate() {
+		return issueDate;
 	}
 
-	
+	public void setIssueDate(String issueDate) {
+		this.issueDate = issueDate;
+	}
+
 	public String getDateoftheMonthYear() {
 		return dateoftheMonthYear;
 	}
@@ -242,14 +254,61 @@ public class IssueGeneration extends BaseEntity {
 	public void setDateoftheMonthYear(String dateoftheMonthYear) {
 		this.dateoftheMonthYear = dateoftheMonthYear;
 	}
-	
 
-	public String getIssueDate() {
-		return issueDate;
+	public Integer getSeqOfIssue() {
+		return seqOfIssue;
 	}
 
-	public void setIssueDate(String issueDate) {
-		this.issueDate = issueDate;
+	public void setSeqOfIssue(Integer seqOfIssue) {
+		this.seqOfIssue = seqOfIssue;
+	}
+
+	public String getIssueURL() {
+		return issueURL;
+	}
+
+	public void setIssueURL(String issueURL) {
+		this.issueURL = issueURL;
+	}
+
+	public String getAnalysed() {
+		return analysed;
+	}
+
+	public void setAnalysed(String analysed) {
+		this.analysed = analysed;
+	}
+
+	public String getFrozen() {
+		return frozen;
+	}
+
+	public void setFrozen(String frozen) {
+		this.frozen = frozen;
+	}
+
+	public String getInventoryID() {
+		return inventoryID;
+	}
+
+	public void setInventoryID(String inventoryID) {
+		this.inventoryID = inventoryID;
+	}
+
+	public String getClosed() {
+		return closed;
+	}
+
+	public void setClosed(String closed) {
+		this.closed = closed;
+	}
+
+	public String getRevenueGenerating() {
+		return revenueGenerating;
+	}
+
+	public void setRevenueGenerating(String revenueGenerating) {
+		this.revenueGenerating = revenueGenerating;
 	}
 
 	@Override
@@ -261,7 +320,9 @@ public class IssueGeneration extends BaseEntity {
 				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
 				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issue_volume=" + issue_volume
 				+ ", issueDate=" + issueDate + ", dateoftheMonthYear=" + dateoftheMonthYear + ", seqOfIssue="
-				+ seqOfIssue + "]";
+				+ seqOfIssue + ", issueURL=" + issueURL + ", analysed=" + analysed + ", frozen=" + frozen
+				+ ", inventoryID=" + inventoryID + ", closed=" + closed + ", revenueGenerating=" + revenueGenerating
+				+ "]";
 	}
-
+	
 }

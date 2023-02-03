@@ -37,6 +37,18 @@ public class OrderCodesSuper extends BaseEntity {
 	@JoinColumn(name = "order_code_parent_id", referencedColumnName = "parent_id")
 	private ParentClass parent;
 	
+	@ManyToOne
+	@JoinColumn(name = "order_code_child_id", referencedColumnName = "child_id")
+	private ChildClass child;
+	
+	@ManyToOne
+	@JoinColumn(name = "sub_child_id", referencedColumnName = "subchild_id")
+	private SubChildClass subChild;
+	
+	@ManyToOne
+	@JoinColumn(name = "order_class_id", referencedColumnName = "oc_id")
+	private OrderClass orderClass;
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "order_codes_id", referencedColumnName = "id")
 	private OrderCodes orderCodes;
@@ -127,6 +139,30 @@ public class OrderCodesSuper extends BaseEntity {
 
 	public void setParent(ParentClass parent) {
 		this.parent = parent;
+	}
+
+	public ChildClass getChild() {
+		return child;
+	}
+
+	public void setChild(ChildClass child) {
+		this.child = child;
+	}
+
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
+	}
+
+	public SubChildClass getSubChild() {
+		return subChild;
+	}
+
+	public void setSubChild(SubChildClass subChild) {
+		this.subChild = subChild;
 	}
 
 	

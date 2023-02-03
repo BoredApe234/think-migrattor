@@ -46,4 +46,9 @@ public class AddOrderServiceImpl implements AddOrderService {
 		return addOrderRepo.saveAndFlush(mapper.convertValue(order, Order.class));
 	}
 
+	@Override
+	public List<Order> getAllOrdersByOrderClassId(Integer ocId) throws Exception {
+		return addOrderRepo.findByOrderClassOcId(ocId);
+	}
+
 }

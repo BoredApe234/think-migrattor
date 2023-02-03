@@ -239,7 +239,7 @@ public class EnumModelVO {
 	 
 	 public static enum OrderStatus  {
 
-			Active("Active"),Inactive("Inactive"),Pending("Pending");
+			Active("Active"),Cancelled("Cancelled"),Pending("Pending");
 
 		    private final String displayOrderStatus;
 
