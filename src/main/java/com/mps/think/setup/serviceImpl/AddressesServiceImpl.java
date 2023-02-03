@@ -7,12 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.Addresses;
-import com.mps.think.setup.model.CustomerAddresses;
-import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.repo.AddressesRepo;
 import com.mps.think.setup.service.AddressService;
 import com.mps.think.setup.vo.AddressesVO;
-import com.mps.think.setup.vo.EnumModelVO.Frequency;
 
 @Service
 public class AddressesServiceImpl implements AddressService  {
@@ -50,16 +47,9 @@ public class AddressesServiceImpl implements AddressService  {
 		data.setValidTo(addresses.getValidTo());
 		data.setFrequency(addresses.getFrequency());
 		data.setAddressAuxJSON(addresses.getAddressAuxJSON());
-//		data.setSelectionFrom(addresses.getSelectionFrom());
-//		data.setSelectionTo(addresses.getSelectionTo());
-//		if (addresses.getFrequency()==Frequency.EveryYear) {
 		data.setSelectionFrom(addresses.getSelectionFrom());
 		data.setSelectionTo(addresses.getSelectionTo());
-//		}
 		addresses.setAddressId(data.getAddressId());
-//		CustomerDetails customerDetails = new CustomerDetails();
-//		customerDetails.setCustomerId(addresses.get);
-//		data.setCusId(customerDetails);
 		addressRepo.saveAndFlush(data);
 		addresses.setAddressId(data.getAddressId());
 		return addresses;
@@ -69,9 +59,6 @@ public class AddressesServiceImpl implements AddressService  {
 	public AddressesVO updateAddresses(AddressesVO addresses) {
 		Addresses data = new Addresses();
 		data.setAddressId(addresses.getAddressId());
-//		CustomerDetails customerDetails = new CustomerDetails();
-//		customerDetails.setCustomerId(addresses.getCusId().getCustomerId());
-//		data.setCusId(customerDetails);
 		data.setAddressName(addresses.getAddressName());
 		data.setAddressType(addresses.getAddressType());
 		data.setAddressCategory(addresses.getAddressCategory());
@@ -89,10 +76,8 @@ public class AddressesServiceImpl implements AddressService  {
 		data.setValidFrom(addresses.getValidFrom());
 		data.setValidTo(addresses.getValidTo());
 		data.setFrequency(addresses.getFrequency());
-//		if (addresses.getFrequency()==Frequency.EveryYear) {
 		data.setSelectionFrom(addresses.getSelectionFrom());
 		data.setSelectionTo(addresses.getSelectionTo());
-//		}
 		data.setAddressAuxJSON(addresses.getAddressAuxJSON());
 		addressRepo.saveAndFlush(data);
 		return addresses;
@@ -111,20 +96,20 @@ public class AddressesServiceImpl implements AddressService  {
 		return delete;
 	}
 	
-	@Override
-	public Addresses updatePrimaryAddressbyCustId(Integer customerId, Integer addressId) {
-		CustomerDetails customer= customerDetailsServiceImpl.findbyCustomerDetailsId(customerId);
-		for(CustomerAddresses custAddress:customer.getCustomerAddresses()) {
-			for(Addresses address:custAddress.getAddressess()) {
-				address.setPrimaryAddress(false);
-				addressRepo.save(address);
-			}
-		}
-		Addresses details= addressRepo.findByaddressId(addressId);
-		details.setPrimaryAddress(true);
-		addressRepo.save(details);
-		return details;
-	}
+//	@Override
+//	public Addresses updatePrimaryAddressbyCustId(Integer customerId, Integer addressId) {
+//		CustomerDetails customer= customerDetailsServiceImpl.findbyCustomerDetailsId(customerId);
+//		for(CustomerAddresses custAddress:customer.getCustomerAddresses()) {
+//			for(Addresses address:custAddress.getAddressess()) {
+//				address.setPrimaryAddress(false);
+//				addressRepo.save(address);
+//			}
+//		}
+//		Addresses details= addressRepo.findByaddressId(addressId);
+//		details.setPrimaryAddress(true);
+//		addressRepo.save(details);
+//		return details;
+//	}
 
 //	@Override
 //	public List<Addresses> getAllAddressesByCustomerId(Integer cusId) {

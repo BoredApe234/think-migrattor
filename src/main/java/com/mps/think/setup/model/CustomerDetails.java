@@ -2,6 +2,7 @@ package com.mps.think.setup.model;
 // customer details
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -9,14 +10,12 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
-
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mps.think.setup.vo.EnumModelVO.ChargeTaxOn;
 import com.mps.think.setup.vo.EnumModelVO.ConfigurationOptionsforOrders;
 import com.mps.think.setup.vo.EnumModelVO.CustomerCategory;
@@ -136,10 +135,11 @@ public class CustomerDetails  extends BaseEntity{
 	@Column(name = "cust_aux_field_json")
 	private String custAuxFieldJSON;
 	
-	@OneToMany
-	@JoinTable(name = "customer_addresses", joinColumns = {
-			@JoinColumn(name = "customer_id", insertable = false, updatable = false) }, inverseJoinColumns = {
-					@JoinColumn(name = "id", insertable = false, updatable = false) })
+	@OneToMany(
+			mappedBy = "customer",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true)
+	@JsonManagedReference
 	private List<CustomerAddresses> customerAddresses;
 
 	public Integer getCustomerId() {

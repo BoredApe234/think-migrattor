@@ -1,11 +1,14 @@
 package com.mps.think.setup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mps.think.setup.service.CustomerDetailsService;
@@ -18,54 +21,68 @@ import com.mps.think.setup.vo.EnumModelVO.PaymentOptions;
 @RestController
 @CrossOrigin
 public class CustomerDetailsController {
-	
+
 	@Autowired
 	private CustomerDetailsService customerDetailsService;
-	
+
 	@GetMapping("/getAllCustomer")
 	public ResponseEntity<?> getAllCustomerDetails() {
 		return ResponseEntity.ok(customerDetailsService.getAllCustomerDetails());
 	}
 
+//	@GetMapping("/getAllCustomersForSearch")
+//	public ResponseEntity<?> getAllCustomerDetailsForSearch(@RequestParam(required = false) String firstName,
+//			@RequestParam(required = false) String lastName, @RequestParam(defaultValue = "0") Integer page,
+//			@RequestParam(defaultValue = "5") Integer size) {
+//		return ResponseEntity.ok(
+//				customerDetailsService.getAllCustomerDetailsForSearch(firstName, lastName, PageRequest.of(page, size)));
+//	}
+
 	@PostMapping("/saveCustomer")
 	public ResponseEntity<?> savecustomerDetails(@RequestBody CustomerDetailsVO customerId) {
 		return ResponseEntity.ok(customerDetailsService.saveCustomerDetails(customerId));
 	}
-	
+
 	@PostMapping("/updateCustomer")
 	public ResponseEntity<?> updatecustomerDetails(@RequestBody CustomerDetailsVO customerId) {
 		return ResponseEntity.ok(customerDetailsService.updateCustomerDetails(customerId));
 	}
-	
+
 	@PostMapping("/findbyCustomerId")
 	public ResponseEntity<?> findbyCustomerDetailsId(@RequestBody Integer customerId) {
 		return ResponseEntity.ok(customerDetailsService.findbyCustomerDetailsId(customerId));
 	}
 
-	
 	@GetMapping("/getAllCustomerCategory")
 	public ResponseEntity<?> getAllCustomerCategory() {
 		return ResponseEntity.ok(CustomerCategory.values());
 	}
-	
+
 	@GetMapping("/getAllConfigurationOptionsforOrders")
 	public ResponseEntity<?> getAllConfigurationOptionsforOrders() {
 		return ResponseEntity.ok(ConfigurationOptionsforOrders.values());
 	}
-	
+
 	@GetMapping("/getAllPaymentOptions")
 	public ResponseEntity<?> getAllPaymentOptions() {
 		return ResponseEntity.ok(PaymentOptions.values());
 	}
-	
+
 	@GetMapping("/getAllChargeTaxOn")
 	public ResponseEntity<?> getAllChargeTaxOn() {
 		return ResponseEntity.ok(ChargeTaxOn.values());
 	}
 	
-	@GetMapping("/getAllCustomerWithAddresses")
-	public ResponseEntity<?> getAllCustomerDetailsWithAddresses() {
-		return ResponseEntity.ok(customerDetailsService.findAllCustomersWithAddresses());
+	@DeleteMapping("/deleteCustomerById")
+	public ResponseEntity<?> deleteCustomerById(@RequestBody Integer customerId) {
+		return ResponseEntity.ok(customerDetailsService.deleteCustomer(customerId));
 	}
 
+	@GetMapping("/getAllCustomerDetailsForSearch")
+	public ResponseEntity<?> getAllCustomerDetailsForSearch(@RequestParam(required = false) String search, @RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) {
+		return ResponseEntity.ok(
+				customerDetailsService.getAllCustomerDetailsForSearch(search, PageRequest.of(page, size)));
+	}
 }
+
