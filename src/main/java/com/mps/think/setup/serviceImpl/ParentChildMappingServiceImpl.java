@@ -25,6 +25,9 @@ public class ParentChildMappingServiceImpl implements ParentChildMappingService 
 	public ParentChildMappingVO saveAuxVParentChild(ParentChildMappingVO auxVariableVO) {
 		ObjectMapper mapper = new ObjectMapper();
 		ParentChildMapping parentChild = mapper.convertValue(auxVariableVO, ParentChildMapping.class);
+		if(auxVariableVO.getChildId().getOcId()==0){
+			parentChild.setChildId(null);
+		}
 		ParentChildMapping data = parentchildMappingRepo.saveAndFlush(parentChild);
 		auxVariableVO.setId(data.getId());
 		return auxVariableVO;
@@ -34,6 +37,9 @@ public class ParentChildMappingServiceImpl implements ParentChildMappingService 
 	public ParentChildMappingVO updateAuxParentChild(ParentChildMappingVO auxVariableVO) {
 		ObjectMapper mapper = new ObjectMapper();
 		ParentChildMapping parentChild = mapper.convertValue(auxVariableVO, ParentChildMapping.class);
+		if(auxVariableVO.getChildId().getOcId()==0){
+			parentChild.setChildId(null);
+		}
 		parentchildMappingRepo.saveAndFlush(parentChild);
 		return auxVariableVO;
 	}
