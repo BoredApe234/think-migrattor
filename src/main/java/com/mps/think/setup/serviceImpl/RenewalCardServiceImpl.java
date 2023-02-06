@@ -45,6 +45,9 @@ public class RenewalCardServiceImpl implements RenewalCardService {
 
 		ObjectMapper mapper = new ObjectMapper();
 		RenewalCard rcard = mapper.convertValue(renewalCardVO, RenewalCard.class);
+		if(renewalCardVO.getRenewalCardId()==0){
+			rcard.setRenewalCardId(null);
+		}
 		RenewalCard data= renewalCardRepo.saveAndFlush(rcard);
 		renewalCardVO.setRenewalCardId(data.getRenewalCardId());
 		return renewalCardVO;
