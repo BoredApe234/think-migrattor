@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.mps.think.setup.service.SubscriptionDefService;
@@ -38,25 +40,31 @@ public class RenewalCard extends BaseEntity{
 	@Column(name = "offers_description")
 	private String offersdescription;
 
-	@Column(name = "discount_class_id")
+	@OneToOne
+	@JoinColumn(name="discount_class_id",referencedColumnName="id")
 	private DiscountCardKeyInfo discountClassId;
 	
-	@Column(name = "order_code_id")
+	@OneToOne
+	@JoinColumn(name="order_code_id",referencedColumnName="id")
 	private OrderCodes orderCodeId;
 	
 	@Column(name = "pkg_def_id")
 	private  String pkgDefId;
 	
-	@Column(name = "rate_class_id")
+	@OneToOne
+	@JoinColumn(name="rate_class_id",referencedColumnName="rcId")
 	private RateCards rateClassId;
 	
-	@Column(name = "source_code_id")
+	@OneToOne
+	@JoinColumn(name="source_code_id",referencedColumnName="sourc_code_id")
 	private SourceCode sourceCodeId;
 	
-	@Column(name = "subscription_def_id")
+	@OneToOne
+	@JoinColumn(name="subscription_def_id",referencedColumnName="id")
 	private SubscriptionDefKeyInfo subscriptionDefId;
 	
-	@Column(name="order_id")
+	@OneToOne
+	@JoinColumn(name="order_id",referencedColumnName="oc_id")
 	private OrderClass orderClassId;
 
 	public Integer getRenewalCardId() {
