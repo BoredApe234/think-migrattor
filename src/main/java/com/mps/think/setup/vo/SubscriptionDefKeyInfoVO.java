@@ -1,26 +1,50 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.ChildClass;
+import com.mps.think.setup.model.OrderCodesSuper;
+import com.mps.think.setup.model.ParentClass;
+import com.mps.think.setup.model.Publisher;
+import com.mps.think.setup.model.RateCards;
+import com.mps.think.setup.model.RenewalCard;
+import com.mps.think.setup.model.SubChildClass;
+import com.mps.think.setup.model.Terms;
+import com.mps.think.setup.vo.EnumModelVO.SubDefStatus;
+
 public class SubscriptionDefKeyInfoVO {
 
 	private Integer id;
 	
-	private Integer publisherId;
-	
+	private Publisher publisher;
+
+	private ParentClass parent;
+
+	private ChildClass child;
+
+	private SubChildClass subChild;
+
 	private String subscriptionDefCode;
-	
+
 	private String description;
-	
-	private String orderCode;
-	
-	private String term;
-	
-	private String status;
-	
-	private String subscriptionDefId;
-	
-	private String rateClass;
-	
-	private String renewalCard;
+
+	private OrderCodesSuper orderCode;
+
+	private Terms term;
+
+	private SubDefStatus subDefStatus;
+
+	private String subDefId;
+
+	private RateCards rateCard;
+
+	private RenewalCard renewalCard;
+
+	private String orderCodeType;
+
+	private String media;
+
+	private String edition;
+
+	private String category;
 
 	public Integer getId() {
 		return id;
@@ -28,14 +52,6 @@ public class SubscriptionDefKeyInfoVO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public Integer getPublisherId() {
-		return publisherId;
-	}
-
-	public void setPublisherId(Integer publisherId) {
-		this.publisherId = publisherId;
 	}
 
 	public String getSubscriptionDefCode() {
@@ -54,52 +70,116 @@ public class SubscriptionDefKeyInfoVO {
 		this.description = description;
 	}
 
-	public String getOrderCode() {
+	public OrderCodesSuper getOrderCode() {
 		return orderCode;
 	}
 
-	public void setOrderCode(String orderCode) {
+	public void setOrderCode(OrderCodesSuper orderCode) {
 		this.orderCode = orderCode;
 	}
 
-	public String getTerm() {
+	public Terms getTerm() {
 		return term;
 	}
 
-	public void setTerm(String term) {
+	public void setTerm(Terms term) {
 		this.term = term;
 	}
 
-	public String getStatus() {
-		return status;
+	public SubDefStatus getSubDefStatus() {
+		return subDefStatus;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setSubDefStatus(SubDefStatus subDefStatus) {
+		this.subDefStatus = subDefStatus;
 	}
 
-	public String getSubscriptionDefId() {
-		return subscriptionDefId;
+	public String getSubDefId() {
+		return subDefId;
 	}
 
-	public void setSubscriptionDefId(String subscriptionDefId) {
-		this.subscriptionDefId = subscriptionDefId;
+	public void setSubDefId(String subDefId) {
+		this.subDefId = subDefId;
 	}
 
-	public String getRateClass() {
-		return rateClass;
+	public RateCards getRateCard() {
+		return rateCard;
 	}
 
-	public void setRateClass(String rateClass) {
-		this.rateClass = rateClass;
+	public void setRateCard(RateCards rateCard) {
+		this.rateCard = rateCard;
 	}
 
-	public String getRenewalCard() {
+	public RenewalCard getRenewalCard() {
 		return renewalCard;
 	}
 
-	public void setRenewalCard(String renewalCard) {
+	public void setRenewalCard(RenewalCard renewalCard) {
 		this.renewalCard = renewalCard;
 	}
-	
+
+	public String getOrderCodeType() {
+		return orderCodeType;
+	}
+
+	public void setOrderCodeType(String orderCodeType) {
+		this.orderCodeType = orderCodeType;
+	}
+
+	public String getMedia() {
+		return media;
+	}
+
+	public void setMedia(String media) {
+		this.media = media;
+	}
+
+	public String getEdition() {
+		return edition;
+	}
+
+	public void setEdition(String edition) {
+		this.edition = edition;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public ParentClass getParent() {
+		return parent;
+	}
+
+	public void setParent(ParentClass parent) {
+		this.parent = parent;
+	}
+
+	public ChildClass getChild() {
+		return child;
+	}
+
+	public void setChild(ChildClass child) {
+		this.child = child;
+	}
+
+	public SubChildClass getSubChild() {
+		return subChild;
+	}
+
+	public void setSubChild(SubChildClass subChild) {
+		this.subChild = subChild;
+	}
+
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
 }

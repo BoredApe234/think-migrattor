@@ -11,24 +11,24 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mps.think.setup.service.SubscriptionDefService;
-import com.mps.think.setup.vo.SubscriptionDefinationVO;
+import com.mps.think.setup.service.SubscriptionDefKeyInfoService;
+import com.mps.think.setup.vo.SubscriptionDefKeyInfoVO;
 
 @RestController
 @CrossOrigin
 public class SubscriptionDefinationController {
 
 	@Autowired
-	private SubscriptionDefService subscriptionDefService;
+	private SubscriptionDefKeyInfoService subscriptionDefService;
 	
 	@PostMapping("/saveSubscriptionDefination")
-	public ResponseEntity<?> saveSubscriptionDefination(@RequestBody SubscriptionDefinationVO subscriptionDefination) {
-		return ResponseEntity.ok(subscriptionDefService.createSubscriptionDefination(subscriptionDefination));
+	public ResponseEntity<?> saveSubscriptionDefination(@RequestBody SubscriptionDefKeyInfoVO subscriptionDefination) {
+		return ResponseEntity.ok(subscriptionDefService.saveSubscriptionDef(subscriptionDefination));
 	}
 	
 	@PutMapping("/updateSubscriptionDefination")
-	public ResponseEntity<?> updateSubscriptionDefination(@RequestBody SubscriptionDefinationVO subscriptionDefination) {
-		return ResponseEntity.ok(subscriptionDefService.updateSubscriptionDefination(subscriptionDefination));
+	public ResponseEntity<?> updateSubscriptionDefination(@RequestBody SubscriptionDefKeyInfoVO subscriptionDefination) {
+		return ResponseEntity.ok(subscriptionDefService.updateSubscriptionDef(subscriptionDefination));
 	}
 	
 	@GetMapping("subscriptionDefinations/{publisherId}")
@@ -36,24 +36,24 @@ public class SubscriptionDefinationController {
 		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefByPublisherId(publisherId));
 	}
 	
-	@GetMapping("/getSubscriptionDefKeyInfo/{id}")
-	public ResponseEntity<?> getSubscriptionDefKeyInfoById(@PathVariable Integer id) {
-		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefKeyInfoById(id));
-	}
-	
-	@GetMapping("/getSubscriptionItemDetails/{id}")
-	public ResponseEntity<?> getSubscriptionItemDetailsById(@PathVariable Integer id) {
-		return ResponseEntity.ok(subscriptionDefService.getSubscriptionItemDetailsById(id));
-	}
-	
-	@GetMapping("/getAllOrderCodesUnderSubDef")
-	public ResponseEntity<?> getAllSubscriptionDefRecords() {
-		return ResponseEntity.ok(subscriptionDefService.getAllOrderCodesUnderSubDef());
-	}
-	
 	@DeleteMapping("deleteSubscriptionDefination")
 	public ResponseEntity<?> deleteSubscriptionDefination(@RequestBody Integer id) {
-		return ResponseEntity.ok(subscriptionDefService.deleteSubscriptionDefinationById(id));
+		return ResponseEntity.ok(subscriptionDefService.deleteSubscriptionDef(id));
+	}
+	
+	@GetMapping("/getSubscriptionDefByParentId/{parentId}")
+	public ResponseEntity<?> getSubscriptionDefByParentId(@PathVariable("parentId") Integer parentId) {
+		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefByParentId(parentId));
+	}
+	
+	@GetMapping("/getSubscriptionDefByChildId/{childId}")
+	public ResponseEntity<?> getSubscriptionDefByChildId(@PathVariable("childId") Integer childId) {
+		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefByChildId(childId));
+	}
+	
+	@GetMapping("/getSubscriptionDefBySubChildId/{subChildId}")
+	public ResponseEntity<?> getSubscriptionDefBySubChildId(@PathVariable("subChildId") Integer subChildId) {
+		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefBySubChildId(subChildId));
 	}
 	
 }
