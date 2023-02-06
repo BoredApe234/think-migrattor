@@ -1,12 +1,9 @@
 package com.mps.think.setup.vo;
 
-import com.mps.think.setup.model.ChildClass;
 import com.mps.think.setup.model.OrderCodesSuper;
-import com.mps.think.setup.model.ParentClass;
 import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.model.RateCards;
 import com.mps.think.setup.model.RenewalCard;
-import com.mps.think.setup.model.SubChildClass;
 import com.mps.think.setup.model.Terms;
 import com.mps.think.setup.vo.EnumModelVO.SubDefStatus;
 
@@ -15,12 +12,6 @@ public class SubscriptionDefKeyInfoVO {
 	private Integer id;
 	
 	private Publisher publisher;
-
-	private ParentClass parent;
-
-	private ChildClass child;
-
-	private SubChildClass subChild;
 
 	private String subscriptionDefCode;
 
@@ -148,30 +139,6 @@ public class SubscriptionDefKeyInfoVO {
 
 	public void setCategory(String category) {
 		this.category = category;
-	}
-
-	public ParentClass getParent() {
-		return parent;
-	}
-
-	public void setParent(ParentClass parent) {
-		this.parent = parent;
-	}
-
-	public ChildClass getChild() {
-		return child;
-	}
-
-	public void setChild(ChildClass child) {
-		this.child = child;
-	}
-
-	public SubChildClass getSubChild() {
-		return subChild;
-	}
-
-	public void setSubChild(SubChildClass subChild) {
-		this.subChild = subChild;
 	}
 
 	public Publisher getPublisher() {

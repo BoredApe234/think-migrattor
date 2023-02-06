@@ -15,10 +15,5 @@ public interface SubscriptionDefKeyInfoService {
 	
 	public List<SubscriptionDefKeyInfo> getSubscriptionDefByPublisherId(Integer id);
 	
-	public List<SubscriptionDefKeyInfo> getSubscriptionDefByParentId(Integer id);
-	
-	public List<SubscriptionDefKeyInfo> getSubscriptionDefByChildId(Integer id);
-	
-	public List<SubscriptionDefKeyInfo> getSubscriptionDefBySubChildId(Integer id);
 	
 }

@@ -22,8 +22,6 @@ public class SubscriptionDefKeyInfoServiceImpl implements SubscriptionDefKeyInfo
 	public SubscriptionDefKeyInfo saveSubscriptionDef(SubscriptionDefKeyInfoVO subsDef) {
 		ObjectMapper mapper = new ObjectMapper();
 		SubscriptionDefKeyInfo subscriptionDef = mapper.convertValue(subsDef, SubscriptionDefKeyInfo.class);
-		if (subsDef.getChild() == null || subsDef.getChild().getChildId() == 0) subscriptionDef.setChild(null);
-		if (subsDef.getSubChild() == null || subsDef.getSubChild().getSubChildId() == 0) subscriptionDef.setSubChild(null);
 		subsRepo.saveAndFlush(subscriptionDef);
 		return subscriptionDef;
 	}
@@ -32,8 +30,6 @@ public class SubscriptionDefKeyInfoServiceImpl implements SubscriptionDefKeyInfo
 	public SubscriptionDefKeyInfo updateSubscriptionDef(SubscriptionDefKeyInfoVO subsDef) {
 		ObjectMapper mapper = new ObjectMapper();
 		SubscriptionDefKeyInfo subscriptionDef = mapper.convertValue(subsDef, SubscriptionDefKeyInfo.class);
-		if (subsDef.getChild() == null || subsDef.getChild().getChildId() == 0) subscriptionDef.setChild(null);
-		if (subsDef.getSubChild() == null || subsDef.getSubChild().getSubChildId() == 0) subscriptionDef.setSubChild(null);
 		subsRepo.saveAndFlush(subscriptionDef);
 		return subscriptionDef;
 	}
@@ -48,21 +44,6 @@ public class SubscriptionDefKeyInfoServiceImpl implements SubscriptionDefKeyInfo
 	@Override
 	public List<SubscriptionDefKeyInfo> getSubscriptionDefByPublisherId(Integer id) {
 		return subsRepo.findByPublisherId(id);
-	}
-
-	@Override
-	public List<SubscriptionDefKeyInfo> getSubscriptionDefByParentId(Integer id) {
-		return subsRepo.findByParentParentID(id);
-	}
-
-	@Override
-	public List<SubscriptionDefKeyInfo> getSubscriptionDefByChildId(Integer id) {
-		return subsRepo.findByChildChildId(id);
-	}
-
-	@Override
-	public List<SubscriptionDefKeyInfo> getSubscriptionDefBySubChildId(Integer id) {
-		return subsRepo.findBySubChildSubChildId(id);
 	}
 
 

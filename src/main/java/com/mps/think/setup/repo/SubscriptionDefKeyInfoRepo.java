@@ -11,11 +11,5 @@ import com.mps.think.setup.model.SubscriptionDefKeyInfo;
 public interface SubscriptionDefKeyInfoRepo extends JpaRepository<SubscriptionDefKeyInfo, Integer> {
 
 	List<SubscriptionDefKeyInfo> findByPublisherId(Integer id);
-	
-	List<SubscriptionDefKeyInfo> findByParentParentID(Integer id);
-	
-	List<SubscriptionDefKeyInfo> findByChildChildId(Integer id);
-
-	List<SubscriptionDefKeyInfo> findBySubChildSubChildId(Integer id);
 
 }

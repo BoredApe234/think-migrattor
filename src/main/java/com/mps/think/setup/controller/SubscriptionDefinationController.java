@@ -41,19 +41,4 @@ public class SubscriptionDefinationController {
 		return ResponseEntity.ok(subscriptionDefService.deleteSubscriptionDef(id));
 	}
 	
-	@GetMapping("/getSubscriptionDefByParentId/{parentId}")
-	public ResponseEntity<?> getSubscriptionDefByParentId(@PathVariable("parentId") Integer parentId) {
-		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefByParentId(parentId));
-	}
-	
-	@GetMapping("/getSubscriptionDefByChildId/{childId}")
-	public ResponseEntity<?> getSubscriptionDefByChildId(@PathVariable("childId") Integer childId) {
-		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefByChildId(childId));
-	}
-	
-	@GetMapping("/getSubscriptionDefBySubChildId/{subChildId}")
-	public ResponseEntity<?> getSubscriptionDefBySubChildId(@PathVariable("subChildId") Integer subChildId) {
-		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefBySubChildId(subChildId));
-	}
-	
 }

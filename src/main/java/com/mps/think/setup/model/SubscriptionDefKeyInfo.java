@@ -32,17 +32,6 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 	@JoinColumn(name = "publisher_id", referencedColumnName = "id")
 	private Publisher publisher;
 	
-	@ManyToOne
-	@JoinColumn(name = "parent_id")
-	private ParentClass parent;
-	
-	@ManyToOne
-	@JoinColumn(name = "child_id")
-	private ChildClass child;
-	
-	@ManyToOne
-	@JoinColumn(name = "sub_child_id", referencedColumnName = "subchild_id")
-	private SubChildClass subChild;
 	
 	@Column(name = "subs_def_code")
 	private String subscriptionDefCode;
@@ -189,29 +178,6 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 		this.category = category;
 	}
 
-	public ParentClass getParent() {
-		return parent;
-	}
-
-	public void setParent(ParentClass parent) {
-		this.parent = parent;
-	}
-
-	public ChildClass getChild() {
-		return child;
-	}
-
-	public void setChild(ChildClass child) {
-		this.child = child;
-	}
-
-	public SubChildClass getSubChild() {
-		return subChild;
-	}
-
-	public void setSubChild(SubChildClass subChild) {
-		this.subChild = subChild;
-	}
 
 	public Publisher getPublisher() {
 		return publisher;
