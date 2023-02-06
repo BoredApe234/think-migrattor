@@ -4,6 +4,7 @@ package com.mps.think.setup.vo;
 import com.mps.think.setup.model.DiscountCardKeyInfo;
 import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.OrderCodes;
+import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.model.RateCards;
 import com.mps.think.setup.model.SourceCode;
 import com.mps.think.setup.model.SubscriptionDefKeyInfo;
@@ -35,6 +36,8 @@ public class RenewalCardVO {
 	private SubscriptionDefKeyInfo subscriptionDefId;
 	
 	private OrderClass orderClassId;
+	
+	private Publisher pubId;
 
 	public Integer getRenewalCardId() {
 		return renewalCardId;
@@ -140,13 +143,24 @@ public class RenewalCardVO {
 		this.orderClassId = orderClassId;
 	}
 
+	public Publisher getPubId() {
+		return pubId;
+	}
+
+	public void setPubId(Publisher pubId) {
+		this.pubId = pubId;
+	}
+
 	@Override
 	public String toString() {
 		return "RenewalCardVO [renewalCardId=" + renewalCardId + ", description=" + description + ", renewal_card="
 				+ renewal_card + ", effortFrom=" + effortFrom + ", effortTo=" + effortTo + ", offersdescription="
 				+ offersdescription + ", discountClassId=" + discountClassId + ", orderCodeId=" + orderCodeId
 				+ ", pkgDefId=" + pkgDefId + ", rateClassId=" + rateClassId + ", sourceCodeId=" + sourceCodeId
-				+ ", subscriptionDefId=" + subscriptionDefId + ", orderClassId=" + orderClassId + "]";
+				+ ", subscriptionDefId=" + subscriptionDefId + ", orderClassId=" + orderClassId + ", pubId=" + pubId
+				+ "]";
 	}
+
+
 	
 }

@@ -66,6 +66,10 @@ public class RenewalCard extends BaseEntity{
 	@OneToOne
 	@JoinColumn(name="order_id",referencedColumnName="oc_id")
 	private OrderClass orderClassId;
+	
+	@OneToOne
+	@JoinColumn(name="pub_id",referencedColumnName="id")
+	private Publisher pubId;
 
 	public Integer getRenewalCardId() {
 		return renewalCardId;
@@ -171,14 +175,23 @@ public class RenewalCard extends BaseEntity{
 		this.orderClassId = orderClassId;
 	}
 
+	public Publisher getPubId() {
+		return pubId;
+	}
+
+	public void setPubId(Publisher pubId) {
+		this.pubId = pubId;
+	}
+
 	@Override
 	public String toString() {
 		return "RenewalCard [renewalCardId=" + renewalCardId + ", description=" + description + ", renewal_card="
 				+ renewal_card + ", effortFrom=" + effortFrom + ", effortTo=" + effortTo + ", offersdescription="
 				+ offersdescription + ", discountClassId=" + discountClassId + ", orderCodeId=" + orderCodeId
 				+ ", pkgDefId=" + pkgDefId + ", rateClassId=" + rateClassId + ", sourceCodeId=" + sourceCodeId
-				+ ", subscriptionDefId=" + subscriptionDefId + ", orderClassId=" + orderClassId + "]";
+				+ ", subscriptionDefId=" + subscriptionDefId + ", orderClassId=" + orderClassId + ", pubId=" + pubId
+				+ "]";
 	}
-	
-	
+
+
 }
