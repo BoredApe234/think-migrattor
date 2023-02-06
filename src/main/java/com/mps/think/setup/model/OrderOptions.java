@@ -61,7 +61,13 @@ public class OrderOptions extends BaseEntity {
 	private String rotation;
 	
 	@Column(name = "number_of_issues")
-	private String numOfIssues;
+	private Integer numOfIssues;
+	
+	@Column(name = "number_of_days")
+	private Integer numOfDays;
+	
+	@Column(name = "number_of_units")
+	private Integer numOfUnits;
 
 	public Integer getId() {
 		return id;
@@ -167,12 +173,28 @@ public class OrderOptions extends BaseEntity {
 		this.rotation = rotation;
 	}
 
-	public String getNumOfIssues() {
+	public Integer getNumOfIssues() {
 		return numOfIssues;
 	}
 
-	public void setNumOfIssues(String numOfIssues) {
+	public void setNumOfIssues(Integer numOfIssues) {
 		this.numOfIssues = numOfIssues;
+	}
+
+	public Integer getNumOfDays() {
+		return numOfDays;
+	}
+
+	public void setNumOfDays(Integer numOfDays) {
+		this.numOfDays = numOfDays;
+	}
+
+	public Integer getNumOfUnits() {
+		return numOfUnits;
+	}
+
+	public void setNumOfUnits(Integer numOfUnits) {
+		this.numOfUnits = numOfUnits;
 	}
 
 }

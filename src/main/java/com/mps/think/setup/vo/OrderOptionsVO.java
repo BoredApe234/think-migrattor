@@ -1,7 +1,5 @@
 package com.mps.think.setup.vo;
 
-import com.mps.think.setup.model.Publisher;
-
 public class OrderOptionsVO {
 
 	private Integer id;
@@ -32,7 +30,11 @@ public class OrderOptionsVO {
 
 	private String rotation;
 
-	private String numOfIssues;
+	private Integer numOfIssues;
+	
+	private Integer numOfDays;
+	
+	private Integer numOfUnits;
 
 	public Integer getId() {
 		return id;
@@ -138,12 +140,28 @@ public class OrderOptionsVO {
 		this.rotation = rotation;
 	}
 
-	public String getNumOfIssues() {
+	public Integer getNumOfIssues() {
 		return numOfIssues;
 	}
 
-	public void setNumOfIssues(String numOfIssues) {
+	public void setNumOfIssues(Integer numOfIssues) {
 		this.numOfIssues = numOfIssues;
+	}
+
+	public Integer getNumOfDays() {
+		return numOfDays;
+	}
+
+	public void setNumOfDays(Integer numOfDays) {
+		this.numOfDays = numOfDays;
+	}
+
+	public Integer getNumOfUnits() {
+		return numOfUnits;
+	}
+
+	public void setNumOfUnits(Integer numOfUnits) {
+		this.numOfUnits = numOfUnits;
 	}
 
 
