@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.RenewalCard;
+import com.mps.think.setup.model.SourceCode;
 import com.mps.think.setup.repo.RenewalCardRepo;
 import com.mps.think.setup.service.RenewalCardService;
 import com.mps.think.setup.vo.RenewalCardVO;
@@ -24,45 +26,52 @@ public class RenewalCardServiceImpl implements RenewalCardService {
 
 	@Override
 	public RenewalCardVO saveRenewalCard(RenewalCardVO renewalCardVO) {
-		RenewalCard data = new RenewalCard();
-		data.setRenewal_card(renewalCardVO.getRenewalCard());
-		data.setDescription(renewalCardVO.getDescription());
-		data.setEffortFrom(renewalCardVO.getEffortFrom());
-		data.setEffortTo(renewalCardVO.getEffortTo());
-		data.setOffersdescription(renewalCardVO.getOffersDescription());
-		data.setOrderCodeId(renewalCardVO.getOrderCodeId());
-		data.setSourceCodeId(renewalCardVO.getSourceCodeId());
-		data.setSubscriptionDefId(renewalCardVO.getSubscriptionDefId());
-		data.setPkgDefId(renewalCardVO.getPkgDefId());
-		data.setRateClassId(renewalCardVO.getRateClassId());
-		data.setDiscountClassId(renewalCardVO.getDiscountClassId());
-		data.setParentId(renewalCardVO.getParentId());
-		data.setChildId(renewalCardVO.getChildId());
-		data.setSubChildId(renewalCardVO.getSubChildId());
-		renewalCardRepo.saveAndFlush(data);
+//		RenewalCard data = new RenewalCard();
+//		data.setRenewal_card(renewalCardVO.getRenewalCard());
+//		data.setDescription(renewalCardVO.getDescription());
+//		data.setEffortFrom(renewalCardVO.getEffortFrom());
+//		data.setEffortTo(renewalCardVO.getEffortTo());
+//		data.setOffersdescription(renewalCardVO.getOffersDescription());
+//		data.setOrderCodeId(renewalCardVO.getOrderCodeId());
+//		data.setSourceCodeId(renewalCardVO.getSourceCodeId());
+//		data.setSubscriptionDefId(renewalCardVO.getSubscriptionDefId());
+//		data.setPkgDefId(renewalCardVO.getPkgDefId());
+//		data.setRateClassId(renewalCardVO.getRateClassId());
+//		data.setDiscountClassId(renewalCardVO.getDiscountClassId());
+//		data.setParentId(renewalCardVO.getParentId());
+//		data.setChildId(renewalCardVO.getChildId());
+//		data.setSubChildId(renewalCardVO.getSubChildId());
+//		renewalCardRepo.saveAndFlush(data);
+
+		ObjectMapper mapper = new ObjectMapper();
+		RenewalCard rcard = mapper.convertValue(renewalCardVO, RenewalCard.class);
+		RenewalCard data= renewalCardRepo.saveAndFlush(rcard);
 		renewalCardVO.setRenewalCardId(data.getRenewalCardId());
 		return renewalCardVO;
 	}
 
 	@Override
 	public RenewalCardVO updateRenewalCard(RenewalCardVO renewalCardVO) {
-		RenewalCard data = new RenewalCard();
-		data.setRenewalCardId(renewalCardVO.getRenewalCardId());
-		data.setRenewal_card(renewalCardVO.getRenewalCard());
-		data.setDescription(renewalCardVO.getDescription());
-		data.setEffortFrom(renewalCardVO.getEffortFrom());
-		data.setEffortTo(renewalCardVO.getEffortTo());
-		data.setOffersdescription(renewalCardVO.getOffersDescription());
-		data.setOrderCodeId(renewalCardVO.getOrderCodeId());
-		data.setSourceCodeId(renewalCardVO.getSourceCodeId());
-		data.setSubscriptionDefId(renewalCardVO.getSubscriptionDefId());
-		data.setPkgDefId(renewalCardVO.getPkgDefId());
-		data.setRateClassId(renewalCardVO.getRateClassId());
-		data.setDiscountClassId(renewalCardVO.getDiscountClassId());
-		data.setParentId(renewalCardVO.getParentId());
-		data.setChildId(renewalCardVO.getChildId());
-		data.setSubChildId(renewalCardVO.getSubChildId());
-		renewalCardRepo.saveAndFlush(data);
+//		RenewalCard data = new RenewalCard();
+//		data.setRenewalCardId(renewalCardVO.getRenewalCardId());
+//		data.setRenewal_card(renewalCardVO.getRenewalCard());
+//		data.setDescription(renewalCardVO.getDescription());
+//		data.setEffortFrom(renewalCardVO.getEffortFrom());
+//		data.setEffortTo(renewalCardVO.getEffortTo());
+//		data.setOffersdescription(renewalCardVO.getOffersDescription());
+//		data.setOrderCodeId(renewalCardVO.getOrderCodeId());
+//		data.setSourceCodeId(renewalCardVO.getSourceCodeId());
+//		data.setSubscriptionDefId(renewalCardVO.getSubscriptionDefId());
+//		data.setPkgDefId(renewalCardVO.getPkgDefId());
+//		data.setRateClassId(renewalCardVO.getRateClassId());
+//		data.setDiscountClassId(renewalCardVO.getDiscountClassId());
+//		data.setParentId(renewalCardVO.getParentId());
+//		data.setChildId(renewalCardVO.getChildId());
+//		data.setSubChildId(renewalCardVO.getSubChildId());
+//		renewalCardRepo.saveAndFlush(data);
+		ObjectMapper mapper = new ObjectMapper();
+		RenewalCard rcard = mapper.convertValue(renewalCardVO, RenewalCard.class);
+		renewalCardRepo.saveAndFlush(rcard);
 		return renewalCardVO;
 	}
 		
