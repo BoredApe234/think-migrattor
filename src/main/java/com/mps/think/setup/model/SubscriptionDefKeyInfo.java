@@ -30,7 +30,7 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "publisher_id", referencedColumnName = "id")
-	private Publisher publisher;
+	private Publisher publisherId;
 	
 	
 	@Column(name = "subs_def_code")
@@ -80,6 +80,14 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Publisher getPublisherId() {
+		return publisherId;
+	}
+
+	public void setPublisherId(Publisher publisherId) {
+		this.publisherId = publisherId;
 	}
 
 	public String getSubscriptionDefCode() {
@@ -178,15 +186,16 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 		this.category = category;
 	}
 
-
-	public Publisher getPublisher() {
-		return publisher;
+	@Override
+	public String toString() {
+		return "SubscriptionDefKeyInfo [id=" + id + ", publisherId=" + publisherId + ", subscriptionDefCode="
+				+ subscriptionDefCode + ", description=" + description + ", orderCode=" + orderCode + ", term=" + term
+				+ ", subDefStatus=" + subDefStatus + ", subDefId=" + subDefId + ", rateCard=" + rateCard
+				+ ", renewalCard=" + renewalCard + ", orderCodeType=" + orderCodeType + ", media=" + media
+				+ ", edition=" + edition + ", category=" + category + "]";
 	}
 
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
-	}
-
+	
 	
 	
 }

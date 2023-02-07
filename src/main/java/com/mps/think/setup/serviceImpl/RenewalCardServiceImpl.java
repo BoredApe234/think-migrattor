@@ -48,6 +48,9 @@ public class RenewalCardServiceImpl implements RenewalCardService {
 		if(renewalCardVO.getDiscountClassId().getId()==0){
 			rcard.setDiscountClassId(null);;
 		}
+		if(renewalCardVO.getSubscriptionDefId().getId()==0){
+			rcard.setSubscriptionDefId(null);
+		}
 		RenewalCard data= renewalCardRepo.saveAndFlush(rcard);
 		renewalCardVO.setRenewalCardId(data.getRenewalCardId());
 		return renewalCardVO;
