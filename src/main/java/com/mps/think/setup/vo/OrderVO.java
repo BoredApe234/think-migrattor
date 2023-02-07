@@ -10,9 +10,9 @@ public class OrderVO {
 	
 	private Integer orderId;
 	
-	private CustomerDetails customerId;
+	private CustomerDetailsVO customerId;
 	
-	private OrderClass orderClass;
+	private OrderClassVO orderClass;
 	
 	private String orderType;
 	
@@ -38,11 +38,11 @@ public class OrderVO {
 		this.orderId = orderId;
 	}
 
-	public CustomerDetails getCustomerId() {
+	public CustomerDetailsVO getCustomerId() {
 		return customerId;
 	}
 
-	public void setCustomerId(CustomerDetails customerId) {
+	public void setCustomerId(CustomerDetailsVO customerId) {
 		this.customerId = customerId;
 	}
 
@@ -110,14 +110,13 @@ public class OrderVO {
 		this.orderType = orderType;
 	}
 
-	public OrderClass getOrderClass() {
+	public OrderClassVO getOrderClass() {
 		return orderClass;
 	}
 
-	public void setOrderClass(OrderClass orderClass) {
+	public void setOrderClass(OrderClassVO orderClass) {
 		this.orderClass = orderClass;
 	}
-
 
 
 }

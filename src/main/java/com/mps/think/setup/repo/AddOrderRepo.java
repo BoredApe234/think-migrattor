@@ -32,4 +32,14 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 											  @Param("customerId") Integer customerId, 
 											  @Param("customerName") String customerName, Pageable page);
 	
+	@Query("SELECT DISTINCT o FROM Order o JOIN o.orderAddresses oa JOIN oa.address oadd JOIN o.customerId cusDet JOIN o.keyOrderInformation keyInfo "
+			+ "JOIN keyInfo.orderCode kioc JOIN kioc.orderCodes ordCod JOIN keyInfo.sourceCode srcCod "
+			+ "WHERE (ordCod.orderCode LIKE '%'||:keyword||'%') OR (srcCod.sourceCode LIKE '%'||:keyword||'%') OR "
+			+ "(CONCAT(keyInfo.orderStatus, ' ', keyInfo.orderCategory, ' ', keyInfo.agent, ' ', keyInfo.purchaseOrder) LIKE '%'||:keyword||'%') OR "
+			+ "(keyInfo.agentReferenceNum LIKE '%'||:keyword||'%') OR "
+			+ "CONCAT(oadd.addressName, ' ', oadd.name, ' ', oadd.addressLine1, ' ', oadd.addressLine2, ' ', oadd.zipCode, ' ', oadd.city, ' ', "
+			+ "oadd.state, ' ', oadd.country, ' ', oadd.countryCode, ' ', oadd.phone) LIKE '%'||:keyword||'%' OR "
+			+ "CONCAT(o.orderId, ' ', o.orderStatus, ' ', o.orderType) LIKE '%'||:keyword||'%'")
+	public Page<Order> findOrdersBySearch(@Param("keyword") String keyword, Pageable page);
+	
 }

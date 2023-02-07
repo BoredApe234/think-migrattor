@@ -2,6 +2,8 @@ package com.mps.think.setup.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.Order;
@@ -17,4 +19,6 @@ public interface AddOrderService {
 	public Order updateOrder(OrderVO order) throws Exception;
 	public List<Order> getAllOrdersByOrderClassId(Integer ocId) throws Exception;
 
+	public Page<Order> getSearchedOrders(String keyword, Pageable page);
+	
 }

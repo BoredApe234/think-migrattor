@@ -29,7 +29,7 @@ public class OrderClassVO {
 	
 	private String upsellOn;
 	
-	private Integer parentId;
+//	private Integer parentId;
 	
 	private Publisher pubId;
 
@@ -129,13 +129,13 @@ public class OrderClassVO {
 		this.upsellOn = upsellOn;
 	}
 
-	public Integer getParentId() {
-		return parentId;
-	}
-
-	public void setParentId(Integer parentId) {
-		this.parentId = parentId;
-	}
+//	public Integer getParentId() {
+//		return parentId;
+//	}
+//
+//	public void setParentId(Integer parentId) {
+//		this.parentId = parentId;
+//	}
 
 	public Publisher getPubId() {
 		return pubId;
@@ -144,16 +144,5 @@ public class OrderClassVO {
 	public void setPubId(Publisher pubId) {
 		this.pubId = pubId;
 	}
-
-	@Override
-	public String toString() {
-		return "OrderClassVO [ocId=" + ocId + ", orderClassName=" + orderClassName + ", ocType=" + ocType
-				+ ", disallowInstallBilling=" + disallowInstallBilling + ", doCancelCreditOnCancel="
-				+ doCancelCreditOnCancel + ", lowSampleStock=" + lowSampleStock + ", lowStock=" + lowStock
-				+ ", newGroupMemberAction=" + newGroupMemberAction + ", postConversionReconcile="
-				+ postConversionReconcile + ", sampleIssueSelection=" + sampleIssueSelection + ", trackInven="
-				+ trackInven + ", upsellOn=" + upsellOn + ", parentId=" + parentId + ", pubId=" + pubId + "]";
-	}
-
 	
 }
