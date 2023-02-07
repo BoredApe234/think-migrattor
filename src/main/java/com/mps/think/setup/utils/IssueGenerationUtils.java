@@ -3,6 +3,7 @@ package com.mps.think.setup.utils;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -155,29 +156,41 @@ public class IssueGenerationUtils {
 		}
 	}
 
-	public static ArrayList<String> dayOfTheYear(Integer[] arr, int issue) {
-		// int issue = 20;
-		// int[] daysOfYear = { 40, 90, 150, 240, 330 };
-		ArrayList<String> list=new ArrayList<>();
-		LocalDate now = LocalDate.now();
+	public static ArrayList<String> dayOfTheYear(Integer[] arr, int issue, String changeDate) {
+		boolean status=false;
+		String[] str = changeDate.split("-");
+		int startYear = Integer.valueOf(str[2]);
+		int currentMonth = Integer.valueOf(str[1]);
+		int currentDate = Integer.valueOf(str[0]);
+		LocalDate startDate = LocalDate.of(startYear, 1, 1);
+		LocalDate now = LocalDate.of(startYear, currentMonth, currentDate);
+		long daysBetween = ChronoUnit.DAYS.between(startDate, now);
+		System.out.println("no of days ::" + daysBetween);
+
+		ArrayList<String> list = new ArrayList<>();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		int year = now.getYear();
 		while (issue > 0) {
 			for (int day : arr) {
-				LocalDate date = LocalDate.ofYearDay(year, day);
-				if (date.isBefore(now)) {
-					date = date.plusYears(1);
+				if (day > daysBetween || status) {
+					LocalDate date = LocalDate.ofYearDay(year, day);
+					if (date.isBefore(now)) {
+						date = date.plusYears(1);
+					}
+					issue = issue - 1;
+					list.add(date.format(formatter));
+					System.out.println(date.format(formatter));
+					if (issue == 0) {
+						break;
+					}
+					
 				}
-				issue = issue - 1;
-				list.add(date.format(formatter));
-				System.out.println(date.format(formatter));
-				if (issue == 0) {
-					break;
-				}
+				
 			}
 			year++;
+			status=true;
 		}
-		System.out.println("@@@@ : "+list);
+		System.out.println("@@@@ : " + list);
 		return list;
 
 	}
@@ -188,9 +201,9 @@ public class IssueGenerationUtils {
 
 		// monthOfTheYear();
 		// dayOfTheWeek();
-		// dayOfTheMonth();
-//		Integer[] daysOfYear = { 40, 90, 150, 240, 330 };
-//		dayOfTheYear(daysOfYear, 20);
+//		 dayOfTheMonth();
+//		Integer[] daysOfYear = { 40, 41, 150, 240, 330 };
+//		dayOfTheYear(daysOfYear, 20, "07-03-2023");
 
 	}
 
