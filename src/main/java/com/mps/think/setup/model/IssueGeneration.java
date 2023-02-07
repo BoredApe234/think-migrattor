@@ -36,7 +36,7 @@ public class IssueGeneration extends BaseEntity {
 	private String orderType;
 
 	@Column(name = "issues_appear_on_every")
-	private String IssuesAppearonEvery;
+	private Integer[] IssuesAppearonEvery;
 
 	@OneToOne
 	@JoinColumn(name = "oder_codeId", referencedColumnName = "id")
@@ -143,11 +143,11 @@ public class IssueGeneration extends BaseEntity {
 		this.orderType = orderType;
 	}
 
-	public String getIssuesAppearonEvery() {
+	public Integer[] getIssuesAppearonEvery() {
 		return IssuesAppearonEvery;
 	}
 
-	public void setIssuesAppearonEvery(String issuesAppearonEvery) {
+	public void setIssuesAppearonEvery(Integer[] issuesAppearonEvery) {
 		IssuesAppearonEvery = issuesAppearonEvery;
 	}
 
