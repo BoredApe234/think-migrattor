@@ -12,7 +12,7 @@ import com.mps.think.setup.vo.EnumModelVO.SubDefStatus;
 public class SubscriptionDefKeyInfoVO {
 
 	private Integer id;
-
+  
 	private Publisher publisher;
 
 	private OrderClass orderClass;
@@ -170,7 +170,4 @@ public class SubscriptionDefKeyInfoVO {
 	public void setRenewalCard(String renewalCard) {
 		this.renewalCard = renewalCard;
 	}
-
-	
-	
 }

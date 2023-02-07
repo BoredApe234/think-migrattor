@@ -14,7 +14,7 @@ public class IssueGenerationVo {
 
 	private String orderType;
 
-	private String IssuesAppearonEvery;
+	private Integer[] IssuesAppearonEvery;
 
 	private OrderCodesVO oderCodeVo;
 
@@ -96,11 +96,11 @@ public class IssueGenerationVo {
 		this.orderType = orderType;
 	}
 
-	public String getIssuesAppearonEvery() {
+	public Integer[] getIssuesAppearonEvery() {
 		return IssuesAppearonEvery;
 	}
 
-	public void setIssuesAppearonEvery(String issuesAppearonEvery) {
+	public void setIssuesAppearonEvery(Integer[] issuesAppearonEvery) {
 		IssuesAppearonEvery = issuesAppearonEvery;
 	}
 

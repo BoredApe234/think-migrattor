@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -43,30 +44,30 @@ public class RenewalCard extends BaseEntity{
 	@JoinColumn(name="discount_class_id",referencedColumnName="id")
 	private DiscountCardKeyInfo discountClassId;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="order_code_id",referencedColumnName="id")
 	private OrderCodes orderCodeId;
 	
 	@Column(name = "pkg_def_id")
 	private  String pkgDefId;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="rate_class_id",referencedColumnName="rcId")
 	private RateCards rateClassId;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="source_code_id",referencedColumnName="sourc_code_id")
 	private SourceCode sourceCodeId;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="subscription_def_id",referencedColumnName="id")
 	private SubscriptionDefKeyInfo subscriptionDefId;
 	
-	@OneToOne
-	@JoinColumn(name="order_id",referencedColumnName="oc_id")
+	@ManyToOne
+	@JoinColumn(name="order_class_id",referencedColumnName="oc_id")
 	private OrderClass orderClassId;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name="pub_id",referencedColumnName="id")
 	private Publisher pubId;
 

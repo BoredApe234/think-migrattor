@@ -37,8 +37,8 @@ public class IssueGenerationController {
 	}
 	
 	@PostMapping("/generateIssue")
-	public ResponseEntity<?> generateIssueGenerationVo(@RequestBody IssueGenerationVo issueGenerationVo, int ocId) {
-		return ResponseEntity.ok(issueGenerationServiceImpl.generateIssueGenerationVo(issueGenerationVo,ocId));
+	public ResponseEntity<?> generateIssueGenerationVo(@RequestBody IssueGenerationVo issueGenerationVo) {
+		return ResponseEntity.ok(issueGenerationServiceImpl.generateIssueGenerationVo(issueGenerationVo));
 	}
 
 	@PostMapping("/updateIssueGeneration")
