@@ -22,6 +22,9 @@ public class SubscriptionDefKeyInfoServiceImpl implements SubscriptionDefKeyInfo
 	public SubscriptionDefKeyInfo saveSubscriptionDef(SubscriptionDefKeyInfoVO subsDef) {
 		ObjectMapper mapper = new ObjectMapper();
 		SubscriptionDefKeyInfo subscriptionDef = mapper.convertValue(subsDef, SubscriptionDefKeyInfo.class);
+//		if (subsDef.getRenewalCard() == null || subsDef.getRenewalCard().getRenewalCardId() == 0) {
+//			subscriptionDef.setRenewalCard(null);
+//		}
 		subsRepo.saveAndFlush(subscriptionDef);
 		return subscriptionDef;
 	}
@@ -30,6 +33,9 @@ public class SubscriptionDefKeyInfoServiceImpl implements SubscriptionDefKeyInfo
 	public SubscriptionDefKeyInfo updateSubscriptionDef(SubscriptionDefKeyInfoVO subsDef) {
 		ObjectMapper mapper = new ObjectMapper();
 		SubscriptionDefKeyInfo subscriptionDef = mapper.convertValue(subsDef, SubscriptionDefKeyInfo.class);
+//		if (subsDef.getRenewalCard() == null || subsDef.getRenewalCard().getRenewalCardId() == 0) {
+//			subscriptionDef.setRenewalCard(null);
+//		}
 		subsRepo.saveAndFlush(subscriptionDef);
 		return subscriptionDef;
 	}
@@ -44,6 +50,25 @@ public class SubscriptionDefKeyInfoServiceImpl implements SubscriptionDefKeyInfo
 	@Override
 	public List<SubscriptionDefKeyInfo> getSubscriptionDefByPublisherId(Integer id) {
 		return subsRepo.findByPublisherId(id);
+	}
+
+	@Override
+	public List<SubscriptionDefKeyInfo> getSubscriptionDefByOcId(Integer id) {
+		return subsRepo.findByOrderClassOcId(id);
+	}
+
+	@Override
+	public List<SubscriptionDefKeyInfo> getAllSubscriptionDef() {
+		return subsRepo.findAll();
+	}
+
+	@Override
+	public SubscriptionDefKeyInfo getSubscriptionDefById(Integer id) {
+		Optional<SubscriptionDefKeyInfo> subsDef = subsRepo.findById(id);
+		if(subsDef.isPresent()) {
+			return subsDef.get();
+		}
+		return null;
 	}
 
 

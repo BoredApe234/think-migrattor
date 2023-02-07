@@ -1,5 +1,7 @@
 package com.mps.think.setup.vo;
 
+
+import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.model.RateCards;
@@ -10,8 +12,10 @@ import com.mps.think.setup.vo.EnumModelVO.SubDefStatus;
 public class SubscriptionDefKeyInfoVO {
 
 	private Integer id;
-	
+
 	private Publisher publisher;
+
+	private OrderClass orderClass;
 
 	private String subscriptionDefCode;
 
@@ -27,7 +31,9 @@ public class SubscriptionDefKeyInfoVO {
 
 	private RateCards rateCard;
 
-	private RenewalCard renewalCard;
+//	private RenewalCard renewalCard;
+	
+	private String renewalCard;
 
 	private String orderCodeType;
 
@@ -43,6 +49,22 @@ public class SubscriptionDefKeyInfoVO {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
 	}
 
 	public String getSubscriptionDefCode() {
@@ -101,13 +123,13 @@ public class SubscriptionDefKeyInfoVO {
 		this.rateCard = rateCard;
 	}
 
-	public RenewalCard getRenewalCard() {
-		return renewalCard;
-	}
-
-	public void setRenewalCard(RenewalCard renewalCard) {
-		this.renewalCard = renewalCard;
-	}
+//	public RenewalCard getRenewalCard() {
+//		return renewalCard;
+//	}
+//
+//	public void setRenewalCard(RenewalCard renewalCard) {
+//		this.renewalCard = renewalCard;
+//	}
 
 	public String getOrderCodeType() {
 		return orderCodeType;
@@ -141,12 +163,14 @@ public class SubscriptionDefKeyInfoVO {
 		this.category = category;
 	}
 
-	public Publisher getPublisher() {
-		return publisher;
+	public String getRenewalCard() {
+		return renewalCard;
 	}
 
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
+	public void setRenewalCard(String renewalCard) {
+		this.renewalCard = renewalCard;
 	}
 
+	
+	
 }

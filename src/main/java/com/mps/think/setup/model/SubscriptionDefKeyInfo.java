@@ -32,6 +32,9 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 	@JoinColumn(name = "publisher_id", referencedColumnName = "id")
 	private Publisher publisher;
 	
+	@ManyToOne
+	@JoinColumn(name = "order_class_id", referencedColumnName = "oc_id")
+	private OrderClass orderClass; 
 	
 	@Column(name = "subs_def_code")
 	private String subscriptionDefCode;
@@ -58,9 +61,12 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 	@JoinColumn(name = "rate_card_id", referencedColumnName = "rcId")
 	private RateCards rateCard;
 	
-	@OneToOne
-	@JoinColumn(name = "renewal_card_id")
-	private RenewalCard renewalCard;
+//	@OneToOne
+//	@JoinColumn(name = "renewal_card_id")
+//	private RenewalCard renewalCard;
+	
+	@Column(name = "renewal_card")
+	private String renewalCard;
 	
 	@Column(name = "order_code_type")
 	private String orderCodeType;
@@ -80,6 +86,22 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
 	}
 
 	public String getSubscriptionDefCode() {
@@ -138,13 +160,13 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 		this.rateCard = rateCard;
 	}
 
-	public RenewalCard getRenewalCard() {
-		return renewalCard;
-	}
-
-	public void setRenewalCard(RenewalCard renewalCard) {
-		this.renewalCard = renewalCard;
-	}
+//	public RenewalCard getRenewalCard() {
+//		return renewalCard;
+//	}
+//
+//	public void setRenewalCard(RenewalCard renewalCard) {
+//		this.renewalCard = renewalCard;
+//	}
 
 	public String getOrderCodeType() {
 		return orderCodeType;
@@ -178,15 +200,13 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 		this.category = category;
 	}
 
-
-	public Publisher getPublisher() {
-		return publisher;
+	public String getRenewalCard() {
+		return renewalCard;
 	}
 
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
+	public void setRenewalCard(String renewalCard) {
+		this.renewalCard = renewalCard;
 	}
 
-	
 	
 }
