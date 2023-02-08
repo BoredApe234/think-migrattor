@@ -51,9 +51,9 @@ public class DiscountCardController {
 		return ResponseEntity.ok(discountCardKeyInfoService.deleteDiscountCardById(id));
 	}
 	
-	@GetMapping("/getAllDiscountCardInfoForParent/{parentId}")
-	public ResponseEntity<?> getAllDiscountCardInfoForParent(@PathVariable("parentId") Integer parentId) {
-		return ResponseEntity.ok(discountCardKeyInfoService.getAllDiscountCardKeyInfoForParent(parentId));
+	@GetMapping("/getAllDiscountCardInfoForOrderClass/{ocId}")
+	public ResponseEntity<?> getAllDiscountCardInfoForParent(@PathVariable("ocId") Integer ocId) {
+		return ResponseEntity.ok(discountCardKeyInfoService.getDiscountCardKeyInfosForOrderClass(ocId));
 	}
 	
 	@DeleteMapping("/deleteEffectiveDatesForDiscountById")

@@ -1,14 +1,17 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.Publisher;
 
 public class DiscountCardKeyInfoVO {
 
 	private Integer id;
 
-	private Integer orderClassId;
-
-	private Integer parentId;
+//	private Integer orderClassId;
+//
+//	private Integer parentId;
+	
+	private OrderClass orderClass;
 
 	private String discountCard;
 
@@ -26,21 +29,21 @@ public class DiscountCardKeyInfoVO {
 		this.id = id;
 	}
 
-	public Integer getOrderClassId() {
-		return orderClassId;
-	}
-
-	public void setOrderClassId(Integer orderClassId) {
-		this.orderClassId = orderClassId;
-	}
-
-	public Integer getParentId() {
-		return parentId;
-	}
-
-	public void setParentId(Integer parentId) {
-		this.parentId = parentId;
-	}
+//	public Integer getOrderClassId() {
+//		return orderClassId;
+//	}
+//
+//	public void setOrderClassId(Integer orderClassId) {
+//		this.orderClassId = orderClassId;
+//	}
+//
+//	public Integer getParentId() {
+//		return parentId;
+//	}
+//
+//	public void setParentId(Integer parentId) {
+//		this.parentId = parentId;
+//	}
 
 	public String getDiscountCard() {
 		return discountCard;
@@ -72,6 +75,14 @@ public class DiscountCardKeyInfoVO {
 
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
+	}
+
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
 	}
 
 }
