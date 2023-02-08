@@ -17,4 +17,8 @@ public interface DiscountCardKeyInfoService {
 	
 	List<DiscountCardKeyInfo> getDiscountCardKeyInfosForOrderClass(Integer ocId);
 	
+	List<DiscountCardKeyInfo> getAllDiscountCards();
+	
+	DiscountCardKeyInfo getDiscountCardKeyInfoById(Integer id);
+	
 }

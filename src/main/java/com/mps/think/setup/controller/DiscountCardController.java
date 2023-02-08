@@ -66,4 +66,24 @@ public class DiscountCardController {
 		return ResponseEntity.ok(effectiveDatesForDiscountService.getEffectiveDatesForDiscountCard(discountCardId));
 	}
 	
+	@GetMapping("/getAllDiscountCards")
+	public ResponseEntity<?> getAllDiscountCards() {
+		return ResponseEntity.ok(discountCardKeyInfoService.getAllDiscountCards());
+	}
+	
+	@GetMapping("/getDiscountCardById/{id}")
+	public ResponseEntity<?> getDiscountCardById(@PathVariable("id") Integer id) {
+		return ResponseEntity.ok(discountCardKeyInfoService.getDiscountCardKeyInfoById(id));
+	}
+	
+	@GetMapping("/getAllEffectiveDates")
+	public ResponseEntity<?> getAllEffectiveDates() {
+		return ResponseEntity.ok(effectiveDatesForDiscountService.getAllEffectiveDates());
+	}
+	
+	@GetMapping("/getEffectiveDateById/{id}")
+	public ResponseEntity<?> getEffectiveDateById(@PathVariable("id") Integer id) {
+		return ResponseEntity.ok(effectiveDatesForDiscountService.getEffectiveDateById(id));
+	}
+	
 }
