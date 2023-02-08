@@ -197,8 +197,23 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		} else {
 			seq = findMaxSeqIssue();
 		}
-		ArrayList<String> generateDate = IssueGenerationUtils.dayOfTheYear(issueGeneration.getIssuesAppearonEvery(),
-				issueGeneration.getNumberOfIssue(),issueGeneration.getChangeDate());
+		ArrayList<String> generateDate = null;
+		if (issueSettingData.getFrequencyOfGeneration().equals("Day")) {
+		 generateDate = IssueGenerationUtils.everyday(issueGeneration.getNumberOfIssue(),
+				issueGeneration.getChangeDate());
+		}
+		if (issueSettingData.getFrequencyOfGeneration().equals("Week")) {
+		 generateDate = IssueGenerationUtils.everyweek(issueGeneration.getNumberOfIssue(),issueGeneration.getIssuesAppearonEvery(),
+				issueGeneration.getChangeDate());
+		}
+		if (issueSettingData.getFrequencyOfGeneration().equals("Month")) {
+		 generateDate = IssueGenerationUtils.everyMonth(issueGeneration.getNumberOfIssue(),issueGeneration.getIssuesAppearonEvery(),
+				issueGeneration.getChangeDate());
+		}
+		if (issueSettingData.getFrequencyOfGeneration().equals("Year")) {
+//		generateDate = IssueGenerationUtils.everyYear(issueGeneration.getNumberOfIssue(),issueGeneration.getIssuesAppearonEvery(),
+//				issueGeneration.getChangeDate());
+		}
 		for (int i = 0; i < generateDate.size(); i++) {
 			seq = seq + 1;
 			IssueGeneration issue = new IssueGeneration();
