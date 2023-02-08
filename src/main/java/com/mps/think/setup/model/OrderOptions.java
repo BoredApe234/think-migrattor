@@ -69,6 +69,9 @@ public class OrderOptions extends BaseEntity {
 	@Column(name = "number_of_units")
 	private Integer numOfUnits;
 
+	@Column(name = "unit_type")
+	private String unitType;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -195,6 +198,14 @@ public class OrderOptions extends BaseEntity {
 
 	public void setNumOfUnits(Integer numOfUnits) {
 		this.numOfUnits = numOfUnits;
+	}
+
+	public String getUnitType() {
+		return unitType;
+	}
+
+	public void setUnitType(String unitType) {
+		this.unitType = unitType;
 	}
 
 }

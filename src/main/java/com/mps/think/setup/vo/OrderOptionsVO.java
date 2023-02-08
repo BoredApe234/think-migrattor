@@ -35,6 +35,8 @@ public class OrderOptionsVO {
 	private Integer numOfDays;
 	
 	private Integer numOfUnits;
+	
+	private String unitType;
 
 	public Integer getId() {
 		return id;
@@ -162,6 +164,14 @@ public class OrderOptionsVO {
 
 	public void setNumOfUnits(Integer numOfUnits) {
 		this.numOfUnits = numOfUnits;
+	}
+
+	public String getUnitType() {
+		return unitType;
+	}
+
+	public void setUnitType(String unitType) {
+		this.unitType = unitType;
 	}
 
 
