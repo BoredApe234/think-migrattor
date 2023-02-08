@@ -27,9 +27,9 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 			+ "cadd.zipCode LIKE '%'||:search||'%' OR "
 			+ "cd.customerId LIKE '%'||:search||'%' OR "
 			+ "cd.fax LIKE '%'||:search||'%' OR "
-			+ "cd.institutionalId LIKE '%'||:search||'%' OR "
-			+ "cd.parentInstitutionalId LIKE '%'||:search||'%' OR "
-			+ "CONCAT(cd.fname, ' ', cd.lname, ' ', cd.company, ' ', cd.department, ' ', cd.email, ' ' ,cd.initialName, ' ',cd.suffix, ' ', cd.countryCode, ' ', cd.primaryPhone, ' ', cd.mobileNumber, ' ', cd.taxId, ' ', cd.secondaryEmail, ' ',cd.secondaryPhone, ' ',cd. listRental, ' ', cd.salesRepresentative, ' ', cd.creditStatus, ' ', cd.fax, ' ',cd.newOrderCommission, ' ', cd.renewalCommission, ' ',cd.paymentThreshold, ' ',cd.custAuxFieldJSON) LIKE '%'||:search||'%'")
+			+ "(cd.institutionalId LIKE '%'||:search||'%') OR "
+			+ "(cd.parentInstitutionalId LIKE '%'||:search||'%') OR "
+			+ "CONCAT(cd.fname, ' ', cd.lname, ' ', cd.company, ' ', cd.department, ' ', cd.email, ' ' ,cd.initialName, ' ',cd.suffix, ' ', cd.countryCode, ' ', cd.primaryPhone, ' ', cd.mobileNumber, ' ', cd.taxId, ' ', cd.secondaryEmail, ' ',cd.secondaryPhone, ' ',cd.listRental, ' ', cd.salesRepresentative, ' ', cd.creditStatus, ' ', cd.fax, ' ',cd.newOrderCommission, ' ', cd.renewalCommission, ' ',cd.paymentThreshold, ' ',cd.custAuxFieldJSON) LIKE '%'||:search||'%'")
 	public Page<CustomerDetails> getAllCustomerDetailsForSearchSingle(@Param("search") String search, Pageable page);
 
 }
