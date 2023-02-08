@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -23,11 +24,15 @@ public class DiscountCardKeyInfo extends BaseEntity {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "order_class_id")
-	private Integer orderClassId;
+//	@Column(name = "order_class_id")
+//	private Integer orderClassId;
 	
-	@Column(name = "parent_id")
-	private Integer parentId;
+//	@Column(name = "parent_id")
+//	private Integer parentId;
+	
+	@ManyToOne
+	@JoinColumn(name = "order_cls_id", referencedColumnName = "oc_id")
+	private OrderClass orderClass;
 	
 	@Column(name = "discount_card")
 	private String discountCard;
@@ -50,21 +55,21 @@ public class DiscountCardKeyInfo extends BaseEntity {
 		this.id = id;
 	}
 
-	public Integer getOrderClassId() {
-		return orderClassId;
-	}
+//	public Integer getOrderClassId() {
+//		return orderClassId;
+//	}
+//
+//	public void setOrderClassId(Integer orderClassId) {
+//		this.orderClassId = orderClassId;
+//	}
 
-	public void setOrderClassId(Integer orderClassId) {
-		this.orderClassId = orderClassId;
-	}
-
-	public Integer getParentId() {
-		return parentId;
-	}
-
-	public void setParentId(Integer parentId) {
-		this.parentId = parentId;
-	}
+//	public Integer getParentId() {
+//		return parentId;
+//	}
+//
+//	public void setParentId(Integer parentId) {
+//		this.parentId = parentId;
+//	}
 
 	public String getDiscountCard() {
 		return discountCard;
@@ -96,6 +101,14 @@ public class DiscountCardKeyInfo extends BaseEntity {
 
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
+	}
+
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
 	}
 	
 }
