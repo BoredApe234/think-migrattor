@@ -25,8 +25,7 @@ public class SubscriptionDefKeyInfoServiceImpl implements SubscriptionDefKeyInfo
 //		if (subsDef.getRenewalCard() == null || subsDef.getRenewalCard().getRenewalCardId() == 0) {
 //			subscriptionDef.setRenewalCard(null);
 //		}
-		subsRepo.saveAndFlush(subscriptionDef);
-		return subscriptionDef;
+		return subsRepo.saveAndFlush(subscriptionDef);
 	}
 
 	@Override
@@ -36,8 +35,7 @@ public class SubscriptionDefKeyInfoServiceImpl implements SubscriptionDefKeyInfo
 //		if (subsDef.getRenewalCard() == null || subsDef.getRenewalCard().getRenewalCardId() == 0) {
 //			subscriptionDef.setRenewalCard(null);
 //		}
-		subsRepo.saveAndFlush(subscriptionDef);
-		return subscriptionDef;
+		return subsRepo.saveAndFlush(subscriptionDef);
 	}
 
 	@Override

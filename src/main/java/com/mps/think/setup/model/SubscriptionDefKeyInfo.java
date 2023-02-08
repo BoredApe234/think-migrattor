@@ -30,7 +30,7 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "publisher_id", referencedColumnName = "id")
-	private Publisher publisherId;
+	private Publisher publisher;
 	
 	@ManyToOne
 	@JoinColumn(name = "order_class_id", referencedColumnName = "oc_id")
