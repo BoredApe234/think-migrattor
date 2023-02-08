@@ -27,6 +27,17 @@ public class OrderClassServiceImpl implements OrderClassService{
 		Publisher pub=new Publisher();
 		pub.setId(orderClassVO.getPubId().getId());
 		data.setPubId(pub);
+		data.setOrderClassName(orderClassVO.getOrderClassName());
+		data.setOcType(orderClassVO.getOcType());
+		data.setDisallowInstallBilling(orderClassVO.getDisallowInstallBilling());
+		data.setDoCancelCreditOnCancel(orderClassVO.getDoCancelCreditOnCancel());
+		data.setLowSampleStock(orderClassVO.getLowSampleStock());
+		data.setLowStock(orderClassVO.getLowStock());
+		data.setNewGroupMemberAction(orderClassVO.getNewGroupMemberAction());
+		data.setPostConversionReconcile(orderClassVO.getPostConversionReconcile());
+		data.setSampleIssueSelection(orderClassVO.getSampleIssueSelection());
+		data.setTrackInven(orderClassVO.getTrackInven());
+		data.setUpsellOn(orderClassVO.getUpsellOn());
 		orderClassRepo.saveAndFlush(data);
 		orderClassVO.setOcId(data.getOcId());
 		return orderClassVO;
@@ -39,6 +50,17 @@ public class OrderClassServiceImpl implements OrderClassService{
 		Publisher pub=new Publisher();
 		pub.setId(orderClassVO.getPubId().getId());
 		data.setPubId(pub);
+		data.setOrderClassName(orderClassVO.getOrderClassName());
+		data.setOcType(orderClassVO.getOcType());
+		data.setDisallowInstallBilling(orderClassVO.getDisallowInstallBilling());
+		data.setDoCancelCreditOnCancel(orderClassVO.getDoCancelCreditOnCancel());
+		data.setLowSampleStock(orderClassVO.getLowSampleStock());
+		data.setLowStock(orderClassVO.getLowStock());
+		data.setNewGroupMemberAction(orderClassVO.getNewGroupMemberAction());
+		data.setPostConversionReconcile(orderClassVO.getPostConversionReconcile());
+		data.setSampleIssueSelection(orderClassVO.getSampleIssueSelection());
+		data.setTrackInven(orderClassVO.getTrackInven());
+		data.setUpsellOn(orderClassVO.getUpsellOn());
 		orderClassRepo.saveAndFlush(data);
 		return orderClassVO;
 	}

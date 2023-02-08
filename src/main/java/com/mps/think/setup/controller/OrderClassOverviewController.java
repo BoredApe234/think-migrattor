@@ -31,11 +31,6 @@ public class OrderClassOverviewController {
 		return ResponseEntity.ok(orderClassOverviewService.updateOrderClassOverview(overview));
 	}
 	
-	@GetMapping("/getAllOrderClassOverviewByParentId/{parentId}")
-	public ResponseEntity<?> getAllOrderClassOverviewByParentId(@PathVariable("parentId") Integer parentId) {
-		return ResponseEntity.ok(orderClassOverviewService.getAllOrderClassOverviewByParentId(parentId));
-	}
-	
 	@DeleteMapping("/deleteOrderClassOverviewById")
 	public ResponseEntity<?> deleteOrderClassOverviewById(@RequestBody Integer id) {
 		return ResponseEntity.ok(orderClassOverviewService.deleteOrderClassOverviewById(id));
@@ -49,16 +44,6 @@ public class OrderClassOverviewController {
 	@GetMapping("/findOrderClassOverviewByPubId/{pubId}")
 	public ResponseEntity<?> findOrderClassOverviewByPubId(@PathVariable("pubId") Integer pubId) {
 		return ResponseEntity.ok(orderClassOverviewService.getAllOrderClassOverviewByPubId(pubId));
-	}
-	
-	@GetMapping("/findOrderClassOverviewByChildId/{childId}")
-	public ResponseEntity<?> findOrderClassOverviewByChildId(@PathVariable("childId") Integer childId) {
-		return ResponseEntity.ok(orderClassOverviewService.getAllOrderClassOverviewByChildId(childId));
-	}
-	
-	@GetMapping("/findOrderClassOverviewBySubChildId/{subChildId}")
-	public ResponseEntity<?> findOrderClassOverviewBySubChildId(@PathVariable("subChildId") Integer subChildId) {
-		return ResponseEntity.ok(orderClassOverviewService.getAllOrderClassOverviewBySubChildId(subChildId));
 	}
 	
 	@GetMapping("/findOrderClassOverviewByOcId/{ocId}")

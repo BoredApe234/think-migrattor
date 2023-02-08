@@ -27,17 +27,6 @@ public class IssueSettingsServiceImpl implements IssueSettingsService{
 		
 		ObjectMapper mapper = new ObjectMapper();
 		IssueSettings issueSettings = mapper.convertValue(issueSettingsVO, IssueSettings.class);
-		if(issueSettingsVO.getParentClassId().getParentID()==0){
-			issueSettings.setParentClassId(null);
-		}
-		
-		if(issueSettingsVO.getChildClassId().getChildId()==0){
-			issueSettings.setChildClassId(null);
-		}
-		
-		if(issueSettingsVO.getSubChildClassId().getSubChildId()==0){
-			issueSettings.setSubChildClassId(null);
-		}
 		IssueSettings data=issueSettingsRepo.saveAndFlush(issueSettings);
 		issueSettingsVO.setId(data.getId());
 		return issueSettingsVO;
@@ -47,17 +36,6 @@ public class IssueSettingsServiceImpl implements IssueSettingsService{
 	public IssueSettingsVO updateIssueSetting(IssueSettingsVO issueSettingsVO) {
 		ObjectMapper mapper = new ObjectMapper();
 		IssueSettings issueSettings = mapper.convertValue(issueSettingsVO, IssueSettings.class);
-		if(issueSettingsVO.getParentClassId().getParentID()==0){
-			issueSettings.setParentClassId(null);
-		}
-		
-		if(issueSettingsVO.getChildClassId().getChildId()==0){
-			issueSettings.setChildClassId(null);
-		}
-		
-		if(issueSettingsVO.getSubChildClassId().getSubChildId()==0){
-			issueSettings.setSubChildClassId(null);
-		}
 		issueSettingsRepo.saveAndFlush(issueSettings);
 		
 		return issueSettingsVO;

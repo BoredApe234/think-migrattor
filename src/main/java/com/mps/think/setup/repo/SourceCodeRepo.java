@@ -10,10 +10,4 @@ import com.mps.think.setup.model.SourceCode;
 @Repository
 public interface SourceCodeRepo extends JpaRepository<SourceCode ,  Integer> {
 	
-//	public SourceCode findSourceCodeById(Integer sourceCodeId);
-	
-	public List<SourceCode> findByParentIDParentID(Integer id);
-
-//	public List<SourceCode> findByChildIDChildId(Integer id);
-
 }

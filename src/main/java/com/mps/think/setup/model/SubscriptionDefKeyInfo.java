@@ -7,51 +7,72 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.mps.think.setup.vo.EnumModelVO.SubDefStatus;
 
 @Entity
-@Table(name = "subscription_def_key_information")
+@Table(name = "subscription_def_tbl")
 public class SubscriptionDefKeyInfo extends BaseEntity {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 905010494963750034L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "publisher_id")
-	private Integer publisherId;
+	@ManyToOne
+	@JoinColumn(name = "publisher_id", referencedColumnName = "id")
+	private Publisher publisherId;
 	
-	@Column(name = "subscription_def_code")
+	
+	@Column(name = "subs_def_code")
 	private String subscriptionDefCode;
-
+	
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "order_code")
-	private String orderCode;
+	@OneToOne
+	@JoinColumn(name = "order_code_id", referencedColumnName = "id")
+	private OrderCodesSuper orderCode;
 	
-	@Column(name = "term")
-	private String term;
+	@OneToOne
+	@JoinColumn(name = "term_id", referencedColumnName = "termsId")
+	private Terms term;
 	
-	@Column(name = "status")
 	@Enumerated(EnumType.STRING)
-	private SubDefStatus status;
+	@Column(name = "subs_def_status")
+	private SubDefStatus subDefStatus;
 	
-	@Column(name = "subscription_def_id")
-	private String subscriptionDefId;
+	@Column(name = "subs_def_id")
+	private String subDefId;
 	
-	@Column(name = "rate_class")
-	private String rateClass;
+	@OneToOne
+	@JoinColumn(name = "rate_card_id", referencedColumnName = "rcId")
+	private RateCards rateCard;
 	
-	@Column(name = "renewal_cards")
-	private String renewalCard;
+	@OneToOne
+	@JoinColumn(name = "renewal_card_id")
+	private RenewalCard renewalCard;
+	
+	@Column(name = "order_code_type")
+	private String orderCodeType;
+	
+	@Column(name = "media")
+	private String media;
+	
+	@Column(name = "edition")
+	private String edition;
+	
+	@Column(name = "category")
+	private String category;
 
 	public Integer getId() {
 		return id;
@@ -61,11 +82,11 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 		this.id = id;
 	}
 
-	public Integer getPublisherId() {
+	public Publisher getPublisherId() {
 		return publisherId;
 	}
 
-	public void setPublisherId(Integer publisherId) {
+	public void setPublisherId(Publisher publisherId) {
 		this.publisherId = publisherId;
 	}
 
@@ -85,52 +106,96 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 		this.description = description;
 	}
 
-	public String getOrderCode() {
+	public OrderCodesSuper getOrderCode() {
 		return orderCode;
 	}
 
-	public void setOrderCode(String orderCode) {
+	public void setOrderCode(OrderCodesSuper orderCode) {
 		this.orderCode = orderCode;
 	}
 
-	public String getTerm() {
+	public Terms getTerm() {
 		return term;
 	}
 
-	public void setTerm(String term) {
+	public void setTerm(Terms term) {
 		this.term = term;
 	}
 
-	public SubDefStatus getStatus() {
-		return status;
+	public SubDefStatus getSubDefStatus() {
+		return subDefStatus;
 	}
 
-	public void setStatus(SubDefStatus status) {
-		this.status = status;
+	public void setSubDefStatus(SubDefStatus subDefStatus) {
+		this.subDefStatus = subDefStatus;
 	}
 
-	public String getSubscriptionDefId() {
-		return subscriptionDefId;
+	public String getSubDefId() {
+		return subDefId;
 	}
 
-	public void setSubscriptionDefId(String subscriptionDefId) {
-		this.subscriptionDefId = subscriptionDefId;
+	public void setSubDefId(String subDefId) {
+		this.subDefId = subDefId;
 	}
 
-	public String getRateClass() {
-		return rateClass;
+	public RateCards getRateCard() {
+		return rateCard;
 	}
 
-	public void setRateClass(String rateClass) {
-		this.rateClass = rateClass;
+	public void setRateCard(RateCards rateCard) {
+		this.rateCard = rateCard;
 	}
 
-	public String getRenewalCard() {
+	public RenewalCard getRenewalCard() {
 		return renewalCard;
 	}
 
-	public void setRenewalCard(String renewalCard) {
+	public void setRenewalCard(RenewalCard renewalCard) {
 		this.renewalCard = renewalCard;
 	}
+
+	public String getOrderCodeType() {
+		return orderCodeType;
+	}
+
+	public void setOrderCodeType(String orderCodeType) {
+		this.orderCodeType = orderCodeType;
+	}
+
+	public String getMedia() {
+		return media;
+	}
+
+	public void setMedia(String media) {
+		this.media = media;
+	}
+
+	public String getEdition() {
+		return edition;
+	}
+
+	public void setEdition(String edition) {
+		this.edition = edition;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	@Override
+	public String toString() {
+		return "SubscriptionDefKeyInfo [id=" + id + ", publisherId=" + publisherId + ", subscriptionDefCode="
+				+ subscriptionDefCode + ", description=" + description + ", orderCode=" + orderCode + ", term=" + term
+				+ ", subDefStatus=" + subDefStatus + ", subDefId=" + subDefId + ", rateCard=" + rateCard
+				+ ", renewalCard=" + renewalCard + ", orderCodeType=" + orderCodeType + ", media=" + media
+				+ ", edition=" + edition + ", category=" + category + "]";
+	}
+
+	
+	
 	
 }

@@ -30,21 +30,21 @@ public class IssueSettings extends BaseEntity{
 	@Column(name = "frequency_of_generation")
 	private String frequencyOfGeneration;
 
-	@Column(name = "periodicity")
-	private String periodicity;
+//	@Column(name = "periodicity")
+//	private String periodicity;
 
 
 	@Column(name = "issues_appear_on_every")
 	private String issuesAppearonEvery;
 	
-	@Column(name = "dwm_of_the_wmy")
-	private String dwmOfThewmy;
-	
-	@Column(name = "nth_day")
-	private String nthDay;
-	
-	@Column(name = "day_of_the_month")
-	private String dayOfTheMonth;
+//	@Column(name = "dwm_of_the_wmy")
+//	private String dwmOfThewmy;
+//	
+//	@Column(name = "nth_day")
+//	private String nthDay;
+//	
+//	@Column(name = "day_of_the_month")
+//	private String dayOfTheMonth;
 	
 //	Enumeration Generation
 	
@@ -70,18 +70,6 @@ public class IssueSettings extends BaseEntity{
 	@OneToOne
 	@JoinColumn(name = "order_class_id", referencedColumnName = "oc_id")
 	private OrderClass orderClassId;
-	
-	@OneToOne
-	@JoinColumn(name = "parent_class_id", referencedColumnName = "parent_id")
-	private ParentClass parentClassId;
-	
-	@OneToOne
-	@JoinColumn(name = "child_class_id", referencedColumnName = "child_id")
-	private ChildClass childClassId;
-	
-	@OneToOne
-	@JoinColumn(name = "subchild_class_id", referencedColumnName = "subchild_id")
-	private SubChildClass subChildClassId;
 
 	public Integer getId() {
 		return id;
@@ -107,13 +95,13 @@ public class IssueSettings extends BaseEntity{
 		this.frequencyOfGeneration = frequencyOfGeneration;
 	}
 
-	public String getPeriodicity() {
-		return periodicity;
-	}
-
-	public void setPeriodicity(String periodicity) {
-		this.periodicity = periodicity;
-	}
+//	public String getPeriodicity() {
+//		return periodicity;
+//	}
+//
+//	public void setPeriodicity(String periodicity) {
+//		this.periodicity = periodicity;
+//	}
 
 	public String getIssuesAppearonEvery() {
 		return issuesAppearonEvery;
@@ -123,29 +111,29 @@ public class IssueSettings extends BaseEntity{
 		this.issuesAppearonEvery = issuesAppearonEvery;
 	}
 
-	public String getDwmOfThewmy() {
-		return dwmOfThewmy;
-	}
-
-	public void setDwmOfThewmy(String dwmOfThewmy) {
-		this.dwmOfThewmy = dwmOfThewmy;
-	}
-
-	public String getNthDay() {
-		return nthDay;
-	}
-
-	public void setNthDay(String nthDay) {
-		this.nthDay = nthDay;
-	}
-
-	public String getDayOfTheMonth() {
-		return dayOfTheMonth;
-	}
-
-	public void setDayOfTheMonth(String dayOfTheMonth) {
-		this.dayOfTheMonth = dayOfTheMonth;
-	}
+//	public String getDwmOfThewmy() {
+//		return dwmOfThewmy;
+//	}
+//
+//	public void setDwmOfThewmy(String dwmOfThewmy) {
+//		this.dwmOfThewmy = dwmOfThewmy;
+//	}
+//
+//	public String getNthDay() {
+//		return nthDay;
+//	}
+//
+//	public void setNthDay(String nthDay) {
+//		this.nthDay = nthDay;
+//	}
+//
+//	public String getDayOfTheMonth() {
+//		return dayOfTheMonth;
+//	}
+//
+//	public void setDayOfTheMonth(String dayOfTheMonth) {
+//		this.dayOfTheMonth = dayOfTheMonth;
+//	}
 
 	public String getVolumeCaption() {
 		return volumeCaption;
@@ -203,41 +191,24 @@ public class IssueSettings extends BaseEntity{
 		this.orderClassId = orderClassId;
 	}
 
-	public ParentClass getParentClassId() {
-		return parentClassId;
-	}
-
-	public void setParentClassId(ParentClass parentClassId) {
-		this.parentClassId = parentClassId;
-	}
-
-	public ChildClass getChildClassId() {
-		return childClassId;
-	}
-
-	public void setChildClassId(ChildClass childClassId) {
-		this.childClassId = childClassId;
-	}
-
-	public SubChildClass getSubChildClassId() {
-		return subChildClassId;
-	}
-
-	public void setSubChildClassId(SubChildClass subChildClassId) {
-		this.subChildClassId = subChildClassId;
-	}
-
 	@Override
 	public String toString() {
 		return "IssueSettings [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
-				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", issuesAppearonEvery="
-				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", nthDay=" + nthDay + ", dayOfTheMonth="
-				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat
-				+ ", changeDate=" + changeDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat
-				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + ", parentClassId="
-				+ parentClassId + ", childClassId=" + childClassId + ", subChildClassId=" + subChildClassId + "]";
+				+ frequencyOfGeneration + ", issuesAppearonEvery=" + issuesAppearonEvery + ", volumeCaption="
+				+ volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate + ", issueCaption="
+				+ issueCaption + ", issueFormat=" + issueFormat + ", issuesOrVolume=" + issuesOrVolume
+				+ ", orderClassId=" + orderClassId + "]";
 	}
 
+//	@Override
+//	public String toString() {
+//		return "IssueSettings [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
+//				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", issuesAppearonEvery="
+//				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", nthDay=" + nthDay + ", dayOfTheMonth="
+//				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat
+//				+ ", changeDate=" + changeDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat
+//				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + "]";
+//	}
 	
 	
 }	

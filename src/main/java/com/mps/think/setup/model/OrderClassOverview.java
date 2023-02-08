@@ -22,19 +22,7 @@ public class OrderClassOverview extends BaseEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private Integer id;
-
-	@ManyToOne
-	@JoinColumn(name = "parent_id")
-	private ParentClass parent;
-	
-	@OneToOne
-	@JoinColumn(name = "child_id")
-	private ChildClass child;
-	
-	@OneToOne
-	@JoinColumn(name = "sub_child_id", referencedColumnName = "subchild_id")
-	private SubChildClass subChild;
+	private Integer id;	
 	
 	// key information
 	
@@ -103,30 +91,6 @@ public class OrderClassOverview extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public ParentClass getParent() {
-		return parent;
-	}
-
-	public void setParent(ParentClass parent) {
-		this.parent = parent;
-	}
-
-	public ChildClass getChild() {
-		return child;
-	}
-
-	public void setChild(ChildClass child) {
-		this.child = child;
-	}
-
-	public SubChildClass getSubChild() {
-		return subChild;
-	}
-
-	public void setSubChild(SubChildClass subChild) {
-		this.subChild = subChild;
 	}
 
 	public String getLabel() {
@@ -239,6 +203,16 @@ public class OrderClassOverview extends BaseEntity {
 
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderClassOverview [id=" + id + ", label=" + label + ", description=" + description + ", orderClass="
+				+ orderClass + ", revenueRecorded=" + revenueRecorded + ", recordRevenueSubsPartWay="
+				+ recordRevenueSubsPartWay + ", cancelCredit=" + cancelCredit + ", sourceCode=" + sourceCode
+				+ ", sourceCodeFormat=" + sourceCodeFormat + ", renewalSCFormat=" + renewalSCFormat + ", profitCenter="
+				+ profitCenter + ", paymentThreshold=" + paymentThreshold + ", reasonableGap=" + reasonableGap
+				+ ", activeOrderHandling=" + activeOrderHandling + ", publisher=" + publisher + "]";
 	}
 
 	

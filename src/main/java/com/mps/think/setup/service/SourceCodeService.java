@@ -16,9 +16,5 @@ public interface SourceCodeService {
 	public SourceCode deleteSourceCodeById(Integer sourceCodeId);
 
 	public SourceCode findbySourceCodeId(Integer sourceCodeId);
-	
-	public List<SourceCode> findSourceCodeByParentId(Integer parentId);
-	
-//	public List<SourceCode> findSourceCodeByChildId(Integer childId);
 
 }

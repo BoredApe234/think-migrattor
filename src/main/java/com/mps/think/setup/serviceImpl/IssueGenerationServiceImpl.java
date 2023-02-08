@@ -1,5 +1,6 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import com.mps.think.setup.repo.IssueGenerationRepo;
 import com.mps.think.setup.repo.IssueSettingsRepo;
 import com.mps.think.setup.service.IssueGenerationService;
 import com.mps.think.setup.utils.IntegerToRoman;
+import com.mps.think.setup.utils.IssueGenerationUtils;
 import com.mps.think.setup.vo.IssueGenerationVo;
 
 @Service
@@ -22,7 +24,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 
 	@Autowired
 	IssueGenerationRepo issueGenerationRepo;
-	
+
 	@Autowired
 	IssueSettingsRepo issueSettingsRepo;
 
@@ -59,10 +61,10 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 			// issueGeneration.getIssueFormat()
 
 			issue.setIssueFormat(issueGeneration.getIssueFormat());
-			//issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery()); , sepreated value 
-			String monthDate= issueGeneration.getIssuesAppearonEvery();
-			
-			
+			// issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery());
+			// , sepreated value
+			// String monthDate= issueGeneration.getIssuesAppearonEvery();
+
 			issue.setNumberOfIssue(issueGeneration.getNumberOfIssue());
 			issue.setIssueDate(issueGeneration.getIssueDate());
 			issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
@@ -97,7 +99,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 			issue.setVolumeCaption(issueGeneration.getVolumeCaption());
 			issue.setVolumeFormat(issueGeneration.getVolumeFormat());
 			issue = issueGenerationRepo.save(issue);
-//			issueGeneration.setId(issue.getId());
+			// issueGeneration.setId(issue.getId());
 
 		}
 		return issueGeneration;
@@ -141,7 +143,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue = issueGenerationRepo.save(issue);
 		return issueGeneration;
 	}
-	
+
 	@Override
 	public IssueGenerationVo insertIssueGenerationVo(IssueGenerationVo issueGeneration) {
 		IssueGeneration issue = new IssueGeneration();
@@ -187,81 +189,88 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 	}
 
 	@Override
-	public IssueGenerationVo generateIssueGenerationVo(IssueGenerationVo issueGeneration,int ocId) {
-		 IssueSettings issueSettingData=issueSettingsRepo.findByOcId(ocId);
-		 for (int i = 0; i < issueGeneration.getNumberOfIssue(); i++) {
-
-				IssueGeneration issue = new IssueGeneration();
-				issue.setActive(issueGeneration.getActive());
-				issue.setDiscountCard(issueGeneration.getDiscountCard());
-				issue.setFrequencyOfGeneration(issueGeneration.getFrequencyOfGeneration());
-				issue.setIssue_volume(issueGeneration.getIssue_volume());
-				if (issueGeneration.getVolumeFormat().equals("Arebic")) {
-					issue.setVolumeCaption(issueGeneration.getVolumeCaption() + "" + i + 1);
-				}
-				if (issueGeneration.getVolumeFormat().equals("Small Roman")) {
-					issue.setVolumeCaption(issueGeneration.getVolumeCaption() + "" + IntegerToRoman.intToSmallRoman(i + 1));
-				}
-				if (issueGeneration.getVolumeFormat().equals("Large Roman")) {
-					issue.setVolumeCaption(issueGeneration.getVolumeCaption() + "" + IntegerToRoman.intToRoman(i + 1));
-				}
-				if (issueGeneration.getVolumeFormat().equals("Lower Case Letter")) {
-					issue.setVolumeCaption(issueGeneration.getVolumeCaption() + "" + IntegerToRoman.intToabcd(i + 1));
-				}
-				if (issueGeneration.getVolumeFormat().equals("Upper Case Letter")) {
-					issue.setVolumeCaption(issueGeneration.getVolumeCaption() + "" + IntegerToRoman.intToABCD(i + 1));
-				}
-				// issueGeneration.getIssueFormat()
-
-				issue.setIssueFormat(issueGeneration.getIssueFormat());
-				//issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery()); , sepreated value 
-				String monthDate= issueGeneration.getIssuesAppearonEvery();
-				
-				
-				issue.setNumberOfIssue(issueGeneration.getNumberOfIssue());
-				issue.setIssueDate(issueGeneration.getIssueDate());
-				issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
-				issue.setChangeDate(issueGeneration.getChangeDate());
-				issue.setSeqOfIssue(i+1);
-				if (issueGeneration.getIssueFormat().equals("Arebic")) {
-					issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + i + 1);
-				}
-				if (issueGeneration.getIssueFormat().equals("Small Roman")) {
-					issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + IntegerToRoman.intToSmallRoman(i + 1));
-				}
-				if (issueGeneration.getIssueFormat().equals("Large Roman")) {
-					issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + IntegerToRoman.intToRoman(i + 1));
-				}
-				if (issueGeneration.getIssueFormat().equals("Lower Case Letter")) {
-					issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + IntegerToRoman.intToabcd(i + 1));
-				}
-				if (issueGeneration.getIssueFormat().equals("Upper Case Letter")) {
-					issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + IntegerToRoman.intToABCD(i + 1));
-				}
-				// OrderCodes id added
-				OrderCodes ocode = new OrderCodes();
-				ocode.setId(issueGeneration.getOderCodeVo().getId());
-				issue.setOderCode(ocode);
-				/// oderclass id
-				OrderClass oc = new OrderClass();
-				oc.setOcId(issueGeneration.getOrderClassId().getOcId());
-				issue.setOrderClassId(oc);
-				issue.setOrderType(issueGeneration.getOrderType());
-				issue.setPeriodicity(issueGeneration.getPeriodicity());
-				issue.setRateCard(issueGeneration.getRateCard());
-				issue.setVolumeCaption(issueGeneration.getVolumeCaption());
-				issue.setVolumeFormat(issueGeneration.getVolumeFormat());
-				issue.setIssueURL(issueGeneration.getIssueURL());
-				issue.setAnalysed(issueGeneration.getAnalysed());
-				issue.setFrozen(issueGeneration.getFrozen());
-				issue.setInventoryID(issueGeneration.getInventoryID());
-				issue.setClosed(issueGeneration.getClosed());
-				issue.setRevenueGenerating(issueGeneration.getRevenueGenerating());
-				issue = issueGenerationRepo.save(issue);
-//				issueGeneration.setId(issue.getId());
-
+	public IssueGenerationVo generateIssueGenerationVo(IssueGenerationVo issueGeneration) {
+		IssueSettings issueSettingData = issueSettingsRepo.findByOcId(issueGeneration.getOrderClassId().getOcId());
+		int seq;
+		if (findMaxSeqIssue() == 0) {
+			seq = 0;
+		} else {
+			seq = findMaxSeqIssue();
+		}
+		ArrayList<String> generateDate = IssueGenerationUtils.dayOfTheYear(issueGeneration.getIssuesAppearonEvery(),
+				issueGeneration.getNumberOfIssue(),issueGeneration.getChangeDate());
+		for (int i = 0; i < generateDate.size(); i++) {
+			seq = seq + 1;
+			IssueGeneration issue = new IssueGeneration();
+			issue.setActive(issueGeneration.getActive());
+			issue.setDiscountCard(issueGeneration.getDiscountCard());
+			issue.setFrequencyOfGeneration(issueGeneration.getFrequencyOfGeneration());
+			issue.setIssue_volume(issueGeneration.getIssue_volume());
+			if (issueSettingData.getVolumeFormat().equals("Arebic")) {
+				issue.setVolumeCaption(issueGeneration.getVolumeCaption() + "" + i + 1);
 			}
-		
+			if (issueSettingData.getVolumeFormat().equals("Small Roman")) {
+				issue.setVolumeCaption(issueGeneration.getVolumeCaption() + "" + IntegerToRoman.intToSmallRoman(i + 1));
+			}
+			if (issueSettingData.getVolumeFormat().equals("Large Roman")) {
+				issue.setVolumeCaption(issueGeneration.getVolumeCaption() + "" + IntegerToRoman.intToRoman(i + 1));
+			}
+			if (issueSettingData.getVolumeFormat().equals("Lower Case Letter")) {
+				issue.setVolumeCaption(issueGeneration.getVolumeCaption() + "" + IntegerToRoman.intToabcd(i + 1));
+			}
+			if (issueSettingData.getVolumeFormat().equals("Upper Case Letter")) {
+				issue.setVolumeCaption(issueGeneration.getVolumeCaption() + "" + IntegerToRoman.intToABCD(i + 1));
+			}
+			// issueGeneration.getIssueFormat()
+
+			issue.setIssueFormat(issueGeneration.getIssueFormat());
+			// issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery());
+			// , sepreated value
+			// String monthDate= issueGeneration.getIssuesAppearonEvery();
+			// issue.setNumberOfIssue(issueGeneration.getNumberOfIssue());
+			issue.setIssueDate(generateDate.get(i));
+			issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
+			issue.setChangeDate(issueGeneration.getChangeDate());
+			issue.setSeqOfIssue(seq);
+			if (issueSettingData.getIssueFormat().equals("Arebic")) {
+				issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + i + 1);
+			}
+			if (issueSettingData.getIssueFormat().equals("Small Roman")) {
+				issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + IntegerToRoman.intToSmallRoman(i + 1));
+			}
+			if (issueSettingData.getIssueFormat().equals("Large Roman")) {
+				issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + IntegerToRoman.intToRoman(i + 1));
+			}
+			if (issueSettingData.getIssueFormat().equals("Lower Case Letter")) {
+				issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + IntegerToRoman.intToabcd(i + 1));
+			}
+			if (issueSettingData.getIssueFormat().equals("Upper Case Letter")) {
+				issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + IntegerToRoman.intToABCD(i + 1));
+			}
+			// OrderCodes id added
+			OrderCodes ocode = new OrderCodes();
+			ocode.setId(issueGeneration.getOderCodeVo().getId());
+			issue.setOderCode(ocode);
+			/// oderclass id
+			OrderClass oc = new OrderClass();
+			oc.setOcId(issueGeneration.getOrderClassId().getOcId());
+			issue.setOrderClassId(oc);
+			issue.setOrderType(issueGeneration.getOrderType());
+			issue.setPeriodicity(issueGeneration.getPeriodicity());
+			issue.setRateCard(issueGeneration.getRateCard());
+			issue.setVolumeCaption(issueGeneration.getVolumeCaption());
+			issue.setVolumeFormat(issueGeneration.getVolumeFormat());
+			issue.setIssueURL(issueGeneration.getIssueURL());
+			issue.setAnalysed(issueGeneration.getAnalysed());
+			issue.setFrozen(issueGeneration.getFrozen());
+			issue.setInventoryID(issueGeneration.getInventoryID());
+			issue.setClosed(issueGeneration.getClosed());
+			issue.setRevenueGenerating(issueGeneration.getRevenueGenerating());
+			issue = issueGenerationRepo.save(issue);
+			// issueGeneration.setId(issue.getId());
+
+		}
+
 		return issueGeneration;
 	}
 

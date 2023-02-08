@@ -27,18 +27,6 @@ public class SourceCode extends BaseEntity {
 	@JoinColumn(name = "oc_id", referencedColumnName = "oc_id")
 	private OrderClass ocId;
 	
-	@ManyToOne
-	@JoinColumn(name = "parent_id", referencedColumnName = "parent_id")
-	private ParentClass parentID;
-	
-	@ManyToOne
-	@JoinColumn(name = "child_id", referencedColumnName = "child_id")
-	private ChildClass childID;
-	
-	@ManyToOne
-	@JoinColumn(name = "sub_child_id", referencedColumnName = "subchild_id")
-	private SubChildClass subChildID;
-	
 	@Column(name = "description")
 	private String description;
 	
@@ -103,30 +91,6 @@ public class SourceCode extends BaseEntity {
 
 	public void setOcId(OrderClass ocId) {
 		this.ocId = ocId;
-	}
-
-	public ParentClass getParentID() {
-		return parentID;
-	}
-
-	public void setParentID(ParentClass parentID) {
-		this.parentID = parentID;
-	}
-
-	public ChildClass getChildID() {
-		return childID;
-	}
-
-	public void setChildID(ChildClass childID) {
-		this.childID = childID;
-	}
-
-	public SubChildClass getSubChildID() {
-		return subChildID;
-	}
-
-	public void setSubChildID(SubChildClass subChildID) {
-		this.subChildID = subChildID;
 	}
 
 	public String getDescription() {
@@ -259,12 +223,14 @@ public class SourceCode extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "SourceCode [sourceCodeId=" + sourceCodeId + ", ocId=" + ocId + ", parentID=" + parentID + ", childID="
-				+ childID + ", subChildID=" + subChildID + ", description=" + description + ", orderCode=" + orderCode
-				+ ", order_code_type=" + order_code_type + ", quantity=" + quantity + ", isActive=" + isActive
-				+ ", state_Break=" + state_Break + ", cost=" + cost + ", isGenerated=" + isGenerated
-				+ ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCode=" + sourceCode
-				+ ", sourceCodeType=" + sourceCodeType + ", sourceCodeFormat=" + sourceCodeFormat + ", rateCard="
-				+ rateCard + ", discount=" + discount + ", shippingPriceList=" + shippingPriceList + "]";
+		return "SourceCode [sourceCodeId=" + sourceCodeId + ", ocId=" + ocId + ", description=" + description
+				+ ", orderCode=" + orderCode + ", order_code_type=" + order_code_type + ", quantity=" + quantity
+				+ ", isActive=" + isActive + ", state_Break=" + state_Break + ", cost=" + cost + ", isGenerated="
+				+ isGenerated + ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCode="
+				+ sourceCode + ", sourceCodeType=" + sourceCodeType + ", sourceCodeFormat=" + sourceCodeFormat
+				+ ", rateCard=" + rateCard + ", discount=" + discount + ", shippingPriceList=" + shippingPriceList
+				+ "]";
 	}
+
+	
 }

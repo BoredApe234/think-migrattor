@@ -46,15 +46,6 @@ public class OrderCodesController {
 		return ResponseEntity.ok(orderCodesService.getOrderItemDetailsById(itemDetailsId));
 	}
 	
-//	@GetMapping("/getOrderCodesByOrderClassId/{orderClassId}")
-//	public ResponseEntity<?> getOrderCodesByOrderClassId(@PathVariable("orderClassId") Integer orderClassId) {
-//		return ResponseEntity.ok(orderCodesService.getOrderCodesByOrderClassId(orderClassId));
-//	}
-	
-	@GetMapping("/getOrderCodesByParentId/{parentId}")
-	public ResponseEntity<?> getOrderCodesByParentId(@PathVariable("parentId") Integer parentId) {
-		return ResponseEntity.ok(orderCodesService.getOrderCodesByParentId(parentId));
-	}
 
 	@GetMapping("/getOrderOptions/{orderOptionsId}")
 	public ResponseEntity<?> getOrderOptionsById(@PathVariable("orderOptionsId") Integer orderOptionsId) {
@@ -86,19 +77,10 @@ public class OrderCodesController {
 		return ResponseEntity.ok(orderCodesService.getAllCompleteOrderCodes());
 	}
 	
-	@GetMapping("/getAllOrderCodesByChildId/{childId}")
-	public ResponseEntity<?> getAllOrderCodesByChildId(@PathVariable("childId") Integer childId) {
-		return ResponseEntity.ok(orderCodesService.getAllOrderCodesByChildClassId(childId));
-	}
-	
 	@GetMapping("/getAllOrderCodesByOrderClassId/{ocId}")
 	public ResponseEntity<?> getAllOrderCodesByOrderClassId(@PathVariable("ocId") Integer ocId) {
 		return ResponseEntity.ok(orderCodesService.getAllOrderCodesByOrderClassId(ocId));
 	}
 	
-	@GetMapping("/getAllOrderCodesBySubChildId/{subChildId}")
-	public ResponseEntity<?> getAllOrderCodesBySubChildId(@PathVariable("subChildId") Integer subChildId) {
-		return ResponseEntity.ok(orderCodesService.getAllOrderCodesBySubChildId(subChildId));
-	}
 
 }

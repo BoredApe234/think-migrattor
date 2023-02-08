@@ -26,8 +26,6 @@ public interface OrderCodesService {
 	public OrderPackageOptions getOrderPackageOptionsById(Integer orderPkgId);
 	public OrderPaymentOptions getOrderPaymentOptionsById(Integer orderPaymentId);
 	
-//	public List<OrderCodesSuper> getOrderCodesByOrderClassId(Integer orderClassId);
-	public List<OrderCodesSuper> getOrderCodesByParentId(Integer parentId);
 	
 	// to fetch the record of all order codes...
 	public List<OrderCodes> getAllOrderCodes();
@@ -38,9 +36,5 @@ public interface OrderCodesService {
 	public List<OrderCodesSuper> getAllCompleteOrderCodes();
 	
 	public List<OrderCodesSuper> getAllOrderCodesByOrderClassId(Integer ocId);
-	
-	public List<OrderCodesSuper> getAllOrderCodesByChildClassId(Integer childId);
-	
-	public List<OrderCodesSuper> getAllOrderCodesBySubChildId(Integer subChildId);
 	
 }

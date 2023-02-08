@@ -50,20 +50,6 @@ public class RateCardsController {
 		return ResponseEntity.ok(rateCardsService.deleteByrcId(rcId));
 	}
 	
-	@GetMapping("/getAllRateCardByParentId/{parentID}")
-	public ResponseEntity<?> getAllRateCardsByParentID(@PathVariable("parentID") Integer parentID) throws Exception {
-		return ResponseEntity.ok(rateCardsService.getAllRateCardsByParentID(parentID));
-	}
-	
-	@GetMapping("/getAllRateCardByChildId/{childId}")
-	public ResponseEntity<?> getAllRateCardsByChildID(@PathVariable("childId") Integer childId) throws Exception {
-		return ResponseEntity.ok(rateCardsService.getAllRateCardsByChildID(childId));
-	}
-	
-	@GetMapping("/getAllRateCardBySubChildId/{subChildId}")
-	public ResponseEntity<?> getAllRateCardsBySubChildID(@PathVariable("subChildId") Integer subChildId) throws Exception {
-		return ResponseEntity.ok(rateCardsService.getAllRateCardsBySubChildId(subChildId));
-	}
 	@GetMapping("/findAllitemType")
 	public ResponseEntity<?> getAllItemtype() {
 		List<String> list= new ArrayList<>();
