@@ -46,7 +46,7 @@ public class RenewalCard extends BaseEntity{
 	
 	@ManyToOne
 	@JoinColumn(name="order_code_id",referencedColumnName="id")
-	private OrderCodes orderCodeId;
+	private OrderCodesSuper orderCodeId;
 	
 	@Column(name = "pkg_def_id")
 	private  String pkgDefId;
@@ -127,14 +127,6 @@ public class RenewalCard extends BaseEntity{
 		this.discountClassId = discountClassId;
 	}
 
-	public OrderCodes getOrderCodeId() {
-		return orderCodeId;
-	}
-
-	public void setOrderCodeId(OrderCodes orderCodeId) {
-		this.orderCodeId = orderCodeId;
-	}
-
 	public String getPkgDefId() {
 		return pkgDefId;
 	}
@@ -183,14 +175,12 @@ public class RenewalCard extends BaseEntity{
 		this.pubId = pubId;
 	}
 
-	@Override
-	public String toString() {
-		return "RenewalCard [renewalCardId=" + renewalCardId + ", description=" + description + ", renewal_card="
-				+ renewal_card + ", effortFrom=" + effortFrom + ", effortTo=" + effortTo + ", offersdescription="
-				+ offersdescription + ", discountClassId=" + discountClassId + ", orderCodeId=" + orderCodeId
-				+ ", pkgDefId=" + pkgDefId + ", rateClassId=" + rateClassId + ", sourceCodeId=" + sourceCodeId
-				+ ", subscriptionDefId=" + subscriptionDefId + ", orderClassId=" + orderClassId + ", pubId=" + pubId
-				+ "]";
+	public OrderCodesSuper getOrderCodeId() {
+		return orderCodeId;
+	}
+
+	public void setOrderCodeId(OrderCodesSuper orderCodeId) {
+		this.orderCodeId = orderCodeId;
 	}
 
 
