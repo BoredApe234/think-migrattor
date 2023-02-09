@@ -191,7 +191,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 	public IssueGenerationVo generateIssueGenerationVo(IssueGenerationVo issueGeneration) {
 		IssueSettings issueSettingData = issueSettingsRepo.findByOcId(issueGeneration.getOrderClassId().getOcId());
 		int seq;
-		if (findMaxSeqIssue() == 0) {
+		if (findMaxSeqIssue() == null) {
 			seq = 0;
 		} else {
 			seq = findMaxSeqIssue();
@@ -289,8 +289,8 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 	}
 
 	@Override
-	public int findMaxSeqIssue() {
-		int data = issueGenerationRepo.findMaxSeqOfIssue();
+	public Integer findMaxSeqIssue() {
+		Integer data = issueGenerationRepo.findMaxSeqOfIssue();
 		return data;
 	}
 
