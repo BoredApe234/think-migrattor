@@ -16,7 +16,7 @@ public class IssueGenerationVo {
 
 	private String orderType;
 
-	private Integer[] IssuesAppearonEvery;
+	private String[] IssuesAppearonEvery;
 
 	private OrderCodesVO oderCodeVo;
 
@@ -266,11 +266,11 @@ public class IssueGenerationVo {
 		this.revenueGenerating = revenueGenerating;
 	}
 
-	public Integer[] getIssuesAppearonEvery() {
+	public String[] getIssuesAppearonEvery() {
 		return IssuesAppearonEvery;
 	}
 
-	public void setIssuesAppearonEvery(Integer[] issuesAppearonEvery) {
+	public void setIssuesAppearonEvery(String[] issuesAppearonEvery) {
 		IssuesAppearonEvery = issuesAppearonEvery;
 	}
 

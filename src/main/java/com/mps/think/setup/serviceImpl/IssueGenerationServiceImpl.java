@@ -158,7 +158,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue.setIssueDate(issueGeneration.getIssueDate());
 		issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
 		issue.setChangeDate(issueGeneration.getChangeDate());
-		issue.setSeqOfIssue(issueGeneration.getSeqOfIssue());
+		issue.setSeqOfIssue(findMaxSeqIssue()+1);
 		// OrderCodes id added
 		OrderCodes ocode = new OrderCodes();
 		ocode.setId(issueGeneration.getOderCodeVo().getId());
@@ -210,8 +210,8 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 				issueGeneration.getChangeDate());
 		}
 		if (issueSettingData.getFrequencyOfGeneration().equals("Year")) {
-//		generateDate = IssueGenerationUtils.everyYear(issueGeneration.getNumberOfIssue(),issueGeneration.getIssuesAppearonEvery(),
-//				issueGeneration.getChangeDate());
+		generateDate = IssueGenerationUtils.everyYear(issueGeneration.getNumberOfIssue(),issueGeneration.getIssuesAppearonEvery(),
+				issueGeneration.getChangeDate());
 		}
 		for (int i = 0; i < generateDate.size(); i++) {
 			seq = seq + 1;
