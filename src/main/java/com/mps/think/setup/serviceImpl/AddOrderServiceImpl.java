@@ -3,6 +3,8 @@ package com.mps.think.setup.serviceImpl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -49,6 +51,11 @@ public class AddOrderServiceImpl implements AddOrderService {
 	@Override
 	public List<Order> getAllOrdersByOrderClassId(Integer ocId) throws Exception {
 		return addOrderRepo.findByOrderClassOcId(ocId);
+	}
+
+	@Override
+	public Page<Order> getSearchedOrders(String keyword, Pageable page) {
+		return addOrderRepo.findOrdersBySearch(keyword, page);
 	}
 
 }

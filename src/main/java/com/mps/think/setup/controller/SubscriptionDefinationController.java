@@ -41,4 +41,19 @@ public class SubscriptionDefinationController {
 		return ResponseEntity.ok(subscriptionDefService.deleteSubscriptionDef(id));
 	}
 	
+	@GetMapping("subscriptionDefinationsByOcId/{ocId}")
+	public ResponseEntity<?> getSubscriptionDefinationByOcId(@PathVariable("ocId") Integer ocId) {
+		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefByOcId(ocId));
+	}
+	
+	@GetMapping("allSubscriptionDefinations")
+	public ResponseEntity<?> getAllSubscriptionDefinations() {
+		return ResponseEntity.ok(subscriptionDefService.getAllSubscriptionDef());
+	}
+	
+	@GetMapping("subscriptionDefinationsById/{id}")
+	public ResponseEntity<?> getSubscriptionDefinationById(@PathVariable("id") Integer id) {
+		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefById(id));
+	}
+	
 }

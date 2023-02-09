@@ -77,10 +77,10 @@ public class AddOrderController {
 		return ResponseEntity.ok(addOrderService.getAllOrdersByOrderClassId(ocIc));
 	}
 	
-//	@GetMapping("/getAllOrdersFromSearch")
-//	public ResponseEntity<?> getAllOrdersFromSearch(@RequestParam(required = false) String keyword, @RequestParam(defaultValue = "0") Integer page,
-//			@RequestParam(defaultValue = "5") Integer size) {
-//		return ResponseEntity.ok(addOrderService.getAllOrderFromSearch(keyword, PageRequest.of(page, size)));
-//	}
+	@GetMapping("/searchOrders")
+	public ResponseEntity<?> getAllOrdersFromSearch(@RequestParam(required = false) String keyword, @RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) {
+		return ResponseEntity.ok(addOrderService.getSearchedOrders(keyword, PageRequest.of(page, size)));
+	}
 
 }

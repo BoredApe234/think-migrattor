@@ -17,4 +17,8 @@ public interface EffectiveDatesForDiscountService {
 	
 	public void deleteEffectiveDatesForDiscountCard(Integer discountCardId);
 	
+	public List<EffectiveDatesForDiscount> getAllEffectiveDates();
+	
+	public EffectiveDatesForDiscount getEffectiveDateById(Integer id);
+	
 }

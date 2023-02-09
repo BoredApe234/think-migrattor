@@ -12,4 +12,6 @@ public interface SubscriptionDefKeyInfoRepo extends JpaRepository<SubscriptionDe
 
 	List<SubscriptionDefKeyInfo> findByPublisherId(Integer id);
 
+	List<SubscriptionDefKeyInfo> findByOrderClassOcId(Integer id);
+	
 }

@@ -51,9 +51,9 @@ public class DiscountCardController {
 		return ResponseEntity.ok(discountCardKeyInfoService.deleteDiscountCardById(id));
 	}
 	
-	@GetMapping("/getAllDiscountCardInfoForParent/{parentId}")
-	public ResponseEntity<?> getAllDiscountCardInfoForParent(@PathVariable("parentId") Integer parentId) {
-		return ResponseEntity.ok(discountCardKeyInfoService.getAllDiscountCardKeyInfoForParent(parentId));
+	@GetMapping("/getAllDiscountCardInfoForOrderClass/{ocId}")
+	public ResponseEntity<?> getAllDiscountCardInfoForParent(@PathVariable("ocId") Integer ocId) {
+		return ResponseEntity.ok(discountCardKeyInfoService.getDiscountCardKeyInfosForOrderClass(ocId));
 	}
 	
 	@DeleteMapping("/deleteEffectiveDatesForDiscountById")
@@ -64,6 +64,26 @@ public class DiscountCardController {
 	@GetMapping("/getEffectiveDatesForDiscountCard/{discountCardId}")
 	public ResponseEntity<?> getEffectiveDatesForDiscountCard(@PathVariable("discountCardId") Integer discountCardId) {
 		return ResponseEntity.ok(effectiveDatesForDiscountService.getEffectiveDatesForDiscountCard(discountCardId));
+	}
+	
+	@GetMapping("/getAllDiscountCards")
+	public ResponseEntity<?> getAllDiscountCards() {
+		return ResponseEntity.ok(discountCardKeyInfoService.getAllDiscountCards());
+	}
+	
+	@GetMapping("/getDiscountCardById/{id}")
+	public ResponseEntity<?> getDiscountCardById(@PathVariable("id") Integer id) {
+		return ResponseEntity.ok(discountCardKeyInfoService.getDiscountCardKeyInfoById(id));
+	}
+	
+	@GetMapping("/getAllEffectiveDates")
+	public ResponseEntity<?> getAllEffectiveDates() {
+		return ResponseEntity.ok(effectiveDatesForDiscountService.getAllEffectiveDates());
+	}
+	
+	@GetMapping("/getEffectiveDateById/{id}")
+	public ResponseEntity<?> getEffectiveDateById(@PathVariable("id") Integer id) {
+		return ResponseEntity.ok(effectiveDatesForDiscountService.getEffectiveDateById(id));
 	}
 	
 }

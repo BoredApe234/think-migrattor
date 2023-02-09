@@ -13,6 +13,12 @@ public interface DiscountCardKeyInfoService {
 	
 	public DiscountCardKeyInfo deleteDiscountCardById(Integer id);
 	
-	public List<DiscountCardKeyInfo> getAllDiscountCardKeyInfoForParent(Integer id);
+//	public List<DiscountCardKeyInfo> getAllDiscountCardKeyInfoForParent(Integer id);
+	
+	List<DiscountCardKeyInfo> getDiscountCardKeyInfosForOrderClass(Integer ocId);
+	
+	List<DiscountCardKeyInfo> getAllDiscountCards();
+	
+	DiscountCardKeyInfo getDiscountCardKeyInfoById(Integer id);
 	
 }

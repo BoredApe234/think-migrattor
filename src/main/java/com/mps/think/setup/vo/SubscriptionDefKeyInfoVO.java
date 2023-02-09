@@ -1,5 +1,7 @@
 package com.mps.think.setup.vo;
 
+
+import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.model.RateCards;
@@ -10,8 +12,10 @@ import com.mps.think.setup.vo.EnumModelVO.SubDefStatus;
 public class SubscriptionDefKeyInfoVO {
 
 	private Integer id;
-	
-	private Publisher publisherId;
+  
+	private Publisher publisher;
+
+	private OrderClass orderClass;
 
 	private String subscriptionDefCode;
 
@@ -27,7 +31,9 @@ public class SubscriptionDefKeyInfoVO {
 
 	private RateCards rateCard;
 
-	private RenewalCard renewalCard;
+//	private RenewalCard renewalCard;
+	
+	private String renewalCard;
 
 	private String orderCodeType;
 
@@ -45,12 +51,20 @@ public class SubscriptionDefKeyInfoVO {
 		this.id = id;
 	}
 
-	public Publisher getPublisherId() {
-		return publisherId;
+	public Publisher getPublisher() {
+		return publisher;
 	}
 
-	public void setPublisherId(Publisher publisherId) {
-		this.publisherId = publisherId;
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
 	}
 
 	public String getSubscriptionDefCode() {
@@ -109,13 +123,13 @@ public class SubscriptionDefKeyInfoVO {
 		this.rateCard = rateCard;
 	}
 
-	public RenewalCard getRenewalCard() {
-		return renewalCard;
-	}
-
-	public void setRenewalCard(RenewalCard renewalCard) {
-		this.renewalCard = renewalCard;
-	}
+//	public RenewalCard getRenewalCard() {
+//		return renewalCard;
+//	}
+//
+//	public void setRenewalCard(RenewalCard renewalCard) {
+//		this.renewalCard = renewalCard;
+//	}
 
 	public String getOrderCodeType() {
 		return orderCodeType;
@@ -149,15 +163,11 @@ public class SubscriptionDefKeyInfoVO {
 		this.category = category;
 	}
 
-	@Override
-	public String toString() {
-		return "SubscriptionDefKeyInfoVO [id=" + id + ", publisherId=" + publisherId + ", subscriptionDefCode="
-				+ subscriptionDefCode + ", description=" + description + ", orderCode=" + orderCode + ", term=" + term
-				+ ", subDefStatus=" + subDefStatus + ", subDefId=" + subDefId + ", rateCard=" + rateCard
-				+ ", renewalCard=" + renewalCard + ", orderCodeType=" + orderCodeType + ", media=" + media
-				+ ", edition=" + edition + ", category=" + category + "]";
+	public String getRenewalCard() {
+		return renewalCard;
 	}
 
-
-
+	public void setRenewalCard(String renewalCard) {
+		this.renewalCard = renewalCard;
+	}
 }

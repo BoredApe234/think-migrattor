@@ -48,8 +48,20 @@ public class DiscountCardKeyInfoServiceImpl implements DiscountCardKeyInfoServic
 	}
 
 	@Override
-	public List<DiscountCardKeyInfo> getAllDiscountCardKeyInfoForParent(Integer id) {
-		return discountCardKeyInfoRepo.findByParentId(id);
+	public List<DiscountCardKeyInfo> getDiscountCardKeyInfosForOrderClass(Integer ocId) {
+		return discountCardKeyInfoRepo.findByOrderClassOcId(ocId);
+	}
+
+	@Override
+	public List<DiscountCardKeyInfo> getAllDiscountCards() {
+		return discountCardKeyInfoRepo.findAll();
+	}
+
+	@Override
+	public DiscountCardKeyInfo getDiscountCardKeyInfoById(Integer id) {
+		Optional<DiscountCardKeyInfo> discCard = discountCardKeyInfoRepo.findById(id);
+		if(discCard.isPresent()) return discCard.get();
+		return null;
 	}
 
 }
