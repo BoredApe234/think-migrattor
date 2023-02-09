@@ -14,5 +14,7 @@ public interface SourceAttributeService {
 	public SourceAttributeVo updateSourceAttribute(SourceAttributeVo sourceAttributeVo);
 
 	public SourceAttribute findbySourceAttributeId(Integer sourceAttributeId);
+	
+	public SourceAttribute deleteSourceAttributeById(Integer id) throws Exception;
 
 }
