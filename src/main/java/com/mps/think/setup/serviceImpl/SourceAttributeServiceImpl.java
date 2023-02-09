@@ -1,8 +1,10 @@
 package com.mps.think.setup.serviceImpl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.SourceAttribute;
@@ -46,6 +48,16 @@ public class SourceAttributeServiceImpl implements SourceAttributeService {
 	@Override
 	public SourceAttribute findbySourceAttributeId(Integer sourceAttributeId) {
 		return sourceAttributeRepo.findById(sourceAttributeId).get();
+	}
+
+	@Override
+	public SourceAttribute deleteSourceAttributeById(Integer id) throws Exception {
+		Optional<SourceAttribute> sourceAttr = sourceAttributeRepo.findById(id);
+		if (sourceAttr.isPresent()) {
+			sourceAttributeRepo.delete(sourceAttr.get());
+			return sourceAttr.get();
+		}
+		throw new NotFoundException();
 	}
 
 }

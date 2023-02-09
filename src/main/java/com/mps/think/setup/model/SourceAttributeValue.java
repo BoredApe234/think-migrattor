@@ -9,7 +9,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-@Table(name="source_attribute_value")
+@Table(name = "source_attribute_value")
 @Entity
 public class SourceAttributeValue extends BaseEntity {
 
@@ -21,20 +21,17 @@ public class SourceAttributeValue extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	
-	 @OneToOne	
-	 @JoinColumn(name = "source_attribute_id", referencedColumnName = "id")
-     private SourceAttribute SourceAttribute;
-	 
 
-	
+	@OneToOne
+	@JoinColumn(name = "source_attribute_id", referencedColumnName = "id")
+	private SourceAttribute SourceAttribute;
+
 	@Column(name = "source_attribute_value")
 	private String sourceAttributeValue;
-	
+
 	@Column(name = "description")
 	private String description;
-	
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -73,6 +70,4 @@ public class SourceAttributeValue extends BaseEntity {
 				+ sourceAttributeValue + ", description=" + description + "]";
 	}
 
-	
-	
-	}
+}

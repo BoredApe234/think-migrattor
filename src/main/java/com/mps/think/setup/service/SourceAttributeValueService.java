@@ -15,4 +15,6 @@ public interface SourceAttributeValueService {
 
 	public SourceAttributeValue findbySourceAttributeValueId(Integer sourceAttributeValueId);
 
+	public SourceAttributeValue deleteSourceAttributeValue(Integer id) throws Exception;
+	
 }
