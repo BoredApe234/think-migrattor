@@ -8,6 +8,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -200,7 +201,6 @@ public class IssueGenerationUtils {
 	
 
 	public static ArrayList<String> everyday(int issue, String changeDate){
-//		20-02-2023
 		ArrayList<String> list=new ArrayList<String>();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String[] str = changeDate.split("-");
@@ -216,8 +216,9 @@ public class IssueGenerationUtils {
 		
 	}
 	
-	public static ArrayList<String> everyweek(int issue, Integer[] days,String changeDate){
+	public static ArrayList<String> everyweek(int issue, String[] days,String changeDate){
 		ArrayList<String> list=new ArrayList<String>();
+		int[] ints = Arrays.stream(days).mapToInt(Integer::parseInt).toArray();
 		String[] str = changeDate.split("-");
 		int startYear = Integer.valueOf(str[2]);
 		int currentMonth = Integer.valueOf(str[1]);
@@ -228,7 +229,7 @@ public class IssueGenerationUtils {
         int count = 0;
         while (count<issue) {
             int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-            for(Integer d:days){
+            for(Integer d:ints){
             if (dayOfWeek ==d) {
             	Date result = calendar.getTime();
                 list.add(dateFormat.format(result));
@@ -242,9 +243,11 @@ public class IssueGenerationUtils {
         System.out.println(list);
 		return list;
 	}
-	public static ArrayList<String> everyMonth(int issue, Integer[] days,String changeDate){
+	public static ArrayList<String> everyMonth(int issue, String[] days,String changeDate){
 		ArrayList<String> list=new ArrayList<String>();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//		String[] test = {"1", "2", "3", "4", "5"};
+	    int[] ints = Arrays.stream(days).mapToInt(Integer::parseInt).toArray();
 		String[] str = changeDate.split("-");
 		int startYear = Integer.valueOf(str[2]);
 		int currentMonth = Integer.valueOf(str[1]);
@@ -252,7 +255,7 @@ public class IssueGenerationUtils {
 		LocalDate now = LocalDate.of(startYear, currentMonth, currentDate);	
 	    int count = 0;
 	    while (count < issue) {
-	      for (int targetDate : days) {
+	      for (int targetDate : ints) {
 	        if (now.getDayOfMonth() == targetDate) {
 	        	list.add(now.format(formatter));
 	          System.out.println(now);
@@ -268,22 +271,19 @@ public class IssueGenerationUtils {
 	}
 	public static ArrayList<String> everyYear(int issue, String[] days,String changeDate){
 		ArrayList<String> list=new ArrayList<String>();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String[] str = changeDate.split("-");
 		int startYear = Integer.valueOf(str[2]);
-		int currentMonth = Integer.valueOf(str[1]);
-		int currentDate = Integer.valueOf(str[0]);
-		LocalDate now = LocalDate.of(startYear, currentMonth, currentDate);	
-		System.out.println("AAAAAAAAAAAAAAAa "+days[3]);
+//		int currentMonth = Integer.valueOf(str[1]);
+//		int currentDate = Integer.valueOf(str[0]);
 		int count=0;
 	    while(count<issue){
 	    	for(String s:days){
-	    		System.out.println(s);
-//	    		String temp=days[i]+"-"+startYear;
-//	    		System.out.println(temp);
-
+	    		String temp=s+"-"+startYear;
+	    		System.out.println(temp);
 	    		count++;
 	    	}
+	    	startYear++;
 	    }
 		return list;
 		
@@ -301,13 +301,13 @@ public class IssueGenerationUtils {
 //		dayOfTheYear(daysOfYear, 20, "07-03-2023");
 	    
 //	    everyday(25, "08-02-2023");
-//	    Integer[] days = {2,4,6};
+//	    String[] days = {"2","4","6"};
 //	    everyweek(10,days,"08-02-2023");
-//	    Integer[] days = {1, 5, 8, 17, 30};
+//	    String[] days = {"1", "5", "8", "17", "30"};
 //		everyMonth(10,days,"08-01-2023");
-		String[] days = {"01-01", "05-01","09-02", "17-02", "30-03"};
-		everyYear(10,days,"08-01-2023");
-		
+//		String[] days = {"01-01", "05-01","09-02", "17-02", "30-03"};
+//		everyYear(20,days,"08-01-2023");
+//		
   }
 
 }
