@@ -271,7 +271,7 @@ public class IssueGenerationUtils {
 	}
 	public static ArrayList<String> everyYear(int issue, String[] days,String changeDate){
 		ArrayList<String> list=new ArrayList<String>();
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 		String[] str = changeDate.split("-");
 		int startYear = Integer.valueOf(str[2]);
 //		int currentMonth = Integer.valueOf(str[1]);
@@ -280,6 +280,7 @@ public class IssueGenerationUtils {
 	    while(count<issue){
 	    	for(String s:days){
 	    		String temp=s+"-"+startYear;
+	    		list.add(temp);
 	    		System.out.println(temp);
 	    		count++;
 	    	}
