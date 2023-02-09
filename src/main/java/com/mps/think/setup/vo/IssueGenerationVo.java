@@ -1,5 +1,7 @@
 package com.mps.think.setup.vo;
 
+import java.util.Arrays;
+
 import javax.persistence.Column;
 
 public class IssueGenerationVo {
@@ -10,7 +12,7 @@ public class IssueGenerationVo {
 
 	private String frequencyOfGeneration;
 
-	private String periodicity;
+//	private String periodicity;
 
 	private String orderType;
 
@@ -80,13 +82,13 @@ public class IssueGenerationVo {
 		this.frequencyOfGeneration = frequencyOfGeneration;
 	}
 
-	public String getPeriodicity() {
-		return periodicity;
-	}
-
-	public void setPeriodicity(String periodicity) {
-		this.periodicity = periodicity;
-	}
+//	public String getPeriodicity() {
+//		return periodicity;
+//	}
+//
+//	public void setPeriodicity(String periodicity) {
+//		this.periodicity = periodicity;
+//	}
 
 	public String getOrderType() {
 		return orderType;
@@ -96,13 +98,13 @@ public class IssueGenerationVo {
 		this.orderType = orderType;
 	}
 
-	public Integer[] getIssuesAppearonEvery() {
-		return IssuesAppearonEvery;
-	}
-
-	public void setIssuesAppearonEvery(Integer[] issuesAppearonEvery) {
-		IssuesAppearonEvery = issuesAppearonEvery;
-	}
+//	public Integer[] getIssuesAppearonEvery() {
+//		return IssuesAppearonEvery;
+//	}
+//
+//	public void setIssuesAppearonEvery(Integer[] issuesAppearonEvery) {
+//		IssuesAppearonEvery = issuesAppearonEvery;
+//	}
 
 	public OrderCodesVO getOderCodeVo() {
 		return oderCodeVo;
@@ -264,12 +266,20 @@ public class IssueGenerationVo {
 		this.revenueGenerating = revenueGenerating;
 	}
 
+	public Integer[] getIssuesAppearonEvery() {
+		return IssuesAppearonEvery;
+	}
+
+	public void setIssuesAppearonEvery(Integer[] issuesAppearonEvery) {
+		IssuesAppearonEvery = issuesAppearonEvery;
+	}
+
 	@Override
 	public String toString() {
 		return "IssueGenerationVo [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
-				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", orderType=" + orderType
-				+ ", IssuesAppearonEvery=" + IssuesAppearonEvery + ", oderCodeVo=" + oderCodeVo + ", orderClassId="
-				+ orderClassId + ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
+				+ frequencyOfGeneration + ", orderType=" + orderType + ", IssuesAppearonEvery="
+				+ Arrays.toString(IssuesAppearonEvery) + ", oderCodeVo=" + oderCodeVo + ", orderClassId=" + orderClassId
+				+ ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
 				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
 				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issueDate=" + issueDate
 				+ ", issue_volume=" + issue_volume + ", dateoftheMonthYear=" + dateoftheMonthYear + ", seqOfIssue="
@@ -277,6 +287,20 @@ public class IssueGenerationVo {
 				+ ", inventoryID=" + inventoryID + ", closed=" + closed + ", revenueGenerating=" + revenueGenerating
 				+ "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "IssueGenerationVo [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
+//				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", orderType=" + orderType
+//				+ ", IssuesAppearonEvery=" + IssuesAppearonEvery + ", oderCodeVo=" + oderCodeVo + ", orderClassId="
+//				+ orderClassId + ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
+//				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
+//				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issueDate=" + issueDate
+//				+ ", issue_volume=" + issue_volume + ", dateoftheMonthYear=" + dateoftheMonthYear + ", seqOfIssue="
+//				+ seqOfIssue + ", issueURL=" + issueURL + ", analysed=" + analysed + ", frozen=" + frozen
+//				+ ", inventoryID=" + inventoryID + ", closed=" + closed + ", revenueGenerating=" + revenueGenerating
+//				+ "]";
+//	}
 
 	
 }

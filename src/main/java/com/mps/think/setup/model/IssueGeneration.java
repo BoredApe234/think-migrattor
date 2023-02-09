@@ -29,14 +29,14 @@ public class IssueGeneration extends BaseEntity {
 	@Column(name = "frequency_of_generation")
 	private String frequencyOfGeneration;
 
-	@Column(name = "periodicity")
-	private String periodicity;
+//	@Column(name = "periodicity")
+//	private String periodicity;
 
 	@Column(name = "order_type")
 	private String orderType;
 
-	@Column(name = "issues_appear_on_every")
-	private Integer[] IssuesAppearonEvery;
+//	@Column(name = "issues_appear_on_every",columnDefinition="LONGTEXT")
+//	private Integer[] IssuesAppearonEvery;
 
 	@OneToOne
 	@JoinColumn(name = "oder_codeId", referencedColumnName = "id")
@@ -127,13 +127,13 @@ public class IssueGeneration extends BaseEntity {
 		this.frequencyOfGeneration = frequencyOfGeneration;
 	}
 
-	public String getPeriodicity() {
-		return periodicity;
-	}
-
-	public void setPeriodicity(String periodicity) {
-		this.periodicity = periodicity;
-	}
+//	public String getPeriodicity() {
+//		return periodicity;
+//	}
+//
+//	public void setPeriodicity(String periodicity) {
+//		this.periodicity = periodicity;
+//	}
 
 	public String getOrderType() {
 		return orderType;
@@ -143,13 +143,13 @@ public class IssueGeneration extends BaseEntity {
 		this.orderType = orderType;
 	}
 
-	public Integer[] getIssuesAppearonEvery() {
-		return IssuesAppearonEvery;
-	}
-
-	public void setIssuesAppearonEvery(Integer[] issuesAppearonEvery) {
-		IssuesAppearonEvery = issuesAppearonEvery;
-	}
+//	public Integer[] getIssuesAppearonEvery() {
+//		return IssuesAppearonEvery;
+//	}
+//
+//	public void setIssuesAppearonEvery(Integer[] issuesAppearonEvery) {
+//		IssuesAppearonEvery = issuesAppearonEvery;
+//	}
 
 	public OrderCodes getOderCode() {
 		return oderCode;
@@ -314,8 +314,7 @@ public class IssueGeneration extends BaseEntity {
 	@Override
 	public String toString() {
 		return "IssueGeneration [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
-				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", orderType=" + orderType
-				+ ", IssuesAppearonEvery=" + IssuesAppearonEvery + ", oderCode=" + oderCode + ", orderClassId="
+				+ frequencyOfGeneration + ", orderType=" + orderType + ", oderCode=" + oderCode + ", orderClassId="
 				+ orderClassId + ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
 				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
 				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issue_volume=" + issue_volume
@@ -325,4 +324,19 @@ public class IssueGeneration extends BaseEntity {
 				+ "]";
 	}
 	
+
+//	@Override
+//	public String toString() {
+//		return "IssueGeneration [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
+//				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", orderType=" + orderType
+//				+ ", IssuesAppearonEvery=" + IssuesAppearonEvery + ", oderCode=" + oderCode + ", orderClassId="
+//				+ orderClassId + ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
+//				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
+//				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issue_volume=" + issue_volume
+//				+ ", issueDate=" + issueDate + ", dateoftheMonthYear=" + dateoftheMonthYear + ", seqOfIssue="
+//				+ seqOfIssue + ", issueURL=" + issueURL + ", analysed=" + analysed + ", frozen=" + frozen
+//				+ ", inventoryID=" + inventoryID + ", closed=" + closed + ", revenueGenerating=" + revenueGenerating
+//				+ "]";
+//	}
+//	
 }

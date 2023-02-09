@@ -10,7 +10,6 @@ import com.mps.think.setup.model.IssueGeneration;
 import com.mps.think.setup.model.IssueSettings;
 import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.OrderCodes;
-import com.mps.think.setup.model.SourceCode;
 import com.mps.think.setup.repo.IssueGenerationRepo;
 import com.mps.think.setup.repo.IssueSettingsRepo;
 import com.mps.think.setup.service.IssueGenerationService;
@@ -94,7 +93,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 			oc.setOcId(issueGeneration.getOrderClassId().getOcId());
 			issue.setOrderClassId(oc);
 			issue.setOrderType(issueGeneration.getOrderType());
-			issue.setPeriodicity(issueGeneration.getPeriodicity());
+//			issue.setPeriodicity(issueGeneration.getPeriodicity());
 			issue.setRateCard(issueGeneration.getRateCard());
 			issue.setVolumeCaption(issueGeneration.getVolumeCaption());
 			issue.setVolumeFormat(issueGeneration.getVolumeFormat());
@@ -115,7 +114,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue.setIssue_volume(issueGeneration.getIssue_volume());
 		issue.setIssueCaption(issueGeneration.getIssueCaption());
 		issue.setIssueFormat(issueGeneration.getIssueFormat());
-		issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery());
+//		issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery());
 		issue.setNumberOfIssue(issueGeneration.getNumberOfIssue());
 		issue.setIssueDate(issueGeneration.getIssueDate());
 		issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
@@ -130,7 +129,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		oc.setOcId(issueGeneration.getOrderClassId().getOcId());
 		issue.setOrderClassId(oc);
 		issue.setOrderType(issueGeneration.getOrderType());
-		issue.setPeriodicity(issueGeneration.getPeriodicity());
+//		issue.setPeriodicity(issueGeneration.getPeriodicity());
 		issue.setRateCard(issueGeneration.getRateCard());
 		issue.setVolumeCaption(issueGeneration.getVolumeCaption());
 		issue.setVolumeFormat(issueGeneration.getVolumeFormat());
@@ -154,7 +153,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue.setIssue_volume(issueGeneration.getIssue_volume());
 		issue.setIssueCaption(issueGeneration.getIssueCaption());
 		issue.setIssueFormat(issueGeneration.getIssueFormat());
-		issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery());
+//		issue.setIssuesAppearonEvery(issueGeneration.getIssuesAppearonEvery());
 		issue.setNumberOfIssue(issueGeneration.getNumberOfIssue());
 		issue.setIssueDate(issueGeneration.getIssueDate());
 		issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
@@ -169,7 +168,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		oc.setOcId(issueGeneration.getOrderClassId().getOcId());
 		issue.setOrderClassId(oc);
 		issue.setOrderType(issueGeneration.getOrderType());
-		issue.setPeriodicity(issueGeneration.getPeriodicity());
+//		issue.setPeriodicity(issueGeneration.getPeriodicity());
 		issue.setRateCard(issueGeneration.getRateCard());
 		issue.setVolumeCaption(issueGeneration.getVolumeCaption());
 		issue.setVolumeFormat(issueGeneration.getVolumeFormat());
@@ -271,7 +270,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 			oc.setOcId(issueGeneration.getOrderClassId().getOcId());
 			issue.setOrderClassId(oc);
 			issue.setOrderType(issueGeneration.getOrderType());
-			issue.setPeriodicity(issueGeneration.getPeriodicity());
+//			issue.setPeriodicity(issueGeneration.getPeriodicity());
 			issue.setRateCard(issueGeneration.getRateCard());
 			issue.setVolumeCaption(issueGeneration.getVolumeCaption());
 			issue.setVolumeFormat(issueGeneration.getVolumeFormat());
