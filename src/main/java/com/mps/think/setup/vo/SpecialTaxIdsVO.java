@@ -6,7 +6,7 @@ public class SpecialTaxIdsVO {
 	private Integer id;
 	private Publisher pubId;
 	private String specialTaxIds;
-	private String exemptStatus;
+	private boolean exemptStatus;
 	public Integer getId() {
 		return id;
 	}
@@ -25,10 +25,10 @@ public class SpecialTaxIdsVO {
 	public void setSpecialTaxIds(String specialTaxIds) {
 		this.specialTaxIds = specialTaxIds;
 	}
-	public String getExemptStatus() {
+	public boolean getExemptStatus() {
 		return exemptStatus;
 	}
-	public void setExemptStatus(String exemptStatus) {
+	public void setExemptStatus(boolean exemptStatus) {
 		this.exemptStatus = exemptStatus;
 	}
 	@Override
