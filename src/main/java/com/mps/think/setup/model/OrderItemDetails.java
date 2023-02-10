@@ -49,6 +49,18 @@ public class OrderItemDetails extends BaseEntity {
 	
 	@Column(name = "commodity_code")
 	private String commodityCode;
+	
+	@Column(name = "grace_quantity")
+	private String graceQuanitity;
+	
+	@Column(name = "media")
+	private String media;
+	
+	@Column(name = "edition")
+	private String edition;
+	
+	@Column(name = "category")
+	private String category;
 
 	public Integer getId() {
 		return id;
@@ -112,6 +124,38 @@ public class OrderItemDetails extends BaseEntity {
 
 	public void setCommodityCode(String commodityCode) {
 		this.commodityCode = commodityCode;
+	}
+
+	public String getGraceQuanitity() {
+		return graceQuanitity;
+	}
+
+	public void setGraceQuanitity(String graceQuanitity) {
+		this.graceQuanitity = graceQuanitity;
+	}
+
+	public String getMedia() {
+		return media;
+	}
+
+	public void setMedia(String media) {
+		this.media = media;
+	}
+
+	public String getEdition() {
+		return edition;
+	}
+
+	public void setEdition(String edition) {
+		this.edition = edition;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 	

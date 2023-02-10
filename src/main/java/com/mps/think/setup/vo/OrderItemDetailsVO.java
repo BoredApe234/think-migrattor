@@ -2,9 +2,6 @@ package com.mps.think.setup.vo;
 
 import java.util.Date;
 
-import com.mps.think.setup.model.Publisher;
-
-
 public class OrderItemDetailsVO {
 
 	private Integer id;
@@ -25,6 +22,14 @@ public class OrderItemDetailsVO {
 
 	private String commodityCode;
 
+	private String graceQuanitity;
+
+	private String media;
+
+	private String edition;
+
+	private String category;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -87,6 +92,38 @@ public class OrderItemDetailsVO {
 
 	public void setCommodityCode(String commodityCode) {
 		this.commodityCode = commodityCode;
+	}
+
+	public String getGraceQuanitity() {
+		return graceQuanitity;
+	}
+
+	public void setGraceQuanitity(String graceQuanitity) {
+		this.graceQuanitity = graceQuanitity;
+	}
+
+	public String getMedia() {
+		return media;
+	}
+
+	public void setMedia(String media) {
+		this.media = media;
+	}
+
+	public String getEdition() {
+		return edition;
+	}
+
+	public void setEdition(String edition) {
+		this.edition = edition;
+	}
+
+	public String getCategory() {
+		return category;
+	}
+
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 }
