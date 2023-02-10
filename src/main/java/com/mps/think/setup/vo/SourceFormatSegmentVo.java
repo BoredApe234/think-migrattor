@@ -4,7 +4,7 @@ public class SourceFormatSegmentVo {
 
 	private Integer id;
 
-	private SourceAttributeVo sourceAttribute;
+	private SourceAttributesVO sourceAttribute;
 
 //	@Enumerated(EnumType.STRING)
 //	private AppConstants.GenerationMethod generationMethod;
@@ -30,12 +30,20 @@ public class SourceFormatSegmentVo {
 		this.id = id;
 	}
 
-	public SourceAttributeVo getSourceAttribute() {
+	public SourceAttributesVO getSourceAttribute() {
 		return sourceAttribute;
 	}
 
-	public void setSourceAttribute(SourceAttributeVo sourceAttribute) {
+	public void setSourceAttribute(SourceAttributesVO sourceAttribute) {
 		this.sourceAttribute = sourceAttribute;
+	}
+
+	public String getGenerationMethod() {
+		return generationMethod;
+	}
+
+	public void setGenerationMethod(String generationMethod) {
+		this.generationMethod = generationMethod;
 	}
 
 	public String getFixedValue() {
@@ -62,14 +70,6 @@ public class SourceFormatSegmentVo {
 		this.demQuestionId = demQuestionId;
 	}
 
-	public String getGenerationMethod() {
-		return generationMethod;
-	}
-
-	public void setGenerationMethod(String generationMethod) {
-		this.generationMethod = generationMethod;
-	}
-
 	public String getGenerationFunction() {
 		return generationFunction;
 	}
@@ -77,7 +77,6 @@ public class SourceFormatSegmentVo {
 	public void setGenerationFunction(String generationFunction) {
 		this.generationFunction = generationFunction;
 	}
-	
 
 	public SourceFormatVo getSourceFormatVo() {
 		return SourceFormatVo;
@@ -87,13 +86,6 @@ public class SourceFormatSegmentVo {
 		SourceFormatVo = sourceFormatVo;
 	}
 
-	@Override
-	public String toString() {
-		return "SourceFormatSegmentVo [id=" + id + ", sourceAttribute=" + sourceAttribute + ", generationMethod="
-				+ generationMethod + ", fixedValue=" + fixedValue + ", genFuncParm=" + genFuncParm + ", demQuestionId="
-				+ demQuestionId + ", generationFunction=" + generationFunction + ", SourceFormatVo=" + SourceFormatVo
-				+ "]";
-	}
-
+	
 	
 }

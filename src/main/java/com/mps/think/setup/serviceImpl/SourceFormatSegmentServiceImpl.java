@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.mps.think.setup.model.SourceAttribute;
+import com.mps.think.setup.model.SourceAttributes;
 import com.mps.think.setup.model.SourceFormat;
 import com.mps.think.setup.model.SourceFormatSegment;
 import com.mps.think.setup.repo.SourceFormatSegmentRepo;
@@ -31,7 +31,7 @@ public class SourceFormatSegmentServiceImpl implements SourceFormatSegmentServic
 		SourceFormatSegment.setGenerationFunction(sourceFormatSegmentVo.getGenerationFunction());
 		SourceFormatSegment.setGenerationMethod(sourceFormatSegmentVo.getGenerationMethod());
 		SourceFormatSegment.setGenFuncParm(sourceFormatSegmentVo.getGenFuncParm());
-		SourceAttribute SourceAttribute = new SourceAttribute();
+		SourceAttributes SourceAttribute = new SourceAttributes();
 		SourceAttribute.setId(sourceFormatSegmentVo.getSourceAttribute().getId());
 		SourceFormatSegment.setSourceAttribute(SourceAttribute);
 		SourceFormat SourceFormat = new SourceFormat();
@@ -51,7 +51,7 @@ public class SourceFormatSegmentServiceImpl implements SourceFormatSegmentServic
 		SourceFormatSegment.setGenerationFunction(sourceFormatSegmentVo.getGenerationFunction());
 		SourceFormatSegment.setGenerationMethod(sourceFormatSegmentVo.getGenerationMethod());
 		SourceFormatSegment.setGenFuncParm(sourceFormatSegmentVo.getGenFuncParm());
-		SourceAttribute SourceAttribute = new SourceAttribute();
+		SourceAttributes SourceAttribute = new SourceAttributes();
 		SourceAttribute.setId(sourceFormatSegmentVo.getSourceAttribute().getId());
 		SourceFormatSegment.setSourceAttribute(SourceAttribute);
 		SourceFormat SourceFormat = new SourceFormat();

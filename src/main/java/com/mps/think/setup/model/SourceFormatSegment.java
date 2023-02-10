@@ -24,7 +24,7 @@ public class SourceFormatSegment extends BaseEntity {
 	
 	@OneToOne
 	@JoinColumn(name = "Source_attribute_id", referencedColumnName = "id")
-	private SourceAttribute sourceAttribute;
+	private SourceAttributes sourceAttribute;
 
 //	@Column(name = "source_format")
 	@OneToOne
@@ -55,13 +55,11 @@ public class SourceFormatSegment extends BaseEntity {
 		this.id = id;
 	}
 
-
-
-	public SourceAttribute getSourceAttribute() {
+	public SourceAttributes getSourceAttribute() {
 		return sourceAttribute;
 	}
 
-	public void setSourceAttribute(SourceAttribute sourceAttribute) {
+	public void setSourceAttribute(SourceAttributes sourceAttribute) {
 		this.sourceAttribute = sourceAttribute;
 	}
 
@@ -97,8 +95,6 @@ public class SourceFormatSegment extends BaseEntity {
 		this.genFuncParm = genFuncParm;
 	}
 
-	
-
 	public String getGenerationFunction() {
 		return generationFunction;
 	}
@@ -107,13 +103,6 @@ public class SourceFormatSegment extends BaseEntity {
 		this.generationFunction = generationFunction;
 	}
 
-	@Override
-	public String toString() {
-		return "SourceFormatSegment [id=" + id + ", sourceAttribute=" + sourceAttribute + ", sourceFormat="
-				+ sourceFormat + ", generationMethod=" + generationMethod + ", fixedValue=" + fixedValue
-				+ ", genFuncParm=" + genFuncParm + ", generationFunction=" + generationFunction + "]";
-	}
-
 	
-
+	
 }
