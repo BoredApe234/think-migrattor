@@ -1,26 +1,48 @@
 package com.mps.think.setup.vo;
 
 import com.mps.think.setup.model.OrderClass;
+import com.mps.think.setup.model.SourceFormat;
 
 public class SourceCodeVO {
 
 	private Integer sourceCodeId;
+
 	private OrderClass ocId;
+
 	private String description;
+
 	private String orderCode;
+
 	private String order_code_type;
+
 	private Integer quantity;
+
 	private Boolean isActive;
+
 	private Boolean state_Break;
+
 	private Integer cost;
+
 	private Boolean isGenerated;
-	private Integer generic_agency;
-	private Integer is_ddp;
-	private String sourceCodeType;
+
+	private Boolean generic_agency;
+
+	private Boolean is_ddp;
+
 	private String sourceCode;
-	private String sourceCodeFormat;
+
+	private String sourceCodeType;
+
+//	These are dropdown fields ===============
+//	@Column(name="source_code_format")
+//	private String sourceCodeFormat;
+
+	private SourceFormat sourceCodeFormat;
+
 	private String rateCard;
+
 	private Integer discount;
+
 	private Integer shippingPriceList;
 
 	public Integer getSourceCodeId() {
@@ -103,28 +125,20 @@ public class SourceCodeVO {
 		this.isGenerated = isGenerated;
 	}
 
-	public Integer getGeneric_agency() {
+	public Boolean getGeneric_agency() {
 		return generic_agency;
 	}
 
-	public void setGeneric_agency(Integer generic_agency) {
+	public void setGeneric_agency(Boolean generic_agency) {
 		this.generic_agency = generic_agency;
 	}
 
-	public Integer getIs_ddp() {
+	public Boolean getIs_ddp() {
 		return is_ddp;
 	}
 
-	public void setIs_ddp(Integer is_ddp) {
+	public void setIs_ddp(Boolean is_ddp) {
 		this.is_ddp = is_ddp;
-	}
-
-	public String getSourceCodeType() {
-		return sourceCodeType;
-	}
-
-	public void setSourceCodeType(String sourceCodeType) {
-		this.sourceCodeType = sourceCodeType;
 	}
 
 	public String getSourceCode() {
@@ -135,11 +149,19 @@ public class SourceCodeVO {
 		this.sourceCode = sourceCode;
 	}
 
-	public String getSourceCodeFormat() {
+	public String getSourceCodeType() {
+		return sourceCodeType;
+	}
+
+	public void setSourceCodeType(String sourceCodeType) {
+		this.sourceCodeType = sourceCodeType;
+	}
+
+	public SourceFormat getSourceCodeFormat() {
 		return sourceCodeFormat;
 	}
 
-	public void setSourceCodeFormat(String sourceCodeFormat) {
+	public void setSourceCodeFormat(SourceFormat sourceCodeFormat) {
 		this.sourceCodeFormat = sourceCodeFormat;
 	}
 
@@ -167,15 +189,6 @@ public class SourceCodeVO {
 		this.shippingPriceList = shippingPriceList;
 	}
 
-	@Override
-	public String toString() {
-		return "SourceCodeVO [sourceCodeId=" + sourceCodeId + ", ocId=" + ocId + ", description=" + description
-				+ ", orderCode=" + orderCode + ", order_code_type=" + order_code_type + ", quantity=" + quantity
-				+ ", isActive=" + isActive + ", state_Break=" + state_Break + ", cost=" + cost + ", isGenerated="
-				+ isGenerated + ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCodeType="
-				+ sourceCodeType + ", sourceCode=" + sourceCode + ", sourceCodeFormat=" + sourceCodeFormat
-				+ ", rateCard=" + rateCard + ", discount=" + discount + ", shippingPriceList=" + shippingPriceList
-				+ "]";
-	}
-
+	
+	
 }
