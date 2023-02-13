@@ -52,10 +52,10 @@ public class SourceCode extends BaseEntity {
 	private Boolean isGenerated;
 	
 	@Column(name="generic_agency")
-	private Integer generic_agency;
+	private Boolean generic_agency;
 	
 	@Column(name="is_ddp")
-	private Integer is_ddp;
+	private Boolean is_ddp;
 	
 	@Column(name="source_code")
 	private String sourceCode;
@@ -65,8 +65,12 @@ public class SourceCode extends BaseEntity {
 	private String sourceCodeType;
 
 //	These are dropdown fields ===============
-	@Column(name="source_code_format")
-	private String sourceCodeFormat;
+//	@Column(name="source_code_format")
+//	private String sourceCodeFormat;
+	
+	@ManyToOne
+	@JoinColumn(name = "source_code_format_id", referencedColumnName = "id")
+	private SourceFormat sourceCodeFormat;
 	
 	@Column(name="rate_card")
 	private String rateCard;
@@ -157,19 +161,19 @@ public class SourceCode extends BaseEntity {
 		this.isGenerated = isGenerated;
 	}
 
-	public Integer getGeneric_agency() {
+	public Boolean getGeneric_agency() {
 		return generic_agency;
 	}
 
-	public void setGeneric_agency(Integer generic_agency) {
+	public void setGeneric_agency(Boolean generic_agency) {
 		this.generic_agency = generic_agency;
 	}
 
-	public Integer getIs_ddp() {
+	public Boolean getIs_ddp() {
 		return is_ddp;
 	}
 
-	public void setIs_ddp(Integer is_ddp) {
+	public void setIs_ddp(Boolean is_ddp) {
 		this.is_ddp = is_ddp;
 	}
 
@@ -189,11 +193,11 @@ public class SourceCode extends BaseEntity {
 		this.sourceCodeType = sourceCodeType;
 	}
 
-	public String getSourceCodeFormat() {
+	public SourceFormat getSourceCodeFormat() {
 		return sourceCodeFormat;
 	}
 
-	public void setSourceCodeFormat(String sourceCodeFormat) {
+	public void setSourceCodeFormat(SourceFormat sourceCodeFormat) {
 		this.sourceCodeFormat = sourceCodeFormat;
 	}
 
@@ -221,16 +225,6 @@ public class SourceCode extends BaseEntity {
 		this.shippingPriceList = shippingPriceList;
 	}
 
-	@Override
-	public String toString() {
-		return "SourceCode [sourceCodeId=" + sourceCodeId + ", ocId=" + ocId + ", description=" + description
-				+ ", orderCode=" + orderCode + ", order_code_type=" + order_code_type + ", quantity=" + quantity
-				+ ", isActive=" + isActive + ", state_Break=" + state_Break + ", cost=" + cost + ", isGenerated="
-				+ isGenerated + ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCode="
-				+ sourceCode + ", sourceCodeType=" + sourceCodeType + ", sourceCodeFormat=" + sourceCodeFormat
-				+ ", rateCard=" + rateCard + ", discount=" + discount + ", shippingPriceList=" + shippingPriceList
-				+ "]";
-	}
-
+	
 	
 }
