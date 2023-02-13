@@ -10,7 +10,8 @@ import org.webjars.NotFoundException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.mps.think.setup.model.RateCards;
-
+import com.mps.think.setup.model.RateCardsRenewals;
+import com.mps.think.setup.repo.RateCardsRenewalsRepo;
 import com.mps.think.setup.repo.RateCardsRepo;
 import com.mps.think.setup.service.RateCardsService;
 import com.mps.think.setup.vo.RateCardsVO;
@@ -20,6 +21,9 @@ public class RateCardsServiceImpl implements RateCardsService {
 	
 	@Autowired
 	RateCardsRepo rateCardsRepo;
+	
+	@Autowired
+	RateCardsRenewalsRepo renewalRepo;
 
 	@Override
 	public List<RateCards> findAllRateCards() {
@@ -60,6 +64,10 @@ public class RateCardsServiceImpl implements RateCardsService {
 	@Override
 	public RateCards deleteByrcId(Integer rcId) {
 		RateCards delete = findbyrcId(rcId);
+		List<RateCardsRenewals> renewals = renewalRepo.findByRenewalIdRcId(rcId);
+		renewals.forEach(r -> {
+			renewalRepo.delete(r);
+		});
 		rateCardsRepo.delete(delete);
 		return delete;
 	}
