@@ -43,8 +43,8 @@ public class SourceAttributeValuesController {
 		return ResponseEntity.ok(sourceAttributeService.findbySourceAttributeId(sourceAttributeId));
 	}
 	
-	@DeleteMapping("/deleteSourceAttributeValue/{id}")
-	public ResponseEntity<?> deleteSourceAttribute(@PathVariable("id") Integer id) throws Exception {
+	@DeleteMapping("/deleteSourceAttributeValue")
+	public ResponseEntity<?> deleteSourceAttribute(@RequestBody Integer id) throws Exception {
 		return ResponseEntity.ok(sourceAttributeService.deleteSourceAttributeById(id));
 	}
 	
