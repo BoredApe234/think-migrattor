@@ -72,14 +72,17 @@ public class SourceCode extends BaseEntity {
 	@JoinColumn(name = "source_code_format_id", referencedColumnName = "id")
 	private SourceFormat sourceCodeFormat;
 	
-	@Column(name="rate_card")
-	private String rateCard;
+	@ManyToOne
+	@JoinColumn(name = "rate_card_id", referencedColumnName = "rcId")
+	private RateCards rateCards;
 	
-	@Column(name="discount")
-	private Integer discount;
+	@ManyToOne
+	@JoinColumn(name = "discount_id", referencedColumnName = "id")
+	private DiscountCardKeyInfo discountCardKeyInfo;
 	
-	@Column(name="shipping_price_list")
-	private Integer shippingPriceList;
+	@ManyToOne
+	@JoinColumn(name = "shipping_price_list_id", referencedColumnName = "id")
+	private ShippingPriceList shippingPriceList;
 
 	public Integer getSourceCodeId() {
 		return sourceCodeId;
@@ -201,29 +204,35 @@ public class SourceCode extends BaseEntity {
 		this.sourceCodeFormat = sourceCodeFormat;
 	}
 
-	public String getRateCard() {
-		return rateCard;
+	public RateCards getRateCards() {
+		return rateCards;
 	}
 
-	public void setRateCard(String rateCard) {
-		this.rateCard = rateCard;
+	public void setRateCards(RateCards rateCards) {
+		this.rateCards = rateCards;
 	}
 
-	public Integer getDiscount() {
-		return discount;
+	public DiscountCardKeyInfo getDiscountCardKeyInfo() {
+		return discountCardKeyInfo;
 	}
 
-	public void setDiscount(Integer discount) {
-		this.discount = discount;
+	public void setDiscountCardKeyInfo(DiscountCardKeyInfo discountCardKeyInfo) {
+		this.discountCardKeyInfo = discountCardKeyInfo;
 	}
 
-	public Integer getShippingPriceList() {
+	public ShippingPriceList getShippingPriceList() {
 		return shippingPriceList;
 	}
 
-	public void setShippingPriceList(Integer shippingPriceList) {
+	public void setShippingPriceList(ShippingPriceList shippingPriceList) {
 		this.shippingPriceList = shippingPriceList;
 	}
+
+	
+	
+	
+
+	
 
 	
 	
