@@ -1,6 +1,9 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.DiscountCardKeyInfo;
 import com.mps.think.setup.model.OrderClass;
+import com.mps.think.setup.model.RateCards;
+import com.mps.think.setup.model.ShippingPriceList;
 import com.mps.think.setup.model.SourceFormat;
 
 public class SourceCodeVO {
@@ -39,11 +42,11 @@ public class SourceCodeVO {
 
 	private SourceFormat sourceCodeFormat;
 
-	private String rateCard;
+	private RateCards rateCards;
 
-	private Integer discount;
+	private DiscountCardKeyInfo discountCardKeyInfo;
 
-	private Integer shippingPriceList;
+	private ShippingPriceList shippingPriceList;
 
 	public Integer getSourceCodeId() {
 		return sourceCodeId;
@@ -165,29 +168,32 @@ public class SourceCodeVO {
 		this.sourceCodeFormat = sourceCodeFormat;
 	}
 
-	public String getRateCard() {
-		return rateCard;
+	public RateCards getRateCards() {
+		return rateCards;
 	}
 
-	public void setRateCard(String rateCard) {
-		this.rateCard = rateCard;
+	public void setRateCards(RateCards rateCards) {
+		this.rateCards = rateCards;
 	}
 
-	public Integer getDiscount() {
-		return discount;
+	public DiscountCardKeyInfo getDiscountCardKeyInfo() {
+		return discountCardKeyInfo;
 	}
 
-	public void setDiscount(Integer discount) {
-		this.discount = discount;
+	public void setDiscountCardKeyInfo(DiscountCardKeyInfo discountCardKeyInfo) {
+		this.discountCardKeyInfo = discountCardKeyInfo;
 	}
 
-	public Integer getShippingPriceList() {
+	public ShippingPriceList getShippingPriceList() {
 		return shippingPriceList;
 	}
 
-	public void setShippingPriceList(Integer shippingPriceList) {
+	public void setShippingPriceList(ShippingPriceList shippingPriceList) {
 		this.shippingPriceList = shippingPriceList;
 	}
+
+	
+	
 
 	
 	
