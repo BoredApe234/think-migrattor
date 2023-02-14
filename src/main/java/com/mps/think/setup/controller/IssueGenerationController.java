@@ -52,8 +52,8 @@ public class IssueGenerationController {
 	}
 	
 	@GetMapping("/findMaxSeqIssue")
-	public ResponseEntity<?> findMaxSeqIssue() {
-		return ResponseEntity.ok(issueGenerationServiceImpl.findMaxSeqIssue());
+	public ResponseEntity<?> findMaxSeqIssue(@RequestParam Integer ocId) {
+		return ResponseEntity.ok(issueGenerationServiceImpl.findMaxSeqIssue(ocId));
 	}
 	
 	@DeleteMapping("/deleteIssuebyId")

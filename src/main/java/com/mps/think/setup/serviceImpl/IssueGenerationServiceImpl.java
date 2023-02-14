@@ -3,7 +3,9 @@ package com.mps.think.setup.serviceImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.aop.AopInvocationException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.IssueGeneration;
@@ -158,7 +160,7 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue.setIssueDate(issueGeneration.getIssueDate());
 		issue.setDateoftheMonthYear(issueGeneration.getDateoftheMonthYear());
 		issue.setChangeDate(issueGeneration.getChangeDate());
-		issue.setSeqOfIssue(findMaxSeqIssue()+1);
+		issue.setSeqOfIssue(findMaxSeqIssue(issueGeneration.getOrderClassId().getOcId())+1);
 		// OrderCodes id added
 		OrderCodes ocode = new OrderCodes();
 		ocode.setId(issueGeneration.getOderCodeVo().getId());
@@ -191,10 +193,10 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 	public IssueGenerationVo generateIssueGenerationVo(IssueGenerationVo issueGeneration) {
 		IssueSettings issueSettingData = issueSettingsRepo.findByOcId(issueGeneration.getOrderClassId().getOcId());
 		int seq;
-		if (findMaxSeqIssue() == null) {
+		if (findMaxSeqIssue(issueGeneration.getOrderClassId().getOcId() )== 0) {
 			seq = 0;
 		} else {
-			seq = findMaxSeqIssue();
+			seq = findMaxSeqIssue(issueGeneration.getOrderClassId().getOcId());
 		}
 		ArrayList<String> generateDate = null;
 		if (issueSettingData.getFrequencyOfGeneration().equals("Day")) {
@@ -289,8 +291,17 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 	}
 
 	@Override
-	public Integer findMaxSeqIssue() {
-		Integer data = issueGenerationRepo.findMaxSeqOfIssue();
+	public Integer findMaxSeqIssue(Integer ocId) {
+		Integer data;
+		  try  
+	        {  
+			   data = issueGenerationRepo.findMaxSeqOfIssue(ocId); 
+	        }  
+	        catch(AopInvocationException e)  
+	        {  data=0;
+	            System.out.println(0);  
+	        }  
+		
 		return data;
 	}
 
