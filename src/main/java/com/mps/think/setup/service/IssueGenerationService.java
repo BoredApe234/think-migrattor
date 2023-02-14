@@ -16,11 +16,13 @@ public interface IssueGenerationService {
 
 	public IssueGeneration findbyIssueId(Integer issueId);
 	
-	public Integer findMaxSeqIssue();
+	public Integer findMaxSeqIssue(Integer ocId);
 
 	IssueGenerationVo generateIssueGenerationVo(IssueGenerationVo issueGeneration);
 
 	IssueGenerationVo insertIssueGenerationVo(IssueGenerationVo issueGeneration);
 	public IssueGeneration deleteIssueById(Integer sourceCodeId);
+
+//	Integer findMaxSeqIssue(Integer ocId);
 
 }
