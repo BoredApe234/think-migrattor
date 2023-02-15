@@ -56,4 +56,9 @@ public class SubscriptionDefinationController {
 		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefById(id));
 	}
 	
+	@GetMapping("/allSuscriptionsForOrderCode/{orderCodeId}")
+	public ResponseEntity<?> getSubscriptionsByOrderCode(@PathVariable("orderCodeId") Integer orderCodeId) {
+		return ResponseEntity.ok(subscriptionDefService.getAllSubscriptionsByOrderCode(orderCodeId));
+	}
+	
 }

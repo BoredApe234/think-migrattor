@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "order_items")
@@ -32,8 +34,9 @@ public class OrderItems extends BaseEntity {
 	@Column(name = "copies_per_issue")
 	private Integer copiesPerIssue;
 	
-	@Column(name = "subs_prod_pkg_def")
-	private String subsProdPkgDef;
+	@OneToOne
+	@JoinColumn(name = "subscription_id", referencedColumnName = "id")
+	private SubscriptionDefKeyInfo subsProdPkgDef;
 	
 	@Column(name = "effective_date")
 	private Date effectiveDate;
@@ -53,16 +56,16 @@ public class OrderItems extends BaseEntity {
 	@Column(name = "extended_issue")
 	private Integer extendedIssue;
 	
-	// need to mapped to Term entity
-	@Column(name = "term")
-	private String term;
+	@OneToOne
+	@JoinColumn(name = "term_id", referencedColumnName = "termsId")
+	private Terms term;
 	
 	@Column(name = "extended_by_days")
 	private Integer extendedByDays;
 	
 	@Column(name = "quantity_ordered")
 	private Integer quantityOrdered;
-	
+
 	public Integer getId() {
 		return id;
 	}
@@ -95,11 +98,11 @@ public class OrderItems extends BaseEntity {
 		this.copiesPerIssue = copiesPerIssue;
 	}
 
-	public String getSubsProdPkgDef() {
+	public SubscriptionDefKeyInfo getSubsProdPkgDef() {
 		return subsProdPkgDef;
 	}
 
-	public void setSubsProdPkgDef(String subsProdPkgDef) {
+	public void setSubsProdPkgDef(SubscriptionDefKeyInfo subsProdPkgDef) {
 		this.subsProdPkgDef = subsProdPkgDef;
 	}
 
@@ -151,11 +154,11 @@ public class OrderItems extends BaseEntity {
 		this.extendedIssue = extendedIssue;
 	}
 
-	public String getTerm() {
+	public Terms getTerm() {
 		return term;
 	}
 
-	public void setTerm(String term) {
+	public void setTerm(Terms term) {
 		this.term = term;
 	}
 
@@ -174,5 +177,7 @@ public class OrderItems extends BaseEntity {
 	public void setQuantityOrdered(Integer quantityOrdered) {
 		this.quantityOrdered = quantityOrdered;
 	}
-
+	
+	
+	
 }

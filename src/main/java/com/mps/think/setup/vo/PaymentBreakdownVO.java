@@ -3,28 +3,31 @@ package com.mps.think.setup.vo;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.mps.think.setup.model.RateCards;
+import com.mps.think.setup.vo.EnumModelVO.PaymentStatus;
+
 public class PaymentBreakdownVO {
-	
+
 	private Integer id;
-	
+
 	private String currencyType;
-	
-	private String rateCard;
-	
+
+	private RateCards rateCard;
+
 	private Date effectiveDate;
-	
-	private String paymentStatus;
-	
+
+	private PaymentStatus paymentStatus;
+
 	private String term;
-	
+
 	private BigDecimal baseAmount;
-	
+
 	private BigDecimal discount;
-	
+
 	private BigDecimal tax;
-	
+
 	private BigDecimal grossAmount;
-	
+
 	private BigDecimal commission;
 
 	private BigDecimal shippingCharge;
@@ -47,11 +50,11 @@ public class PaymentBreakdownVO {
 		this.currencyType = currencyType;
 	}
 
-	public String getRateCard() {
+	public RateCards getRateCard() {
 		return rateCard;
 	}
 
-	public void setRateCard(String rateCard) {
+	public void setRateCard(RateCards rateCard) {
 		this.rateCard = rateCard;
 	}
 
@@ -63,11 +66,11 @@ public class PaymentBreakdownVO {
 		this.effectiveDate = effectiveDate;
 	}
 
-	public String getPaymentStatus() {
+	public PaymentStatus getPaymentStatus() {
 		return paymentStatus;
 	}
 
-	public void setPaymentStatus(String paymentStatus) {
+	public void setPaymentStatus(PaymentStatus paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
 
@@ -134,7 +137,5 @@ public class PaymentBreakdownVO {
 	public void setNetAmount(BigDecimal netAmount) {
 		this.netAmount = netAmount;
 	}
-
-	
 
 }
