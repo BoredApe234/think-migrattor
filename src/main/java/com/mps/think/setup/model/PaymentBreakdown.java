@@ -10,6 +10,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.mps.think.setup.vo.EnumModelVO.PaymentStatus;
@@ -31,8 +33,9 @@ public class PaymentBreakdown extends BaseEntity {
 	@Column(name = "currency_type")
 	private String currencyType;
 	
-	@Column(name = "rate_card")
-	private String rateCard;
+	@ManyToOne
+	@JoinColumn(name = "rate_card_id", referencedColumnName = "rcId")
+	private RateCards rateCard;
 	
 	@Column(name = "effective_date")
 	private Date effectiveDate;
@@ -81,11 +84,11 @@ public class PaymentBreakdown extends BaseEntity {
 		this.currencyType = currencyType;
 	}
 
-	public String getRateCard() {
+	public RateCards getRateCard() {
 		return rateCard;
 	}
 
-	public void setRateCard(String rateCard) {
+	public void setRateCard(RateCards rateCard) {
 		this.rateCard = rateCard;
 	}
 
@@ -168,7 +171,7 @@ public class PaymentBreakdown extends BaseEntity {
 	public void setNetAmount(BigDecimal netAmount) {
 		this.netAmount = netAmount;
 	}
-	
+
 	
 
 }

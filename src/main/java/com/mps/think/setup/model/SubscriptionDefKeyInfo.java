@@ -1,14 +1,22 @@
 package com.mps.think.setup.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinColumns;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -46,9 +54,13 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 	@JoinColumn(name = "order_code_id", referencedColumnName = "id")
 	private OrderCodesSuper orderCode;
 	
-	@OneToOne
-	@JoinColumn(name = "term_id", referencedColumnName = "termsId")
-	private Terms term;
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(
+			name = "subscription_terms_mapping_tbl",
+			joinColumns = {@JoinColumn(name = "subscription_id", referencedColumnName = "id")},
+		    inverseJoinColumns = {@JoinColumn(name = "term_id", referencedColumnName = "termsId")}
+	)
+	private List<Terms> terms;
 	
 	@Enumerated(EnumType.STRING)
 	@Column(name = "subs_def_status")
@@ -87,6 +99,7 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public Publisher getPublisher() {
 		return publisher;
 	}
@@ -101,7 +114,6 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 
 	public void setOrderClass(OrderClass orderClass) {
 		this.orderClass = orderClass;
-
 	}
 
 	public String getSubscriptionDefCode() {
@@ -128,12 +140,12 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 		this.orderCode = orderCode;
 	}
 
-	public Terms getTerm() {
-		return term;
+	public List<Terms> getTerms() {
+		return terms;
 	}
 
-	public void setTerm(Terms term) {
-		this.term = term;
+	public void setTerms(List<Terms> terms) {
+		this.terms = terms;
 	}
 
 	public SubDefStatus getSubDefStatus() {
@@ -160,13 +172,13 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 		this.rateCard = rateCard;
 	}
 
-//	public RenewalCard getRenewalCard() {
-//		return renewalCard;
-//	}
-//
-//	public void setRenewalCard(RenewalCard renewalCard) {
-//		this.renewalCard = renewalCard;
-//	}
+	public String getRenewalCard() {
+		return renewalCard;
+	}
+
+	public void setRenewalCard(String renewalCard) {
+		this.renewalCard = renewalCard;
+	}
 
 	public String getOrderCodeType() {
 		return orderCodeType;
@@ -200,13 +212,6 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 		this.category = category;
 	}
 
-
-	public String getRenewalCard() {
-		return renewalCard;
-	}
-
-	public void setRenewalCard(String renewalCard) {
-		this.renewalCard = renewalCard;
-	}
+	
 
 }

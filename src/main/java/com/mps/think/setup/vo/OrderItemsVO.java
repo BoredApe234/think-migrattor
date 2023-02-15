@@ -2,8 +2,11 @@ package com.mps.think.setup.vo;
 
 import java.util.Date;
 
-public class OrderItemsVO {
+import com.mps.think.setup.model.SubscriptionDefKeyInfo;
+import com.mps.think.setup.model.Terms;
 
+public class OrderItemsVO {
+	
 	private Integer id;
 
 	private Integer issue;
@@ -11,27 +14,26 @@ public class OrderItemsVO {
 	private String enumeration;
 
 	private Integer copiesPerIssue;
-	
-	private String subsProdPkgDef;
-	
+
+	private SubscriptionDefKeyInfo subsProdPkgDef;
+
 	private Date effectiveDate;
 
 	private Integer numOfIssues;
-	
-	private Date validFrom;
-	
-	private Date validTo;
-	
-	private Integer liabilityIssue;
-	
-	private Integer extendedIssue;
-	
-	private String term;
-	
-	private Integer extendedByDays;
-	
-	private Integer quantityOrdered;
 
+	private Date validFrom;
+
+	private Date validTo;
+
+	private Integer liabilityIssue;
+
+	private Integer extendedIssue;
+
+	private Terms term;
+
+	private Integer extendedByDays;
+
+	private Integer quantityOrdered;
 
 	public Integer getId() {
 		return id;
@@ -65,11 +67,11 @@ public class OrderItemsVO {
 		this.copiesPerIssue = copiesPerIssue;
 	}
 
-	public String getSubsProdPkgDef() {
+	public SubscriptionDefKeyInfo getSubsProdPkgDef() {
 		return subsProdPkgDef;
 	}
 
-	public void setSubsProdPkgDef(String subsProdPkgDef) {
+	public void setSubsProdPkgDef(SubscriptionDefKeyInfo subsProdPkgDef) {
 		this.subsProdPkgDef = subsProdPkgDef;
 	}
 
@@ -121,11 +123,11 @@ public class OrderItemsVO {
 		this.extendedIssue = extendedIssue;
 	}
 
-	public String getTerm() {
+	public Terms getTerm() {
 		return term;
 	}
 
-	public void setTerm(String term) {
+	public void setTerm(Terms term) {
 		this.term = term;
 	}
 
@@ -145,4 +147,6 @@ public class OrderItemsVO {
 		this.quantityOrdered = quantityOrdered;
 	}
 
+	
+	
 }

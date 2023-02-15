@@ -1,6 +1,8 @@
 package com.mps.think.setup.vo;
 
 
+import java.util.List;
+
 import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.model.Publisher;
@@ -23,7 +25,7 @@ public class SubscriptionDefKeyInfoVO {
 
 	private OrderCodesSuper orderCode;
 
-	private Terms term;
+	private List<Terms> terms;
 
 	private SubDefStatus subDefStatus;
 
@@ -91,12 +93,12 @@ public class SubscriptionDefKeyInfoVO {
 		this.orderCode = orderCode;
 	}
 
-	public Terms getTerm() {
-		return term;
+	public List<Terms> getTerms() {
+		return terms;
 	}
 
-	public void setTerm(Terms term) {
-		this.term = term;
+	public void setTerms(List<Terms> terms) {
+		this.terms = terms;
 	}
 
 	public SubDefStatus getSubDefStatus() {
@@ -123,13 +125,13 @@ public class SubscriptionDefKeyInfoVO {
 		this.rateCard = rateCard;
 	}
 
-//	public RenewalCard getRenewalCard() {
-//		return renewalCard;
-//	}
-//
-//	public void setRenewalCard(RenewalCard renewalCard) {
-//		this.renewalCard = renewalCard;
-//	}
+	public String getRenewalCard() {
+		return renewalCard;
+	}
+
+	public void setRenewalCard(String renewalCard) {
+		this.renewalCard = renewalCard;
+	}
 
 	public String getOrderCodeType() {
 		return orderCodeType;
@@ -163,11 +165,5 @@ public class SubscriptionDefKeyInfoVO {
 		this.category = category;
 	}
 
-	public String getRenewalCard() {
-		return renewalCard;
-	}
-
-	public void setRenewalCard(String renewalCard) {
-		this.renewalCard = renewalCard;
-	}
+	
 }
