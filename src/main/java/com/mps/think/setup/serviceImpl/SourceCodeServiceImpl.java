@@ -33,6 +33,9 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		SourceCode newSourceCode = mapper.convertValue(sourceCode, SourceCode.class);
+		if(sourceCode.getDiscount()==0){
+			newSourceCode.setDiscount(null);
+		}
 		sourceCodeRepo.saveAndFlush(newSourceCode);
 		
 		return sourceCode;
@@ -51,6 +54,9 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 	public SourceCodeVO updateSourceCode(SourceCodeVO sourceCode) {
 		ObjectMapper mapper = new ObjectMapper();
 		SourceCode sourceCodeToUpdate = mapper.convertValue(sourceCode, SourceCode.class);
+		if(sourceCode.getDiscount()==0){
+			sourceCodeToUpdate.setDiscount(null);
+		}
 		sourceCodeRepo.saveAndFlush(sourceCodeToUpdate);
 		return sourceCode;
 	}
