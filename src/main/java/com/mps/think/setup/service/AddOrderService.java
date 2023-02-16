@@ -16,7 +16,7 @@ public interface AddOrderService {
 	public List<Order> getAllOrders() throws Exception;
 	public Order getOrderById(Integer orderId) throws Exception;
 	public List<Order> getAllOrderByCustomerId(Integer customerId) throws Exception;
-	public Order updateOrder(OrderVO order) throws Exception;
+	public Order updateOrder(Order order) throws Exception;
 	public List<Order> getAllOrdersByOrderClassId(Integer ocId) throws Exception;
 
 	public Page<Order> getSearchedOrders(String keyword, Pageable page);
