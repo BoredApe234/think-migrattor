@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mps.think.setup.model.Order;
 import com.mps.think.setup.service.AddOrderService;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
 import com.mps.think.setup.vo.EnumModelVO.OrderType;
@@ -34,7 +35,7 @@ public class AddOrderController {
 	}
 	
 	@PutMapping("/updateOrder")
-	public ResponseEntity<?> updateOrder(@RequestBody OrderVO order) throws Exception {
+	public ResponseEntity<?> updateOrder(@RequestBody Order order) throws Exception {
 		return ResponseEntity.ok(addOrderService.updateOrder(order));
 	}
 	

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.repo.AddOrderRepo;
@@ -43,7 +44,7 @@ public class AddOrderServiceImpl implements AddOrderService {
 	}
 
 	@Override
-	public Order updateOrder(OrderVO order) throws Exception {
+	public Order updateOrder(Order order) throws Exception {
 		ObjectMapper mapper = new ObjectMapper();
 		return addOrderRepo.saveAndFlush(mapper.convertValue(order, Order.class));
 	}
