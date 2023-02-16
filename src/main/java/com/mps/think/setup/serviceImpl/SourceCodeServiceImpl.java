@@ -33,6 +33,19 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 		
 		ObjectMapper mapper = new ObjectMapper();
 		SourceCode newSourceCode = mapper.convertValue(sourceCode, SourceCode.class);
+		
+		if(sourceCode.getDiscountCardKeyInfo()==null || sourceCode.getDiscountCardKeyInfo().getId()==0){
+			newSourceCode.setDiscountCardKeyInfo(null);
+			}
+		if(sourceCode.getRateCards()==null || sourceCode.getRateCards().getRcId()==0){
+			newSourceCode.setRateCards(null);
+		}
+		if (sourceCode.getShippingPriceList()==null || sourceCode.getShippingPriceList().getId()==0) {
+			newSourceCode.setShippingPriceList(null);
+		}
+		if(sourceCode.getSourceCodeFormat()==null || sourceCode.getSourceCodeFormat().getId()==0) {
+			newSourceCode.setSourceCodeFormat(null);
+		}
 		sourceCodeRepo.saveAndFlush(newSourceCode);
 		
 		return sourceCode;
@@ -51,6 +64,19 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 	public SourceCodeVO updateSourceCode(SourceCodeVO sourceCode) {
 		ObjectMapper mapper = new ObjectMapper();
 		SourceCode sourceCodeToUpdate = mapper.convertValue(sourceCode, SourceCode.class);
+		
+		if(sourceCode.getDiscountCardKeyInfo()==null || sourceCode.getDiscountCardKeyInfo().getId()==0){
+			sourceCodeToUpdate.setDiscountCardKeyInfo(null);
+			}
+		if(sourceCode.getRateCards()==null || sourceCode.getRateCards().getRcId()==0){
+			sourceCodeToUpdate.setRateCards(null);
+		}
+		if (sourceCode.getShippingPriceList()==null || sourceCode.getShippingPriceList().getId()==0) {
+			sourceCodeToUpdate.setShippingPriceList(null);
+		}
+		if(sourceCode.getSourceCodeFormat()==null || sourceCode.getSourceCodeFormat().getId()==0) {
+			sourceCodeToUpdate.setSourceCodeFormat(null);
+		}
 		sourceCodeRepo.saveAndFlush(sourceCodeToUpdate);
 		return sourceCode;
 	}
