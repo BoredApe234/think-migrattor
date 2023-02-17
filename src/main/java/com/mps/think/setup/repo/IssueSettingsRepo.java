@@ -10,6 +10,6 @@ import com.mps.think.setup.model.IssueSettings;
 @Repository
 public interface IssueSettingsRepo extends JpaRepository<IssueSettings, Integer>{
 
-	@Query(value="SELECT * FROM THINK_SETUP.issue_setting where order_class_id=:ocId",nativeQuery = true)
+	@Query(value="SELECT * FROM think_setup_new.issue_setting where order_class_id=:ocId",nativeQuery = true)
 	IssueSettings findByOcId(@Param("ocId") Integer ocId);
 }
