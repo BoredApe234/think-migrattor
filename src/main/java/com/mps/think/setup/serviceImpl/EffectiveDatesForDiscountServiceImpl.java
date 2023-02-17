@@ -22,17 +22,15 @@ public class EffectiveDatesForDiscountServiceImpl implements EffectiveDatesForDi
 	private EffectiveDatesForDiscountRepo effectiveDatesForDiscountRepo;
 	
 	@Override
-	public EffectiveDatesForDiscountVO saveEffectiveDateForDiscount(EffectiveDatesForDiscountVO effectiveDateForDiscount) {
+	public EffectiveDatesForDiscount saveEffectiveDateForDiscount(EffectiveDatesForDiscountVO effectiveDateForDiscount) {
 		ObjectMapper mapper = new ObjectMapper();
-		effectiveDatesForDiscountRepo.saveAndFlush(mapper.convertValue(effectiveDateForDiscount, EffectiveDatesForDiscount.class));
-		return effectiveDateForDiscount;
+		return effectiveDatesForDiscountRepo.saveAndFlush(mapper.convertValue(effectiveDateForDiscount, EffectiveDatesForDiscount.class));
 	}
 
 	@Override
-	public EffectiveDatesForDiscountVO updateEffectiveDatesForDiscount(EffectiveDatesForDiscountVO effectiveDateForDiscount) {
+	public EffectiveDatesForDiscount updateEffectiveDatesForDiscount(EffectiveDatesForDiscount effectiveDateForDiscount) {
 		ObjectMapper mapper = new ObjectMapper();
-		effectiveDatesForDiscountRepo.saveAndFlush(mapper.convertValue(effectiveDateForDiscount, EffectiveDatesForDiscount.class));
-		return effectiveDateForDiscount;
+		return effectiveDatesForDiscountRepo.saveAndFlush(mapper.convertValue(effectiveDateForDiscount, EffectiveDatesForDiscount.class));
 	}
 
 	@Override

@@ -23,17 +23,15 @@ public class DiscountCardKeyInfoServiceImpl implements DiscountCardKeyInfoServic
 	private EffectiveDatesForDiscountService effectiveDateService;
 	
 	@Override
-	public DiscountCardKeyInfoVO saveDiscountCard(DiscountCardKeyInfoVO discountCard) {
+	public DiscountCardKeyInfo saveDiscountCard(DiscountCardKeyInfoVO discountCard) {
 		ObjectMapper mapper = new ObjectMapper();
-		discountCardKeyInfoRepo.saveAndFlush(mapper.convertValue(discountCard, DiscountCardKeyInfo.class));
-		return discountCard;
+		return discountCardKeyInfoRepo.saveAndFlush(mapper.convertValue(discountCard, DiscountCardKeyInfo.class));
 	}
 
 	@Override
-	public DiscountCardKeyInfoVO updateDiscountCard(DiscountCardKeyInfoVO discountCard) {
+	public DiscountCardKeyInfo updateDiscountCard(DiscountCardKeyInfo discountCard) {
 		ObjectMapper mapper = new ObjectMapper();
-		discountCardKeyInfoRepo.saveAndFlush(mapper.convertValue(discountCard, DiscountCardKeyInfo.class));
-		return discountCard;
+		return discountCardKeyInfoRepo.saveAndFlush(mapper.convertValue(discountCard, DiscountCardKeyInfo.class));
 	}
 
 	@Override
