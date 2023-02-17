@@ -39,6 +39,9 @@ public class CustomerDetails  extends BaseEntity{
 	@Column(name = "customerCategory")
 	private CustomerCategory customerCategory;
 	
+	@Column(name = "think_category")
+	private String thinkCategory;
+	
 	@NotBlank
 	@Column(name = "salutation")
 	private String salutation;
@@ -156,6 +159,14 @@ public class CustomerDetails  extends BaseEntity{
 
 	public void setCustomerCategory(CustomerCategory customerCategory) {
 		this.customerCategory = customerCategory;
+	}
+
+	public String getThinkCategory() {
+		return thinkCategory;
+	}
+
+	public void setThinkCategory(String thinkCategory) {
+		this.thinkCategory = thinkCategory;
 	}
 
 	public String getSalutation() {
@@ -374,14 +385,6 @@ public class CustomerDetails  extends BaseEntity{
 		this.paymentThreshold = paymentThreshold;
 	}
 
-	public List<CustomerAddresses> getCustomerAddresses() {
-		return customerAddresses;
-	}
-
-	public void setCustomerAddresses(List<CustomerAddresses> customerAddresses) {
-		this.customerAddresses = customerAddresses;
-	}
-
 	public String getCustAuxFieldJSON() {
 		return custAuxFieldJSON;
 	}
@@ -390,20 +393,31 @@ public class CustomerDetails  extends BaseEntity{
 		this.custAuxFieldJSON = custAuxFieldJSON;
 	}
 
+	public List<CustomerAddresses> getCustomerAddresses() {
+		return customerAddresses;
+	}
+
+	public void setCustomerAddresses(List<CustomerAddresses> customerAddresses) {
+		this.customerAddresses = customerAddresses;
+	}
+
 	@Override
 	public String toString() {
-		return "CustomerDetails [customerId=" + customerId + ", customerCategory=" + customerCategory + ", salutation="
-				+ salutation + ", fname=" + fname + ", lname=" + lname + ", initialName=" + initialName + ", suffix="
-				+ suffix + ", company=" + company + ", department=" + department + ", email=" + email + ", countryCode="
-				+ countryCode + ", primaryPhone=" + primaryPhone + ", mobileNumber=" + mobileNumber + ", taxId=" + taxId
-				+ ", taxExempt=" + taxExempt + ", secondaryEmail=" + secondaryEmail + ", secondaryPhone="
-				+ secondaryPhone + ", listRental=" + listRental + ", salesRepresentative=" + salesRepresentative
-				+ ", creditStatus=" + creditStatus + ", fax=" + fax + ", institutionalId=" + institutionalId
-				+ ", parentInstitutionalId=" + parentInstitutionalId + ", chargeTaxOn=" + chargeTaxOn
-				+ ", paymentOptions=" + paymentOptions + ", configurationOptionsforOrders="
-				+ configurationOptionsforOrders + ", newOrderCommission=" + newOrderCommission + ", renewalCommission="
-				+ renewalCommission + ", paymentThreshold=" + paymentThreshold + ", custAuxFieldJSON="
-				+ custAuxFieldJSON + ", customerAddresses=" + customerAddresses + "]";
+		return "CustomerDetails [customerId=" + customerId + ", customerCategory=" + customerCategory
+				+ ", thinkCategory=" + thinkCategory + ", salutation=" + salutation + ", fname=" + fname + ", lname="
+				+ lname + ", initialName=" + initialName + ", suffix=" + suffix + ", company=" + company
+				+ ", department=" + department + ", email=" + email + ", countryCode=" + countryCode + ", primaryPhone="
+				+ primaryPhone + ", mobileNumber=" + mobileNumber + ", taxId=" + taxId + ", taxExempt=" + taxExempt
+				+ ", secondaryEmail=" + secondaryEmail + ", secondaryPhone=" + secondaryPhone + ", listRental="
+				+ listRental + ", salesRepresentative=" + salesRepresentative + ", creditStatus=" + creditStatus
+				+ ", fax=" + fax + ", institutionalId=" + institutionalId + ", parentInstitutionalId="
+				+ parentInstitutionalId + ", chargeTaxOn=" + chargeTaxOn + ", paymentOptions=" + paymentOptions
+				+ ", configurationOptionsforOrders=" + configurationOptionsforOrders + ", newOrderCommission="
+				+ newOrderCommission + ", renewalCommission=" + renewalCommission + ", paymentThreshold="
+				+ paymentThreshold + ", custAuxFieldJSON=" + custAuxFieldJSON + ", customerAddresses="
+				+ customerAddresses + "]";
 	}
+
+	
 
 }

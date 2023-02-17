@@ -13,6 +13,7 @@ public class CustomerDetailsVO {
 	
 	private Integer customerId;
 	private CustomerCategory customerCategory;
+	private String thinkCategory;
 	private String salutation;
 	private String fname;
 	private String lname;
@@ -53,6 +54,12 @@ public class CustomerDetailsVO {
 	}
 	public void setCustomerCategory(CustomerCategory customerCategory) {
 		this.customerCategory = customerCategory;
+	}
+	public String getThinkCategory() {
+		return thinkCategory;
+	}
+	public void setThinkCategory(String thinkCategory) {
+		this.thinkCategory = thinkCategory;
 	}
 	public String getSalutation() {
 		return salutation;
@@ -228,6 +235,8 @@ public class CustomerDetailsVO {
 	public void setCustomerAddresses(List<CustomerAddressesVO> customerAddresses) {
 		this.customerAddresses = customerAddresses;
 	}
+	
+	
 	
 	
 }
