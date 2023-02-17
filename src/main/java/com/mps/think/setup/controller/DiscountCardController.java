@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mps.think.setup.model.DiscountCardKeyInfo;
+import com.mps.think.setup.model.EffectiveDatesForDiscount;
 import com.mps.think.setup.service.DiscountCardKeyInfoService;
 import com.mps.think.setup.service.EffectiveDatesForDiscountService;
 import com.mps.think.setup.vo.DiscountCardKeyInfoVO;
@@ -32,7 +34,7 @@ public class DiscountCardController {
 	}
 	
 	@PutMapping("/updateDiscountCardKeyInfo")
-	public ResponseEntity<?> updateDiscountCardKeyInfo(@RequestBody DiscountCardKeyInfoVO discountCardKeyInfo) {
+	public ResponseEntity<?> updateDiscountCardKeyInfo(@RequestBody DiscountCardKeyInfo discountCardKeyInfo) {
 		return ResponseEntity.ok(discountCardKeyInfoService.updateDiscountCard(discountCardKeyInfo));
 	}
 	
@@ -42,7 +44,7 @@ public class DiscountCardController {
 	}
 	
 	@PutMapping("/updateEffectiveDateForDiscount")
-	public ResponseEntity<?> updateEffectiveDateForDiscount(@RequestBody EffectiveDatesForDiscountVO effectiveDateForDiscount) {
+	public ResponseEntity<?> updateEffectiveDateForDiscount(@RequestBody EffectiveDatesForDiscount effectiveDateForDiscount) {
 		return ResponseEntity.ok(effectiveDatesForDiscountService.updateEffectiveDatesForDiscount(effectiveDateForDiscount));
 	}
 	

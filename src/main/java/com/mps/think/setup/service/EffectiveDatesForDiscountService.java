@@ -7,9 +7,9 @@ import com.mps.think.setup.vo.EffectiveDatesForDiscountVO;
 
 public interface EffectiveDatesForDiscountService {
 
-	public EffectiveDatesForDiscountVO saveEffectiveDateForDiscount(EffectiveDatesForDiscountVO effectiveDateForDiscount);
+	public EffectiveDatesForDiscount saveEffectiveDateForDiscount(EffectiveDatesForDiscountVO effectiveDateForDiscount);
 	
-	public EffectiveDatesForDiscountVO updateEffectiveDatesForDiscount(EffectiveDatesForDiscountVO effectiveDateForDiscount);
+	public EffectiveDatesForDiscount updateEffectiveDatesForDiscount(EffectiveDatesForDiscount effectiveDateForDiscount);
 	
 	public EffectiveDatesForDiscount deleteEffectiveDatesForDiscountById(Integer id);
 	
