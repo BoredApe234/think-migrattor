@@ -87,9 +87,9 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 				issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + IntegerToRoman.intToABCD(i + 1));
 			}
 			// OrderCodes id added
-			OrderCodes ocode = new OrderCodes();
-			ocode.setId(issueGeneration.getOderCodeVo().getId());
-			issue.setOderCode(ocode);
+//			OrderCodes ocode = new OrderCodes();
+//			ocode.setId(issueGeneration.getOderCodeVo().getId());
+//			issue.setOderCode(ocode);
 			/// oderclass id
 			OrderClass oc = new OrderClass();
 			oc.setOcId(issueGeneration.getOrderClassId().getOcId());
@@ -123,9 +123,9 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue.setChangeDate(issueGeneration.getChangeDate());
 		issue.setSeqOfIssue(issueGeneration.getSeqOfIssue());
 		// OrderCodes id added
-		OrderCodes ocode = new OrderCodes();
-		ocode.setId(issueGeneration.getOderCodeVo().getId());
-		issue.setOderCode(ocode);
+//		OrderCodes ocode = new OrderCodes();
+//		ocode.setId(issueGeneration.getOderCodeVo().getId());
+//		issue.setOderCode(ocode);
 		/// oderclass id
 		OrderClass oc = new OrderClass();
 		oc.setOcId(issueGeneration.getOrderClassId().getOcId());
@@ -162,9 +162,9 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		issue.setChangeDate(issueGeneration.getChangeDate());
 		issue.setSeqOfIssue(findMaxSeqIssue(issueGeneration.getOrderClassId().getOcId())+1);
 		// OrderCodes id added
-		OrderCodes ocode = new OrderCodes();
-		ocode.setId(issueGeneration.getOderCodeVo().getId());
-		issue.setOderCode(ocode);
+//		OrderCodes ocode = new OrderCodes();
+//		ocode.setId(issueGeneration.getOderCodeVo().getId());
+//		issue.setOderCode(ocode);
 		/// oderclass id
 		OrderClass oc = new OrderClass();
 		oc.setOcId(issueGeneration.getOrderClassId().getOcId());
@@ -264,9 +264,9 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 				issue.setIssueCaption(issueGeneration.getIssueCaption() + "" + IntegerToRoman.intToABCD(i + 1));
 			}
 			// OrderCodes id added
-			OrderCodes ocode = new OrderCodes();
-			ocode.setId(issueGeneration.getOderCodeVo().getId());
-			issue.setOderCode(ocode);
+//			OrderCodes ocode = new OrderCodes();
+//			ocode.setId(issueGeneration.getOderCodeVo().getId());
+//			issue.setOderCode(ocode);
 			/// oderclass id
 			OrderClass oc = new OrderClass();
 			oc.setOcId(issueGeneration.getOrderClassId().getOcId());
