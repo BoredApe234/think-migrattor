@@ -16,6 +16,7 @@ import javax.validation.constraints.Pattern;
 import com.mps.think.setup.vo.EnumModelVO.AddressCategory;
 import com.mps.think.setup.vo.EnumModelVO.AddressType;
 import com.mps.think.setup.vo.EnumModelVO.Frequency;
+import com.mps.think.setup.vo.EnumModelVO.Status;
 
 @Entity
 @Table(name = "addresses")
@@ -47,8 +48,9 @@ public class Addresses  extends BaseEntity{
 	@Column(name = "addressCategory")
 	private String addressCategory;
 	
+	@Enumerated(EnumType.STRING)
 	@Column(name = "status")
-	private Boolean status;
+	private Status status;
 	
 	@Column(name = "primaryAddress")
 	private Boolean primaryAddress;
@@ -108,14 +110,6 @@ public class Addresses  extends BaseEntity{
 		this.addressId = addressId;
 	}
 
-//	public CustomerDetails getCusId() {
-//		return cusId;
-//	}
-//
-//	public void setCusId(CustomerDetails cusId) {
-//		this.cusId = cusId;
-//	}
-
 	public String getAddressName() {
 		return addressName;
 	}
@@ -140,11 +134,11 @@ public class Addresses  extends BaseEntity{
 		this.addressCategory = addressCategory;
 	}
 
-	public Boolean getStatus() {
+	public Status getStatus() {
 		return status;
 	}
 
-	public void setStatus(Boolean status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 
@@ -286,6 +280,10 @@ public class Addresses  extends BaseEntity{
 				+ ", frequency=" + frequency + ", selectionFrom=" + selectionFrom + ", selectionTo=" + selectionTo
 				+ ", addressAuxJSON=" + addressAuxJSON + "]";
 	}
+	
+	
+
+	
 
 	
 

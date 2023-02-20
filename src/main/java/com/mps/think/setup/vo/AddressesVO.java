@@ -5,6 +5,7 @@ import java.util.Date;
 import com.mps.think.setup.vo.EnumModelVO.AddressCategory;
 import com.mps.think.setup.vo.EnumModelVO.AddressType;
 import com.mps.think.setup.vo.EnumModelVO.Frequency;
+import com.mps.think.setup.vo.EnumModelVO.Status;
 
 public class AddressesVO {
 	
@@ -13,7 +14,7 @@ public class AddressesVO {
 	private String addressName;
 	private AddressType addressType;
 	private String addressCategory;
-	private Boolean status;
+	private Status status;
 	private Boolean primaryAddress;
 	private String name;
 	private String addressLine1;
@@ -54,10 +55,10 @@ public class AddressesVO {
 	public void setAddressCategory(String addressCategory) {
 		this.addressCategory = addressCategory;
 	}
-	public Boolean getStatus() {
+	public Status getStatus() {
 		return status;
 	}
-	public void setStatus(Boolean status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
 	public Boolean getPrimaryAddress() {
@@ -132,7 +133,6 @@ public class AddressesVO {
 	public void setValidTo(Date validTo) {
 		this.validTo = validTo;
 	}
-	
 	public String getFrequency() {
 		return frequency;
 	}
@@ -167,6 +167,8 @@ public class AddressesVO {
 				+ ", frequency=" + frequency + ", selectionFrom=" + selectionFrom + ", selectionTo=" + selectionTo
 				+ ", addressAuxJSON=" + addressAuxJSON + "]";
 	}
+	
+	
 	
 	
 	

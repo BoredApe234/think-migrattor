@@ -18,6 +18,7 @@ import com.mps.think.setup.vo.EnumModelVO.AddressCategory;
 import com.mps.think.setup.vo.EnumModelVO.AddressType;
 import com.mps.think.setup.vo.EnumModelVO.Frequency;
 import com.mps.think.setup.vo.EnumModelVO.OrderType;
+import com.mps.think.setup.vo.EnumModelVO.Status;
 
 @RestController
 @CrossOrigin
@@ -72,6 +73,11 @@ public class AddressesController {
 			list.add(data.getDisplayName());
 		}
 		return ResponseEntity.ok(list);
+	}
+	
+	@GetMapping("/findAllstatus")
+	public ResponseEntity<?> getAllStatus() {
+		return ResponseEntity.ok(Status.values());
 	}
 	
 //	@PostMapping("/updatePrimaryAddressbyCustId")
