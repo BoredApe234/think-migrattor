@@ -283,6 +283,9 @@ public class IssueGenerationUtils {
 	    		list.add(temp);
 	    		System.out.println(temp);
 	    		count++;
+	    		if(issue==count){
+	    			break;
+	    		}
 	    	}
 	    	startYear++;
 	    }
