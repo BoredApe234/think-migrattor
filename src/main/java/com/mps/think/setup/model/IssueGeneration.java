@@ -38,9 +38,9 @@ public class IssueGeneration extends BaseEntity {
 //	@Column(name = "issues_appear_on_every",columnDefinition="LONGTEXT")
 //	private Integer[] IssuesAppearonEvery;
 
-	@OneToOne
-	@JoinColumn(name = "oder_codeId", referencedColumnName = "id")
-	private OrderCodes oderCode;
+//	@OneToOne
+//	@JoinColumn(name = "oder_codeId", referencedColumnName = "id")
+//	private OrderCodes oderCode;
 
 	// oder class mapping will be there
 	@OneToOne
@@ -151,13 +151,13 @@ public class IssueGeneration extends BaseEntity {
 //		IssuesAppearonEvery = issuesAppearonEvery;
 //	}
 
-	public OrderCodes getOderCode() {
-		return oderCode;
-	}
-
-	public void setOderCode(OrderCodes oderCode) {
-		this.oderCode = oderCode;
-	}
+//	public OrderCodes getOderCode() {
+//		return oderCode;
+//	}
+//
+//	public void setOderCode(OrderCodes oderCode) {
+//		this.oderCode = oderCode;
+//	}
 
 	public OrderClass getOrderClassId() {
 		return orderClassId;
@@ -314,29 +314,14 @@ public class IssueGeneration extends BaseEntity {
 	@Override
 	public String toString() {
 		return "IssueGeneration [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
-				+ frequencyOfGeneration + ", orderType=" + orderType + ", oderCode=" + oderCode + ", orderClassId="
-				+ orderClassId + ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
-				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
-				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issue_volume=" + issue_volume
-				+ ", issueDate=" + issueDate + ", dateoftheMonthYear=" + dateoftheMonthYear + ", seqOfIssue="
-				+ seqOfIssue + ", issueURL=" + issueURL + ", analysed=" + analysed + ", frozen=" + frozen
-				+ ", inventoryID=" + inventoryID + ", closed=" + closed + ", revenueGenerating=" + revenueGenerating
-				+ "]";
+				+ frequencyOfGeneration + ", orderType=" + orderType + ", orderClassId=" + orderClassId + ", active="
+				+ active + ", rateCard=" + rateCard + ", discountCard=" + discountCard + ", volumeCaption="
+				+ volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate + ", issueCaption="
+				+ issueCaption + ", issueFormat=" + issueFormat + ", issue_volume=" + issue_volume + ", issueDate="
+				+ issueDate + ", dateoftheMonthYear=" + dateoftheMonthYear + ", seqOfIssue=" + seqOfIssue
+				+ ", issueURL=" + issueURL + ", analysed=" + analysed + ", frozen=" + frozen + ", inventoryID="
+				+ inventoryID + ", closed=" + closed + ", revenueGenerating=" + revenueGenerating + "]";
 	}
-	
 
-//	@Override
-//	public String toString() {
-//		return "IssueGeneration [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
-//				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", orderType=" + orderType
-//				+ ", IssuesAppearonEvery=" + IssuesAppearonEvery + ", oderCode=" + oderCode + ", orderClassId="
-//				+ orderClassId + ", active=" + active + ", rateCard=" + rateCard + ", discountCard=" + discountCard
-//				+ ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate
-//				+ ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat + ", issue_volume=" + issue_volume
-//				+ ", issueDate=" + issueDate + ", dateoftheMonthYear=" + dateoftheMonthYear + ", seqOfIssue="
-//				+ seqOfIssue + ", issueURL=" + issueURL + ", analysed=" + analysed + ", frozen=" + frozen
-//				+ ", inventoryID=" + inventoryID + ", closed=" + closed + ", revenueGenerating=" + revenueGenerating
-//				+ "]";
-//	}
-//	
+
 }
