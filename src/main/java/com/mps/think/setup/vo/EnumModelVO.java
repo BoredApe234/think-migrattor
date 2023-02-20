@@ -280,5 +280,19 @@ public class EnumModelVO {
 		        return displayItemType ;
 		    }
 		}
+	 public static enum Status  {
+
+			Active("Active"),Inactive("Inactive");
+
+		    private final String displayStatus ;
+
+		    Status(String displayStatus ) {
+				this.displayStatus  = displayStatus ;
+			}
+
+			public String getDisplayName() {
+		        return displayStatus ;
+		    }
+		}
 
 }
