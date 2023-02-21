@@ -48,4 +48,9 @@ public class SourceAttributeValuesController {
 		return ResponseEntity.ok(sourceAttributeService.deleteSourceAttributeById(id));
 	}
 	
+	@GetMapping("getAllSourceAttrValuesBySourceAttrId/{id}")
+	public ResponseEntity<?> getAllSourceAttrValBySourceAttrId(@PathVariable("id") Integer id) {
+		return ResponseEntity.ok(sourceAttributeService.getAllSourceAttributeValuesByScId(id));
+	}
+	
 }

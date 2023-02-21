@@ -1,6 +1,7 @@
 package com.mps.think.setup.vo;
 
 import com.mps.think.setup.model.Publisher;
+import com.mps.think.setup.model.SourceAttributes;
 
 public class SourceAttributeValuesVO {
 
@@ -9,6 +10,8 @@ public class SourceAttributeValuesVO {
 	private Publisher publisher;
 
 	private String chosenAttributeValue;
+	
+	private SourceAttributes sourceAttributesId;
 
 	private String description;
 
@@ -38,6 +41,14 @@ public class SourceAttributeValuesVO {
 		this.chosenAttributeValue = chosenAttributeValue;
 	}
 
+	public SourceAttributes getSourceAttributesId() {
+		return sourceAttributesId;
+	}
+
+	public void setSourceAttributesId(SourceAttributes sourceAttributesId) {
+		this.sourceAttributesId = sourceAttributesId;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -53,6 +64,7 @@ public class SourceAttributeValuesVO {
 	public void setMaxCharacterLen(Integer maxCharacterLen) {
 		this.maxCharacterLen = maxCharacterLen;
 	}
+
 	
 	
 }
