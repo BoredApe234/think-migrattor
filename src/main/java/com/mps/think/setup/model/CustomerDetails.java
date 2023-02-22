@@ -18,7 +18,6 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mps.think.setup.vo.EnumModelVO.ChargeTaxOn;
 import com.mps.think.setup.vo.EnumModelVO.ConfigurationOptionsforOrders;
-import com.mps.think.setup.vo.EnumModelVO.CustomerCategory;
 import com.mps.think.setup.vo.EnumModelVO.PaymentOptions;
 
 @Entity
@@ -35,7 +34,7 @@ public class CustomerDetails  extends BaseEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer customerId;
 	
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "customerCategory")
 	private CustomerCategory customerCategory;
 	
