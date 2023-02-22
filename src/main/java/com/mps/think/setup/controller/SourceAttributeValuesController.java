@@ -39,8 +39,8 @@ public class SourceAttributeValuesController {
 	}
 
 	@GetMapping("/findbySourceAttributeValueId/{sourceAttributeValueId}")
-	public ResponseEntity<?> findbySourceAttributeId(@Valid @PathVariable("sourceAttributeId") Integer sourceAttributeId) throws Exception {
-		return ResponseEntity.ok(sourceAttributeService.findbySourceAttributeId(sourceAttributeId));
+	public ResponseEntity<?> findbySourceAttributeId(@Valid @PathVariable("sourceAttributeValueId") Integer sourceAttributeValueId) throws Exception {
+		return ResponseEntity.ok(sourceAttributeService.findbySourceAttributeId(sourceAttributeValueId));
 	}
 	
 	@DeleteMapping("/deleteSourceAttributeValue")
