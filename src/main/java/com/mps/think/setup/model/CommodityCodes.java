@@ -28,7 +28,7 @@ public class CommodityCodes extends BaseEntity {
 	private Publisher pubId;
 	
 	@Column(name = "commodityCode")
-	private Integer commodityCode;
+	private String commodityCode;
 	
 	@Column(name = "description")
 	private String description;
@@ -49,11 +49,11 @@ public class CommodityCodes extends BaseEntity {
 		this.pubId = pubId;
 	}
 
-	public Integer getCommodityCode() {
+	public String getCommodityCode() {
 		return commodityCode;
 	}
 
-	public void setCommodityCode(Integer commodityCode) {
+	public void setCommodityCode(String commodityCode) {
 		this.commodityCode = commodityCode;
 	}
 
