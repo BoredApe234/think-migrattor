@@ -6,7 +6,7 @@ public class CommodityCodesVO {
 	
 	private Integer id;
 	private Publisher pubId;
-	private Integer commodityCode;
+	private String commodityCode;
 	private String description;
 	public Integer getId() {
 		return id;
@@ -20,10 +20,10 @@ public class CommodityCodesVO {
 	public void setPubId(Publisher pubId) {
 		this.pubId = pubId;
 	}
-	public Integer getCommodityCode() {
+	public String getCommodityCode() {
 		return commodityCode;
 	}
-	public void setCommodityCode(Integer commodityCode) {
+	public void setCommodityCode(String commodityCode) {
 		this.commodityCode = commodityCode;
 	}
 	public String getDescription() {

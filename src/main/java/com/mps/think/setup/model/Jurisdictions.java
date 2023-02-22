@@ -38,7 +38,7 @@ public class Jurisdictions extends BaseEntity{
 	private String country;
 	
 	@Column(name = "zipCode")
-	private Integer zipCode;
+	private String zipCode;
 
 	public Integer getId() {
 		return id;
@@ -80,11 +80,11 @@ public class Jurisdictions extends BaseEntity{
 		this.country = country;
 	}
 
-	public Integer getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(Integer zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
