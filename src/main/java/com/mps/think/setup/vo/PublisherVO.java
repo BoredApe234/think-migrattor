@@ -2,10 +2,11 @@ package com.mps.think.setup.vo;
 
 import java.math.BigInteger;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mps.think.setup.vo.EnumModelVO.Currency;
 import com.mps.think.setup.vo.EnumModelVO.DateFormat;
 import com.mps.think.setup.vo.EnumModelVO.TimeZone;
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PublisherVO {
 
 	private Integer id;
@@ -34,10 +35,10 @@ public class PublisherVO {
 
 	private String logoUrl;
 
-	private TimeZone timeZone;
+	private String timeZone;
 
 	private Currency currency;
-	private DateFormat dateformat;
+	private String dateformat;
 
 	private BigInteger secondaryPhone;
 
@@ -161,11 +162,11 @@ public class PublisherVO {
 		this.logoUrl = logoUrl;
 	}
 
-	public TimeZone getTimeZone() {
+	public String getTimeZone() {
 		return timeZone;
 	}
 
-	public void setTimeZone(TimeZone timeZone) {
+	public void setTimeZone(String timeZone) {
 		this.timeZone = timeZone;
 	}
 
@@ -177,11 +178,11 @@ public class PublisherVO {
 		this.currency = currency;
 	}
 
-	public DateFormat getDateformat() {
+	public String getDateformat() {
 		return dateformat;
 	}
 
-	public void setDateformat(DateFormat dateformat) {
+	public void setDateformat(String dateformat) {
 		this.dateformat = dateformat;
 	}
 

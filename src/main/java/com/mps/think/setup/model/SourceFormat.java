@@ -1,11 +1,17 @@
 package com.mps.think.setup.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Table(name = "source_format")
 @Entity
@@ -30,9 +36,16 @@ public class SourceFormat extends BaseEntity {
 	private Integer mruSourceFormatSegmentSeq;
 
 //	@Enumerated(EnumType.STRING)
-	@Column(name = "code_gen_type")
-	private String codeGenType;
+//	@Column(name = "code_gen_type")
+//	private Integer[] codeGenType;
 //	private AppConstants.codeGen codeGenType;
+	
+	@OneToMany(
+			mappedBy = "sourceFormat",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true)
+	@JsonManagedReference
+	private List<SourceFormatAndAttributeMapping> attributeMappings;
 
 	public Integer getId() {
 		return id;
@@ -66,21 +79,26 @@ public class SourceFormat extends BaseEntity {
 		this.mruSourceFormatSegmentSeq = mruSourceFormatSegmentSeq;
 	}
 
-	public String getCodeGenType() {
-		return codeGenType;
+//	public Integer[] getCodeGenType() {
+//		return codeGenType;
+//	}
+//
+//	public void setCodeGenType(Integer[] codeGenType) {
+//		this.codeGenType = codeGenType;
+//	}
+
+	public List<SourceFormatAndAttributeMapping> getAttributeMappings() {
+		return attributeMappings;
 	}
 
-	public void setCodeGenType(String codeGenType) {
-		this.codeGenType = codeGenType;
+	public void setAttributeMappings(List<SourceFormatAndAttributeMapping> attributeMappings) {
+		this.attributeMappings = attributeMappings;
 	}
 
 	@Override
 	public String toString() {
 		return "SourceFormat [id=" + id + ", sourceFormat=" + sourceFormat + ", description=" + description
-				+ ", mruSourceFormatSegmentSeq=" + mruSourceFormatSegmentSeq + ", codeGenType=" + codeGenType + "]";
-	}
-
-	
-
-	
+				+ ", mruSourceFormatSegmentSeq=" + mruSourceFormatSegmentSeq + ", attributeMappings="
+				+ attributeMappings + "]";
+	}	
 }

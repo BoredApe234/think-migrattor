@@ -72,17 +72,17 @@ public class Publisher extends BaseEntity {
 	@Column(name = "Logo_Url")
 	private String logoUrl;
 
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "timeZone")
-	private TimeZone timeZone;
+	private String timeZone;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "currency")
 	private Currency currency;
 
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "date_format")
-	private DateFormat dateformat;
+	private String dateformat;
 
 	@Column(name = "secondary_Phone")
 	private BigInteger secondary_Phone;
@@ -207,11 +207,11 @@ public class Publisher extends BaseEntity {
 		this.logoUrl = logoUrl;
 	}
 
-	public TimeZone getTimeZone() {
+	public String getTimeZone() {
 		return timeZone;
 	}
 
-	public void setTimeZone(TimeZone timeZone) {
+	public void setTimeZone(String timeZone) {
 		this.timeZone = timeZone;
 	}
 
@@ -223,11 +223,11 @@ public class Publisher extends BaseEntity {
 		this.currency = currency;
 	}
 
-	public DateFormat getDateformat() {
+	public String getDateformat() {
 		return dateformat;
 	}
 
-	public void setDateformat(DateFormat dateformat) {
+	public void setDateformat(String dateformat) {
 		this.dateformat = dateformat;
 	}
 

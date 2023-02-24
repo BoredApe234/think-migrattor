@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.SourceFormat;
 import com.mps.think.setup.repo.SourceFormatRepo;
 import com.mps.think.setup.service.SourceFormatService;
@@ -22,26 +24,17 @@ public class SourceFormatServiceImpl implements SourceFormatService {
 
 	@Override
 	public SourceFormatVo saveSourceFormat(SourceFormatVo sourceFormatVo) {
-		SourceFormat sourceFormat= new SourceFormat();
-		
-		sourceFormat.setCodeGenType(sourceFormatVo.getCodeGenType());
-		sourceFormat.setDescription(sourceFormatVo.getDescription());
-		sourceFormat.setMruSourceFormatSegmentSeq(sourceFormatVo.getMruSourceFormatSegmentSeq());
-		sourceFormat.setSourceFormat(sourceFormatVo.getSourceFormat());
-		sourceFormat=	sourceFormatRepo.save(sourceFormat);
-		sourceFormatVo.setId(sourceFormat.getId());
+		ObjectMapper mapper = new ObjectMapper();
+		SourceFormat sf = mapper.convertValue(sourceFormatVo, SourceFormat.class);
+		sourceFormatRepo.saveAndFlush(sf);
 		return sourceFormatVo;
 	}
 
 	@Override
 	public SourceFormatVo updateSourceFormat(SourceFormatVo sourceFormatVo) {
-		SourceFormat sourceFormat = new SourceFormat();
-		sourceFormat.setId(sourceFormatVo.getId());
-		sourceFormat.setCodeGenType(sourceFormatVo.getCodeGenType());
-		sourceFormat.setDescription(sourceFormatVo.getDescription());
-		sourceFormat.setMruSourceFormatSegmentSeq(sourceFormatVo.getMruSourceFormatSegmentSeq());
-		sourceFormat.setSourceFormat(sourceFormatVo.getSourceFormat());
-		sourceFormat = sourceFormatRepo.save(sourceFormat);
+		ObjectMapper mapper = new ObjectMapper();
+		SourceFormat sf = mapper.convertValue(sourceFormatVo, SourceFormat.class);
+		sourceFormatRepo.saveAndFlush(sf);
 		return sourceFormatVo;
 	}
 
