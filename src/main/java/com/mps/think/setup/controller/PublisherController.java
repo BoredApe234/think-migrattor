@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mps.think.setup.service.PublisherSerivce;
+import com.mps.think.setup.vo.PublisherVO;
 
 @RestController
 @CrossOrigin
@@ -22,15 +23,15 @@ public class PublisherController {
 		return ResponseEntity.ok(publisherSerivce.findAllPublisher());
 	}
 
-//	@PostMapping("/savePublisher")
-//	public ResponseEntity<?> savePublisher(@RequestBody PublisherVO publiser) {
-//		return ResponseEntity.ok(publisherSerivce.savePublisher(publiser));
-//	}
-//	
-//	@PostMapping("/updatePublisher")
-//	public ResponseEntity<?> updatePublisher(@RequestBody PublisherVO publiser) {
-//		return ResponseEntity.ok(publisherSerivce.updatePublisher(publiser));
-//	}
+	@PostMapping("/savePublisher")
+	public ResponseEntity<?> savePublisher(@RequestBody PublisherVO publiser) {
+		return ResponseEntity.ok(publisherSerivce.savePublisher(publiser));
+	}
+	
+	@PostMapping("/updatePublisher")
+	public ResponseEntity<?> updatePublisher(@RequestBody PublisherVO publiser) {
+		return ResponseEntity.ok(publisherSerivce.updatePublisher(publiser));
+	}
 	
 	@PostMapping("/findbyPublisherId")
 	public ResponseEntity<?> findbyPublisherId(@RequestBody Integer id) {

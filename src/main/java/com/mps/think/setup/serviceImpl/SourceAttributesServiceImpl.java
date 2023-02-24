@@ -8,7 +8,6 @@ import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mps.think.setup.model.SourceAttributeValues;
 import com.mps.think.setup.model.SourceAttributes;
 import com.mps.think.setup.repo.SourceAttributesRepo;
 import com.mps.think.setup.service.SourceAttributesService;
@@ -53,6 +52,15 @@ public class SourceAttributesServiceImpl implements SourceAttributesService {
 		sourceAttributesRepo.delete(attribute);
 		return attribute;
 	}
+
+//	@Override
+//	public SourceAttributes findbySourceAttributeName(Integer sourceAttributeId) throws Exception {
+//		Optional<SourceAttributes> attribute = sourceAttributesRepo.findById(sourceAttributeId);
+//		if (attribute.isPresent()) {
+//			return attribute.get();
+//		}
+//		throw new NotFoundException();
+//	}
 
 
 	

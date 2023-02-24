@@ -68,12 +68,5 @@ public class SourceAttributes extends BaseEntity {
 
 	public void setValue(String value) {
 		this.value = value;
-	}
-
-	
-
-	
-
-	
-	
+	}	
 }

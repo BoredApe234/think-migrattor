@@ -1,8 +1,11 @@
 package com.mps.think.setup.vo;
 
-public class SourceFormatVo  {
+import java.util.List;
 
-	
+import com.mps.think.setup.model.SourceFormatAndAttributeMapping;
+
+public class SourceFormatVo {
+
 	private Integer id;
 
 	private String sourceFormat;
@@ -11,9 +14,11 @@ public class SourceFormatVo  {
 
 	private Integer mruSourceFormatSegmentSeq;
 
-//	@Enumerated(EnumType.STRING)
-//	private AppConstants.codeGen codeGenType;
-	private String codeGenType;
+	// @Enumerated(EnumType.STRING)
+	// private AppConstants.codeGen codeGenType;
+	// private Integer[] codeGenType;
+
+	private List<SourceFormatAndAttributeMapping> attributeMappings;
 
 	public Integer getId() {
 		return id;
@@ -47,21 +52,27 @@ public class SourceFormatVo  {
 		this.mruSourceFormatSegmentSeq = mruSourceFormatSegmentSeq;
 	}
 
-	
-	public String getCodeGenType() {
-		return codeGenType;
+	// public Integer[] getCodeGenType() {
+	// return codeGenType;
+	// }
+	//
+	// public void setCodeGenType(Integer[] codeGenType) {
+	// this.codeGenType = codeGenType;
+	// }
+
+	public List<SourceFormatAndAttributeMapping> getAttributeMappings() {
+		return attributeMappings;
 	}
 
-	public void setCodeGenType(String codeGenType) {
-		this.codeGenType = codeGenType;
+	public void setAttributeMappings(List<SourceFormatAndAttributeMapping> attributeMappings) {
+		this.attributeMappings = attributeMappings;
 	}
 
 	@Override
 	public String toString() {
 		return "SourceFormatVo [id=" + id + ", sourceFormat=" + sourceFormat + ", description=" + description
-				+ ", mruSourceFormatSegmentSeq=" + mruSourceFormatSegmentSeq + ", codeGenType=" + codeGenType + "]";
+				+ ", mruSourceFormatSegmentSeq=" + mruSourceFormatSegmentSeq + ", attributeMappings="
+				+ attributeMappings + "]";
 	}
 
-
-	
 }
