@@ -11,7 +11,8 @@ public class SourceAttributesVO {
 
 	private String attribute;
 
-	private SourceAttributeValues value;
+//	private SourceAttributeValues value;
+	private String value;
 
 	public Integer getId() {
 		return id;
@@ -37,13 +38,17 @@ public class SourceAttributesVO {
 		this.attribute = attribute;
 	}
 
-	public SourceAttributeValues getValue() {
+	public String getValue() {
 		return value;
 	}
 
-	public void setValue(SourceAttributeValues value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
+
+	
+
+	
 	
 	
 

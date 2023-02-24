@@ -10,7 +10,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -18,7 +20,6 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mps.think.setup.vo.EnumModelVO.ChargeTaxOn;
 import com.mps.think.setup.vo.EnumModelVO.ConfigurationOptionsforOrders;
-import com.mps.think.setup.vo.EnumModelVO.CustomerCategory;
 import com.mps.think.setup.vo.EnumModelVO.PaymentOptions;
 
 @Entity
@@ -35,8 +36,9 @@ public class CustomerDetails  extends BaseEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer customerId;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "customerCategory")
+//	@Enumerated(EnumType.STRING)
+	@OneToOne
+	@JoinColumn(name = "customerCategory", referencedColumnName = "customer_category_id")
 	private CustomerCategory customerCategory;
 	
 	@Column(name = "think_category")

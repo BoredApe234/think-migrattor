@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name="source_attribute_values")
@@ -26,6 +28,10 @@ public class SourceAttributeValues extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "publisher_id", referencedColumnName = "id")
 	private Publisher publisher;
+	
+	@ManyToOne
+	@JoinColumn(name = "sourceAttributes_id", referencedColumnName = "id")
+	private SourceAttributes sourceAttributesId;
 	 
 	@Column(name = "chosen_attribute_value")
 	private String chosenAttributeValue;
@@ -52,6 +58,14 @@ public class SourceAttributeValues extends BaseEntity {
 		this.publisher = publisher;
 	}
 
+	public SourceAttributes getSourceAttributesId() {
+		return sourceAttributesId;
+	}
+
+	public void setSourceAttributesId(SourceAttributes sourceAttributesId) {
+		this.sourceAttributesId = sourceAttributesId;
+	}
+
 	public String getChosenAttributeValue() {
 		return chosenAttributeValue;
 	}
@@ -75,6 +89,10 @@ public class SourceAttributeValues extends BaseEntity {
 	public void setMaxCharacterLen(Integer maxCharacterLen) {
 		this.maxCharacterLen = maxCharacterLen;
 	}
+
+	
+
+	
 
 
 }

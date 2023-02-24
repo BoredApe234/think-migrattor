@@ -31,9 +31,12 @@ public class SourceAttributes extends BaseEntity {
 	@Column(name = "attribute")
 	private String attribute;
 
-	@OneToOne
-	@JoinColumn(name = "source_attribute_val_id", referencedColumnName = "id")
-	private SourceAttributeValues value;
+//	@OneToOne
+//	@JoinColumn(name = "source_attribute_val_id", referencedColumnName = "id")
+//	private SourceAttributeValues value;
+	
+	@Column(name = "value")
+	private String value;
 
 	public Integer getId() {
 		return id;
@@ -59,11 +62,11 @@ public class SourceAttributes extends BaseEntity {
 		this.attribute = attribute;
 	}
 
-	public SourceAttributeValues getValue() {
+	public String getValue() {
 		return value;
 	}
 
-	public void setValue(SourceAttributeValues value) {
+	public void setValue(String value) {
 		this.value = value;
 	}	
 }
