@@ -16,12 +16,12 @@ public class DeliveryMethodsVO {
 	
 	private String regionList;
 	
-	private String amount;
+	private Double amount;
 
 	private String transportMode;
 	
 	private Publisher publisher;
-	
+
 	public Integer getDeliveryMethodsId() {
 		return deliveryMethodsId;
 	}
@@ -70,11 +70,11 @@ public class DeliveryMethodsVO {
 		this.regionList = regionList;
 	}
 
-	public String getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(String amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 
@@ -93,5 +93,7 @@ public class DeliveryMethodsVO {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
+	
+	
 
 }
