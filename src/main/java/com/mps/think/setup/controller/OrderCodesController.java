@@ -82,5 +82,10 @@ public class OrderCodesController {
 		return ResponseEntity.ok(orderCodesService.getAllOrderCodesByOrderClassId(ocId));
 	}
 	
+	@GetMapping("/getAllTermsInOrderCodeSubsDefById/{orderCodeId}")
+	public ResponseEntity<?> getAllTermsUnderOrderCode(@PathVariable("orderCodeId") Integer orderCodeId) {
+		return ResponseEntity.ok(orderCodesService.getAllTermsForOrderCodeByIdOrderCodeId(orderCodeId));
+	}
+	
 
 }
