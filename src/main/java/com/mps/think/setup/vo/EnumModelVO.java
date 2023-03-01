@@ -294,5 +294,20 @@ public class EnumModelVO {
 		        return displayStatus ;
 		    }
 		}
+	 
+	 public static enum RefundTo  {
+
+			One("Original Source"),Two("Deposit Account"),Three("Payment Account"),Four("Others");
+
+		    private final String displayRefundTo ;
+
+		    RefundTo(String displayRefundTo ) {
+				this.displayRefundTo  = displayRefundTo ;
+			}
+
+			public String getDisplayName() {
+		        return displayRefundTo ;
+		    }
+		}
 
 }
