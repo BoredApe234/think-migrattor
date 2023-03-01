@@ -65,6 +65,15 @@ public class IssueSettings extends BaseEntity{
 	
 	@Column(name="issues_or_volume")
 	private String issuesOrVolume;
+	
+	@Column(name="start_date_of_issue")
+	private String startDateOfIssue;
+	
+	@Column(name="volume_of_issues")
+	private String volumeOfIssues;
+	
+	@Column(name="time_period")
+	private String timePeriod;
 
 	// order class mapping will be there
 	@OneToOne
@@ -191,24 +200,37 @@ public class IssueSettings extends BaseEntity{
 		this.orderClassId = orderClassId;
 	}
 
+	public String getStartDateOfIssue() {
+		return startDateOfIssue;
+	}
+
+	public void setStartDateOfIssue(String startDateOfIssue) {
+		this.startDateOfIssue = startDateOfIssue;
+	}
+
+	public String getVolumeOfIssues() {
+		return volumeOfIssues;
+	}
+
+	public void setVolumeOfIssues(String volumeOfIssues) {
+		this.volumeOfIssues = volumeOfIssues;
+	}
+
+	public String getTimePeriod() {
+		return timePeriod;
+	}
+
+	public void setTimePeriod(String timePeriod) {
+		this.timePeriod = timePeriod;
+	}
+
 	@Override
 	public String toString() {
 		return "IssueSettings [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
 				+ frequencyOfGeneration + ", issuesAppearonEvery=" + issuesAppearonEvery + ", volumeCaption="
 				+ volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate + ", issueCaption="
 				+ issueCaption + ", issueFormat=" + issueFormat + ", issuesOrVolume=" + issuesOrVolume
-				+ ", orderClassId=" + orderClassId + "]";
+				+ ", startDateOfIssue=" + startDateOfIssue + ", volumeOfIssues=" + volumeOfIssues + ", timePeriod="
+				+ timePeriod + ", orderClassId=" + orderClassId + "]";
 	}
-
-//	@Override
-//	public String toString() {
-//		return "IssueSettings [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
-//				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", issuesAppearonEvery="
-//				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", nthDay=" + nthDay + ", dayOfTheMonth="
-//				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat
-//				+ ", changeDate=" + changeDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat
-//				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + "]";
-//	}
-	
-	
 }	

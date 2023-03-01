@@ -207,7 +207,8 @@ public class IssueGenerationUtils {
 		int startYear = Integer.valueOf(str[2]);
 		int currentMonth = Integer.valueOf(str[1]);
 		int currentDate = Integer.valueOf(str[0]);
-		LocalDate now = LocalDate.of(startYear, currentMonth, currentDate);		
+		LocalDate now = LocalDate.of(startYear, currentMonth, currentDate);	
+//		LocalDate currentdate=now.plusDays(1);
 		for(int i=0;i<issue;i++){
 			list.add(now.plusDays(i+1).format(formatter));
 		}
@@ -219,6 +220,10 @@ public class IssueGenerationUtils {
 	public static ArrayList<String> everyweek(int issue, String[] days,String changeDate){
 		ArrayList<String> list=new ArrayList<String>();
 		int[] ints = Arrays.stream(days).mapToInt(Integer::parseInt).toArray();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//		LocalDate localdate = LocalDate.parse(changeDate);
+//		LocalDate currentDay=localdate.plusDays(1);
+//		String strDate=formatter.format(currentDay);
 		String[] str = changeDate.split("-");
 		int startYear = Integer.valueOf(str[2]);
 		int currentMonth = Integer.valueOf(str[1]);
@@ -252,18 +257,19 @@ public class IssueGenerationUtils {
 		int startYear = Integer.valueOf(str[2]);
 		int currentMonth = Integer.valueOf(str[1]);
 		int currentDate = Integer.valueOf(str[0]);
-		LocalDate now = LocalDate.of(startYear, currentMonth, currentDate);	
+		LocalDate now = LocalDate.of(startYear, currentMonth, currentDate);
+		LocalDate currentdate=now.plusDays(1);
 	    int count = 0;
 	    while (count < issue) {
 	      for (int targetDate : ints) {
-	        if (now.getDayOfMonth() == targetDate) {
-	        	list.add(now.format(formatter));
-	          System.out.println(now);
+	        if (currentdate.getDayOfMonth() == targetDate) {
+	        	list.add(currentdate.format(formatter));
+	          System.out.println(currentdate);
 	          count++;
 	          break;
 	        }
 	      }
-	      now = now.plusDays(1);
+	      currentdate = currentdate.plusDays(1);
 	    }
 	    System.out.println(list);
 		return list;
@@ -272,15 +278,21 @@ public class IssueGenerationUtils {
 	public static ArrayList<String> everyYear(int issue, String[] days,String changeDate){
 		ArrayList<String> list=new ArrayList<String>();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+//		LocalDate d = LocalDate.parse(changeDate);
+//		LocalDate currentDate=d.plusDays(1);
+//		String strDate=formatter.format(currentDate);  
 		String[] str = changeDate.split("-");
 		int startYear = Integer.valueOf(str[2]);
 //		int currentMonth = Integer.valueOf(str[1]);
 //		int currentDate = Integer.valueOf(str[0]);
 		int count=0;
+		issue=issue+1;
 	    while(count<issue){
 	    	for(String s:days){
 	    		String temp=s+"-"+startYear;
+	    		if(count!=0){
 	    		list.add(temp);
+	    		}
 	    		System.out.println(temp);
 	    		count++;
 	    		if(issue==count){
