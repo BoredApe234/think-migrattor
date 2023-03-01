@@ -1,5 +1,7 @@
 package com.mps.think.setup.vo;
 
+import javax.persistence.Column;
+
 import com.mps.think.setup.model.OrderClass;
 
 public class IssueSettingsVO {
@@ -34,6 +36,12 @@ public class IssueSettingsVO {
 	private String issueFormat;
 	
 	private String issuesOrVolume;
+	
+	private String startDateOfIssue;
+	
+	private String volumeOfIssues;
+	
+	private String timePeriod;
 
 	// order class mapping will be there
 	private OrderClass orderClassId;
@@ -158,24 +166,37 @@ public class IssueSettingsVO {
 		this.orderClassId = orderClassId;
 	}
 
+	public String getStartDateOfIssue() {
+		return startDateOfIssue;
+	}
+
+	public void setStartDateOfIssue(String startDateOfIssue) {
+		this.startDateOfIssue = startDateOfIssue;
+	}
+
+	public String getVolumeOfIssues() {
+		return volumeOfIssues;
+	}
+
+	public void setVolumeOfIssues(String volumeOfIssues) {
+		this.volumeOfIssues = volumeOfIssues;
+	}
+
+	public String getTimePeriod() {
+		return timePeriod;
+	}
+
+	public void setTimePeriod(String timePeriod) {
+		this.timePeriod = timePeriod;
+	}
+
 	@Override
 	public String toString() {
 		return "IssueSettingsVO [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
 				+ frequencyOfGeneration + ", issuesAppearonEvery=" + issuesAppearonEvery + ", volumeCaption="
 				+ volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate + ", issueCaption="
 				+ issueCaption + ", issueFormat=" + issueFormat + ", issuesOrVolume=" + issuesOrVolume
-				+ ", orderClassId=" + orderClassId + "]";
+				+ ", startDateOfIssue=" + startDateOfIssue + ", volumeOfIssues=" + volumeOfIssues + ", timePeriod="
+				+ timePeriod + ", orderClassId=" + orderClassId + "]";
 	}
-
-//	@Override
-//	public String toString() {
-//		return "IssueSettingsVO [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
-//				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", issuesAppearonEvery="
-//				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", nthDay=" + nthDay + ", dayOfTheMonth="
-//				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat
-//				+ ", changeDate=" + changeDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat
-//				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + "]";
-//	}
-
-
 }
