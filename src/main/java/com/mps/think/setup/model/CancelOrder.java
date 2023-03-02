@@ -1,7 +1,6 @@
 package com.mps.think.setup.model;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,8 +11,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
-
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "cancel_order")
@@ -206,9 +203,10 @@ public class CancelOrder extends BaseEntity {
 	public void setNameoncard(String nameoncard) {
 		this.nameoncard = nameoncard;
 	}
-
 	
 	
 	
-
+	
+	
+	
 }

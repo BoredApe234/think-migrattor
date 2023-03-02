@@ -1,7 +1,7 @@
 package com.mps.think.setup.vo;
 
 import java.sql.Date;
-import java.time.LocalDate;
+
 
 
 import com.mps.think.setup.model.CancelReasons;
@@ -9,7 +9,7 @@ import com.mps.think.setup.model.CancelReasons;
 public class CancelOrderVO {
 	
     private Integer cancelorderId;
-	private Integer orderId;
+    private Integer orderId;
 	private Float refundamount;
 	private CancelReasons CancelReasonsId;
 	private Boolean donotrenew;
@@ -122,7 +122,4 @@ public class CancelOrderVO {
 	}
 	
 	
-	
-	
-
 }

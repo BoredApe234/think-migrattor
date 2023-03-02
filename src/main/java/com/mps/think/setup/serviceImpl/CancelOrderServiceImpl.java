@@ -1,5 +1,8 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +17,11 @@ public class CancelOrderServiceImpl implements CancelOrderService {
 	
 	@Autowired
 	private CancelOrderRepo cancelOrderRepo;
+	
+	@Override
+	public List<CancelOrder> getAllCancelOrder() {
+		return cancelOrderRepo.findAll();
+	}
 
 	@Override
 	public CancelOrderVO saveCancelOrder(CancelOrderVO cancelOrder) {
@@ -23,5 +31,25 @@ public class CancelOrderServiceImpl implements CancelOrderService {
 		newCancelOrder.setCancelorderId(data.getCancelorderId());
 		return cancelOrder;
 	}
+	
+	@Override
+	public CancelOrderVO updateCancelOrder(CancelOrderVO cancelOrder) {
+		ObjectMapper mapper = new ObjectMapper();
+		CancelOrder cancelOrderToUpdate = mapper.convertValue(cancelOrder, CancelOrder.class);
+		CancelOrder data=cancelOrderRepo.saveAndFlush(cancelOrderToUpdate);
+		cancelOrder.setCancelorderId(data.getCancelorderId());
+		return cancelOrder;
+	}
+	
+	@Override
+	public CancelOrder findbyCancelOrderId(Integer cancelOrder) {
+		 Optional<CancelOrder> cr = cancelOrderRepo.findById(cancelOrder);
+			return cr.get();
+	}
+	
+//	@Override
+//	public List<CancelOrder> getAllCancelOrderByCancelorderId(Integer cancelOrder) {
+//		return cancelOrderRepo.findByOrderidOrderId(cancelOrder);
+//	}
 
 }

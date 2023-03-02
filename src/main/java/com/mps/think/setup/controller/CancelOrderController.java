@@ -23,10 +23,30 @@ public class CancelOrderController {
 	@Autowired
 	CancelOrderService cancelOrderService;
 	
+	@GetMapping("/getAllCancelOrder")
+	public ResponseEntity<?> getAllCancelOrder() {
+		return ResponseEntity.ok(cancelOrderService.getAllCancelOrder());
+	}
+	
 	@PostMapping("/saveCancelOrder")
 	public ResponseEntity<?> savecancelOrder(@RequestBody CancelOrderVO cancelOrderId) {
 		return ResponseEntity.ok(cancelOrderService.saveCancelOrder(cancelOrderId));
 	}
+	
+	@PostMapping("/findbyCancelOrderId")
+	public ResponseEntity<?> findbyCancelOrderId(@RequestBody Integer cancelOrderId) {
+		return ResponseEntity.ok(cancelOrderService.findbyCancelOrderId(cancelOrderId));
+	}
+	
+	@PostMapping("/updateCancelOrder")
+	public ResponseEntity<?> updatecancelOrder(@RequestBody CancelOrderVO cancelOrderId) {
+		return ResponseEntity.ok(cancelOrderService.updateCancelOrder(cancelOrderId));
+	}
+	
+//	@PostMapping("/findAllCancelOrderByOrderId")
+//	public ResponseEntity<?> findByOrderidOrderId(@RequestBody Integer cancelOrderId) {
+//		return ResponseEntity.ok(cancelOrderService.getAllCancelOrderByCancelorderId(cancelOrderId));
+//	}
 	
 	@GetMapping("/findRefundTo")
 	public ResponseEntity<?> getAllRefundTo() {
