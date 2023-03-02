@@ -37,7 +37,6 @@ public class IssueSettingsServiceImpl implements IssueSettingsService{
 		ObjectMapper mapper = new ObjectMapper();
 		IssueSettings issueSettings = mapper.convertValue(issueSettingsVO, IssueSettings.class);
 		issueSettingsRepo.saveAndFlush(issueSettings);
-		
 		return issueSettingsVO;
 	}
 

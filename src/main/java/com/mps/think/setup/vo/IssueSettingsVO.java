@@ -1,5 +1,7 @@
 package com.mps.think.setup.vo;
 
+import javax.persistence.Column;
+
 import com.mps.think.setup.model.OrderClass;
 
 public class IssueSettingsVO {
@@ -11,17 +13,7 @@ public class IssueSettingsVO {
 
 	private String frequencyOfGeneration;
 
-//	private String periodicity;
-
 	private String issuesAppearonEvery;
-	
-//	private String dwmOfThewmy;
-//	
-//	private String nthDay;
-//	
-//	private String dayOfTheMonth;
-	
-//	Enumeration Generation
 	
 	private String volumeCaption;
 	
@@ -34,6 +26,14 @@ public class IssueSettingsVO {
 	private String issueFormat;
 	
 	private String issuesOrVolume;
+	
+	private String typeOfIssue;
+	
+	private String startIssue;
+	
+	private Integer backIssues;
+	
+	private Integer BeforeAfterCurrentDate;
 
 	// order class mapping will be there
 	private OrderClass orderClassId;
@@ -62,14 +62,6 @@ public class IssueSettingsVO {
 		this.frequencyOfGeneration = frequencyOfGeneration;
 	}
 
-//	public String getPeriodicity() {
-//		return periodicity;
-//	}
-//
-//	public void setPeriodicity(String periodicity) {
-//		this.periodicity = periodicity;
-//	}
-
 	public String getIssuesAppearonEvery() {
 		return issuesAppearonEvery;
 	}
@@ -77,30 +69,6 @@ public class IssueSettingsVO {
 	public void setIssuesAppearonEvery(String issuesAppearonEvery) {
 		this.issuesAppearonEvery = issuesAppearonEvery;
 	}
-
-//	public String getDwmOfThewmy() {
-//		return dwmOfThewmy;
-//	}
-//
-//	public void setDwmOfThewmy(String dwmOfThewmy) {
-//		this.dwmOfThewmy = dwmOfThewmy;
-//	}
-//
-//	public String getNthDay() {
-//		return nthDay;
-//	}
-//
-//	public void setNthDay(String nthDay) {
-//		this.nthDay = nthDay;
-//	}
-//
-//	public String getDayOfTheMonth() {
-//		return dayOfTheMonth;
-//	}
-//
-//	public void setDayOfTheMonth(String dayOfTheMonth) {
-//		this.dayOfTheMonth = dayOfTheMonth;
-//	}
 
 	public String getVolumeCaption() {
 		return volumeCaption;
@@ -150,6 +118,38 @@ public class IssueSettingsVO {
 		this.issuesOrVolume = issuesOrVolume;
 	}
 
+	public String getTypeOfIssue() {
+		return typeOfIssue;
+	}
+
+	public void setTypeOfIssue(String typeOfIssue) {
+		this.typeOfIssue = typeOfIssue;
+	}
+
+	public String getStartIssue() {
+		return startIssue;
+	}
+
+	public void setStartIssue(String startIssue) {
+		this.startIssue = startIssue;
+	}
+
+	public Integer getBackIssues() {
+		return backIssues;
+	}
+
+	public void setBackIssues(Integer backIssues) {
+		this.backIssues = backIssues;
+	}
+
+	public Integer getBeforeAfterCurrentDate() {
+		return BeforeAfterCurrentDate;
+	}
+
+	public void setBeforeAfterCurrentDate(Integer beforeAfterCurrentDate) {
+		BeforeAfterCurrentDate = beforeAfterCurrentDate;
+	}
+
 	public OrderClass getOrderClassId() {
 		return orderClassId;
 	}
@@ -164,18 +164,8 @@ public class IssueSettingsVO {
 				+ frequencyOfGeneration + ", issuesAppearonEvery=" + issuesAppearonEvery + ", volumeCaption="
 				+ volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate + ", issueCaption="
 				+ issueCaption + ", issueFormat=" + issueFormat + ", issuesOrVolume=" + issuesOrVolume
-				+ ", orderClassId=" + orderClassId + "]";
+				+ ", typeOfIssue=" + typeOfIssue + ", startIssue=" + startIssue + ", backIssues=" + backIssues
+				+ ", BeforeAfterCurrentDate=" + BeforeAfterCurrentDate + ", orderClassId=" + orderClassId + "]";
 	}
-
-//	@Override
-//	public String toString() {
-//		return "IssueSettingsVO [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
-//				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", issuesAppearonEvery="
-//				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", nthDay=" + nthDay + ", dayOfTheMonth="
-//				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat
-//				+ ", changeDate=" + changeDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat
-//				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + "]";
-//	}
-
 
 }

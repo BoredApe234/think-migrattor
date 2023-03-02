@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Table(name = "source_Code")
@@ -84,6 +85,11 @@ public class SourceCode extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "discount_id", referencedColumnName = "id")
 	private DiscountCardKeyInfo discountCardKeyInfo;
+	
+	@JsonBackReference
+	@ManyToOne
+	@JoinColumn(name = "renewal_card_id", referencedColumnName = "renewal_card_id")
+	private RenewalCard renewalCard;
 
 	@ManyToOne
 	@JoinColumn(name = "shipping_price_list_id", referencedColumnName = "id")
@@ -232,6 +238,14 @@ public class SourceCode extends BaseEntity {
 		this.discountCardKeyInfo = discountCardKeyInfo;
 	}
 
+	public RenewalCard getRenewalCard() {
+		return renewalCard;
+	}
+
+	public void setRenewalCard(RenewalCard renewalCard) {
+		this.renewalCard = renewalCard;
+	}
+
 	public ShippingPriceList getShippingPriceList() {
 		return shippingPriceList;
 	}
@@ -255,8 +269,9 @@ public class SourceCode extends BaseEntity {
 				+ ", isActive=" + isActive + ", state_Break=" + state_Break + ", cost=" + cost + ", isGenerated="
 				+ isGenerated + ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCode="
 				+ sourceCode + ", sourceCodeType=" + sourceCodeType + ", sourceCodeFormat=" + sourceCodeFormat
-				+ ", rateCards=" + rateCards + ", discountCardKeyInfo=" + discountCardKeyInfo + ", shippingPriceList="
-				+ shippingPriceList + ", sourceCodeAndValuesMappings=" + sourceCodeAndValuesMappings + "]";
+				+ ", rateCards=" + rateCards + ", discountCardKeyInfo=" + discountCardKeyInfo + ", renewalCard="
+				+ renewalCard + ", shippingPriceList=" + shippingPriceList + ", sourceCodeAndValuesMappings="
+				+ sourceCodeAndValuesMappings + "]";
 	}
 
 }
