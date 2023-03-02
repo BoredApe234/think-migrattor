@@ -29,6 +29,8 @@ public class IssueSettingsVO {
 	
 	private String typeOfIssue;
 	
+	private String startIssue;
+	
 	private Integer backIssues;
 	
 	private Integer BeforeAfterCurrentDate;
@@ -124,6 +126,14 @@ public class IssueSettingsVO {
 		this.typeOfIssue = typeOfIssue;
 	}
 
+	public String getStartIssue() {
+		return startIssue;
+	}
+
+	public void setStartIssue(String startIssue) {
+		this.startIssue = startIssue;
+	}
+
 	public Integer getBackIssues() {
 		return backIssues;
 	}
@@ -154,8 +164,8 @@ public class IssueSettingsVO {
 				+ frequencyOfGeneration + ", issuesAppearonEvery=" + issuesAppearonEvery + ", volumeCaption="
 				+ volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate + ", issueCaption="
 				+ issueCaption + ", issueFormat=" + issueFormat + ", issuesOrVolume=" + issuesOrVolume
-				+ ", typeOfIssue=" + typeOfIssue + ", backIssues=" + backIssues + ", BeforeAfterCurrentDate="
-				+ BeforeAfterCurrentDate + ", orderClassId=" + orderClassId + "]";
+				+ ", typeOfIssue=" + typeOfIssue + ", startIssue=" + startIssue + ", backIssues=" + backIssues
+				+ ", BeforeAfterCurrentDate=" + BeforeAfterCurrentDate + ", orderClassId=" + orderClassId + "]";
 	}
 
 }

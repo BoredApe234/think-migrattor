@@ -54,6 +54,9 @@ public class IssueSettings extends BaseEntity{
 	@Column(name="type_of_issue")
 	private String typeOfIssue;
 	
+	@Column(name="start_issue")
+	private String startIssue;
+	
 	@Column(name="back_issues")
 	private Integer backIssues;
 	
@@ -176,6 +179,15 @@ public class IssueSettings extends BaseEntity{
 	public void setOrderClassId(OrderClass orderClassId) {
 		this.orderClassId = orderClassId;
 	}
+	
+
+	public String getStartIssue() {
+		return startIssue;
+	}
+
+	public void setStartIssue(String startIssue) {
+		this.startIssue = startIssue;
+	}
 
 	@Override
 	public String toString() {
@@ -183,9 +195,8 @@ public class IssueSettings extends BaseEntity{
 				+ frequencyOfGeneration + ", issuesAppearonEvery=" + issuesAppearonEvery + ", volumeCaption="
 				+ volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate + ", issueCaption="
 				+ issueCaption + ", issueFormat=" + issueFormat + ", issuesOrVolume=" + issuesOrVolume
-				+ ", typeOfIssue=" + typeOfIssue + ", backIssues=" + backIssues + ", BeforeAfterCurrentDate="
-				+ BeforeAfterCurrentDate + ", orderClassId=" + orderClassId + "]";
+				+ ", typeOfIssue=" + typeOfIssue + ", startIssue=" + startIssue + ", backIssues=" + backIssues
+				+ ", BeforeAfterCurrentDate=" + BeforeAfterCurrentDate + ", orderClassId=" + orderClassId + "]";
 	}
 
-	
 }	
