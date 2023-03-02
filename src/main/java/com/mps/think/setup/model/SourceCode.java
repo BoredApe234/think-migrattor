@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Table(name = "source_Code")
@@ -85,6 +86,7 @@ public class SourceCode extends BaseEntity {
 	@JoinColumn(name = "discount_id", referencedColumnName = "id")
 	private DiscountCardKeyInfo discountCardKeyInfo;
 	
+	@JsonBackReference
 	@ManyToOne
 	@JoinColumn(name = "renewal_card_id", referencedColumnName = "renewal_card_id")
 	private RenewalCard renewalCard;
