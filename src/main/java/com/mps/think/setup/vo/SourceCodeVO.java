@@ -5,6 +5,7 @@ import java.util.List;
 import com.mps.think.setup.model.DiscountCardKeyInfo;
 import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.RateCards;
+import com.mps.think.setup.model.RenewalCard;
 import com.mps.think.setup.model.ShippingPriceList;
 import com.mps.think.setup.model.SourceCodeAndValuesMapping;
 import com.mps.think.setup.model.SourceFormat;
@@ -48,6 +49,8 @@ public class SourceCodeVO {
 	private RateCards rateCards;
 
 	private DiscountCardKeyInfo discountCardKeyInfo;
+	
+	private RenewalCard renewalCard;
 
 	private ShippingPriceList shippingPriceList;
 	
@@ -189,6 +192,14 @@ public class SourceCodeVO {
 		this.discountCardKeyInfo = discountCardKeyInfo;
 	}
 
+	public RenewalCard getRenewalCard() {
+		return renewalCard;
+	}
+
+	public void setRenewalCard(RenewalCard renewalCard) {
+		this.renewalCard = renewalCard;
+	}
+
 	public ShippingPriceList getShippingPriceList() {
 		return shippingPriceList;
 	}
@@ -212,9 +223,8 @@ public class SourceCodeVO {
 				+ ", isActive=" + isActive + ", state_Break=" + state_Break + ", cost=" + cost + ", isGenerated="
 				+ isGenerated + ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCode="
 				+ sourceCode + ", sourceCodeType=" + sourceCodeType + ", sourceCodeFormat=" + sourceCodeFormat
-				+ ", rateCards=" + rateCards + ", discountCardKeyInfo=" + discountCardKeyInfo + ", shippingPriceList="
-				+ shippingPriceList + ", sourceCodeAndValuesMappings=" + sourceCodeAndValuesMappings + "]";
+				+ ", rateCards=" + rateCards + ", discountCardKeyInfo=" + discountCardKeyInfo + ", renewalCard="
+				+ renewalCard + ", shippingPriceList=" + shippingPriceList + ", sourceCodeAndValuesMappings="
+				+ sourceCodeAndValuesMappings + "]";
 	}
-
-	
 }
