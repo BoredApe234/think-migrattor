@@ -30,23 +30,8 @@ public class IssueSettings extends BaseEntity{
 	@Column(name = "frequency_of_generation")
 	private String frequencyOfGeneration;
 
-//	@Column(name = "periodicity")
-//	private String periodicity;
-
-
 	@Column(name = "issues_appear_on_every")
 	private String issuesAppearonEvery;
-	
-//	@Column(name = "dwm_of_the_wmy")
-//	private String dwmOfThewmy;
-//	
-//	@Column(name = "nth_day")
-//	private String nthDay;
-//	
-//	@Column(name = "day_of_the_month")
-//	private String dayOfTheMonth;
-	
-//	Enumeration Generation
 	
 	@Column(name="volume_caption")
 	private String volumeCaption;
@@ -65,6 +50,15 @@ public class IssueSettings extends BaseEntity{
 	
 	@Column(name="issues_or_volume")
 	private String issuesOrVolume;
+	
+	@Column(name="type_of_issue")
+	private String typeOfIssue;
+	
+	@Column(name="back_issues")
+	private Integer backIssues;
+	
+	@Column(name="before_after_current_date")
+	private Integer BeforeAfterCurrentDate;
 
 	// order class mapping will be there
 	@OneToOne
@@ -95,14 +89,6 @@ public class IssueSettings extends BaseEntity{
 		this.frequencyOfGeneration = frequencyOfGeneration;
 	}
 
-//	public String getPeriodicity() {
-//		return periodicity;
-//	}
-//
-//	public void setPeriodicity(String periodicity) {
-//		this.periodicity = periodicity;
-//	}
-
 	public String getIssuesAppearonEvery() {
 		return issuesAppearonEvery;
 	}
@@ -110,30 +96,6 @@ public class IssueSettings extends BaseEntity{
 	public void setIssuesAppearonEvery(String issuesAppearonEvery) {
 		this.issuesAppearonEvery = issuesAppearonEvery;
 	}
-
-//	public String getDwmOfThewmy() {
-//		return dwmOfThewmy;
-//	}
-//
-//	public void setDwmOfThewmy(String dwmOfThewmy) {
-//		this.dwmOfThewmy = dwmOfThewmy;
-//	}
-//
-//	public String getNthDay() {
-//		return nthDay;
-//	}
-//
-//	public void setNthDay(String nthDay) {
-//		this.nthDay = nthDay;
-//	}
-//
-//	public String getDayOfTheMonth() {
-//		return dayOfTheMonth;
-//	}
-//
-//	public void setDayOfTheMonth(String dayOfTheMonth) {
-//		this.dayOfTheMonth = dayOfTheMonth;
-//	}
 
 	public String getVolumeCaption() {
 		return volumeCaption;
@@ -183,6 +145,30 @@ public class IssueSettings extends BaseEntity{
 		this.issuesOrVolume = issuesOrVolume;
 	}
 
+	public String getTypeOfIssue() {
+		return typeOfIssue;
+	}
+
+	public void setTypeOfIssue(String typeOfIssue) {
+		this.typeOfIssue = typeOfIssue;
+	}
+
+	public Integer getBackIssues() {
+		return backIssues;
+	}
+
+	public void setBackIssues(Integer backIssues) {
+		this.backIssues = backIssues;
+	}
+
+	public Integer getBeforeAfterCurrentDate() {
+		return BeforeAfterCurrentDate;
+	}
+
+	public void setBeforeAfterCurrentDate(Integer beforeAfterCurrentDate) {
+		BeforeAfterCurrentDate = beforeAfterCurrentDate;
+	}
+
 	public OrderClass getOrderClassId() {
 		return orderClassId;
 	}
@@ -197,18 +183,9 @@ public class IssueSettings extends BaseEntity{
 				+ frequencyOfGeneration + ", issuesAppearonEvery=" + issuesAppearonEvery + ", volumeCaption="
 				+ volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate + ", issueCaption="
 				+ issueCaption + ", issueFormat=" + issueFormat + ", issuesOrVolume=" + issuesOrVolume
-				+ ", orderClassId=" + orderClassId + "]";
+				+ ", typeOfIssue=" + typeOfIssue + ", backIssues=" + backIssues + ", BeforeAfterCurrentDate="
+				+ BeforeAfterCurrentDate + ", orderClassId=" + orderClassId + "]";
 	}
 
-//	@Override
-//	public String toString() {
-//		return "IssueSettings [id=" + id + ", numberOfIssue=" + numberOfIssue + ", frequencyOfGeneration="
-//				+ frequencyOfGeneration + ", periodicity=" + periodicity + ", issuesAppearonEvery="
-//				+ issuesAppearonEvery + ", dwmOfThewmy=" + dwmOfThewmy + ", nthDay=" + nthDay + ", dayOfTheMonth="
-//				+ dayOfTheMonth + ", volumeCaption=" + volumeCaption + ", volumeFormat=" + volumeFormat
-//				+ ", changeDate=" + changeDate + ", issueCaption=" + issueCaption + ", issueFormat=" + issueFormat
-//				+ ", issuesOrVolume=" + issuesOrVolume + ", orderClassId=" + orderClassId + "]";
-//	}
-	
 	
 }	

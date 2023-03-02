@@ -1,9 +1,12 @@
 package com.mps.think.setup.vo;
 
+import java.util.List;
+
 import com.mps.think.setup.model.DiscountCardKeyInfo;
 import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.RateCards;
 import com.mps.think.setup.model.ShippingPriceList;
+import com.mps.think.setup.model.SourceCodeAndValuesMapping;
 import com.mps.think.setup.model.SourceFormat;
 
 public class SourceCodeVO {
@@ -47,6 +50,8 @@ public class SourceCodeVO {
 	private DiscountCardKeyInfo discountCardKeyInfo;
 
 	private ShippingPriceList shippingPriceList;
+	
+	private List<SourceCodeAndValuesMapping> sourceCodeAndValuesMappings;
 
 	public Integer getSourceCodeId() {
 		return sourceCodeId;
@@ -192,9 +197,24 @@ public class SourceCodeVO {
 		this.shippingPriceList = shippingPriceList;
 	}
 
-	
-	
+	public List<SourceCodeAndValuesMapping> getSourceCodeAndValuesMappings() {
+		return sourceCodeAndValuesMappings;
+	}
 
-	
+	public void setSourceCodeAndValuesMappings(List<SourceCodeAndValuesMapping> sourceCodeAndValuesMappings) {
+		this.sourceCodeAndValuesMappings = sourceCodeAndValuesMappings;
+	}
+
+	@Override
+	public String toString() {
+		return "SourceCodeVO [sourceCodeId=" + sourceCodeId + ", ocId=" + ocId + ", description=" + description
+				+ ", orderCode=" + orderCode + ", order_code_type=" + order_code_type + ", quantity=" + quantity
+				+ ", isActive=" + isActive + ", state_Break=" + state_Break + ", cost=" + cost + ", isGenerated="
+				+ isGenerated + ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCode="
+				+ sourceCode + ", sourceCodeType=" + sourceCodeType + ", sourceCodeFormat=" + sourceCodeFormat
+				+ ", rateCards=" + rateCards + ", discountCardKeyInfo=" + discountCardKeyInfo + ", shippingPriceList="
+				+ shippingPriceList + ", sourceCodeAndValuesMappings=" + sourceCodeAndValuesMappings + "]";
+	}
+
 	
 }
