@@ -25,5 +25,7 @@ public interface AddressService {
 //	public List<Addresses> getAllAddressesByCustomerId(Integer cusId);
 	
 	public void setGivenAddressesNonPrimary(List<Integer> addressesIds);
+	
+	public void updateSelectedAddressAsPrimary(Integer addressId);
 
 }
