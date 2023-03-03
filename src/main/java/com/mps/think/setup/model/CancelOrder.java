@@ -62,8 +62,11 @@ public class CancelOrder extends BaseEntity {
 	@Column(name = "card_holder_name")
 	private String cardholdername;
 	
-	@Column(name = "reneworpayanotherorder")
-	private Boolean reneworpayanotherorder;
+	@Column(name = "renewanorder")
+	private Boolean renewanorder;
+	
+	@Column(name = "payanotherorder")
+	private Boolean payanotherorder;
 	
 	@Pattern(regexp="(^[0-9]*$)")
 	@Column(name = "paymentaccount")
@@ -163,12 +166,20 @@ public class CancelOrder extends BaseEntity {
 		this.cardholdername = cardholdername;
 	}
 
-	public Boolean getReneworpayanotherorder() {
-		return reneworpayanotherorder;
+	public Boolean getRenewanorder() {
+		return renewanorder;
 	}
 
-	public void setReneworpayanotherorder(Boolean reneworpayanotherorder) {
-		this.reneworpayanotherorder = reneworpayanotherorder;
+	public void setRenewanorder(Boolean renewanorder) {
+		this.renewanorder = renewanorder;
+	}
+
+	public Boolean getPayanotherorder() {
+		return payanotherorder;
+	}
+
+	public void setPayanotherorder(Boolean payanotherorder) {
+		this.payanotherorder = payanotherorder;
 	}
 
 	public String getPaymentaccount() {
@@ -211,7 +222,6 @@ public class CancelOrder extends BaseEntity {
 		this.nameoncard = nameoncard;
 	}
 
-	
 	
 	
 	
