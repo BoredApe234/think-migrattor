@@ -80,6 +80,12 @@ public class AddressesController {
 		return ResponseEntity.ok(Status.values());
 	}
 	
+	@PostMapping("/updateGivenAddressesAsNonPrimary")
+	public ResponseEntity<?> updateGivenAddressesNonPrimary(@RequestBody List<Integer> addressesIds) {
+		addressService.setGivenAddressesNonPrimary(addressesIds);
+		return ResponseEntity.ok("updated");
+	}
+	
 //	@PostMapping("/updatePrimaryAddressbyCustId")
 //	public ResponseEntity<?> updatePrimaryAddressbyCustId(Integer customerId, Integer addressId) {
 //		return ResponseEntity.ok(addressService.updatePrimaryAddressbyCustId(customerId, addressId));
