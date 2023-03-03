@@ -24,8 +24,6 @@ public interface AddressService {
 	
 //	public List<Addresses> getAllAddressesByCustomerId(Integer cusId);
 	
-	public Boolean checkPrimaryAddressForGivenAddresses(List<Integer> addressesIds);
-	
 	public void setGivenAddressesNonPrimary(List<Integer> addressesIds);
 
 }
