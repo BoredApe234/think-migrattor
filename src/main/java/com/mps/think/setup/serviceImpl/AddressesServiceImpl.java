@@ -98,12 +98,6 @@ public class AddressesServiceImpl implements AddressService  {
 	}
 
 	@Override
-	public Boolean checkPrimaryAddressForGivenAddresses(List<Integer> addressesIds) {
-		List<Addresses> addressesToCheck = addressRepo.findAllById(addressesIds);
-		return addressesToCheck.stream().filter(address -> address.getPrimaryAddress()).toList().size() > 0;
-	}
-
-	@Override
 	public void setGivenAddressesNonPrimary(List<Integer> addressesIds) {
 		List<Addresses> addressesToCheck = addressRepo.findAllById(addressesIds);
 		List<Addresses> updatedAddresses = addressesToCheck.stream().map(a -> {
