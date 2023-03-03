@@ -1,7 +1,10 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,7 +18,10 @@ import com.mps.think.setup.model.OrderItemDetails;
 import com.mps.think.setup.model.OrderOptions;
 import com.mps.think.setup.model.OrderPackageOptions;
 import com.mps.think.setup.model.OrderPaymentOptions;
+import com.mps.think.setup.model.SubscriptionDefKeyInfo;
+import com.mps.think.setup.model.Terms;
 import com.mps.think.setup.repo.OrderCodesSuperRepo;
+import com.mps.think.setup.repo.SubscriptionDefKeyInfoRepo;
 import com.mps.think.setup.service.OrderCodesService;
 import com.mps.think.setup.vo.OrderCodesSuperVO;
 
@@ -24,6 +30,9 @@ public class OrderCodesServiceImpl implements OrderCodesService {
 
 	@Autowired
 	private OrderCodesSuperRepo orderCodesSuperRepo;
+	
+	@Autowired
+	private SubscriptionDefKeyInfoRepo subsDefRepo;
 
 	@Override
 	public OrderCodesSuper saveOrderCodes(OrderCodesSuperVO orderCodes) {
@@ -99,5 +108,13 @@ public class OrderCodesServiceImpl implements OrderCodesService {
 		return orderCodesSuperRepo.findByOrderClassOcId(ocId);
 	}
 
+	@Override
+	public Set<Terms> getAllTermsForOrderCodeByIdOrderCodeId(Integer orderCodeId) {
+		Set<Terms> termsOutput = new HashSet<>();
+		subsDefRepo.findByOrderCodeId(orderCodeId).forEach(s -> {
+			termsOutput.addAll(s.getTerms());
+		});
+		return termsOutput;
+	}
 
 }

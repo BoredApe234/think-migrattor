@@ -32,14 +32,53 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 											  @Param("customerId") Integer customerId, 
 											  @Param("customerName") String customerName, Pageable page);
 	
-	@Query("SELECT DISTINCT o FROM Order o JOIN o.orderAddresses oa JOIN oa.address oadd JOIN o.customerId cusDet JOIN o.keyOrderInformation keyInfo "
-			+ "JOIN keyInfo.orderCode kioc JOIN kioc.orderCodes ordCod JOIN keyInfo.sourceCode srcCod "
+	
+	@Query("SELECT o FROM Order o "
+			+ "JOIN o.orderAddresses oa "
+			+ "JOIN o.customerId cusDet "
+			+ "JOIN o.keyOrderInformation keyInfo "
+			+ "JOIN o.orderItemsAndTerms itemTerms "
+			+ "JOIN o.paymentBreakdown payment "
+			+ "JOIN o.orderClass oc "
+			+ "JOIN o.auxiliaryInformation auxInfo "
+			+ "JOIN oa.address oadd "
+			+ "JOIN keyInfo.orderCode kioc "
+			+ "JOIN keyInfo.sourceCode srcCod "
+			+ "JOIN kioc.orderCodes ordCod "
+			+ "JOIN itemTerms.subsProdPkgDef subDef "
+			+ "JOIN itemTerms.term t "
+			+ "JOIN payment.rateCard rc "
 			+ "WHERE (ordCod.orderCode LIKE '%'||:keyword||'%') OR (srcCod.sourceCode LIKE '%'||:keyword||'%') OR "
-			+ "(CONCAT(keyInfo.orderStatus, ' ', keyInfo.orderCategory, ' ', keyInfo.agent, ' ', keyInfo.purchaseOrder) LIKE '%'||:keyword||'%') OR "
+			+ "(CONCAT(keyInfo.orderStatus, ' ', keyInfo.orderCategory, ' ', keyInfo.purchaseOrder, ' ', COALESCE(keyInfo.agent, '')) LIKE '%'||:keyword||'%') OR "
+			+ "(keyInfo.orderDate LIKE '%'||:keyword||'%') OR "
 			+ "(keyInfo.agentReferenceNum LIKE '%'||:keyword||'%') OR "
-			+ "CONCAT(oadd.addressName, ' ', oadd.name, ' ', oadd.addressLine1, ' ', oadd.addressLine2, ' ', oadd.zipCode, ' ', oadd.city, ' ', "
-			+ "oadd.state, ' ', oadd.country, ' ', oadd.countryCode, ' ', oadd.phone) LIKE '%'||:keyword||'%' OR "
-			+ "CONCAT(o.orderId, ' ', o.orderStatus, ' ', o.orderType) LIKE '%'||:keyword||'%'")
+			+ "(CONCAT(oadd.addressName, ' ', oadd.name, ' ', oadd.addressLine1, ' ', COALESCE(oadd.addressLine2, ''), ' ', oadd.city, ' ', oadd.state, ' ', oadd.country, ' ', oadd.phone) LIKE '%'||:keyword||'%') OR "
+			+ "(CONCAT(oadd.zipCode, ' ', oadd.countryCode) LIKE '%'||:keyword||'%') OR "
+			+ "(CONCAT(o.orderType, ' ', o.orderStatus) LIKE '%'||:keyword||'%') OR "
+			+ "(o.orderId LIKE '%'||:keyword||'%') OR "
+			+ "(CONCAT(subDef.subscriptionDefCode, ' ', t.term, ' ', itemTerms.numOfIssues, ' ', itemTerms.copiesPerIssue, ' ', itemTerms.validFrom, ' ', itemTerms.validTo, ' ', "
+			+ "COALESCE(itemTerms.liabilityIssue, ''), ' ', COALESCE(itemTerms.extendedIssue, '')) LIKE '%'||:keyword||'%') OR "
+			+ "(CONCAT(rc.rateCard, ' ', payment.paymentStatus, ' ', payment.netAmount) LIKE '%'||:keyword||'%') OR "
+			+ "(CONCAT(oc.orderClassName, ' ', oc.ocType) LIKE '%'||:keyword||'%') OR "
+			+ "(CONCAT(cusDet.fname, ' ', cusDet.lname, ' ', cusDet.initialName, ' ', cusDet.company, ' ', cusDet.email, ' ', cusDet.primaryPhone) LIKE '%'||:keyword||'%') OR "
+			+ "(auxInfo.orderAuxJSON LIKE '%'||:keyword||'%') "
+			+ "GROUP BY o.orderId")
 	public Page<Order> findOrdersBySearch(@Param("keyword") String keyword, Pageable page);
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
