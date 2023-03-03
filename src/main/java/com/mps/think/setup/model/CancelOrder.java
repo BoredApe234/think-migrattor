@@ -1,6 +1,8 @@
 package com.mps.think.setup.model;
 
-import java.sql.Date;
+
+
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 @Entity
 @Table(name = "cancel_order")
@@ -26,8 +31,10 @@ public class CancelOrder extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer cancelorderId;
 	
-	@Column(name = "order_id")
-	private Integer orderId;
+	@JsonBackReference
+	@OneToOne
+	@JoinColumn(name = "orderid" , referencedColumnName = "order_id" )
+	private Order orderid;
 	
 	@Column(name = "refund_amount")
 	private Float refundamount;
@@ -84,12 +91,12 @@ public class CancelOrder extends BaseEntity {
 		this.cancelorderId = cancelorderId;
 	}
 
-	public Integer getOrderId() {
-		return orderId;
+	public Order getOrderid() {
+		return orderid;
 	}
 
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
+	public void setOrderid(Order orderid) {
+		this.orderid = orderid;
 	}
 
 	public Float getRefundamount() {
@@ -203,7 +210,7 @@ public class CancelOrder extends BaseEntity {
 	public void setNameoncard(String nameoncard) {
 		this.nameoncard = nameoncard;
 	}
-	
+
 	
 	
 	

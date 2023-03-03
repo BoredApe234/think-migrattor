@@ -5,11 +5,12 @@ import java.sql.Date;
 
 
 import com.mps.think.setup.model.CancelReasons;
+import com.mps.think.setup.model.Order;
 
 public class CancelOrderVO {
 	
     private Integer cancelorderId;
-    private Integer orderId;
+    private Order orderid;
 	private Float refundamount;
 	private CancelReasons CancelReasonsId;
 	private Boolean donotrenew;
@@ -30,11 +31,11 @@ public class CancelOrderVO {
 	public void setCancelorderId(Integer cancelorderId) {
 		this.cancelorderId = cancelorderId;
 	}
-	public Integer getOrderId() {
-		return orderId;
+	public Order getOrderid() {
+		return orderid;
 	}
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
+	public void setOrderid(Order orderid) {
+		this.orderid = orderid;
 	}
 	public Float getRefundamount() {
 		return refundamount;
@@ -120,6 +121,8 @@ public class CancelOrderVO {
 	public void setNameoncard(String nameoncard) {
 		this.nameoncard = nameoncard;
 	}
+	
+	
 	
 	
 }

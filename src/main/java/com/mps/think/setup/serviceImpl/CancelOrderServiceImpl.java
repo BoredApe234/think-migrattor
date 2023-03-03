@@ -47,9 +47,9 @@ public class CancelOrderServiceImpl implements CancelOrderService {
 			return cr.get();
 	}
 	
-//	@Override
-//	public List<CancelOrder> getAllCancelOrderByCancelorderId(Integer cancelOrder) {
-//		return cancelOrderRepo.findByOrderidOrderId(cancelOrder);
-//	}
+	@Override
+	public List<CancelOrder> getAllCancelOrderByCancelorderId(Integer cancelOrder) {
+		return cancelOrderRepo.findByOrderidOrderId(cancelOrder);
+	}
 
 }

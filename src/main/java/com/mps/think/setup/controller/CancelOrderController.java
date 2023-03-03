@@ -43,10 +43,10 @@ public class CancelOrderController {
 		return ResponseEntity.ok(cancelOrderService.updateCancelOrder(cancelOrderId));
 	}
 	
-//	@PostMapping("/findAllCancelOrderByOrderId")
-//	public ResponseEntity<?> findByOrderidOrderId(@RequestBody Integer cancelOrderId) {
-//		return ResponseEntity.ok(cancelOrderService.getAllCancelOrderByCancelorderId(cancelOrderId));
-//	}
+	@PostMapping("/findAllCancelOrderByOrderId")
+	public ResponseEntity<?> findByOrderidOrderId(@RequestBody Integer cancelOrderId) {
+		return ResponseEntity.ok(cancelOrderService.getAllCancelOrderByCancelorderId(cancelOrderId));
+	}
 	
 	@GetMapping("/findRefundTo")
 	public ResponseEntity<?> getAllRefundTo() {

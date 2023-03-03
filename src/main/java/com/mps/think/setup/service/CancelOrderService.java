@@ -18,6 +18,6 @@ public interface CancelOrderService {
 	
 	public CancelOrder findbyCancelOrderId(Integer cancelOrder);
 
-	//public List<CancelOrder> getAllCancelOrderByCancelorderId(Integer cancelOrder);
+	public List<CancelOrder> getAllCancelOrderByCancelorderId(Integer cancelOrder);
 
 }

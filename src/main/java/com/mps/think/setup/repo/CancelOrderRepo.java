@@ -9,6 +9,6 @@ import com.mps.think.setup.model.CancelOrder;
 @Repository
 public interface CancelOrderRepo extends JpaRepository<CancelOrder ,Integer> {
 	
-//	List<CancelOrder> findByOrderidOrderId(Integer id);
+	List<CancelOrder> findByOrderidOrderId(Integer id);
 
 }
