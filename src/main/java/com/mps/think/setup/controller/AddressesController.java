@@ -86,6 +86,12 @@ public class AddressesController {
 		return ResponseEntity.ok("updated");
 	}
 	
+	@PostMapping("/updateSelectedAddressAsPrimary")
+	public ResponseEntity<?> updateSelectedAddressAsPrimary(@RequestBody Integer id) {
+		addressService.updateSelectedAddressAsPrimary(id);
+		return ResponseEntity.ok("updated");
+	}
+	
 //	@PostMapping("/updatePrimaryAddressbyCustId")
 //	public ResponseEntity<?> updatePrimaryAddressbyCustId(Integer customerId, Integer addressId) {
 //		return ResponseEntity.ok(addressService.updatePrimaryAddressbyCustId(customerId, addressId));

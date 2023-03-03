@@ -106,6 +106,13 @@ public class AddressesServiceImpl implements AddressService  {
 		}).collect(Collectors.toList());
 		addressRepo.saveAllAndFlush(updatedAddresses);
 	}
+
+	@Override
+	public void updateSelectedAddressAsPrimary(Integer addressId) {
+		Addresses address = addressRepo.findById(addressId).get();
+		address.setPrimaryAddress(true);
+		addressRepo.saveAndFlush(address);
+	}
 	
 //	@Override
 //	public Addresses updatePrimaryAddressbyCustId(Integer customerId, Integer addressId) {
