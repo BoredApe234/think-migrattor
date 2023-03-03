@@ -19,7 +19,8 @@ public class CancelOrderVO {
 	private String refundto;
 	private String cardNumber;
 	private String cardholdername;
-	private Boolean reneworpayanotherorder;
+	private Boolean renewanorder;
+	private Boolean payanotherorder;
 	private String paymentaccount;
 	private String paymenttype;
 	private String card;
@@ -85,11 +86,17 @@ public class CancelOrderVO {
 	public void setCardholdername(String cardholdername) {
 		this.cardholdername = cardholdername;
 	}
-	public Boolean getReneworpayanotherorder() {
-		return reneworpayanotherorder;
+	public Boolean getRenewanorder() {
+		return renewanorder;
 	}
-	public void setReneworpayanotherorder(Boolean reneworpayanotherorder) {
-		this.reneworpayanotherorder = reneworpayanotherorder;
+	public void setRenewanorder(Boolean renewanorder) {
+		this.renewanorder = renewanorder;
+	}
+	public Boolean getPayanotherorder() {
+		return payanotherorder;
+	}
+	public void setPayanotherorder(Boolean payanotherorder) {
+		this.payanotherorder = payanotherorder;
 	}
 	public String getPaymentaccount() {
 		return paymentaccount;
