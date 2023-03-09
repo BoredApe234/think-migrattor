@@ -38,4 +38,8 @@ public class OrderClassController {
 	public ResponseEntity<?> findbyOrderClassId(@RequestBody Integer orderClassId) {
 		return ResponseEntity.ok(orderClassService.findbyOrderClassId(orderClassId));
 	}
+	@PostMapping("/findAllOrderClassByPubId")
+	public ResponseEntity<?> findAllOrderClassByPubId(@RequestBody Integer pubId) {
+		return ResponseEntity.ok(orderClassService.findAllOrderClassByPubId(pubId));
+	}
 }

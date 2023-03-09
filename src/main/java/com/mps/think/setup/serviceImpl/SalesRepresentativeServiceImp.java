@@ -94,4 +94,9 @@ public class SalesRepresentativeServiceImp implements SalesRepresentativeService
 		return delete;
 	}
 
+	@Override
+	public List<SalesRepresentative> findAllSalesRepresentativeByPubId(Integer pubId) {
+		return salesRepresentativeRepo.findAllSalesRepresentativeByPubId(pubId);
+	}
+
 }

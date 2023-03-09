@@ -38,6 +38,11 @@ public class CustomerCategoryController {
 		return ResponseEntity.ok(customerCategoryService.findbyCustomerCategoryId(CustomerCategoryId));
 	}
 	
+	@PostMapping("/findAllCustomerCategoryByPubId")
+	public ResponseEntity<?> findAllCustomerCategoryByPubId(@RequestBody Integer pubId) {
+		return ResponseEntity.ok(customerCategoryService.findAllCustomerCategoryByPubId(pubId));
+	}
+	
 	@DeleteMapping("/deleteByCustomerCategoryId")
 	public ResponseEntity<?> deleteByCustomerCategoryId(@RequestBody Integer customerCategoryId) {
 		return ResponseEntity.ok(customerCategoryService.deleteByCustomerCategoryId(customerCategoryId));
