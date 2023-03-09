@@ -40,8 +40,9 @@ public class AddOrderController {
 	}
 	
 	@GetMapping("/getAllOrders")
-	public ResponseEntity<?> getAllOrders() throws Exception {
-		return ResponseEntity.ok(addOrderService.getAllOrders());
+	public ResponseEntity<?> getAllOrders(@RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) throws Exception {
+		return ResponseEntity.ok(addOrderService.getAllOrders(PageRequest.of(page, size)));
 	}
 	
 	@GetMapping("/getOrderById/{orderId}")
