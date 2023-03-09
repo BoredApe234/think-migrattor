@@ -52,6 +52,11 @@ public class CustomerDetailsController {
 	public ResponseEntity<?> findbyCustomerDetailsId(@RequestBody Integer customerId) {
 		return ResponseEntity.ok(customerDetailsService.findbyCustomerDetailsId(customerId));
 	}
+	
+	@PostMapping("/findAllCustomerByPubId")
+	public ResponseEntity<?> findAllCustomerByPubId(@RequestBody Integer pubId) {
+		return ResponseEntity.ok(customerDetailsService.findAllCustomerByPubId(pubId));
+	}
 
 	@GetMapping("/getAllCustomerCategory")
 	public ResponseEntity<?> getAllCustomerCategory() {

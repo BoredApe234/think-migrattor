@@ -10,7 +10,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -137,6 +139,10 @@ public class CustomerDetails  extends BaseEntity{
 	
 	@Column(name = "cust_aux_field_json")
 	private String custAuxFieldJSON;
+	
+	@OneToOne
+	@JoinColumn(name = "pub_id", referencedColumnName = "id" )
+	private Publisher publisher;
 	
 	@OneToMany(
 			mappedBy = "customer",

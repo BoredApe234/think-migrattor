@@ -41,6 +41,10 @@ public class CancelReasonsController {
 		return ResponseEntity.ok(cancelReasonsService.findbyCancelReasonsId(cancelReasonsId));
 	}
 	
+	@PostMapping("/findbyPubId")
+	public ResponseEntity<?> findbyPubId(@RequestBody Integer pubId) {
+		return ResponseEntity.ok(cancelReasonsService.findByPubId(pubId));
+	}
 	
 	@DeleteMapping("/deleteByCrId")
 	public ResponseEntity<?> deleteByCancelReasonsId(@RequestBody Integer cancelReasonsId) {

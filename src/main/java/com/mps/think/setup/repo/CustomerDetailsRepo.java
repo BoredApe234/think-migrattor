@@ -1,5 +1,7 @@
 package com.mps.think.setup.repo;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -7,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.mps.think.setup.model.CancelReasons;
 import com.mps.think.setup.model.CustomerDetails;
 
 @Repository
@@ -32,4 +35,7 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 			+ "CONCAT(cd.fname, ' ', cd.lname, ' ', cd.company, ' ', cd.department, ' ', cd.email, ' ' ,cd.initialName, ' ',cd.suffix, ' ', cd.countryCode, ' ', cd.primaryPhone, ' ', cd.mobileNumber, ' ', cd.taxId, ' ', COALESCE(cd.secondaryEmail, ''), ' ', COALESCE(cd.secondaryPhone, ''), ' ',cd.listRental, ' ', cd.salesRepresentative, ' ', cd.creditStatus, ' ', cd.fax, ' ', COALESCE(cd.newOrderCommission, ''), ' ', COALESCE(cd.renewalCommission, ''), ' ',COALESCE(cd.paymentThreshold, ''), ' ',COALESCE(cd.custAuxFieldJSON, '')) LIKE '%'||:search||'%'")
 	public Page<CustomerDetails> getAllCustomerDetailsForSearchSingle(@Param("search") String search, Pageable page);
 
+	
+	@Query(value="SELECT * FROM customer where pub_id=:pubId",nativeQuery = true)
+	public List<CustomerDetails> findAllCustomerByPubId(@Param("pubId") Integer pubId);
 }

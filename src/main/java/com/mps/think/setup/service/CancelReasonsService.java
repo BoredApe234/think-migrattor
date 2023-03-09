@@ -15,6 +15,7 @@ public interface CancelReasonsService {
 	public CancelReasonsVO updateCancelReasons(CancelReasonsVO cancelReasons);
 
 	public CancelReasons findbyCancelReasonsId(Integer cancelReasonsId);
+	public List<CancelReasons> findByPubId(Integer pubId);
 	
 	public CancelReasons deleteByCancelReasonsId(Integer cancelReasonsId);
 

@@ -73,4 +73,11 @@ public class CancelReasonsServiceImpl implements CancelReasonsService{
 		CancelReasonsRepo.delete(delete);
 		return delete;
 	}
+
+
+	@Override
+	public List<CancelReasons> findByPubId(Integer pubId) {
+		
+		return CancelReasonsRepo.findByPubId(pubId);
+	}
 }
