@@ -44,6 +44,11 @@ public class SalesRepresentativeController {
 		return ResponseEntity.ok(salesRepresentativeServiceImp.findbySalesRepresentativeId(salesRepresentativeId));
 	}
 	
+	@RequestMapping(value = "/findAllSalesRepresentativeByPubId", method = RequestMethod.POST)
+	public ResponseEntity<?> findAllSalesRepresentativeByPubId(@Valid @RequestBody Integer pubId) {
+		return ResponseEntity.ok(salesRepresentativeServiceImp.findAllSalesRepresentativeByPubId(pubId));
+	}
+	
 	@DeleteMapping("/deleteBySalesRepresentativeId")
 	public ResponseEntity<?> deleteBySalesRepresentativeId(@RequestBody Integer salesRepID) {
 		return ResponseEntity.ok(salesRepresentativeServiceImp.deleteBySalesRepresentativeId(salesRepID));

@@ -15,6 +15,8 @@ public interface CustomerCategoryService {
 
 	public CustomerCategory findbyCustomerCategoryId(Integer customerCategoryId);
 	
+	public List<CustomerCategory> findAllCustomerCategoryByPubId(Integer pubId);
+	
 	public CustomerCategory deleteByCustomerCategoryId(Integer customerCategoryId);
 
 }

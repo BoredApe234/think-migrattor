@@ -14,4 +14,6 @@ public interface OrderClassService {
 	public OrderClassVO updateOrderClass(OrderClassVO orderClassVO);
 	
 	public OrderClass findbyOrderClassId(Integer orderClassId);
+	
+	public List<OrderClass> findAllOrderClassByPubId(Integer pubId);
 }

@@ -14,6 +14,8 @@ public interface SalesRepresentativeService {
 	public SalesRepresentativeVO updateSalesRepresentative(SalesRepresentativeVO salesRepresentativeVO);
 
 	public SalesRepresentative findbySalesRepresentativeId(Integer contactId);
+	
+	public List<SalesRepresentative> findAllSalesRepresentativeByPubId(Integer pubId);
 
 	SalesRepresentative findbytId(Integer contactId);
 	

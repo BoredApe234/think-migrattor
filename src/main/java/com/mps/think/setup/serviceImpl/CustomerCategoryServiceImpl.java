@@ -71,4 +71,9 @@ public class CustomerCategoryServiceImpl implements CustomerCategoryService {
 		return delete;
 	}
 
+	@Override
+	public List<CustomerCategory> findAllCustomerCategoryByPubId(Integer pubId) {
+		return CustomerCategoryRepo.findAllCustomerCategoryByPubId(pubId);
+	}
+
 }
