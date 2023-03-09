@@ -51,11 +51,14 @@ public class IssueSettings extends BaseEntity{
 	@Column(name="issues_or_volume")
 	private String issuesOrVolume;
 	
-	@Column(name="type_of_issue")
-	private String typeOfIssue;
+	@Column(name="number_of_issues")
+	private String numberOfIssues;
 	
-	@Column(name="start_issue")
-	private String startIssue;
+	@Column(name="volume_of_issues")
+	private String VolumeOfIssues;
+	
+	@Column(name="time_period")
+	private String timePeriod;
 	
 	@Column(name="back_issues")
 	private Integer backIssues;
@@ -148,12 +151,28 @@ public class IssueSettings extends BaseEntity{
 		this.issuesOrVolume = issuesOrVolume;
 	}
 
-	public String getTypeOfIssue() {
-		return typeOfIssue;
+	public String getNumberOfIssues() {
+		return numberOfIssues;
 	}
 
-	public void setTypeOfIssue(String typeOfIssue) {
-		this.typeOfIssue = typeOfIssue;
+	public void setNumberOfIssues(String numberOfIssues) {
+		this.numberOfIssues = numberOfIssues;
+	}
+
+	public String getVolumeOfIssues() {
+		return VolumeOfIssues;
+	}
+
+	public void setVolumeOfIssues(String volumeOfIssues) {
+		VolumeOfIssues = volumeOfIssues;
+	}
+
+	public String getTimePeriod() {
+		return timePeriod;
+	}
+
+	public void setTimePeriod(String timePeriod) {
+		this.timePeriod = timePeriod;
 	}
 
 	public Integer getBackIssues() {
@@ -179,15 +198,6 @@ public class IssueSettings extends BaseEntity{
 	public void setOrderClassId(OrderClass orderClassId) {
 		this.orderClassId = orderClassId;
 	}
-	
-
-	public String getStartIssue() {
-		return startIssue;
-	}
-
-	public void setStartIssue(String startIssue) {
-		this.startIssue = startIssue;
-	}
 
 	@Override
 	public String toString() {
@@ -195,8 +205,8 @@ public class IssueSettings extends BaseEntity{
 				+ frequencyOfGeneration + ", issuesAppearonEvery=" + issuesAppearonEvery + ", volumeCaption="
 				+ volumeCaption + ", volumeFormat=" + volumeFormat + ", changeDate=" + changeDate + ", issueCaption="
 				+ issueCaption + ", issueFormat=" + issueFormat + ", issuesOrVolume=" + issuesOrVolume
-				+ ", typeOfIssue=" + typeOfIssue + ", startIssue=" + startIssue + ", backIssues=" + backIssues
-				+ ", BeforeAfterCurrentDate=" + BeforeAfterCurrentDate + ", orderClassId=" + orderClassId + "]";
+				+ ", numberOfIssues=" + numberOfIssues + ", VolumeOfIssues=" + VolumeOfIssues + ", timePeriod="
+				+ timePeriod + ", backIssues=" + backIssues + ", BeforeAfterCurrentDate=" + BeforeAfterCurrentDate
+				+ ", orderClassId=" + orderClassId + "]";
 	}
-
 }	
