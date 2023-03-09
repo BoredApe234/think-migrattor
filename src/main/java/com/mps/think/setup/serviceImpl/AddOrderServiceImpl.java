@@ -28,8 +28,8 @@ public class AddOrderServiceImpl implements AddOrderService {
 	}
 
 	@Override
-	public List<Order> getAllOrders() throws Exception {
-		return addOrderRepo.findAll();
+	public Page<Order> getAllOrders(Pageable page) throws Exception {
+		return addOrderRepo.findAll(page);
 	}
 
 	@Override
