@@ -21,7 +21,7 @@ public interface IssueGenerationService {
 	IssueGenerationVo generateIssueGenerationVo(IssueGenerationVo issueGeneration);
 
 	IssueGenerationVo insertIssueGenerationVo(IssueGenerationVo issueGeneration);
-	public IssueGeneration deleteIssueById(Integer sourceCodeId);
+	public List<IssueGeneration> deleteIssueById(Integer[] issueId);
 
 //	Integer findMaxSeqIssue(Integer ocId);
 

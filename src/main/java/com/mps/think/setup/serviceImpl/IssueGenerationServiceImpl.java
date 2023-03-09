@@ -306,10 +306,14 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 	}
 
 	@Override
-	public IssueGeneration deleteIssueById(Integer issueId) {
-		IssueGeneration delete = findbyIssueId(issueId);
+	public List<IssueGeneration> deleteIssueById(Integer[] issueId) {
+		List<IssueGeneration> list=new ArrayList<>();
+		for(Integer issue:issueId){
+		IssueGeneration delete = findbyIssueId(issue);
+		list.add(delete);
 		issueGenerationRepo.delete(delete);
-		return delete;
+		}
+		return list;
 	}
 
 }

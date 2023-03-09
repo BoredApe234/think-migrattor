@@ -57,7 +57,7 @@ public class IssueGenerationController {
 	}
 	
 	@DeleteMapping("/deleteIssuebyId")
-	public ResponseEntity<?> deleteIssueCode(@RequestBody Integer IssueId) {
+	public ResponseEntity<?> deleteIssueCode(@RequestBody Integer[] IssueId) {
 		return ResponseEntity.ok(issueGenerationServiceImpl.deleteIssueById(IssueId));
 	}
 }
