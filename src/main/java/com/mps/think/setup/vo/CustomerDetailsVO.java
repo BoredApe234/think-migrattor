@@ -5,9 +5,11 @@ import java.util.List;
 
 import com.mps.think.setup.model.CustomerAddresses;
 import com.mps.think.setup.model.Publisher;
+
+import com.mps.think.setup.model.CustomerCategory;
+
 import com.mps.think.setup.vo.EnumModelVO.ChargeTaxOn;
 import com.mps.think.setup.vo.EnumModelVO.ConfigurationOptionsforOrders;
-import com.mps.think.setup.vo.EnumModelVO.CustomerCategory;
 import com.mps.think.setup.vo.EnumModelVO.PaymentOptions;
 
 public class CustomerDetailsVO {

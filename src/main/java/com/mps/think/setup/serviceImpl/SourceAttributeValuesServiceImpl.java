@@ -57,4 +57,9 @@ public class SourceAttributeValuesServiceImpl implements SourceAttributeValuesSe
 		throw new NotFoundException();
 	}
 
+	@Override
+	public List<SourceAttributeValues> getAllSourceAttributeValuesByScId(Integer id) {
+		return sourceAttributeRepo.findBySourceAttributesIdId(id);
+	}
+
 }

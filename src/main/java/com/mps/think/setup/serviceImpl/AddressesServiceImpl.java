@@ -2,6 +2,7 @@ package com.mps.think.setup.serviceImpl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -94,6 +95,23 @@ public class AddressesServiceImpl implements AddressService  {
 		Addresses delete = findbyAddressesId(addressesId);
 		addressRepo.delete(delete);
 		return delete;
+	}
+
+	@Override
+	public void setGivenAddressesNonPrimary(List<Integer> addressesIds) {
+		List<Addresses> addressesToCheck = addressRepo.findAllById(addressesIds);
+		List<Addresses> updatedAddresses = addressesToCheck.stream().map(a -> {
+			a.setPrimaryAddress(false);
+			return a;
+		}).collect(Collectors.toList());
+		addressRepo.saveAllAndFlush(updatedAddresses);
+	}
+
+	@Override
+	public void updateSelectedAddressAsPrimary(Integer addressId) {
+		Addresses address = addressRepo.findById(addressId).get();
+		address.setPrimaryAddress(true);
+		addressRepo.saveAndFlush(address);
 	}
 	
 //	@Override

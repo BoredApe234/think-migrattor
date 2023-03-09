@@ -40,7 +40,7 @@ public class DeliveryMethods extends BaseEntity {
 	private String regionList;
 	
 	@Column(name = "delivery_amount")
-	private String amount;
+	private Double amount;
 	
 	@Column(name = "transport_mode")
 	private String transportMode;
@@ -48,6 +48,14 @@ public class DeliveryMethods extends BaseEntity {
 	@OneToOne
 	@JoinColumn(name = "publisher_id")
 	private Publisher publisher;
+
+	public Integer getDeliveryMethodsId() {
+		return deliveryMethodsId;
+	}
+
+	public void setDeliveryMethodsId(Integer deliveryMethodsId) {
+		this.deliveryMethodsId = deliveryMethodsId;
+	}
 
 	public Boolean getDefaultDelivery() {
 		return defaultDelivery;
@@ -89,11 +97,11 @@ public class DeliveryMethods extends BaseEntity {
 		this.regionList = regionList;
 	}
 
-	public String getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(String amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 
@@ -105,29 +113,14 @@ public class DeliveryMethods extends BaseEntity {
 		this.transportMode = transportMode;
 	}
 
-	public Integer getDeliveryMethodsId() {
-		return deliveryMethodsId;
-	}
-
-
-	public void setDeliveryMethodsId(Integer deliveryMethodsId) {
-		this.deliveryMethodsId = deliveryMethodsId;
-	}
-	
 	public Publisher getPublisher() {
 		return publisher;
 	}
-	
+
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
+
 	
-	@Override
-	public String toString() {
-		return "DeliveryMethods [deliveryMethodsId=" + deliveryMethodsId + ", defaultDelivery=" + defaultDelivery
-				+ ", deliveryMethod=" + deliveryMethod + ", active=" + active + ", description=" + description
-				+ ", regionList=" + regionList + ", amount=" + amount + ", transportMode=" + transportMode
-				+ ", publisher=" + publisher + "]";
-	}
 	
 }

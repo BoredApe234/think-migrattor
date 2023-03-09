@@ -32,7 +32,8 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 			+ "cd.fax LIKE '%'||:search||'%' OR "
 			+ "(cd.institutionalId LIKE '%'||:search||'%') OR "
 			+ "(cd.parentInstitutionalId LIKE '%'||:search||'%') OR "
-			+ "CONCAT(cd.fname, ' ', cd.lname, ' ', cd.company, ' ', cd.department, ' ', cd.email, ' ' ,cd.initialName, ' ',cd.suffix, ' ', cd.countryCode, ' ', cd.primaryPhone, ' ', cd.mobileNumber, ' ', cd.taxId, ' ', COALESCE(cd.secondaryEmail, ''), ' ', COALESCE(cd.secondaryPhone, ''), ' ',cd.listRental, ' ', cd.salesRepresentative, ' ', cd.creditStatus, ' ', cd.fax, ' ', COALESCE(cd.newOrderCommission, ''), ' ', COALESCE(cd.renewalCommission, ''), ' ',COALESCE(cd.paymentThreshold, ''), ' ',COALESCE(cd.custAuxFieldJSON, '')) LIKE '%'||:search||'%'")
+			+ "CONCAT(cd.fname, ' ', cd.lname, ' ', cd.company, ' ', cd.department, ' ', cd.email, ' ' ,cd.initialName, ' ',cd.suffix, ' ', cd.countryCode, ' ', cd.primaryPhone, ' ', cd.mobileNumber, ' ', cd.taxId, ' ', COALESCE(cd.secondaryEmail, ''), ' ', COALESCE(cd.secondaryPhone, ''), ' ',cd.listRental, ' ', cd.salesRepresentative, ' ', cd.creditStatus, ' ', cd.fax, ' ', COALESCE(cd.newOrderCommission, ''), ' ', COALESCE(cd.renewalCommission, ''), ' ',COALESCE(cd.paymentThreshold, ''), ' ',COALESCE(cd.custAuxFieldJSON, '')) LIKE '%'||:search||'%'"
+			+ "GROUP BY cd.customerId")
 	public Page<CustomerDetails> getAllCustomerDetailsForSearchSingle(@Param("search") String search, Pageable page);
 
 	

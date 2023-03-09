@@ -36,7 +36,7 @@ public class DeliveryMethodOverrides extends BaseEntity {
 	private String orderClass;
 	
 	@Column(name = "amount")
-	private String amount;
+	private Double amount;
 	
 	@OneToOne
 	@JoinColumn(name = "publisher_id", referencedColumnName = "id")
@@ -82,11 +82,11 @@ public class DeliveryMethodOverrides extends BaseEntity {
 		this.orderClass = orderClass;
 	}
 
-	public String getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(String amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 
@@ -97,5 +97,9 @@ public class DeliveryMethodOverrides extends BaseEntity {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
+	
+	
+
+	
 	
 }

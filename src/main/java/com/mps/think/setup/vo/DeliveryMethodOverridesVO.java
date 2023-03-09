@@ -1,21 +1,23 @@
 package com.mps.think.setup.vo;
 
+
+
 import com.mps.think.setup.model.Publisher;
 
 public class DeliveryMethodOverridesVO {
 
 	private Integer id;
-	
+
 	private String deliveryMethod;
-	
+
 	private String region;
-	
+
 	private String currency;
-	
+
 	private String orderClass;
-	
-	private String amount;
-	
+
+	private Double amount;
+
 	private Publisher publisher;
 
 	public Integer getId() {
@@ -58,11 +60,11 @@ public class DeliveryMethodOverridesVO {
 		this.orderClass = orderClass;
 	}
 
-	public String getAmount() {
+	public Double getAmount() {
 		return amount;
 	}
 
-	public void setAmount(String amount) {
+	public void setAmount(Double amount) {
 		this.amount = amount;
 	}
 
@@ -74,4 +76,6 @@ public class DeliveryMethodOverridesVO {
 		this.publisher = publisher;
 	}
 	
+	
+
 }

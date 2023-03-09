@@ -20,6 +20,8 @@ import com.mps.think.setup.vo.EnumModelVO.Frequency;
 import com.mps.think.setup.vo.EnumModelVO.OrderType;
 import com.mps.think.setup.vo.EnumModelVO.Status;
 
+import net.minidev.json.JSONObject;
+
 @RestController
 @CrossOrigin
 public class AddressesController {
@@ -78,6 +80,22 @@ public class AddressesController {
 	@GetMapping("/findAllstatus")
 	public ResponseEntity<?> getAllStatus() {
 		return ResponseEntity.ok(Status.values());
+	}
+	
+	@PostMapping("/updateGivenAddressesAsNonPrimary")
+	public ResponseEntity<?> updateGivenAddressesNonPrimary(@RequestBody List<Integer> addressesIds) {
+		JSONObject json = new JSONObject();
+	    json.put("data", "updated");
+		addressService.setGivenAddressesNonPrimary(addressesIds);
+		return ResponseEntity.ok(json.toString());
+	}
+	
+	@PostMapping("/updateSelectedAddressAsPrimary")
+	public ResponseEntity<?> updateSelectedAddressAsPrimary(@RequestBody Integer id) {
+		JSONObject json = new JSONObject();
+	    json.put("data", "updated");
+		addressService.updateSelectedAddressAsPrimary(id);
+		return ResponseEntity.ok(json.toString());
 	}
 	
 //	@PostMapping("/updatePrimaryAddressbyCustId")

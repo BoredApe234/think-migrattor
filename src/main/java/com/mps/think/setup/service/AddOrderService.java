@@ -13,7 +13,7 @@ import com.mps.think.setup.vo.OrderVO;
 public interface AddOrderService {
 	
 	public Order saveOrder(OrderVO order) throws Exception;
-	public List<Order> getAllOrders() throws Exception;
+	public Page<Order> getAllOrders(Pageable page) throws Exception;
 	public Order getOrderById(Integer orderId) throws Exception;
 	public List<Order> getAllOrderByCustomerId(Integer customerId) throws Exception;
 	public Order updateOrder(Order order) throws Exception;

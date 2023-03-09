@@ -39,13 +39,18 @@ public class SourceAttributeValuesController {
 	}
 
 	@GetMapping("/findbySourceAttributeValueId/{sourceAttributeValueId}")
-	public ResponseEntity<?> findbySourceAttributeId(@Valid @PathVariable("sourceAttributeId") Integer sourceAttributeId) throws Exception {
-		return ResponseEntity.ok(sourceAttributeService.findbySourceAttributeId(sourceAttributeId));
+	public ResponseEntity<?> findbySourceAttributeId(@Valid @PathVariable("sourceAttributeValueId") Integer sourceAttributeValueId) throws Exception {
+		return ResponseEntity.ok(sourceAttributeService.findbySourceAttributeId(sourceAttributeValueId));
 	}
 	
 	@DeleteMapping("/deleteSourceAttributeValue")
 	public ResponseEntity<?> deleteSourceAttribute(@RequestBody Integer id) throws Exception {
 		return ResponseEntity.ok(sourceAttributeService.deleteSourceAttributeById(id));
+	}
+	
+	@GetMapping("getAllSourceAttrValuesBySourceAttrId/{id}")
+	public ResponseEntity<?> getAllSourceAttrValBySourceAttrId(@PathVariable("id") Integer id) {
+		return ResponseEntity.ok(sourceAttributeService.getAllSourceAttributeValuesByScId(id));
 	}
 	
 }
