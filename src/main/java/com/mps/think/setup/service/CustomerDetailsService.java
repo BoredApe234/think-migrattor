@@ -21,6 +21,8 @@ public interface CustomerDetailsService {
 
 	public CustomerDetails findbyCustomerDetailsId(Integer customerId);
 	
-	public CustomerDetails deleteCustomer(Integer customerId);
+	public List<CustomerDetails> findAllCustomerByPubId(Integer pubId);
+	
+	public CustomerDetails deleteCustomer(Integer pubId);
 
 }

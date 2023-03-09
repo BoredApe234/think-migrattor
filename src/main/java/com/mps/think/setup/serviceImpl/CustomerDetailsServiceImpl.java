@@ -67,5 +67,11 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		// TODO Auto-generated method stub
 		return customerRepo.getAllCustomerDetailsForSearchSingle(search, page);
 	}
+
+	@Override
+	public List<CustomerDetails> findAllCustomerByPubId(Integer pubId) {
+
+		return customerRepo.findAllCustomerByPubId(pubId);
+	}
 	
 }

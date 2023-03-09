@@ -140,6 +140,10 @@ public class CustomerDetails  extends BaseEntity{
 	@Column(name = "cust_aux_field_json")
 	private String custAuxFieldJSON;
 	
+	@OneToOne
+	@JoinColumn(name = "pub_id", referencedColumnName = "id" )
+	private Publisher publisher;
+	
 	@OneToMany(
 			mappedBy = "customer",
 	        cascade = CascadeType.ALL,
