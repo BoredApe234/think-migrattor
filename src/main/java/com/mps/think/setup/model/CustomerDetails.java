@@ -144,6 +144,14 @@ public class CustomerDetails  extends BaseEntity{
 	@JoinColumn(name = "pub_id", referencedColumnName = "id" )
 	private Publisher publisher;
 	
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
 	@OneToMany(
 			mappedBy = "customer",
 	        cascade = CascadeType.ALL,
@@ -406,24 +414,4 @@ public class CustomerDetails  extends BaseEntity{
 	public void setCustomerAddresses(List<CustomerAddresses> customerAddresses) {
 		this.customerAddresses = customerAddresses;
 	}
-
-	@Override
-	public String toString() {
-		return "CustomerDetails [customerId=" + customerId + ", customerCategory=" + customerCategory
-				+ ", thinkCategory=" + thinkCategory + ", salutation=" + salutation + ", fname=" + fname + ", lname="
-				+ lname + ", initialName=" + initialName + ", suffix=" + suffix + ", company=" + company
-				+ ", department=" + department + ", email=" + email + ", countryCode=" + countryCode + ", primaryPhone="
-				+ primaryPhone + ", mobileNumber=" + mobileNumber + ", taxId=" + taxId + ", taxExempt=" + taxExempt
-				+ ", secondaryEmail=" + secondaryEmail + ", secondaryPhone=" + secondaryPhone + ", listRental="
-				+ listRental + ", salesRepresentative=" + salesRepresentative + ", creditStatus=" + creditStatus
-				+ ", fax=" + fax + ", institutionalId=" + institutionalId + ", parentInstitutionalId="
-				+ parentInstitutionalId + ", chargeTaxOn=" + chargeTaxOn + ", paymentOptions=" + paymentOptions
-				+ ", configurationOptionsforOrders=" + configurationOptionsforOrders + ", newOrderCommission="
-				+ newOrderCommission + ", renewalCommission=" + renewalCommission + ", paymentThreshold="
-				+ paymentThreshold + ", custAuxFieldJSON=" + custAuxFieldJSON + ", customerAddresses="
-				+ customerAddresses + "]";
-	}
-
-	
-
 }
