@@ -2,6 +2,7 @@ package com.mps.think.setup.service;
 
 import java.util.List;
 
+
 import com.mps.think.setup.model.SubscriptionCategory;
 import com.mps.think.setup.vo.SubscriptionCategoryVO;
 
@@ -16,5 +17,7 @@ public interface SubscriptionCategoryService {
 	public SubscriptionCategory findbyId(Integer id);
 	
 	public SubscriptionCategory deleteSubscriptionCategoryById(Integer id);
+	
+	public List<SubscriptionCategory> findAllSubscriptionCategoryByPubId(Integer id);
 
 }
