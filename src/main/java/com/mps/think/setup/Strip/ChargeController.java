@@ -20,7 +20,7 @@ public class ChargeController {
 	StripeService paymentsService;
 
 //	@PostMapping("/charge")
-//	public String charge(ChargeRequest chargeRequest, Model model) throws StripeException {
+//	public Charge charge(ChargeRequest chargeRequest, Model model) throws StripeException {
 //		chargeRequest.setDescription("Example charge");
 //		chargeRequest.setCurrency(Currency.EUR);
 //		Charge charge = paymentsService.charge(chargeRequest);
@@ -30,13 +30,13 @@ public class ChargeController {
 //		model.addAttribute("balance_transaction", charge.getBalanceTransaction());
 //		System.out.println(chargeRequest.toString());
 //		System.out.println(charge.toString());
-//		return "result";
+//		return charge;
 //	}
 
 	@ExceptionHandler(StripeException.class)
 	public String handleError(Model model, StripeException ex) {
 		model.addAttribute("error", ex.getMessage());
-		return "result";
+		return "result"+ex.getMessage();
 	}
 
 	@PostMapping("/chargeAPI")
