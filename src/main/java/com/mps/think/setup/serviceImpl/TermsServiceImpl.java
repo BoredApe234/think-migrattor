@@ -124,4 +124,10 @@ public class TermsServiceImpl implements TermsService{
 		return delete;
 	}
 
+
+	@Override
+	public List<Terms> findAllTermsForPublisher(Integer pubId) {
+		return termsRepo.findByPubIdId(pubId);
+	}
+
 }

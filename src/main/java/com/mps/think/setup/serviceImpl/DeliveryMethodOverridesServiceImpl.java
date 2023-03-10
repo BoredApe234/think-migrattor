@@ -59,4 +59,9 @@ public class DeliveryMethodOverridesServiceImpl implements DeliveryMethodOverrid
 		return deliveryMethodOverrideToDelete;
 	}
 
+	@Override
+	public List<DeliveryMethodOverrides> getAllDeliveryMethodOverriedsForPublisher(Integer pubId) {
+		return deliveryMethodOverridesRepo.findByPublisherId(pubId);
+	}
+
 }

@@ -16,5 +16,7 @@ public interface TaxService {
 	public TaxType findbyTaxType(Integer taxId);
 	
 	public TaxType deleteByTaxTypeId(Integer taxId);
+	
+	List<TaxType> findAllTaxTypeForPublisher(Integer pubId);
 
 }

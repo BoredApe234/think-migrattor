@@ -61,4 +61,9 @@ public class TaxRateCategoryServiceImpl implements TaxRateCategoryService{
 		return delete;
 	}
 
+	@Override
+	public List<TaxRateCategory> findAllTaxRateCategoryForPublisher(Integer pubId) {
+		return taxRateCategoryRepo.findByPubIdId(pubId);
+	}
+
 }

@@ -57,4 +57,9 @@ public class ShippingPriceListImpl implements ShippingPriceListService {
 		return shippingPriceListToDelete;
 	}
 
+	@Override
+	public List<ShippingPriceList> getAllShippingPricesForPublisher(Integer pubId) {
+		return shippingPriceListRepo.findByPublisherId(pubId);
+	}
+
 }

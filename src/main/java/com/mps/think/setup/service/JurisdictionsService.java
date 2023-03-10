@@ -16,5 +16,7 @@ public interface JurisdictionsService {
 	public Jurisdictions findbyId(Integer id);
 	
 	public Jurisdictions deleteJurisdictionsById(Integer id);
+	
+	List<Jurisdictions> findAllJurisdictionsForPublisher(Integer pubId);
 
 }

@@ -19,4 +19,6 @@ public interface DeliveryMethodsService {
 	
 	public DeliveryMethods deleteDeliveryMethodById(Integer id);
 	
+	List<DeliveryMethods> getAllDeliveryMethodsForPublisherByPubId(Integer pubId);
+	
 }

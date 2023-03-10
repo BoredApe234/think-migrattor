@@ -16,5 +16,7 @@ public interface CommodityCodesService {
 	public CommodityCodes findbyId(Integer id);
 	
 	public CommodityCodes deleteCommodityCodesById(Integer id);
+	
+	List<CommodityCodes> findAllCommodityCodesForPublisher(Integer pubId);
 
 }

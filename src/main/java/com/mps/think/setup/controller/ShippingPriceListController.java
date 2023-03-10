@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,6 +42,11 @@ public class ShippingPriceListController {
 	@DeleteMapping("/deleteShippingPriceListById")
 	public ResponseEntity<?> deleteShippingPriceListById(@RequestBody Integer id) {
 		return ResponseEntity.ok(shippingPriceListService.deleteShippingPriceListById(id));
+	}
+	
+	@GetMapping("/findAllShippingPriceListForPublisher/{pubId}")
+	public ResponseEntity<?> getAllShippingPriceListForPublisher(@PathVariable("pubId") Integer pubId) {
+		return ResponseEntity.ok(shippingPriceListService.getAllShippingPricesForPublisher(pubId));
 	}
 	
 }

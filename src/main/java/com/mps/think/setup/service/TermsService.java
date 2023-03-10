@@ -16,5 +16,7 @@ public interface TermsService {
 	public Terms findbytermsId(Integer termsId);
 	
 	public Terms deleteBytermsId(Integer termsId);
+	
+	List<Terms> findAllTermsForPublisher(Integer pubId);
 
 }
