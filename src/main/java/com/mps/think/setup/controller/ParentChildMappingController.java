@@ -36,4 +36,9 @@ public class ParentChildMappingController {
 	public ResponseEntity<?> findbysourceCodeId(@RequestBody Integer id) {
 		return ResponseEntity.ok(childMappingService.findbyParentChildMappingId(id));
 	}
+	
+	@PostMapping("/findAllParentChildByPublisherId")
+	public ResponseEntity<?> findAllParentChildByPublisherId(@RequestBody Integer pubId) {
+		return ResponseEntity.ok(childMappingService.findAllParentChildByPublisherId(pubId));
+	}
 }

@@ -50,4 +50,10 @@ public class ParentChildMappingServiceImpl implements ParentChildMappingService 
 		return parentchildMappingRepo.findById(id).get();
 	}
 
+	@Override
+	public List<ParentChildMapping> findAllParentChildByPublisherId(Integer pubId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
