@@ -239,8 +239,10 @@ public class CustomerDetailsVO {
 	public void setCustomerAddresses(List<CustomerAddressesVO> customerAddresses) {
 		this.customerAddresses = customerAddresses;
 	}
-	
-	
-	
-	
+	public Publisher getPublisher() {
+		return publisher;
+	}
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
 }
