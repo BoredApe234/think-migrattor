@@ -18,5 +18,7 @@ public interface TaxRateCategoryService {
 	public TaxRateCategory findbyTaxRateCategoryId(Integer taxRateCategoryId);
 	
 	public TaxRateCategory deleteByTaxRateCategoryId(Integer id);
+	
+	List<TaxRateCategory> findAllTaxRateCategoryForPublisher(Integer pubId);
 
 }

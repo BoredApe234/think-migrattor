@@ -20,5 +20,6 @@ public interface SpecialTaxIdsService {
 	
 	public SpecialTaxIds deleteBySpecialTaxIdsId(Integer id);
 
+	List<SpecialTaxIds> findAllSpecialTaxIdsForPublisher(Integer pubId);
 
 }

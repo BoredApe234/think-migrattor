@@ -76,5 +76,10 @@ public class DeliveryMethodsServiceImpl implements DeliveryMethodsService {
 		}
 		return deliveryToRemove;
 	}
+
+	@Override
+	public List<DeliveryMethods> getAllDeliveryMethodsForPublisherByPubId(Integer pubId) {
+		return deliveryMethodsRepo.findByPublisherId(pubId);
+	}
 	
 }

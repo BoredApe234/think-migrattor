@@ -17,4 +17,6 @@ public interface TransportModeService {
 
 	public TransportMode deleteTransportModeById(Integer id);
 	
+	List<TransportMode> getAllTransportModeForPublisher(Integer pubId);
+	
 }

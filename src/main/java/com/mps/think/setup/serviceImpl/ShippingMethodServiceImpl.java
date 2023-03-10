@@ -61,6 +61,11 @@ public class ShippingMethodServiceImpl implements ShippingMethodService {
 		shippingMethodRepo.delete(shippingMethodToDelete);
 		return shippingMethodToDelete;
 	}
+
+	@Override
+	public List<ShippingMethod> getAllShippingMethodsForPublisher(Integer pubId) {
+		return shippingMethodRepo.findByPublisherId(pubId);
+	}
 	
 
 }

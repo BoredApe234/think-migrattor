@@ -17,4 +17,6 @@ public interface DeliveryMethodOverridesService {
 	
 	public DeliveryMethodOverrides deleteDeliveryMethodOverrideById(Integer id);
 	
+	List<DeliveryMethodOverrides> getAllDeliveryMethodOverriedsForPublisher(Integer pubId);
+	
 }

@@ -74,4 +74,10 @@ public class JurisdictionsServiceImpl implements JurisdictionsService {
 		return todelete;
 	}
 
+	@Override
+	public List<Jurisdictions> findAllJurisdictionsForPublisher(Integer pubId) {
+		return jurisdictionsRepo.findByPubIdId(pubId);
+	}
+
+
 }

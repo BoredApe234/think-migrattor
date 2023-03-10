@@ -19,4 +19,6 @@ public interface ShippingMethodService {
 	
 	public ShippingMethod deleteShippingMethodById(Integer id);
 	
+	List<ShippingMethod> getAllShippingMethodsForPublisher(Integer pubId);
+	
 }

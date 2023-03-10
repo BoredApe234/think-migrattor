@@ -52,4 +52,9 @@ public class TransportModeServiceImpl implements TransportModeService {
 		return transportModeToDelete;
 	}
 
+	@Override
+	public List<TransportMode> getAllTransportModeForPublisher(Integer pubId) {
+		return transportModeRepo.findByPublisherId(pubId);
+	}
+
 }
