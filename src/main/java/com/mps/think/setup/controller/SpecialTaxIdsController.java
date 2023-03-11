@@ -46,8 +46,8 @@ public class SpecialTaxIdsController {
 		return ResponseEntity.ok(stis.deleteBySpecialTaxIdsId(id));
 	}
 	
-	@PostMapping("/findAllSpecialTaxIdsForPublisher/{pubId}")
-	public ResponseEntity<?> findAllSpecialTaxIdsForPublisher(@PathVariable("pubId") Integer pubId) {
+	@PostMapping("/findAllSpecialTaxIdsForPublisher")
+	public ResponseEntity<?> findAllSpecialTaxIdsForPublisher(@RequestBody Integer pubId) {
 		return ResponseEntity.ok(stis.findAllSpecialTaxIdsForPublisher(pubId));
 	}
 	

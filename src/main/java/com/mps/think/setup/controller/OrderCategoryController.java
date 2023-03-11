@@ -46,8 +46,8 @@ public class OrderCategoryController {
 		return ResponseEntity.ok(orderCategoryService.deleteByOrderCategoryId(orderCategoryId));
 	}
 	
-	@PostMapping("getAlOrderCategoryForPublisher/{publisherId}")
-	public ResponseEntity<?> getAllOrderCategoryForPublisher(@PathVariable("publisherId") Integer publisherId) {
+	@PostMapping("getAllOrderCategoryForPublisher")
+	public ResponseEntity<?> getAllOrderCategoryForPublisher(@RequestBody Integer publisherId) {
 		return ResponseEntity.ok(orderCategoryService.findAllOrderCategoryByPubId(publisherId));
 	}
 

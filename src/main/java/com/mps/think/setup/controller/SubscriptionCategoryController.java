@@ -45,8 +45,8 @@ public class SubscriptionCategoryController {
 		return ResponseEntity.ok(subscriptionCategoryService.deleteSubscriptionCategoryById(id));
 	}
 	
-	@PostMapping("getAllSubscriptionCategoryForPublisher/{publisherId}")
-	public ResponseEntity<?> getAllSubscriptionCategoryForPublisher(@PathVariable("publisherId") Integer publisherId) {
+	@PostMapping("getAllSubscriptionCategoryForPublisher")
+	public ResponseEntity<?> getAllSubscriptionCategoryForPublisher(@RequestBody Integer publisherId) {
 		return ResponseEntity.ok(subscriptionCategoryService.findAllSubscriptionCategoryByPubId(publisherId));
 	}
 

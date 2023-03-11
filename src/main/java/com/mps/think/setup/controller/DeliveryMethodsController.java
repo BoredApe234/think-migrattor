@@ -52,8 +52,8 @@ public class DeliveryMethodsController {
 		return ResponseEntity.ok(deliveryMethodService.deleteDeliveryMethodById(id));
 	}
 	
-	@PostMapping("getAllDeliveryMethodsForPublisher/{publisherId}")
-	public ResponseEntity<?> getAllDeliveryMethodsForPublisher(@PathVariable("publisherId") Integer publisherId) {
+	@PostMapping("getAllDeliveryMethodsForPublisher")
+	public ResponseEntity<?> getAllDeliveryMethodsForPublisher(@RequestBody Integer publisherId) {
 		return ResponseEntity.ok(deliveryMethodService.getAllDeliveryMethodsForPublisherByPubId(publisherId));
 	}
 	

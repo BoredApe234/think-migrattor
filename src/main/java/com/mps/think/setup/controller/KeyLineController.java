@@ -45,8 +45,8 @@ public class KeyLineController {
 		return ResponseEntity.ok(lableKeyLineServiceImpl.deleteByLableKeyLineId(lableKeylineId));
 	}
 	
-	@PostMapping("getAllLableKeyLineForPublisher/{publisherId}")
-	public ResponseEntity<?> getAllLableKeyLineForPublisher(@PathVariable("publisherId") Integer lableKeylineId) {
+	@PostMapping("getAllLableKeyLineForPublisher")
+	public ResponseEntity<?> getAllLableKeyLineForPublisher(@RequestBody Integer lableKeylineId) {
 		return ResponseEntity.ok(lableKeyLineServiceImpl.findAllLableKeyLineByPubId(lableKeylineId));
 	}
 

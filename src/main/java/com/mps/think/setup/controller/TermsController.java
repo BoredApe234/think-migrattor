@@ -69,8 +69,8 @@ public class TermsController {
 		return ResponseEntity.ok(termsService.deleteBytermsId(termsId));
 	}
 	
-	@PostMapping("/getAllTermsForPublisher/{pubId}")
-	public ResponseEntity<?> findAllTermsForPublisher(@PathVariable("pubId") Integer pubId) {
+	@PostMapping("/getAllTermsForPublisher")
+	public ResponseEntity<?> findAllTermsForPublisher(@RequestBody Integer pubId) {
 		return ResponseEntity.ok(termsService.findAllTermsForPublisher(pubId));
 	}
 

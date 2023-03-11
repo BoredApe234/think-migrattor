@@ -45,8 +45,8 @@ public class LableGroupController {
 		return ResponseEntity.ok(lableGroupServiceImp.deleteByLableGroupId(lableGroupId));
 	}
 	
-	@PostMapping("getAllLableGroupForPublisher/{publisherId}")
-	public ResponseEntity<?> getAllLableGroupForPublisher(@PathVariable("publisherId") Integer lableGroupId) {
+	@PostMapping("getAllLableGroupForPublisher")
+	public ResponseEntity<?> getAllLableGroupForPublisher(@RequestBody Integer lableGroupId) {
 		return ResponseEntity.ok(lableGroupServiceImp.findAllLableGroupByPubId(lableGroupId));
 	}
 
