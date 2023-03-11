@@ -45,7 +45,7 @@ public class LableFormatController {
 		return ResponseEntity.ok(lableFormatServiceImp.deleteByLableFormatId(lableFormatId));
 	}
 	
-	@GetMapping("getAllLableFormatForPublisher/{publisherId}")
+	@PostMapping("getAllLableFormatForPublisher/{publisherId}")
 	public ResponseEntity<?> getAllLableFormatForPublisher(@PathVariable("publisherId") Integer lableFormatId) {
 		return ResponseEntity.ok(lableFormatServiceImp.findAllLableFormatByPubId(lableFormatId));
 	}

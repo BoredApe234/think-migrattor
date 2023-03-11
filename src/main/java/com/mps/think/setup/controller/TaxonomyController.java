@@ -46,7 +46,7 @@ public class TaxonomyController {
 		return ResponseEntity.ok(taxonomyService.deleteById(id));
 	}
 	
-	@GetMapping("getAllTaxonomyForPublisher/{publisherId}")
+	@PostMapping("getAllTaxonomyForPublisher/{publisherId}")
 	public ResponseEntity<?> getAllTaxonomyForPublisher(@PathVariable("publisherId") Integer publisherId) {
 		return ResponseEntity.ok(taxonomyService.findAllTaxonomyByPubId(publisherId));
 	}

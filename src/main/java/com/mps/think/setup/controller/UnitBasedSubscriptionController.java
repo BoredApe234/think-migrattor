@@ -47,7 +47,7 @@ public class UnitBasedSubscriptionController {
 		return ResponseEntity.ok(ubss.deleteByUnitBasedSubscriptionId(ubsid));
 	}
 	
-	@GetMapping("getAllubsForPublisher/{publisherId}")
+	@PostMapping("getAllubsForPublisher/{publisherId}")
 	public ResponseEntity<?> getAllubsForPublisher(@PathVariable("publisherId") Integer publisherId) {
 		return ResponseEntity.ok(ubss.findAllUnitBasedSubscriptionByPubId(publisherId));
 	}
