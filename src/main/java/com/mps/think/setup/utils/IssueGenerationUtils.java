@@ -108,7 +108,8 @@ public class IssueGenerationUtils {
 			for (String s : days) {
 				String temp = startYear + "-" + s;
 				if (count != 0) {
-					Date date = java.sql.Date.valueOf(LocalDate.parse(temp));
+					Date date = java.sql.Date.valueOf(temp);
+					
 					list.add(date);
 				}
 				System.out.println(temp);
