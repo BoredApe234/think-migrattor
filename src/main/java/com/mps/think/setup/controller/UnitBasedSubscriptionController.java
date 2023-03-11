@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,6 +45,11 @@ public class UnitBasedSubscriptionController {
 	@DeleteMapping("/deleteByubsId")
 	public ResponseEntity<?> deleteByUbsId(@RequestBody Integer ubsid) {
 		return ResponseEntity.ok(ubss.deleteByUnitBasedSubscriptionId(ubsid));
+	}
+	
+	@PostMapping("getAllubsForPublisher/{publisherId}")
+	public ResponseEntity<?> getAllubsForPublisher(@PathVariable("publisherId") Integer publisherId) {
+		return ResponseEntity.ok(ubss.findAllUnitBasedSubscriptionByPubId(publisherId));
 	}
 	
 }

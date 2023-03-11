@@ -2,6 +2,7 @@ package com.mps.think.setup.service;
 
 import java.util.List;
 
+
 import com.mps.think.setup.model.LableGroup;
 import com.mps.think.setup.vo.LableGroupVO;
 
@@ -16,5 +17,7 @@ public interface LableGroupService {
 	public LableGroup findbyLableGroup(Integer lableGroupId);
 	
 	public LableGroup deleteByLableGroupId(Integer lableGroupId);
+	
+	public List<LableGroup> findAllLableGroupByPubId(Integer lableGroupId);
 
 }
