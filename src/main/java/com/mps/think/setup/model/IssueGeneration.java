@@ -8,6 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "issue_generation")
@@ -64,6 +68,8 @@ public class IssueGeneration extends BaseEntity {
 	@Column(name = "volume_format")
 	private String volumeFormat;
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@UpdateTimestamp
 	@Column(name = "change_date")
 	private String changeDate;
 
@@ -97,6 +103,8 @@ public class IssueGeneration extends BaseEntity {
 	@Column(name="inventory_id")
 	private String inventoryID;
 	
+	@Temporal(TemporalType.TIMESTAMP)
+	@UpdateTimestamp
 	@Column(name="closed")
 	private String closed;
 	
