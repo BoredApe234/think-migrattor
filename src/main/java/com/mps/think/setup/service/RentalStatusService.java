@@ -13,7 +13,9 @@ public interface RentalStatusService {
 
 	public RentalStatusVO updateRentalStatus(RentalStatusVO rentalStatusVO);
 
-	RentalStatus findbyRentalStatusId(Integer rentalStatusId);
+	public RentalStatus findbyRentalStatusId(Integer rentalStatusId);
+	
+	public List<RentalStatus> findRentalStatusByPubId(Integer pubId);
 	
 	public RentalStatus deleteByRentalStatusId(Integer rentalStatusId);
 

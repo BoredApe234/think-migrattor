@@ -15,6 +15,8 @@ public interface CreditStatusService {
 
 	public CreditStatus findbycreditId(Integer creditId);
 	
+	public List<CreditStatus> findcreditbyPubId(Integer pubId);
+	
 	public CreditStatus deleteBycreditId(Integer creditId);
 
 }

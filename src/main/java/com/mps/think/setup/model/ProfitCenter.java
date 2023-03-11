@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -22,10 +24,9 @@ public class ProfitCenter extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Integer proftId;
 
-//	@NonNull
-//	@OneToOne
-//	@JoinColumn(name = "pub_id", referencedColumnName = "id")
-//	private Publisher pubId;
+	@OneToOne
+	@JoinColumn(name = "pub_id", referencedColumnName = "id")
+	private Publisher pubId;
 
 	@NotBlank(message = "Profit Description Name is mandatory")
 	@Column(name = "profit_description")
@@ -127,21 +128,13 @@ public class ProfitCenter extends BaseEntity {
 		this.profitCenter = profitCenter;
 	}
 
-	@Override
-	public String toString() {
-		return "ProfitCenter [proftId=" + proftId + ", profitDescription=" + profitDescription + ", profitCenter="
-				+ profitCenter + ", inclTaxLiab=" + inclTaxLiab + ", inclDelLiab=" + inclDelLiab + ", inclComLiab="
-				+ inclComLiab + ", inclTaxAr=" + inclTaxAr + ", inclDelAr=" + inclDelAr + ", inclComAr=" + inclComAr
-				+ "]";
+	public Publisher getPubId() {
+		return pubId;
 	}
-	
-	
 
-//	@Override
-//	public String toString() {
-//		return "ProfitCenter [proftId=" + proftId + ", profitDescription=" + profitDescription + ", inclTaxLiab="
-//				+ inclTaxLiab + ", inclDelLiab=" + inclDelLiab + ", inclComLiab=" + inclComLiab + ", inclTaxAr="
-//				+ inclTaxAr + ", inclDelAr=" + inclDelAr + ", inclComAr=" + inclComAr + "]";
-//	}
+	public void setPubId(Publisher pubId) {
+		this.pubId = pubId;
+	}
+
 
 }

@@ -68,4 +68,9 @@ public class VolumeGroupServiceImpl implements VolumeGroupService {
 		return delete;
 	}
 
+	@Override
+	public List<VolumeGroup> getAllVolumeGroupForPublisher(Integer pubId) {
+		return volumeGroupRepo.findByPubIdId(pubId);
+	}
+
 }
