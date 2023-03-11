@@ -14,5 +14,7 @@ public interface ParentChildMappingService {
 	public ParentChildMappingVO updateAuxParentChild(ParentChildMappingVO parentChildMappingVO);
 
 	public ParentChildMapping findbyParentChildMappingId(Integer id);
+	
+	public List<ParentChildMapping> findAllParentChildByPublisherId(Integer pubId);
 
 }
