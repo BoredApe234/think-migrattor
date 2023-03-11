@@ -52,7 +52,7 @@ public class DeliveryMethodsController {
 		return ResponseEntity.ok(deliveryMethodService.deleteDeliveryMethodById(id));
 	}
 	
-	@GetMapping("getAllDeliveryMethodsForPublisher/{publisherId}")
+	@PostMapping("getAllDeliveryMethodsForPublisher/{publisherId}")
 	public ResponseEntity<?> getAllDeliveryMethodsForPublisher(@PathVariable("publisherId") Integer publisherId) {
 		return ResponseEntity.ok(deliveryMethodService.getAllDeliveryMethodsForPublisherByPubId(publisherId));
 	}

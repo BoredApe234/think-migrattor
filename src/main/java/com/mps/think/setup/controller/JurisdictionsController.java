@@ -45,7 +45,7 @@ public class JurisdictionsController {
 		return ResponseEntity.ok(jurisdictionsService.deleteJurisdictionsById(id));
 	}
 	
-	@GetMapping("/getAllJurisdictionsForPublisher/{pubId}")
+	@PostMapping("/getAllJurisdictionsForPublisher/{pubId}")
 	public ResponseEntity<?> findAllJurisdictionsForPublisher(@PathVariable("pubId") Integer pubId) {
 		return ResponseEntity.ok(jurisdictionsService.findAllJurisdictionsForPublisher(pubId));
 	}

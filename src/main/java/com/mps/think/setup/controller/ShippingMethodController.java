@@ -49,7 +49,7 @@ public class ShippingMethodController {
 		return ResponseEntity.ok(shippingMethodService.deleteShippingMethodById(id));
 	}
 	
-	@GetMapping("/findAllShippingMethodsForPublisher/{pubId}")
+	@PostMapping("/findAllShippingMethodsForPublisher/{pubId}")
 	public ResponseEntity<?> findAllShippingMethodsForPublisher(@PathVariable("pubId") Integer pubId) {
 		return ResponseEntity.ok(shippingMethodService.getAllShippingMethodsForPublisher(pubId));
 	}

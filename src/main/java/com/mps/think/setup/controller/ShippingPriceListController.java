@@ -44,7 +44,7 @@ public class ShippingPriceListController {
 		return ResponseEntity.ok(shippingPriceListService.deleteShippingPriceListById(id));
 	}
 	
-	@GetMapping("/findAllShippingPriceListForPublisher/{pubId}")
+	@PostMapping("/findAllShippingPriceListForPublisher/{pubId}")
 	public ResponseEntity<?> getAllShippingPriceListForPublisher(@PathVariable("pubId") Integer pubId) {
 		return ResponseEntity.ok(shippingPriceListService.getAllShippingPricesForPublisher(pubId));
 	}

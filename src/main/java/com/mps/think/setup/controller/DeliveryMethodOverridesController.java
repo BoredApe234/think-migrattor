@@ -44,7 +44,7 @@ public class DeliveryMethodOverridesController {
 		return ResponseEntity.ok(deliveryMethodOverridesService.getDeliveryMethodOverrideById(id));
 	}
 	
-	@GetMapping("/getDeliveryMethodOverridesForPublisher/{pubId}")
+	@PostMapping("/getDeliveryMethodOverridesForPublisher/{pubId}")
 	public ResponseEntity<?> getDeliveryMethodOverridesForPublisher(@PathVariable("pubId") Integer pubId) {
 		return ResponseEntity.ok(deliveryMethodOverridesService.getAllDeliveryMethodOverriedsForPublisher(pubId));
 	}
