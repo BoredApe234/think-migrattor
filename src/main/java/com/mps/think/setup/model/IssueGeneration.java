@@ -1,5 +1,5 @@
 package com.mps.think.setup.model;
-
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -71,7 +71,7 @@ public class IssueGeneration extends BaseEntity {
 	@Temporal(TemporalType.TIMESTAMP)
 	@UpdateTimestamp
 	@Column(name = "change_date")
-	private String changeDate;
+	private Date changeDate;
 
 	@Column(name = "issue_caption")
 	private String issueCaption;
@@ -83,7 +83,7 @@ public class IssueGeneration extends BaseEntity {
 	private String issue_volume;
 	
 	@Column(name = "issue_date")
-	private String issueDate;
+	private Date issueDate;
 	
 	@Column(name = "date_ofthe_month_year")
 	private String dateoftheMonthYear;
@@ -103,10 +103,10 @@ public class IssueGeneration extends BaseEntity {
 	@Column(name="inventory_id")
 	private String inventoryID;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	@UpdateTimestamp
+//	@Temporal(TemporalType.TIMESTAMP)
+//	@UpdateTimestamp
 	@Column(name="closed")
-	private String closed;
+	private Date closed;
 	
 	@Column(name="revenue_generating")
 	private String revenueGenerating;
@@ -215,11 +215,11 @@ public class IssueGeneration extends BaseEntity {
 		this.volumeFormat = volumeFormat;
 	}
 
-	public String getChangeDate() {
+	public Date getChangeDate() {
 		return changeDate;
 	}
 
-	public void setChangeDate(String changeDate) {
+	public void setChangeDate(Date changeDate) {
 		this.changeDate = changeDate;
 	}
 
@@ -247,11 +247,11 @@ public class IssueGeneration extends BaseEntity {
 		this.issue_volume = issue_volume;
 	}
 
-	public String getIssueDate() {
+	public Date getIssueDate() {
 		return issueDate;
 	}
 
-	public void setIssueDate(String issueDate) {
+	public void setIssueDate(Date issueDate) {
 		this.issueDate = issueDate;
 	}
 
@@ -303,11 +303,11 @@ public class IssueGeneration extends BaseEntity {
 		this.inventoryID = inventoryID;
 	}
 
-	public String getClosed() {
+	public Date getClosed() {
 		return closed;
 	}
 
-	public void setClosed(String closed) {
+	public void setClosed(Date closed) {
 		this.closed = closed;
 	}
 

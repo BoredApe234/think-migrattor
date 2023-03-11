@@ -1,6 +1,8 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.aop.AopInvocationException;
@@ -198,20 +200,20 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		} else {
 			seq = findMaxSeqIssue(issueGeneration.getOrderClassId().getOcId());
 		}
-		ArrayList<String> generateDate = null;
-		if (issueSettingData.getFrequencyOfGeneration().equals("Day")) {
+		ArrayList<Date> generateDate = null;
+		if (issueGeneration.getFrequencyOfGeneration().equals("Day")) {
 		 generateDate = IssueGenerationUtils.everyday(issueGeneration.getNumberOfIssue(),
 				issueGeneration.getChangeDate());
 		}
-		if (issueSettingData.getFrequencyOfGeneration().equals("Week")) {
+		if (issueGeneration.getFrequencyOfGeneration().equals("Week")) {
 		 generateDate = IssueGenerationUtils.everyweek(issueGeneration.getNumberOfIssue(),issueGeneration.getIssuesAppearonEvery(),
 				issueGeneration.getChangeDate());
 		}
-		if (issueSettingData.getFrequencyOfGeneration().equals("Month")) {
+		if (issueGeneration.getFrequencyOfGeneration().equals("Month")) {
 		 generateDate = IssueGenerationUtils.everyMonth(issueGeneration.getNumberOfIssue(),issueGeneration.getIssuesAppearonEvery(),
 				issueGeneration.getChangeDate());
 		}
-		if (issueSettingData.getFrequencyOfGeneration().equals("Year")) {
+		if (issueGeneration.getFrequencyOfGeneration().equals("Year")) {
 		generateDate = IssueGenerationUtils.everyYear(issueGeneration.getNumberOfIssue(),issueGeneration.getIssuesAppearonEvery(),
 				issueGeneration.getChangeDate());
 		}

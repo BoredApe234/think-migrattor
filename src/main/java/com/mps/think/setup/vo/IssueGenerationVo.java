@@ -1,8 +1,7 @@
 package com.mps.think.setup.vo;
 
 import java.util.Arrays;
-
-import javax.persistence.Column;
+import java.util.Date;
 
 import com.mps.think.setup.model.OrderClass;
 
@@ -34,13 +33,13 @@ public class IssueGenerationVo {
 
 	private String volumeFormat;
 
-	private String changeDate;
+	private Date changeDate;
 
 	private String issueCaption;
 
 	private String issueFormat;
 
-	private String issueDate;
+	private Date issueDate;
 
 	private String issue_volume;
 
@@ -56,7 +55,7 @@ public class IssueGenerationVo {
 
 	private String inventoryID;
 
-	private String closed;
+	private Date closed;
 
 	private String revenueGenerating;
 
@@ -164,11 +163,11 @@ public class IssueGenerationVo {
 		this.volumeFormat = volumeFormat;
 	}
 
-	public String getChangeDate() {
+	public Date getChangeDate() {
 		return changeDate;
 	}
 
-	public void setChangeDate(String changeDate) {
+	public void setChangeDate(Date changeDate) {
 		this.changeDate = changeDate;
 	}
 
@@ -188,11 +187,11 @@ public class IssueGenerationVo {
 		this.issueFormat = issueFormat;
 	}
 
-	public String getIssueDate() {
+	public Date getIssueDate() {
 		return issueDate;
 	}
 
-	public void setIssueDate(String issueDate) {
+	public void setIssueDate(Date issueDate) {
 		this.issueDate = issueDate;
 	}
 
@@ -252,11 +251,11 @@ public class IssueGenerationVo {
 		this.inventoryID = inventoryID;
 	}
 
-	public String getClosed() {
+	public Date getClosed() {
 		return closed;
 	}
 
-	public void setClosed(String closed) {
+	public void setClosed(Date closed) {
 		this.closed = closed;
 	}
 
