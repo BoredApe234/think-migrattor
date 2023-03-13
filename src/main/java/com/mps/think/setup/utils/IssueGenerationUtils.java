@@ -13,8 +13,8 @@ public class IssueGenerationUtils {
 
 	public static ArrayList<Date> everyday(int issue, Date changeDate) {
 		ArrayList<Date> list = new ArrayList<Date>();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-		String cdate = dateFormat.format(changeDate);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String cdate = formatter.format(changeDate);
 		String[] str = cdate.split("-");
 		int startYear = Integer.valueOf(str[0]);
 		int currentMonth = Integer.valueOf(str[1]);
@@ -34,8 +34,8 @@ public class IssueGenerationUtils {
 	public static ArrayList<Date> everyweek(int issue, String[] days, Date changeDate) {
 		ArrayList<Date> list = new ArrayList<Date>();
 		int[] ints = Arrays.stream(days).mapToInt(Integer::parseInt).toArray();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd");
-		String cdate = dateFormat.format(changeDate);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String cdate = formatter.format(changeDate);
 		String[] str = cdate.split("-");
 		int startYear = Integer.valueOf(str[0]);
 		int currentMonth = Integer.valueOf(str[1]);
@@ -51,7 +51,7 @@ public class IssueGenerationUtils {
 				if (dayOfWeek == d) {
 					Date result = calendar.getTime();
 					list.add(result);
-					System.out.println(dateFormat.format(result));
+					System.out.println(formatter.format(result));
 					count++;
 				}
 			}
@@ -64,8 +64,8 @@ public class IssueGenerationUtils {
 	public static ArrayList<Date> everyMonth(int issue, String[] days, Date changeDate) {
 		ArrayList<Date> list = new ArrayList<Date>();
 		int[] ints = Arrays.stream(days).mapToInt(Integer::parseInt).toArray();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-		String cdate = dateFormat.format(changeDate);
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String cdate = formatter.format(changeDate);
 		System.out.println("@@@@@@@@@@ sdfghjk:" + cdate);
 		String[] str = cdate.split("-");
 		int startYear = Integer.valueOf(str[0]);
@@ -96,8 +96,9 @@ public class IssueGenerationUtils {
 
 	public static ArrayList<Date> everyYear(int issue, String[] days, Date changeDate) {
 		ArrayList<Date> list = new ArrayList<Date>();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-		String cdate = dateFormat.format(changeDate);
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String cdate = formatter.format(changeDate);
 		String[] str = cdate.split("-");
 		int startYear = Integer.valueOf(str[0]);
 		// int currentMonth = Integer.valueOf(str[1]);
@@ -124,4 +125,22 @@ public class IssueGenerationUtils {
 
 	}
 
+	 public static void main(String[] args) {
+	      
+//	      // Input epoch time in milliseconds
+//	      long epoch_time = 1678679255976L;
+//	      
+//	      // Create a new Date object from epoch time
+//	      Date date = new Date(epoch_time);
+//	      
+//	      System.out.println(date);
+//	      
+//	      // Create a SimpleDateFormat object to format the date
+//	      SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//	      
+//	      // Convert the date to string format using the SimpleDateFormat object
+//	      String date_str = formatter.format(date);
+//	      
+//	      System.out.println(date_str); // Output: '2022-03-18 00:00:00'
+	   }
 }
