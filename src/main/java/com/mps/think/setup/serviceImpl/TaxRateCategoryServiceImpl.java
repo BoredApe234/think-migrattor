@@ -27,6 +27,7 @@ public class TaxRateCategoryServiceImpl implements TaxRateCategoryService{
 		trc.setId(taxRateCategory.getId());
 		trc.setTaxRateCategory(taxRateCategory.getTaxRateCategory());
 		trc.setDescription(taxRateCategory.getDescription());
+		trc.setPubId(taxRateCategory.getPubId());
 		taxRateCategoryRepo.saveAndFlush(trc);
 		return taxRateCategory;
 	}
@@ -37,6 +38,7 @@ public class TaxRateCategoryServiceImpl implements TaxRateCategoryService{
 			if (curr.getId().equals(taxRateCategory.getId())) {
 				curr.setTaxRateCategory(taxRateCategory.getTaxRateCategory());
 				curr.setDescription(taxRateCategory.getDescription());
+				curr.setPubId(taxRateCategory.getPubId());
 				taxRateCategoryRepo.saveAndFlush(curr);
 				return taxRateCategory;
 			}
