@@ -16,11 +16,11 @@ import com.mps.think.setup.vo.OrderCategoryVO;
 @Service
 public class OrderCategoryServiceImpl implements OrderCategoryService {
 	@Autowired
-	OrderCategoryRepo OrderCategoryRepo;
+	OrderCategoryRepo orderCategoryRepo;
 
 	@Override
 	public List<OrderCategory> findAllOrderCategory() {
-		List<OrderCategory> ordList = OrderCategoryRepo.findAll();
+		List<OrderCategory> ordList = orderCategoryRepo.findAll();
 		if (ordList.isEmpty()) {
 			throw new NotFoundException("No Order category present, please add Order category!");
 		}
@@ -35,7 +35,7 @@ public class OrderCategoryServiceImpl implements OrderCategoryService {
 		Publisher publisher=new Publisher();
 		publisher.setId(orderCategory.getPubId().getId());
 		data.setPubId(publisher);
-		OrderCategoryRepo.saveAndFlush(data);
+		orderCategoryRepo.saveAndFlush(data);
 		orderCategory.setOrderCategoryId(data.getOrderCategoryId());	
 		return orderCategory;
 	}
@@ -49,13 +49,13 @@ public class OrderCategoryServiceImpl implements OrderCategoryService {
 		data.setPubId(publisher);
 		data.setOrderCategory(orderCategory.getOrderCategory());
 		data.setOrderDescription(orderCategory.getOrderDescription());
-		OrderCategoryRepo.saveAndFlush(data);
+		orderCategoryRepo.saveAndFlush(data);
 		return orderCategory;
 	}
 
 	@Override
 	public OrderCategory findbyOrderCategoryId(Integer orderCategoryId) {
-        Optional<OrderCategory> cc = OrderCategoryRepo.findById(orderCategoryId);
+        Optional<OrderCategory> cc = orderCategoryRepo.findById(orderCategoryId);
 		if(!cc.isPresent()) {
 			throw new NotFoundException("Order category Id : "+ orderCategoryId +" does not exist!");
 		}
@@ -64,10 +64,18 @@ public class OrderCategoryServiceImpl implements OrderCategoryService {
 
 	@Override
 	public OrderCategory deleteByOrderCategoryId(Integer orderCategoryId) {
-		OrderCategory Delete = OrderCategoryRepo.findByOrderCategoryId(orderCategoryId);
-		OrderCategoryRepo.delete(Delete);
+		OrderCategory Delete = orderCategoryRepo.findByOrderCategoryId(orderCategoryId);
+		orderCategoryRepo.delete(Delete);
 		return Delete;
 	}
+
+	@Override
+	public List<OrderCategory> findAllOrderCategoryByPubId(Integer publisherId) {
+		// TODO Auto-generated method stub
+		return orderCategoryRepo.findByPubIdId(publisherId);
+	}
+
+
 
 	
   

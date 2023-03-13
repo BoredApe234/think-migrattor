@@ -17,11 +17,11 @@ import com.mps.think.setup.vo.UnitBasedSubscriptionVO;
 public class UnitBasedSubscriptionServiceImpl implements UnitBasedSubscriptionService{
 
 	@Autowired
-    private UnitBasedSubscriptionRepo UnitBasedSubscriptionRepo;
+    private UnitBasedSubscriptionRepo unitBasedSubscriptionRepo;
 
 	@Override
 	public List<UnitBasedSubscription> findAllUnitBasedSubscription() {
-		return UnitBasedSubscriptionRepo.findAll();
+		return unitBasedSubscriptionRepo.findAll();
 	}
 
 	@Override
@@ -32,7 +32,7 @@ public class UnitBasedSubscriptionServiceImpl implements UnitBasedSubscriptionSe
 		Publisher publisher=new Publisher();
 		publisher.setId(UnitBasedSubscription.getPubId().getId());
 		data.setPubId(publisher);
-		UnitBasedSubscriptionRepo.saveAndFlush(data);
+		unitBasedSubscriptionRepo.saveAndFlush(data);
 		return UnitBasedSubscription;
 	}
 
@@ -45,13 +45,13 @@ public class UnitBasedSubscriptionServiceImpl implements UnitBasedSubscriptionSe
 		data.setPubId(publisher);
 		data.setLabel(unitBasedSubscription.getLabel());
 		data.setDiscription(unitBasedSubscription.getDiscription());
-		UnitBasedSubscriptionRepo.saveAndFlush(data);
+		unitBasedSubscriptionRepo.saveAndFlush(data);
 		return unitBasedSubscription;
 	}
 	
 	@Override
 	public UnitBasedSubscription findbyUnitBasedSubscriptionId(Integer UnitBasedSubscriptionId) {
-		Optional<UnitBasedSubscription> cr = UnitBasedSubscriptionRepo.findById(UnitBasedSubscriptionId);
+		Optional<UnitBasedSubscription> cr = unitBasedSubscriptionRepo.findById(UnitBasedSubscriptionId);
 		if(!cr.isPresent()) {
 			throw new NotFoundException("Unit Based Subscription Id : "+ UnitBasedSubscriptionId +" does not exist!");
 		}
@@ -61,8 +61,14 @@ public class UnitBasedSubscriptionServiceImpl implements UnitBasedSubscriptionSe
 	@Override
 	public UnitBasedSubscription deleteByUnitBasedSubscriptionId(Integer ubsid) {
 		UnitBasedSubscription delete = findbyUnitBasedSubscriptionId(ubsid);
-		UnitBasedSubscriptionRepo.delete(delete);
+		unitBasedSubscriptionRepo.delete(delete);
 		return delete;
+	}
+
+	@Override
+	public List<UnitBasedSubscription> findAllUnitBasedSubscriptionByPubId(Integer publisherId) {
+		// TODO Auto-generated method stub
+		return unitBasedSubscriptionRepo.findByPubIdId(publisherId);
 	}
 
 	

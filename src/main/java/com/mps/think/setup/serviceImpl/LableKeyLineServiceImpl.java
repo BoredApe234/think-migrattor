@@ -68,4 +68,10 @@ public class LableKeyLineServiceImpl implements LableKeyLineService {
 		return delete;
 	}
 
+	@Override
+	public List<LableKeyLine> findAllLableKeyLineByPubId(Integer lableKeyLineId) {
+		// TODO Auto-generated method stub
+		return lableKeyLineRepo.findByPubIdId(lableKeyLineId);
+	}
+
 }
