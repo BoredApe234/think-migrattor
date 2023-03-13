@@ -1,5 +1,7 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.Publisher;
+
 public class RentalStatusVO {
 
 	private Integer rentalStatusId;
@@ -10,6 +12,8 @@ public class RentalStatusVO {
 	private Integer rentEmail;
 
 	private Integer rentName;
+	
+	private Publisher publisher;
 
 	public Integer getRentalStatusId() {
 		return rentalStatusId;
@@ -52,10 +56,19 @@ public class RentalStatusVO {
 		this.rentName = rentName;
 	}
 
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
 	@Override
 	public String toString() {
-		return "RentalStatus [rentalStatusId=" + rentalStatusId + ", rentalcategory=" + rentalcategory
-				+ ", description=" + description + ", rentEmail=" + rentEmail + ", rentName=" + rentName + "]";
+		return "RentalStatusVO [rentalStatusId=" + rentalStatusId + ", rentalcategory=" + rentalcategory
+				+ ", description=" + description + ", rentEmail=" + rentEmail + ", rentName=" + rentName
+				+ ", publisher=" + publisher + "]";
 	}
 
 }

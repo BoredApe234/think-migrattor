@@ -50,4 +50,9 @@ public class SourceFormatServiceImpl implements SourceFormatService {
 		return delete;
 	}
 
+	@Override
+	public List<SourceFormat> getAllSourceFormatForPublisher(Integer pubId) {
+		return sourceFormatRepo.findBypubIdId(pubId);
+	}
+
 }

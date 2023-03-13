@@ -53,4 +53,9 @@ public class SourceAttributeValuesController {
 		return ResponseEntity.ok(sourceAttributeService.getAllSourceAttributeValuesByScId(id));
 	}
 	
+	@PostMapping("getAllSourceAttributeValuesForPub")
+	public ResponseEntity<?> getAllSourceAttributeValuesForPub(@RequestBody Integer pubid) {
+		return ResponseEntity.ok(sourceAttributeService.getAllSourceAttributeValuesForPub(pubid));
+	}
+	
 }

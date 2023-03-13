@@ -34,10 +34,10 @@ public class CreditStatusController {
 		return ResponseEntity.ok(creditStatusService.updatecreditStatus(creditStatus));
 	}
 
-//	@PostMapping("/findbyPubId")
-//	public ResponseEntity<?> findbyPubId(@RequestBody Integer PubId) {
-//		return ResponseEntity.ok(creditStatusService.findbyPubId(PubId));
-//	}
+	@PostMapping("/findcreditbyPubId")
+	public ResponseEntity<?> findcreditbyPubId(@RequestBody Integer pubId) {
+		return ResponseEntity.ok(creditStatusService.findcreditbyPubId(pubId));
+	}
 	
 	@PostMapping("/findbycreditId")
 	public ResponseEntity<?> findbycreditId(@RequestBody Integer creditId) {

@@ -38,6 +38,11 @@ public class RentalStatusController {
 		return ResponseEntity.ok(rentalStatusService.findbyRentalStatusId(rentalStatusId));
 	}
 	
+	@PostMapping("/findRentalStatusByPubId")
+	public ResponseEntity<?> findRentalStatusByPubId(@RequestBody Integer pubId) {
+		return ResponseEntity.ok(rentalStatusService.findRentalStatusByPubId(pubId));
+	}
+	
 	@DeleteMapping("/deleteByRentalStatusId")
 	public ResponseEntity<?> deleteByRentalStatusId(@RequestBody Integer rentalStatusId) {
 		return ResponseEntity.ok(rentalStatusService.deleteByRentalStatusId(rentalStatusId));
