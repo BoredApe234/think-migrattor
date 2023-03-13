@@ -38,6 +38,7 @@ public class ProfitCenterServiceImpl implements ProfitCenterService {
 		profitCenter.setInclDelLiab(profitCenterVo.getInclDelLiab());
 		profitCenter.setInclTaxAr(profitCenterVo.getInclTaxAr());
 		profitCenter.setInclTaxLiab(profitCenterVo.getInclTaxLiab());
+		profitCenter.setPubId(profitCenterVo.getPubId());
 		profitCenter = profitCenterRepo.saveAndFlush(profitCenter);
 		profitCenterVo.setProftId(profitCenter.getProftId());
 		return profitCenterVo;
@@ -54,6 +55,7 @@ public class ProfitCenterServiceImpl implements ProfitCenterService {
 		profitCenterid.setInclDelLiab(profitCenterVo.getInclDelLiab());
 		profitCenterid.setInclTaxAr(profitCenterVo.getInclTaxAr());
 		profitCenterid.setInclTaxLiab(profitCenterVo.getInclTaxLiab());
+		profitCenterid.setPubId(profitCenterVo.getPubId());
 		profitCenterid = profitCenterRepo.saveAndFlush(profitCenterid);
 		return profitCenterVo;
 	}
