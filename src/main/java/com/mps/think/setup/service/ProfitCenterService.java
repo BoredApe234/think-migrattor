@@ -15,6 +15,8 @@ public interface ProfitCenterService {
 
 	public ProfitCenter findbycreditId(Integer creditId);
 	
+	public List<ProfitCenter> getAllcreditForPublisher(Integer pubId);
+	
 	public ProfitCenter deleteByproftIdId(Integer proftId);
 
 }

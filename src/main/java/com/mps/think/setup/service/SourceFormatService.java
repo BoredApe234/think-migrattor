@@ -15,6 +15,8 @@ public interface SourceFormatService {
 
 	public SourceFormat findbySourceFormatId(Integer SourceFormatId);
 	
+	public List<SourceFormat> getAllSourceFormatForPublisher(Integer pubId);
+	
 	public SourceFormat deleteBySourceFormatId(Integer id);
 
 }

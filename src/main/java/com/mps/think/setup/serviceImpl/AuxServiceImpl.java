@@ -65,4 +65,9 @@ public class AuxServiceImpl implements AuxService {
 		return data;
 	}
 
+	@Override
+	public List<AuxVariable> getAllAuxForPublisher(Integer pubId) {
+		return auxRepo.findByPubIdId(pubId);
+	}
+
 }

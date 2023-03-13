@@ -15,6 +15,8 @@ public interface AuxService {
 
 	public AuxVariable findbyAuxId(Integer id);
 	
+	public List<AuxVariable> getAllAuxForPublisher(Integer pubId);
+	
 	public AuxVariable deleteByAuxVariableId(Integer auxId);
 
 }

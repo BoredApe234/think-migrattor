@@ -66,4 +66,9 @@ public class RentalStatusServiceImpl implements RentalStatusService {
 		return delete;
 	}
 
+	@Override
+	public List<RentalStatus> findRentalStatusByPubId(Integer pubId) {
+		return 	rentalStatusRepo.findByPublisherId(pubId);
+	}
+
 }

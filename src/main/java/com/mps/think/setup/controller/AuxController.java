@@ -44,6 +44,10 @@ public class AuxController {
 		return ResponseEntity.ok(auxServiceImpl.findbyAuxId(auxId));
 	}
 	
+	@PostMapping("/getAllAuxForPublisher")
+	public ResponseEntity<?> getAllAuxForPublisher(@RequestBody Integer pubId) {
+		return ResponseEntity.ok(auxServiceImpl.getAllAuxForPublisher(pubId));
+	}
 
 	@GetMapping("/getAllAuxCategory")
 	public ResponseEntity<?> getAllAuxCategory() {

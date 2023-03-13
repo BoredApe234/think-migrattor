@@ -40,8 +40,12 @@ public class ProfitCenterController {
 
 	@RequestMapping(value = "/findbyProfitCenter", method = RequestMethod.POST)
 	public ResponseEntity<?> findbyProfitCenter(@Valid @RequestBody Integer profitCenterID) {
-
 		return ResponseEntity.ok(profitCenterServiceImpl.findbycreditId(profitCenterID));
+	}
+	
+	@RequestMapping(value = "/getAllcreditForPublisher", method = RequestMethod.POST)
+	public ResponseEntity<?> getAllcreditForPublisher(@Valid @RequestBody Integer pubId) {
+		return ResponseEntity.ok(profitCenterServiceImpl.getAllcreditForPublisher(pubId));
 	}
 	
 	@DeleteMapping("/deleteByProfitCenterId")

@@ -19,4 +19,6 @@ public interface SourceAttributesService {
 
 	public SourceAttributes deleteSourceAttribute(Integer id) throws Exception;
 	
+	public List<SourceAttributes> getAllSourceAttributeForPublisher(Integer pubid);
+	
 }

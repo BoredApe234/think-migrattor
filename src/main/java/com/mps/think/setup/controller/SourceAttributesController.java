@@ -45,6 +45,10 @@ public class SourceAttributesController {
 		return ResponseEntity.ok(sourceAttributesService.findbySourceAttributeId(sourceAttributeId));
 	}
 	
+	@RequestMapping(value = "/getAllSourceAttributeForPublisher", method = RequestMethod.POST)
+	public ResponseEntity<?> getAllSourceAttributeForPublisher(@RequestBody Integer pubid)  {
+		return ResponseEntity.ok(sourceAttributesService.getAllSourceAttributeForPublisher(pubid));
+	}
 	@DeleteMapping("/deleteSourceAttribute")
 	public ResponseEntity<?> deleteSourceAttributeValue(@RequestBody Integer id) throws Exception {
 		return ResponseEntity.ok(sourceAttributesService.deleteSourceAttribute(id));
