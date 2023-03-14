@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.vo.OrderVO;
 
 @Service
@@ -20,5 +21,7 @@ public interface AddOrderService {
 	public List<Order> getAllOrdersByOrderClassId(Integer ocId) throws Exception;
 
 	public Page<Order> getSearchedOrders(String keyword, Pageable page);
+	
+	List<OrderCodesSuper> getRecentTwoOrderOfCustomer(Integer customerId) throws Exception;
 	
 }
