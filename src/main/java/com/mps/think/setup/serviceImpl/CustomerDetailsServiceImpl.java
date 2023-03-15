@@ -1,6 +1,7 @@
 package com.mps.think.setup.serviceImpl;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,6 +91,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Override
 	public List<Map<Integer, List<OrderCodesSuper>>> GetAllCustomerRecentOrderCodeForPub(Integer pubId) {
+		if (customerRepo.countCustomersInPublisher(pubId) < 1) return new ArrayList<Map<Integer, List<OrderCodesSuper>>>(0);
 		List<Map<Integer, List<OrderCodesSuper>>> orderCodes = customerRepo.findByPublisherId(pubId, PageRequest.of(0, customerRepo.countCustomersInPublisher(pubId))).stream().map(c -> {
 			try {
 				return fetchRecentTwoOrderCode(c.getCustomerId());
