@@ -2,10 +2,12 @@ package com.mps.think.setup.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -53,9 +55,10 @@ public class CustomerDetailsController {
 		return ResponseEntity.ok(customerDetailsService.findbyCustomerDetailsId(customerId));
 	}
 	
-	@PostMapping("/findAllCustomerByPubId")
-	public ResponseEntity<?> findAllCustomerByPubId(@RequestBody Integer pubId) {
-		return ResponseEntity.ok(customerDetailsService.findAllCustomerByPubId(pubId));
+	@GetMapping("/findAllCustomerByPubId/{pubId}")
+	public ResponseEntity<?> findAllCustomerByPubId(@PathVariable("pubId") Integer pubId, @RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) {
+		return ResponseEntity.ok(customerDetailsService.findAllCustomerByPubId(pubId, PageRequest.of(page, size, Sort.by("customerId").descending())));
 	}
 
 	@GetMapping("/getAllCustomerCategory")
@@ -89,5 +92,11 @@ public class CustomerDetailsController {
 		return ResponseEntity.ok(
 				customerDetailsService.getAllCustomerDetailsForSearch(search, PageRequest.of(page, size)));
 	}
+	
+	@GetMapping("/getAllCustomersRecentTwoOrderCodeUnderPub/{pubId}")
+	public ResponseEntity<?> getAllCustomersRecentTwoOrderCodeUnderPub(@PathVariable("pubId") Integer pubId) {
+		return ResponseEntity.ok(customerDetailsService.GetAllCustomerRecentOrderCodeForPub(pubId));
+	}
+	
 }
 

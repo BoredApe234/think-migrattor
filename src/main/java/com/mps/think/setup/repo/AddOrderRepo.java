@@ -17,7 +17,7 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	
 //	public List<Order> findAllByCustomerId(Integer customerId) throws Exception;
 	
-	public List<Order> findByCustomerIdCustomerId(Integer customerId) throws Exception;
+	public Page<Order> findByCustomerIdCustomerId(Integer customerId, Pageable page) throws Exception;
 	
 	public List<Order> findByOrderClassOcId(Integer ocId) throws Exception;
 
@@ -64,6 +64,8 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 			+ "(auxInfo.orderAuxJSON LIKE '%'||:keyword||'%') "
 			+ "GROUP BY o.orderId")
 	public Page<Order> findOrdersBySearch(@Param("keyword") String keyword, Pageable page);
+
+	public List<Order> findByCustomerIdCustomerId(Integer customerId);
 	
 }
 
