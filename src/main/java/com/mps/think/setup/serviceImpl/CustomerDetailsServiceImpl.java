@@ -1,19 +1,25 @@
 package com.mps.think.setup.serviceImpl;
 
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.mps.think.setup.model.CustomerDetails;
-
+import com.mps.think.setup.model.OrderCodesSuper;
+import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.CustomerDetailsRepo;
+import com.mps.think.setup.service.AddOrderService;
 import com.mps.think.setup.service.CustomerDetailsService;
 import com.mps.think.setup.vo.CustomerDetailsVO;
 
@@ -22,6 +28,9 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Autowired
 	private CustomerDetailsRepo customerRepo;
+	
+	@Autowired
+	private AddOrderService orderService;
 	
 	@Override
 	public List<CustomerDetails> getAllCustomerDetails() {
@@ -69,9 +78,27 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	}
 
 	@Override
-	public List<CustomerDetails> findAllCustomerByPubId(Integer pubId) {
+	public Page<CustomerDetails> findAllCustomerByPubId(Integer pubId, Pageable page) {
+		return customerRepo.findByPublisherId(pubId, page);
+	}
+	
+	public Map<Integer, List<OrderCodesSuper>> fetchRecentTwoOrderCode(Integer customerId) throws Exception {
+		Map<Integer, List<OrderCodesSuper>> response = new HashMap<>();
+		response.put(customerId, orderService.getRecentTwoOrderOfCustomer(customerId));
+		return response;
+	}
 
-		return customerRepo.findAllCustomerByPubId(pubId);
+	@Override
+	public List<Map<Integer, List<OrderCodesSuper>>> GetAllCustomerRecentOrderCodeForPub(Integer pubId) {
+		List<Map<Integer, List<OrderCodesSuper>>> orderCodes = customerRepo.findByPublisherId(pubId, PageRequest.of(0, customerRepo.countCustomersInPublisher(pubId))).stream().map(c -> {
+			try {
+				return fetchRecentTwoOrderCode(c.getCustomerId());
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			return null;
+		}).collect(Collectors.toList());
+		return orderCodes;
 	}
 	
 }
