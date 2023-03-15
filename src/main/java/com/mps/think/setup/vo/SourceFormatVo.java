@@ -2,6 +2,7 @@ package com.mps.think.setup.vo;
 
 import java.util.List;
 
+import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.model.SourceFormatAndAttributeMapping;
 
 public class SourceFormatVo {
@@ -13,6 +14,8 @@ public class SourceFormatVo {
 	private String description;
 
 	private Integer mruSourceFormatSegmentSeq;
+	
+	private Publisher pubId;
 
 	// @Enumerated(EnumType.STRING)
 	// private AppConstants.codeGen codeGenType;
@@ -68,11 +71,19 @@ public class SourceFormatVo {
 		this.attributeMappings = attributeMappings;
 	}
 
+	public Publisher getPubId() {
+		return pubId;
+	}
+
+	public void setPubId(Publisher pubId) {
+		this.pubId = pubId;
+	}
+
 	@Override
 	public String toString() {
 		return "SourceFormatVo [id=" + id + ", sourceFormat=" + sourceFormat + ", description=" + description
-				+ ", mruSourceFormatSegmentSeq=" + mruSourceFormatSegmentSeq + ", attributeMappings="
-				+ attributeMappings + "]";
+				+ ", mruSourceFormatSegmentSeq=" + mruSourceFormatSegmentSeq + ", pubId=" + pubId
+				+ ", attributeMappings=" + attributeMappings + "]";
 	}
 
 }

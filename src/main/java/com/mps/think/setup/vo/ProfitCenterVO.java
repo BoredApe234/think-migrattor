@@ -1,5 +1,7 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.Publisher;
+
 public class ProfitCenterVO {
 
 	private Integer proftId;
@@ -12,6 +14,7 @@ public class ProfitCenterVO {
 	private Integer inclTaxAr;
 	private Integer inclDelAr;
 	private Integer inclComAr;
+	private Publisher pubId;
 
 	public Integer getProftId() {
 		return proftId;
@@ -85,20 +88,23 @@ public class ProfitCenterVO {
 	public void setProfitCenter(String profitCenter) {
 		this.profitCenter = profitCenter;
 	}
+	
+
+	public Publisher getPubId() {
+		return pubId;
+	}
+
+	public void setPubId(Publisher pubId) {
+		this.pubId = pubId;
+	}
 
 	@Override
 	public String toString() {
 		return "ProfitCenterVO [proftId=" + proftId + ", profitDescription=" + profitDescription + ", profitCenter="
 				+ profitCenter + ", inclTaxLiab=" + inclTaxLiab + ", inclDelLiab=" + inclDelLiab + ", inclComLiab="
 				+ inclComLiab + ", inclTaxAr=" + inclTaxAr + ", inclDelAr=" + inclDelAr + ", inclComAr=" + inclComAr
-				+ "]";
+				+ ", pubId=" + pubId + "]";
 	}
 
-//	@Override
-//	public String toString() {
-//		return "ProfitCenter [proftId=" + proftId + ", profitDescription=" + profitDescription + ", inclTaxLiab="
-//				+ inclTaxLiab + ", inclDelLiab=" + inclDelLiab + ", inclComLiab=" + inclComLiab + ", inclTaxAr="
-//				+ inclTaxAr + ", inclDelAr=" + inclDelAr + ", inclComAr=" + inclComAr + "]";
-//	}
 
 }

@@ -70,6 +70,12 @@ public class SubscriptionCategoryServiceImpl implements SubscriptionCategoryServ
 		SubscriptionCategory todelete = subscriptionCategoryRepo.findSubscriptionCategoryById(id);
 		subscriptionCategoryRepo.delete(todelete);
 		return todelete;
+	}
+
+	@Override
+	public List<SubscriptionCategory> findAllSubscriptionCategoryByPubId(Integer id) {
+		// TODO Auto-generated method stub
+		return subscriptionCategoryRepo.findByPubIdId(id);
 	}	
 
 }

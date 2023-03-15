@@ -44,8 +44,8 @@ public class TransportModeController {
 		return ResponseEntity.ok(transportModeService.deleteTransportModeById(id));
 	}
 	
-	@GetMapping("/getAllTransportModesForPublisher/{pubId}")
-	public ResponseEntity<?> findAllTransportModesForPublisher(@PathVariable("pubId") Integer pubId) {
+	@PostMapping("/getAllTransportModesForPublisher")
+	public ResponseEntity<?> findAllTransportModesForPublisher(@RequestBody Integer pubId) {
 		return ResponseEntity.ok(transportModeService.getAllTransportModeForPublisher(pubId));
 	}
 	

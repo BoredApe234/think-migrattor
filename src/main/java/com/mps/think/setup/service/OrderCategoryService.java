@@ -17,6 +17,8 @@ public interface OrderCategoryService {
 	public OrderCategory findbyOrderCategoryId(Integer orderCategoryId);
 	
 	public OrderCategory deleteByOrderCategoryId(Integer orderCategoryId);
+	
+	public List<OrderCategory> findAllOrderCategoryByPubId(Integer publisherId);
 
 
 }

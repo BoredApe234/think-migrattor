@@ -38,26 +38,14 @@ public class ProfitCenterServiceImpl implements ProfitCenterService {
 		profitCenter.setInclDelLiab(profitCenterVo.getInclDelLiab());
 		profitCenter.setInclTaxAr(profitCenterVo.getInclTaxAr());
 		profitCenter.setInclTaxLiab(profitCenterVo.getInclTaxLiab());
+		profitCenter.setPubId(profitCenterVo.getPubId());
 		profitCenter = profitCenterRepo.saveAndFlush(profitCenter);
 		profitCenterVo.setProftId(profitCenter.getProftId());
 		return profitCenterVo;
 	}
 
 	@Override
-	public ProfitCenterVO updatecreditStatus(ProfitCenterVO profitCenterVo) {
-//		ProfitCenter profitCenter = new ProfitCenter();
-//		profitCenter.setProftId(profitCenterVo.getProftId());
-//		profitCenter.setProfitDescription(profitCenterVo.getProfitDescription());
-//		profitCenter.setProfitCenter(profitCenterVo.getProfitCenter());
-//		profitCenter.setInclComAr(profitCenterVo.getInclComAr());
-//		profitCenter.setInclComLiab(profitCenterVo.getInclComLiab());
-//		profitCenter.setInclDelAr(profitCenterVo.getInclDelAr());
-//		profitCenter.setInclDelLiab(profitCenterVo.getInclDelLiab());
-//		profitCenter.setInclTaxAr(profitCenterVo.getInclTaxAr());
-//		profitCenter.setInclTaxLiab(profitCenterVo.getInclTaxLiab());
-//		profitCenter = profitCenterRepo.saveAndFlush(profitCenter);
-		
-		
+	public ProfitCenterVO updatecreditStatus(ProfitCenterVO profitCenterVo) {	
 		ProfitCenter profitCenterid= profitCenterRepo.findById(profitCenterVo.getProftId()).get();
 		profitCenterid.setProfitDescription(profitCenterVo.getProfitDescription());
 		profitCenterid.setProfitCenter(profitCenterVo.getProfitCenter());
@@ -67,6 +55,7 @@ public class ProfitCenterServiceImpl implements ProfitCenterService {
 		profitCenterid.setInclDelLiab(profitCenterVo.getInclDelLiab());
 		profitCenterid.setInclTaxAr(profitCenterVo.getInclTaxAr());
 		profitCenterid.setInclTaxLiab(profitCenterVo.getInclTaxLiab());
+		profitCenterid.setPubId(profitCenterVo.getPubId());
 		profitCenterid = profitCenterRepo.saveAndFlush(profitCenterid);
 		return profitCenterVo;
 	}
@@ -85,6 +74,11 @@ public class ProfitCenterServiceImpl implements ProfitCenterService {
 		ProfitCenter delete = findbycreditId(proftId);
 		profitCenterRepo.delete(delete);
 		return delete;
+	}
+
+	@Override
+	public List<ProfitCenter> getAllcreditForPublisher(Integer pubId) {
+		return profitCenterRepo.findByPubIdId(pubId);
 	}
 
 }

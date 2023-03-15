@@ -40,8 +40,12 @@ public class VolumeGroupController {
 
 	@RequestMapping(value = "/findbyVolumeGroupId", method = RequestMethod.POST)
 	public ResponseEntity<?> findbyVolumeGroupId(@Valid @RequestBody Integer volumeGroupId) {
-
 		return ResponseEntity.ok(volumeGroupServiceImpl.findbyVolumeGroupId(volumeGroupId));
+	}
+	
+	@RequestMapping(value = "/getAllVolumeGroupForPublisher", method = RequestMethod.POST)
+	public ResponseEntity<?> getAllVolumeGroupForPublisher(@Valid @RequestBody Integer pubId) {
+		return ResponseEntity.ok(volumeGroupServiceImpl.getAllVolumeGroupForPublisher(pubId));
 	}
 	
 	@DeleteMapping("/deleteByVolumeGroupId")

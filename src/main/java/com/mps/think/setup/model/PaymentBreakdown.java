@@ -50,6 +50,9 @@ public class PaymentBreakdown extends BaseEntity {
 	@Column(name = "base_amount")
 	private BigDecimal baseAmount;
 	
+	@Column(name = "currency")
+	private String currency;
+	
 	@Column(name = "discount")
 	private BigDecimal discount;
 	
@@ -170,6 +173,14 @@ public class PaymentBreakdown extends BaseEntity {
 
 	public void setNetAmount(BigDecimal netAmount) {
 		this.netAmount = netAmount;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
 
 	

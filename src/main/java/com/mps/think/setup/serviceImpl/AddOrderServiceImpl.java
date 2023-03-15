@@ -1,6 +1,11 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.service.AddOrderService;
 import com.mps.think.setup.vo.OrderVO;
@@ -57,6 +63,16 @@ public class AddOrderServiceImpl implements AddOrderService {
 	@Override
 	public Page<Order> getSearchedOrders(String keyword, Pageable page) {
 		return addOrderRepo.findOrdersBySearch(keyword, page);
+	}
+
+	@Override
+	public List<OrderCodesSuper> getRecentTwoOrderOfCustomer(Integer customerId) throws Exception {
+		List<Order> orders = addOrderRepo.findByCustomerIdCustomerId(customerId);
+		if (orders.size() <= 2) return orders.stream().map(o -> o.getKeyOrderInformation().getOrderCode()).collect(Collectors.toList());
+		Order order1 = orders.stream().max(Comparator.comparingInt(Order::getOrderId)).get();
+		orders.remove(order1);
+		Order order2 = orders.stream().max(Comparator.comparingInt(Order::getOrderId)).get();
+		return Arrays.asList(order1.getKeyOrderInformation().getOrderCode(), order2.getKeyOrderInformation().getOrderCode());
 	}
 
 }

@@ -8,7 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -34,6 +36,10 @@ public class SourceFormat extends BaseEntity {
 
 	@Column(name = "mru_source_format_segment_seq")
 	private Integer mruSourceFormatSegmentSeq;
+	
+	@OneToOne
+	@JoinColumn(name = "pub_id", referencedColumnName = "id" )
+	private Publisher pubId;
 
 //	@Enumerated(EnumType.STRING)
 //	@Column(name = "code_gen_type")
@@ -95,10 +101,19 @@ public class SourceFormat extends BaseEntity {
 		this.attributeMappings = attributeMappings;
 	}
 
+	public Publisher getPubId() {
+		return pubId;
+	}
+
+	public void setPubId(Publisher pubId) {
+		this.pubId = pubId;
+	}
+
 	@Override
 	public String toString() {
 		return "SourceFormat [id=" + id + ", sourceFormat=" + sourceFormat + ", description=" + description
-				+ ", mruSourceFormatSegmentSeq=" + mruSourceFormatSegmentSeq + ", attributeMappings="
-				+ attributeMappings + "]";
-	}	
+				+ ", mruSourceFormatSegmentSeq=" + mruSourceFormatSegmentSeq + ", pubId=" + pubId
+				+ ", attributeMappings=" + attributeMappings + "]";
+	}
+
 }

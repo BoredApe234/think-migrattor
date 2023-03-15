@@ -15,6 +15,8 @@ public interface VolumeGroupService {
 
 	public VolumeGroup findbyVolumeGroupId(Integer creditId);
 	
+	public List<VolumeGroup> getAllVolumeGroupForPublisher(Integer pubId);
+	
 	public VolumeGroup deleteByVolumeGroupId(Integer volumeGroupId);
 
 }

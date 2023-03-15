@@ -45,10 +45,13 @@ public class SourceFormatController {
 
 	@RequestMapping(value = "/findbySourceFormatId", method = RequestMethod.POST)
 	public ResponseEntity<?> findbySourceFormatId(@Valid @RequestBody Integer sourceFormatId) {
-
 		return ResponseEntity.ok(SourceformatServiceImpl.findbySourceFormatId(sourceFormatId));
 	}
 	
+	@RequestMapping(value = "/getAllSourceFormatForPublisher", method = RequestMethod.POST)
+	public ResponseEntity<?> getAllSourceFormatForPublisher(@Valid @RequestBody Integer pubId) {
+		return ResponseEntity.ok(SourceformatServiceImpl.getAllSourceFormatForPublisher(pubId));
+	}
 	@GetMapping("/getAllCodeGen")
 	public ResponseEntity<?> getAllCodeGen() {
 		List<String> list= new ArrayList<>();

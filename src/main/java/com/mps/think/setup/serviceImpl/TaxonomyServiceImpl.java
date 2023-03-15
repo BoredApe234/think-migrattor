@@ -68,6 +68,12 @@ public class TaxonomyServiceImpl implements TaxonomyService {
 		taxonomyRepo.delete(todelete);
 		return todelete;
 	}
+
+	@Override
+	public List<Taxonomy> findAllTaxonomyByPubId(Integer publisherId) {
+		// TODO Auto-generated method stub
+		return taxonomyRepo.findByPubIdId(publisherId);
+	}
 	
 
 }

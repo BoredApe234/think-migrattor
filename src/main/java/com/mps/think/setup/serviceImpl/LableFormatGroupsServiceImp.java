@@ -65,4 +65,10 @@ public class LableFormatGroupsServiceImp implements LableFormatGroupsService {
 		return lableFormatGroupsRepo.findById(lableFormatId).get();
 	}
 
+	@Override
+	public List<LableFormatGroups> findAllLableFormatGroupsByPubId(Integer lableFormatId) {
+		// TODO Auto-generated method stub
+		return lableFormatGroupsRepo.findByPubIdId(lableFormatId);
+	}
+
 }

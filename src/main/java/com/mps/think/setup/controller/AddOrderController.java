@@ -84,5 +84,10 @@ public class AddOrderController {
 			@RequestParam(defaultValue = "5") Integer size) {
 		return ResponseEntity.ok(addOrderService.getSearchedOrders(keyword, PageRequest.of(page, size)));
 	}
+	
+	@GetMapping("/getRecentTwoOrderCodesOfCustomer/{customerId}")
+	public ResponseEntity<?> getRecentTwoOrderOfCustomer(@PathVariable("customerId") Integer customerId) throws Exception {
+		return ResponseEntity.ok(addOrderService.getRecentTwoOrderOfCustomer(customerId));
+	}
 
 }

@@ -20,4 +20,5 @@ public interface SourceAttributeValuesService {
 	
 	public List<SourceAttributeValues> getAllSourceAttributeValuesByScId(Integer id);
 
+	public List<SourceAttributeValues> getAllSourceAttributeValuesForPub(Integer pubid);
 }

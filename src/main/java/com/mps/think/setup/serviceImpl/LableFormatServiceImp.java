@@ -60,4 +60,10 @@ public class LableFormatServiceImp implements LableFormatService {
 		return delete;
 	}
 
+	@Override
+	public List<LableFormat> findAllLableFormatByPubId(Integer lableFormatId) {
+		// TODO Auto-generated method stub
+		return lableFormatRepo.findByPubIdId(lableFormatId);
+	}
+
 }

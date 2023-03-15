@@ -69,5 +69,10 @@ public class CreditStatusServiceImpl implements CreditStatusService {
 		creditStatusRepo.delete(delete);
 		return delete;
 	}
+
+	@Override
+	public List<CreditStatus> findcreditbyPubId(Integer pubId) {
+		return creditStatusRepo.findByPubIdId(pubId);
+	}
 }
 

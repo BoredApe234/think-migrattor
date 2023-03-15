@@ -16,5 +16,7 @@ public interface LableKeyLineService {
 	public LableKeyLine findbyLableKeyLine(Integer lableKeyLineId);
 	
 	public LableKeyLine deleteByLableKeyLineId(Integer lableKeyLineId);
+	
+	public List<LableKeyLine> findAllLableKeyLineByPubId(Integer lableKeyLineId);
 
 }
