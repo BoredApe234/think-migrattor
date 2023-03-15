@@ -3,6 +3,7 @@ package com.mps.think.setup.service;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -19,9 +20,12 @@ public interface AddOrderService {
 	public List<Order> getAllOrderByCustomerId(Integer customerId) throws Exception;
 	public Order updateOrder(Order order) throws Exception;
 	public List<Order> getAllOrdersByOrderClassId(Integer ocId) throws Exception;
+	
+	public List<Order> getAllorderForPublisher(Pageable page,Integer pubId) throws Exception;
 
 	public Page<Order> getSearchedOrders(String keyword, Pageable page);
 	
 	List<OrderCodesSuper> getRecentTwoOrderOfCustomer(Integer customerId) throws Exception;
+	
 	
 }
