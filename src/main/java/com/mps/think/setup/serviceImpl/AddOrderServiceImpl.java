@@ -1,18 +1,19 @@
 package com.mps.think.setup.serviceImpl;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
-import java.util.Collections;
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.DeserializationFeature;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderCodesSuper;
@@ -74,5 +75,14 @@ public class AddOrderServiceImpl implements AddOrderService {
 		Order order2 = orders.stream().max(Comparator.comparingInt(Order::getOrderId)).get();
 		return Arrays.asList(order1.getKeyOrderInformation().getOrderCode(), order2.getKeyOrderInformation().getOrderCode());
 	}
+
+	@Override
+	public List<Order> getAllorderForPublisher(Pageable page,Integer pubId) throws Exception {
+		return addOrderRepo.findAllByCustomerIdPublisherId(page,pubId);
+	}
+
+	
+
+	
 
 }
