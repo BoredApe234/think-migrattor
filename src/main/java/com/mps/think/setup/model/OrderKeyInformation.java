@@ -13,6 +13,8 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.annotations.UpdateTimestamp;
+
 @Table(name = "order_key_information")
 @Entity
 public class OrderKeyInformation extends BaseEntity {
@@ -43,6 +45,7 @@ public class OrderKeyInformation extends BaseEntity {
 	
 	@Column(name = "order_date")
 	@Temporal(TemporalType.TIMESTAMP)
+	@UpdateTimestamp
 	private Date orderDate;
 
 	@Column(name = "purchase_order")

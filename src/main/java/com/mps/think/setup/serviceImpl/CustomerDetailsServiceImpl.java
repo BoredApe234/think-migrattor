@@ -88,13 +88,14 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		response.put(customerId, orderService.getRecentTwoOrderOfCustomer(customerId));
 		return response;
 	}
-
+	
 	@Override
 	public List<Map<Integer, List<OrderCodesSuper>>> GetAllCustomerRecentOrderCodeForPub(Integer pubId) {
-		if (customerRepo.countCustomersInPublisher(pubId) < 1) {
+		Integer numCustomers = customerRepo.countCustomersInPublisher(pubId);
+		if (numCustomers < 1) {
 			return new ArrayList<Map<Integer, List<OrderCodesSuper>>>(0);
 		} 
-		List<Map<Integer, List<OrderCodesSuper>>> orderCodes = customerRepo.findByPublisherId(pubId, PageRequest.of(0, customerRepo.countCustomersInPublisher(pubId))).stream().map(c -> {
+		List<Map<Integer, List<OrderCodesSuper>>> orderCodes = customerRepo.findByPublisherId(pubId, PageRequest.of(0, numCustomers)).stream().map(c -> {
 			try {
 				return fetchRecentTwoOrderCode(c.getCustomerId());
 			} catch (Exception e) {
@@ -106,3 +107,6 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	}
 	
 }
+
+
+
