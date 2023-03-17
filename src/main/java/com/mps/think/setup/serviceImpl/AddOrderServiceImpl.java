@@ -62,8 +62,8 @@ public class AddOrderServiceImpl implements AddOrderService {
 	}
 
 	@Override
-	public Page<Order> getSearchedOrders(String keyword, Pageable page) {
-		return addOrderRepo.findOrdersBySearch(keyword, page);
+	public Page<Order> getSearchedOrders(Integer pubId, Integer customerId, String keyword, Pageable page) {
+		return addOrderRepo.findOrdersBySearch(pubId, customerId, keyword, page);
 	}
 
 	@Override

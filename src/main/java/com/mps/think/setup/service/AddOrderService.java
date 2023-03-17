@@ -23,7 +23,7 @@ public interface AddOrderService {
 	
 	public List<Order> getAllorderForPublisher(Pageable page,Integer pubId) throws Exception;
 
-	public Page<Order> getSearchedOrders(String keyword, Pageable page);
+	public Page<Order> getSearchedOrders(Integer pubId, Integer customerId, String keyword, Pageable page);
 	
 	List<OrderCodesSuper> getRecentTwoOrderOfCustomer(Integer customerId) throws Exception;
 	
