@@ -134,6 +134,12 @@ public class CustomerDetails  extends BaseEntity{
 	@Column(name = "renewalCommission")
 	private String renewalCommission;
 	
+	@Column(name = "agencyname")
+	private String agencyname;
+	
+	@Column(name = "agencycode")
+	private String agencycode;
+	
 	@Column(name = "paymentThreshold")
 	private String paymentThreshold;
 	
@@ -414,4 +420,22 @@ public class CustomerDetails  extends BaseEntity{
 	public void setCustomerAddresses(List<CustomerAddresses> customerAddresses) {
 		this.customerAddresses = customerAddresses;
 	}
+
+	public String getAgencyname() {
+		return agencyname;
+	}
+
+	public void setAgencyname(String agencyname) {
+		this.agencyname = agencyname;
+	}
+
+	public String getAgencycode() {
+		return agencycode;
+	}
+
+	public void setAgencycode(String agencycode) {
+		this.agencycode = agencycode;
+	}
+	
+	
 }

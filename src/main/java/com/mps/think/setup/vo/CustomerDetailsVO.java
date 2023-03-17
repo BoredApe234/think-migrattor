@@ -38,6 +38,8 @@ public class CustomerDetailsVO {
 	private String fax;
 	private Integer institutionalId;
 	private Integer parentInstitutionalId;
+	private String agencyname;
+	private String agencycode;
 	private ChargeTaxOn chargeTaxOn;
 	private PaymentOptions paymentOptions;
 	private ConfigurationOptionsforOrders configurationOptionsforOrders;
@@ -245,4 +247,17 @@ public class CustomerDetailsVO {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
+	public String getAgencyname() {
+		return agencyname;
+	}
+	public void setAgencyname(String agencyname) {
+		this.agencyname = agencyname;
+	}
+	public String getAgencycode() {
+		return agencycode;
+	}
+	public void setAgencycode(String agencycode) {
+		this.agencycode = agencycode;
+	}
+	
 }
