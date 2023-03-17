@@ -20,6 +20,8 @@ import com.mps.think.setup.vo.EnumModelVO.ConfigurationOptionsforOrders;
 import com.mps.think.setup.vo.EnumModelVO.CustomerCategory;
 import com.mps.think.setup.vo.EnumModelVO.PaymentOptions;
 
+import net.minidev.json.JSONObject;
+
 @RestController
 @CrossOrigin
 public class CustomerDetailsController {
@@ -105,7 +107,9 @@ public class CustomerDetailsController {
 	
 	@GetMapping("/getOrderCountOfCustomerForGivenYear")
 	public ResponseEntity<?> getOrderCountOfCustomerForGivenYear(@RequestParam(required = true) Integer customerId, @RequestParam(required = true) String year) {
-		return ResponseEntity.ok(customerDetailsService.countOfOrdersForGivenCustomerInYear(customerId, year));
+		JSONObject json = new JSONObject();
+	    json.put("orderCount", customerDetailsService.countOfOrdersForGivenCustomerInYear(customerId, year));
+		return ResponseEntity.ok(json.toString());
 	}
 	
 }
