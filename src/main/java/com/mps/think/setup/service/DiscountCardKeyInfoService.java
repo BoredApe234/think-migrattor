@@ -3,6 +3,7 @@ package com.mps.think.setup.service;
 import java.util.List;
 
 import com.mps.think.setup.model.DiscountCardKeyInfo;
+import com.mps.think.setup.model.RateCards;
 import com.mps.think.setup.vo.DiscountCardKeyInfoVO;
 
 public interface DiscountCardKeyInfoService {
@@ -20,5 +21,7 @@ public interface DiscountCardKeyInfoService {
 	List<DiscountCardKeyInfo> getAllDiscountCards();
 	
 	DiscountCardKeyInfo getDiscountCardKeyInfoById(Integer id);
+	
+	public List<DiscountCardKeyInfo> findAllDiscountCardKeyInfoByPublisherId(Integer pubId);
 	
 }

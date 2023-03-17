@@ -58,5 +58,10 @@ public class RateCardsController {
 		}
 		return ResponseEntity.ok(list);
 	}
+	
+	@PostMapping("getAllRateCardsForPublisher")
+	public ResponseEntity<?> findAllRateCardsByPublisherId(@RequestBody Integer rcId) {
+		return ResponseEntity.ok(rateCardsService.findAllRateCardsByPublisherId(rcId));
+	}
 
 }

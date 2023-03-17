@@ -7,9 +7,12 @@ import org.springframework.stereotype.Repository;
 
 import com.mps.think.setup.model.DiscountCardKeyInfo;
 
+
 @Repository
 public interface DiscountCardKeyInfoRepo extends JpaRepository<DiscountCardKeyInfo, Integer> {
 
 	List<DiscountCardKeyInfo> findByOrderClassOcId(Integer id);
+	
+	List<DiscountCardKeyInfo> findByOrderClassPubIdId(Integer pubId);
 	
 }

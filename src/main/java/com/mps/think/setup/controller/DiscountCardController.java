@@ -88,4 +88,9 @@ public class DiscountCardController {
 		return ResponseEntity.ok(effectiveDatesForDiscountService.getEffectiveDateById(id));
 	}
 	
+	@PostMapping("getAllDiscountCardForPublisher")
+	public ResponseEntity<?> findAllDiscountCardKeyInfoByPublisherId(@RequestBody Integer PubId) {
+		return ResponseEntity.ok(discountCardKeyInfoService.findAllDiscountCardKeyInfoByPublisherId(PubId));
+	}
+	
 }
