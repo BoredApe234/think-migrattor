@@ -33,20 +33,9 @@ public class IssueGeneration extends BaseEntity {
 	@Column(name = "frequency_of_generation")
 	private String frequencyOfGeneration;
 
-//	@Column(name = "periodicity")
-//	private String periodicity;
-
 	@Column(name = "order_type")
 	private String orderType;
 
-//	@Column(name = "issues_appear_on_every",columnDefinition="LONGTEXT")
-//	private Integer[] IssuesAppearonEvery;
-
-//	@OneToOne
-//	@JoinColumn(name = "oder_codeId", referencedColumnName = "id")
-//	private OrderCodes oderCode;
-
-	// oder class mapping will be there
 	@OneToOne
 	@JoinColumn(name = "order_class_id", referencedColumnName = "oc_id")
 	private OrderClass orderClassId;
@@ -103,8 +92,6 @@ public class IssueGeneration extends BaseEntity {
 	@Column(name="inventory_id")
 	private String inventoryID;
 	
-//	@Temporal(TemporalType.TIMESTAMP)
-//	@UpdateTimestamp
 	@Column(name="closed")
 	private Date closed;
 	

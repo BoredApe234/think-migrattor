@@ -315,4 +315,9 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		return list;
 	}
 
+	@Override
+	public List<IssueGeneration> getAllIssueGenerationForPublisher(Integer pubId) {
+		return issueGenerationRepo.findByOrderClassIdPubIdId(pubId);
+	}
+
 }

@@ -26,23 +26,6 @@ public class RenewalCardServiceImpl implements RenewalCardService {
 
 	@Override
 	public RenewalCardVO saveRenewalCard(RenewalCardVO renewalCardVO) {
-//		RenewalCard data = new RenewalCard();
-//		data.setRenewal_card(renewalCardVO.getRenewalCard());
-//		data.setDescription(renewalCardVO.getDescription());
-//		data.setEffortFrom(renewalCardVO.getEffortFrom());
-//		data.setEffortTo(renewalCardVO.getEffortTo());
-//		data.setOffersdescription(renewalCardVO.getOffersDescription());
-//		data.setOrderCodeId(renewalCardVO.getOrderCodeId());
-//		data.setSourceCodeId(renewalCardVO.getSourceCodeId());
-//		data.setSubscriptionDefId(renewalCardVO.getSubscriptionDefId());
-//		data.setPkgDefId(renewalCardVO.getPkgDefId());
-//		data.setRateClassId(renewalCardVO.getRateClassId());
-//		data.setDiscountClassId(renewalCardVO.getDiscountClassId());
-//		data.setParentId(renewalCardVO.getParentId());
-//		data.setChildId(renewalCardVO.getChildId());
-//		data.setSubChildId(renewalCardVO.getSubChildId());
-//		renewalCardRepo.saveAndFlush(data);
-
 		ObjectMapper mapper = new ObjectMapper();
 		RenewalCard rcard = mapper.convertValue(renewalCardVO, RenewalCard.class);
 		if(renewalCardVO.getDiscountClassId().getId()==0){
@@ -58,23 +41,6 @@ public class RenewalCardServiceImpl implements RenewalCardService {
 
 	@Override
 	public RenewalCardVO updateRenewalCard(RenewalCardVO renewalCardVO) {
-//		RenewalCard data = new RenewalCard();
-//		data.setRenewalCardId(renewalCardVO.getRenewalCardId());
-//		data.setRenewal_card(renewalCardVO.getRenewalCard());
-//		data.setDescription(renewalCardVO.getDescription());
-//		data.setEffortFrom(renewalCardVO.getEffortFrom());
-//		data.setEffortTo(renewalCardVO.getEffortTo());
-//		data.setOffersdescription(renewalCardVO.getOffersDescription());
-//		data.setOrderCodeId(renewalCardVO.getOrderCodeId());
-//		data.setSourceCodeId(renewalCardVO.getSourceCodeId());
-//		data.setSubscriptionDefId(renewalCardVO.getSubscriptionDefId());
-//		data.setPkgDefId(renewalCardVO.getPkgDefId());
-//		data.setRateClassId(renewalCardVO.getRateClassId());
-//		data.setDiscountClassId(renewalCardVO.getDiscountClassId());
-//		data.setParentId(renewalCardVO.getParentId());
-//		data.setChildId(renewalCardVO.getChildId());
-//		data.setSubChildId(renewalCardVO.getSubChildId());
-//		renewalCardRepo.saveAndFlush(data);
 		ObjectMapper mapper = new ObjectMapper();
 		RenewalCard rcard = mapper.convertValue(renewalCardVO, RenewalCard.class);
 		if(renewalCardVO.getDiscountClassId().getId()==0){
@@ -99,6 +65,11 @@ public class RenewalCardServiceImpl implements RenewalCardService {
 		RenewalCard id= renewalCardRepo.findById(renewalCardId).get();
 		renewalCardRepo.deleteById(renewalCardId);
 		return id;
+	}
+
+	@Override
+	public List<RenewalCard> getAllRenewalCardForPublisher(Integer pubId) {
+		return renewalCardRepo.findByPubIdId(pubId);
 	}
 
 }

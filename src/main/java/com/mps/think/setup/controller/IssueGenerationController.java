@@ -60,4 +60,9 @@ public class IssueGenerationController {
 	public ResponseEntity<?> deleteIssueCode(@RequestBody Integer[] IssueId) {
 		return ResponseEntity.ok(issueGenerationServiceImpl.deleteIssueById(IssueId));
 	}
+	
+	@PostMapping("/getAllIssueGenerationForPublisher")
+	public ResponseEntity<?> getAllIssueGenerationForPublisher(@RequestBody Integer pubId) {
+		return ResponseEntity.ok(issueGenerationServiceImpl.getAllIssueGenerationForPublisher(pubId));
+	}
 }

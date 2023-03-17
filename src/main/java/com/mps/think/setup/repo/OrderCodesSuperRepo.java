@@ -12,7 +12,5 @@ public interface OrderCodesSuperRepo extends JpaRepository<OrderCodesSuper, Inte
 
 	List<OrderCodesSuper> findByPublisherId(Integer id);
 
-	
 	List<OrderCodesSuper> findByOrderClassOcId(Integer ocId);
-	
 }
