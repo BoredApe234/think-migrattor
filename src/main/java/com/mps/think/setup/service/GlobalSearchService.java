@@ -7,6 +7,6 @@ import org.springframework.data.domain.Pageable;
 
 public interface GlobalSearchService {
 
-	Map<String, Object> getSearchResults(String keyword, Pageable customersPage);
+//	Map<String, Object> getSearchResults(String keyword, Pageable customersPage);
 	
 }

@@ -87,10 +87,10 @@ public class CustomerDetailsController {
 	}
 
 	@GetMapping("/getAllCustomerDetailsForSearch")
-	public ResponseEntity<?> getAllCustomerDetailsForSearch(@RequestParam(required = false) String search, @RequestParam(defaultValue = "0") Integer page,
+	public ResponseEntity<?> getAllCustomerDetailsForSearch(@RequestParam(required = true) Integer pubId, @RequestParam(required = false) String search, @RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "5") Integer size) {
 		return ResponseEntity.ok(
-				customerDetailsService.getAllCustomerDetailsForSearch(search, PageRequest.of(page, size)));
+				customerDetailsService.getAllCustomerDetailsForSearch(pubId, search, PageRequest.of(page, size)));
 	}
 	
 	@GetMapping("/getAllCustomersRecentTwoOrderCodeUnderPub/{pubId}")

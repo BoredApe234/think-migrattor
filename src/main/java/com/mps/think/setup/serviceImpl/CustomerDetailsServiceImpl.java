@@ -73,9 +73,9 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	}
 
 	@Override
-	public Page<CustomerDetails> getAllCustomerDetailsForSearch(String search, Pageable page) {
+	public Page<CustomerDetails> getAllCustomerDetailsForSearch(Integer pubId, String search, Pageable page) {
 		// TODO Auto-generated method stub
-		return customerRepo.getAllCustomerDetailsForSearchSingle(search, page);
+		return customerRepo.getAllCustomerDetailsForSearchSingle(pubId, search, page);
 	}
 
 	@Override
