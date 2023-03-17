@@ -15,4 +15,6 @@ public interface RenewalCardService {
 	public RenewalCard deleteRenewalCard(Integer renewalCardId);
 
 	public RenewalCard findbyRenewalCardId(Integer renewalCardId);
+	
+	public List<RenewalCard> getAllRenewalCardForPublisher(Integer pubId);
 }

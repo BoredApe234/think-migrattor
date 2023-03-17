@@ -23,6 +23,11 @@ public class RenewalCardController {
 	public ResponseEntity<?> findAllRenewalCard() {
 		return ResponseEntity.ok(renewalCardService.findAllRenewalCard());
 	}
+	
+	@PostMapping("/getAllRenewalCardForPublisher")
+	public ResponseEntity<?> getAllRenewalCardForPublisher(@RequestBody Integer pubId) {
+		return ResponseEntity.ok(renewalCardService.getAllRenewalCardForPublisher(pubId));
+	}
 
 	@PostMapping("/saveRenewalCard")
 	public ResponseEntity<?> saveRenewalCard(@RequestBody RenewalCardVO cardVO) {

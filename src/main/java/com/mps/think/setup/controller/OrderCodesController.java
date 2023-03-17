@@ -21,8 +21,8 @@ public class OrderCodesController {
 	@Autowired
 	private OrderCodesService orderCodesService;
 	
-	@GetMapping("/orderCodes/{publisherId}")
-	public ResponseEntity<?> getOrderClassByPublisherId(@PathVariable Integer publisherId) {
+	@PostMapping("/getAllOrderCodesForpublisher")
+	public ResponseEntity<?> getAllOrderCodesForpublisher(@RequestBody Integer publisherId) {
 		return ResponseEntity.ok(orderCodesService.getOrderByPublisherId(publisherId));
 	}
 	

@@ -38,4 +38,9 @@ public class IssueSettingsController {
 	public ResponseEntity<?> findbyIssueSettingId(@RequestBody Integer IssueSettingId) {
 		return ResponseEntity.ok(issueSettingsService.findbyIssueSettingId(IssueSettingId));
 	}
+	
+	@PostMapping("/getAllIssueSettingsForPublisher")
+	public ResponseEntity<?> getAllIssueSettingsForPublisher(@RequestBody Integer pubId) {
+		return ResponseEntity.ok(issueSettingsService.getAllIssueSettingsForPublisher(pubId));
+	}
 }

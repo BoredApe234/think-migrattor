@@ -31,8 +31,8 @@ public class SubscriptionDefinationController {
 		return ResponseEntity.ok(subscriptionDefService.updateSubscriptionDef(subscriptionDefination));
 	}
 	
-	@GetMapping("subscriptionDefinations/{publisherId}")
-	public ResponseEntity<?> getSubscriptionDefinationByPublisherId(@PathVariable Integer publisherId) {
+	@PostMapping("/getAllSubscriptionDefinationsForpublisher")
+	public ResponseEntity<?> getAllSubscriptionDefinationsForpublisher(@RequestBody Integer publisherId) {
 		return ResponseEntity.ok(subscriptionDefService.getSubscriptionDefByPublisherId(publisherId));
 	}
 	
