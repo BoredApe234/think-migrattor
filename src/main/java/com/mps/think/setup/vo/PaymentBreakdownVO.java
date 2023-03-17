@@ -21,6 +21,8 @@ public class PaymentBreakdownVO {
 	private String term;
 
 	private BigDecimal baseAmount;
+	
+	private String currency;
 
 	private BigDecimal discount;
 
@@ -136,6 +138,14 @@ public class PaymentBreakdownVO {
 
 	public void setNetAmount(BigDecimal netAmount) {
 		this.netAmount = netAmount;
+	}
+
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
 
 }

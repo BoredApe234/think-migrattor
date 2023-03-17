@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +43,7 @@ public class AddOrderController {
 	@GetMapping("/getAllOrders")
 	public ResponseEntity<?> getAllOrders(@RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "5") Integer size) throws Exception {
-		return ResponseEntity.ok(addOrderService.getAllOrders(PageRequest.of(page, size)));
+		return ResponseEntity.ok(addOrderService.getAllOrders(PageRequest.of(page, size, Sort.by("orderId").descending())));
 	}
 	
 	@GetMapping("/getOrderById/{orderId}")
@@ -51,8 +52,9 @@ public class AddOrderController {
 	}
 	
 	@GetMapping("/getAllOrderByCustomerId/{customerId}")
-	public ResponseEntity<?> getAllOrderByCustomerId(@PathVariable Integer customerId) throws Exception {
-		return ResponseEntity.ok(addOrderService.getAllOrderByCustomerId(customerId));
+	public ResponseEntity<?> getAllOrderByCustomerId(@PathVariable Integer customerId, @RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) throws Exception {
+		return ResponseEntity.ok(addOrderService.getAllOrderByCustomerId(customerId, PageRequest.of(page, size, Sort.by("orderId").descending())));
 	}
 	
 	@GetMapping("/findAllPaymentStatus")
@@ -84,5 +86,15 @@ public class AddOrderController {
 			@RequestParam(defaultValue = "5") Integer size) {
 		return ResponseEntity.ok(addOrderService.getSearchedOrders(keyword, PageRequest.of(page, size)));
 	}
-
+	
+	@GetMapping("/getRecentTwoOrderCodesOfCustomer/{customerId}")
+	public ResponseEntity<?> getRecentTwoOrderOfCustomer(@PathVariable("customerId") Integer customerId) throws Exception {
+		return ResponseEntity.ok(addOrderService.getRecentTwoOrderOfCustomer(customerId));
+	}
+	
+	@PostMapping("/getAllorderForPublisher")
+	public ResponseEntity<?> getAllorderForPublisher(@RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size , @RequestParam Integer pubId) throws Exception {
+		return ResponseEntity.ok(addOrderService.getAllorderForPublisher(PageRequest.of(page, size), pubId));
+	}
 }

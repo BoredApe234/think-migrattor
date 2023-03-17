@@ -33,6 +33,7 @@ public class RentalStatusServiceImpl implements RentalStatusService {
 		data.setRentName(rentalStatusVO.getRentName());
 		data.setRentEmail(rentalStatusVO.getRentEmail());
 		data.setDescription(rentalStatusVO.getDescription());
+		data.setPublisher(rentalStatusVO.getPublisher());
 		rentalStatusRepo.saveAndFlush(data);
 		data.setRentalStatusId(rentalStatusVO.getRentalStatusId());
 		return rentalStatusVO;
@@ -46,6 +47,7 @@ public class RentalStatusServiceImpl implements RentalStatusService {
 		data.setRentName(rentalStatusVO.getRentName());
 		data.setRentEmail(rentalStatusVO.getRentEmail());
 		data.setDescription(rentalStatusVO.getDescription());
+		data.setPublisher(rentalStatusVO.getPublisher());
 		rentalStatusRepo.saveAndFlush(data);
 		return rentalStatusVO;
 	}

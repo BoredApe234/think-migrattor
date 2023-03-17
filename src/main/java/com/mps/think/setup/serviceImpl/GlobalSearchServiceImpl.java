@@ -20,21 +20,21 @@ import com.mps.think.setup.service.GlobalSearchService;
 @Service
 public class GlobalSearchServiceImpl implements GlobalSearchService {
 	
-	@Autowired
-	private AddOrderRepo orderRepo;
-	
-	@Autowired
-	private CustomerDetailsRepo customerRepo;
-
-	@Override
-	public Map<String, Object> getSearchResults(String keyword, Pageable customersPage) {
-		Map<String, Object> result = new HashMap<>();
-		Page<CustomerDetails> customerResults = customerRepo.getAllCustomerDetailsForSearchSingle(keyword, customersPage);
-//		Page<Order> orderResults = orderRepo.findOrdersBySearch(keyword, ordersPage);
-		result.put("customers", customerResults);
-//		result.put("orders", orderResults);
-		return result;
-	}
+//	@Autowired
+//	private AddOrderRepo orderRepo;
+//	
+//	@Autowired
+//	private CustomerDetailsRepo customerRepo;
+//
+//	@Override
+//	public Map<String, Object> getSearchResults(String keyword, Pageable customersPage) {
+//		Map<String, Object> result = new HashMap<>();
+////		Page<CustomerDetails> customerResults = customerRepo.getAllCustomerDetailsForSearchSingle(keyword, customersPage);
+////		Page<Order> orderResults = orderRepo.findOrdersBySearch(keyword, ordersPage);
+////		result.put("customers", customerResults);
+////		result.put("orders", orderResults);
+//		return result;
+//	}
 
 
 }

@@ -29,6 +29,7 @@ public class SpecialTaxIdsServiceImpl implements SpecialTaxIdsService{
 		stxid.setId(specialTaxIds.getId());
 		stxid.setSpecialTaxIds(specialTaxIds.getSpecialTaxIds());
 		stxid.setExemptStatus(specialTaxIds.getExemptStatus());
+		stxid.setPubId(specialTaxIds.getPubId());
 		specialTaxIdsRepo.saveAndFlush(stxid);
 		// TODO Auto-generated method stub
 		return specialTaxIds;
@@ -40,6 +41,7 @@ public class SpecialTaxIdsServiceImpl implements SpecialTaxIdsService{
 			if (curr.getId().equals(specialTaxIds.getId())) {
 				curr.setSpecialTaxIds(specialTaxIds.getSpecialTaxIds());
 				curr.setExemptStatus(specialTaxIds.getExemptStatus());
+				curr.setPubId(specialTaxIds.getPubId());
 				specialTaxIdsRepo.saveAndFlush(curr);
 				return specialTaxIds;
 			}

@@ -45,8 +45,8 @@ public class CommodityCodesController {
 		return ResponseEntity.ok(commodityCodesService.deleteCommodityCodesById(id));
 	}
 
-	@GetMapping("/getAllCommodityCodesForPublisher/{pubId}")
-	public ResponseEntity<?> findAllCommodityCodesForPublisher(@PathVariable("pubId") Integer pubId) {
+	@PostMapping("/getAllCommodityCodesForPublisher")
+	public ResponseEntity<?> findAllCommodityCodesForPublisher(@RequestBody Integer pubId) {
 		return ResponseEntity.ok(commodityCodesService.findAllCommodityCodesForPublisher(pubId));
 	}
 	

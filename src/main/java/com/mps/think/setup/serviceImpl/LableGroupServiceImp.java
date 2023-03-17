@@ -59,4 +59,10 @@ public class LableGroupServiceImp implements LableGroupService {
 		return delete;
 	}
 
+	@Override
+	public List<LableGroup> findAllLableGroupByPubId(Integer lableGroupId) {
+		// TODO Auto-generated method stub
+		return lableGroupRepo.findByPubIdId(lableGroupId);
+	}
+
 }

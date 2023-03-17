@@ -14,13 +14,13 @@ import com.mps.think.setup.service.GlobalSearchService;
 @CrossOrigin
 public class GlobalSearchController {
 
-	@Autowired
-	private GlobalSearchService globalSearchService;
-	
-	@GetMapping("/getAllResults")
-	public ResponseEntity<?> getAllResults(@RequestParam(required = false) String keyword, 
-			@RequestParam(defaultValue = "0") Integer customerPageStart, @RequestParam(defaultValue = "5") Integer customerPageEnd) {
-		return ResponseEntity.ok(globalSearchService.getSearchResults(keyword, PageRequest.of(customerPageStart, customerPageEnd)));
-	}
+//	@Autowired
+//	private GlobalSearchService globalSearchService;
+//	
+//	@GetMapping("/getAllResults")
+//	public ResponseEntity<?> getAllResults(@RequestParam(required = false) String keyword, 
+//			@RequestParam(defaultValue = "0") Integer customerPageStart, @RequestParam(defaultValue = "5") Integer customerPageEnd) {
+//		return ResponseEntity.ok(globalSearchService.getSearchResults(keyword, PageRequest.of(customerPageStart, customerPageEnd)));
+//	}
 	
 }
