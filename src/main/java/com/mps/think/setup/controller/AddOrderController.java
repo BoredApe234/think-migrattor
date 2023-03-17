@@ -95,6 +95,6 @@ public class AddOrderController {
 	@PostMapping("/getAllorderForPublisher")
 	public ResponseEntity<?> getAllorderForPublisher(@RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "5") Integer size , @RequestParam Integer pubId) throws Exception {
-		return ResponseEntity.ok(addOrderService.getAllorderForPublisher(PageRequest.of(page, size), pubId));
+		return ResponseEntity.ok(addOrderService.getAllorderForPublisher(PageRequest.of(page, size, Sort.by("orderId").descending()), pubId));
 	}
 }

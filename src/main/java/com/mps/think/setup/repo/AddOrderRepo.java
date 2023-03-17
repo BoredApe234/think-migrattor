@@ -17,7 +17,7 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	
 	
 	
-	public List<Order> findAllByCustomerIdPublisherId(Pageable page,Integer pubId) throws Exception;
+	public Page<Order> findAllByCustomerIdPublisherId(Pageable page,Integer pubId) throws Exception;
 	
 	public Page<Order> findByCustomerIdCustomerId(Integer customerId, Pageable page) throws Exception;
 	
@@ -128,6 +128,9 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	
 
 	public List<Order> findByCustomerIdCustomerId(Integer customerId);
+	
+	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation k RIGHT JOIN o.customerId c WHERE (c.customerId = :customerId) AND (k.orderDate LIKE '%'||:year||'%') GROUP BY o.orderId")
+	List<Order> findOrderCountForCustomerInYear(@Param("customerId") Integer customerId, @Param("year") String year);
 	
 }
 
