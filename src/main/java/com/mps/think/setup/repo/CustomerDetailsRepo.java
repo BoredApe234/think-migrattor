@@ -25,26 +25,48 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 //			+ "AND (c.lname LIKE '%'||:lastName||'%' OR :lastName IS NULL)")
 //	public Page<CustomerDetails> getAllCustomerDetailsForSearch(@Param("firstName") String firstName,
 //			@Param("lastName") String lastName, Pageable page);
-	
-	@Query("SELECT cd FROM CustomerDetails cd JOIN cd.customerAddresses cda JOIN cda.address cadd WHERE "
-			+ "CONCAT(cadd.addressName, ' ', cadd.addressId, ' ', cadd.name, ' ', cadd.city, ' ', cadd.countryCode, ' ' ,cadd.addressType, ' ' ,cadd.addressLine1,' ', cadd.addressLine2, ' '"
-			+ ",cadd.state,' ',cadd.addressCategory, ' ',cadd.country, ' ', cadd.frequency, ' ', cadd.phone, ' '"
-			+ ", cadd.addressAuxJSON) LIKE '%'||:search||'%' OR "
-			+ "cadd.zipCode LIKE '%'||:search||'%' OR "
-			+ "cd.customerId LIKE '%'||:search||'%' OR "
-			+ "cd.fax LIKE '%'||:search||'%' OR "
-			+ "(cd.institutionalId LIKE '%'||:search||'%') OR "
-			+ "(cd.parentInstitutionalId LIKE '%'||:search||'%') OR "
-			+ "CONCAT(cd.fname, ' ', cd.lname, ' ', cd.company, ' ', cd.department, ' ', cd.email, ' ' ,cd.initialName, ' ',cd.suffix, ' ', cd.countryCode, ' ', cd.primaryPhone, ' ', cd.mobileNumber, ' ', cd.taxId, ' ', COALESCE(cd.secondaryEmail, ''), ' ', COALESCE(cd.secondaryPhone, ''), ' ',cd.listRental, ' ', cd.salesRepresentative, ' ', cd.creditStatus, ' ', cd.fax, ' ', COALESCE(cd.newOrderCommission, ''), ' ', COALESCE(cd.renewalCommission, ''), ' ',COALESCE(cd.paymentThreshold, ''), ' ',COALESCE(cd.custAuxFieldJSON, '')) LIKE '%'||:search||'%'"
-			+ "GROUP BY cd.customerId")
-	public Page<CustomerDetails> getAllCustomerDetailsForSearchSingle(@Param("search") String search, Pageable page);
+
+//	@Query("SELECT cd FROM CustomerDetails cd JOIN cd.customerAddresses cda JOIN cda.address cadd WHERE "
+//			+ "CONCAT(cadd.addressName, ' ', cadd.addressId, ' ', cadd.name, ' ', cadd.city, ' ', cadd.countryCode, ' ' ,cadd.addressType, ' ' ,cadd.addressLine1,' ', cadd.addressLine2, ' '"
+//			+ ",cadd.state,' ',cadd.addressCategory, ' ',cadd.country, ' ', cadd.frequency, ' ', cadd.phone, ' '"
+//			+ ", cadd.addressAuxJSON) LIKE '%'||:search||'%' OR "
+//			+ "cadd.zipCode LIKE '%'||:search||'%' OR "
+//			+ "cd.customerId LIKE '%'||:search||'%' OR "
+//			+ "cd.fax LIKE '%'||:search||'%' OR "
+//			+ "(cd.institutionalId LIKE '%'||:search||'%') OR "
+//			+ "(cd.parentInstitutionalId LIKE '%'||:search||'%') OR "
+//			+ "CONCAT(cd.fname, ' ', cd.lname, ' ', cd.company, ' ', cd.department, ' ', cd.email, ' ' ,cd.initialName, ' ',cd.suffix, ' ', cd.countryCode, ' ', cd.primaryPhone, ' ', cd.mobileNumber, ' ', cd.taxId, ' ', COALESCE(cd.secondaryEmail, ''), ' ', COALESCE(cd.secondaryPhone, ''), ' ',cd.listRental, ' ', cd.salesRepresentative, ' ', cd.creditStatus, ' ', cd.fax, ' ', COALESCE(cd.newOrderCommission, ''), ' ', COALESCE(cd.renewalCommission, ''), ' ',COALESCE(cd.paymentThreshold, ''), ' ',COALESCE(cd.custAuxFieldJSON, '')) LIKE '%'||:search||'%'"
+//			+ "GROUP BY cd.customerId")
+//	public Page<CustomerDetails> getAllCustomerDetailsForSearchSingle(@Param("search") String search, Pageable page);
+
+	@Query("SELECT c FROM Order o LEFT JOIN o.keyOrderInformation keyInfo LEFT JOIN keyInfo.orderCode ocs LEFT JOIN ocs.orderCodes oc RIGHT JOIN o.customerId c LEFT JOIN "
+			+ "c.customerAddresses ca JOIN ca.address a WHERE ((c.publisher.id = :pubId) AND "
+			+ "((a.addressLine1 LIKE '%'||:search||'%') OR (a.city LIKE '%'||:search||'%') OR (a.state LIKE '%'||:search||'%') "
+			+ "OR (a.country LIKE '%'||:search||'%') OR (a.addressName LIKE '%'||:search||'%') OR (a.addressId LIKE '%'||:search||'%') "
+			+ "OR (a.name LIKE '%'||:search||'%') OR (a.countryCode LIKE '%'||:search||'%') "
+			+ "OR (a.addressType LIKE '%'||:search||'%') OR (a.addressLine2 LIKE '%'||:search||'%') OR (a.addressAuxJSON LIKE '%'||:search||'%') "
+			+ "OR (a.zipCode LIKE '%'||:search||'%') OR (c.customerId LIKE '%'||:search||'%') OR (c.fax LIKE '%'||:search||'%') "
+			+ "OR (c.institutionalId LIKE '%'||:search||'%') OR (c.parentInstitutionalId LIKE '%'||:search||'%') OR (c.fname LIKE '%'||:search||'%') "
+			+ "OR (c.lname LIKE '%'||:search||'%') OR (c.company LIKE '%'||:search||'%') OR (c.department LIKE '%'||:search||'%') OR (c.email LIKE '%'||:search||'%') "
+			+ "OR (c.initialName LIKE '%'||:search||'%') OR (c.suffix LIKE '%'||:search||'%') "
+			+ "OR (c.countryCode LIKE '%'||:search||'%') OR (c.primaryPhone LIKE '%'||:search||'%') OR (c.mobileNumber LIKE '%'||:search||'%') "
+			+ "OR (c.taxId LIKE '%'||:search||'%') OR (c.secondaryEmail LIKE '%'||:search||'%') OR (c.secondaryPhone LIKE '%'||:search||'%') "
+			+ "OR (c.listRental LIKE '%'||:search||'%') OR (c.salesRepresentative LIKE '%'||:search||'%') "
+			+ "OR (c.creditStatus LIKE '%'||:search||'%') OR (c.newOrderCommission LIKE '%'||:search||'%') OR (c.fax LIKE '%'||:search||'%') "
+			+ "OR (c.renewalCommission LIKE '%'||:search||'%') OR (c.paymentThreshold LIKE '%'||:search||'%') "
+			+ "OR (c.custAuxFieldJSON LIKE '%'||:search||'%') "
+			+ "OR (oc.orderCode LIKE '%'||:search||'%') OR (o.orderId LIKE '%'||:search||'%') OR (keyInfo.agent LIKE '%'||:search||'%') "
+			+ "OR (keyInfo.agentReferenceNum LIKE '%'||:search||'%'))) "
+			+ "GROUP BY c.customerId")
+	public Page<CustomerDetails> getAllCustomerDetailsForSearchSingle(@Param("pubId") Integer pubId,
+			@Param("search") String search, Pageable page);
 
 //	@Query(value="SELECT * FROM customer where pub_id=:pubId",nativeQuery = true)
 //	public Page<CustomerDetails> findAllCustomerByPubId(@Param("pubId") Integer pubId, Sort sort);
-	
+
 	Page<CustomerDetails> findByPublisherId(Integer pubId, Pageable page);
-	
+
 	@Query("SELECT COUNT(c) FROM CustomerDetails c where c.publisher.id = ?1")
 	Integer countCustomersInPublisher(Integer pubId);
-	
+
 }
