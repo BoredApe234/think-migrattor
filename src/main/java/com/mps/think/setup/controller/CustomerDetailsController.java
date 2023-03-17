@@ -98,5 +98,15 @@ public class CustomerDetailsController {
 		return ResponseEntity.ok(customerDetailsService.GetAllCustomerRecentOrderCodeForPub(pubId));
 	}
 	
+	@GetMapping("/getRecentPlacedOrderOfCustomer/{customerId}")
+	public ResponseEntity<?> getRecentPlacedOrderOfCustomer(@PathVariable("customerId") Integer customerId) throws Exception {
+		return ResponseEntity.ok(customerDetailsService.getRecentOrderOfCustomer(customerId));
+	}
+	
+	@GetMapping("/getOrderCountOfCustomerForGivenYear")
+	public ResponseEntity<?> getOrderCountOfCustomerForGivenYear(@RequestParam(required = true) Integer customerId, @RequestParam(required = true) String year) {
+		return ResponseEntity.ok(customerDetailsService.countOfOrdersForGivenCustomerInYear(customerId, year));
+	}
+	
 }
 

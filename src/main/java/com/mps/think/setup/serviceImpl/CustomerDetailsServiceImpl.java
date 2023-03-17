@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.mps.think.setup.model.CustomerDetails;
+import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.CustomerDetailsRepo;
@@ -32,6 +34,9 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	
 	@Autowired
 	private AddOrderService orderService;
+	
+	@Autowired
+	private AddOrderRepo orderRepo;
 	
 	@Override
 	public List<CustomerDetails> getAllCustomerDetails() {
@@ -104,6 +109,20 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 			return null;
 		}).collect(Collectors.toList());
 		return orderCodes;
+	}
+
+	@Override
+	public Order getRecentOrderOfCustomer(Integer customerId) throws Exception {
+		List<Order> orders = orderService.getAllOrderByCustomerId(customerId, PageRequest.of(0, 1, Sort.by("orderId").descending())).toList();
+		if (!orders.isEmpty()) {
+			return orders.get(0);
+		}
+		throw new NoSuchElementException("customer does not have any order");
+	}
+
+	@Override
+	public Integer countOfOrdersForGivenCustomerInYear(Integer customerId, String year) {
+		return orderRepo.findOrderCountForCustomerInYear(customerId, year).size();
 	}
 	
 }

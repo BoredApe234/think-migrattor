@@ -77,7 +77,7 @@ public class AddOrderServiceImpl implements AddOrderService {
 	}
 
 	@Override
-	public List<Order> getAllorderForPublisher(Pageable page,Integer pubId) throws Exception {
+	public Page<Order> getAllorderForPublisher(Pageable page,Integer pubId) throws Exception {
 		return addOrderRepo.findAllByCustomerIdPublisherId(page,pubId);
 	}
 
