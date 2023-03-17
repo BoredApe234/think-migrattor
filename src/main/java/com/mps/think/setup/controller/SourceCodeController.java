@@ -59,5 +59,10 @@ public class SourceCodeController {
 		return ResponseEntity.ok(list);
 	}
 	
+	@PostMapping("getAllSourceCodeForPublisher")
+	public ResponseEntity<?> findAllSourceCodeByPublisherId(@RequestBody Integer sourceCodeId) {
+		return ResponseEntity.ok(sourceCodeService.findAllSourceCodeByPublisherId(sourceCodeId));
+	}
+	
 
 }

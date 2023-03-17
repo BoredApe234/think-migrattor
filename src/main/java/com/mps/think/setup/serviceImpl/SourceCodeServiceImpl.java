@@ -94,4 +94,10 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 		return delete;
 	}
 
+	@Override
+	public List<SourceCode> findAllSourceCodeByPublisherId(Integer pubId) {
+		// TODO Auto-generated method stub
+		return sourceCodeRepo.findByOcIdPubIdId(pubId);
+	}
+
 }

@@ -71,4 +71,10 @@ public class RateCardsServiceImpl implements RateCardsService {
 		rateCardsRepo.delete(delete);
 		return delete;
 	}
+
+	@Override
+	public List<RateCards> findAllRateCardsByPublisherId(Integer pubId) {
+		// TODO Auto-generated method stub
+		return rateCardsRepo.findByOcIdPubIdId(pubId);
+	}
 }
