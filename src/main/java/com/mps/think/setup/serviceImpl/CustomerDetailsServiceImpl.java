@@ -117,7 +117,8 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		if (!orders.isEmpty()) {
 			return orders.get(0);
 		}
-		throw new NoSuchElementException("customer does not have any order");
+//		throw new NoSuchElementException("customer does not have any order");
+		return null;
 	}
 
 	@Override

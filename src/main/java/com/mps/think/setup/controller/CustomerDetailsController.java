@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mps.think.setup.model.Order;
 import com.mps.think.setup.service.CustomerDetailsService;
 import com.mps.think.setup.vo.CustomerDetailsVO;
 import com.mps.think.setup.vo.EnumModelVO.ChargeTaxOn;
@@ -102,7 +103,8 @@ public class CustomerDetailsController {
 	
 	@GetMapping("/getRecentPlacedOrderOfCustomer/{customerId}")
 	public ResponseEntity<?> getRecentPlacedOrderOfCustomer(@PathVariable("customerId") Integer customerId) throws Exception {
-		return ResponseEntity.ok(customerDetailsService.getRecentOrderOfCustomer(customerId));
+		Order recentOrderOfCustomer = customerDetailsService.getRecentOrderOfCustomer(customerId);
+		return ResponseEntity.ok(recentOrderOfCustomer != null ? recentOrderOfCustomer : new JSONObject());
 	}
 	
 	@GetMapping("/getOrderCountOfCustomerForGivenYear")
