@@ -50,19 +50,19 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 //	}
 
 	@Override
-	public CustomerDetailsVO saveCustomerDetails(CustomerDetailsVO customerDetails) {
+	public CustomerDetails saveCustomerDetails(CustomerDetailsVO customerDetails) {
 		ObjectMapper mapper = new ObjectMapper();
 		CustomerDetails newCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
-		customerRepo.saveAndFlush(newCustomer);
-		return customerDetails;
+		CustomerDetails cdata=customerRepo.saveAndFlush(newCustomer);
+		return cdata;
 	}
 
 	@Override
-	public CustomerDetailsVO updateCustomerDetails(CustomerDetailsVO customerDetails) {
+	public CustomerDetails updateCustomerDetails(CustomerDetailsVO customerDetails) {
 		ObjectMapper mapper = new ObjectMapper();
 		CustomerDetails updatedCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
-		customerRepo.saveAndFlush(updatedCustomer);
-		return customerDetails;
+		CustomerDetails cdata=customerRepo.saveAndFlush(updatedCustomer);
+		return cdata;
 	}
 
 	@Override

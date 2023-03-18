@@ -18,9 +18,9 @@ public interface CustomerDetailsService {
 //	public Page<CustomerDetails> getAllCustomerDetailsForSearch(String firstName, String lastName, Pageable page);
 	public Page<CustomerDetails> getAllCustomerDetailsForSearch(Integer pubId, String search,  Pageable page);
 
-	public CustomerDetailsVO saveCustomerDetails(CustomerDetailsVO customerDetails);
+	public CustomerDetails saveCustomerDetails(CustomerDetailsVO customerDetails);
 
-	public CustomerDetailsVO updateCustomerDetails(CustomerDetailsVO customerDetails);
+	public CustomerDetails updateCustomerDetails(CustomerDetailsVO customerDetails);
 
 	public CustomerDetails findbyCustomerDetailsId(Integer customerId);
 	
