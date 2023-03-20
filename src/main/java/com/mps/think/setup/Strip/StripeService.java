@@ -15,6 +15,7 @@ import com.stripe.exception.AuthenticationException;
 import com.stripe.exception.CardException;
 import com.stripe.exception.InvalidRequestException;
 import com.stripe.model.Charge;
+import com.stripe.model.Refund;
 
 @Service
 public class StripeService {
@@ -36,4 +37,12 @@ public class StripeService {
         chargeParams.put("source", chargeRequest.getStripeToken());
         return Charge.create(chargeParams);
     }
+    
+	public Refund refund(String chargeId) throws AuthenticationException, InvalidRequestException,
+			APIConnectionException, CardException, APIException {
+		Map<String, Object> params = new HashMap<>();
+		params.put("charge", chargeId);
+		Refund refund = Refund.create(params);
+		return refund;
+	}
 }

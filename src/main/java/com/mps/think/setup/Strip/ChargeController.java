@@ -12,6 +12,7 @@ import com.mps.think.setup.Strip.ChargeRequest.Currency;
 import com.mps.think.setup.vo.PublicKey;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
+import com.stripe.model.Refund;
 
 @RestController
 public class ChargeController {
@@ -36,7 +37,7 @@ public class ChargeController {
 	@ExceptionHandler(StripeException.class)
 	public String handleError(Model model, StripeException ex) {
 		model.addAttribute("error", ex.getMessage());
-		return "result"+ex.getMessage();
+		return "result" + ex.getMessage();
 	}
 
 	@PostMapping("/chargeAPI")
@@ -55,4 +56,16 @@ public class ChargeController {
 		System.out.println(charge.toString());
 		return ResponseEntity.ok(pk);
 	}
+
+	@PostMapping("/refundAPI")
+	public ResponseEntity<?> refundAPI(String chargeId) throws StripeException {
+//		Stripe.apiKey = "sk_test_FQFXEQMTnWlgu1ckpre5Ka4000VeYdxCdU";
+//		Map<String, Object> params = new HashMap<>();
+//		params.put("charge", chargeId);
+//		Refund refund = Refund.create(params);
+		Refund refund = paymentsService.refund(chargeId);
+		System.out.println(refund.toString());
+		return ResponseEntity.ok(refund);
+	}
+
 }
