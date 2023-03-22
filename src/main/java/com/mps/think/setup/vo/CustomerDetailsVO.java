@@ -1,6 +1,7 @@
 package com.mps.think.setup.vo;
 
 
+import java.util.Date;
 import java.util.List;
 
 import com.mps.think.setup.model.CustomerAddresses;
@@ -10,6 +11,7 @@ import com.mps.think.setup.model.CustomerCategory;
 
 import com.mps.think.setup.vo.EnumModelVO.ChargeTaxOn;
 import com.mps.think.setup.vo.EnumModelVO.ConfigurationOptionsforOrders;
+import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
 import com.mps.think.setup.vo.EnumModelVO.PaymentOptions;
 
 public class CustomerDetailsVO {
@@ -49,6 +51,10 @@ public class CustomerDetailsVO {
 	private String custAuxFieldJSON;
 	private Publisher publisher;
 	private List<CustomerAddressesVO> customerAddresses;
+	private CustomerStatus customerStatus;
+	private String currCustomerStatusCause;
+	private Date dateUntilDeactivation;
+	
 	public Integer getCustomerId() {
 		return customerId;
 	}
@@ -258,6 +264,24 @@ public class CustomerDetailsVO {
 	}
 	public void setAgencycode(String agencycode) {
 		this.agencycode = agencycode;
+	}
+	public CustomerStatus getCustomerStatus() {
+		return customerStatus;
+	}
+	public void setCustomerStatus(CustomerStatus customerStatus) {
+		this.customerStatus = customerStatus;
+	}
+	public String getCurrCustomerStatusCause() {
+		return currCustomerStatusCause;
+	}
+	public void setCurrCustomerStatusCause(String currCustomerStatusCause) {
+		this.currCustomerStatusCause = currCustomerStatusCause;
+	}
+	public Date getDateUntilDeactivation() {
+		return dateUntilDeactivation;
+	}
+	public void setDateUntilDeactivation(Date dateUntilDeactivation) {
+		this.dateUntilDeactivation = dateUntilDeactivation;
 	}
 	
 }
