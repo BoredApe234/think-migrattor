@@ -19,6 +19,7 @@ import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.service.AddOrderService;
+import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
 import com.mps.think.setup.vo.OrderVO;
 
 @Service
@@ -79,6 +80,15 @@ public class AddOrderServiceImpl implements AddOrderService {
 	@Override
 	public Page<Order> getAllorderForPublisher(Pageable page,Integer pubId) throws Exception {
 		return addOrderRepo.findAllByCustomerIdPublisherId(page,pubId);
+	}
+
+	@Override
+	public void setAllOrdersOfCustomerInActive(Integer customerId) {
+		List<Order> orders = addOrderRepo.findByCustomerIdCustomerId(customerId);
+		orders.forEach(o -> {
+			o.setOrderStatus(OrderStatus.Cancelled);
+		});
+		addOrderRepo.saveAllAndFlush(orders);
 	}
 
 	

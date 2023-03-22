@@ -27,5 +27,6 @@ public interface AddOrderService {
 	
 	List<OrderCodesSuper> getRecentTwoOrderOfCustomer(Integer customerId) throws Exception;
 	
+	void setAllOrdersOfCustomerInActive(Integer customerId);
 	
 }

@@ -34,4 +34,6 @@ public interface CustomerDetailsService {
 	
 	Integer countOfOrdersForGivenCustomerInYear(Integer customerId, String year);
 	
+	CustomerDetails updateCustomerStatus(CustomerDetailsVO customer);
+	
 }
