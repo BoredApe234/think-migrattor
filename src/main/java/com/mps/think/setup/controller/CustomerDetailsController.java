@@ -114,11 +114,11 @@ public class CustomerDetailsController {
 		return ResponseEntity.ok(json.toString());
 	}
 	@GetMapping("/getAllCustomerAgentForSearch")
-	public ResponseEntity<?> getAllCustomerAgentForSearch(@RequestParam(required = false) String agencyName,
+	public ResponseEntity<?> getAllCustomerAgentForSearch(@RequestParam(required = true) Integer publisher, @RequestParam(required = false) String agencyName,
 			 @RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "5") Integer size) {
 		return ResponseEntity.ok(
-				customerDetailsService.getAllCustomerAgentForSearch(agencyName, PageRequest.of(page, size)));
+				customerDetailsService.getAllCustomerAgentForSearch(publisher ,agencyName, PageRequest.of(page, size)));
 	}
 }
 

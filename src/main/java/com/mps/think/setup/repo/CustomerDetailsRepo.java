@@ -71,8 +71,10 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 	
 //	   @Query("SELECT c FROM CustomerDetails c WHERE " +
 //	            "(LOWER(c.agencyname) LIKE LOWER(CONCAT('%', :agencyName, '%')) OR :agencyName IS NULL)")
-		@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE cc.custCategory LIKE '%'||'Agents'||'%' "
-				+ "AND c.agencyname LIKE '%'||:agencyName||'%'")
-	    Page<CustomerDetails> getAllCustomerAgentForSearch(@Param("agencyName") String agencyName, Pageable pageable);
+//		@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE cc.custCategory LIKE '%'||'Agents'||'%' AND "
+//				+ "c.publisher = :publisher AND c.agencyname LIKE '%'||:agencyName||'%'")
+	
+	@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE c.publisher.id = :publisher AND cc.thinkCategory = 'Agency' AND cc.custCategory LIKE '%'||:agencyName||'%'")
+	Page<CustomerDetails> getAllCustomerAgentForSearch(@Param("publisher") Integer publisher,@Param("agencyName") String agencyName, Pageable pageable);
 
 }

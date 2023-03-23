@@ -34,5 +34,5 @@ public interface CustomerDetailsService {
 	
 	Integer countOfOrdersForGivenCustomerInYear(Integer customerId, String year);
 	
-	public Page<CustomerDetails> getAllCustomerAgentForSearch(String agencyname, Pageable page);
+	public Page<CustomerDetails> getAllCustomerAgentForSearch(Integer publisher, String agencyname, Pageable page);
 }

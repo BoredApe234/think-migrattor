@@ -127,9 +127,9 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	}
 
 	@Override
-	public Page<CustomerDetails> getAllCustomerAgentForSearch(String agencyname, Pageable page) {
+	public Page<CustomerDetails> getAllCustomerAgentForSearch(Integer publisher ,String agencyname, Pageable page) {
 		// TODO Auto-generated method stub
-		return customerRepo.getAllCustomerAgentForSearch(agencyname, page);
+		return customerRepo.getAllCustomerAgentForSearch(publisher, agencyname, page);
 	}
 	
 }
