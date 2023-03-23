@@ -15,5 +15,7 @@ public interface AddPaymentService {
 	public AddPayment updatePayment(AddPaymentVO paymentVO);
 	
 	public AddPayment findbyPaymentId(Integer id);
+	
+	public AddPayment findByCustomerDetailsCustomerId(Integer customerId);
 
 }
