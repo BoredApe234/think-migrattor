@@ -68,5 +68,11 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 
 	@Query("SELECT COUNT(c) FROM CustomerDetails c where c.publisher.id = ?1")
 	Integer countCustomersInPublisher(Integer pubId);
+	
+//	   @Query("SELECT c FROM CustomerDetails c WHERE " +
+//	            "(LOWER(c.agencyname) LIKE LOWER(CONCAT('%', :agencyName, '%')) OR :agencyName IS NULL)")
+		@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE cc.custCategory LIKE '%'||'Agents'||'%' "
+				+ "AND c.agencyname LIKE '%'||:agencyName||'%'")
+	    Page<CustomerDetails> getAllCustomerAgentForSearch(@Param("agencyName") String agencyName, Pageable pageable);
 
 }

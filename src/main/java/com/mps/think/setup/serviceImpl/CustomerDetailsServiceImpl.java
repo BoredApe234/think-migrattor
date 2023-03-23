@@ -125,6 +125,12 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	public Integer countOfOrdersForGivenCustomerInYear(Integer customerId, String year) {
 		return orderRepo.findOrderCountForCustomerInYear(customerId, year).size();
 	}
+
+	@Override
+	public Page<CustomerDetails> getAllCustomerAgentForSearch(String agencyname, Pageable page) {
+		// TODO Auto-generated method stub
+		return customerRepo.getAllCustomerAgentForSearch(agencyname, page);
+	}
 	
 }
 

@@ -113,6 +113,12 @@ public class CustomerDetailsController {
 	    json.put("orderCount", customerDetailsService.countOfOrdersForGivenCustomerInYear(customerId, year));
 		return ResponseEntity.ok(json.toString());
 	}
-	
+	@GetMapping("/getAllCustomerAgentForSearch")
+	public ResponseEntity<?> getAllCustomerAgentForSearch(@RequestParam(required = false) String agencyName,
+			 @RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) {
+		return ResponseEntity.ok(
+				customerDetailsService.getAllCustomerAgentForSearch(agencyName, PageRequest.of(page, size)));
+	}
 }
 
