@@ -1,9 +1,10 @@
 package com.mps.think.setup.serviceImpl;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.AddPayment;
@@ -104,6 +105,15 @@ public class AddPaymentServiceImpl implements AddPaymentService{
 	@Override
 	public AddPayment findbyPaymentId(Integer id) {
 		return addPaymentRepo.findById(id).get();
+	}
+
+	@Override
+	public AddPayment findByCustomerDetailsCustomerId(Integer customerId) {
+		AddPayment data=addPaymentRepo.findByCustomerDetailsCustomerId(customerId);
+		if(null==data){
+		 throw new NoSuchElementException("plz add payment details");
+		}
+		return data;
 	}
 
 }
