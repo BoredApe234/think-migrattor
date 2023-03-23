@@ -40,5 +40,8 @@ public class AddPaymentController {
 		return ResponseEntity.ok(addPaymentService.findbyPaymentId(id));
 	}
 	
-
+	@PostMapping("/findByCustomerDetailsCustomerId")
+	public ResponseEntity<?> findByCustomerDetailsCustomerId(@RequestBody Integer customerId) {
+		return ResponseEntity.ok(addPaymentService.findByCustomerDetailsCustomerId(customerId));
+	}
 }
