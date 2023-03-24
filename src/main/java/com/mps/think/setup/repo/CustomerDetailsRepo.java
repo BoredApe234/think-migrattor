@@ -69,7 +69,7 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 
 	@Query("SELECT COUNT(c) FROM CustomerDetails c where c.publisher.id = ?1")
 	Integer countCustomersInPublisher(Integer pubId);
-	
+
 	@Query("SELECT a FROM Order o JOIN o.customerId c JOIN o.orderAddresses oam JOIN oam.address a WHERE c.customerId = :customerId GROUP BY a.addressId "
 			+ "ORDER BY o.orderId DESC")
 	Page<Addresses> findAllRecentAddressOfCustomerBasedOnOrder(@Param("customerId") Integer customerId, Pageable page);
@@ -78,5 +78,14 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 	// this one is to show the other customer addresses while placing the order...
 	@Query("SELECT c FROM CustomerDetails c WHERE c.customerId != :customerId")
 	Page<CustomerDetails> findOtherCustomer(@Param("customerId") Integer customerId, Pageable page);
+
+//	   @Query("SELECT c FROM CustomerDetails c WHERE " +
+//	            "(LOWER(c.agencyname) LIKE LOWER(CONCAT('%', :agencyName, '%')) OR :agencyName IS NULL)")
+//		@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE cc.custCategory LIKE '%'||'Agents'||'%' AND "
+//				+ "c.publisher = :publisher AND c.agencyname LIKE '%'||:agencyName||'%'")
+	
+	@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE c.publisher.id = :publisher AND cc.thinkCategory = 'Agency' AND cc.custCategory LIKE '%'||:agencyName||'%'")
+	Page<CustomerDetails> getAllCustomerAgentForSearch(@Param("publisher") Integer publisher,@Param("agencyName") String agencyName, Pageable pageable);
+
 
 }

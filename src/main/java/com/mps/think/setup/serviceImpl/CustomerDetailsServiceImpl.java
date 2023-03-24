@@ -139,6 +139,10 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	}
 
 	@Override
+	public Page<CustomerDetails> getAllCustomerAgentForSearch(Integer publisher ,String agencyname, Pageable page) {
+		return customerRepo.getAllCustomerAgentForSearch(publisher, agencyname, page);
+	}
+	
 	public CustomerDetails updateCustomerStatus(CustomerDetailsVO customerVO) {
 
 		Optional<CustomerDetails> customerDetails = customerRepo.findById(customerVO.getCustomerId());
