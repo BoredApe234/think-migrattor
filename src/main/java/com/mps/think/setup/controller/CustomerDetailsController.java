@@ -133,5 +133,17 @@ public class CustomerDetailsController {
 		return ResponseEntity.ok(customerDetailsService.updateCustomerStatus(customerVO));
 	}
 	
+	@GetMapping("/getAllRecentAddressesOfCustomer")
+	public ResponseEntity<?> getAllRecentAddressesOfCustomer(@RequestParam(required = true) Integer customerId, 
+			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) {
+		return ResponseEntity.ok(customerDetailsService.getAllRecentAddressFromCustomerOrders(customerId, PageRequest.of(page, size)));
+	}
+	
+	@GetMapping("/getOtherCustomersWithAddresses")
+	public ResponseEntity<?> getOtherCustomers(@RequestParam(required = true) Integer customerId, 
+			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) {
+		return ResponseEntity.ok(customerDetailsService.getOtherCustomerAddresses(customerId, PageRequest.of(page, size)));
+	}
+	
 }
 
