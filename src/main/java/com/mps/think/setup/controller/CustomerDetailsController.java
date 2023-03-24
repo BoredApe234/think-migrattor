@@ -99,7 +99,7 @@ public class CustomerDetailsController {
 	
 	@GetMapping("/getAllCustomersRecentTwoOrderCodeUnderPub/{pubId}")
 	public ResponseEntity<?> getAllCustomersRecentTwoOrderCodeUnderPub(@PathVariable("pubId") Integer pubId) {
-		return ResponseEntity.ok(customerDetailsService.GetAllCustomerRecentOrderCodeForPub(pubId));
+		return ResponseEntity.ok(customerDetailsService.getAllCustomerRecentOrderCodeForPub(pubId));
 	}
 	
 	@GetMapping("/getRecentPlacedOrderOfCustomer/{customerId}")
@@ -140,9 +140,9 @@ public class CustomerDetailsController {
 	}
 	
 	@GetMapping("/getOtherCustomersWithAddresses")
-	public ResponseEntity<?> getOtherCustomers(@RequestParam(required = true) Integer customerId, 
+	public ResponseEntity<?> getOtherCustomers(@RequestParam(required = false) Integer publisherId, @RequestParam(required = true) Integer customerId, 
 			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) {
-		return ResponseEntity.ok(customerDetailsService.getOtherCustomerAddresses(customerId, PageRequest.of(page, size)));
+		return ResponseEntity.ok(customerDetailsService.getOtherCustomerAddresses(publisherId, customerId, PageRequest.of(page, size)));
 	}
 	
 }
