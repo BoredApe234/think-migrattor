@@ -9,6 +9,7 @@ import org.springframework.data.domain.Pageable;
 import com.mps.think.setup.model.Addresses;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.OrderAddressMapping;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.vo.CustomerDetailsVO;
 
@@ -29,7 +30,7 @@ public interface CustomerDetailsService {
 	
 	public CustomerDetails deleteCustomer(Integer pubId);
 	
-	List<Map<Integer, List<OrderCodesSuper>>> GetAllCustomerRecentOrderCodeForPub(Integer pubId);
+	List<Map<Integer, List<OrderCodesSuper>>> getAllCustomerRecentOrderCodeForPub(Integer pubId);
 
 	Order getRecentOrderOfCustomer(Integer customerId) throws Exception;
 	
@@ -39,8 +40,8 @@ public interface CustomerDetailsService {
 
 	CustomerDetails updateCustomerStatus(CustomerDetailsVO customer);
 	
-	Page<Addresses> getAllRecentAddressFromCustomerOrders(Integer customerId, Pageable page);
+	Page<OrderAddressMapping> getAllRecentAddressFromCustomerOrders(Integer customerId, Pageable page);
 	
-	Page<CustomerDetails> getOtherCustomerAddresses(Integer customerId, Pageable page);
+	Page<CustomerDetails> getOtherCustomerAddresses(Integer publisherId, Integer customerId, Pageable page);
 
 }

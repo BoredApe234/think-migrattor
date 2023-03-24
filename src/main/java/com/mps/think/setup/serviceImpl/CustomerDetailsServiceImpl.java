@@ -21,6 +21,7 @@ import com.mps.think.setup.model.Addresses;
 import com.mps.think.setup.model.CustomerAddresses;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.OrderAddressMapping;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.AddressesRepo;
@@ -106,7 +107,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	}
 
 	@Override
-	public List<Map<Integer, List<OrderCodesSuper>>> GetAllCustomerRecentOrderCodeForPub(Integer pubId) {
+	public List<Map<Integer, List<OrderCodesSuper>>> getAllCustomerRecentOrderCodeForPub(Integer pubId) {
 		Integer numCustomers = customerRepo.countCustomersInPublisher(pubId);
 		if (numCustomers < 1) {
 			return new ArrayList<>(0);
@@ -173,13 +174,13 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	}
 
 	@Override
-	public Page<Addresses> getAllRecentAddressFromCustomerOrders(Integer customerId, Pageable page) {
+	public Page<OrderAddressMapping> getAllRecentAddressFromCustomerOrders(Integer customerId, Pageable page) {
 		return customerRepo.findAllRecentAddressOfCustomerBasedOnOrder(customerId, page);
 	}
 
 	@Override
-	public Page<CustomerDetails> getOtherCustomerAddresses(Integer customerId, Pageable page) {
-		return customerRepo.findOtherCustomer(customerId, page);
+	public Page<CustomerDetails> getOtherCustomerAddresses(Integer publisherId, Integer customerId, Pageable page) {
+		return customerRepo.findOtherCustomer(publisherId, customerId, page);
 	}
 
 }

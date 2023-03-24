@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import com.mps.think.setup.model.Addresses;
 import com.mps.think.setup.model.CancelReasons;
 import com.mps.think.setup.model.CustomerDetails;
+import com.mps.think.setup.model.OrderAddressMapping;
 
 @Repository
 public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Integer> {
@@ -70,14 +71,14 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 	@Query("SELECT COUNT(c) FROM CustomerDetails c where c.publisher.id = ?1")
 	Integer countCustomersInPublisher(Integer pubId);
 
-	@Query("SELECT a FROM Order o JOIN o.customerId c JOIN o.orderAddresses oam JOIN oam.address a WHERE c.customerId = :customerId GROUP BY a.addressId "
+	@Query("SELECT oam FROM Order o JOIN o.customerId c JOIN o.orderAddresses oam JOIN oam.address a WHERE c.customerId = :customerId GROUP BY a.addressId "
 			+ "ORDER BY o.orderId DESC")
-	Page<Addresses> findAllRecentAddressOfCustomerBasedOnOrder(@Param("customerId") Integer customerId, Pageable page);
+	Page<OrderAddressMapping> findAllRecentAddressOfCustomerBasedOnOrder(@Param("customerId") Integer customerId, Pageable page);
 	
 	
 	// this one is to show the other customer addresses while placing the order...
-	@Query("SELECT c FROM CustomerDetails c WHERE c.customerId != :customerId")
-	Page<CustomerDetails> findOtherCustomer(@Param("customerId") Integer customerId, Pageable page);
+	@Query("SELECT c FROM CustomerDetails c WHERE (c.publisher.id = :publisherId OR :publisherId IS NULL) AND c.customerId != :customerId")
+	Page<CustomerDetails> findOtherCustomer(@Param("publisherId") Integer publisherId, @Param("customerId") Integer customerId, Pageable page);
 
 //	   @Query("SELECT c FROM CustomerDetails c WHERE " +
 //	            "(LOWER(c.agencyname) LIKE LOWER(CONCAT('%', :agencyName, '%')) OR :agencyName IS NULL)")
@@ -86,6 +87,5 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 	
 	@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE c.publisher.id = :publisher AND cc.thinkCategory = 'Agency' AND cc.custCategory LIKE '%'||:agencyName||'%'")
 	Page<CustomerDetails> getAllCustomerAgentForSearch(@Param("publisher") Integer publisher,@Param("agencyName") String agencyName, Pageable pageable);
-
 
 }
