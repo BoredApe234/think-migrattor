@@ -80,6 +80,10 @@ public class Order extends BaseEntity {
 	@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH})
 	@JoinColumn(name = "auxiliary_information_id", referencedColumnName = "id" )
 	private OrderAuxiliaryInformation auxiliaryInformation;
+	
+	@OneToOne
+	@JoinColumn(name = "other_addresses_customer", referencedColumnName = "id")
+	private CustomerDetails otherAddressCustomer;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -167,6 +171,14 @@ public class Order extends BaseEntity {
 
 	public void setOrderClass(OrderClass orderClass) {
 		this.orderClass = orderClass;
+	}
+
+	public CustomerDetails getOtherAddressCustomer() {
+		return otherAddressCustomer;
+	}
+
+	public void setOtherAddressCustomer(CustomerDetails otherAddressCustomer) {
+		this.otherAddressCustomer = otherAddressCustomer;
 	}
 
 }

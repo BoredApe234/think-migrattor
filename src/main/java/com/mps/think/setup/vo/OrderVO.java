@@ -29,6 +29,8 @@ public class OrderVO {
 	private List<OrderAddressMappingVO> orderAddresses;
 	
 	private OrderAuxiliaryInformationVO auxiliaryInformation;
+	
+	private CustomerDetailsVO otherAddressCustomer;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -118,5 +120,12 @@ public class OrderVO {
 		this.orderClass = orderClass;
 	}
 
+	public CustomerDetailsVO getOtherAddressCustomer() {
+		return otherAddressCustomer;
+	}
+
+	public void setOtherAddressCustomer(CustomerDetailsVO otherAddressCustomer) {
+		this.otherAddressCustomer = otherAddressCustomer;
+	}
 
 }
