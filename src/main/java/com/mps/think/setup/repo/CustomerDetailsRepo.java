@@ -12,6 +12,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.data.util.Streamable;
 import org.springframework.stereotype.Repository;
 
+import com.mps.think.setup.model.Addresses;
 import com.mps.think.setup.model.CancelReasons;
 import com.mps.think.setup.model.CustomerDetails;
 
@@ -68,5 +69,14 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 
 	@Query("SELECT COUNT(c) FROM CustomerDetails c where c.publisher.id = ?1")
 	Integer countCustomersInPublisher(Integer pubId);
+	
+	@Query("SELECT a FROM Order o JOIN o.customerId c JOIN o.orderAddresses oam JOIN oam.address a WHERE c.customerId = :customerId GROUP BY a.addressId "
+			+ "ORDER BY o.orderId DESC")
+	Page<Addresses> findAllRecentAddressOfCustomerBasedOnOrder(@Param("customerId") Integer customerId, Pageable page);
+	
+	
+	// this one is to show the other customer addresses while placing the order...
+	@Query("SELECT c FROM CustomerDetails c WHERE c.customerId != :customerId")
+	Page<CustomerDetails> findOtherCustomer(@Param("customerId") Integer customerId, Pageable page);
 
 }

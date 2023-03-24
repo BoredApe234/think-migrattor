@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.mps.think.setup.model.Addresses;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderCodesSuper;
@@ -35,5 +36,9 @@ public interface CustomerDetailsService {
 	Integer countOfOrdersForGivenCustomerInYear(Integer customerId, String year);
 	
 	CustomerDetails updateCustomerStatus(CustomerDetailsVO customer);
+	
+	Page<Addresses> getAllRecentAddressFromCustomerOrders(Integer customerId, Pageable page);
+	
+	Page<CustomerDetails> getOtherCustomerAddresses(Integer customerId, Pageable page);
 	
 }

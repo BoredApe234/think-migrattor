@@ -109,9 +109,9 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	public List<Map<Integer, List<OrderCodesSuper>>> GetAllCustomerRecentOrderCodeForPub(Integer pubId) {
 		Integer numCustomers = customerRepo.countCustomersInPublisher(pubId);
 		if (numCustomers < 1) {
-			return new ArrayList<Map<Integer, List<OrderCodesSuper>>>(0);
+			return new ArrayList<>(0);
 		}
-		List<Map<Integer, List<OrderCodesSuper>>> orderCodes = customerRepo
+		return customerRepo
 				.findByPublisherId(pubId, PageRequest.of(0, numCustomers)).stream().map(c -> {
 					try {
 						return fetchRecentTwoOrderCode(c.getCustomerId());
@@ -120,7 +120,6 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 					}
 					return null;
 				}).collect(Collectors.toList());
-		return orderCodes;
 	}
 
 	@Override
@@ -167,6 +166,16 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		
 		return customer;
 		
+	}
+
+	@Override
+	public Page<Addresses> getAllRecentAddressFromCustomerOrders(Integer customerId, Pageable page) {
+		return customerRepo.findAllRecentAddressOfCustomerBasedOnOrder(customerId, page);
+	}
+
+	@Override
+	public Page<CustomerDetails> getOtherCustomerAddresses(Integer customerId, Pageable page) {
+		return customerRepo.findOtherCustomer(customerId, page);
 	}
 
 }
