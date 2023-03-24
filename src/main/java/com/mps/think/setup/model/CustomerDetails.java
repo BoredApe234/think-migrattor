@@ -1,4 +1,5 @@
 package com.mps.think.setup.model;
+import java.util.Date;
 // customer details
 import java.util.List;
 
@@ -20,6 +21,7 @@ import javax.validation.constraints.Pattern;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.mps.think.setup.vo.EnumModelVO.ChargeTaxOn;
 import com.mps.think.setup.vo.EnumModelVO.ConfigurationOptionsforOrders;
+import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
 import com.mps.think.setup.vo.EnumModelVO.PaymentOptions;
 
 @Entity
@@ -165,6 +167,16 @@ public class CustomerDetails  extends BaseEntity{
 	@JsonManagedReference
 	private List<CustomerAddresses> customerAddresses;
 
+	@Enumerated(EnumType.STRING)
+	@Column(name = "customer_status")
+	private CustomerStatus customerStatus;
+	
+	@Column(name = "curr_customer_status_cause")
+	private String currCustomerStatusCause;
+	
+	@Column(name = "date_until_deactivation")
+	private Date dateUntilDeactivation;
+	
 	public Integer getCustomerId() {
 		return customerId;
 	}
@@ -435,6 +447,30 @@ public class CustomerDetails  extends BaseEntity{
 
 	public void setAgencycode(String agencycode) {
 		this.agencycode = agencycode;
+	}
+
+	public CustomerStatus getCustomerStatus() {
+		return customerStatus;
+	}
+
+	public void setCustomerStatus(CustomerStatus customerStatus) {
+		this.customerStatus = customerStatus;
+	}
+
+	public String getCurrCustomerStatusCause() {
+		return currCustomerStatusCause;
+	}
+
+	public void setCurrCustomerStatusCause(String currCustomerStatusCause) {
+		this.currCustomerStatusCause = currCustomerStatusCause;
+	}
+
+	public Date getDateUntilDeactivation() {
+		return dateUntilDeactivation;
+	}
+
+	public void setDateUntilDeactivation(Date dateUntilDeactivation) {
+		this.dateUntilDeactivation = dateUntilDeactivation;
 	}
 	
 	

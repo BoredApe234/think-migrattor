@@ -19,6 +19,7 @@ import com.mps.think.setup.vo.CustomerDetailsVO;
 import com.mps.think.setup.vo.EnumModelVO.ChargeTaxOn;
 import com.mps.think.setup.vo.EnumModelVO.ConfigurationOptionsforOrders;
 import com.mps.think.setup.vo.EnumModelVO.CustomerCategory;
+import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
 import com.mps.think.setup.vo.EnumModelVO.PaymentOptions;
 
 import net.minidev.json.JSONObject;
@@ -113,6 +114,7 @@ public class CustomerDetailsController {
 	    json.put("orderCount", customerDetailsService.countOfOrdersForGivenCustomerInYear(customerId, year));
 		return ResponseEntity.ok(json.toString());
 	}
+	
 	@GetMapping("/getAllCustomerAgentForSearch")
 	public ResponseEntity<?> getAllCustomerAgentForSearch(@RequestParam(required = true) Integer publisher, @RequestParam(required = false) String agencyName,
 			 @RequestParam(defaultValue = "0") Integer page,
@@ -120,5 +122,16 @@ public class CustomerDetailsController {
 		return ResponseEntity.ok(
 				customerDetailsService.getAllCustomerAgentForSearch(publisher ,agencyName, PageRequest.of(page, size)));
 	}
+	
+	@GetMapping("/getCustomerStatusValues")
+	public ResponseEntity<?> getCustomerStatusValues() {
+		return ResponseEntity.ok(CustomerStatus.values());
+	}
+	
+	@PostMapping("/updateCustomerStatusHoldOrInactive")
+	public ResponseEntity<?> updateCustomerStatusHoldOrInactive(@RequestBody CustomerDetailsVO customerVO) {
+		return ResponseEntity.ok(customerDetailsService.updateCustomerStatus(customerVO));
+	}
+	
 }
 
