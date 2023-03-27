@@ -75,7 +75,6 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 			+ "ORDER BY o.orderId DESC")
 	Page<OrderAddressMapping> findAllRecentAddressOfCustomerBasedOnOrder(@Param("customerId") Integer customerId, Pageable page);
 	
-	
 	// this one is to show the other customer addresses while placing the order...
 	@Query("SELECT c FROM CustomerDetails c WHERE (c.publisher.id = :publisherId OR :publisherId IS NULL) AND c.customerId != :customerId")
 	Page<CustomerDetails> findOtherCustomer(@Param("publisherId") Integer publisherId, @Param("customerId") Integer customerId, Pageable page);
@@ -88,4 +87,7 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 	@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE c.publisher.id = :publisher AND cc.thinkCategory = 'Agency' AND cc.custCategory LIKE '%'||:agencyName||'%'")
 	Page<CustomerDetails> getAllCustomerAgentForSearch(@Param("publisher") Integer publisher,@Param("agencyName") String agencyName, Pageable pageable);
 
+	@Query("SELECT ca.customer from CustomerAddresses ca WHERE ca.customer.customerId = :customerId AND ca.address.addressId = :addressId")
+	List<CustomerDetails> getCustomerDetailsIfPassedCustomerHoldTheAddress(@Param("customerId") Integer customerId, @Param("addressId") Integer addressId);
+	
 }
