@@ -3,11 +3,12 @@ package com.mps.think.setup.serviceImpl;
 import java.util.List;
 import java.util.Optional;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
-import com.mps.think.setup.model.Publisher;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.Terms;
 import com.mps.think.setup.repo.TermsRepo;
 import com.mps.think.setup.service.TermsService;
@@ -18,6 +19,7 @@ public class TermsServiceImpl implements TermsService{
 	
 	@Autowired
 	TermsRepo termsRepo;
+	
 
 	@Override
 	public List<Terms> findAllTerms() {
@@ -31,81 +33,23 @@ public class TermsServiceImpl implements TermsService{
 
 	@Override
 	public TermsVO saveTerms(TermsVO terms) {
-		Terms data  = new Terms();
-		
-		if (terms.getSegmented()== true ) {
-			data.setTerm(terms.getTerm());
-			data.setDescription(terms.getDescription());
-			data.setSegmented(terms.getSegmented());
-			data.setSegment(terms.getSegment());
-			data.setUnitsPerSegment(terms.getUnitsPerSegment());
-			data.setQuantity(terms.getSegment() * terms.getUnitsPerSegment());
-			data.setDuration(terms.getDuration());
-			data.setUnitsInDuration(terms.getUnitsInDuration());
-			data.setVolumeGroupsToSpan(terms.getVolumeGroupsToSpan());
-			data.setStartType(terms.getStartType());
-			data.setInstallmentterm(terms.getInstallmentterm());
-			terms.setTermsId(terms.getTermsId());
-			Publisher publisher=new Publisher();
-			publisher.setId(terms.getPubId().getId());
-			data.setPubId(publisher);
-			termsRepo.saveAndFlush(data);
+		ObjectMapper mapper = new ObjectMapper();
+		Terms newTerms = mapper.convertValue(terms, Terms.class);
+		Terms data=termsRepo.saveAndFlush(newTerms);
+		terms.setTermsId(data.getTermsId());
+		return terms;
 		}
-		else {
-			data.setTerm(terms.getTerm());
-			data.setDescription(terms.getDescription());
-			data.setQuantity(terms.getQuantity());
-			data.setDuration(terms.getDuration());
-			data.setUnitsInDuration(terms.getUnitsInDuration());
-			data.setVolumeGroupsToSpan(terms.getVolumeGroupsToSpan());
-			data.setStartType(terms.getStartType());
-			data.setInstallmentterm(terms.getInstallmentterm());
-			data.setSegmented(terms.getSegmented());
-			Publisher publisher=new Publisher();
-			publisher.setId(terms.getPubId().getId());
-			data.setPubId(publisher);
-			termsRepo.saveAndFlush(data);
-		}
-		return terms;}
 
 
 	@Override
 	public TermsVO updateTerms(TermsVO terms) {
-		Terms data  = new Terms();
-		if(terms.getSegmented()==true) {
-			data.setTermsId(terms.getTermsId());
-			Publisher publisher=new Publisher();
-			publisher.setId(terms.getPubId().getId());
-			data.setPubId(publisher);
-			data.setTerm(terms.getTerm());
-			data.setDescription(terms.getDescription());
-			data.setSegmented(terms.getSegmented());
-			data.setSegment(terms.getSegment());
-			data.setUnitsPerSegment(terms.getUnitsPerSegment());
-			data.setQuantity(terms.getSegment() * terms.getUnitsPerSegment());
-			data.setDuration(terms.getDuration());
-			data.setUnitsInDuration(terms.getUnitsInDuration());
-			data.setVolumeGroupsToSpan(terms.getVolumeGroupsToSpan());
-			data.setStartType(terms.getStartType());
-			data.setInstallmentterm(terms.getInstallmentterm());
-			termsRepo.saveAndFlush(data);
-			}
-		else {
-				data.setTermsId(terms.getTermsId());
-				Publisher publisher=new Publisher();
-				publisher.setId(terms.getPubId().getId());
-				data.setPubId(publisher);
-				data.setTerm(terms.getTerm());
-				data.setDescription(terms.getDescription());
-				data.setQuantity(terms.getQuantity());
-				data.setDuration(terms.getDuration());
-				data.setUnitsInDuration(terms.getUnitsInDuration());
-				data.setVolumeGroupsToSpan(terms.getVolumeGroupsToSpan());
-				data.setStartType(terms.getStartType());
-				data.setInstallmentterm(terms.getInstallmentterm());
-				termsRepo.saveAndFlush(data);
-			}
-		return terms;}
+		ObjectMapper mapper = new ObjectMapper();
+		Terms updateTerms = mapper.convertValue(terms, Terms.class);
+		Terms data=termsRepo.saveAndFlush(updateTerms);
+		terms.setTermsId(data.getTermsId());
+		return terms;
+
+		}
 	
 
 	@Override
