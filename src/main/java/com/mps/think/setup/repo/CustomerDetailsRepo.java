@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mps.think.setup.model.Addresses;
 import com.mps.think.setup.model.CancelReasons;
+import com.mps.think.setup.model.CustomerAddresses;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.OrderAddressMapping;
 
@@ -87,7 +88,13 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 	@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE c.publisher.id = :publisher AND cc.thinkCategory = 'Agency' AND cc.custCategory LIKE '%'||:agencyName||'%'")
 	Page<CustomerDetails> getAllCustomerAgentForSearch(@Param("publisher") Integer publisher,@Param("agencyName") String agencyName, Pageable pageable);
 
-	@Query("SELECT ca.customer from CustomerAddresses ca WHERE ca.customer.customerId = :customerId AND ca.address.addressId = :addressId")
-	List<CustomerDetails> getCustomerDetailsIfPassedCustomerHoldTheAddress(@Param("customerId") Integer customerId, @Param("addressId") Integer addressId);
+//	@Query("SELECT ca.customer from CustomerAddresses ca WHERE ca.customer.customerId = :customerId AND ca.address.addressId = :addressId")
+//	List<CustomerDetails> getCustomerDetailsIfPassedCustomerHoldTheAddress(@Param("customerId") Integer customerId, @Param("addressId") Integer addressId);
+	
+	@Query(value = "select count(*) from customer_addresses_mapping cam where cam.customer_id = :customerId and cam.address_id = :addressId", nativeQuery = true)
+	Integer checkGivenAddressIsOfCustomer(@Param("customerId") Integer customerId, @Param("addressId") Integer addressId);
+	
+	@Query(value = "select cam.customer_id from customer_addresses_mapping cam where cam.address_id = :addressId", nativeQuery = true)
+	List<Integer> findCustomerNameFromAddressId(@Param("addressId") Integer addressId);
 	
 }
