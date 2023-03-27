@@ -226,6 +226,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 			
 			/*
 			 	we can remove comment out from below code and remove the above redundant code.
+			 	
 			*/
 			
 //			CustomerDetails randomCustomer = getCustomerByAddressId(oam.getAddress().getAddressId());
