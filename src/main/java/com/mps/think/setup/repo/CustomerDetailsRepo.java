@@ -97,4 +97,5 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 	@Query(value = "select cam.customer_id from customer_addresses_mapping cam where cam.address_id = :addressId", nativeQuery = true)
 	List<Integer> findCustomerNameFromAddressId(@Param("addressId") Integer addressId);
 	
+	
 }
