@@ -135,8 +135,8 @@ public class CustomerDetailsController {
 	
 	@GetMapping("/getAllRecentAddressesOfCustomer")
 	public ResponseEntity<?> getAllRecentAddressesOfCustomer(@RequestParam(required = true) Integer customerId, 
-			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) {
-		return ResponseEntity.ok(customerDetailsService.getAllRecentAddressFromCustomerOrders(customerId, PageRequest.of(page, size)));
+			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws Exception {
+		return ResponseEntity.ok(customerDetailsService.getRecentAddressWithTheirCustomer(customerId, PageRequest.of(page, size)));
 	}
 	
 	@GetMapping("/getOtherCustomersWithAddresses")

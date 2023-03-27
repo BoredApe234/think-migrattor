@@ -8,14 +8,17 @@ import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.Addresses;
 import com.mps.think.setup.model.CustomerAddresses;
@@ -30,8 +33,10 @@ import com.mps.think.setup.service.AddOrderService;
 import com.mps.think.setup.service.CustomerDetailsService;
 import com.mps.think.setup.vo.CustomerDetailsVO;
 import com.mps.think.setup.vo.EnumModelVO;
+import com.mps.think.setup.vo.RecentAddressVO;
 import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
 import com.mps.think.setup.vo.EnumModelVO.Status;
+import com.mps.think.setup.vo.OrderAddressMappingVO;
 
 @Service
 public class CustomerDetailsServiceImpl implements CustomerDetailsService {
@@ -47,6 +52,9 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Autowired
 	private AddressesRepo addressRepo;
+	
+	@Autowired
+	private ObjectMapper mapper;
 
 	@Override
 	public List<CustomerDetails> getAllCustomerDetails() {
@@ -61,7 +69,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Override
 	public CustomerDetails saveCustomerDetails(CustomerDetailsVO customerDetails) {
-		ObjectMapper mapper = new ObjectMapper();
+//		ObjectMapper mapper = new ObjectMapper();
 		CustomerDetails newCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
 		newCustomer.setCustomerStatus(CustomerStatus.Active);
 		newCustomer.setDateUntilDeactivation(null);
@@ -71,7 +79,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Override
 	public CustomerDetails updateCustomerDetails(CustomerDetailsVO customerDetails) {
-		ObjectMapper mapper = new ObjectMapper();
+//		ObjectMapper mapper = new ObjectMapper();
 		CustomerDetails updatedCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
 		CustomerDetails cdata = customerRepo.saveAndFlush(updatedCustomer);
 		return cdata;
@@ -182,5 +190,45 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	public Page<CustomerDetails> getOtherCustomerAddresses(Integer publisherId, Integer customerId, Pageable page) {
 		return customerRepo.findOtherCustomer(publisherId, customerId, page);
 	}
+	
+	public String fetchCustomerName(CustomerDetails customer) {
+		String name = customer.getFname();
+		name += customer.getLname() != null ? " " + customer.getLname() : "";
+		return name.trim();
+	}
+
+	@Override
+	public Page<RecentAddressVO> getRecentAddressWithTheirCustomer(Integer customerId,
+			Pageable page) throws Exception {
+		Page<OrderAddressMapping> givenCustomerOrdersAddresses = customerRepo.findAllRecentAddressOfCustomerBasedOnOrder(customerId, page);
+		List<RecentAddressVO> output = new ArrayList<>();
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		for (OrderAddressMapping oam : givenCustomerOrdersAddresses.toList()) {
+			Integer addressId = oam.getAddress().getAddressId();
+			CustomerDetails otherAddressCustomer = oam.getOrder().getOtherAddressCustomer();
+			List<CustomerDetails> cus1 = customerRepo.getCustomerDetailsIfPassedCustomerHoldTheAddress(customerId, addressId);
+			RecentAddressVO recentAddress = new RecentAddressVO();
+			if (!cus1.isEmpty()) {
+				recentAddress.setOrderAddressMapping(mapper.convertValue(oam, OrderAddressMappingVO.class));
+				recentAddress.setCustomerName(fetchCustomerName(cus1.get(0)));
+			} else if (otherAddressCustomer != null) {
+				List<CustomerDetails> cus2 = customerRepo.getCustomerDetailsIfPassedCustomerHoldTheAddress(otherAddressCustomer.getCustomerId(), addressId);
+				if (!cus2.isEmpty()) {
+					recentAddress.setOrderAddressMapping(mapper.convertValue(oam, OrderAddressMappingVO.class));
+					recentAddress.setCustomerName(fetchCustomerName(cus2.get(0)));
+				} else {
+					recentAddress.setOrderAddressMapping(mapper.convertValue(oam, OrderAddressMappingVO.class));
+					recentAddress.setCustomerName("");
+				}
+			}
+			output.add(recentAddress);
+		}
+		return new PageImpl<>(output, givenCustomerOrdersAddresses.getPageable(), givenCustomerOrdersAddresses.getTotalElements());
+	}
 
 }
+
+
+
+
+

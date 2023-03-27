@@ -12,6 +12,7 @@ import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderAddressMapping;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.vo.CustomerDetailsVO;
+import com.mps.think.setup.vo.RecentAddressVO;
 
 public interface CustomerDetailsService {
 	
@@ -43,5 +44,7 @@ public interface CustomerDetailsService {
 	Page<OrderAddressMapping> getAllRecentAddressFromCustomerOrders(Integer customerId, Pageable page);
 	
 	Page<CustomerDetails> getOtherCustomerAddresses(Integer publisherId, Integer customerId, Pageable page);
+	
+	Page<RecentAddressVO> getRecentAddressWithTheirCustomer(Integer customerId, Pageable page) throws Exception;
 
 }
