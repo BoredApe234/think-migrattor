@@ -48,6 +48,22 @@ public class OrderVO {
 		this.customerId = customerId;
 	}
 
+	public OrderClassVO getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClassVO orderClass) {
+		this.orderClass = orderClass;
+	}
+
+	public String getOrderType() {
+		return orderType;
+	}
+
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
+	}
+
 	public OrderStatus getOrderStatus() {
 		return orderStatus;
 	}
@@ -88,14 +104,6 @@ public class OrderVO {
 		this.deliveryAndBillingOptions = deliveryAndBillingOptions;
 	}
 
-	public OrderAuxiliaryInformationVO getAuxiliaryInformation() {
-		return auxiliaryInformation;
-	}
-
-	public void setAuxiliaryInformation(OrderAuxiliaryInformationVO auxiliaryInformation) {
-		this.auxiliaryInformation = auxiliaryInformation;
-	}
-
 	public List<OrderAddressMappingVO> getOrderAddresses() {
 		return orderAddresses;
 	}
@@ -104,20 +112,12 @@ public class OrderVO {
 		this.orderAddresses = orderAddresses;
 	}
 
-	public String getOrderType() {
-		return orderType;
+	public OrderAuxiliaryInformationVO getAuxiliaryInformation() {
+		return auxiliaryInformation;
 	}
 
-	public void setOrderType(String orderType) {
-		this.orderType = orderType;
-	}
-
-	public OrderClassVO getOrderClass() {
-		return orderClass;
-	}
-
-	public void setOrderClass(OrderClassVO orderClass) {
-		this.orderClass = orderClass;
+	public void setAuxiliaryInformation(OrderAuxiliaryInformationVO auxiliaryInformation) {
+		this.auxiliaryInformation = auxiliaryInformation;
 	}
 
 	public CustomerDetailsVO getOtherAddressCustomer() {
@@ -127,5 +127,7 @@ public class OrderVO {
 	public void setOtherAddressCustomer(CustomerDetailsVO otherAddressCustomer) {
 		this.otherAddressCustomer = otherAddressCustomer;
 	}
+
+	
 
 }

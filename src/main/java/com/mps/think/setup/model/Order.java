@@ -81,7 +81,7 @@ public class Order extends BaseEntity {
 	@JoinColumn(name = "auxiliary_information_id", referencedColumnName = "id" )
 	private OrderAuxiliaryInformation auxiliaryInformation;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "other_addresses_customer", referencedColumnName = "id")
 	private CustomerDetails otherAddressCustomer;
 
@@ -99,6 +99,22 @@ public class Order extends BaseEntity {
 
 	public void setCustomerId(CustomerDetails customerId) {
 		this.customerId = customerId;
+	}
+
+	public OrderClass getOrderClass() {
+		return orderClass;
+	}
+
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
+	}
+
+	public String getOrderType() {
+		return orderType;
+	}
+
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
 	}
 
 	public OrderStatus getOrderStatus() {
@@ -157,22 +173,6 @@ public class Order extends BaseEntity {
 		this.auxiliaryInformation = auxiliaryInformation;
 	}
 
-	public String getOrderType() {
-		return orderType;
-	}
-
-	public void setOrderType(String orderType) {
-		this.orderType = orderType;
-	}
-
-	public OrderClass getOrderClass() {
-		return orderClass;
-	}
-
-	public void setOrderClass(OrderClass orderClass) {
-		this.orderClass = orderClass;
-	}
-
 	public CustomerDetails getOtherAddressCustomer() {
 		return otherAddressCustomer;
 	}
@@ -180,5 +180,7 @@ public class Order extends BaseEntity {
 	public void setOtherAddressCustomer(CustomerDetails otherAddressCustomer) {
 		this.otherAddressCustomer = otherAddressCustomer;
 	}
+
+	
 
 }

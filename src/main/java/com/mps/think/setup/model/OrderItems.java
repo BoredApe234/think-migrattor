@@ -51,7 +51,7 @@ public class OrderItems extends BaseEntity {
 	private Date validTo;
 	
 	@Column(name = "liability_issue")
-	private String liabilityIssue;
+	private Integer liabilityIssue;
 	
 	@Column(name = "extended_issue")
 	private Integer extendedIssue;
@@ -138,11 +138,11 @@ public class OrderItems extends BaseEntity {
 		this.validTo = validTo;
 	}
 
-	public String getLiabilityIssue() {
+	public Integer getLiabilityIssue() {
 		return liabilityIssue;
 	}
 
-	public void setLiabilityIssue(String liabilityIssue) {
+	public void setLiabilityIssue(Integer liabilityIssue) {
 		this.liabilityIssue = liabilityIssue;
 	}
 

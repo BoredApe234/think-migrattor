@@ -25,7 +25,7 @@ public class OrderItemsVO {
 
 	private Date validTo;
 
-	private String liabilityIssue;
+	private Integer liabilityIssue;
 
 	private Integer extendedIssue;
 
@@ -107,11 +107,11 @@ public class OrderItemsVO {
 		this.validTo = validTo;
 	}
 
-	public String getLiabilityIssue() {
+	public Integer getLiabilityIssue() {
 		return liabilityIssue;
 	}
 
-	public void setLiabilityIssue(String liabilityIssue) {
+	public void setLiabilityIssue(Integer liabilityIssue) {
 		this.liabilityIssue = liabilityIssue;
 	}
 
