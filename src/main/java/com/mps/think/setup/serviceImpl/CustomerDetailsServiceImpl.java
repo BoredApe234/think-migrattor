@@ -196,34 +196,42 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		name += customer.getLname() != null ? " " + customer.getLname() : "";
 		return name.trim();
 	}
+	
+	public CustomerDetails getCustomerByAddressId(Integer addressId) {
+		List<Integer> customers = customerRepo.findCustomerNameFromAddressId(addressId);
+		if (customers.isEmpty()) return null;
+		Optional<CustomerDetails> cus = customerRepo.findById(customers.get(0));
+		return cus.isPresent() ? cus.get() : null;
+	}
 
 	@Override
 	public Page<RecentAddressVO> getRecentAddressWithTheirCustomer(Integer customerId,
 			Pageable page) throws Exception {
-		Page<OrderAddressMapping> givenCustomerOrdersAddresses = customerRepo.findAllRecentAddressOfCustomerBasedOnOrder(customerId, page);
+		Page<OrderAddressMapping> givenCustomerOrdersAddresses = customerRepo.findAllRecentAddressOfCustomerBasedOnOrder(customerId, page);		
 		List<RecentAddressVO> output = new ArrayList<>();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-		for (OrderAddressMapping oam : givenCustomerOrdersAddresses.toList()) {
-			Integer addressId = oam.getAddress().getAddressId();
-			CustomerDetails otherAddressCustomer = oam.getOrder().getOtherAddressCustomer();
-			List<CustomerDetails> cus1 = customerRepo.getCustomerDetailsIfPassedCustomerHoldTheAddress(customerId, addressId);
-			RecentAddressVO recentAddress = new RecentAddressVO();
-			if (!cus1.isEmpty()) {
-				recentAddress.setOrderAddressMapping(mapper.convertValue(oam, OrderAddressMappingVO.class));
-				recentAddress.setCustomerName(fetchCustomerName(cus1.get(0)));
-			} else if (otherAddressCustomer != null) {
-				List<CustomerDetails> cus2 = customerRepo.getCustomerDetailsIfPassedCustomerHoldTheAddress(otherAddressCustomer.getCustomerId(), addressId);
-				if (!cus2.isEmpty()) {
-					recentAddress.setOrderAddressMapping(mapper.convertValue(oam, OrderAddressMappingVO.class));
-					recentAddress.setCustomerName(fetchCustomerName(cus2.get(0)));
-				} else {
-					recentAddress.setOrderAddressMapping(mapper.convertValue(oam, OrderAddressMappingVO.class));
-					recentAddress.setCustomerName("");
-				}
+		for (OrderAddressMapping oam : givenCustomerOrdersAddresses) {
+			CustomerDetails cus1 = oam.getOrder().getCustomerId();
+			CustomerDetails cus2 = oam.getOrder().getOtherAddressCustomer();
+			RecentAddressVO recentAdd = new RecentAddressVO();
+			recentAdd.setOrderAddressMapping(mapper.convertValue(oam, OrderAddressMappingVO.class));
+			if (customerRepo.checkGivenAddressIsOfCustomer(cus1.getCustomerId(), oam.getAddress().getAddressId()) > 0) {
+				recentAdd.setCustomerName(fetchCustomerName(cus1));
+			} else if (cus2 != null && customerRepo.checkGivenAddressIsOfCustomer(cus2.getCustomerId(), oam.getAddress().getAddressId()) > 0) {
+				recentAdd.setCustomerName(fetchCustomerName(cus2));
+			} else {
+				CustomerDetails randomCustomer = getCustomerByAddressId(oam.getAddress().getAddressId());
+				recentAdd.setCustomerName(randomCustomer != null ? fetchCustomerName(randomCustomer) : "");
 			}
-			if (recentAddress.getOrderAddressMapping() != null) {
-				output.add(recentAddress);
-			}
+			
+			/*
+			 	we can remove comment out from below code and remove the above redundant code.
+			*/
+			
+//			CustomerDetails randomCustomer = getCustomerByAddressId(oam.getAddress().getAddressId());
+//			recentAdd.setCustomerName(randomCustomer != null ? fetchCustomerName(randomCustomer) : "");
+			
+			output.add(recentAdd);
 		}
 		return new PageImpl<>(output, givenCustomerOrdersAddresses.getPageable(), givenCustomerOrdersAddresses.getTotalElements());
 	}
