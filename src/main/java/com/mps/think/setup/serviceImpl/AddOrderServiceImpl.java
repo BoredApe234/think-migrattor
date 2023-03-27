@@ -27,11 +27,15 @@ public class AddOrderServiceImpl implements AddOrderService {
 
 	@Autowired
 	private AddOrderRepo addOrderRepo;
+	
+	@Autowired
+	private ObjectMapper mapper;
 
 	@Override
 	public Order saveOrder(OrderVO order) throws Exception {
-		ObjectMapper mapper = new ObjectMapper();
+//		ObjectMapper mapper = new ObjectMapper();
 		Order newOrder = mapper.convertValue(order, Order.class);
+		if (order.getOtherAddressCustomer().getCustomerId() == 0) newOrder.setOtherAddressCustomer(null);
 		return addOrderRepo.saveAndFlush(newOrder);
 	}
 
@@ -53,8 +57,10 @@ public class AddOrderServiceImpl implements AddOrderService {
 
 	@Override
 	public Order updateOrder(Order order) throws Exception {
-		ObjectMapper mapper = new ObjectMapper();
-		return addOrderRepo.saveAndFlush(mapper.convertValue(order, Order.class));
+//		ObjectMapper mapper = new ObjectMapper();
+		Order updateOrder = mapper.convertValue(order, Order.class);
+		if (order.getOtherAddressCustomer().getCustomerId() == 0) updateOrder.setOtherAddressCustomer(null);
+		return addOrderRepo.saveAndFlush(updateOrder);
 	}
 
 	@Override
