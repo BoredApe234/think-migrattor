@@ -221,7 +221,9 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 					recentAddress.setCustomerName("");
 				}
 			}
-			output.add(recentAddress);
+			if (recentAddress.getOrderAddressMapping() != null) {
+				output.add(recentAddress);
+			}
 		}
 		return new PageImpl<>(output, givenCustomerOrdersAddresses.getPageable(), givenCustomerOrdersAddresses.getTotalElements());
 	}
