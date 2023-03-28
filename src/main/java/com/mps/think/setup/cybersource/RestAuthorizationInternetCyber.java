@@ -2,6 +2,11 @@ package com.mps.think.setup.cybersource;
 
 import java.util.Properties;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
 import com.cybersource.authsdk.core.MerchantConfig;
 
 import Api.PaymentsApi;
@@ -16,18 +21,17 @@ import Model.Ptsv2paymentsPaymentInformation;
 import Model.Ptsv2paymentsPaymentInformationCard;
 import Model.Ptsv2paymentsProcessingInformation;
 
-public class SimpleAuthorizationInternet {
+@RestController
+public class RestAuthorizationInternetCyber {
 	private static String responseCode = null;
 	private static String status = null;
 	private static Properties merchantProp;
 	public static boolean userCapture = false;
 
-	public static void main(String args[]) throws Exception {
-		run();
-	}
+	@GetMapping("/paymentCybersource")
+	public ResponseEntity<PtsV2PaymentsPost201Response> paymentCybersource(
+			@RequestBody CyberSourceRequest cyberSourceRequest) {
 
-	public static PtsV2PaymentsPost201Response run() {
-	
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
@@ -39,34 +43,48 @@ public class SimpleAuthorizationInternet {
 		if (userCapture) {
 			processingInformation.capture(true);
 		}
-		
+
 		requestObj.processingInformation(processingInformation);
 
 		Ptsv2paymentsPaymentInformation paymentInformation = new Ptsv2paymentsPaymentInformation();
 		Ptsv2paymentsPaymentInformationCard paymentInformationCard = new Ptsv2paymentsPaymentInformationCard();
-		paymentInformationCard.number("4111111111111111");
-		paymentInformationCard.expirationMonth("12");
-		paymentInformationCard.expirationYear("2031");
+//		paymentInformationCard.number("4111111111111111");
+//		paymentInformationCard.expirationMonth("12");
+//		paymentInformationCard.expirationYear("2031");
+		paymentInformationCard.number(cyberSourceRequest.getNumber());
+		paymentInformationCard.expirationMonth(cyberSourceRequest.getExpirationMonth());
+		paymentInformationCard.expirationYear(cyberSourceRequest.getExpirationYear());
 		paymentInformation.card(paymentInformationCard);
 
 		requestObj.paymentInformation(paymentInformation);
 
 		Ptsv2paymentsOrderInformation orderInformation = new Ptsv2paymentsOrderInformation();
 		Ptsv2paymentsOrderInformationAmountDetails orderInformationAmountDetails = new Ptsv2paymentsOrderInformationAmountDetails();
-		orderInformationAmountDetails.totalAmount("102.21");
-		orderInformationAmountDetails.currency("USD");
+//		orderInformationAmountDetails.totalAmount("102.21");
+//		orderInformationAmountDetails.currency("USD");
+		orderInformationAmountDetails.totalAmount(cyberSourceRequest.getTotalAmount());
+		orderInformationAmountDetails.currency(cyberSourceRequest.getCurrency());
 		orderInformation.amountDetails(orderInformationAmountDetails);
 
 		Ptsv2paymentsOrderInformationBillTo orderInformationBillTo = new Ptsv2paymentsOrderInformationBillTo();
-		orderInformationBillTo.firstName("John");
-		orderInformationBillTo.lastName("Doe");
-		orderInformationBillTo.address1("1 Market St");
-		orderInformationBillTo.locality("san francisco");
-		orderInformationBillTo.administrativeArea("CA");
-		orderInformationBillTo.postalCode("94105");
-		orderInformationBillTo.country("US");
-		orderInformationBillTo.email("test@cybs.com");
-		orderInformationBillTo.phoneNumber("4158880000");
+//		orderInformationBillTo.firstName("John");
+//		orderInformationBillTo.lastName("Doe");
+//		orderInformationBillTo.address1("1 Market St");
+//		orderInformationBillTo.locality("san francisco");
+//		orderInformationBillTo.administrativeArea("CA");
+//		orderInformationBillTo.postalCode("94105");
+//		orderInformationBillTo.country("US");
+//		orderInformationBillTo.email("test@cybs.com");
+//		orderInformationBillTo.phoneNumber("4158880000");
+		orderInformationBillTo.firstName(cyberSourceRequest.getFirstName());
+		orderInformationBillTo.lastName(cyberSourceRequest.getLastName());
+		orderInformationBillTo.address1(cyberSourceRequest.getAddress1());
+		orderInformationBillTo.locality(cyberSourceRequest.getLocality());
+		orderInformationBillTo.administrativeArea(cyberSourceRequest.getAdministrativeArea());
+		orderInformationBillTo.postalCode(cyberSourceRequest.getPostalCode());
+		orderInformationBillTo.country(cyberSourceRequest.getCountry());
+		orderInformationBillTo.email(cyberSourceRequest.getEmail());
+		orderInformationBillTo.phoneNumber(cyberSourceRequest.getPhoneNumber());
 		orderInformation.billTo(orderInformationBillTo);
 
 		requestObj.orderInformation(orderInformation);
@@ -86,10 +104,10 @@ public class SimpleAuthorizationInternet {
 			System.out.println("ResponseCode :" + responseCode);
 			System.out.println("ResponseMessage :" + status);
 			System.out.println(result);
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-	return result;
+		return ResponseEntity.ok(result);
 	}
 }
