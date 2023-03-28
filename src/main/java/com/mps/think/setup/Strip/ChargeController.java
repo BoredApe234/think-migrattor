@@ -61,7 +61,7 @@ public class ChargeController {
 	public ResponseEntity<?> refundAPI(String chargeId) throws StripeException {
 //		Stripe.apiKey = "sk_test_FQFXEQMTnWlgu1ckpre5Ka4000VeYdxCdU";
 //		Map<String, Object> params = new HashMap<>();
-//		params.put("charge", chargeId);
+//		params.put("charge", chargeId);cus_NYjc8h13frsnR1
 //		Refund refund = Refund.create(params);
 		Refund refund = paymentsService.refund(chargeId);
 		System.out.println(refund.toString());

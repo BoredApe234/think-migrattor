@@ -119,12 +119,45 @@
 		<artifactId>springdoc-openapi-ui</artifactId>
 		<version>1.6.10</version>
 	</dependency>
-	 <dependency>
-            <groupId>com.stripe</groupId>
-            <artifactId>stripe-java</artifactId>
-            <version>4.2.0</version>
-        </dependency>
-          <dependency>
+		<dependency>
+			<groupId>com.stripe</groupId>
+			<artifactId>stripe-java</artifactId>
+			<version>4.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cybersource</groupId>
+			<artifactId>AuthenticationSdk</artifactId>
+			<version>0.0.24</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cybersource</groupId>
+			<artifactId>cybersource-sdk-java</artifactId>
+			<version>6.2.13</version>
+		</dependency>
+		<dependency>
+			<groupId>com.cybersource</groupId>
+			<artifactId>cybersource-rest-client-java</artifactId>
+			<version>0.0.51</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.google.guava</groupId>
+		    <artifactId>guava</artifactId>
+		    <version>[30.0-jre,)</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+		<dependency>
+		    <groupId>commons-io</groupId>
+		    <artifactId>commons-io</artifactId>
+		    <version>2.11.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>2.12.6.1</version>
+		</dependency>
+		
+  <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
