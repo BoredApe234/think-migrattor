@@ -38,6 +38,12 @@ public class PaymentTypeController {
 		return ResponseEntity.ok(paymentTypeService.getAllPaymentTypes(PageRequest.of(page, size)));
 	}
 	
+	@GetMapping("/getAllPaymentTypesByPubId")
+	public ResponseEntity<?> getAllPaymentTypesByPubId(@RequestParam(required = true) Integer publisherId, 
+			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) {
+		return ResponseEntity.ok(paymentTypeService.getAllPaymentTypeByPubId(publisherId, PageRequest.of(page, size)));
+	}
+	
 	@GetMapping("/getPaymentTypeById/{paymentTypeId}")
 	public ResponseEntity<?> getPaymentTypeById(@PathVariable("paymentTypeId") Integer paymentTypeId) {
 		return ResponseEntity.ok(paymentTypeService.getPaymentTypeById(paymentTypeId));
