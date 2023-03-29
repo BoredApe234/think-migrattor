@@ -3,7 +3,7 @@ package com.mps.think.setup.cybersource;
 import java.util.Properties;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,7 +28,7 @@ public class RestAuthorizationInternetCyber {
 	private static Properties merchantProp;
 	public static boolean userCapture = false;
 
-	@GetMapping("/paymentCybersource")
+	@PostMapping("/paymentCybersource")
 	public ResponseEntity<PtsV2PaymentsPost201Response> paymentCybersource(
 			@RequestBody CyberSourceRequest cyberSourceRequest) {
 
