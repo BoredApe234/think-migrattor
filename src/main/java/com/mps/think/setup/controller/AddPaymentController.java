@@ -8,9 +8,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mps.think.setup.model.AddPayment;
 import com.mps.think.setup.service.AddPaymentService;
 import com.mps.think.setup.vo.AddPaymentVO;
 import com.mps.think.setup.vo.AuxVariableVO;
+
+import net.minidev.json.JSONObject;
 
 @RestController
 @CrossOrigin
@@ -41,7 +44,8 @@ public class AddPaymentController {
 	}
 	
 	@PostMapping("/findByCustomerDetailsCustomerId")
-	public ResponseEntity<?> findByCustomerDetailsCustomerId(@RequestBody Integer customerId) {
-		return ResponseEntity.ok(addPaymentService.findByCustomerDetailsCustomerId(customerId));
+	public ResponseEntity<?> findByCustomerDetailsCustomerId(@RequestBody Integer customerId) throws Exception {
+		AddPayment addPaymentDetails = addPaymentService.findByCustomerDetailsCustomerId(customerId);
+		return ResponseEntity.ok(addPaymentDetails != null ? addPaymentDetails : new JSONObject());
 	}
 }
