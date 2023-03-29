@@ -50,6 +50,10 @@ public class PaymentThreshold extends BaseEntity{
 	@OneToOne
 	@JoinColumn(name = "pub_id", referencedColumnName = "id" )
 	private Publisher publisher;
+	
+	@OneToOne
+	@JoinColumn(name = "payment_threshold_def_id", referencedColumnName = "id" )
+	private PaymentThresholdDef paymentThresholdDef;
 
 	public Integer getPaymentThresholdId() {
 		return paymentThresholdId;
@@ -129,6 +133,14 @@ public class PaymentThreshold extends BaseEntity{
 
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
+	}
+
+	public PaymentThresholdDef getPaymentThresholdDef() {
+		return paymentThresholdDef;
+	}
+
+	public void setPaymentThresholdDef(PaymentThresholdDef paymentThresholdDef) {
+		this.paymentThresholdDef = paymentThresholdDef;
 	}
 	
 }

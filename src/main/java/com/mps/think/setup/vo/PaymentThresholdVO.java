@@ -1,5 +1,6 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.PaymentThresholdDef;
 import com.mps.think.setup.model.Publisher;
 
 public class PaymentThresholdVO {
@@ -23,6 +24,8 @@ public class PaymentThresholdVO {
 	private Integer maxOverpaymentForRefund;
 	
 	private Publisher publisher;
+	
+	private PaymentThresholdDef paymentThresholdDef;
 
 	public Integer getPaymentThresholdId() {
 		return paymentThresholdId;
@@ -102,6 +105,14 @@ public class PaymentThresholdVO {
 
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
+	}
+
+	public PaymentThresholdDef getPaymentThresholdDef() {
+		return paymentThresholdDef;
+	}
+
+	public void setPaymentThresholdDef(PaymentThresholdDef paymentThresholdDef) {
+		this.paymentThresholdDef = paymentThresholdDef;
 	}
 	
 }

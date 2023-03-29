@@ -69,7 +69,7 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 				System.out.println("4 Full payments");
 				payment.put("paymentStatus", "Full payments");
 				return payment;
-			} else if ((int) unPaidAmount >= threshold.getMaxUnderpaymentForPartial()) {
+			} else if ((int) unPaidAmount > threshold.getMaxUnderpaymentForPartial()) {
 				System.out.println("7 Partial payments");
 				payment.put("paymentStatus", "Partial payments");
 				return payment;
@@ -83,7 +83,7 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 				System.out.println("6 Full payments");
 				payment.put("paymentStatus", "Full payments");
 				return payment;
-			} else if ((int) unPaidAmount >= threshold.getMaxOverpaymentForRefund()) {
+			} else if ((int) unPaidAmount > threshold.getMaxOverpaymentForRefund()) {
 				System.out.println("7 Refund payments");
 				payment.put("paymentStatus", "Refund payments");
 				return payment;
