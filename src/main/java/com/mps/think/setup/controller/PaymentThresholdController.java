@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mps.think.setup.service.PaymentThresholdService;
@@ -34,6 +35,11 @@ public class PaymentThresholdController {
 	@PostMapping("/getPaymentThresholdById")
 	public ResponseEntity<?> getPaymentThresholdById(@RequestBody Integer id){
 		return ResponseEntity.ok(paymentThresholdService.findByPaymentThresholdId(id));
+	}
+	
+	@PostMapping("/getPaymentRange")
+	public ResponseEntity<?> getPaymentRange(@RequestParam double invoiceAmount,@RequestParam double paidAmount,@RequestParam Integer paymentThresholdId){
+		return ResponseEntity.ok(paymentThresholdService.definePayment(invoiceAmount, paidAmount, paymentThresholdId));
 	}
 
 }
