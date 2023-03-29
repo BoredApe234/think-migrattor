@@ -334,5 +334,35 @@ public class EnumModelVO {
 			return customerStatus;
 		}
 	}
+	
+	public static enum RealiseCashWhen {
+		
+		AUTHORISED("Authorised"), CLEARED("Cleared");
+		
+		private final String realiseCash;
+
+		RealiseCashWhen(String realiseCash) {
+			this.realiseCash = realiseCash;
+		}
+
+		public String getRealiseCash() {
+			return realiseCash;
+		}
+		
+	}
+	
+	public static enum CVVValues {
+		
+		NOTREQUIRED("Not Required"), REQUIRED("Required");
+		private final String cvv;
+		
+		CVVValues(String cvv) {
+			this.cvv = cvv;
+		}
+		public String getCvv() {
+			return cvv;
+		}
+	
+	}
 
 }
