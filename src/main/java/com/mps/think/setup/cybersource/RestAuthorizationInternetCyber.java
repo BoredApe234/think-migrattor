@@ -35,7 +35,8 @@ public class RestAuthorizationInternetCyber {
 		CreatePaymentRequest requestObj = new CreatePaymentRequest();
 
 		Ptsv2paymentsClientReferenceInformation clientReferenceInformation = new Ptsv2paymentsClientReferenceInformation();
-		clientReferenceInformation.code("TC50171_3");
+//		clientReferenceInformation.code("TC50171_3");TC50171_3
+		clientReferenceInformation.code("think_mpstest");
 		requestObj.clientReferenceInformation(clientReferenceInformation);
 
 		Ptsv2paymentsProcessingInformation processingInformation = new Ptsv2paymentsProcessingInformation();
