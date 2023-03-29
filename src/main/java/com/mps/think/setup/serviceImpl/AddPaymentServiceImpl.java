@@ -110,9 +110,9 @@ public class AddPaymentServiceImpl implements AddPaymentService{
 	@Override
 	public AddPayment findByCustomerDetailsCustomerId(Integer customerId) {
 		AddPayment data=addPaymentRepo.findByCustomerDetailsCustomerId(customerId);
-		if(null==data){
-		 throw new NoSuchElementException("plz add payment details");
-		}
+//		if(null==data){
+//		 throw new NoSuchElementException("plz add payment details");
+//		}
 		return data;
 	}
 

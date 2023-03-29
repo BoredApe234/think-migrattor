@@ -1,0 +1,134 @@
+package com.mps.think.setup.model;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="Payment_threshold")
+public class PaymentThreshold extends BaseEntity{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@Column(name="id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private Integer paymentThresholdId;
+	
+	@Column(name="partial_threshold")
+	private Integer partialThreshold;
+	
+	@Column(name="under_threshold")
+    private Integer underThreshold ;
+    
+	@Column(name="over_threshold")
+    private Integer overThreshold;
+    
+	@Column(name="refund_threshold")
+    private Integer refundThreshold;
+    
+	@Column(name="max_under_payment_for_full")
+    private Integer maxUnderpaymentForFull;
+    
+	@Column(name="max_under_payment_for_partial")
+    private Integer maxUnderpaymentForPartial;
+    
+	@Column(name="max_over_payment_for_full")
+    private Integer maxOverpaymentForFull;
+    
+	@Column(name="max_over_payment_for_refund")
+    private Integer maxOverpaymentForRefund;
+	
+	@OneToOne
+	@JoinColumn(name = "pub_id", referencedColumnName = "id" )
+	private Publisher publisher;
+
+	public Integer getPaymentThresholdId() {
+		return paymentThresholdId;
+	}
+
+	public void setPaymentThresholdId(Integer paymentThresholdId) {
+		this.paymentThresholdId = paymentThresholdId;
+	}
+
+	public Integer getPartialThreshold() {
+		return partialThreshold;
+	}
+
+	public void setPartialThreshold(Integer partialThreshold) {
+		this.partialThreshold = partialThreshold;
+	}
+
+	public Integer getUnderThreshold() {
+		return underThreshold;
+	}
+
+	public void setUnderThreshold(Integer underThreshold) {
+		this.underThreshold = underThreshold;
+	}
+
+	public Integer getOverThreshold() {
+		return overThreshold;
+	}
+
+	public void setOverThreshold(Integer overThreshold) {
+		this.overThreshold = overThreshold;
+	}
+
+	public Integer getRefundThreshold() {
+		return refundThreshold;
+	}
+
+	public void setRefundThreshold(Integer refundThreshold) {
+		this.refundThreshold = refundThreshold;
+	}
+
+	public Integer getMaxUnderpaymentForFull() {
+		return maxUnderpaymentForFull;
+	}
+
+	public void setMaxUnderpaymentForFull(Integer maxUnderpaymentForFull) {
+		this.maxUnderpaymentForFull = maxUnderpaymentForFull;
+	}
+
+	public Integer getMaxUnderpaymentForPartial() {
+		return maxUnderpaymentForPartial;
+	}
+
+	public void setMaxUnderpaymentForPartial(Integer maxUnderpaymentForPartial) {
+		this.maxUnderpaymentForPartial = maxUnderpaymentForPartial;
+	}
+
+	public Integer getMaxOverpaymentForFull() {
+		return maxOverpaymentForFull;
+	}
+
+	public void setMaxOverpaymentForFull(Integer maxOverpaymentForFull) {
+		this.maxOverpaymentForFull = maxOverpaymentForFull;
+	}
+
+	public Integer getMaxOverpaymentForRefund() {
+		return maxOverpaymentForRefund;
+	}
+
+	public void setMaxOverpaymentForRefund(Integer maxOverpaymentForRefund) {
+		this.maxOverpaymentForRefund = maxOverpaymentForRefund;
+	}
+
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+	
+}
