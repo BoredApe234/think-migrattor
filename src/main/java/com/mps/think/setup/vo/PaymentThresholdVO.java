@@ -25,6 +25,14 @@ public class PaymentThresholdVO {
 	
 	private Publisher publisher;
 	
+	private String overpaymentAction;
+
+	private String underpaymentAction;
+
+	private boolean overpaymentOverrides;
+
+	private boolean underpaymentOverrides;
+	
 	private PaymentThresholdDef paymentThresholdDef;
 
 	public Integer getPaymentThresholdId() {
@@ -107,6 +115,38 @@ public class PaymentThresholdVO {
 		this.publisher = publisher;
 	}
 
+	public String getOverpaymentAction() {
+		return overpaymentAction;
+	}
+
+	public void setOverpaymentAction(String overpaymentAction) {
+		this.overpaymentAction = overpaymentAction;
+	}
+
+	public String getUnderpaymentAction() {
+		return underpaymentAction;
+	}
+
+	public void setUnderpaymentAction(String underpaymentAction) {
+		this.underpaymentAction = underpaymentAction;
+	}
+
+	public boolean isOverpaymentOverrides() {
+		return overpaymentOverrides;
+	}
+
+	public void setOverpaymentOverrides(boolean overpaymentOverrides) {
+		this.overpaymentOverrides = overpaymentOverrides;
+	}
+
+	public boolean isUnderpaymentOverrides() {
+		return underpaymentOverrides;
+	}
+
+	public void setUnderpaymentOverrides(boolean underpaymentOverrides) {
+		this.underpaymentOverrides = underpaymentOverrides;
+	}
+
 	public PaymentThresholdDef getPaymentThresholdDef() {
 		return paymentThresholdDef;
 	}
@@ -114,5 +154,7 @@ public class PaymentThresholdVO {
 	public void setPaymentThresholdDef(PaymentThresholdDef paymentThresholdDef) {
 		this.paymentThresholdDef = paymentThresholdDef;
 	}
+
+
 	
 }
