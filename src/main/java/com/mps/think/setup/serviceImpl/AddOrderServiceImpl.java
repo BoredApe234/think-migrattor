@@ -70,7 +70,7 @@ public class AddOrderServiceImpl implements AddOrderService {
 
 	@Override
 	public Page<Order> getSearchedOrders(Integer pubId, Integer customerId, String keyword, Pageable page) {
-		return addOrderRepo.findOrdersBySearch(pubId, customerId, keyword, page);
+		return addOrderRepo.findOrdersBySearch(pubId.equals(0) ? null : pubId, customerId, keyword, page);
 	}
 
 	@Override
