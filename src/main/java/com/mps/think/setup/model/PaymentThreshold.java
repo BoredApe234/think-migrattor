@@ -10,57 +10,65 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Payment_threshold")
-public class PaymentThreshold extends BaseEntity{
-	
+@Table(name = "Payment_threshold")
+public class PaymentThreshold extends BaseEntity {
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name = "id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer paymentThresholdId;
-	
-	@Column(name="partial_threshold")
+
+	@Column(name = "partial_threshold")
 	private Integer partialThreshold;
-	
-	@Column(name="under_threshold")
-    private Integer underThreshold ;
-    
-	@Column(name="over_threshold")
-    private Integer overThreshold;
-    
-	@Column(name="refund_threshold")
-    private Integer refundThreshold;
-    
-	@Column(name="max_under_payment_for_full")
-    private Integer maxUnderpaymentForFull;
-    
-	@Column(name="max_under_payment_for_partial")
-    private Integer maxUnderpaymentForPartial;
-    
-	@Column(name="max_over_payment_for_full")
-    private Integer maxOverpaymentForFull;
-    
-	@Column(name="max_over_payment_for_refund")
-    private Integer maxOverpaymentForRefund;
-	
+
+	@Column(name = "under_threshold")
+	private Integer underThreshold;
+
+	@Column(name = "over_threshold")
+	private Integer overThreshold;
+
+	@Column(name = "refund_threshold")
+	private Integer refundThreshold;
+
+	@Column(name = "max_under_payment_for_full")
+	private Integer maxUnderpaymentForFull;
+
+	@Column(name = "max_under_payment_for_partial")
+	private Integer maxUnderpaymentForPartial;
+
+	@Column(name = "max_over_payment_for_full")
+	private Integer maxOverpaymentForFull;
+
+	@Column(name = "max_over_payment_for_refund")
+	private Integer maxOverpaymentForRefund;
+
+	@Column(name = "over_payment_action")
+	private String overpaymentAction;
+
+	@Column(name = "under_payment_action")
+	private String underpaymentAction;
+
+	@Column(name = "over_payment_overrides")
+	private boolean overpaymentOverrides;
+
+	@Column(name = "under_payment_overrides")
+	private boolean underpaymentOverrides;
+
 	@OneToOne
-	@JoinColumn(name = "pub_id", referencedColumnName = "id" )
+	@JoinColumn(name = "pub_id", referencedColumnName = "id")
 	private Publisher publisher;
-	
+
 	@OneToOne
-	@JoinColumn(name = "payment_threshold_def_id", referencedColumnName = "id" )
+	@JoinColumn(name = "payment_threshold_def_id", referencedColumnName = "id")
 	private PaymentThresholdDef paymentThresholdDef;
 
 	public Integer getPaymentThresholdId() {
 		return paymentThresholdId;
-	}
-
-	public void setPaymentThresholdId(Integer paymentThresholdId) {
-		this.paymentThresholdId = paymentThresholdId;
 	}
 
 	public Integer getPartialThreshold() {
@@ -127,6 +135,38 @@ public class PaymentThreshold extends BaseEntity{
 		this.maxOverpaymentForRefund = maxOverpaymentForRefund;
 	}
 
+	public String getOverpaymentAction() {
+		return overpaymentAction;
+	}
+
+	public void setOverpaymentAction(String overpaymentAction) {
+		this.overpaymentAction = overpaymentAction;
+	}
+
+	public String getUnderpaymentAction() {
+		return underpaymentAction;
+	}
+
+	public void setUnderpaymentAction(String underpaymentAction) {
+		this.underpaymentAction = underpaymentAction;
+	}
+
+	public boolean isOverpaymentOverrides() {
+		return overpaymentOverrides;
+	}
+
+	public void setOverpaymentOverrides(boolean overpaymentOverrides) {
+		this.overpaymentOverrides = overpaymentOverrides;
+	}
+
+	public boolean isUnderpaymentOverrides() {
+		return underpaymentOverrides;
+	}
+
+	public void setUnderpaymentOverrides(boolean underpaymentOverrides) {
+		this.underpaymentOverrides = underpaymentOverrides;
+	}
+
 	public Publisher getPublisher() {
 		return publisher;
 	}
@@ -142,5 +182,8 @@ public class PaymentThreshold extends BaseEntity{
 	public void setPaymentThresholdDef(PaymentThresholdDef paymentThresholdDef) {
 		this.paymentThresholdDef = paymentThresholdDef;
 	}
-	
+
+	public void setPaymentThresholdId(Integer paymentThresholdId) {
+		this.paymentThresholdId = paymentThresholdId;
+	}
 }
