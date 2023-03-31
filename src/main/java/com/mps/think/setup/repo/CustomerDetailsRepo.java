@@ -68,6 +68,8 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 //	public Page<CustomerDetails> findAllCustomerByPubId(@Param("pubId") Integer pubId, Sort sort);
 
 	Page<CustomerDetails> findByPublisherId(Integer pubId, Pageable page);
+	
+	List<CustomerDetails> findByPublisherId(Integer pubId);
 
 	@Query("SELECT COUNT(c) FROM CustomerDetails c where c.publisher.id = ?1")
 	Integer countCustomersInPublisher(Integer pubId);
