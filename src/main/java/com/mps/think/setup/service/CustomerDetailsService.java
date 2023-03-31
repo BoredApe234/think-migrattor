@@ -31,7 +31,7 @@ public interface CustomerDetailsService {
 	
 	public CustomerDetails deleteCustomer(Integer pubId);
 	
-	List<Map<Integer, List<OrderCodesSuper>>> getAllCustomerRecentOrderCodeForPub(Integer pubId);
+	Map<Integer, List<OrderCodesSuper>> getAllCustomerRecentOrderCodeForPub(Integer pubId);
 
 	Order getRecentOrderOfCustomer(Integer customerId) throws Exception;
 	
