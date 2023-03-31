@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,8 +23,9 @@ public class AddProcess extends BaseEntity  {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer process_id;
 	
-	@Column(name = "process_types")
-	private String process_type;
+	@OneToOne
+	@JoinColumn(name = "processtype_id", referencedColumnName = "p_Id" )
+	private ProcessType process_typeid;
 
 	public Integer getProcess_id() {
 		return process_id;
@@ -32,13 +35,15 @@ public class AddProcess extends BaseEntity  {
 		this.process_id = process_id;
 	}
 
-	public String getProcess_type() {
-		return process_type;
+	public ProcessType getProcess_typeid() {
+		return process_typeid;
 	}
 
-	public void setProcess_type(String process_type) {
-		this.process_type = process_type;
+	public void setProcess_typeid(ProcessType process_typeid) {
+		this.process_typeid = process_typeid;
 	}
+
+	
 	
 	
 	

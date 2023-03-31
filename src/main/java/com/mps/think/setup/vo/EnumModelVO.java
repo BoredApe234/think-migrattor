@@ -364,19 +364,5 @@ public class EnumModelVO {
 		}
 	
 	}
-	
-	public static enum Process_types {
-		Label("Label"), BackLabel("BackLabel"), Billing("Billing"), Refund("Refund"), Renewal("Renewal"), Product_fullfillment("Product Fullfillment");
-
-		private final String process_types;
-
-		Process_types(String process_types) {
-			this.process_types = process_types;
-		}
-
-		public String getProcess_types() {
-			return process_types;
-		}
-	}
 
 }
