@@ -1,6 +1,7 @@
 package com.mps.think.setup.serviceImpl;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -69,7 +70,6 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Override
 	public CustomerDetails saveCustomerDetails(CustomerDetailsVO customerDetails) {
-//		ObjectMapper mapper = new ObjectMapper();
 		CustomerDetails newCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
 		newCustomer.setCustomerStatus(CustomerStatus.Active);
 		newCustomer.setDateUntilDeactivation(null);
@@ -79,7 +79,6 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Override
 	public CustomerDetails updateCustomerDetails(CustomerDetailsVO customerDetails) {
-//		ObjectMapper mapper = new ObjectMapper();
 		CustomerDetails updatedCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
 		CustomerDetails cdata = customerRepo.saveAndFlush(updatedCustomer);
 		return cdata;
@@ -99,7 +98,6 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Override
 	public Page<CustomerDetails> getAllCustomerDetailsForSearch(Integer pubId, String search, Pageable page) {
-		// TODO Auto-generated method stub
 		return customerRepo.getAllCustomerDetailsForSearchSingle(pubId.equals(0) ? null : pubId, search, page);
 	}
 
@@ -108,37 +106,29 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		return customerRepo.findByPublisherId(pubId, page);
 	}
 
-	public Map<Integer, List<OrderCodesSuper>> fetchRecentTwoOrderCode(Integer customerId) throws Exception {
-		Map<Integer, List<OrderCodesSuper>> response = new HashMap<>();
-		response.put(customerId, orderService.getRecentTwoOrderOfCustomer(customerId));
-		return response;
+	public List<OrderCodesSuper> fetchRecentTwoOrderCode(Integer customerId) throws Exception {
+		return orderService.getRecentTwoOrderOfCustomer(customerId);
 	}
 
 	@Override
-	public List<Map<Integer, List<OrderCodesSuper>>> getAllCustomerRecentOrderCodeForPub(Integer pubId) {
-		Integer numCustomers = customerRepo.countCustomersInPublisher(pubId);
-		if (numCustomers < 1) {
-			return new ArrayList<>(0);
-		}
-		return customerRepo
-				.findByPublisherId(pubId, PageRequest.of(0, numCustomers)).stream().map(c -> {
-					try {
-						return fetchRecentTwoOrderCode(c.getCustomerId());
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-					return null;
-				}).collect(Collectors.toList());
+	public Map<Integer, List<OrderCodesSuper>> getAllCustomerRecentOrderCodeForPub(Integer pubId) {
+		Map<Integer, List<OrderCodesSuper>> output = new HashMap<>();
+		customerRepo.findByPublisherId(pubId).stream().forEach(c -> {
+			try {
+				output.put(c.getCustomerId(), fetchRecentTwoOrderCode(c.getCustomerId()));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		});
+		return output;
 	}
 
 	@Override
 	public Order getRecentOrderOfCustomer(Integer customerId) throws Exception {
-		List<Order> orders = orderService
-				.getAllOrderByCustomerId(customerId, PageRequest.of(0, 1, Sort.by("orderId").descending())).toList();
-		if (!orders.isEmpty()) {
-			return orders.get(0);
+		Optional<Order> order = orderRepo.findByCustomerIdCustomerId(customerId).stream().max(Comparator.comparingInt(Order::getOrderId));
+		if (order.isPresent()) {
+			return order.get();
 		}
-//		throw new NoSuchElementException("customer does not have any order");
 		return null;
 	}
 
@@ -204,6 +194,16 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		return cus.isPresent() ? cus.get() : null;
 	}
 
+	
+	/*
+	 * the code below using if else-if and else for every OrderAddressMapping, though we can only use the code of else block to fetch the customer by providing the addressId 
+	 * but as per out condition an order can hold its customer addresses + one other customer addresses so if and else-if condition will check those
+	 * tow specific customer addresses only but, if any unknown address comes out the else condition is there to find the particular customer by 
+	 * using that address's id (which will perform a little longer operation) so almost every time the code will go through if and else-if condition
+	 * only and it is more efficient to find customer if there is only 2 customers.
+	 * 
+	 */
+	
 	@Override
 	public Page<RecentAddressVO> getRecentAddressWithTheirCustomer(Integer customerId,
 			Pageable page) throws Exception {
@@ -222,15 +222,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 			} else {
 				CustomerDetails randomCustomer = getCustomerByAddressId(oam.getAddress().getAddressId());
 				recentAdd.setCustomerName(randomCustomer != null ? fetchCustomerName(randomCustomer) : "");
-			}
-			
-			/*
-			 	we can remove comment out from below code and remove the above redundant code.
-			*/
-			
-//			CustomerDetails randomCustomer = getCustomerByAddressId(oam.getAddress().getAddressId());
-//			recentAdd.setCustomerName(randomCustomer != null ? fetchCustomerName(randomCustomer) : "");
-			
+			}		
 			output.add(recentAdd);
 		}
 		return new PageImpl<>(output, givenCustomerOrdersAddresses.getPageable(), givenCustomerOrdersAddresses.getTotalElements());
