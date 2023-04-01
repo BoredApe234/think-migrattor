@@ -1,6 +1,6 @@
 package com.mps.think.setup.vo;
 
-
+import com.mps.think.setup.model.SubmitJob;
 
 public class JobQueueVO {
 	
@@ -9,7 +9,7 @@ public class JobQueueVO {
 	private Boolean running;
 	private Boolean on_hold;
 	private Boolean day_end;
-	private String job;
+	private SubmitJob submitJobId;
 	public Integer getJobid() {
 		return jobid;
 	}
@@ -40,12 +40,14 @@ public class JobQueueVO {
 	public void setDay_end(Boolean day_end) {
 		this.day_end = day_end;
 	}
-	public String getJob() {
-		return job;
+	public SubmitJob getSubmitJobId() {
+		return submitJobId;
 	}
-	public void setJob(String job) {
-		this.job = job;
+	public void setSubmitJobId(SubmitJob submitJobId) {
+		this.submitJobId = submitJobId;
 	}
+	
+	
 	
 	
 

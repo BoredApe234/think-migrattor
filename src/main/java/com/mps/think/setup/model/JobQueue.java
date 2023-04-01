@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -33,8 +35,9 @@ public class JobQueue extends BaseEntity {
 	@Column(name = "day_end")
 	private Boolean day_end;
 	
-	@Column(name = "job")
-	private String job;
+	@OneToOne
+	@JoinColumn(name = "submitJob_id", referencedColumnName = "id" )
+	private SubmitJob submitJobId;
 
 	public Integer getJobid() {
 		return jobid;
@@ -76,13 +79,17 @@ public class JobQueue extends BaseEntity {
 		this.day_end = day_end;
 	}
 
-	public String getJob() {
-		return job;
+	public SubmitJob getSubmitJobId() {
+		return submitJobId;
 	}
 
-	public void setJob(String job) {
-		this.job = job;
+	public void setSubmitJobId(SubmitJob submitJobId) {
+		this.submitJobId = submitJobId;
 	}
+	
+	
+
+	
 	
 	
 	
