@@ -58,11 +58,12 @@ public class CustomerDetailsController {
 	public ResponseEntity<?> findbyCustomerDetailsId(@RequestBody Integer customerId) {
 		return ResponseEntity.ok(customerDetailsService.findbyCustomerDetailsId(customerId));
 	}
-	
+
 	@GetMapping("/findAllCustomerByPubId/{pubId}")
-	public ResponseEntity<?> findAllCustomerByPubId(@PathVariable("pubId") Integer pubId, @RequestParam(defaultValue = "0") Integer page,
-			@RequestParam(defaultValue = "5") Integer size) {
-		return ResponseEntity.ok(customerDetailsService.findAllCustomerByPubId(pubId, PageRequest.of(page, size, Sort.by("customerId").descending())));
+	public ResponseEntity<?> findAllCustomerByPubId(@PathVariable("pubId") Integer pubId,
+			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) {
+		return ResponseEntity.ok(customerDetailsService.findAllCustomerByPubId(pubId,
+				PageRequest.of(page, size, Sort.by("customerId").descending())));
 	}
 
 	@GetMapping("/getAllCustomerCategory")
@@ -84,66 +85,70 @@ public class CustomerDetailsController {
 	public ResponseEntity<?> getAllChargeTaxOn() {
 		return ResponseEntity.ok(ChargeTaxOn.values());
 	}
-	
+
 	@DeleteMapping("/deleteCustomerById")
 	public ResponseEntity<?> deleteCustomerById(@RequestBody Integer customerId) {
 		return ResponseEntity.ok(customerDetailsService.deleteCustomer(customerId));
 	}
 
 	@GetMapping("/getAllCustomerDetailsForSearch")
-	public ResponseEntity<?> getAllCustomerDetailsForSearch(@RequestParam(required = true) Integer pubId, @RequestParam(required = false) String search, @RequestParam(defaultValue = "0") Integer page,
+	public ResponseEntity<?> getAllCustomerDetailsForSearch(@RequestParam(required = true) Integer pubId,
+			@RequestParam(required = false) String search, @RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "5") Integer size) {
-		return ResponseEntity.ok(
-				customerDetailsService.getAllCustomerDetailsForSearch(pubId, search, PageRequest.of(page, size)));
+		return ResponseEntity
+				.ok(customerDetailsService.getAllCustomerDetailsForSearch(pubId, search, PageRequest.of(page, size)));
 	}
-	
+
 	@GetMapping("/getAllCustomersRecentTwoOrderCodeUnderPub/{pubId}")
 	public ResponseEntity<?> getAllCustomersRecentTwoOrderCodeUnderPub(@PathVariable("pubId") Integer pubId) {
 		return ResponseEntity.ok(customerDetailsService.getAllCustomerRecentOrderCodeForPub(pubId));
 	}
-	
+
 	@GetMapping("/getRecentPlacedOrderOfCustomer/{customerId}")
-	public ResponseEntity<?> getRecentPlacedOrderOfCustomer(@PathVariable("customerId") Integer customerId) throws Exception {
+	public ResponseEntity<?> getRecentPlacedOrderOfCustomer(@PathVariable("customerId") Integer customerId)
+			throws Exception {
 		Order recentOrderOfCustomer = customerDetailsService.getRecentOrderOfCustomer(customerId);
 		return ResponseEntity.ok(recentOrderOfCustomer != null ? recentOrderOfCustomer : new JSONObject());
 	}
-	
+
 	@GetMapping("/getOrderCountOfCustomerForGivenYear")
-	public ResponseEntity<?> getOrderCountOfCustomerForGivenYear(@RequestParam(required = true) Integer customerId, @RequestParam(required = true) String year) {
+	public ResponseEntity<?> getOrderCountOfCustomerForGivenYear(@RequestParam(required = true) Integer customerId,
+			@RequestParam(required = true) String year) {
 		JSONObject json = new JSONObject();
-	    json.put("orderCount", customerDetailsService.countOfOrdersForGivenCustomerInYear(customerId, year));
+		json.put("orderCount", customerDetailsService.countOfOrdersForGivenCustomerInYear(customerId, year));
 		return ResponseEntity.ok(json.toString());
 	}
-	
+
 	@GetMapping("/getAllCustomerAgentForSearch")
-	public ResponseEntity<?> getAllCustomerAgentForSearch(@RequestParam(required = true) Integer publisher, @RequestParam(required = false) String agencyName,
-			 @RequestParam(defaultValue = "0") Integer page,
-			@RequestParam(defaultValue = "5") Integer size) {
-		return ResponseEntity.ok(
-				customerDetailsService.getAllCustomerAgentForSearch(publisher ,agencyName, PageRequest.of(page, size)));
+	public ResponseEntity<?> getAllCustomerAgentForSearch(@RequestParam(required = true) Integer publisher,
+			@RequestParam(required = false) String agencyName) {
+		return ResponseEntity.ok(customerDetailsService.getAllCustomerAgentForSearch(publisher, agencyName));
 	}
-	
+
 	@GetMapping("/getCustomerStatusValues")
 	public ResponseEntity<?> getCustomerStatusValues() {
 		return ResponseEntity.ok(CustomerStatus.values());
 	}
-	
+
 	@PostMapping("/updateCustomerStatusHoldOrInactive")
 	public ResponseEntity<?> updateCustomerStatusHoldOrInactive(@RequestBody CustomerDetailsVO customerVO) {
 		return ResponseEntity.ok(customerDetailsService.updateCustomerStatus(customerVO));
 	}
-	
-	@GetMapping("/getAllRecentAddressesOfCustomer")
-	public ResponseEntity<?> getAllRecentAddressesOfCustomer(@RequestParam(required = true) Integer customerId, 
-			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws Exception {
-		return ResponseEntity.ok(customerDetailsService.getRecentAddressWithTheirCustomer(customerId, PageRequest.of(page, size)));
-	}
-	
-	@GetMapping("/getOtherCustomersWithAddresses")
-	public ResponseEntity<?> getOtherCustomers(@RequestParam(required = false) Integer publisherId, @RequestParam(required = true) Integer customerId, 
-			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) {
-		return ResponseEntity.ok(customerDetailsService.getOtherCustomerAddresses(publisherId, customerId, PageRequest.of(page, size)));
-	}
-	
-}
 
+	@GetMapping("/getAllRecentAddressesOfCustomer")
+	public ResponseEntity<?> getAllRecentAddressesOfCustomer(@RequestParam(required = true) Integer customerId,
+			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size)
+			throws Exception {
+		return ResponseEntity
+				.ok(customerDetailsService.getRecentAddressWithTheirCustomer(customerId, PageRequest.of(page, size)));
+	}
+
+	@GetMapping("/getOtherCustomersWithAddresses")
+	public ResponseEntity<?> getOtherCustomers(@RequestParam(required = false) Integer publisherId,
+			@RequestParam(required = true) Integer customerId, @RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) {
+		return ResponseEntity.ok(
+				customerDetailsService.getOtherCustomerAddresses(publisherId, customerId, PageRequest.of(page, size)));
+	}
+
+}

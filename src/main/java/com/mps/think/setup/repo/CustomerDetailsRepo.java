@@ -87,9 +87,14 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 //		@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE cc.custCategory LIKE '%'||'Agents'||'%' AND "
 //				+ "c.publisher = :publisher AND c.agencyname LIKE '%'||:agencyName||'%'")
 	
-	@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE c.publisher.id = :publisher AND cc.thinkCategory = 'Agency' AND cc.custCategory LIKE '%'||:agencyName||'%'")
-	Page<CustomerDetails> getAllCustomerAgentForSearch(@Param("publisher") Integer publisher,@Param("agencyName") String agencyName, Pageable pageable);
-
+//	@Query("SELECT c FROM CustomerDetails c JOIN c.customerCategory cc WHERE c.publisher.id = :publisher AND cc.thinkCategory = 'Agency' AND cc.custCategory LIKE '%'||:agencyName||'%'")
+//	Page<CustomerDetails> getAllCustomerAgentForSearch(@Param("publisher") Integer publisher,@Param("agencyName") String agencyName, Pageable pageable);
+//======================================================================================================================================================
+	@Query("SELECT c.agencyname FROM CustomerDetails c WHERE c.publisher.id = :pubId AND " +
+            "(LOWER(c.agencyname) LIKE LOWER(CONCAT('%', :agencyName, '%')) OR :agencyName IS NULL)")
+List<String> getAllCustomerAgentForSearch(@Param("pubId") Integer pubId, @Param("agencyName") String agencyName);
+//======================================================================================================================================================
+	
 //	@Query("SELECT ca.customer from CustomerAddresses ca WHERE ca.customer.customerId = :customerId AND ca.address.addressId = :addressId")
 //	List<CustomerDetails> getCustomerDetailsIfPassedCustomerHoldTheAddress(@Param("customerId") Integer customerId, @Param("addressId") Integer addressId);
 	
