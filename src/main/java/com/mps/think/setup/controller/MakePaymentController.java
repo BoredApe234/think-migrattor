@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mps.think.setup.service.MakePaymentService;
+import com.mps.think.setup.vo.MailTemplateVO;
 import com.mps.think.setup.vo.MakePaymentVO;
 @RestController
 @CrossOrigin
@@ -34,5 +35,10 @@ public class MakePaymentController {
 	@PostMapping("/findMakePaymentId")
 	public ResponseEntity<?> findMakePaymentId(@RequestBody Integer id){
 		return ResponseEntity.ok(makePaymentService.findByMakePaymentId(id));
+	}
+	
+	@PostMapping("/sendPaymentLink")
+	public ResponseEntity<?> sendPaymentLink(@RequestBody MailTemplateVO mailTemplateVO) {
+		return ResponseEntity.ok(makePaymentService.sendPaymentLink(mailTemplateVO));
 	}
 }
