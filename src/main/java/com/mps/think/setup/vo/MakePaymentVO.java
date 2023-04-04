@@ -14,7 +14,7 @@ public class MakePaymentVO {
 	private long paymentAccount;
 	private String paymentType;
 	private String card;
-	private String amountToBePaid;
+	private double amountToBePaid;
 	private String expiryDate;
 	private String transactionStatus;
 	private String chargeId;
@@ -63,10 +63,10 @@ public class MakePaymentVO {
 	public void setCard(String card) {
 		this.card = card;
 	}
-	public String getAmountToBePaid() {
+	public double getAmountToBePaid() {
 		return amountToBePaid;
 	}
-	public void setAmountToBePaid(String amountToBePaid) {
+	public void setAmountToBePaid(double amountToBePaid) {
 		this.amountToBePaid = amountToBePaid;
 	}
 	public String getExpiryDate() {
