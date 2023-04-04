@@ -47,7 +47,7 @@ public class MakePayment extends BaseEntity{
 	private String card;
 	
 	@Column(name="amount_to_be_paid")
-	private String amountToBePaid;
+	private double amountToBePaid;
 	
 	@Column(name="expiry_date")
 	private String expiryDate;
@@ -128,11 +128,11 @@ public class MakePayment extends BaseEntity{
 		this.card = card;
 	}
 
-	public String getAmountToBePaid() {
+	public double getAmountToBePaid() {
 		return amountToBePaid;
 	}
 
-	public void setAmountToBePaid(String amountToBePaid) {
+	public void setAmountToBePaid(double amountToBePaid) {
 		this.amountToBePaid = amountToBePaid;
 	}
 
