@@ -1,0 +1,11 @@
+package com.mps.think.setup.repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.mps.think.setup.model.AddProcess;
+
+@Repository
+public interface AddProcessRepo extends JpaRepository<AddProcess, Integer> {
+
+}
