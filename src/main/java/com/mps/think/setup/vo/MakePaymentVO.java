@@ -2,7 +2,6 @@ package com.mps.think.setup.vo;
 
 import java.util.List;
 
-import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderPaymentMapping;
 import com.mps.think.setup.model.Publisher;
 

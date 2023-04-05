@@ -28,7 +28,7 @@ public void sendMailToCus(String emailFrom,String emailTo,String emailCC,String 
 		MimeMessage message = new MimeMessage(session);
 		message.setFrom(new InternetAddress(emailFrom.trim()));
 		message.addRecipient(Message.RecipientType.TO, new InternetAddress(emailTo.trim()));
-		message.addRecipient(Message.RecipientType.CC, new InternetAddress(emailCC.trim()));
+		if (!emailCC.trim().isBlank()) message.addRecipient(Message.RecipientType.CC, new InternetAddress(emailCC.trim()));
 		
 		String subject = emailSubject;
 		String content = emailContent;
