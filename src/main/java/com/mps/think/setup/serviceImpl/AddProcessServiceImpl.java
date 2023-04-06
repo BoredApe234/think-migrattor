@@ -53,5 +53,10 @@ public class AddProcessServiceImpl implements AddProcessService {
 		addProcessRepo.delete(delete);
 		return delete;
 	}
+	
+	@Override
+	public List<AddProcess> findAllAddProcessByPId(Integer pid) {
+		return addProcessRepo.findByprocesstypeidPid(pid);
+	}
 
 }
