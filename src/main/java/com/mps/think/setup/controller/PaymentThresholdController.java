@@ -42,7 +42,7 @@ public class PaymentThresholdController {
 		return ResponseEntity.ok(paymentThresholdService.definePayment(invoiceAmount, paidAmount, paymentThresholdId));
 	}
 	
-	@PostMapping("/findByPaymentThresholdDefId")
+	@PostMapping("/getPaymentThresholdDefId")
 	public ResponseEntity<?> findByPaymentThresholdDefId(@RequestBody Integer id){
 		return ResponseEntity.ok(paymentThresholdService.findByPaymentThresholdDefId(id));
 	}
