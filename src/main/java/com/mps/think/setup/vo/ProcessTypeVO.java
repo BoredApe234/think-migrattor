@@ -2,14 +2,13 @@ package com.mps.think.setup.vo;
 
 public class ProcessTypeVO {
 	
-	private Integer p_Id;
+	private Integer pid;
 	private String mainpurposelabel;
-	
-	public Integer getP_Id() {
-		return p_Id;
+	public Integer getPid() {
+		return pid;
 	}
-	public void setP_Id(Integer p_Id) {
-		this.p_Id = p_Id;
+	public void setPid(Integer pid) {
+		this.pid = pid;
 	}
 	public String getMainpurposelabel() {
 		return mainpurposelabel;
@@ -17,6 +16,8 @@ public class ProcessTypeVO {
 	public void setMainpurposelabel(String mainpurposelabel) {
 		this.mainpurposelabel = mainpurposelabel;
 	}
+	
+	
 	
 	
 

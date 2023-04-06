@@ -6,7 +6,7 @@ import com.mps.think.setup.model.ProcessType;
 public class AddProcessVO {
 	
 	private Integer process_id;
-	private ProcessType process_typeid;
+	private ProcessType processtypeid;
 	private String mainpurpose;
 	private String description;
 	private Boolean status;
@@ -38,11 +38,11 @@ public class AddProcessVO {
 	public void setProcess_id(Integer process_id) {
 		this.process_id = process_id;
 	}
-	public ProcessType getProcess_typeid() {
-		return process_typeid;
+	public ProcessType getProcesstypeid() {
+		return processtypeid;
 	}
-	public void setProcess_typeid(ProcessType process_typeid) {
-		this.process_typeid = process_typeid;
+	public void setProcesstypeid(ProcessType processtypeid) {
+		this.processtypeid = processtypeid;
 	}
 	public String getMainpurpose() {
 		return mainpurpose;

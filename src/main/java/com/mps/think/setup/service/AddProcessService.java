@@ -20,5 +20,7 @@ public interface AddProcessService {
 	public AddProcess findbyProcessId(Integer process_id);
 	
 	public AddProcess deleteByProcessId(Integer process_id);
+	
+	public List<AddProcess> findAllAddProcessByPId(Integer pId);
 
 }

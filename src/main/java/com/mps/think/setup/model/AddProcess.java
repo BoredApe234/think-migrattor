@@ -11,7 +11,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "process")
+@Table(name = "process_table")
 public class AddProcess extends BaseEntity  {
 
 	/**
@@ -25,8 +25,8 @@ public class AddProcess extends BaseEntity  {
 	private Integer process_id;
 	
 	@OneToOne
-	@JoinColumn(name = "processtype_id", referencedColumnName = "p_Id" )
-	private ProcessType process_typeid;
+	@JoinColumn(name = "process_type_id", referencedColumnName = "p_id" )
+	private ProcessType processtypeid;
 	
 	@Column(name = "mainpurpose")
 	private String mainpurpose;
@@ -112,12 +112,12 @@ public class AddProcess extends BaseEntity  {
 		this.process_id = process_id;
 	}
 
-	public ProcessType getProcess_typeid() {
-		return process_typeid;
+	public ProcessType getProcesstypeid() {
+		return processtypeid;
 	}
 
-	public void setProcess_typeid(ProcessType process_typeid) {
-		this.process_typeid = process_typeid;
+	public void setProcesstypeid(ProcessType processtypeid) {
+		this.processtypeid = processtypeid;
 	}
 
 	public String getMainpurpose() {
@@ -320,6 +320,7 @@ public class AddProcess extends BaseEntity  {
 		this.picklist = picklist;
 	}
 
+	
 	
 	
 	

@@ -27,7 +27,7 @@ public class ProcessTypeServiceImpl  implements ProcessTypeService{
 		ObjectMapper mapper = new ObjectMapper();
 		ProcessType newProcessType = mapper.convertValue(processType, ProcessType.class);
 		ProcessType data=processTypeRepo.saveAndFlush(newProcessType);
-		processType.setP_Id(data.getP_Id());
+		processType.setPid(data.getPid());
 		return processType;
 	}
 
@@ -36,7 +36,7 @@ public class ProcessTypeServiceImpl  implements ProcessTypeService{
 		ObjectMapper mapper = new ObjectMapper();
 		ProcessType updateProcessType = mapper.convertValue(processType, ProcessType.class);
 		ProcessType data=processTypeRepo.saveAndFlush(updateProcessType);
-		processType.setP_Id(data.getP_Id());
+		processType.setPid(data.getPid());
 		return processType;
 	}
 
