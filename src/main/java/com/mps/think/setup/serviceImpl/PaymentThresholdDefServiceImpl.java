@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mps.think.setup.model.DeliveryMethods;
 import com.mps.think.setup.model.PaymentThresholdDef;
 import com.mps.think.setup.repo.PaymentThresholdDefRepo;
 import com.mps.think.setup.service.PaymentThresholdDefService;
@@ -39,6 +40,15 @@ public class PaymentThresholdDefServiceImpl implements PaymentThresholdDefServic
 	@Override
 	public PaymentThresholdDef findbyPaymentThresholdDefId(Integer id) {
 		return paymentThresholdDefRepo.findById(id).get();
+	}
+
+	@Override
+	public PaymentThresholdDef DeletePaymentThresholdDef(Integer id) {
+		PaymentThresholdDef remove = paymentThresholdDefRepo.findById(id).get();
+		if (remove != null) {
+			paymentThresholdDefRepo.delete(remove);
+		}
+		return remove;
 	}
 
 }

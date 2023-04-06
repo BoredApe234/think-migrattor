@@ -18,4 +18,6 @@ public interface PaymentThresholdService {
 	public Optional<PaymentThreshold> findByPaymentThresholdId(Integer id);
 	
 	public HashMap<String, String> definePayment(double invoiceAmount, double paidAmount, Integer paymentThresholdId);
+	
+	public PaymentThreshold findByPaymentThresholdDefId(Integer id);
 }
