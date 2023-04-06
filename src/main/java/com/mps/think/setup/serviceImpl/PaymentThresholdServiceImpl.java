@@ -99,4 +99,9 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 		payment.put("paymentStatus", "Not have vaild payment");
 		return payment;
 	}
+
+	@Override
+	public PaymentThreshold findByPaymentThresholdDefId(Integer id) {
+		return paymentThresholdRepo.findByPaymentThresholdDefId(id);
+	}
 }

@@ -14,5 +14,7 @@ public interface PaymentThresholdDefService {
 	public PaymentThresholdDef updatePaymentThresholdDef(PaymentThresholdDefVO paymentThresholdDefVO);
 	
 	public PaymentThresholdDef findbyPaymentThresholdDefId(Integer id);
+	
+	public PaymentThresholdDef DeletePaymentThresholdDef(Integer id);
 
 }
