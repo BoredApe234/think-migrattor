@@ -8,7 +8,9 @@ import com.mps.think.setup.vo.PaymentInformationVO;
 
 public interface PaymentInformationService {
 	
-	public List<PaymentInformation> getallPaymentinFormationForPublisher(Integer pub);
+	public List<PaymentInformation> getallPaymentInformationForPublisher(Integer pub);
+	
+	public List<PaymentInformation> getallPaymentInformationForCustomer(Integer customerId);
 	
 	public PaymentInformation savePayInfo(PaymentInformationVO paymentInformationVO);
 	
