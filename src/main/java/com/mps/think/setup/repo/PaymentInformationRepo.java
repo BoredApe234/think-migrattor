@@ -11,4 +11,5 @@ import com.mps.think.setup.model.PaymentInformation;
 public interface PaymentInformationRepo extends JpaRepository<PaymentInformation, Integer> {
 
 	List<PaymentInformation> findByPublisherId(Integer pub);
+	List<PaymentInformation> findByOrderCustomerIdCustomerId(Integer customerId);
 }

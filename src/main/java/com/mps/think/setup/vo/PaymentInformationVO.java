@@ -1,5 +1,6 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.Publisher;
 
 public class PaymentInformationVO {
@@ -18,6 +19,10 @@ public class PaymentInformationVO {
 	String chargeId;
 
 	String status;
+	
+	String otherinfo;
+	
+	Order order;
 
 	Publisher publisher;
 
@@ -83,6 +88,22 @@ public class PaymentInformationVO {
 
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
+	}
+
+	public String getOtherinfo() {
+		return otherinfo;
+	}
+
+	public void setOtherinfo(String otherinfo) {
+		this.otherinfo = otherinfo;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 }
