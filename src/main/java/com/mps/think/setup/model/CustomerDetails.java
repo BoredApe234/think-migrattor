@@ -46,7 +46,6 @@ public class CustomerDetails  extends BaseEntity{
 	@Column(name = "think_category")
 	private String thinkCategory;
 	
-	@NotBlank
 	@Column(name = "salutation")
 	private String salutation;
 	
