@@ -54,7 +54,7 @@ public class PaymentBreakdown extends BaseEntity {
 	private String currency;
 	
 	@Column(name = "discount")
-	private BigDecimal discount;
+	private String discount;
 	
 	@Column(name = "tax")
 	private BigDecimal tax;
@@ -127,11 +127,11 @@ public class PaymentBreakdown extends BaseEntity {
 		this.baseAmount = baseAmount;
 	}
 
-	public BigDecimal getDiscount() {
+	public String getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(BigDecimal discount) {
+	public void setDiscount(String discount) {
 		this.discount = discount;
 	}
 
