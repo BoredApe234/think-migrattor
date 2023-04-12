@@ -43,7 +43,7 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 //	public Page<CustomerDetails> getAllCustomerDetailsForSearchSingle(@Param("search") String search, Pageable page);
 
 	@Query("SELECT c FROM Order o LEFT JOIN o.keyOrderInformation keyInfo LEFT JOIN keyInfo.orderCode ocs LEFT JOIN ocs.orderCodes oc RIGHT JOIN o.customerId c LEFT JOIN "
-			+ "c.customerAddresses ca JOIN ca.address a WHERE ((c.publisher.id = :pubId OR :pubId IS NULL) AND "
+			+ "c.customerAddresses ca JOIN ca.address a JOIN c.paymentThreshold pthres WHERE ((c.publisher.id = :pubId OR :pubId IS NULL) AND "
 			+ "((a.addressLine1 LIKE '%'||:search||'%') OR (a.city LIKE '%'||:search||'%') OR (a.state LIKE '%'||:search||'%') "
 			+ "OR (a.country LIKE '%'||:search||'%') OR (a.addressName LIKE '%'||:search||'%') OR (a.addressId LIKE '%'||:search||'%') "
 			+ "OR (a.name LIKE '%'||:search||'%') OR (a.countryCode LIKE '%'||:search||'%') "
@@ -56,7 +56,7 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 			+ "OR (c.taxId LIKE '%'||:search||'%') OR (c.secondaryEmail LIKE '%'||:search||'%') OR (c.secondaryPhone LIKE '%'||:search||'%') "
 			+ "OR (c.listRental LIKE '%'||:search||'%') OR (c.salesRepresentative LIKE '%'||:search||'%') "
 			+ "OR (c.creditStatus LIKE '%'||:search||'%') OR (c.newOrderCommission LIKE '%'||:search||'%') OR (c.fax LIKE '%'||:search||'%') "
-			+ "OR (c.renewalCommission LIKE '%'||:search||'%') OR (c.paymentThreshold LIKE '%'||:search||'%') "
+			+ "OR (c.renewalCommission LIKE '%'||:search||'%') OR (pthres.paymentThresholdCode LIKE '%'||:search||'%') "
 			+ "OR (c.custAuxFieldJSON LIKE '%'||:search||'%') "
 			+ "OR (oc.orderCode LIKE '%'||:search||'%') OR (o.orderId LIKE '%'||:search||'%') OR (keyInfo.agent LIKE '%'||:search||'%') "
 			+ "OR (keyInfo.agentReferenceNum LIKE '%'||:search||'%'))) "
