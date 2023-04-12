@@ -8,7 +8,7 @@ import com.mps.think.setup.model.CustomerAddresses;
 import com.mps.think.setup.model.Publisher;
 
 import com.mps.think.setup.model.CustomerCategory;
-
+import com.mps.think.setup.model.PaymentThresholdDef;
 import com.mps.think.setup.vo.EnumModelVO.ChargeTaxOn;
 import com.mps.think.setup.vo.EnumModelVO.ConfigurationOptionsforOrders;
 import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
@@ -47,14 +47,13 @@ public class CustomerDetailsVO {
 	private ConfigurationOptionsforOrders configurationOptionsforOrders;
 	private String newOrderCommission;
 	private String renewalCommission;
-	private String paymentThreshold;
+	private PaymentThresholdDefVO paymentThreshold;
 	private String custAuxFieldJSON;
 	private Publisher publisher;
 	private List<CustomerAddressesVO> customerAddresses;
 	private CustomerStatus customerStatus;
 	private String currCustomerStatusCause;
 	private Date dateUntilDeactivation;
-	
 	public Integer getCustomerId() {
 		return customerId;
 	}
@@ -199,6 +198,18 @@ public class CustomerDetailsVO {
 	public void setParentInstitutionalId(Integer parentInstitutionalId) {
 		this.parentInstitutionalId = parentInstitutionalId;
 	}
+	public String getAgencyname() {
+		return agencyname;
+	}
+	public void setAgencyname(String agencyname) {
+		this.agencyname = agencyname;
+	}
+	public String getAgencycode() {
+		return agencycode;
+	}
+	public void setAgencycode(String agencycode) {
+		this.agencycode = agencycode;
+	}
 	public ChargeTaxOn getChargeTaxOn() {
 		return chargeTaxOn;
 	}
@@ -229,23 +240,11 @@ public class CustomerDetailsVO {
 	public void setRenewalCommission(String renewalCommission) {
 		this.renewalCommission = renewalCommission;
 	}
-	public String getPaymentThreshold() {
-		return paymentThreshold;
-	}
-	public void setPaymentThreshold(String paymentThreshold) {
-		this.paymentThreshold = paymentThreshold;
-	}
 	public String getCustAuxFieldJSON() {
 		return custAuxFieldJSON;
 	}
 	public void setCustAuxFieldJSON(String custAuxFieldJSON) {
 		this.custAuxFieldJSON = custAuxFieldJSON;
-	}
-	public List<CustomerAddressesVO> getCustomerAddresses() {
-		return customerAddresses;
-	}
-	public void setCustomerAddresses(List<CustomerAddressesVO> customerAddresses) {
-		this.customerAddresses = customerAddresses;
 	}
 	public Publisher getPublisher() {
 		return publisher;
@@ -253,17 +252,11 @@ public class CustomerDetailsVO {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
-	public String getAgencyname() {
-		return agencyname;
+	public List<CustomerAddressesVO> getCustomerAddresses() {
+		return customerAddresses;
 	}
-	public void setAgencyname(String agencyname) {
-		this.agencyname = agencyname;
-	}
-	public String getAgencycode() {
-		return agencycode;
-	}
-	public void setAgencycode(String agencycode) {
-		this.agencycode = agencycode;
+	public void setCustomerAddresses(List<CustomerAddressesVO> customerAddresses) {
+		this.customerAddresses = customerAddresses;
 	}
 	public CustomerStatus getCustomerStatus() {
 		return customerStatus;
@@ -283,5 +276,14 @@ public class CustomerDetailsVO {
 	public void setDateUntilDeactivation(Date dateUntilDeactivation) {
 		this.dateUntilDeactivation = dateUntilDeactivation;
 	}
+	public PaymentThresholdDefVO getPaymentThreshold() {
+		return paymentThreshold;
+	}
+	public void setPaymentThreshold(PaymentThresholdDefVO paymentThreshold) {
+		this.paymentThreshold = paymentThreshold;
+	}
+
+	
+	
 	
 }

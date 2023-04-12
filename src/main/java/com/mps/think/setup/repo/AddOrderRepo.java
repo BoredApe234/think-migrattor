@@ -86,12 +86,13 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	 * term -> term in order item and terms
 	 * rc -> rate card in payment breakdown
 	 * cusCat -> customer category in customer
+	 * pthres -> paymentThreshold in customer details
 	 * 
 	*/
 	
 	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation keyInfo JOIN o.orderItemsAndTerms oitem JOIN o.paymentBreakdown pay JOIN o.deliveryAndBillingOptions dbil "
 			+ "JOIN o.auxiliaryInformation auxInfo LEFT JOIN o.orderAddresses oadd LEFT JOIN oadd.address a LEFT JOIN o.customerId c LEFT JOIN o.orderClass ocls JOIN keyInfo.orderCode ocs "
-			+ "JOIN ocs.orderCodes oc JOIN keyInfo.sourceCode sc JOIN oitem.subsProdPkgDef subdef JOIN oitem.term term JOIN pay.rateCard rc JOIN c.customerCategory cusCat WHERE "
+			+ "JOIN ocs.orderCodes oc JOIN keyInfo.sourceCode sc JOIN oitem.subsProdPkgDef subdef JOIN oitem.term term JOIN pay.rateCard rc JOIN c.customerCategory cusCat JOIN c.paymentThreshold pthres WHERE "
 			+ "((c.publisher.id = :pubId OR :pubId IS NULL) AND (c.customerId = :customerId OR :customerId IS NULL) AND ((o.orderId LIKE '%'||:keyword||'%') OR (o.orderType LIKE '%'||:keyword||'%') "
 			+ "OR (o.orderStatus LIKE '%'||:keyword||'%') OR (keyInfo.orderCategory LIKE '%'||:keyword||'%') OR (keyInfo.orderStatus LIKE '%'||:keyword||'%') "
 			+ "OR (keyInfo.orderDate LIKE '%'||:keyword||'%') OR (keyInfo.purchaseOrder LIKE '%'||:keyword||'%') OR (keyInfo.agent LIKE '%'||:keyword||'%') "
@@ -115,7 +116,7 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 			+ "OR (c.salesRepresentative LIKE '%'||:keyword||'%') OR (c.creditStatus LIKE '%'||:keyword||'%') OR (c.fax LIKE '%'||:keyword||'%') OR (c.institutionalId LIKE '%'||:keyword||'%') "
 			+ "OR (c.parentInstitutionalId LIKE '%'||:keyword||'%') OR (c.chargeTaxOn LIKE '%'||:keyword||'%') OR (c.paymentOptions LIKE '%'||:keyword||'%') OR (c.configurationOptionsforOrders LIKE '%'||:keyword||'%') "
 			+ "OR (c.newOrderCommission LIKE '%'||:keyword||'%') OR (c.renewalCommission LIKE '%'||:keyword||'%') "
-			+ "OR (c.paymentThreshold LIKE '%'||:keyword||'%') OR (c.custAuxFieldJSON LIKE '%'||:keyword||'%') OR (ocls.orderClassName LIKE '%'||:keyword||'%') "
+			+ "OR (pthres.paymentThresholdCode LIKE '%'||:keyword||'%') OR (c.custAuxFieldJSON LIKE '%'||:keyword||'%') OR (ocls.orderClassName LIKE '%'||:keyword||'%') "
 			+ "OR (ocls.ocType LIKE '%'||:keyword||'%') OR (oc.orderCode LIKE '%'||:keyword||'%') OR (oc.description LIKE '%'||:keyword||'%') "
 			+ "OR (oc.orderType LIKE '%'||:keyword||'%') OR (oc.orderCodeId LIKE '%'||:keyword||'%') OR (oc.orderClassId LIKE '%'||:keyword||'%') "
 			+ "OR (sc.sourceCode LIKE '%'||:keyword||'%') OR (sc.sourceCodeType LIKE '%'||:keyword||'%') OR (sc.description LIKE '%'||:keyword||'%') OR (subdef.subscriptionDefCode LIKE '%'||:keyword||'%') "

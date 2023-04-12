@@ -141,8 +141,9 @@ public class CustomerDetails  extends BaseEntity{
 	@Column(name = "agencycode")
 	private String agencycode;
 	
-	@Column(name = "paymentThreshold")
-	private String paymentThreshold;
+	@OneToOne
+	@JoinColumn(name = "paymentthresholddef_id", referencedColumnName = "id" )
+	private PaymentThresholdDef paymentThreshold;
 	
 	@Column(name = "cust_aux_field_json")
 	private String custAuxFieldJSON;
@@ -175,7 +176,7 @@ public class CustomerDetails  extends BaseEntity{
 	
 	@Column(name = "date_until_deactivation")
 	private Date dateUntilDeactivation;
-	
+
 	public Integer getCustomerId() {
 		return customerId;
 	}
@@ -408,12 +409,20 @@ public class CustomerDetails  extends BaseEntity{
 		this.renewalCommission = renewalCommission;
 	}
 
-	public String getPaymentThreshold() {
-		return paymentThreshold;
+	public String getAgencyname() {
+		return agencyname;
 	}
 
-	public void setPaymentThreshold(String paymentThreshold) {
-		this.paymentThreshold = paymentThreshold;
+	public void setAgencyname(String agencyname) {
+		this.agencyname = agencyname;
+	}
+
+	public String getAgencycode() {
+		return agencycode;
+	}
+
+	public void setAgencycode(String agencycode) {
+		this.agencycode = agencycode;
 	}
 
 	public String getCustAuxFieldJSON() {
@@ -430,22 +439,6 @@ public class CustomerDetails  extends BaseEntity{
 
 	public void setCustomerAddresses(List<CustomerAddresses> customerAddresses) {
 		this.customerAddresses = customerAddresses;
-	}
-
-	public String getAgencyname() {
-		return agencyname;
-	}
-
-	public void setAgencyname(String agencyname) {
-		this.agencyname = agencyname;
-	}
-
-	public String getAgencycode() {
-		return agencycode;
-	}
-
-	public void setAgencycode(String agencycode) {
-		this.agencycode = agencycode;
 	}
 
 	public CustomerStatus getCustomerStatus() {
@@ -471,6 +464,16 @@ public class CustomerDetails  extends BaseEntity{
 	public void setDateUntilDeactivation(Date dateUntilDeactivation) {
 		this.dateUntilDeactivation = dateUntilDeactivation;
 	}
+
+	public PaymentThresholdDef getPaymentThreshold() {
+		return paymentThreshold;
+	}
+
+	public void setPaymentThreshold(PaymentThresholdDef paymentThreshold) {
+		this.paymentThreshold = paymentThreshold;
+	}
+	
+	
 	
 	
 }

@@ -66,8 +66,9 @@ public class OrderClassOverview extends BaseEntity {
 	@Column(name = "profit_center")
 	private String profitCenter;
 	
-	@Column(name = "payment_threshold")
-	private String paymentThreshold;
+	@OneToOne
+	@JoinColumn(name = "payment_threshold" , referencedColumnName = "id")
+	private PaymentThresholdDef paymentThreshold;
 	
 	//
 	
@@ -173,11 +174,11 @@ public class OrderClassOverview extends BaseEntity {
 		this.profitCenter = profitCenter;
 	}
 
-	public String getPaymentThreshold() {
+	public PaymentThresholdDef getPaymentThreshold() {
 		return paymentThreshold;
 	}
 
-	public void setPaymentThreshold(String paymentThreshold) {
+	public void setPaymentThreshold(PaymentThresholdDef paymentThreshold) {
 		this.paymentThreshold = paymentThreshold;
 	}
 
@@ -205,15 +206,7 @@ public class OrderClassOverview extends BaseEntity {
 		this.publisher = publisher;
 	}
 
-	@Override
-	public String toString() {
-		return "OrderClassOverview [id=" + id + ", label=" + label + ", description=" + description + ", orderClass="
-				+ orderClass + ", revenueRecorded=" + revenueRecorded + ", recordRevenueSubsPartWay="
-				+ recordRevenueSubsPartWay + ", cancelCredit=" + cancelCredit + ", sourceCode=" + sourceCode
-				+ ", sourceCodeFormat=" + sourceCodeFormat + ", renewalSCFormat=" + renewalSCFormat + ", profitCenter="
-				+ profitCenter + ", paymentThreshold=" + paymentThreshold + ", reasonableGap=" + reasonableGap
-				+ ", activeOrderHandling=" + activeOrderHandling + ", publisher=" + publisher + "]";
-	}
+	
 
 	
 }
