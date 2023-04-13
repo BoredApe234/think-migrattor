@@ -27,14 +27,19 @@ public class MakePaymentController {
 		return ResponseEntity.ok(makePaymentService.saveMakePayment(makePaymentVO));
 	}
 	
-	@PostMapping("/updateMakePayment")
-	public ResponseEntity<?> updateMakePayment(@RequestBody MakePaymentVO makePaymentVO){
-		return ResponseEntity.ok(makePaymentService.updateMakePayment(makePaymentVO));
-	}
+//	@PostMapping("/updateMakePayment")
+//	public ResponseEntity<?> updateMakePayment(@RequestBody MakePaymentVO makePaymentVO){
+//		return ResponseEntity.ok(makePaymentService.updateMakePayment(makePaymentVO));
+//	}
 
 	@PostMapping("/findMakePaymentId")
 	public ResponseEntity<?> findMakePaymentId(@RequestBody Integer id){
 		return ResponseEntity.ok(makePaymentService.findByMakePaymentId(id));
+	}
+	
+	@PostMapping("/findByOrderId")
+	public ResponseEntity<?> findByOrderId(@RequestBody Integer id){
+		return ResponseEntity.ok(makePaymentService.findByOrderId(id));
 	}
 	
 	@PostMapping("/sendPaymentLink")

@@ -1,5 +1,6 @@
 package com.mps.think.setup.model;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -65,12 +66,16 @@ public class MakePayment extends BaseEntity{
 	@JoinColumn(name = "publisher_id", referencedColumnName = "id")
 	private Publisher publisher;
 	
-	@OneToMany(
-			mappedBy = "makePayment",
-	        cascade = CascadeType.ALL,
-	        orphanRemoval = true)
-	@JsonManagedReference
-	private List<OrderPaymentMapping> orderPaymentMapping;
+	@ManyToOne
+	@JoinColumn(name = "order_id", referencedColumnName = "order_id")
+	private Order order;
+	
+//	@OneToMany(
+//			mappedBy = "makePayment",
+//	        cascade = CascadeType.ALL,
+//	        orphanRemoval = true)
+//	@JsonManagedReference
+//	private List<OrderPaymentMapping> orderPaymentMapping;
 
 	public Integer getId() {
 		return id;
@@ -176,20 +181,28 @@ public class MakePayment extends BaseEntity{
 		this.publisher = publisher;
 	}
 
-	public List<OrderPaymentMapping> getOrderPaymentMapping() {
-		return orderPaymentMapping;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setOrderPaymentMapping(List<OrderPaymentMapping> orderPaymentMapping) {
-		this.orderPaymentMapping = orderPaymentMapping;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
-	@Override
-	public String toString() {
-		return "MakePayment [id=" + id + ", nameOfCustomer=" + nameOfCustomer + ", payerCustomer=" + payerCustomer
-				+ ", baseAmount=" + baseAmount + ", paymentAccount=" + paymentAccount + ", paymentType=" + paymentType
-				+ ", card=" + card + ", amountToBePaid=" + amountToBePaid + ", expiryDate=" + expiryDate
-				+ ", transactionStatus=" + transactionStatus + ", chargeId=" + chargeId + ", status=" + status
-				+ ", publisher=" + publisher + ", orderPaymentMapping=" + orderPaymentMapping + "]";
-	}
+//	public List<OrderPaymentMapping> getOrderPaymentMapping() {
+//		return orderPaymentMapping;
+//	}
+//
+//	public void setOrderPaymentMapping(List<OrderPaymentMapping> orderPaymentMapping) {
+//		this.orderPaymentMapping = orderPaymentMapping;
+//	}
+//
+//	@Override
+//	public String toString() {
+//		return "MakePayment [id=" + id + ", nameOfCustomer=" + nameOfCustomer + ", payerCustomer=" + payerCustomer
+//				+ ", baseAmount=" + baseAmount + ", paymentAccount=" + paymentAccount + ", paymentType=" + paymentType
+//				+ ", card=" + card + ", amountToBePaid=" + amountToBePaid + ", expiryDate=" + expiryDate
+//				+ ", transactionStatus=" + transactionStatus + ", chargeId=" + chargeId + ", status=" + status
+//				+ ", publisher=" + publisher + ", orderPaymentMapping=" + orderPaymentMapping + "]";
+//	}
 }
