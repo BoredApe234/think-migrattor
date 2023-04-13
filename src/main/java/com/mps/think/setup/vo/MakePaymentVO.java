@@ -1,7 +1,10 @@
 package com.mps.think.setup.vo;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
+import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderPaymentMapping;
 import com.mps.think.setup.model.Publisher;
 
@@ -19,7 +22,9 @@ public class MakePaymentVO {
 	private String chargeId;
 	private String status;
 	private Publisher publisher;
-	private List<OrderPaymentMapping> orderPaymentMapping;
+//	private Order order;
+	private LinkedHashMap<Integer, Double> listOfOrder;
+//	private List<OrderPaymentMapping> orderPaymentMapping;
 	public Integer getId() {
 		return id;
 	}
@@ -98,18 +103,32 @@ public class MakePaymentVO {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
-	public List<OrderPaymentMapping> getOrderPaymentMapping() {
-		return orderPaymentMapping;
+//	public Order getOrder() {
+//		return order;
+//	}
+//	public void setOrder(Order order) {
+//		this.order = order;
+//	}
+	public LinkedHashMap<Integer, Double> getListOfOrder() {
+		return listOfOrder;
 	}
-	public void setOrderPaymentMapping(List<OrderPaymentMapping> orderPaymentMapping) {
-		this.orderPaymentMapping = orderPaymentMapping;
+	public void setListOfOrder(LinkedHashMap<Integer, Double> listOfOrder) {
+		this.listOfOrder = listOfOrder;
 	}
-	@Override
-	public String toString() {
-		return "MakePaymentVO [id=" + id + ", nameOfCustomer=" + nameOfCustomer + ", payerCustomer=" + payerCustomer
-				+ ", baseAmount=" + baseAmount + ", paymentAccount=" + paymentAccount + ", paymentType=" + paymentType
-				+ ", card=" + card + ", amountToBePaid=" + amountToBePaid + ", expiryDate=" + expiryDate
-				+ ", transactionStatus=" + transactionStatus + ", chargeId=" + chargeId + ", status=" + status
-				+ ", publisher=" + publisher + ", orderPaymentMapping=" + orderPaymentMapping + "]";
-	}
+
+	
+//	public List<OrderPaymentMapping> getOrderPaymentMapping() {
+//		return orderPaymentMapping;
+//	}
+//	public void setOrderPaymentMapping(List<OrderPaymentMapping> orderPaymentMapping) {
+//		this.orderPaymentMapping = orderPaymentMapping;
+//	}
+//	@Override
+//	public String toString() {
+//		return "MakePaymentVO [id=" + id + ", nameOfCustomer=" + nameOfCustomer + ", payerCustomer=" + payerCustomer
+//				+ ", baseAmount=" + baseAmount + ", paymentAccount=" + paymentAccount + ", paymentType=" + paymentType
+//				+ ", card=" + card + ", amountToBePaid=" + amountToBePaid + ", expiryDate=" + expiryDate
+//				+ ", transactionStatus=" + transactionStatus + ", chargeId=" + chargeId + ", status=" + status
+//				+ ", publisher=" + publisher + ", orderPaymentMapping=" + orderPaymentMapping + "]";
+//	}
 }

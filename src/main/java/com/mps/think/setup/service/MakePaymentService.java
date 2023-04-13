@@ -12,9 +12,11 @@ public interface MakePaymentService {
 	
 	public List<MakePayment> findAllMakePaymentByPubId(Integer pubId);
 	
-	public MakePayment saveMakePayment(MakePaymentVO makePaymentVO);
+	public List<MakePayment> saveMakePayment(MakePaymentVO makePaymentVO);
 	
 	public MakePayment updateMakePayment(MakePaymentVO makePaymentVO);
+	
+	public MakePayment findByOrderId(Integer orderId);
 	
 	public Optional<MakePayment> findByMakePaymentId(Integer id);
 	

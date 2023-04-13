@@ -10,5 +10,6 @@ import com.mps.think.setup.model.MakePayment;
 public interface MakePaymentRepo extends JpaRepository<MakePayment, Integer>{
 	
 	List<MakePayment> findByPublisherId(Integer pubId);
+	MakePayment findByOrderOrderId(Integer orderId);
 
 }
