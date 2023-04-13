@@ -92,7 +92,7 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	
 	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation keyInfo JOIN o.orderItemsAndTerms oitem JOIN o.paymentBreakdown pay JOIN o.deliveryAndBillingOptions dbil "
 			+ "JOIN o.auxiliaryInformation auxInfo LEFT JOIN o.orderAddresses oadd LEFT JOIN oadd.address a LEFT JOIN o.customerId c LEFT JOIN o.orderClass ocls JOIN keyInfo.orderCode ocs "
-			+ "JOIN ocs.orderCodes oc JOIN keyInfo.sourceCode sc JOIN oitem.subsProdPkgDef subdef JOIN oitem.term term JOIN pay.rateCard rc JOIN c.customerCategory cusCat JOIN c.paymentThreshold pthres WHERE "
+			+ "JOIN ocs.orderCodes oc JOIN keyInfo.sourceCode sc JOIN oitem.subsProdPkgDef subdef JOIN oitem.term term JOIN pay.rateCard rc JOIN c.customerCategory cusCat LEFT JOIN c.paymentThreshold pthres WHERE "
 			+ "((c.publisher.id = :pubId OR :pubId IS NULL) AND (c.customerId = :customerId OR :customerId IS NULL) AND ((o.orderId LIKE '%'||:keyword||'%') OR (o.orderType LIKE '%'||:keyword||'%') "
 			+ "OR (o.orderStatus LIKE '%'||:keyword||'%') OR (keyInfo.orderCategory LIKE '%'||:keyword||'%') OR (keyInfo.orderStatus LIKE '%'||:keyword||'%') "
 			+ "OR (keyInfo.orderDate LIKE '%'||:keyword||'%') OR (keyInfo.purchaseOrder LIKE '%'||:keyword||'%') OR (keyInfo.agent LIKE '%'||:keyword||'%') "
