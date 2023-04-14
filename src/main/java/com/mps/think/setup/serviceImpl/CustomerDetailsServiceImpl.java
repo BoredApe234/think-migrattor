@@ -72,7 +72,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	public CustomerDetails saveCustomerDetails(CustomerDetailsVO customerDetails) {
 		CustomerDetails newCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
 		
-		if(customerDetails.getPaymentThreshold()==null || customerDetails.getPaymentThreshold().getId()==0){
+		if(customerDetails.getPaymentThreshold()==null || customerDetails.getPaymentThreshold().getPaymentThresholdId()==0){
 			newCustomer.setPaymentThreshold(null);
 			}
 		
@@ -86,7 +86,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	public CustomerDetails updateCustomerDetails(CustomerDetailsVO customerDetails) {
 		CustomerDetails updatedCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
 		
-		if(customerDetails.getPaymentThreshold()==null || customerDetails.getPaymentThreshold().getId()==0){
+		if(customerDetails.getPaymentThreshold()==null || customerDetails.getPaymentThreshold().getPaymentThresholdId()==0){
 			updatedCustomer.setPaymentThreshold(null);
 			}
 		

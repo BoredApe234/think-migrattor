@@ -4,11 +4,9 @@ package com.mps.think.setup.vo;
 import java.util.Date;
 import java.util.List;
 
-import com.mps.think.setup.model.CustomerAddresses;
-import com.mps.think.setup.model.Publisher;
-
 import com.mps.think.setup.model.CustomerCategory;
-import com.mps.think.setup.model.PaymentThresholdDef;
+import com.mps.think.setup.model.PaymentThreshold;
+import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.vo.EnumModelVO.ChargeTaxOn;
 import com.mps.think.setup.vo.EnumModelVO.ConfigurationOptionsforOrders;
 import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
@@ -47,7 +45,7 @@ public class CustomerDetailsVO {
 	private ConfigurationOptionsforOrders configurationOptionsforOrders;
 	private String newOrderCommission;
 	private String renewalCommission;
-	private PaymentThresholdDefVO paymentThreshold;
+	private PaymentThreshold paymentThreshold;
 	private String custAuxFieldJSON;
 	private Publisher publisher;
 	private List<CustomerAddressesVO> customerAddresses;
@@ -276,10 +274,10 @@ public class CustomerDetailsVO {
 	public void setDateUntilDeactivation(Date dateUntilDeactivation) {
 		this.dateUntilDeactivation = dateUntilDeactivation;
 	}
-	public PaymentThresholdDefVO getPaymentThreshold() {
+	public PaymentThreshold getPaymentThreshold() {
 		return paymentThreshold;
 	}
-	public void setPaymentThreshold(PaymentThresholdDefVO paymentThreshold) {
+	public void setPaymentThreshold(PaymentThreshold paymentThreshold) {
 		this.paymentThreshold = paymentThreshold;
 	}
 

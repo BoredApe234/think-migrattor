@@ -15,9 +15,9 @@ public interface PaymentThresholdService {
 	
 	public PaymentThreshold updatePaymentThreshold(PaymentThresholdVO paymentThresholdVO);
 	
-	public Optional<PaymentThreshold> findByPaymentThresholdId(Integer id);
+	public PaymentThreshold findByPaymentThresholdId(Integer id);
 	
 	public HashMap<String, String> definePayment(double invoiceAmount, double paidAmount, Integer paymentThresholdId);
-	
-	public PaymentThreshold findByPaymentThresholdDefId(Integer id);
+		
+	public PaymentThreshold DeletePaymentThreshold(Integer id);
 }

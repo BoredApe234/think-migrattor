@@ -143,7 +143,7 @@ public class CustomerDetails  extends BaseEntity{
 	
 	@OneToOne
 	@JoinColumn(name = "paymentthresholddef_id", referencedColumnName = "id" )
-	private PaymentThresholdDef paymentThreshold;
+	private PaymentThreshold paymentThreshold;
 	
 	@Column(name = "cust_aux_field_json")
 	private String custAuxFieldJSON;
@@ -465,11 +465,11 @@ public class CustomerDetails  extends BaseEntity{
 		this.dateUntilDeactivation = dateUntilDeactivation;
 	}
 
-	public PaymentThresholdDef getPaymentThreshold() {
+	public PaymentThreshold getPaymentThreshold() {
 		return paymentThreshold;
 	}
 
-	public void setPaymentThreshold(PaymentThresholdDef paymentThreshold) {
+	public void setPaymentThreshold(PaymentThreshold paymentThreshold) {
 		this.paymentThreshold = paymentThreshold;
 	}
 	
