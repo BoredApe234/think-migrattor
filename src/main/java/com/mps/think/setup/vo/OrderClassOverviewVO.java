@@ -1,7 +1,7 @@
 package com.mps.think.setup.vo;
 
 import com.mps.think.setup.model.OrderClass;
-import com.mps.think.setup.model.PaymentThresholdDef;
+import com.mps.think.setup.model.PaymentThreshold;
 import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.model.SourceCode;
 
@@ -39,7 +39,7 @@ public class OrderClassOverviewVO {
 
 	private String profitCenter;
 
-	private PaymentThresholdDef paymentThreshold;
+	private PaymentThreshold paymentThreshold;
 
 	//
 
@@ -141,11 +141,11 @@ public class OrderClassOverviewVO {
 		this.profitCenter = profitCenter;
 	}
 
-	public PaymentThresholdDef getPaymentThreshold() {
+	public PaymentThreshold getPaymentThreshold() {
 		return paymentThreshold;
 	}
 
-	public void setPaymentThreshold(PaymentThresholdDef paymentThreshold) {
+	public void setPaymentThreshold(PaymentThreshold paymentThreshold) {
 		this.paymentThreshold = paymentThreshold;
 	}
 

@@ -3,6 +3,7 @@ package com.mps.think.setup.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -42,9 +43,14 @@ public class PaymentThresholdController {
 		return ResponseEntity.ok(paymentThresholdService.definePayment(invoiceAmount, paidAmount, paymentThresholdId));
 	}
 	
-	@PostMapping("/getPaymentThresholdDefId")
-	public ResponseEntity<?> findByPaymentThresholdDefId(@RequestBody Integer id){
-		return ResponseEntity.ok(paymentThresholdService.findByPaymentThresholdDefId(id));
+//	@PostMapping("/getPaymentThresholdDefId")
+//	public ResponseEntity<?> findByPaymentThresholdDefId(@RequestBody Integer id){
+//		return ResponseEntity.ok(paymentThresholdService.findByPaymentThresholdDefId(id));
+//	}
+	
+	@DeleteMapping("/DeletePaymentThreshold")
+	public ResponseEntity<?> DeletePaymentThreshold(@RequestBody Integer id) {
+		return ResponseEntity.ok(paymentThresholdService.DeletePaymentThreshold(id));
 	}
 
 }

@@ -22,6 +22,12 @@ public class PaymentThreshold extends BaseEntity {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer paymentThresholdId;
+	
+	@Column(name="code")
+	private String paymentThresholdCode;
+	
+	@Column(name="description")
+	private String paymentThresholdDescription;
 
 	@Column(name = "partial_threshold")
 	private Integer partialThreshold;
@@ -62,10 +68,6 @@ public class PaymentThreshold extends BaseEntity {
 	@OneToOne
 	@JoinColumn(name = "pub_id", referencedColumnName = "id")
 	private Publisher publisher;
-
-	@OneToOne
-	@JoinColumn(name = "payment_threshold_def_id", referencedColumnName = "id")
-	private PaymentThresholdDef paymentThresholdDef;
 
 	public Integer getPaymentThresholdId() {
 		return paymentThresholdId;
@@ -175,15 +177,24 @@ public class PaymentThreshold extends BaseEntity {
 		this.publisher = publisher;
 	}
 
-	public PaymentThresholdDef getPaymentThresholdDef() {
-		return paymentThresholdDef;
-	}
-
-	public void setPaymentThresholdDef(PaymentThresholdDef paymentThresholdDef) {
-		this.paymentThresholdDef = paymentThresholdDef;
-	}
-
 	public void setPaymentThresholdId(Integer paymentThresholdId) {
 		this.paymentThresholdId = paymentThresholdId;
 	}
+
+	public String getPaymentThresholdCode() {
+		return paymentThresholdCode;
+	}
+
+	public void setPaymentThresholdCode(String paymentThresholdCode) {
+		this.paymentThresholdCode = paymentThresholdCode;
+	}
+
+	public String getPaymentThresholdDescription() {
+		return paymentThresholdDescription;
+	}
+
+	public void setPaymentThresholdDescription(String paymentThresholdDescription) {
+		this.paymentThresholdDescription = paymentThresholdDescription;
+	}
+	
 }

@@ -40,8 +40,8 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 	}
 
 	@Override
-	public Optional<PaymentThreshold> findByPaymentThresholdId(Integer id) {
-		return paymentThresholdRepo.findById(id);
+	public PaymentThreshold findByPaymentThresholdId(Integer id) {
+		return paymentThresholdRepo.findById(id).get();
 	}
 
 	@Override
@@ -101,7 +101,11 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 	}
 
 	@Override
-	public PaymentThreshold findByPaymentThresholdDefId(Integer id) {
-		return paymentThresholdRepo.findByPaymentThresholdDefId(id);
+	public PaymentThreshold DeletePaymentThreshold(Integer id) {
+		PaymentThreshold remove = paymentThresholdRepo.findById(id).get();
+		if (remove != null) {
+			paymentThresholdRepo.delete(remove);
+		}
+		return remove;
 	}
 }

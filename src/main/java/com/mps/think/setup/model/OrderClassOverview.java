@@ -68,7 +68,7 @@ public class OrderClassOverview extends BaseEntity {
 	
 	@OneToOne
 	@JoinColumn(name = "payment_threshold" , referencedColumnName = "id")
-	private PaymentThresholdDef paymentThreshold;
+	private PaymentThreshold paymentThreshold;
 	
 	//
 	
@@ -174,11 +174,11 @@ public class OrderClassOverview extends BaseEntity {
 		this.profitCenter = profitCenter;
 	}
 
-	public PaymentThresholdDef getPaymentThreshold() {
+	public PaymentThreshold getPaymentThreshold() {
 		return paymentThreshold;
 	}
 
-	public void setPaymentThreshold(PaymentThresholdDef paymentThreshold) {
+	public void setPaymentThreshold(PaymentThreshold paymentThreshold) {
 		this.paymentThreshold = paymentThreshold;
 	}
 
