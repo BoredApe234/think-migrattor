@@ -35,6 +35,7 @@ public class CustomerCategoryServiceImpl implements CustomerCategoryService {
 		data.setPubId(publisher);
 		data.setThinkCategory(customerCategory.getThinkCategory());
 		data.setCustCategory(customerCategory.getCustCategory());
+		data.setDefaultcc(customerCategory.getDefaultcc());
 		CustomerCategoryRepo.saveAndFlush(data);
 		customerCategory.setCustomerCategoryId(data.getCustomerCategoryId());	
 		return customerCategory;
@@ -50,6 +51,7 @@ public class CustomerCategoryServiceImpl implements CustomerCategoryService {
 		data.setPubId(publisher);
 		data.setThinkCategory(customerCategory.getThinkCategory());
 		data.setCustCategory(customerCategory.getCustCategory());
+		data.setDefaultcc(customerCategory.getDefaultcc());
 		CustomerCategoryRepo.saveAndFlush(data);
 		return customerCategory;
 	}

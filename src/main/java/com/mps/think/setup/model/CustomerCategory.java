@@ -34,62 +34,60 @@ public class CustomerCategory extends BaseEntity {
 
 	@Column(name = "status")
 	private Integer status;
+	
+	@Column(name = "defaultcc")
+	private Boolean defaultcc;
 
 	
 	public Integer getCustomerCategoryId() {
 		return CustomerCategoryId;
 	}
 
-
 	public void setCustomerCategoryId(Integer customerCategoryId) {
 		CustomerCategoryId = customerCategoryId;
 	}
-
 
 	public Publisher getPubId() {
 		return pubId;
 	}
 
-
 	public void setPubId(Publisher pubId) {
 		this.pubId = pubId;
 	}
-
 
 	public String getCustCategory() {
 		return custCategory;
 	}
 
-
 	public void setCustCategory(String custCategory) {
 		this.custCategory = custCategory;
 	}
-
 
 	public String getThinkCategory() {
 		return thinkCategory;
 	}
 
-
 	public void setThinkCategory(String thinkCategory) {
 		this.thinkCategory = thinkCategory;
 	}
-
 
 	public Integer getStatus() {
 		return status;
 	}
 
-
 	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
-
-	@Override
-	public String toString() {
-		return "CustomerCategory [CustomerCategoryId=" + CustomerCategoryId + ", pubId=" + pubId + ", custCategory="
-				+ custCategory + ", thinkCategory=" + thinkCategory + ", status=" + status + "]";
+	public Boolean getDefaultcc() {
+		return defaultcc;
 	}
+
+	public void setDefaultcc(Boolean defaultcc) {
+		this.defaultcc = defaultcc;
+	}
+
+	
+	
 
 }
