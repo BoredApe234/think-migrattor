@@ -26,7 +26,7 @@ public class BaseEntity implements Serializable {
 	private Integer createdBy;
 
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
-	@Column(name = "created_at")
+	@Column(name = "created_at", updatable = false, nullable = false)
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
 	private Date createdAt;
