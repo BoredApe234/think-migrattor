@@ -1,6 +1,6 @@
 package com.mps.think.setup.vo;
 
-import com.mps.think.setup.model.OrderClass;
+import com.mps.think.setup.model.OrderClassOverview;
 import com.mps.think.setup.model.ProcessType;
 
 public class AddProcessVO {
@@ -23,7 +23,7 @@ public class AddProcessVO {
 	private String outputsort;
 	private String defaultjobqueue;
 	private String sqlscript;
-	private OrderClass orderClass;
+	private OrderClassOverview orderClassOverview;
 	private String length;
 	private Integer gps;
 	private Integer keyline;
@@ -140,11 +140,11 @@ public class AddProcessVO {
 	public void setSqlscript(String sqlscript) {
 		this.sqlscript = sqlscript;
 	}
-	public OrderClass getOrderClass() {
-		return orderClass;
+	public OrderClassOverview getOrderClassOverview() {
+		return orderClassOverview;
 	}
-	public void setOrderClass(OrderClass orderClass) {
-		this.orderClass = orderClass;
+	public void setOrderClassOverview(OrderClassOverview orderClassOverview) {
+		this.orderClassOverview = orderClassOverview;
 	}
 	public String getLength() {
 		return length;
@@ -197,10 +197,4 @@ public class AddProcessVO {
 	
 	
 	
-	
-	
-	
-	
-	
-
 }
