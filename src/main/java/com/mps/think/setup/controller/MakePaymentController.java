@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.JsonObject;
+import com.mps.think.setup.model.MakePayment;
 import com.mps.think.setup.service.MakePaymentService;
 import com.mps.think.setup.vo.MailTemplateVO;
 import com.mps.think.setup.vo.MakePaymentVO;
@@ -39,7 +41,8 @@ public class MakePaymentController {
 	
 	@PostMapping("/findByOrderId")
 	public ResponseEntity<?> findByOrderId(@RequestBody Integer id){
-		return ResponseEntity.ok(makePaymentService.findByOrderId(id));
+		MakePayment data = makePaymentService.findByOrderId(id);
+		return ResponseEntity.ok(data !=null?data:new JsonObject());
 	}
 	
 	@PostMapping("/sendPaymentLink")
