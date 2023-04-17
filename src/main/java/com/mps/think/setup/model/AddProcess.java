@@ -76,9 +76,13 @@ public class AddProcess extends BaseEntity  {
 	@Column(name = "sqlscript")
 	private String sqlscript;
 	
+//	@ManyToOne
+//	@JoinColumn(name = "order_cls_id", referencedColumnName = "oc_id")
+//	private OrderClass orderClass;
+	
 	@ManyToOne
-	@JoinColumn(name = "order_cls_id", referencedColumnName = "oc_id")
-	private OrderClass orderClass;
+	@JoinColumn(name = "order_class_overview_id", referencedColumnName = "id")
+	private OrderClassOverview orderClassOverview;
 	
 	@Column(name = "length")
 	private String length;
@@ -248,12 +252,12 @@ public class AddProcess extends BaseEntity  {
 		this.sqlscript = sqlscript;
 	}
 
-	public OrderClass getOrderClass() {
-		return orderClass;
+	public OrderClassOverview getOrderClassOverview() {
+		return orderClassOverview;
 	}
 
-	public void setOrderClass(OrderClass orderClass) {
-		this.orderClass = orderClass;
+	public void setOrderClassOverview(OrderClassOverview orderClassOverview) {
+		this.orderClassOverview = orderClassOverview;
 	}
 
 	public String getLength() {
@@ -321,13 +325,4 @@ public class AddProcess extends BaseEntity  {
 	}
 
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
