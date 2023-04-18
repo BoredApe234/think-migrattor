@@ -1,7 +1,10 @@
 package com.mps.think.setup.vo;
 
+import com.mps.think.setup.model.ExtractFilter;
 import com.mps.think.setup.model.OrderClassOverview;
+import com.mps.think.setup.model.OutputSort;
 import com.mps.think.setup.model.ProcessType;
+import com.mps.think.setup.model.Queue;
 
 public class AddProcessVO {
 	
@@ -18,10 +21,10 @@ public class AddProcessVO {
 	private Boolean productfullfillment;
 	private Boolean refund;
 	private Boolean renewal;
-	private String extractfilter;
+	private ExtractFilter extractfilterid;
 	private String defaultjobpriority;
-	private String outputsort;
-	private String defaultjobqueue;
+	private OutputSort outputsortid;
+	private Queue defaultjobqueueid;
 	private String sqlscript;
 	private OrderClassOverview orderClassOverview;
 	private String length;
@@ -110,11 +113,11 @@ public class AddProcessVO {
 	public void setRenewal(Boolean renewal) {
 		this.renewal = renewal;
 	}
-	public String getExtractfilter() {
-		return extractfilter;
+	public ExtractFilter getExtractfilterid() {
+		return extractfilterid;
 	}
-	public void setExtractfilter(String extractfilter) {
-		this.extractfilter = extractfilter;
+	public void setExtractfilterid(ExtractFilter extractfilterid) {
+		this.extractfilterid = extractfilterid;
 	}
 	public String getDefaultjobpriority() {
 		return defaultjobpriority;
@@ -122,17 +125,17 @@ public class AddProcessVO {
 	public void setDefaultjobpriority(String defaultjobpriority) {
 		this.defaultjobpriority = defaultjobpriority;
 	}
-	public String getOutputsort() {
-		return outputsort;
+	public OutputSort getOutputsortid() {
+		return outputsortid;
 	}
-	public void setOutputsort(String outputsort) {
-		this.outputsort = outputsort;
+	public void setOutputsortid(OutputSort outputsortid) {
+		this.outputsortid = outputsortid;
 	}
-	public String getDefaultjobqueue() {
-		return defaultjobqueue;
+	public Queue getDefaultjobqueueid() {
+		return defaultjobqueueid;
 	}
-	public void setDefaultjobqueue(String defaultjobqueue) {
-		this.defaultjobqueue = defaultjobqueue;
+	public void setDefaultjobqueueid(Queue defaultjobqueueid) {
+		this.defaultjobqueueid = defaultjobqueueid;
 	}
 	public String getSqlscript() {
 		return sqlscript;

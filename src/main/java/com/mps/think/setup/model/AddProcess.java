@@ -61,17 +61,20 @@ public class AddProcess extends BaseEntity  {
 	@Column(name = "renewal")
 	private Boolean renewal;
 	
-	@Column(name = "extractfilter")
-	private String extractfilter;
+	@OneToOne
+	@JoinColumn(name = "extractfilter", referencedColumnName = "id" )
+	private ExtractFilter extractfilterid;
 	
 	@Column(name = "defaultjobpriority")
 	private String defaultjobpriority;
 	
-	@Column(name = "outputsort")
-	private String outputsort;
+	@OneToOne
+	@JoinColumn(name = "output_sort", referencedColumnName = "id" )
+	private OutputSort outputsortid;
 	
-	@Column(name = "defaultjobqueue")
-	private String defaultjobqueue;
+	@OneToOne
+	@JoinColumn(name = "defaultjobqueue" , referencedColumnName = "id")
+	private Queue defaultjobqueueid;
 	
 	@Column(name = "sqlscript")
 	private String sqlscript;
@@ -212,12 +215,12 @@ public class AddProcess extends BaseEntity  {
 		this.renewal = renewal;
 	}
 
-	public String getExtractfilter() {
-		return extractfilter;
+	public ExtractFilter getExtractfilterid() {
+		return extractfilterid;
 	}
 
-	public void setExtractfilter(String extractfilter) {
-		this.extractfilter = extractfilter;
+	public void setExtractfilterid(ExtractFilter extractfilterid) {
+		this.extractfilterid = extractfilterid;
 	}
 
 	public String getDefaultjobpriority() {
@@ -228,20 +231,20 @@ public class AddProcess extends BaseEntity  {
 		this.defaultjobpriority = defaultjobpriority;
 	}
 
-	public String getOutputsort() {
-		return outputsort;
+	public OutputSort getOutputsortid() {
+		return outputsortid;
 	}
 
-	public void setOutputsort(String outputsort) {
-		this.outputsort = outputsort;
+	public void setOutputsortid(OutputSort outputsortid) {
+		this.outputsortid = outputsortid;
 	}
 
-	public String getDefaultjobqueue() {
-		return defaultjobqueue;
+	public Queue getDefaultjobqueueid() {
+		return defaultjobqueueid;
 	}
 
-	public void setDefaultjobqueue(String defaultjobqueue) {
-		this.defaultjobqueue = defaultjobqueue;
+	public void setDefaultjobqueueid(Queue defaultjobqueueid) {
+		this.defaultjobqueueid = defaultjobqueueid;
 	}
 
 	public String getSqlscript() {
@@ -323,6 +326,8 @@ public class AddProcess extends BaseEntity  {
 	public void setPicklist(Boolean picklist) {
 		this.picklist = picklist;
 	}
+
+	
 
 	
 }
