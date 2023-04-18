@@ -23,7 +23,7 @@ public class MakePaymentVO {
 	private String status;
 	private Publisher publisher;
 //	private Order order;
-	private LinkedHashMap<Integer, Double> listOfOrder;
+	private LinkedHashMap<String, Double> listOfOrder;
 //	private List<OrderPaymentMapping> orderPaymentMapping;
 	public Integer getId() {
 		return id;
@@ -109,10 +109,10 @@ public class MakePaymentVO {
 //	public void setOrder(Order order) {
 //		this.order = order;
 //	}
-	public LinkedHashMap<Integer, Double> getListOfOrder() {
+	public LinkedHashMap<String, Double> getListOfOrder() {
 		return listOfOrder;
 	}
-	public void setListOfOrder(LinkedHashMap<Integer, Double> listOfOrder) {
+	public void setListOfOrder(LinkedHashMap<String, Double> listOfOrder) {
 		this.listOfOrder = listOfOrder;
 	}
 

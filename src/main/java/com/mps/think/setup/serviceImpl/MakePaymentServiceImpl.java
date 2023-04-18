@@ -46,7 +46,7 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 //		MakePayment data=makePaymentRepo.saveAndFlush(makePayment);
 		double amnt=makePaymentVO.getAmountToBePaid();
 		List<MakePayment> mke=new ArrayList<>();
-		for (Map.Entry<Integer,Double> entry : makePaymentVO.getListOfOrder().entrySet()) {
+		for (Map.Entry<String,Double> entry : makePaymentVO.getListOfOrder().entrySet()) {
 		if(amnt>0) {
 		MakePayment makePayment=new MakePayment();
 		makePayment.setNameOfCustomer(makePaymentVO.getNameOfCustomer());
@@ -69,7 +69,8 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 		pub.setId(makePaymentVO.getPublisher().getId());
 		makePayment.setPublisher(pub);
 		Order od=new Order();
-		od.setOrderId(entry.getKey());
+		String[] s=entry.getKey().split("-");
+		od.setOrderId(Integer.parseInt(s[1]));
 		makePayment.setOrder(od);
 		MakePayment listdata=makePaymentRepo.saveAndFlush(makePayment);
 		mke.add(listdata);
@@ -106,7 +107,6 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 
 	@Override
 	public MakePayment findByOrderId(Integer orderId) {
-		// TODO Auto-generated method stub
 		return makePaymentRepo.findByOrderOrderId(orderId);
 	}
 
