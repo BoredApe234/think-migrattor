@@ -364,5 +364,18 @@ public class EnumModelVO {
 		}
 	
 	}
+	public static enum Mode {
+		One("Print"), Two("File"), Three("Window"), Four("Unused");
+
+		private final String mode;
+
+		Mode(String mode) {
+			this.mode = mode;
+		}
+
+		public String getMode() {
+			return mode;
+		}
+	}
 
 }

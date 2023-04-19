@@ -1,15 +1,15 @@
 package com.mps.think.setup.vo;
 
-
-
 import com.mps.think.setup.model.AddProcess;
+import com.mps.think.setup.model.OrderClass;
+import com.mps.think.setup.model.OutputValue;
 
 public class ProcessOutputVO {
 	
 	private Integer output_id;
 	private AddProcess addProcessId;
-    private String type;
-	private String output;
+	private OrderClass orderClass;
+	private OutputValue outputValue;
 	private String mode;
 	private String outputfilename;
 	private Boolean apendjobId;
@@ -20,7 +20,6 @@ public class ProcessOutputVO {
 	private String effort;
 	private String auditreport;
 	private String parametervalue;
-	
 	public Integer getOutput_id() {
 		return output_id;
 	}
@@ -33,17 +32,17 @@ public class ProcessOutputVO {
 	public void setAddProcessId(AddProcess addProcessId) {
 		this.addProcessId = addProcessId;
 	}
-	public String getType() {
-		return type;
+	public OrderClass getOrderClass() {
+		return orderClass;
 	}
-	public void setType(String type) {
-		this.type = type;
+	public void setOrderClass(OrderClass orderClass) {
+		this.orderClass = orderClass;
 	}
-	public String getOutput() {
-		return output;
+	public OutputValue getOutputValue() {
+		return outputValue;
 	}
-	public void setOutput(String output) {
-		this.output = output;
+	public void setOutputValue(OutputValue outputValue) {
+		this.outputValue = outputValue;
 	}
 	public String getMode() {
 		return mode;
