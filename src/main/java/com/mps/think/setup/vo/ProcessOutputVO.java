@@ -2,13 +2,15 @@ package com.mps.think.setup.vo;
 
 import com.mps.think.setup.model.AddProcess;
 import com.mps.think.setup.model.OrderClass;
+import com.mps.think.setup.model.OrderClassOverview;
 import com.mps.think.setup.model.OutputValue;
 
 public class ProcessOutputVO {
 	
 	private Integer output_id;
 	private AddProcess addProcessId;
-	private OrderClass orderClass;
+//	private OrderClass orderClass;
+	private OrderClassOverview orderClassOverview;
 	private OutputValue outputValue;
 	private String mode;
 	private String outputfilename;
@@ -32,12 +34,12 @@ public class ProcessOutputVO {
 	public void setAddProcessId(AddProcess addProcessId) {
 		this.addProcessId = addProcessId;
 	}
-	public OrderClass getOrderClass() {
-		return orderClass;
-	}
-	public void setOrderClass(OrderClass orderClass) {
-		this.orderClass = orderClass;
-	}
+//	public OrderClass getOrderClass() {
+//		return orderClass;
+//	}
+//	public void setOrderClass(OrderClass orderClass) {
+//		this.orderClass = orderClass;
+//	}
 	public OutputValue getOutputValue() {
 		return outputValue;
 	}
@@ -103,6 +105,12 @@ public class ProcessOutputVO {
 	}
 	public void setParametervalue(String parametervalue) {
 		this.parametervalue = parametervalue;
+	}
+	public OrderClassOverview getOrderClassOverview() {
+		return orderClassOverview;
+	}
+	public void setOrderClassOverview(OrderClassOverview orderClassOverview) {
+		this.orderClassOverview = orderClassOverview;
 	}
 	
 	

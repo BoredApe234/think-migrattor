@@ -27,9 +27,13 @@ public class ProcessOutput extends BaseEntity {
 	@JoinColumn(name = "addProcess_id", referencedColumnName = "process_id" )
 	private AddProcess addProcessId;
 	
+//	@ManyToOne
+//	@JoinColumn(name = "order_cls_id", referencedColumnName = "oc_id")
+//	private OrderClass orderClass;
+	
 	@ManyToOne
-	@JoinColumn(name = "order_cls_id", referencedColumnName = "oc_id")
-	private OrderClass orderClass;
+	@JoinColumn(name = "order_cls_overview", referencedColumnName = "id")
+	private OrderClassOverview orderClassOverview;
 	
 	@ManyToOne
 	@JoinColumn(name = "output", referencedColumnName = "id")
@@ -81,13 +85,13 @@ public class ProcessOutput extends BaseEntity {
 		this.addProcessId = addProcessId;
 	}
 
-	public OrderClass getOrderClass() {
-		return orderClass;
-	}
-
-	public void setOrderClass(OrderClass orderClass) {
-		this.orderClass = orderClass;
-	}
+//	public OrderClass getOrderClass() {
+//		return orderClass;
+//	}
+//
+//	public void setOrderClass(OrderClass orderClass) {
+//		this.orderClass = orderClass;
+//	}
 
 	public OutputValue getOutputValue() {
 		return outputValue;
@@ -176,6 +180,16 @@ public class ProcessOutput extends BaseEntity {
 	public void setParametervalue(String parametervalue) {
 		this.parametervalue = parametervalue;
 	}
+
+	public OrderClassOverview getOrderClassOverview() {
+		return orderClassOverview;
+	}
+
+	public void setOrderClassOverview(OrderClassOverview orderClassOverview) {
+		this.orderClassOverview = orderClassOverview;
+	}
+	
+	
 
 		
 
