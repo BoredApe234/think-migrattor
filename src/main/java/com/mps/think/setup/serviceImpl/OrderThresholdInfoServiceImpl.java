@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderClass;
 import com.mps.think.setup.model.OrderThresholdInfo;
@@ -18,6 +19,9 @@ import com.mps.think.setup.vo.OrderThresholdInfoVO;
 public class OrderThresholdInfoServiceImpl implements OrderThresholdInfoService{
 	@Autowired
 	OrderThresholdInfoRepo thresholdInfoRepo;
+	
+	@Autowired
+	ObjectMapper mapper;
 
 	@Override
 	public List<OrderThresholdInfo> findAllorderThresholdByPubId(Integer pubId) {
@@ -26,43 +30,47 @@ public class OrderThresholdInfoServiceImpl implements OrderThresholdInfoService{
 
 	@Override
 	public OrderThresholdInfo saveorderThresholdInfo(OrderThresholdInfoVO orderThresholdInfoVO) {
-		OrderThresholdInfo ot=new OrderThresholdInfo();
-		OrderClass oc=new OrderClass();
-		oc.setOcId(orderThresholdInfoVO.getOrderClass().getOcId());
-		ot.setOrderClass(oc);
-		Terms term=new Terms();
-		term.setTermsId(orderThresholdInfoVO.getTerms().getTermsId());
-		ot.setTerms(term);
-		SourceCode sc=new SourceCode();
-		sc.setSourceCodeId(orderThresholdInfoVO.getSourceCode().getSourceCodeId());
-		ot.setSourceCode(sc);
-		Order order=new Order();
-		order.setOrderId(orderThresholdInfoVO.getOrder().getOrderId());
-		ot.setOrder(order);
-		ot.setCustomerNbr(orderThresholdInfoVO.getCustomerNbr());
-		ot.setOrderNbr(orderThresholdInfoVO.getOrderNbr());
-		ot.setStartDate(orderThresholdInfoVO.getStartDate());
-		ot.setLineItem(orderThresholdInfoVO.getLineItem());
-		ot.setOrderDate(orderThresholdInfoVO.getOrderDate());
-		ot.setTotalPaid(orderThresholdInfoVO.getTotalPaid());
-		if(orderThresholdInfoVO.getPaymentStatus().equalsIgnoreCase("Prorate Issues")) {
-			ot.setUnderPaymentOption(orderThresholdInfoVO.getUnderPaymentOption());
-			ot.setExpirationOriginal(orderThresholdInfoVO.getExpirationOriginal());
-			ot.setExpirationProrated(orderThresholdInfoVO.getExpirationProrated());
-			ot.setOrderQuantityOriginal(orderThresholdInfoVO.getOrderQuantityOriginal());
-			ot.setOrderQuantityProrated(orderThresholdInfoVO.getOrderQuantityProrated());
-			ot.setRemaining(orderThresholdInfoVO.getRemaining());
-			ot.setOrderAmntSubsOriginal(orderThresholdInfoVO.getOrderAmntSubsOriginal());
-			ot.setOrderAmntDeliveryOriginal(orderThresholdInfoVO.getOrderAmntDeliveryOriginal());
-			ot.setOrderAmntTaxOriginal(orderThresholdInfoVO.getOrderAmntTaxOriginal());
-		}
-		Publisher pub=new Publisher();
-		pub.setId(orderThresholdInfoVO.getPublisher().getId());
-		ot.setPublisher(pub);
-		OrderThresholdInfo data = thresholdInfoRepo.saveAndFlush(ot);
-		ot.setId(data.getId());
+//		OrderThresholdInfo ot=new OrderThresholdInfo();
+//		OrderClass oc=new OrderClass();
+//		oc.setOcId(orderThresholdInfoVO.getOrderClass().getOcId());
+//		ot.setOrderClass(oc);
+//		Terms term=new Terms();
+//		term.setTermsId(orderThresholdInfoVO.getTerms().getTermsId());
+//		ot.setTerms(term);
+//		SourceCode sc=new SourceCode();
+//		sc.setSourceCodeId(orderThresholdInfoVO.getSourceCode().getSourceCodeId());
+//		ot.setSourceCode(sc);
+//		Order order=new Order();
+//		order.setOrderId(orderThresholdInfoVO.getOrder().getOrderId());
+//		ot.setOrder(order);
+//		ot.setCustomerNbr(orderThresholdInfoVO.getCustomerNbr());
+//		ot.setOrderNbr(orderThresholdInfoVO.getOrderNbr());
+//		ot.setStartDate(orderThresholdInfoVO.getStartDate());
+//		ot.setLineItem(orderThresholdInfoVO.getLineItem());
+//		ot.setOrderDate(orderThresholdInfoVO.getOrderDate());
+//		ot.setTotalPaid(orderThresholdInfoVO.getTotalPaid());
+//		ot.setUnderPaymentOption(orderThresholdInfoVO.getUnderPaymentOption());
+//		if(orderThresholdInfoVO.getPaymentStatus().equalsIgnoreCase("Prorate Issues")) {
+//			ot.setExpirationOriginal(orderThresholdInfoVO.getExpirationOriginal());
+//			ot.setExpirationProrated(orderThresholdInfoVO.getExpirationProrated());
+//			ot.setOrderQuantityOriginal(orderThresholdInfoVO.getOrderQuantityOriginal());
+//			ot.setOrderQuantityProrated(orderThresholdInfoVO.getOrderQuantityProrated());
+//			ot.setRemainingOriginal(orderThresholdInfoVO.getRemainingOriginal());
+//			ot.setRemainingProrated(orderThresholdInfoVO.getRemainingProrated());
+//			ot.setOrderAmntSubsOriginal(orderThresholdInfoVO.getOrderAmntSubsOriginal());
+//			ot.setOrderAmntSubsProrated(orderThresholdInfoVO.getOrderAmntSubsProrated());
+//			ot.setOrderAmntDeliveryOriginal(orderThresholdInfoVO.getOrderAmntDeliveryOriginal());
+//			ot.setOrderAmntDeliveryProrated(orderThresholdInfoVO.getOrderAmntDeliveryProrated());
+//			ot.setOrderAmntTaxOriginal(orderThresholdInfoVO.getOrderAmntTaxOriginal());
+//			ot.setOrderAmntTaxProrated(orderThresholdInfoVO.getOrderAmntTaxProrated());
+//		}
+//		Publisher pub=new Publisher();
+//		pub.setId(orderThresholdInfoVO.getPublisher().getId());
+//		ot.setPublisher(pub);
+//		OrderThresholdInfo data = thresholdInfoRepo.saveAndFlush(ot);
+//		ot.setId(data.getId());
 		
-		return ot;
+		return thresholdInfoRepo.saveAndFlush(mapper.convertValue(orderThresholdInfoVO, OrderThresholdInfo.class));
 	}
 
 	@Override
