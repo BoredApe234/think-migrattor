@@ -77,17 +77,29 @@ public class OrderThresholdInfo extends BaseEntity{
 	@Column(name = "order_quantity_prorated")
 	private Integer orderQuantityProrated;
 	
-	@Column(name = "remaining")
-	private Integer remaining;
+	@Column(name = "remaining_original")
+	private Integer remainingOriginal;
+	
+	@Column(name = "remaining_prorated")
+	private Integer remainingProrated;
 	
 	@Column(name = "order_amnt_subs_original")
 	private double orderAmntSubsOriginal;
 	
+	@Column(name = "order_amnt_subs_prorated")
+	private double orderAmntSubsProrated;
+	
 	@Column(name = "order_amnt_delivery_original")
 	private double orderAmntDeliveryOriginal;
 	
+	@Column(name = "order_amnt_delivery_prorated")
+	private double orderAmntDeliveryProrated;
+	
 	@Column(name = "order_amnt_tax_original")
 	private double orderAmntTaxOriginal;
+	
+	@Column(name = "order_amnt_tax_prorated")
+	private double orderAmntTaxProrated;
 	
 	@OneToOne
 	@JoinColumn(name = "pub_id", referencedColumnName = "id" )
@@ -229,12 +241,20 @@ public class OrderThresholdInfo extends BaseEntity{
 		this.orderQuantityProrated = orderQuantityProrated;
 	}
 
-	public Integer getRemaining() {
-		return remaining;
+	public Integer getRemainingOriginal() {
+		return remainingOriginal;
 	}
 
-	public void setRemaining(Integer remaining) {
-		this.remaining = remaining;
+	public void setRemainingOriginal(Integer remainingOriginal) {
+		this.remainingOriginal = remainingOriginal;
+	}
+
+	public Integer getRemainingProrated() {
+		return remainingProrated;
+	}
+
+	public void setRemainingProrated(Integer remainingProrated) {
+		this.remainingProrated = remainingProrated;
 	}
 
 	public double getOrderAmntSubsOriginal() {
@@ -245,6 +265,14 @@ public class OrderThresholdInfo extends BaseEntity{
 		this.orderAmntSubsOriginal = orderAmntSubsOriginal;
 	}
 
+	public double getOrderAmntSubsProrated() {
+		return orderAmntSubsProrated;
+	}
+
+	public void setOrderAmntSubsProrated(double orderAmntSubsProrated) {
+		this.orderAmntSubsProrated = orderAmntSubsProrated;
+	}
+
 	public double getOrderAmntDeliveryOriginal() {
 		return orderAmntDeliveryOriginal;
 	}
@@ -253,12 +281,28 @@ public class OrderThresholdInfo extends BaseEntity{
 		this.orderAmntDeliveryOriginal = orderAmntDeliveryOriginal;
 	}
 
+	public double getOrderAmntDeliveryProrated() {
+		return orderAmntDeliveryProrated;
+	}
+
+	public void setOrderAmntDeliveryProrated(double orderAmntDeliveryProrated) {
+		this.orderAmntDeliveryProrated = orderAmntDeliveryProrated;
+	}
+
 	public double getOrderAmntTaxOriginal() {
 		return orderAmntTaxOriginal;
 	}
 
 	public void setOrderAmntTaxOriginal(double orderAmntTaxOriginal) {
 		this.orderAmntTaxOriginal = orderAmntTaxOriginal;
+	}
+
+	public double getOrderAmntTaxProrated() {
+		return orderAmntTaxProrated;
+	}
+
+	public void setOrderAmntTaxProrated(double orderAmntTaxProrated) {
+		this.orderAmntTaxProrated = orderAmntTaxProrated;
 	}
 
 	public Publisher getPublisher() {

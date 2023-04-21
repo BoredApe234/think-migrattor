@@ -27,10 +27,14 @@ public class OrderThresholdInfoVO {
 	private Date expirationProrated;
 	private Integer orderQuantityOriginal;
 	private Integer orderQuantityProrated;
-	private Integer remaining;
+	private Integer remainingOriginal;
+	private Integer remainingProrated;
 	private double orderAmntSubsOriginal;
+	private double orderAmntSubsProrated;
 	private double orderAmntDeliveryOriginal;
+	private double orderAmntDeliveryProrated;
 	private double orderAmntTaxOriginal;
+	private double orderAmntTaxProrated;
 	private Publisher publisher;
 	public Integer getId() {
 		return id;
@@ -134,11 +138,17 @@ public class OrderThresholdInfoVO {
 	public void setOrderQuantityProrated(Integer orderQuantityProrated) {
 		this.orderQuantityProrated = orderQuantityProrated;
 	}
-	public Integer getRemaining() {
-		return remaining;
+	public Integer getRemainingOriginal() {
+		return remainingOriginal;
 	}
-	public void setRemaining(Integer remaining) {
-		this.remaining = remaining;
+	public void setRemainingOriginal(Integer remainingOriginal) {
+		this.remainingOriginal = remainingOriginal;
+	}
+	public Integer getRemainingProrated() {
+		return remainingProrated;
+	}
+	public void setRemainingProrated(Integer remainingProrated) {
+		this.remainingProrated = remainingProrated;
 	}
 	public double getOrderAmntSubsOriginal() {
 		return orderAmntSubsOriginal;
@@ -146,11 +156,23 @@ public class OrderThresholdInfoVO {
 	public void setOrderAmntSubsOriginal(double orderAmntSubsOriginal) {
 		this.orderAmntSubsOriginal = orderAmntSubsOriginal;
 	}
+	public double getOrderAmntSubsProrated() {
+		return orderAmntSubsProrated;
+	}
+	public void setOrderAmntSubsProrated(double orderAmntSubsProrated) {
+		this.orderAmntSubsProrated = orderAmntSubsProrated;
+	}
 	public double getOrderAmntDeliveryOriginal() {
 		return orderAmntDeliveryOriginal;
 	}
 	public void setOrderAmntDeliveryOriginal(double orderAmntDeliveryOriginal) {
 		this.orderAmntDeliveryOriginal = orderAmntDeliveryOriginal;
+	}
+	public double getOrderAmntDeliveryProrated() {
+		return orderAmntDeliveryProrated;
+	}
+	public void setOrderAmntDeliveryProrated(double orderAmntDeliveryProrated) {
+		this.orderAmntDeliveryProrated = orderAmntDeliveryProrated;
 	}
 	public double getOrderAmntTaxOriginal() {
 		return orderAmntTaxOriginal;
@@ -158,11 +180,18 @@ public class OrderThresholdInfoVO {
 	public void setOrderAmntTaxOriginal(double orderAmntTaxOriginal) {
 		this.orderAmntTaxOriginal = orderAmntTaxOriginal;
 	}
+	public double getOrderAmntTaxProrated() {
+		return orderAmntTaxProrated;
+	}
+	public void setOrderAmntTaxProrated(double orderAmntTaxProrated) {
+		this.orderAmntTaxProrated = orderAmntTaxProrated;
+	}
 	public Publisher getPublisher() {
 		return publisher;
 	}
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
+	
 	
 }
