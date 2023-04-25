@@ -12,6 +12,5 @@ public interface PaymentThresholdRepo extends JpaRepository<PaymentThreshold, In
 
 	List<PaymentThreshold> findByPublisherId(@Param("pubId") Integer pubId);
 
-	PaymentThreshold saveAndFlush(List<PaymentThreshold> pThresholdnew);
 	
 }
