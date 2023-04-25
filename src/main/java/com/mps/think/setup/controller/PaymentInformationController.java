@@ -37,4 +37,9 @@ public class PaymentInformationController {
 		return ResponseEntity.ok(paymentInformationService.findByPaymentInfoId(id));
 	}
 	
+	@PostMapping("/getPaymentInformationByOrderId")
+	public ResponseEntity<?> getPaymentInformationByOrderId(@RequestBody Integer orderId){
+		return ResponseEntity.ok(paymentInformationService.getPaymentInformationByOrderId(orderId));
+	}
+	
 }
