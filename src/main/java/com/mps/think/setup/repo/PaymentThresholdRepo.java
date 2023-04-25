@@ -11,5 +11,7 @@ import com.mps.think.setup.model.PaymentThreshold;
 public interface PaymentThresholdRepo extends JpaRepository<PaymentThreshold, Integer>{
 
 	List<PaymentThreshold> findByPublisherId(@Param("pubId") Integer pubId);
+
+	PaymentThreshold saveAndFlush(List<PaymentThreshold> pThresholdnew);
 	
 }

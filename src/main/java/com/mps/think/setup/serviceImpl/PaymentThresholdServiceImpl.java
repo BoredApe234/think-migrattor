@@ -1,7 +1,9 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -107,5 +109,27 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 			paymentThresholdRepo.delete(remove);
 		}
 		return remove;
+	}
+
+	@Override
+	public List<PaymentThreshold> defaultStatus(PaymentThresholdVO paymentThresholdVO) {
+		List<PaymentThreshold> list=paymentThresholdRepo.findByPublisherId(paymentThresholdVO.getPublisher().getId());
+		ObjectMapper obj = new ObjectMapper();
+		PaymentThreshold pThresholdnew,thresh;
+		List<PaymentThreshold> response=new ArrayList<>();
+		for(PaymentThreshold pthreshold:list) {
+			if(Objects.equals(paymentThresholdVO.getPaymentThresholdId(), pthreshold.getPaymentThresholdId())) {
+				pThresholdnew = obj.convertValue(pthreshold, PaymentThreshold.class);
+				pThresholdnew.setStatus(true);
+				thresh=paymentThresholdRepo.saveAndFlush(pThresholdnew);
+				response.add(thresh);
+			}else {
+			pThresholdnew = obj.convertValue(pthreshold, PaymentThreshold.class);
+			pThresholdnew.setStatus(false);
+			thresh=paymentThresholdRepo.saveAndFlush(pThresholdnew);
+			response.add(thresh);
+			}
+		}
+		return response;
 	}
 }

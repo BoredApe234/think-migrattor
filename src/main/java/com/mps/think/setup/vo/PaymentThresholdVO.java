@@ -36,6 +36,8 @@ public class PaymentThresholdVO {
 
 	private String paymentThresholdDescription;
 	
+	private boolean status;
+	
 	public Integer getPaymentThresholdId() {
 		return paymentThresholdId;
 	}
@@ -164,4 +166,13 @@ public class PaymentThresholdVO {
 		this.paymentThresholdDescription = paymentThresholdDescription;
 	}
 
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	
 }

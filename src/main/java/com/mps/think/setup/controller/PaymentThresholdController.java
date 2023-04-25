@@ -52,5 +52,11 @@ public class PaymentThresholdController {
 	public ResponseEntity<?> DeletePaymentThreshold(@RequestBody Integer id) {
 		return ResponseEntity.ok(paymentThresholdService.DeletePaymentThreshold(id));
 	}
+	
+	@PostMapping("/defaultStatus")
+	public ResponseEntity<?> defaultStatus(@RequestBody PaymentThresholdVO paymentThresholdVO) {
+		return ResponseEntity.ok(paymentThresholdService.defaultStatus(paymentThresholdVO));
+	}
+
 
 }
