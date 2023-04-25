@@ -20,4 +20,6 @@ public interface PaymentThresholdService {
 	public HashMap<String, String> definePayment(double invoiceAmount, double paidAmount, Integer paymentThresholdId);
 		
 	public PaymentThreshold DeletePaymentThreshold(Integer id);
+	
+	public List<PaymentThreshold> defaultStatus(PaymentThresholdVO paymentThresholdVO);
 }

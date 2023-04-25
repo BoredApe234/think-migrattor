@@ -64,6 +64,9 @@ public class PaymentThreshold extends BaseEntity {
 
 	@Column(name = "under_payment_overrides")
 	private boolean underpaymentOverrides;
+	
+	@Column(name = "default_status")
+	private boolean status;
 
 	@OneToOne
 	@JoinColumn(name = "pub_id", referencedColumnName = "id")
@@ -196,5 +199,12 @@ public class PaymentThreshold extends BaseEntity {
 	public void setPaymentThresholdDescription(String paymentThresholdDescription) {
 		this.paymentThresholdDescription = paymentThresholdDescription;
 	}
-	
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 }
