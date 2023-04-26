@@ -33,8 +33,9 @@ public class Splits extends BaseEntity {
 	@JoinColumn(name = "extractfilter", referencedColumnName = "id" )
 	private ExtractFilter extractfilterid;
 	
-	@Column(name = "process")
-	private Integer process;
+	@OneToOne
+	@JoinColumn(name = "process", referencedColumnName = "p_id" )
+	private ProcessType pid;
 
 	public Integer getId() {
 		return id;
@@ -68,13 +69,15 @@ public class Splits extends BaseEntity {
 		this.extractfilterid = extractfilterid;
 	}
 
-	public Integer getProcess() {
-		return process;
+	public ProcessType getPid() {
+		return pid;
 	}
 
-	public void setProcess(Integer process) {
-		this.process = process;
+	public void setPid(ProcessType pid) {
+		this.pid = pid;
 	}
+
+
 	
 	
 	

@@ -15,6 +15,9 @@ public class AddProcessVO {
 	private Boolean status;
 	private Boolean active;
 	private Boolean repeating;
+	private Boolean inserts;
+	private Boolean split;
+	private Boolean autorenewal;
 	private Boolean holdormanualselect;
 	private Boolean backlabel;
 	private Boolean billing;
@@ -197,6 +200,25 @@ public class AddProcessVO {
 	public void setPicklist(Boolean picklist) {
 		this.picklist = picklist;
 	}
+	public Boolean getInserts() {
+		return inserts;
+	}
+	public void setInserts(Boolean inserts) {
+		this.inserts = inserts;
+	}
+	public Boolean getSplit() {
+		return split;
+	}
+	public void setSplit(Boolean split) {
+		this.split = split;
+	}
+	public Boolean getAutorenewal() {
+		return autorenewal;
+	}
+	public void setAutorenewal(Boolean autorenewal) {
+		this.autorenewal = autorenewal;
+	}
+	
 	
 	
 	
