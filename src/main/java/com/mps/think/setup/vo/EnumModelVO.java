@@ -377,5 +377,22 @@ public class EnumModelVO {
 			return mode;
 		}
 	}
+	
+	public static enum Interval {
+		Minute("Minute"), Day("Day"), Month("Month");
+
+		private final String interval;
+
+		Interval(String interval) {
+			this.interval = interval;
+		}
+
+		public String getInterval() {
+			return interval;
+		}
+	}
+
+
+	
 
 }
