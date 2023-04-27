@@ -36,4 +36,9 @@ public class PaymentLinkStatusController {
 	public ResponseEntity<?> findPaymentLinkStatusById(@RequestBody Integer id){
 		return ResponseEntity.ok(linkStatusService.findPaymentLinkStatusById(id));
 	}
+	
+	@PostMapping("/findPaymentLinkStatusByOrderId")
+	public ResponseEntity<?> findPaymentLinkStatusByOrderId(@RequestBody Integer orderId){
+		return ResponseEntity.ok(linkStatusService.findPaymentLinkStatusByOrderId(orderId));
+	}
 }
