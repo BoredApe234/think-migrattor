@@ -10,4 +10,5 @@ import com.mps.think.setup.model.PaymentLinkStatus;
 public interface PaymentLinkStatusRepo extends JpaRepository<PaymentLinkStatus, Integer> {
 
 	List<PaymentLinkStatus> findByPublisherId(Integer pubId);
+	PaymentLinkStatus findByorderId(Integer orderId);
 }

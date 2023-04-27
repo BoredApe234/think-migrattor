@@ -39,4 +39,9 @@ public class PaymentLinkStatusServiceImpl implements PaymentLinkStatusService{
 		return paymentLinkStatusRepo.findById(id).get();
 	}
 
+	@Override
+	public PaymentLinkStatus findPaymentLinkStatusByOrderId(Integer orderId) {
+		return paymentLinkStatusRepo.findByorderId(orderId);
+	}
+
 }
