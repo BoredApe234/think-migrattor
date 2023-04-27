@@ -43,6 +43,15 @@ public class AddProcess extends BaseEntity  {
 	@Column(name = "repeating")
 	private Boolean repeating;
 	
+	@Column(name = "inserts")
+	private Boolean inserts;
+	
+	@Column(name = "split")
+	private Boolean split;
+	
+	@Column(name = "autorenewal")
+	private Boolean autorenewal;
+	
 	@Column(name = "holdormanualselect")
 	private Boolean holdormanualselect;
 	
@@ -326,6 +335,32 @@ public class AddProcess extends BaseEntity  {
 	public void setPicklist(Boolean picklist) {
 		this.picklist = picklist;
 	}
+
+	public Boolean getInserts() {
+		return inserts;
+	}
+
+	public void setInserts(Boolean inserts) {
+		this.inserts = inserts;
+	}
+
+	public Boolean getSplit() {
+		return split;
+	}
+
+	public void setSplit(Boolean split) {
+		this.split = split;
+	}
+
+	public Boolean getAutorenewal() {
+		return autorenewal;
+	}
+
+	public void setAutorenewal(Boolean autorenewal) {
+		this.autorenewal = autorenewal;
+	}
+	
+	
 
 	
 

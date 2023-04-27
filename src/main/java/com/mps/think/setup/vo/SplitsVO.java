@@ -1,5 +1,6 @@
 package com.mps.think.setup.vo;
 import com.mps.think.setup.model.ExtractFilter;
+import com.mps.think.setup.model.ProcessType;
 
 public class SplitsVO {
 	
@@ -7,7 +8,7 @@ public class SplitsVO {
 	private String value;
 	private String description;
 	private ExtractFilter extractfilterid;
-	private Integer process;
+	private ProcessType pid;
 	
 	public Integer getId() {
 		return id;
@@ -33,12 +34,13 @@ public class SplitsVO {
 	public void setExtractfilterid(ExtractFilter extractfilterid) {
 		this.extractfilterid = extractfilterid;
 	}
-	public Integer getProcess() {
-		return process;
+	public ProcessType getPid() {
+		return pid;
 	}
-	public void setProcess(Integer process) {
-		this.process = process;
+	public void setPid(ProcessType pid) {
+		this.pid = pid;
 	}
+
 	
 	
 	
