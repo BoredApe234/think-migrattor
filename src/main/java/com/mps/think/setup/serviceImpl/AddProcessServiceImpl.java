@@ -17,6 +17,9 @@ public class AddProcessServiceImpl implements AddProcessService {
 	
 	@Autowired
 	private AddProcessRepo addProcessRepo;
+	
+	@Autowired
+	private ObjectMapper mapper;
 
 	@Override
 	public List<AddProcess> getAllProcess() {
@@ -24,21 +27,13 @@ public class AddProcessServiceImpl implements AddProcessService {
 	}
 
 	@Override
-	public AddProcessVO saveProcess(AddProcessVO process) {
-		ObjectMapper mapper = new ObjectMapper();
-		AddProcess newAddProcess = mapper.convertValue(process, AddProcess.class);
-		AddProcess data=addProcessRepo.saveAndFlush(newAddProcess);
-		process.setProcess_id(data.getProcess_id());
-		return process;
+	public AddProcess saveProcess(AddProcessVO process) {
+	return addProcessRepo.saveAndFlush(mapper.convertValue(process, AddProcess.class));
 	}
 
 	@Override
-	public AddProcessVO updateProcess(AddProcessVO process) {
-		ObjectMapper mapper = new ObjectMapper();
-		AddProcess updateAddProcess = mapper.convertValue(process, AddProcess.class);
-		AddProcess data=addProcessRepo.saveAndFlush(updateAddProcess);
-		process.setProcess_id(data.getProcess_id());
-		return process;
+	public AddProcess updateProcess(AddProcessVO process) {
+		return  addProcessRepo.saveAndFlush(mapper.convertValue(process, AddProcess.class));
 	}
 
 	@Override

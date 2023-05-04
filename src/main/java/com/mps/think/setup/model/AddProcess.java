@@ -1,5 +1,8 @@
 package com.mps.think.setup.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,8 +10,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "process_table")
@@ -92,9 +98,16 @@ public class AddProcess extends BaseEntity  {
 //	@JoinColumn(name = "order_cls_id", referencedColumnName = "oc_id")
 //	private OrderClass orderClass;
 	
-	@ManyToOne
-	@JoinColumn(name = "order_class_overview_id", referencedColumnName = "id")
-	private OrderClassOverview orderClassOverview;
+//	@ManyToOne
+//	@JoinColumn(name = "order_class_overview_id", referencedColumnName = "id")
+//	private OrderClassOverview orderClassOverview;
+	
+	@OneToMany(
+			mappedBy = "addProcess",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true)
+	@JsonManagedReference
+	private List<Addprocessmapping> addprocessmapping;
 	
 	@Column(name = "length")
 	private String length;
@@ -174,6 +187,30 @@ public class AddProcess extends BaseEntity  {
 
 	public void setRepeating(Boolean repeating) {
 		this.repeating = repeating;
+	}
+
+	public Boolean getInserts() {
+		return inserts;
+	}
+
+	public void setInserts(Boolean inserts) {
+		this.inserts = inserts;
+	}
+
+	public Boolean getSplit() {
+		return split;
+	}
+
+	public void setSplit(Boolean split) {
+		this.split = split;
+	}
+
+	public Boolean getAutorenewal() {
+		return autorenewal;
+	}
+
+	public void setAutorenewal(Boolean autorenewal) {
+		this.autorenewal = autorenewal;
 	}
 
 	public Boolean getHoldormanualselect() {
@@ -264,12 +301,12 @@ public class AddProcess extends BaseEntity  {
 		this.sqlscript = sqlscript;
 	}
 
-	public OrderClassOverview getOrderClassOverview() {
-		return orderClassOverview;
+	public List<Addprocessmapping> getAddprocessmapping() {
+		return addprocessmapping;
 	}
 
-	public void setOrderClassOverview(OrderClassOverview orderClassOverview) {
-		this.orderClassOverview = orderClassOverview;
+	public void setAddprocessmapping(List<Addprocessmapping> addprocessmapping) {
+		this.addprocessmapping = addprocessmapping;
 	}
 
 	public String getLength() {
@@ -335,33 +372,10 @@ public class AddProcess extends BaseEntity  {
 	public void setPicklist(Boolean picklist) {
 		this.picklist = picklist;
 	}
-
-	public Boolean getInserts() {
-		return inserts;
-	}
-
-	public void setInserts(Boolean inserts) {
-		this.inserts = inserts;
-	}
-
-	public Boolean getSplit() {
-		return split;
-	}
-
-	public void setSplit(Boolean split) {
-		this.split = split;
-	}
-
-	public Boolean getAutorenewal() {
-		return autorenewal;
-	}
-
-	public void setAutorenewal(Boolean autorenewal) {
-		this.autorenewal = autorenewal;
-	}
 	
 	
 
+	
 	
 
 	

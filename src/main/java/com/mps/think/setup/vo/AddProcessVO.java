@@ -1,5 +1,9 @@
 package com.mps.think.setup.vo;
 
+import java.util.List;
+
+import com.mps.think.setup.model.Addprocessmapping;
+import com.mps.think.setup.model.AddprocessmappingVO;
 import com.mps.think.setup.model.ExtractFilter;
 import com.mps.think.setup.model.OrderClassOverview;
 import com.mps.think.setup.model.OutputSort;
@@ -29,7 +33,7 @@ public class AddProcessVO {
 	private OutputSort outputsortid;
 	private Queue defaultjobqueueid;
 	private String sqlscript;
-	private OrderClassOverview orderClassOverview;
+	private List<AddprocessmappingVO> addprocessmapping;
 	private String length;
 	private Integer gps;
 	private Integer keyline;
@@ -79,6 +83,24 @@ public class AddProcessVO {
 	}
 	public void setRepeating(Boolean repeating) {
 		this.repeating = repeating;
+	}
+	public Boolean getInserts() {
+		return inserts;
+	}
+	public void setInserts(Boolean inserts) {
+		this.inserts = inserts;
+	}
+	public Boolean getSplit() {
+		return split;
+	}
+	public void setSplit(Boolean split) {
+		this.split = split;
+	}
+	public Boolean getAutorenewal() {
+		return autorenewal;
+	}
+	public void setAutorenewal(Boolean autorenewal) {
+		this.autorenewal = autorenewal;
 	}
 	public Boolean getHoldormanualselect() {
 		return holdormanualselect;
@@ -146,12 +168,6 @@ public class AddProcessVO {
 	public void setSqlscript(String sqlscript) {
 		this.sqlscript = sqlscript;
 	}
-	public OrderClassOverview getOrderClassOverview() {
-		return orderClassOverview;
-	}
-	public void setOrderClassOverview(OrderClassOverview orderClassOverview) {
-		this.orderClassOverview = orderClassOverview;
-	}
 	public String getLength() {
 		return length;
 	}
@@ -200,25 +216,14 @@ public class AddProcessVO {
 	public void setPicklist(Boolean picklist) {
 		this.picklist = picklist;
 	}
-	public Boolean getInserts() {
-		return inserts;
+	public List<AddprocessmappingVO> getAddprocessmapping() {
+		return addprocessmapping;
 	}
-	public void setInserts(Boolean inserts) {
-		this.inserts = inserts;
+	public void setAddprocessmapping(List<AddprocessmappingVO> addprocessmapping) {
+		this.addprocessmapping = addprocessmapping;
 	}
-	public Boolean getSplit() {
-		return split;
-	}
-	public void setSplit(Boolean split) {
-		this.split = split;
-	}
-	public Boolean getAutorenewal() {
-		return autorenewal;
-	}
-	public void setAutorenewal(Boolean autorenewal) {
-		this.autorenewal = autorenewal;
-	}
-	
+
+
 	
 	
 	

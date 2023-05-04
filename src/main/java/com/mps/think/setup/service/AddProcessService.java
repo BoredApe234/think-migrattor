@@ -13,9 +13,9 @@ public interface AddProcessService {
 	
 	public List<AddProcess> getAllProcess();
 	
-	public AddProcessVO saveProcess(AddProcessVO process);
+	public AddProcess saveProcess(AddProcessVO process);
 
-	public AddProcessVO updateProcess(AddProcessVO process);
+	public AddProcess updateProcess(AddProcessVO process);
 
 	public AddProcess findbyProcessId(Integer process_id);
 	

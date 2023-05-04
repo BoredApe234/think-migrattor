@@ -36,6 +36,9 @@ public class CustomerCategoryServiceImpl implements CustomerCategoryService {
 		data.setThinkCategory(customerCategory.getThinkCategory());
 		data.setCustCategory(customerCategory.getCustCategory());
 		data.setDefaultcc(customerCategory.getDefaultcc());
+		if(customerCategory.getDefaultcc() != null && customerCategory.getDefaultcc()) {
+			makeOtherCustomerCategoriesFalse(customerCategory.getPubId().getId());			
+		}
 		CustomerCategoryRepo.saveAndFlush(data);
 		customerCategory.setCustomerCategoryId(data.getCustomerCategoryId());	
 		return customerCategory;
