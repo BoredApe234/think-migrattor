@@ -3,8 +3,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import com.mps.think.setup.sorl.DocumentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 /**
@@ -18,7 +18,7 @@ public class SolrDocumentController {
  public String SpringBootSolrExample() {
       return "Welcome to Spring Boot solr Example";
  }
- @RequestMapping("/delete")
+ @GetMapping("/delete")
  public String deleteAllDocuments() {
      try { //delete all documents from solr core
       documentRepository.deleteAll();
@@ -27,7 +27,7 @@ public class SolrDocumentController {
        return "Failed to delete documents";
      }
  }
- @RequestMapping("/save")
+ @GetMapping("/save")
  public String saveAllDocuments() {
  //Store Documents
        documentRepository.saveAll(Arrays.asList(new Document("1", "pdf","Java Dev Zone"),
@@ -37,7 +37,7 @@ public class SolrDocumentController {
        new Document("5", "docx", "Spring boot + solr")));
        return "5 documents saved!!!";
  }
- @RequestMapping("/getAll")
+ @GetMapping("/getAll")
  public List<Document> getAllDocs() {
        List<Document> documents = new ArrayList<>();
        // iterate all documents and add it to list
