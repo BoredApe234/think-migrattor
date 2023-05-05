@@ -12,6 +12,7 @@ public class ChargeRequest {
 	private String stripeEmail;
 	private String stripeToken;
 	private String currencyType;
+	private Integer orderId;
 
 	public String getDescription() {
 		return description;
@@ -61,10 +62,25 @@ public class ChargeRequest {
 		this.currencyType = currencyType;
 	}
 
+	public Integer getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(Integer orderId) {
+		this.orderId = orderId;
+	}
+
 	@Override
 	public String toString() {
 		return "ChargeRequest [description=" + description + ", amount=" + amount + ", currency=" + currency
-				+ ", stripeEmail=" + stripeEmail + ", stripeToken=" + stripeToken + "]";
+				+ ", stripeEmail=" + stripeEmail + ", stripeToken=" + stripeToken + ", currencyType=" + currencyType
+				+ ", orderId=" + orderId + "]";
 	}
+
+//	@Override
+//	public String toString() {
+//		return "ChargeRequest [description=" + description + ", amount=" + amount + ", currency=" + currency
+//				+ ", stripeEmail=" + stripeEmail + ", stripeToken=" + stripeToken + "]";
+//	}
 
 }
