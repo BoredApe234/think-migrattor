@@ -68,6 +68,7 @@ public class ChargeController {
 		pb.setId(orderDetails.getPaymentBreakdown().getId());
 		pb.setPaymentStatus(orderDetails.getPaymentBreakdown().getPaymentStatus());
 		od.setPaymentBreakdown(pb);
+		addOrderRepo.saveAndFlush(od);
 		
 		System.out.println(chargeRequest.toString());
 		System.out.println(charge.toString());
