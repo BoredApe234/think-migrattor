@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mps.think.setup.Strip.ChargeRequest.Currency;
+import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.PaymentBreakdown;
 import com.mps.think.setup.vo.PublicKey;
 import com.stripe.exception.StripeException;
 import com.stripe.model.Charge;
@@ -52,6 +54,12 @@ public class ChargeController {
 		pk.setId(charge.getId());
 		pk.setStatus(charge.getStatus());
 		pk.setBalanceTransaction(charge.getBalanceTransaction());
+		Order od=new Order();
+		od.setOrderId(chargeRequest.getOrderId());
+		PaymentBreakdown pb=new PaymentBreakdown();
+		pb.setId(od.getPaymentBreakdown().getId());
+		pb.setPaymentStatus(od.getPaymentBreakdown().getPaymentStatus());
+		od.setPaymentBreakdown(pb);
 		System.out.println(chargeRequest.toString());
 		System.out.println(charge.toString());
 		return ResponseEntity.ok(pk);
