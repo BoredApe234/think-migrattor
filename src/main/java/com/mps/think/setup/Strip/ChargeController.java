@@ -1,9 +1,8 @@
 package com.mps.think.setup.Strip;
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,19 +27,19 @@ public class ChargeController {
 	@Autowired
 	AddOrderRepo addOrderRepo;
 
-//	@PostMapping("/charge")
-//	public Charge charge(ChargeRequest chargeRequest, Model model) throws StripeException {
-//		chargeRequest.setDescription("Example charge");
-//		chargeRequest.setCurrency(Currency.EUR);
-//		Charge charge = paymentsService.charge(chargeRequest);
-//		model.addAttribute("id", charge.getId());
-//		model.addAttribute("status", charge.getStatus());
-//		model.addAttribute("chargeId", charge.getId());
-//		model.addAttribute("balance_transaction", charge.getBalanceTransaction());
-//		System.out.println(chargeRequest.toString());
-//		System.out.println(charge.toString());
-//		return charge;
-//	}
+	@PostMapping("/charge")
+	public Charge charge(ChargeRequest chargeRequest, Model model) throws StripeException {
+		chargeRequest.setDescription("Example charge");
+		chargeRequest.setCurrency(Currency.EUR);
+		Charge charge = paymentsService.charge(chargeRequest);
+		model.addAttribute("id", charge.getId());
+		model.addAttribute("status", charge.getStatus());
+		model.addAttribute("chargeId", charge.getId());
+		model.addAttribute("balance_transaction", charge.getBalanceTransaction());
+		System.out.println(chargeRequest.toString());
+		System.out.println(charge.toString());
+		return charge;
+	}
 
 	@ExceptionHandler(StripeException.class)
 	public String handleError(Model model, StripeException ex) {
@@ -62,13 +61,17 @@ public class ChargeController {
 		pk.setBalanceTransaction(charge.getBalanceTransaction());
 		
 		Order orderDetails = addOrderRepo.findById(chargeRequest.getOrderId()).get();
-		Order od=new Order();
-		od.setOrderId(orderDetails.getOrderId());
-		PaymentBreakdown pb=new PaymentBreakdown();
-		pb.setId(orderDetails.getPaymentBreakdown().getId());
-		pb.setPaymentStatus(orderDetails.getPaymentBreakdown().getPaymentStatus());
-		od.setPaymentBreakdown(pb);
-		addOrderRepo.saveAndFlush(od);
+//		Order od=new Order();
+//		od.setOrderId(orderDetails.getOrderId());
+//		PaymentBreakdown pb=new PaymentBreakdown();
+//		pb.setId(orderDetails.getPaymentBreakdown().getId());
+//		pb.setPaymentStatus(orderDetails.getPaymentBreakdown().getPaymentStatus());
+//		od.setPaymentBreakdown(pb);
+//		addOrderRepo.saveAndFlush(od);
+		PaymentBreakdown paymentBreakdown = orderDetails.getPaymentBreakdown();
+		paymentBreakdown.setPaymentStatus(charge.getStatus());
+		orderDetails.setPaymentBreakdown(paymentBreakdown);
+		addOrderRepo.saveAndFlush(orderDetails);
 		
 		System.out.println(chargeRequest.toString());
 		System.out.println(charge.toString());
