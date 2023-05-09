@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -35,7 +36,7 @@ public class ProcessOutput extends BaseEntity {
 	@JoinColumn(name = "order_cls_overview", referencedColumnName = "id")
 	private OrderClassOverview orderClassOverview;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "output", referencedColumnName = "id")
 	private OutputValue outputValue;
 	
