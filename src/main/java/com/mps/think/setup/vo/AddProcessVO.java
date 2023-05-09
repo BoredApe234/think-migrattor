@@ -1,11 +1,8 @@
 package com.mps.think.setup.vo;
 
 import java.util.List;
-
-import com.mps.think.setup.model.Addprocessmapping;
 import com.mps.think.setup.model.AddprocessmappingVO;
 import com.mps.think.setup.model.ExtractFilter;
-import com.mps.think.setup.model.OrderClassOverview;
 import com.mps.think.setup.model.OutputSort;
 import com.mps.think.setup.model.ProcessType;
 import com.mps.think.setup.model.Queue;
@@ -42,6 +39,9 @@ public class AddProcessVO {
 	private String bundlethreshold;
 	private String prioritysort;
 	private Boolean picklist;
+	private String intervalunit;
+	private Integer nointunits;
+	
 	public Integer getProcess_id() {
 		return process_id;
 	}
@@ -221,6 +221,18 @@ public class AddProcessVO {
 	}
 	public void setAddprocessmapping(List<AddprocessmappingVO> addprocessmapping) {
 		this.addprocessmapping = addprocessmapping;
+	}
+	public String getIntervalunit() {
+		return intervalunit;
+	}
+	public void setIntervalunit(String intervalunit) {
+		this.intervalunit = intervalunit;
+	}
+	public Integer getNointunits() {
+		return nointunits;
+	}
+	public void setNointunits(Integer nointunits) {
+		this.nointunits = nointunits;
 	}
 
 
