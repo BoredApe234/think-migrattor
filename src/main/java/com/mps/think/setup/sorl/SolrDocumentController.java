@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.mps.think.setup.model.CustomerDetails;
+import com.mps.think.setup.service.CustomerDetailsService;
 /**
  * Created by JavaDeveloperZone on 16-12-2017.
  */
@@ -14,7 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class SolrDocumentController {
  @Autowired
  private DocumentRepository documentRepository;
- @RequestMapping("/")
+
+	@Autowired
+	private CustomerDetailsService customerDetailsService;
+
+ @GetMapping("/")
  public String SpringBootSolrExample() {
       return "Welcome to Spring Boot solr Example";
  }
@@ -45,5 +51,15 @@ public class SolrDocumentController {
        documents.add(doc);
  }
  return documents;
+ }
+ 
+ @GetMapping("/saveCustomerDetails")
+ public String CustomerDetailsDocuments() {
+ //Store Documents
+	 List<CustomerDetails> cust= customerDetailsService.getAllCustomerDetails();
+	 
+       documentRepository.saveAll(Arrays.asList(
+    		   new Document("CustomerDetails", "customer",cust.toString())));
+       return "CustomerDetails saved!!!";
  }
 }
