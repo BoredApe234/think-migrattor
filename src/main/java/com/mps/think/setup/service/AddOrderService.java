@@ -29,4 +29,6 @@ public interface AddOrderService {
 	
 	void setAllOrdersOfCustomerInActive(Integer customerId);
 	
+	List<Order> getOrdersById(Integer id);
+	
 }

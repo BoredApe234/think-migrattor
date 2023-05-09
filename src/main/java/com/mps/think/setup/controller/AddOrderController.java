@@ -48,7 +48,7 @@ public class AddOrderController {
 	
 	@GetMapping("/getOrderById/{orderId}")
 	public ResponseEntity<?> getOrderById(@PathVariable Integer orderId) throws Exception {
-		return ResponseEntity.ok(addOrderService.getOrderById(orderId));
+		return ResponseEntity.ok(addOrderService.getOrdersById(orderId));
 	}
 	
 	@GetMapping("/getAllOrderByCustomerId/{customerId}")
@@ -97,4 +97,5 @@ public class AddOrderController {
 			@RequestParam(defaultValue = "5") Integer size , @RequestParam Integer pubId) throws Exception {
 		return ResponseEntity.ok(addOrderService.getAllorderForPublisher(PageRequest.of(page, size, Sort.by("orderId").descending()), pubId));
 	}
+	
 }
