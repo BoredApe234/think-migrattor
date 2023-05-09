@@ -87,7 +87,12 @@ public class CustomerCategory extends BaseEntity {
 		this.defaultcc = defaultcc;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		return "CustomerCategory [CustomerCategoryId=" + CustomerCategoryId + ", pubId=" + pubId + ", custCategory="
+				+ custCategory + ", thinkCategory=" + thinkCategory + ", status=" + status + ", defaultcc=" + defaultcc
+				+ "]";
+	}
+
 
 }

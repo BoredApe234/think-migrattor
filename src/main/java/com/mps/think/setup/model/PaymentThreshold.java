@@ -207,4 +207,18 @@ public class PaymentThreshold extends BaseEntity {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+
+	@Override
+	public String toString() {
+		return "PaymentThreshold [paymentThresholdId=" + paymentThresholdId + ", paymentThresholdCode="
+				+ paymentThresholdCode + ", paymentThresholdDescription=" + paymentThresholdDescription
+				+ ", partialThreshold=" + partialThreshold + ", underThreshold=" + underThreshold + ", overThreshold="
+				+ overThreshold + ", refundThreshold=" + refundThreshold + ", maxUnderpaymentForFull="
+				+ maxUnderpaymentForFull + ", maxUnderpaymentForPartial=" + maxUnderpaymentForPartial
+				+ ", maxOverpaymentForFull=" + maxOverpaymentForFull + ", maxOverpaymentForRefund="
+				+ maxOverpaymentForRefund + ", overpaymentAction=" + overpaymentAction + ", underpaymentAction="
+				+ underpaymentAction + ", overpaymentOverrides=" + overpaymentOverrides + ", underpaymentOverrides="
+				+ underpaymentOverrides + ", status=" + status + ", publisher=" + publisher + "]";
+	}
+	
 }

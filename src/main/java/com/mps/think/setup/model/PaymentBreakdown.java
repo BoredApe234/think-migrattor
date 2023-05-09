@@ -40,9 +40,9 @@ public class PaymentBreakdown extends BaseEntity {
 	@Column(name = "effective_date")
 	private Date effectiveDate;
 	
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "payment_status")
-	private PaymentStatus paymentStatus;
+	private String paymentStatus;
 	
 	@Column(name = "term")
 	private String term;
@@ -103,11 +103,11 @@ public class PaymentBreakdown extends BaseEntity {
 		this.effectiveDate = effectiveDate;
 	}
 
-	public PaymentStatus getPaymentStatus() {
+	public String getPaymentStatus() {
 		return paymentStatus;
 	}
 
-	public void setPaymentStatus(PaymentStatus paymentStatus) {
+	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
 

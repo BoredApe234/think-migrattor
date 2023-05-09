@@ -59,5 +59,4 @@ public class CustomerAddresses extends BaseEntity {
 		this.customer = customer;
 	}
 
-
 }
