@@ -132,6 +132,12 @@ public class AddProcess extends BaseEntity  {
 	
 	@Column(name = "picklist")
 	private Boolean picklist;
+	
+	@Column(name = "intervalunit")
+	private String intervalunit;
+	
+	@Column(name = "nointunits")
+	private Integer nointunits;
 
 	public Integer getProcess_id() {
 		return process_id;
@@ -371,6 +377,22 @@ public class AddProcess extends BaseEntity  {
 
 	public void setPicklist(Boolean picklist) {
 		this.picklist = picklist;
+	}
+
+	public String getIntervalunit() {
+		return intervalunit;
+	}
+
+	public void setIntervalunit(String intervalunit) {
+		this.intervalunit = intervalunit;
+	}
+
+	public Integer getNointunits() {
+		return nointunits;
+	}
+
+	public void setNointunits(Integer nointunits) {
+		this.nointunits = nointunits;
 	}
 	
 	
