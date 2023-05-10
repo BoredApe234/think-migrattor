@@ -188,6 +188,15 @@ public class ProcessOutput extends BaseEntity {
 	public void setOrderClassOverview(OrderClassOverview orderClassOverview) {
 		this.orderClassOverview = orderClassOverview;
 	}
+
+	@Override
+	public String toString() {
+		return "ProcessOutput [output_id=" + output_id + ", addProcessId=" + addProcessId + ", orderClassOverview="
+				+ orderClassOverview + ", outputValue=" + outputValue + ", mode=" + mode + ", outputfilename="
+				+ outputfilename + ", apendjobId=" + apendjobId + ", outputfileformat=" + outputfileformat
+				+ ", installmentplan=" + installmentplan + ", def=" + def + ", test=" + test + ", effort=" + effort
+				+ ", auditreport=" + auditreport + ", parametervalue=" + parametervalue + "]";
+	}
 	
 	
 

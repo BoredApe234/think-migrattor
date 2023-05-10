@@ -76,5 +76,11 @@ public class ValueForScAttribute extends BaseEntity {
 		this.width = width;
 	}
 
+	@Override
+	public String toString() {
+		return "ValueForScAttribute [id=" + id + ", pubId=" + pubId + ", valuesforthechosenattribute="
+				+ valuesforthechosenattribute + ", description=" + description + ", width=" + width + "]";
+	}
+
 	
 }

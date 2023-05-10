@@ -372,6 +372,21 @@ public class AddProcess extends BaseEntity  {
 	public void setPicklist(Boolean picklist) {
 		this.picklist = picklist;
 	}
+
+	@Override
+	public String toString() {
+		return "AddProcess [process_id=" + process_id + ", processtypeid=" + processtypeid + ", mainpurpose="
+				+ mainpurpose + ", description=" + description + ", status=" + status + ", active=" + active
+				+ ", repeating=" + repeating + ", inserts=" + inserts + ", split=" + split + ", autorenewal="
+				+ autorenewal + ", holdormanualselect=" + holdormanualselect + ", backlabel=" + backlabel + ", billing="
+				+ billing + ", productfullfillment=" + productfullfillment + ", refund=" + refund + ", renewal="
+				+ renewal + ", extractfilterid=" + extractfilterid + ", defaultjobpriority=" + defaultjobpriority
+				+ ", outputsortid=" + outputsortid + ", defaultjobqueueid=" + defaultjobqueueid + ", sqlscript="
+				+ sqlscript + ", addprocessmapping=" + addprocessmapping + ", length=" + length + ", gps=" + gps
+				+ ", keyline=" + keyline + ", gracenewexpires=" + gracenewexpires + ", savecurrentgraces="
+				+ savecurrentgraces + ", bundlethreshold=" + bundlethreshold + ", prioritysort=" + prioritysort
+				+ ", picklist=" + picklist + "]";
+	}
 	
 	
 

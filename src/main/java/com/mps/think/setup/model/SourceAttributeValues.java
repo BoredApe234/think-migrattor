@@ -90,6 +90,13 @@ public class SourceAttributeValues extends BaseEntity {
 		this.maxCharacterLen = maxCharacterLen;
 	}
 
+	@Override
+	public String toString() {
+		return "SourceAttributeValues [id=" + id + ", publisher=" + publisher + ", sourceAttributesId="
+				+ sourceAttributesId + ", chosenAttributeValue=" + chosenAttributeValue + ", description=" + description
+				+ ", maxCharacterLen=" + maxCharacterLen + "]";
+	}
+
 	
 
 	

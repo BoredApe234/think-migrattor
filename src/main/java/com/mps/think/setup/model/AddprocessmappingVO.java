@@ -17,6 +17,10 @@ public class AddprocessmappingVO {
 	public void setOrderClass(OrderClass orderClass) {
 		this.orderClass = orderClass;
 	}
+	@Override
+	public String toString() {
+		return "AddprocessmappingVO [id=" + id + ", orderClass=" + orderClass + "]";
+	}
 	
 	
 

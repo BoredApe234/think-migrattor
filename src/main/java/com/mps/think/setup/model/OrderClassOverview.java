@@ -206,6 +206,16 @@ public class OrderClassOverview extends BaseEntity {
 		this.publisher = publisher;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderClassOverview [id=" + id + ", label=" + label + ", description=" + description + ", orderClass="
+				+ orderClass + ", revenueRecorded=" + revenueRecorded + ", recordRevenueSubsPartWay="
+				+ recordRevenueSubsPartWay + ", cancelCredit=" + cancelCredit + ", sourceCode=" + sourceCode
+				+ ", sourceCodeFormat=" + sourceCodeFormat + ", renewalSCFormat=" + renewalSCFormat + ", profitCenter="
+				+ profitCenter + ", paymentThreshold=" + paymentThreshold + ", reasonableGap=" + reasonableGap
+				+ ", activeOrderHandling=" + activeOrderHandling + ", publisher=" + publisher + "]";
+	}
+
 	
 
 	

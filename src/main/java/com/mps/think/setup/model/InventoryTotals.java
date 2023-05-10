@@ -106,4 +106,12 @@ public class InventoryTotals extends BaseEntity {
 		this.totalUnitsAvailable = totalUnitsAvailable;
 	}
 
+	@Override
+	public String toString() {
+		return "InventoryTotals [id=" + id + ", orderNotShipped=" + orderNotShipped + ", customerBackOrders="
+				+ customerBackOrders + ", inStock=" + inStock + ", onVendorOrder=" + onVendorOrder
+				+ ", onVendorBackOrder=" + onVendorBackOrder + ", adjustments=" + adjustments + ", totalUnitsAvailable="
+				+ totalUnitsAvailable + "]";
+	}
+
 }

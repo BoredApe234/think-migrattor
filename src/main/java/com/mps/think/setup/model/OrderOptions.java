@@ -208,4 +208,14 @@ public class OrderOptions extends BaseEntity {
 		this.unitType = unitType;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderOptions [id=" + id + ", subscriptionCalculation=" + subscriptionCalculation
+				+ ", revenueRealisedBy=" + revenueRealisedBy + ", taxonomy=" + taxonomy + ", renewalCard=" + renewalCard
+				+ ", controlled=" + controlled + ", segmentedOrder=" + segmentedOrder + ", graceQuanitity="
+				+ graceQuanitity + ", trialType=" + trialType + ", media=" + media + ", edition=" + edition
+				+ ", category=" + category + ", rotation=" + rotation + ", numOfIssues=" + numOfIssues + ", numOfDays="
+				+ numOfDays + ", numOfUnits=" + numOfUnits + ", unitType=" + unitType + "]";
+	}
+
 }

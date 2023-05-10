@@ -159,6 +159,14 @@ public class RateCardsRenewals extends BaseEntity {
 	public void setRenewalExpiryDate(Date renewalExpiryDate) {
 		this.renewalExpiryDate = renewalExpiryDate;
 	}
+
+	@Override
+	public String toString() {
+		return "RateCardsRenewals [id=" + id + ", renewalId=" + renewalId + ", basicPrice=" + basicPrice + ", noOfItem="
+				+ noOfItem + ", unitPrice=" + unitPrice + ", currency=" + currency + ", validFrom=" + validFrom
+				+ ", validTo=" + validTo + ", fromQuantity=" + fromQuantity + ", toQuantity=" + toQuantity
+				+ ", validForRegions=" + validForRegions + ", renewalExpiryDate=" + renewalExpiryDate + "]";
+	}
 	
 	
 

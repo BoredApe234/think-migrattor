@@ -72,5 +72,12 @@ public class InventoryBulkTotals extends BaseEntity {
 	public void setInventoryInTransfer(Integer inventoryInTransfer) {
 		this.inventoryInTransfer = inventoryInTransfer;
 	}
+
+	@Override
+	public String toString() {
+		return "InventoryBulkTotals [id=" + id + ", onVentoryOrder=" + onVentoryOrder + ", onVentoryBackOrder="
+				+ onVentoryBackOrder + ", bulkInStock=" + bulkInStock + ", inventoryInTransfer=" + inventoryInTransfer
+				+ "]";
+	}
 	
 }

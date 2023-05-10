@@ -472,6 +472,25 @@ public class CustomerDetails  extends BaseEntity{
 	public void setPaymentThreshold(PaymentThreshold paymentThreshold) {
 		this.paymentThreshold = paymentThreshold;
 	}
+
+	@Override
+	public String toString() {
+		return "CustomerDetails [customerId=" + customerId + ", customerCategory=" + customerCategory
+				+ ", thinkCategory=" + thinkCategory + ", salutation=" + salutation + ", fname=" + fname + ", lname="
+				+ lname + ", initialName=" + initialName + ", suffix=" + suffix + ", company=" + company
+				+ ", department=" + department + ", email=" + email + ", countryCode=" + countryCode + ", primaryPhone="
+				+ primaryPhone + ", mobileNumber=" + mobileNumber + ", taxId=" + taxId + ", taxExempt=" + taxExempt
+				+ ", secondaryEmail=" + secondaryEmail + ", secondaryPhone=" + secondaryPhone + ", listRental="
+				+ listRental + ", salesRepresentative=" + salesRepresentative + ", creditStatus=" + creditStatus
+				+ ", fax=" + fax + ", institutionalId=" + institutionalId + ", parentInstitutionalId="
+				+ parentInstitutionalId + ", chargeTaxOn=" + chargeTaxOn + ", paymentOptions=" + paymentOptions
+				+ ", configurationOptionsforOrders=" + configurationOptionsforOrders + ", newOrderCommission="
+				+ newOrderCommission + ", renewalCommission=" + renewalCommission + ", agencyname=" + agencyname
+				+ ", agencycode=" + agencycode + ", paymentThreshold=" + paymentThreshold + ", custAuxFieldJSON="
+				+ custAuxFieldJSON + ", publisher=" + publisher + ", customerAddresses=" + customerAddresses
+				+ ", customerStatus=" + customerStatus + ", currCustomerStatusCause=" + currCustomerStatusCause
+				+ ", dateUntilDeactivation=" + dateUntilDeactivation + "]";
+	}
 	
 	
 	

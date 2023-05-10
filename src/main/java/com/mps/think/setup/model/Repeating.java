@@ -50,6 +50,11 @@ public class Repeating extends BaseEntity {
 	public void setNointunits(Integer nointunits) {
 		this.nointunits = nointunits;
 	}
+
+	@Override
+	public String toString() {
+		return "Repeating [id=" + id + ", intervalunit=" + intervalunit + ", nointunits=" + nointunits + "]";
+	}
 	
 	
 

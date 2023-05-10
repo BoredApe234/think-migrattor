@@ -183,6 +183,15 @@ public class PaymentBreakdown extends BaseEntity {
 		this.currency = currency;
 	}
 
+	@Override
+	public String toString() {
+		return "PaymentBreakdown [id=" + id + ", currencyType=" + currencyType + ", rateCard=" + rateCard
+				+ ", effectiveDate=" + effectiveDate + ", paymentStatus=" + paymentStatus + ", term=" + term
+				+ ", baseAmount=" + baseAmount + ", currency=" + currency + ", discount=" + discount + ", tax=" + tax
+				+ ", grossAmount=" + grossAmount + ", commission=" + commission + ", shippingCharge=" + shippingCharge
+				+ ", netAmount=" + netAmount + "]";
+	}
+
 	
 
 }

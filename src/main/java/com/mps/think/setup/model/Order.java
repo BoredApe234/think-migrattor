@@ -84,6 +84,10 @@ public class Order extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "other_addresses_customer", referencedColumnName = "id")
 	private CustomerDetails otherAddressCustomer;
+	
+	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private MultiLineItemOrder parentOrder;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -181,6 +185,23 @@ public class Order extends BaseEntity {
 		this.otherAddressCustomer = otherAddressCustomer;
 	}
 
-	
+	public MultiLineItemOrder getParentOrder() {
+		return parentOrder;
+	}
 
+	public void setParentOrder(MultiLineItemOrder parentOrder) {
+		this.parentOrder = parentOrder;
+
+	}
+
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", customerId=" + customerId + ", orderClass=" + orderClass
+				+ ", orderType=" + orderType + ", orderStatus=" + orderStatus + ", keyOrderInformation="
+				+ keyOrderInformation + ", orderItemsAndTerms=" + orderItemsAndTerms + ", paymentBreakdown="
+				+ paymentBreakdown + ", deliveryAndBillingOptions=" + deliveryAndBillingOptions + ", orderAddresses="
+				+ orderAddresses + ", auxiliaryInformation=" + auxiliaryInformation + ", otherAddressCustomer="
+				+ otherAddressCustomer + ", parentOrder=" + parentOrder + "]";
+	}
+	
 }

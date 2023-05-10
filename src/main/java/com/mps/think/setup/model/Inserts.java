@@ -76,6 +76,12 @@ public class Inserts extends BaseEntity {
 	public void setPid(ProcessType pid) {
 		this.pid = pid;
 	}
+
+	@Override
+	public String toString() {
+		return "Inserts [id=" + id + ", bit=" + bit + ", description=" + description + ", efid=" + efid + ", pid=" + pid
+				+ "]";
+	}
 	
 	
 

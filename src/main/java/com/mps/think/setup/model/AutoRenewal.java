@@ -40,6 +40,11 @@ public class AutoRenewal extends BaseEntity {
 		this.id = id;
 	}
 
+	@Override
+	public String toString() {
+		return "AutoRenewal [id=" + id + ", days=" + days + "]";
+	}
+
 
 	
 	

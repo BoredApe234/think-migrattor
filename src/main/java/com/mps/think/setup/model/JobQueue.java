@@ -86,6 +86,12 @@ public class JobQueue extends BaseEntity {
 	public void setSubmitJobId(SubmitJob submitJobId) {
 		this.submitJobId = submitJobId;
 	}
+
+	@Override
+	public String toString() {
+		return "JobQueue [jobid=" + jobid + ", ready=" + ready + ", running=" + running + ", on_hold=" + on_hold
+				+ ", day_end=" + day_end + ", submitJobId=" + submitJobId + "]";
+	}
 	
 	
 
