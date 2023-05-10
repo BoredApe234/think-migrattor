@@ -132,12 +132,6 @@ public class AddProcess extends BaseEntity  {
 	
 	@Column(name = "picklist")
 	private Boolean picklist;
-	
-	@Column(name = "intervalunit")
-	private String intervalunit;
-	
-	@Column(name = "nointunits")
-	private Integer nointunits;
 
 	public Integer getProcess_id() {
 		return process_id;
@@ -379,20 +373,19 @@ public class AddProcess extends BaseEntity  {
 		this.picklist = picklist;
 	}
 
-	public String getIntervalunit() {
-		return intervalunit;
-	}
-
-	public void setIntervalunit(String intervalunit) {
-		this.intervalunit = intervalunit;
-	}
-
-	public Integer getNointunits() {
-		return nointunits;
-	}
-
-	public void setNointunits(Integer nointunits) {
-		this.nointunits = nointunits;
+	@Override
+	public String toString() {
+		return "AddProcess [process_id=" + process_id + ", processtypeid=" + processtypeid + ", mainpurpose="
+				+ mainpurpose + ", description=" + description + ", status=" + status + ", active=" + active
+				+ ", repeating=" + repeating + ", inserts=" + inserts + ", split=" + split + ", autorenewal="
+				+ autorenewal + ", holdormanualselect=" + holdormanualselect + ", backlabel=" + backlabel + ", billing="
+				+ billing + ", productfullfillment=" + productfullfillment + ", refund=" + refund + ", renewal="
+				+ renewal + ", extractfilterid=" + extractfilterid + ", defaultjobpriority=" + defaultjobpriority
+				+ ", outputsortid=" + outputsortid + ", defaultjobqueueid=" + defaultjobqueueid + ", sqlscript="
+				+ sqlscript + ", addprocessmapping=" + addprocessmapping + ", length=" + length + ", gps=" + gps
+				+ ", keyline=" + keyline + ", gracenewexpires=" + gracenewexpires + ", savecurrentgraces="
+				+ savecurrentgraces + ", bundlethreshold=" + bundlethreshold + ", prioritysort=" + prioritysort
+				+ ", picklist=" + picklist + "]";
 	}
 	
 	

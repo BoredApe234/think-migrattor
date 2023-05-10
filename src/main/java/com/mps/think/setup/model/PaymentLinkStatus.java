@@ -76,4 +76,11 @@ public class PaymentLinkStatus extends BaseEntity {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
+
+	@Override
+	public String toString() {
+		return "PaymentLinkStatus [id=" + id + ", orderId=" + orderId + ", link=" + link + ", status=" + status
+				+ ", publisher=" + publisher + "]";
+	}
+	
 }

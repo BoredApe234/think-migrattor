@@ -77,6 +77,12 @@ public class Splits extends BaseEntity {
 		this.pid = pid;
 	}
 
+	@Override
+	public String toString() {
+		return "Splits [id=" + id + ", value=" + value + ", description=" + description + ", extractfilterid="
+				+ extractfilterid + ", pid=" + pid + "]";
+	}
+
 
 	
 	

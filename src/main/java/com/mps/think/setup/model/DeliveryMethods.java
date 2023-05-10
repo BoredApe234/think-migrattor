@@ -121,6 +121,14 @@ public class DeliveryMethods extends BaseEntity {
 		this.publisher = publisher;
 	}
 
+	@Override
+	public String toString() {
+		return "DeliveryMethods [deliveryMethodsId=" + deliveryMethodsId + ", defaultDelivery=" + defaultDelivery
+				+ ", deliveryMethod=" + deliveryMethod + ", active=" + active + ", description=" + description
+				+ ", regionList=" + regionList + ", amount=" + amount + ", transportMode=" + transportMode
+				+ ", publisher=" + publisher + "]";
+	}
+
 	
 	
 }

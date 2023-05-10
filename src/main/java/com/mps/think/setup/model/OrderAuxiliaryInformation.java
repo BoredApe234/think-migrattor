@@ -39,5 +39,10 @@ public class OrderAuxiliaryInformation extends BaseEntity {
 	public void setOrderAuxJSON(String orderAuxJSON) {
 		this.orderAuxJSON = orderAuxJSON;
 	}
+
+	@Override
+	public String toString() {
+		return "OrderAuxiliaryInformation [id=" + id + ", orderAuxJSON=" + orderAuxJSON + "]";
+	}
 	
 }

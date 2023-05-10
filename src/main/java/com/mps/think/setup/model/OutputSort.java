@@ -50,6 +50,11 @@ public class OutputSort extends BaseEntity{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	@Override
+	public String toString() {
+		return "OutputSort [id=" + id + ", code=" + code + ", description=" + description + "]";
+	}
 	
 	
 

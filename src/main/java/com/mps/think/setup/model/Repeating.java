@@ -8,8 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "queue")
-public class Queue extends BaseEntity{
+@Table(name = "repeating_interval")
+public class Repeating extends BaseEntity {
 
 	/**
 	 * 
@@ -21,11 +21,11 @@ public class Queue extends BaseEntity{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(name = "queue")
-	private String queue;
+	@Column(name = "intervalunit")
+	private String intervalunit;
 	
-	@Column(name = "description")
-	private String description;
+	@Column(name = "nointunits")
+	private Integer nointunits;
 
 	public Integer getId() {
 		return id;
@@ -35,25 +35,25 @@ public class Queue extends BaseEntity{
 		this.id = id;
 	}
 
-	public String getQueue() {
-		return queue;
+	public String getIntervalunit() {
+		return intervalunit;
 	}
 
-	public void setQueue(String queue) {
-		this.queue = queue;
+	public void setIntervalunit(String intervalunit) {
+		this.intervalunit = intervalunit;
 	}
 
-	public String getDescription() {
-		return description;
+	public Integer getNointunits() {
+		return nointunits;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setNointunits(Integer nointunits) {
+		this.nointunits = nointunits;
 	}
 
 	@Override
 	public String toString() {
-		return "Queue [id=" + id + ", queue=" + queue + ", description=" + description + "]";
+		return "Repeating [id=" + id + ", intervalunit=" + intervalunit + ", nointunits=" + nointunits + "]";
 	}
 	
 	

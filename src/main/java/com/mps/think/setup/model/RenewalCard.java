@@ -183,5 +183,15 @@ public class RenewalCard extends BaseEntity{
 		this.orderCodeId = orderCodeId;
 	}
 
+	@Override
+	public String toString() {
+		return "RenewalCard [renewalCardId=" + renewalCardId + ", description=" + description + ", renewal_card="
+				+ renewal_card + ", effortFrom=" + effortFrom + ", effortTo=" + effortTo + ", offersdescription="
+				+ offersdescription + ", discountClassId=" + discountClassId + ", orderCodeId=" + orderCodeId
+				+ ", pkgDefId=" + pkgDefId + ", rateClassId=" + rateClassId + ", sourceCodeId=" + sourceCodeId
+				+ ", subscriptionDefId=" + subscriptionDefId + ", orderClassId=" + orderClassId + ", pubId=" + pubId
+				+ "]";
+	}
+
 
 }

@@ -147,6 +147,14 @@ public class EffectiveDatesForDiscount extends BaseEntity {
 	public void setDiscountCardId(DiscountCardKeyInfo discountCardId) {
 		this.discountCardId = discountCardId;
 	}
+
+	@Override
+	public String toString() {
+		return "EffectiveDatesForDiscount [id=" + id + ", effectiveDate=" + effectiveDate + ", region=" + region
+				+ ", fromQuantity=" + fromQuantity + ", toQuantity=" + toQuantity + ", fromAmount=" + fromAmount
+				+ ", toAmount=" + toAmount + ", currency=" + currency + ", discountPercent=" + discountPercent
+				+ ", unitType=" + unitType + ", discountCardId=" + discountCardId + "]";
+	}
 	
 	
 }
