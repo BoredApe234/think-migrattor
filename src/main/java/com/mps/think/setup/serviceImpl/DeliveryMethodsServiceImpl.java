@@ -19,6 +19,7 @@ public class DeliveryMethodsServiceImpl implements DeliveryMethodsService {
 	@Override
 	public DeliveryMethodsVO saveDeliveryMethod(DeliveryMethodsVO delivery) {
 		DeliveryMethods newDeliveryMethod = new DeliveryMethods();
+		if (delivery.getDefaultDelivery()) makeAllDeliveryMethodsNonDefault(delivery);
 		newDeliveryMethod.setDefaultDelivery(delivery.getDefaultDelivery());
 		newDeliveryMethod.setDeliveryMethod(delivery.getDeliveryMethod());
 		newDeliveryMethod.setActive(delivery.getActive());
@@ -35,11 +36,20 @@ public class DeliveryMethodsServiceImpl implements DeliveryMethodsService {
 	public List<DeliveryMethods> getAllDeliveryMethods() {
 		return deliveryMethodsRepo.findAll();
 	}
+	
+	void makeAllDeliveryMethodsNonDefault(DeliveryMethodsVO delivery) {
+		List<DeliveryMethods> deliveryMethods = deliveryMethodsRepo.findByPublisherId(delivery.getPublisher().getId());
+		deliveryMethods.forEach(d -> {
+				d.setDefaultDelivery(false);
+		});
+		deliveryMethodsRepo.saveAllAndFlush(deliveryMethods);
+	}
 
 	@Override
 	public DeliveryMethodsVO updateDeliveryMethod(DeliveryMethodsVO delivery) {
 		DeliveryMethods deliveryToUpdate = deliveryMethodsRepo.findByDeliveryMethodsId(delivery.getDeliveryMethodsId());
 		if (deliveryToUpdate != null) {
+			if (delivery.getDefaultDelivery()) makeAllDeliveryMethodsNonDefault(delivery);
 			deliveryToUpdate.setDefaultDelivery(delivery.getDefaultDelivery());
 			deliveryToUpdate.setDeliveryMethod(delivery.getDeliveryMethod());
 			deliveryToUpdate.setActive(delivery.getActive());
