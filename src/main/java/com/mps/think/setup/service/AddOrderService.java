@@ -31,4 +31,6 @@ public interface AddOrderService {
 	
 	List<Order> getOrdersById(Integer id);
 	
+	Order getSubOrderById(Integer id);
+	
 }

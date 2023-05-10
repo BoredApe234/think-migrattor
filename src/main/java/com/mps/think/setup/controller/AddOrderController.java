@@ -98,4 +98,9 @@ public class AddOrderController {
 		return ResponseEntity.ok(addOrderService.getAllorderForPublisher(PageRequest.of(page, size, Sort.by("orderId").descending()), pubId));
 	}
 	
+	@GetMapping("/getSubOrderById/{orderId}")
+	public ResponseEntity<?> getSubOrderById(@PathVariable("orderId") Integer orderId) {
+		return ResponseEntity.ok(addOrderService.getSubOrderById(orderId));
+	}
+	
 }

@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +110,13 @@ public class AddOrderServiceImpl implements AddOrderService {
 	public List<Order> getOrdersById(Integer id) {
 		MultiLineItemOrder order = multiLineOrderRepo.findByOrderOrderId(id);
 		return multiLineOrderRepo.findByParentOrderId(order.getParentOrderId()).stream().map(o -> o.getOrder()).collect(Collectors.toList());
+	}
+
+	@Override
+	public Order getSubOrderById(Integer id) {
+		Optional<Order> order = addOrderRepo.findById(id);
+		if (order.isPresent()) return order.get();
+		return null;
 	}
 
 	
