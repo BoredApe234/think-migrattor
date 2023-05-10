@@ -10,15 +10,15 @@ public class RenewalDefinitionVO {
 	private Integer id;
 	private String renewal;
 	private String description;
-	private Boolean issues;
-	private Boolean volumegroup;
-	private Boolean requal;
+//	private Boolean issues;
+//	private Boolean volumegroup;
+//	private Boolean requal;
+	private String type;
 	private Boolean allorderclass;
 	private Boolean generatesourcecode;
 	private Integer renewalcard;
 	private ExtractFilter efid;
 	private List<RenewalDefinitionMappingVO> renewalDefinitionMapping;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -37,23 +37,11 @@ public class RenewalDefinitionVO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Boolean getIssues() {
-		return issues;
+	public String getType() {
+		return type;
 	}
-	public void setIssues(Boolean issues) {
-		this.issues = issues;
-	}
-	public Boolean getVolumegroup() {
-		return volumegroup;
-	}
-	public void setVolumegroup(Boolean volumegroup) {
-		this.volumegroup = volumegroup;
-	}
-	public Boolean getRequal() {
-		return requal;
-	}
-	public void setRequal(Boolean requal) {
-		this.requal = requal;
+	public void setType(String type) {
+		this.type = type;
 	}
 	public Boolean getAllorderclass() {
 		return allorderclass;
@@ -85,6 +73,8 @@ public class RenewalDefinitionVO {
 	public void setRenewalDefinitionMapping(List<RenewalDefinitionMappingVO> renewalDefinitionMapping) {
 		this.renewalDefinitionMapping = renewalDefinitionMapping;
 	}
+	
+	
 
 	
 	

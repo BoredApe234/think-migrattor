@@ -35,14 +35,17 @@ public class RenewalDefinition extends BaseEntity {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "issues")
-	private Boolean issues;
+	@Column(name = "type")
+	private String type;
 	
-	@Column(name = "volumegroup")
-	private Boolean volumegroup;
-	
-	@Column(name = "requal")
-	private Boolean requal;
+//	@Column(name = "issues")
+//	private Boolean issues;
+//	
+//	@Column(name = "volumegroup")
+//	private Boolean volumegroup;
+//	
+//	@Column(name = "requal")
+//	private Boolean requal;
 	
 	@Column(name = "allorderclass")
 	private Boolean allorderclass;
@@ -88,28 +91,12 @@ public class RenewalDefinition extends BaseEntity {
 		this.description = description;
 	}
 
-	public Boolean getIssues() {
-		return issues;
+	public String getType() {
+		return type;
 	}
 
-	public void setIssues(Boolean issues) {
-		this.issues = issues;
-	}
-
-	public Boolean getVolumegroup() {
-		return volumegroup;
-	}
-
-	public void setVolumegroup(Boolean volumegroup) {
-		this.volumegroup = volumegroup;
-	}
-
-	public Boolean getRequal() {
-		return requal;
-	}
-
-	public void setRequal(Boolean requal) {
-		this.requal = requal;
+	public void setType(String type) {
+		this.type = type;
 	}
 
 	public Boolean getAllorderclass() {
@@ -160,8 +147,4 @@ public class RenewalDefinition extends BaseEntity {
 				+ ", renewalDefinitionMapping=" + renewalDefinitionMapping + "]";
 	}
 	
-	
-	
-	
-
 }

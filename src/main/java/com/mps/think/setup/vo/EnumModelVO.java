@@ -391,6 +391,20 @@ public class EnumModelVO {
 			return interval;
 		}
 	}
+	
+	public static enum Type {
+		One("By Issues"), Two("By Volume Group"), Three("Requal");
+
+		private final String type;
+
+		Type(String type) {
+			this.type = type;
+		}
+
+		public String getType() {
+			return type;
+		}
+	}
 
 
 	
