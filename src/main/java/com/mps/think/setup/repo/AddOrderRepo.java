@@ -133,6 +133,10 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation k RIGHT JOIN o.customerId c WHERE (c.customerId = :customerId) AND (k.orderDate LIKE '%'||:year||'%') GROUP BY o.orderId")
 	List<Order> findOrderCountForCustomerInYear(@Param("customerId") Integer customerId, @Param("year") String year);
 	
+	@Query(value = "SELECT o.* FROM order_parent o JOIN customer c ON c.id = o.customer_id WHERE c.id = :customerId ORDER BY o.order_id DESC LIMIT 2",
+			nativeQuery = true)
+	List<Order> fetchRecentTwoOrderByCustomerId(@Param("customerId") Integer customerId);
+	
 }
 
 
