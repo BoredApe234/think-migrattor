@@ -31,6 +31,8 @@ public class OrderVO {
 	private OrderAuxiliaryInformationVO auxiliaryInformation;
 	
 	private CustomerDetailsVO otherAddressCustomer;
+	
+	private MultiLineItemOrderVO parentOrder;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -126,6 +128,14 @@ public class OrderVO {
 
 	public void setOtherAddressCustomer(CustomerDetailsVO otherAddressCustomer) {
 		this.otherAddressCustomer = otherAddressCustomer;
+	}
+
+	public MultiLineItemOrderVO getParentOrder() {
+		return parentOrder;
+	}
+
+	public void setParentOrder(MultiLineItemOrderVO parentOrder) {
+		this.parentOrder = parentOrder;
 	}
 
 	

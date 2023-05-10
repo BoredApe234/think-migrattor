@@ -50,6 +50,11 @@ public class Queue extends BaseEntity{
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	@Override
+	public String toString() {
+		return "Queue [id=" + id + ", queue=" + queue + ", description=" + description + "]";
+	}
 	
 	
 

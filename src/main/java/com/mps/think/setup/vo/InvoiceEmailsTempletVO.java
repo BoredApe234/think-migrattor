@@ -2,11 +2,12 @@ package com.mps.think.setup.vo;
 
 import com.mps.think.setup.model.Publisher;
 
-public class InvoiceEmailsTampletVO {
+public class InvoiceEmailsTempletVO {
 	
 	private Integer id;
 	private String emailTamplateName;
 	private String textFormate;
+	private String templateType;
 	private boolean defaultStatus;
 	private Publisher publisher;
 	public Integer getId() {
@@ -27,6 +28,12 @@ public class InvoiceEmailsTampletVO {
 	public void setTextFormate(String textFormate) {
 		this.textFormate = textFormate;
 	}
+	public String getTemplateType() {
+		return templateType;
+	}
+	public void setTemplateType(String templateType) {
+		this.templateType = templateType;
+	}
 	public boolean isDefaultStatus() {
 		return defaultStatus;
 	}
@@ -42,7 +49,8 @@ public class InvoiceEmailsTampletVO {
 	@Override
 	public String toString() {
 		return "InvoiceEmailsTampletVO [id=" + id + ", emailTamplateName=" + emailTamplateName + ", textFormate="
-				+ textFormate + ", defaultStatus=" + defaultStatus + ", publisher=" + publisher + "]";
+				+ textFormate + ", templateType=" + templateType + ", defaultStatus=" + defaultStatus + ", publisher="
+				+ publisher + "]";
 	}
 	
 }

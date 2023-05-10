@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -36,7 +35,7 @@ public class ProcessOutput extends BaseEntity {
 	@JoinColumn(name = "order_cls_overview", referencedColumnName = "id")
 	private OrderClassOverview orderClassOverview;
 	
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "output", referencedColumnName = "id")
 	private OutputValue outputValue;
 	
@@ -188,6 +187,15 @@ public class ProcessOutput extends BaseEntity {
 
 	public void setOrderClassOverview(OrderClassOverview orderClassOverview) {
 		this.orderClassOverview = orderClassOverview;
+	}
+
+	@Override
+	public String toString() {
+		return "ProcessOutput [output_id=" + output_id + ", addProcessId=" + addProcessId + ", orderClassOverview="
+				+ orderClassOverview + ", outputValue=" + outputValue + ", mode=" + mode + ", outputfilename="
+				+ outputfilename + ", apendjobId=" + apendjobId + ", outputfileformat=" + outputfileformat
+				+ ", installmentplan=" + installmentplan + ", def=" + def + ", test=" + test + ", effort=" + effort
+				+ ", auditreport=" + auditreport + ", parametervalue=" + parametervalue + "]";
 	}
 	
 	

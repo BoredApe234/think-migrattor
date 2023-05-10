@@ -56,9 +56,4 @@ public class SourceFormatAndAttributeMapping extends BaseEntity{
 		this.sourceFormat = sourceFormat;
 	}
 
-	@Override
-	public String toString() {
-		return "SourceFormatAndAttributeMapping [id=" + id + ", sourceAttributes=" + sourceAttributes
-				+ ", sourceFormat=" + sourceFormat + "]";
-	}
 }

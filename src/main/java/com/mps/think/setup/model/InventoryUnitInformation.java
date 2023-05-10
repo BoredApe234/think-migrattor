@@ -61,5 +61,11 @@ public class InventoryUnitInformation extends BaseEntity {
 	public void setCost(Double cost) {
 		this.cost = cost;
 	}
+
+	@Override
+	public String toString() {
+		return "InventoryUnitInformation [id=" + id + ", defaultPrice=" + defaultPrice + ", weight=" + weight
+				+ ", cost=" + cost + "]";
+	}
 	
 }

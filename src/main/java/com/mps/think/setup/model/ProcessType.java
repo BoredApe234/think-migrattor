@@ -42,6 +42,11 @@ public class ProcessType extends BaseEntity {
 		this.mainpurposelabel = mainpurposelabel;
 	}
 
+	@Override
+	public String toString() {
+		return "ProcessType [pid=" + pid + ", mainpurposelabel=" + mainpurposelabel + "]";
+	}
+
 	
 	
 	

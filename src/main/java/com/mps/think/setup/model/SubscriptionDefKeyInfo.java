@@ -212,6 +212,15 @@ public class SubscriptionDefKeyInfo extends BaseEntity {
 		this.category = category;
 	}
 
+	@Override
+	public String toString() {
+		return "SubscriptionDefKeyInfo [id=" + id + ", publisher=" + publisher + ", orderClass=" + orderClass
+				+ ", subscriptionDefCode=" + subscriptionDefCode + ", description=" + description + ", orderCode="
+				+ orderCode + ", terms=" + terms + ", subDefStatus=" + subDefStatus + ", subDefId=" + subDefId
+				+ ", rateCard=" + rateCard + ", renewalCard=" + renewalCard + ", orderCodeType=" + orderCodeType
+				+ ", media=" + media + ", edition=" + edition + ", category=" + category + "]";
+	}
+
 	
 
 }

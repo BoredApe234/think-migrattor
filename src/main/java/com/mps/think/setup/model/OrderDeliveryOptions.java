@@ -73,4 +73,10 @@ public class OrderDeliveryOptions extends BaseEntity {
 		this.autoRenewal = autoRenewal;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderDeliveryOptions [id=" + id + ", deliveryMethod=" + deliveryMethod + ", proformaPayment="
+				+ proformaPayment + ", sendRenewalNotice=" + sendRenewalNotice + ", autoRenewal=" + autoRenewal + "]";
+	}
+
 }

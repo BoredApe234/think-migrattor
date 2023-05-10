@@ -103,6 +103,13 @@ public class SourceFormatSegment extends BaseEntity {
 		this.generationFunction = generationFunction;
 	}
 
+	@Override
+	public String toString() {
+		return "SourceFormatSegment [id=" + id + ", sourceAttribute=" + sourceAttribute + ", sourceFormat="
+				+ sourceFormat + ", generationMethod=" + generationMethod + ", fixedValue=" + fixedValue
+				+ ", genFuncParm=" + genFuncParm + ", generationFunction=" + generationFunction + "]";
+	}
+
 	
 	
 }

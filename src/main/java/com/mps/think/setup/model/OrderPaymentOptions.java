@@ -120,5 +120,13 @@ public class OrderPaymentOptions extends BaseEntity {
 		this.isActive = isActive;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderPaymentOptions [id=" + id + ", proformaOptions=" + proformaOptions + ", creditCardProcessing="
+				+ creditCardProcessing + ", installmentBilling=" + installmentBilling + ", prepaymentRequired="
+				+ prepaymentRequired + ", autoReplace=" + autoReplace + ", chargeShipping=" + chargeShipping
+				+ ", taxable=" + taxable + ", isActive=" + isActive + "]";
+	}
+
 
 }

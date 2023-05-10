@@ -11,7 +11,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "invoice_email_tamplet")
-public class InvoiceEmailsTamplet extends BaseEntity{
+public class InvoiceEmailsTemplet extends BaseEntity{
 
 	/**
 	 * 
@@ -28,6 +28,9 @@ public class InvoiceEmailsTamplet extends BaseEntity{
 	
 	@Column(name = "text_formate")
 	private String textFormate;
+	
+	@Column(name = "template_type")
+	private String templateType;
 	
 	@Column(name = "default_status")
 	private boolean defaultStatus;
@@ -60,6 +63,14 @@ public class InvoiceEmailsTamplet extends BaseEntity{
 		this.textFormate = textFormate;
 	}
 
+	public String getTemplateType() {
+		return templateType;
+	}
+
+	public void setTemplateType(String templateType) {
+		this.templateType = templateType;
+	}
+
 	public boolean isDefaultStatus() {
 		return defaultStatus;
 	}
@@ -79,6 +90,9 @@ public class InvoiceEmailsTamplet extends BaseEntity{
 	@Override
 	public String toString() {
 		return "InvoiceEmailsTamplet [id=" + id + ", emailTamplateName=" + emailTamplateName + ", textFormate="
-				+ textFormate + ", defaultStatus=" + defaultStatus + ", publisher=" + publisher + "]";
+				+ textFormate + ", templateType=" + templateType + ", defaultStatus=" + defaultStatus + ", publisher="
+				+ publisher + "]";
 	}
+
+	
 }

@@ -169,6 +169,15 @@ public class Terms extends BaseEntity{
 		this.installmentterm = installmentterm;
 	}
 
+	@Override
+	public String toString() {
+		return "Terms [termsId=" + termsId + ", pubId=" + pubId + ", term=" + term + ", description=" + description
+				+ ", segmented=" + segmented + ", segment=" + segment + ", unitsPerSegment=" + unitsPerSegment
+				+ ", quantity=" + quantity + ", duration=" + duration + ", unitsInDuration=" + unitsInDuration
+				+ ", volumeGroupsToSpan=" + volumeGroupsToSpan + ", startType=" + startType + ", installmentterm="
+				+ installmentterm + "]";
+	}
+
 	
 	
 	

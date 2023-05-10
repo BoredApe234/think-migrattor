@@ -158,5 +158,13 @@ public class OrderItemDetails extends BaseEntity {
 		this.category = category;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderItemDetails [id=" + id + ", effectiveDate=" + effectiveDate + ", itemType=" + itemType
+				+ ", itemUrl=" + itemUrl + ", itemImage=" + itemImage + ", price=" + price + ", shippingWeight="
+				+ shippingWeight + ", commodityCode=" + commodityCode + ", graceQuanitity=" + graceQuanitity
+				+ ", media=" + media + ", edition=" + edition + ", category=" + category + "]";
+	}
+
 	
 }

@@ -84,4 +84,11 @@ public class InventoryGeneralInformation extends BaseEntity {
 		this.activeInventoryItem = activeInventoryItem;
 	}
 
+	@Override
+	public String toString() {
+		return "InventoryGeneralInformation [id=" + id + ", inventoryCode=" + inventoryCode + ", inventoryId="
+				+ inventoryId + ", userCode=" + userCode + ", description=" + description + ", activeInventoryItem="
+				+ activeInventoryItem + "]";
+	}
+
 }

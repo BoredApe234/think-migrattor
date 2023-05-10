@@ -127,4 +127,12 @@ public class PaymentType extends BaseEntity {
 		this.cvv = cvv;
 	}
 
+	@Override
+	public String toString() {
+		return "PaymentType [id=" + id + ", paymentType=" + paymentType + ", description=" + description
+				+ ", paymentForm=" + paymentForm + ", realiseCashWhen=" + realiseCashWhen + ", useAsDefault="
+				+ useAsDefault + ", creditCardType=" + creditCardType + ", cvv=" + cvv + ", publisher=" + publisher
+				+ "]";
+	}
+
 }

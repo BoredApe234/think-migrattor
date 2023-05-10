@@ -73,4 +73,10 @@ public class BaseEntity implements Serializable {
 		this.modifiedAt = modifiedAt;
 	}
 
+	@Override
+	public String toString() {
+		return "BaseEntity [createdBy=" + createdBy + ", createdAt=" + createdAt + ", modifiedBy=" + modifiedBy
+				+ ", modifiedAt=" + modifiedAt + "]";
+	}
+
 }
