@@ -141,10 +141,12 @@ public class RenewalDefinition extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "RenewalDefinition [id=" + id + ", renewal=" + renewal + ", description=" + description + ", issues="
-				+ issues + ", volumegroup=" + volumegroup + ", requal=" + requal + ", allorderclass=" + allorderclass
-				+ ", generatesourcecode=" + generatesourcecode + ", renewalcard=" + renewalcard + ", efid=" + efid
-				+ ", renewalDefinitionMapping=" + renewalDefinitionMapping + "]";
+		return "RenewalDefinition [id=" + id + ", renewal=" + renewal + ", description=" + description + ", type="
+				+ type + ", allorderclass=" + allorderclass + ", generatesourcecode=" + generatesourcecode
+				+ ", renewalcard=" + renewalcard + ", efid=" + efid + ", renewalDefinitionMapping="
+				+ renewalDefinitionMapping + "]";
 	}
+
+
 	
 }
