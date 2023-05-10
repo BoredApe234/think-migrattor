@@ -118,6 +118,13 @@ public class OrderCodes extends BaseEntity {
 		this.discountCard = discountCard;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderCodes [id=" + id + ", orderCode=" + orderCode + ", description=" + description + ", orderType="
+				+ orderType + ", orderCodeId=" + orderCodeId + ", orderClassId=" + orderClassId + ", rateCard="
+				+ rateCard + ", discountCard=" + discountCard + "]";
+	}
+
 	
 	
 }

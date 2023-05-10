@@ -53,8 +53,5 @@ public class OrderPaymentMapping {
 		this.makePayment = makePayment;
 	}
 
-	@Override
-	public String toString() {
-		return "OrderPayment [id=" + id + ", order=" + order + ", makePayment=" + makePayment + "]";
-	}
+	
 }

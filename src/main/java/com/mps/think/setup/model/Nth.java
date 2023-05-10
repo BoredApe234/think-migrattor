@@ -165,6 +165,15 @@ public class Nth extends BaseEntity {
 	public void setMaximumrecord(String maximumrecord) {
 		this.maximumrecord = maximumrecord;
 	}
+
+	@Override
+	public String toString() {
+		return "Nth [nthid=" + nthid + ", code=" + code + ", active=" + active + ", description=" + description
+				+ ", outputsortid=" + outputsortid + ", count=" + count + ", percent=" + percent + ", everynthrecord="
+				+ everynthrecord + ", record=" + record + ", percentage=" + percentage + ", startingrecord="
+				+ startingrecord + ", selecteverynthrecord=" + selecteverynthrecord + ", maximumrecord=" + maximumrecord
+				+ "]";
+	}
 	
 	
 

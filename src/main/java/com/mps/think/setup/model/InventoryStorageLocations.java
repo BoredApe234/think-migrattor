@@ -73,4 +73,10 @@ public class InventoryStorageLocations extends BaseEntity {
 		this.bin = bin;
 	}
 
+	@Override
+	public String toString() {
+		return "InventoryStorageLocations [id=" + id + ", location=" + location + ", areaLookup=" + areaLookup
+				+ ", alternateArea=" + alternateArea + ", bin=" + bin + "]";
+	}
+
 }

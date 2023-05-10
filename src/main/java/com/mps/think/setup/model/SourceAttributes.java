@@ -68,5 +68,12 @@ public class SourceAttributes extends BaseEntity {
 
 	public void setValue(String value) {
 		this.value = value;
+	}
+
+	@Override
+	public String toString() {
+		return "SourceAttributes [id=" + id + ", publisher=" + publisher + ", attribute=" + attribute + ", value="
+				+ value + "]";
 	}	
+	
 }

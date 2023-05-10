@@ -96,6 +96,13 @@ public class MailTemplate extends BaseEntity {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
+
+	@Override
+	public String toString() {
+		return "MailTemplate [id=" + id + ", emailFrom=" + emailFrom + ", emailTo=" + emailTo + ", emailCC=" + emailCC
+				+ ", emailSubject=" + emailSubject + ", emailContent=" + emailContent + ", publisher=" + publisher
+				+ "]";
+	}
 	
 	
 }

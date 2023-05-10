@@ -151,6 +151,14 @@ public class RenewalDefinition extends BaseEntity {
 	public void setRenewalDefinitionMapping(List<RenewalDefinitionMapping> renewalDefinitionMapping) {
 		this.renewalDefinitionMapping = renewalDefinitionMapping;
 	}
+
+	@Override
+	public String toString() {
+		return "RenewalDefinition [id=" + id + ", renewal=" + renewal + ", description=" + description + ", issues="
+				+ issues + ", volumegroup=" + volumegroup + ", requal=" + requal + ", allorderclass=" + allorderclass
+				+ ", generatesourcecode=" + generatesourcecode + ", renewalcard=" + renewalcard + ", efid=" + efid
+				+ ", renewalDefinitionMapping=" + renewalDefinitionMapping + "]";
+	}
 	
 	
 	

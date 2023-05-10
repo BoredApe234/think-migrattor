@@ -132,5 +132,12 @@ public class PaymentInformation extends BaseEntity {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
+
+	@Override
+	public String toString() {
+		return "PaymentInformation [id=" + id + ", cardNumber=" + cardNumber + ", nameOfCardHolder=" + nameOfCardHolder
+				+ ", amount=" + amount + ", transactionId=" + transactionId + ", chargeId=" + chargeId + ", status="
+				+ status + ", otherinfo=" + otherinfo + ", order=" + order + ", publisher=" + publisher + "]";
+	}
 	
 }

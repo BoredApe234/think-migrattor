@@ -50,6 +50,11 @@ public class ExtractFilter extends BaseEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	@Override
+	public String toString() {
+		return "ExtractFilter [id=" + id + ", extract=" + extract + ", description=" + description + "]";
+	}
 	
 	
 

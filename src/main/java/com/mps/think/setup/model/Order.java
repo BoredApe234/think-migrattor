@@ -181,6 +181,16 @@ public class Order extends BaseEntity {
 		this.otherAddressCustomer = otherAddressCustomer;
 	}
 
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", customerId=" + customerId + ", orderClass=" + orderClass
+				+ ", orderType=" + orderType + ", orderStatus=" + orderStatus + ", keyOrderInformation="
+				+ keyOrderInformation + ", orderItemsAndTerms=" + orderItemsAndTerms + ", paymentBreakdown="
+				+ paymentBreakdown + ", deliveryAndBillingOptions=" + deliveryAndBillingOptions + ", orderAddresses="
+				+ orderAddresses + ", auxiliaryInformation=" + auxiliaryInformation + ", otherAddressCustomer="
+				+ otherAddressCustomer + "]";
+	}
+
 	
 
 }

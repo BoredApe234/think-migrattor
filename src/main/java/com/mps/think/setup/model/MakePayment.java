@@ -189,6 +189,15 @@ public class MakePayment extends BaseEntity{
 		this.order = order;
 	}
 
+	@Override
+	public String toString() {
+		return "MakePayment [id=" + id + ", nameOfCustomer=" + nameOfCustomer + ", payerCustomer=" + payerCustomer
+				+ ", baseAmount=" + baseAmount + ", paymentAccount=" + paymentAccount + ", paymentType=" + paymentType
+				+ ", card=" + card + ", amountToBePaid=" + amountToBePaid + ", expiryDate=" + expiryDate
+				+ ", transactionStatus=" + transactionStatus + ", chargeId=" + chargeId + ", status=" + status
+				+ ", publisher=" + publisher + ", order=" + order + "]";
+	}
+
 //	public List<OrderPaymentMapping> getOrderPaymentMapping() {
 //		return orderPaymentMapping;
 //	}
@@ -205,4 +214,6 @@ public class MakePayment extends BaseEntity{
 //				+ ", transactionStatus=" + transactionStatus + ", chargeId=" + chargeId + ", status=" + status
 //				+ ", publisher=" + publisher + ", orderPaymentMapping=" + orderPaymentMapping + "]";
 //	}
+	
+	
 }

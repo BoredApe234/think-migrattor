@@ -312,5 +312,21 @@ public class OrderThresholdInfo extends BaseEntity{
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
+
+	@Override
+	public String toString() {
+		return "OrderThresholdInfo [id=" + id + ", orderClass=" + orderClass + ", customerNbr=" + customerNbr
+				+ ", terms=" + terms + ", orderNbr=" + orderNbr + ", startDate=" + startDate + ", lineItem=" + lineItem
+				+ ", sourceCode=" + sourceCode + ", orderDate=" + orderDate + ", order=" + order + ", totalPaid="
+				+ totalPaid + ", paymentStatus=" + paymentStatus + ", underPaymentOption=" + underPaymentOption
+				+ ", expirationOriginal=" + expirationOriginal + ", expirationProrated=" + expirationProrated
+				+ ", orderQuantityOriginal=" + orderQuantityOriginal + ", orderQuantityProrated="
+				+ orderQuantityProrated + ", remainingOriginal=" + remainingOriginal + ", remainingProrated="
+				+ remainingProrated + ", orderAmntSubsOriginal=" + orderAmntSubsOriginal + ", orderAmntSubsProrated="
+				+ orderAmntSubsProrated + ", orderAmntDeliveryOriginal=" + orderAmntDeliveryOriginal
+				+ ", orderAmntDeliveryProrated=" + orderAmntDeliveryProrated + ", orderAmntTaxOriginal="
+				+ orderAmntTaxOriginal + ", orderAmntTaxProrated=" + orderAmntTaxProrated + ", publisher=" + publisher
+				+ "]";
+	}
 	
 }

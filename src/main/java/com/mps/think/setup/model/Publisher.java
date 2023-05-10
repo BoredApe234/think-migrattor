@@ -249,4 +249,6 @@ public class Publisher extends BaseEntity {
 				+ secondary_Phone + "]";
 	}
 
+
+
 }

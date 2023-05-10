@@ -262,16 +262,5 @@ public class SourceCode extends BaseEntity {
 		this.sourceCodeAndValuesMappings = sourceCodeAndValuesMappings;
 	}
 
-	@Override
-	public String toString() {
-		return "SourceCode [sourceCodeId=" + sourceCodeId + ", ocId=" + ocId + ", description=" + description
-				+ ", orderCode=" + orderCode + ", order_code_type=" + order_code_type + ", quantity=" + quantity
-				+ ", isActive=" + isActive + ", state_Break=" + state_Break + ", cost=" + cost + ", isGenerated="
-				+ isGenerated + ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCode="
-				+ sourceCode + ", sourceCodeType=" + sourceCodeType + ", sourceCodeFormat=" + sourceCodeFormat
-				+ ", rateCards=" + rateCards + ", discountCardKeyInfo=" + discountCardKeyInfo + ", renewalCard="
-				+ renewalCard + ", shippingPriceList=" + shippingPriceList + ", sourceCodeAndValuesMappings="
-				+ sourceCodeAndValuesMappings + "]";
-	}
-
+	
 }

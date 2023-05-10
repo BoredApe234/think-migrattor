@@ -177,6 +177,15 @@ public class OrderItems extends BaseEntity {
 	public void setQuantityOrdered(Integer quantityOrdered) {
 		this.quantityOrdered = quantityOrdered;
 	}
+
+	@Override
+	public String toString() {
+		return "OrderItems [id=" + id + ", issue=" + issue + ", enumeration=" + enumeration + ", copiesPerIssue="
+				+ copiesPerIssue + ", subsProdPkgDef=" + subsProdPkgDef + ", effectiveDate=" + effectiveDate
+				+ ", numOfIssues=" + numOfIssues + ", validFrom=" + validFrom + ", validTo=" + validTo
+				+ ", liabilityIssue=" + liabilityIssue + ", extendedIssue=" + extendedIssue + ", term=" + term
+				+ ", extendedByDays=" + extendedByDays + ", quantityOrdered=" + quantityOrdered + "]";
+	}
 	
 	
 	

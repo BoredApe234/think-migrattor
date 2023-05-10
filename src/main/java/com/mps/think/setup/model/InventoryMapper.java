@@ -104,4 +104,12 @@ public class InventoryMapper extends BaseEntity {
 		this.bulkInventoryTotals = bulkInventoryTotals;
 	}
 
+	@Override
+	public String toString() {
+		return "InventoryMapper [inventoryId=" + inventoryId + ", generalInformation=" + generalInformation
+				+ ", unitInformation=" + unitInformation + ", orderSettings=" + orderSettings + ", inventoryTotals="
+				+ inventoryTotals + ", primaryStorageLocation=" + primaryStorageLocation + ", bulkInventoryTotals="
+				+ bulkInventoryTotals + "]";
+	}
+
 }
