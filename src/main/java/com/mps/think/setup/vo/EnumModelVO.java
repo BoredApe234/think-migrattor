@@ -405,6 +405,51 @@ public class EnumModelVO {
 			return type;
 		}
 	}
+	
+	public static enum EffortType {
+		One("Issues/Unitd Left"), Two("Issues/Unitd Left With Expire"), Three("At Birth"),
+		Four("By Package Expire Date") , Five("By Subscription Expire Date"), Six("Extract Issues/Units Left");
+
+		private final String effortType;
+
+		EffortType(String effortType) {
+			this.effortType = effortType;
+		}
+
+		public String getEffortType() {
+			return effortType;
+		}
+	}
+	
+	public static enum SendTo {
+		One("Donor"), Two("Recipient");
+
+		private final String sendTo;
+
+		SendTo(String sendTo) {
+			this.sendTo = sendTo;
+		}
+
+		public String getSendTo() {
+			return sendTo;
+		}
+	}
+	
+	public static enum Pricing {
+		One("Use Expire Date"), Two("Use Run Date");
+
+		private final String pricing;
+
+		Pricing(String pricing) {
+			this.pricing = pricing;
+		}
+
+		public String getPricing() {
+			return pricing;
+		}
+	}
+	
+	
 
 
 	
