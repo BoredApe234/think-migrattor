@@ -34,7 +34,7 @@ public class Inserts extends BaseEntity {
 	private ExtractFilter efid;
 	
 	@OneToOne
-	@JoinColumn(name = "pr_id", referencedColumnName = "p_id" )
+	@JoinColumn(name = "pr_id", referencedColumnName = "id" )
 	private ProcessType pid;
 
 	public Integer getId() {

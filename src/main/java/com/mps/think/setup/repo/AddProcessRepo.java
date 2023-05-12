@@ -10,6 +10,6 @@ import com.mps.think.setup.model.AddProcess;
 @Repository
 public interface AddProcessRepo extends JpaRepository<AddProcess, Integer> {
 	
-	public List<AddProcess> findByprocesstypeidPid(Integer pid);
+//	public List<AddProcess> findByprocesstypeidPid(Integer pid);
 
 }

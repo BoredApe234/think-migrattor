@@ -21,6 +21,6 @@ public interface AddProcessService {
 	
 	public AddProcess deleteByProcessId(Integer process_id);
 	
-	public List<AddProcess> findAllAddProcessByPId(Integer pId);
+//	public List<AddProcess> findAllAddProcessByPId(Integer pId);
 
 }

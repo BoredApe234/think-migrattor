@@ -26,12 +26,12 @@ public class AddProcess extends BaseEntity  {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "process_id")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer process_id;
+	private Integer id;
 	
 	@OneToOne
-	@JoinColumn(name = "process_type_id", referencedColumnName = "p_id" )
+	@JoinColumn(name = "process_type_id", referencedColumnName = "id" )
 	private ProcessType processtypeid;
 	
 	@Column(name = "mainpurpose")
@@ -133,12 +133,12 @@ public class AddProcess extends BaseEntity  {
 	@Column(name = "picklist")
 	private Boolean picklist;
 
-	public Integer getProcess_id() {
-		return process_id;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setProcess_id(Integer process_id) {
-		this.process_id = process_id;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public ProcessType getProcesstypeid() {
@@ -375,18 +375,19 @@ public class AddProcess extends BaseEntity  {
 
 	@Override
 	public String toString() {
-		return "AddProcess [process_id=" + process_id + ", processtypeid=" + processtypeid + ", mainpurpose="
-				+ mainpurpose + ", description=" + description + ", status=" + status + ", active=" + active
-				+ ", repeating=" + repeating + ", inserts=" + inserts + ", split=" + split + ", autorenewal="
-				+ autorenewal + ", holdormanualselect=" + holdormanualselect + ", backlabel=" + backlabel + ", billing="
-				+ billing + ", productfullfillment=" + productfullfillment + ", refund=" + refund + ", renewal="
-				+ renewal + ", extractfilterid=" + extractfilterid + ", defaultjobpriority=" + defaultjobpriority
+		return "AddProcess [id=" + id + ", processtypeid=" + processtypeid + ", mainpurpose=" + mainpurpose
+				+ ", description=" + description + ", status=" + status + ", active=" + active + ", repeating="
+				+ repeating + ", inserts=" + inserts + ", split=" + split + ", autorenewal=" + autorenewal
+				+ ", holdormanualselect=" + holdormanualselect + ", backlabel=" + backlabel + ", billing=" + billing
+				+ ", productfullfillment=" + productfullfillment + ", refund=" + refund + ", renewal=" + renewal
+				+ ", extractfilterid=" + extractfilterid + ", defaultjobpriority=" + defaultjobpriority
 				+ ", outputsortid=" + outputsortid + ", defaultjobqueueid=" + defaultjobqueueid + ", sqlscript="
 				+ sqlscript + ", addprocessmapping=" + addprocessmapping + ", length=" + length + ", gps=" + gps
 				+ ", keyline=" + keyline + ", gracenewexpires=" + gracenewexpires + ", savecurrentgraces="
 				+ savecurrentgraces + ", bundlethreshold=" + bundlethreshold + ", prioritysort=" + prioritysort
 				+ ", picklist=" + picklist + "]";
 	}
+
 	
 	
 
