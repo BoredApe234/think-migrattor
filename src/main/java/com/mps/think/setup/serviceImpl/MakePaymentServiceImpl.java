@@ -15,6 +15,7 @@ import com.mps.think.setup.model.MailTemplate;
 import com.mps.think.setup.model.MakePayment;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.Publisher;
+import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.MailTemplateRepo;
 import com.mps.think.setup.repo.MakePaymentRepo;
 import com.mps.think.setup.service.MakePaymentService;
@@ -30,6 +31,9 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 
 	@Autowired
 	MailTemplateRepo mailTemplateRepo;
+	
+	@Autowired
+	AddOrderRepo addOrderRepo;
 
 	@Autowired
 	MailTemplateUtils template;
@@ -38,29 +42,26 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 	public List<MakePayment> findAllMakePaymentByPubId(Integer pubId) {
 		return makePaymentRepo.findByPublisherId(pubId);
 	}
+	
 
 	@Override
 	public List<MakePayment> saveMakePayment(MakePaymentVO makePaymentVO) {
-//		ObjectMapper obj=new ObjectMapper();
+//		ObjectMapper obj=new ObjectMapper();  entry.getValue()
 //		MakePayment makePayment=obj.convertValue(makePaymentVO, MakePayment.class);
 //		MakePayment data=makePaymentRepo.saveAndFlush(makePayment);
-		double amnt=makePaymentVO.getAmountToBePaid();
+//		double amnt=makePaymentVO.getAmountToBePaid();
 		List<MakePayment> mke=new ArrayList<>();
-		for (Map.Entry<String,Double> entry : makePaymentVO.getListOfOrder().entrySet()) {
-		if(amnt>0) {
+//		if(makePaymentVO.getTotalAmount()>=makePaymentVO.getTotalPaidAmount()) {
+		for (Map.Entry<Integer,Double> entry : makePaymentVO.getListOfOrder().entrySet()) {
+		Order odr=addOrderRepo.findById(entry.getKey()).get();
 		MakePayment makePayment=new MakePayment();
 		makePayment.setNameOfCustomer(makePaymentVO.getNameOfCustomer());
 		makePayment.setPayerCustomer(makePaymentVO.getPayerCustomer());
-		makePayment.setBaseAmount(entry.getValue());
+		makePayment.setBaseAmount(odr.getPaymentBreakdown().getNetAmount().doubleValue());
 		makePayment.setPaymentAccount(makePaymentVO.getPaymentAccount());
 		makePayment.setPaymentType(makePaymentVO.getPaymentType());
 		makePayment.setCard(makePaymentVO.getCard());
-		if(amnt>entry.getValue()) {
 		makePayment.setAmountToBePaid(entry.getValue());
-		}else {
-			makePayment.setAmountToBePaid(amnt);
-		}
-		amnt=amnt-entry.getValue();
 		makePayment.setExpiryDate(makePaymentVO.getExpiryDate());
 		makePayment.setTransactionStatus(makePaymentVO.getTransactionStatus());
 		makePayment.setChargeId(makePaymentVO.getChargeId());
@@ -69,12 +70,12 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 		pub.setId(makePaymentVO.getPublisher().getId());
 		makePayment.setPublisher(pub);
 		Order od=new Order();
-		String[] s=entry.getKey().split("-");
-		od.setOrderId(Integer.parseInt(s[1]));
+//		String[] s=entry.getKey().split("-");
+		od.setOrderId(entry.getKey());
 		makePayment.setOrder(od);
 		MakePayment listdata=makePaymentRepo.saveAndFlush(makePayment);
 		mke.add(listdata);
-		}
+//		}
 		}return mke;
 
 	}

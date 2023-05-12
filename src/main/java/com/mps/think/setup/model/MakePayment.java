@@ -62,6 +62,9 @@ public class MakePayment extends BaseEntity{
 	@Column(name="status")
 	private String status;
 	
+//	@Column(name = "total_paid_amount")
+//	private double totalPaidAmount;
+	
 	@ManyToOne
 	@JoinColumn(name = "publisher_id", referencedColumnName = "id")
 	private Publisher publisher;
@@ -69,13 +72,6 @@ public class MakePayment extends BaseEntity{
 	@ManyToOne
 	@JoinColumn(name = "order_id", referencedColumnName = "order_id")
 	private Order order;
-	
-//	@OneToMany(
-//			mappedBy = "makePayment",
-//	        cascade = CascadeType.ALL,
-//	        orphanRemoval = true)
-//	@JsonManagedReference
-//	private List<OrderPaymentMapping> orderPaymentMapping;
 
 	public Integer getId() {
 		return id;
@@ -173,6 +169,14 @@ public class MakePayment extends BaseEntity{
 		this.status = status;
 	}
 
+//	public double getTotalPaidAmount() {
+//		return totalPaidAmount;
+//	}
+//
+//	public void setTotalPaidAmount(double totalPaidAmount) {
+//		this.totalPaidAmount = totalPaidAmount;
+//	}
+
 	public Publisher getPublisher() {
 		return publisher;
 	}
@@ -198,21 +202,13 @@ public class MakePayment extends BaseEntity{
 				+ ", publisher=" + publisher + ", order=" + order + "]";
 	}
 
-//	public List<OrderPaymentMapping> getOrderPaymentMapping() {
-//		return orderPaymentMapping;
-//	}
-//
-//	public void setOrderPaymentMapping(List<OrderPaymentMapping> orderPaymentMapping) {
-//		this.orderPaymentMapping = orderPaymentMapping;
-//	}
-//
 //	@Override
 //	public String toString() {
 //		return "MakePayment [id=" + id + ", nameOfCustomer=" + nameOfCustomer + ", payerCustomer=" + payerCustomer
 //				+ ", baseAmount=" + baseAmount + ", paymentAccount=" + paymentAccount + ", paymentType=" + paymentType
 //				+ ", card=" + card + ", amountToBePaid=" + amountToBePaid + ", expiryDate=" + expiryDate
 //				+ ", transactionStatus=" + transactionStatus + ", chargeId=" + chargeId + ", status=" + status
-//				+ ", publisher=" + publisher + ", orderPaymentMapping=" + orderPaymentMapping + "]";
+//				+ ", totalPaidAmount=" + totalPaidAmount + ", publisher=" + publisher + ", order=" + order + "]";
 //	}
 	
 	
