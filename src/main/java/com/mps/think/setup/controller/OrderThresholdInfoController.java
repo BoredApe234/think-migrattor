@@ -1,5 +1,7 @@
 package com.mps.think.setup.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,7 +25,7 @@ public class OrderThresholdInfoController {
 	}
 	
 	@PostMapping("/saveorderThresholdInfo")
-	public ResponseEntity<?> saveorderThresholdInfo(@RequestBody OrderThresholdInfoVO orderThresholdInfoVO) {
+	public ResponseEntity<?> saveorderThresholdInfo(@RequestBody List<OrderThresholdInfoVO> orderThresholdInfoVO) {
 		return ResponseEntity.ok(thresholdInfoService.saveorderThresholdInfo(orderThresholdInfoVO));
 	}
 	

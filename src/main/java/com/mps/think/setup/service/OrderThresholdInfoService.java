@@ -9,7 +9,7 @@ public interface OrderThresholdInfoService {
 	
 	public List<OrderThresholdInfo> findAllorderThresholdByPubId(Integer pubId);
 	
-	public OrderThresholdInfo saveorderThresholdInfo(OrderThresholdInfoVO orderThresholdInfoVO);
+	public List<OrderThresholdInfo> saveorderThresholdInfo(List<OrderThresholdInfoVO> orderThresholdInfoVO);
 	
 	public OrderThresholdInfo findbyOrderId(Integer orderId);
 
