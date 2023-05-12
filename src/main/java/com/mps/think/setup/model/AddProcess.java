@@ -1,5 +1,5 @@
 package com.mps.think.setup.model;
-
+//Model changes
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "process_table")
+@Table(name = "process")
 public class AddProcess extends BaseEntity  {
 
 	/**
