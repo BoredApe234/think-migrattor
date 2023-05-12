@@ -49,9 +49,9 @@ public class AddProcessServiceImpl implements AddProcessService {
 		return delete;
 	}
 	
-	@Override
-	public List<AddProcess> findAllAddProcessByPId(Integer pid) {
-		return addProcessRepo.findByprocesstypeidPid(pid);
-	}
+//	@Override
+//	public List<AddProcess> findAllAddProcessByPId(Integer pid) {
+//		return addProcessRepo.findByprocesstypeidPid(pid);
+//	}
 
 }

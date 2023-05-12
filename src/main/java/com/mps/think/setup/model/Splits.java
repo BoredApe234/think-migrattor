@@ -34,7 +34,7 @@ public class Splits extends BaseEntity {
 	private ExtractFilter extractfilterid;
 	
 	@OneToOne
-	@JoinColumn(name = "process", referencedColumnName = "p_id" )
+	@JoinColumn(name = "process", referencedColumnName = "id" )
 	private ProcessType pid;
 
 	public Integer getId() {

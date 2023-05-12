@@ -22,24 +22,24 @@ public class Addprocessmapping extends BaseEntity {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
-	private Integer id;
+	@Column(name = "pmid")
+	private Integer pmid;
 	
 	@ManyToOne
 	@JoinColumn(name = "oc_id")
 	private OrderClass orderClass;
 	
 	@ManyToOne
-    @JoinColumn(name = "process_id")
+    @JoinColumn(name = "id")
 	@JsonBackReference
 	private AddProcess addProcess;
 
-	public Integer getId() {
-		return id;
+	public Integer getPmid() {
+		return pmid;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setPmid(Integer pmid) {
+		this.pmid = pmid;
 	}
 
 	public OrderClass getOrderClass() {
@@ -57,6 +57,8 @@ public class Addprocessmapping extends BaseEntity {
 	public void setAddProcess(AddProcess addProcess) {
 		this.addProcess = addProcess;
 	}
+
+
 
 	
 	
