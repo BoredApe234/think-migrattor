@@ -106,8 +106,10 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 	
 	
 	@Override
-	public HashMap<String, String> definePayment(LinkedHashMap<Integer, String> amount, Integer paymentThresholdId) {
+	public List<HashMap<String, String>> definePayment(LinkedHashMap<Integer, String> amount, Integer paymentThresholdId) {
 		HashMap<String, String> payment = new HashMap<String, String>();
+		
+		List<HashMap<String, String>> list = null;
 		for(Map.Entry<Integer,String> entry : amount.entrySet()) {
 		String[] str=entry.getValue().split(",");
 		double invoiceAmount=Double.valueOf(str[0]);
@@ -119,51 +121,62 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 		if (paidPercentage <= threshold.getPartialThreshold()) {
 			System.out.println("1 Partial payments");
 			payment.put("paymentStatus", "Partial payments");
-			return payment;
+			list.add(payment);
+			return list;
 		} else if (paidPercentage > threshold.getPartialThreshold() && paidPercentage < threshold.getUnderThreshold()) {
 			if ((int) unPaidAmount <= threshold.getMaxUnderpaymentForPartial()) {
 				System.out.println("2 Under payments");
 				payment.put("paymentStatus", "Under payments");
-				return payment;
+				list.add(payment);
+				return list;
 			}
 			System.out.println("3 Partial payments");
 			payment.put("paymentStatus", "Partial payments");
-			return payment;
+			list.add(payment);
+			return list;
 		} else if (paidPercentage >= threshold.getUnderThreshold() && paidPercentage <= threshold.getOverThreshold()) {
 			if ((int) unPaidAmount <= threshold.getMaxUnderpaymentForFull()) {
 				System.out.println("4 Full payments");
 				payment.put("paymentStatus", "Full payments");
-				return payment;
+				list.add(payment);
+				return list;
 			} else if ((int) unPaidAmount > threshold.getMaxUnderpaymentForPartial()) {
 				System.out.println("7 Partial payments");
 				payment.put("paymentStatus", "Partial payments");
-				return payment;
+				list.add(payment);
+				return list;
 			}
 			System.out.println("5 Under payments");
 			payment.put("paymentStatus", "Under payments");
-			return payment;
+			list.add(payment);
+			return list;
 
 		} else if (paidPercentage > threshold.getOverThreshold() && paidPercentage <= threshold.getRefundThreshold()) {
 			if ((int) unPaidAmount <= threshold.getMaxOverpaymentForFull()) {
 				System.out.println("6 Full payments");
 				payment.put("paymentStatus", "Full payments");
-				return payment;
+				list.add(payment);
+				return list;
 			} else if ((int) unPaidAmount > threshold.getMaxOverpaymentForRefund()) {
 				System.out.println("7 Refund payments");
 				payment.put("paymentStatus", "Refund payments");
-				return payment;
+				list.add(payment);
+				return list;
 			}
 			System.out.println("8 Over payments");
 			payment.put("paymentStatus", "Over payments");
-			return payment;
+			list.add(payment);
+			return list;
 		} else if (paidPercentage > threshold.getRefundThreshold()) {
 			System.out.println("9 Refund payments");
 			payment.put("paymentStatus", "Refund payments");
-			return payment;
+			list.add(payment);
+			return list;
 		}
 		payment.put("paymentStatus", "Not have vaild payment");
+		list.add(payment);
 		}
-		return payment;
+		return list;
 		
 	}
 	@Override

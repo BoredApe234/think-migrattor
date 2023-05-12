@@ -18,7 +18,7 @@ public interface PaymentThresholdService {
 	
 	public PaymentThreshold findByPaymentThresholdId(Integer id);
 	
-	public HashMap<String, String> definePayment(LinkedHashMap<Integer, String> amount, Integer paymentThresholdId);
+	public List<HashMap<String, String>> definePayment(LinkedHashMap<Integer, String> amount, Integer paymentThresholdId);
 		
 	public PaymentThreshold DeletePaymentThreshold(Integer id);
 	
