@@ -1,5 +1,6 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class OrderThresholdInfoServiceImpl implements OrderThresholdInfoService{
 	}
 
 	@Override
-	public OrderThresholdInfo saveorderThresholdInfo(OrderThresholdInfoVO orderThresholdInfoVO) {
+	public List<OrderThresholdInfo> saveorderThresholdInfo(List<OrderThresholdInfoVO> orderThresholdInfoVO) {
 //		OrderThresholdInfo ot=new OrderThresholdInfo();
 //		OrderClass oc=new OrderClass();
 //		oc.setOcId(orderThresholdInfoVO.getOrderClass().getOcId());
@@ -69,8 +70,12 @@ public class OrderThresholdInfoServiceImpl implements OrderThresholdInfoService{
 //		ot.setPublisher(pub);
 //		OrderThresholdInfo data = thresholdInfoRepo.saveAndFlush(ot);
 //		ot.setId(data.getId());
-		
-		return thresholdInfoRepo.saveAndFlush(mapper.convertValue(orderThresholdInfoVO, OrderThresholdInfo.class));
+		List<OrderThresholdInfo> list=new ArrayList<>();
+		for(OrderThresholdInfoVO orderList:orderThresholdInfoVO) {
+		OrderThresholdInfo data = thresholdInfoRepo.saveAndFlush(mapper.convertValue(orderList, OrderThresholdInfo.class));
+		list.add(data);
+		}
+		return list;
 	}
 
 	@Override
