@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "process")
+@Table(name = "add_process")
 public class AddProcess extends BaseEntity  {
 
 	/**
