@@ -1,15 +1,17 @@
 package com.mps.think.setup.vo;
 
-
-
 import com.mps.think.setup.model.AddProcess;
+import com.mps.think.setup.model.OrderClass;
+import com.mps.think.setup.model.OrderClassOverview;
+import com.mps.think.setup.model.OutputValue;
 
 public class ProcessOutputVO {
 	
 	private Integer output_id;
 	private AddProcess addProcessId;
-    private String type;
-	private String output;
+//	private OrderClass orderClass;
+	private OrderClassOverview orderClassOverview;
+	private OutputValue outputValue;
 	private String mode;
 	private String outputfilename;
 	private Boolean apendjobId;
@@ -20,7 +22,6 @@ public class ProcessOutputVO {
 	private String effort;
 	private String auditreport;
 	private String parametervalue;
-	
 	public Integer getOutput_id() {
 		return output_id;
 	}
@@ -33,17 +34,17 @@ public class ProcessOutputVO {
 	public void setAddProcessId(AddProcess addProcessId) {
 		this.addProcessId = addProcessId;
 	}
-	public String getType() {
-		return type;
+//	public OrderClass getOrderClass() {
+//		return orderClass;
+//	}
+//	public void setOrderClass(OrderClass orderClass) {
+//		this.orderClass = orderClass;
+//	}
+	public OutputValue getOutputValue() {
+		return outputValue;
 	}
-	public void setType(String type) {
-		this.type = type;
-	}
-	public String getOutput() {
-		return output;
-	}
-	public void setOutput(String output) {
-		this.output = output;
+	public void setOutputValue(OutputValue outputValue) {
+		this.outputValue = outputValue;
 	}
 	public String getMode() {
 		return mode;
@@ -104,6 +105,12 @@ public class ProcessOutputVO {
 	}
 	public void setParametervalue(String parametervalue) {
 		this.parametervalue = parametervalue;
+	}
+	public OrderClassOverview getOrderClassOverview() {
+		return orderClassOverview;
+	}
+	public void setOrderClassOverview(OrderClassOverview orderClassOverview) {
+		this.orderClassOverview = orderClassOverview;
 	}
 	
 	

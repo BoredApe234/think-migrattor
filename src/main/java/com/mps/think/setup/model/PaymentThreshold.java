@@ -22,6 +22,12 @@ public class PaymentThreshold extends BaseEntity {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer paymentThresholdId;
+	
+	@Column(name="code")
+	private String paymentThresholdCode;
+	
+	@Column(name="description")
+	private String paymentThresholdDescription;
 
 	@Column(name = "partial_threshold")
 	private Integer partialThreshold;
@@ -58,14 +64,13 @@ public class PaymentThreshold extends BaseEntity {
 
 	@Column(name = "under_payment_overrides")
 	private boolean underpaymentOverrides;
+	
+	@Column(name = "default_status")
+	private boolean status;
 
 	@OneToOne
 	@JoinColumn(name = "pub_id", referencedColumnName = "id")
 	private Publisher publisher;
-
-	@OneToOne
-	@JoinColumn(name = "payment_threshold_def_id", referencedColumnName = "id")
-	private PaymentThresholdDef paymentThresholdDef;
 
 	public Integer getPaymentThresholdId() {
 		return paymentThresholdId;
@@ -175,15 +180,45 @@ public class PaymentThreshold extends BaseEntity {
 		this.publisher = publisher;
 	}
 
-	public PaymentThresholdDef getPaymentThresholdDef() {
-		return paymentThresholdDef;
-	}
-
-	public void setPaymentThresholdDef(PaymentThresholdDef paymentThresholdDef) {
-		this.paymentThresholdDef = paymentThresholdDef;
-	}
-
 	public void setPaymentThresholdId(Integer paymentThresholdId) {
 		this.paymentThresholdId = paymentThresholdId;
 	}
+
+	public String getPaymentThresholdCode() {
+		return paymentThresholdCode;
+	}
+
+	public void setPaymentThresholdCode(String paymentThresholdCode) {
+		this.paymentThresholdCode = paymentThresholdCode;
+	}
+
+	public String getPaymentThresholdDescription() {
+		return paymentThresholdDescription;
+	}
+
+	public void setPaymentThresholdDescription(String paymentThresholdDescription) {
+		this.paymentThresholdDescription = paymentThresholdDescription;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "PaymentThreshold [paymentThresholdId=" + paymentThresholdId + ", paymentThresholdCode="
+				+ paymentThresholdCode + ", paymentThresholdDescription=" + paymentThresholdDescription
+				+ ", partialThreshold=" + partialThreshold + ", underThreshold=" + underThreshold + ", overThreshold="
+				+ overThreshold + ", refundThreshold=" + refundThreshold + ", maxUnderpaymentForFull="
+				+ maxUnderpaymentForFull + ", maxUnderpaymentForPartial=" + maxUnderpaymentForPartial
+				+ ", maxOverpaymentForFull=" + maxOverpaymentForFull + ", maxOverpaymentForRefund="
+				+ maxOverpaymentForRefund + ", overpaymentAction=" + overpaymentAction + ", underpaymentAction="
+				+ underpaymentAction + ", overpaymentOverrides=" + overpaymentOverrides + ", underpaymentOverrides="
+				+ underpaymentOverrides + ", status=" + status + ", publisher=" + publisher + "]";
+	}
+	
 }

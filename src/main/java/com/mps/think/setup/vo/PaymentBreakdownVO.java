@@ -16,7 +16,7 @@ public class PaymentBreakdownVO {
 
 	private Date effectiveDate;
 
-	private PaymentStatus paymentStatus;
+	private String paymentStatus;
 
 	private String term;
 
@@ -24,7 +24,7 @@ public class PaymentBreakdownVO {
 	
 	private String currency;
 
-	private BigDecimal discount;
+	private String discount;
 
 	private BigDecimal tax;
 
@@ -68,11 +68,11 @@ public class PaymentBreakdownVO {
 		this.effectiveDate = effectiveDate;
 	}
 
-	public PaymentStatus getPaymentStatus() {
+	public String getPaymentStatus() {
 		return paymentStatus;
 	}
 
-	public void setPaymentStatus(PaymentStatus paymentStatus) {
+	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
 
@@ -92,11 +92,11 @@ public class PaymentBreakdownVO {
 		this.baseAmount = baseAmount;
 	}
 
-	public BigDecimal getDiscount() {
+	public String getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(BigDecimal discount) {
+	public void setDiscount(String discount) {
 		this.discount = discount;
 	}
 

@@ -46,7 +46,6 @@ public class CustomerDetails  extends BaseEntity{
 	@Column(name = "think_category")
 	private String thinkCategory;
 	
-	@NotBlank
 	@Column(name = "salutation")
 	private String salutation;
 	
@@ -142,8 +141,9 @@ public class CustomerDetails  extends BaseEntity{
 	@Column(name = "agencycode")
 	private String agencycode;
 	
-	@Column(name = "paymentThreshold")
-	private String paymentThreshold;
+	@OneToOne
+	@JoinColumn(name = "paymentthresholddef_id", referencedColumnName = "id" )
+	private PaymentThreshold paymentThreshold;
 	
 	@Column(name = "cust_aux_field_json")
 	private String custAuxFieldJSON;
@@ -176,7 +176,7 @@ public class CustomerDetails  extends BaseEntity{
 	
 	@Column(name = "date_until_deactivation")
 	private Date dateUntilDeactivation;
-	
+
 	public Integer getCustomerId() {
 		return customerId;
 	}
@@ -409,12 +409,20 @@ public class CustomerDetails  extends BaseEntity{
 		this.renewalCommission = renewalCommission;
 	}
 
-	public String getPaymentThreshold() {
-		return paymentThreshold;
+	public String getAgencyname() {
+		return agencyname;
 	}
 
-	public void setPaymentThreshold(String paymentThreshold) {
-		this.paymentThreshold = paymentThreshold;
+	public void setAgencyname(String agencyname) {
+		this.agencyname = agencyname;
+	}
+
+	public String getAgencycode() {
+		return agencycode;
+	}
+
+	public void setAgencycode(String agencycode) {
+		this.agencycode = agencycode;
 	}
 
 	public String getCustAuxFieldJSON() {
@@ -431,22 +439,6 @@ public class CustomerDetails  extends BaseEntity{
 
 	public void setCustomerAddresses(List<CustomerAddresses> customerAddresses) {
 		this.customerAddresses = customerAddresses;
-	}
-
-	public String getAgencyname() {
-		return agencyname;
-	}
-
-	public void setAgencyname(String agencyname) {
-		this.agencyname = agencyname;
-	}
-
-	public String getAgencycode() {
-		return agencycode;
-	}
-
-	public void setAgencycode(String agencycode) {
-		this.agencycode = agencycode;
 	}
 
 	public CustomerStatus getCustomerStatus() {
@@ -472,6 +464,35 @@ public class CustomerDetails  extends BaseEntity{
 	public void setDateUntilDeactivation(Date dateUntilDeactivation) {
 		this.dateUntilDeactivation = dateUntilDeactivation;
 	}
+
+	public PaymentThreshold getPaymentThreshold() {
+		return paymentThreshold;
+	}
+
+	public void setPaymentThreshold(PaymentThreshold paymentThreshold) {
+		this.paymentThreshold = paymentThreshold;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerDetails [customerId=" + customerId + ", customerCategory=" + customerCategory
+				+ ", thinkCategory=" + thinkCategory + ", salutation=" + salutation + ", fname=" + fname + ", lname="
+				+ lname + ", initialName=" + initialName + ", suffix=" + suffix + ", company=" + company
+				+ ", department=" + department + ", email=" + email + ", countryCode=" + countryCode + ", primaryPhone="
+				+ primaryPhone + ", mobileNumber=" + mobileNumber + ", taxId=" + taxId + ", taxExempt=" + taxExempt
+				+ ", secondaryEmail=" + secondaryEmail + ", secondaryPhone=" + secondaryPhone + ", listRental="
+				+ listRental + ", salesRepresentative=" + salesRepresentative + ", creditStatus=" + creditStatus
+				+ ", fax=" + fax + ", institutionalId=" + institutionalId + ", parentInstitutionalId="
+				+ parentInstitutionalId + ", chargeTaxOn=" + chargeTaxOn + ", paymentOptions=" + paymentOptions
+				+ ", configurationOptionsforOrders=" + configurationOptionsforOrders + ", newOrderCommission="
+				+ newOrderCommission + ", renewalCommission=" + renewalCommission + ", agencyname=" + agencyname
+				+ ", agencycode=" + agencycode + ", paymentThreshold=" + paymentThreshold + ", custAuxFieldJSON="
+				+ custAuxFieldJSON + ", publisher=" + publisher + ", customerAddresses=" + customerAddresses
+				+ ", customerStatus=" + customerStatus + ", currCustomerStatusCause=" + currCustomerStatusCause
+				+ ", dateUntilDeactivation=" + dateUntilDeactivation + "]";
+	}
+	
+	
 	
 	
 }

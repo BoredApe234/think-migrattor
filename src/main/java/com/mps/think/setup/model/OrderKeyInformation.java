@@ -129,4 +129,12 @@ public class OrderKeyInformation extends BaseEntity {
 		this.orderCode = orderCode;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderKeyInformation [id=" + id + ", orderCode=" + orderCode + ", sourceCode=" + sourceCode
+				+ ", orderCategory=" + orderCategory + ", orderStatus=" + orderStatus + ", orderDate=" + orderDate
+				+ ", purchaseOrder=" + purchaseOrder + ", agent=" + agent + ", agentReferenceNum=" + agentReferenceNum
+				+ "]";
+	}
+
 }

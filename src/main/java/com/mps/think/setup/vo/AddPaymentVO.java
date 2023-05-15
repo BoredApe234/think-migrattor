@@ -10,7 +10,7 @@ public class AddPaymentVO {
 	private String typeOfPaymentAccount;
 	private boolean selectCreditCard;
 	private boolean selectCreditCardWithToken;
-	private long creditCard;
+	private String creditCard;
 	private String token;
 	private String creditCardLastDigit;
 	private String cardType;
@@ -43,10 +43,10 @@ public class AddPaymentVO {
 	public void setSelectCreditCardWithToken(boolean selectCreditCardWithToken) {
 		this.selectCreditCardWithToken = selectCreditCardWithToken;
 	}
-	public long getCreditCard() {
+	public String getCreditCard() {
 		return creditCard;
 	}
-	public void setCreditCard(long creditCard) {
+	public void setCreditCard(String creditCard) {
 		this.creditCard = creditCard;
 	}
 	public String getToken() {

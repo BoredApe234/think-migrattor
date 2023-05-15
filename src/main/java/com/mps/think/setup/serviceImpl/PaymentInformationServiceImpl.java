@@ -19,7 +19,7 @@ public class PaymentInformationServiceImpl implements PaymentInformationService 
 	PaymentInformationRepo paymentInformationRepo;
 
 	@Override
-	public List<PaymentInformation> getallPaymentinFormationForPublisher(Integer pub) {
+	public List<PaymentInformation> getallPaymentInformationForPublisher(Integer pub) {
 		return paymentInformationRepo.findByPublisherId(pub);
 	}
 
@@ -34,6 +34,16 @@ public class PaymentInformationServiceImpl implements PaymentInformationService 
 	@Override
 	public Optional<PaymentInformation> findByPaymentInfoId(Integer id) {
 		return paymentInformationRepo.findById(id);
+	}
+
+	@Override
+	public List<PaymentInformation> getallPaymentInformationForCustomer(Integer customerId) {
+		return paymentInformationRepo.findByOrderCustomerIdCustomerId(customerId);
+	}
+
+	@Override
+	public PaymentInformation getPaymentInformationByOrderId(Integer orderId) {
+		return paymentInformationRepo.findByOrderOrderId(orderId);
 	}
 
 }

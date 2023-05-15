@@ -97,6 +97,13 @@ public class DeliveryMethodOverrides extends BaseEntity {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
+
+	@Override
+	public String toString() {
+		return "DeliveryMethodOverrides [id=" + id + ", deliveryMethod=" + deliveryMethod + ", region=" + region
+				+ ", currency=" + currency + ", orderClass=" + orderClass + ", amount=" + amount + ", publisher="
+				+ publisher + "]";
+	}
 	
 	
 

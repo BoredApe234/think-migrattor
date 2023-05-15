@@ -40,9 +40,9 @@ public class PaymentBreakdown extends BaseEntity {
 	@Column(name = "effective_date")
 	private Date effectiveDate;
 	
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "payment_status")
-	private PaymentStatus paymentStatus;
+	private String paymentStatus;
 	
 	@Column(name = "term")
 	private String term;
@@ -54,7 +54,7 @@ public class PaymentBreakdown extends BaseEntity {
 	private String currency;
 	
 	@Column(name = "discount")
-	private BigDecimal discount;
+	private String discount;
 	
 	@Column(name = "tax")
 	private BigDecimal tax;
@@ -103,11 +103,11 @@ public class PaymentBreakdown extends BaseEntity {
 		this.effectiveDate = effectiveDate;
 	}
 
-	public PaymentStatus getPaymentStatus() {
+	public String getPaymentStatus() {
 		return paymentStatus;
 	}
 
-	public void setPaymentStatus(PaymentStatus paymentStatus) {
+	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
 
@@ -127,11 +127,11 @@ public class PaymentBreakdown extends BaseEntity {
 		this.baseAmount = baseAmount;
 	}
 
-	public BigDecimal getDiscount() {
+	public String getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(BigDecimal discount) {
+	public void setDiscount(String discount) {
 		this.discount = discount;
 	}
 
@@ -181,6 +181,15 @@ public class PaymentBreakdown extends BaseEntity {
 
 	public void setCurrency(String currency) {
 		this.currency = currency;
+	}
+
+	@Override
+	public String toString() {
+		return "PaymentBreakdown [id=" + id + ", currencyType=" + currencyType + ", rateCard=" + rateCard
+				+ ", effectiveDate=" + effectiveDate + ", paymentStatus=" + paymentStatus + ", term=" + term
+				+ ", baseAmount=" + baseAmount + ", currency=" + currency + ", discount=" + discount + ", tax=" + tax
+				+ ", grossAmount=" + grossAmount + ", commission=" + commission + ", shippingCharge=" + shippingCharge
+				+ ", netAmount=" + netAmount + "]";
 	}
 
 	

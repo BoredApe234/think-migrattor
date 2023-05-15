@@ -7,9 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.google.gson.JsonObject;
+import com.mps.think.setup.model.MakePayment;
 import com.mps.think.setup.service.MakePaymentService;
 import com.mps.think.setup.vo.MailTemplateVO;
 import com.mps.think.setup.vo.MakePaymentVO;
+import com.nimbusds.jose.shaded.json.JSONObject;
 @RestController
 @CrossOrigin
 public class MakePaymentController {
@@ -27,14 +30,20 @@ public class MakePaymentController {
 		return ResponseEntity.ok(makePaymentService.saveMakePayment(makePaymentVO));
 	}
 	
-	@PostMapping("/updateMakePayment")
-	public ResponseEntity<?> updateMakePayment(@RequestBody MakePaymentVO makePaymentVO){
-		return ResponseEntity.ok(makePaymentService.updateMakePayment(makePaymentVO));
-	}
+//	@PostMapping("/updateMakePayment")
+//	public ResponseEntity<?> updateMakePayment(@RequestBody MakePaymentVO makePaymentVO){
+//		return ResponseEntity.ok(makePaymentService.updateMakePayment(makePaymentVO));
+//	}
 
 	@PostMapping("/findMakePaymentId")
 	public ResponseEntity<?> findMakePaymentId(@RequestBody Integer id){
 		return ResponseEntity.ok(makePaymentService.findByMakePaymentId(id));
+	}
+	
+	@PostMapping("/findByOrderId")
+	public ResponseEntity<?> findByOrderId(@RequestBody Integer id){
+		MakePayment data = makePaymentService.findByOrderId(id);
+		return ResponseEntity.ok(data !=null?data:new JSONObject());
 	}
 	
 	@PostMapping("/sendPaymentLink")

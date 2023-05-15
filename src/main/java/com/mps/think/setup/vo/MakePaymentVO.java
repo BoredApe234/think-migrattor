@@ -1,7 +1,10 @@
 package com.mps.think.setup.vo;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
+import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderPaymentMapping;
 import com.mps.think.setup.model.Publisher;
 
@@ -9,17 +12,19 @@ public class MakePaymentVO {
 	private Integer id;
 	private String nameOfCustomer;
 	private String payerCustomer;
-	private double baseAmount;
+	private double totalAmount;
 	private long paymentAccount;
 	private String paymentType;
 	private String card;
-	private double amountToBePaid;
+//	private double amountToBePaid;
 	private String expiryDate;
 	private String transactionStatus;
 	private String chargeId;
 	private String status;
+	private double totalPaidAmount;
 	private Publisher publisher;
-	private List<OrderPaymentMapping> orderPaymentMapping;
+	private LinkedHashMap<Integer, Double> listOfOrder;
+//	private List<Integer> listOfOrder;
 	public Integer getId() {
 		return id;
 	}
@@ -38,11 +43,11 @@ public class MakePaymentVO {
 	public void setPayerCustomer(String payerCustomer) {
 		this.payerCustomer = payerCustomer;
 	}
-	public double getBaseAmount() {
-		return baseAmount;
+	public double getTotalAmount() {
+		return totalAmount;
 	}
-	public void setBaseAmount(double baseAmount) {
-		this.baseAmount = baseAmount;
+	public void setTotalAmount(double totalAmount) {
+		this.totalAmount = totalAmount;
 	}
 	public long getPaymentAccount() {
 		return paymentAccount;
@@ -61,12 +66,6 @@ public class MakePaymentVO {
 	}
 	public void setCard(String card) {
 		this.card = card;
-	}
-	public double getAmountToBePaid() {
-		return amountToBePaid;
-	}
-	public void setAmountToBePaid(double amountToBePaid) {
-		this.amountToBePaid = amountToBePaid;
 	}
 	public String getExpiryDate() {
 		return expiryDate;
@@ -92,24 +91,30 @@ public class MakePaymentVO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public double getTotalPaidAmount() {
+		return totalPaidAmount;
+	}
+	public void setTotalPaidAmount(double totalPaidAmount) {
+		this.totalPaidAmount = totalPaidAmount;
+	}
 	public Publisher getPublisher() {
 		return publisher;
 	}
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
-	public List<OrderPaymentMapping> getOrderPaymentMapping() {
-		return orderPaymentMapping;
+	public LinkedHashMap<Integer, Double> getListOfOrder() {
+		return listOfOrder;
 	}
-	public void setOrderPaymentMapping(List<OrderPaymentMapping> orderPaymentMapping) {
-		this.orderPaymentMapping = orderPaymentMapping;
+	public void setListOfOrder(LinkedHashMap<Integer, Double> listOfOrder) {
+		this.listOfOrder = listOfOrder;
 	}
 	@Override
 	public String toString() {
 		return "MakePaymentVO [id=" + id + ", nameOfCustomer=" + nameOfCustomer + ", payerCustomer=" + payerCustomer
-				+ ", baseAmount=" + baseAmount + ", paymentAccount=" + paymentAccount + ", paymentType=" + paymentType
-				+ ", card=" + card + ", amountToBePaid=" + amountToBePaid + ", expiryDate=" + expiryDate
-				+ ", transactionStatus=" + transactionStatus + ", chargeId=" + chargeId + ", status=" + status
-				+ ", publisher=" + publisher + ", orderPaymentMapping=" + orderPaymentMapping + "]";
+				+ ", totalAmount=" + totalAmount + ", paymentAccount=" + paymentAccount + ", paymentType=" + paymentType
+				+ ", card=" + card + ", expiryDate=" + expiryDate + ", transactionStatus=" + transactionStatus
+				+ ", chargeId=" + chargeId + ", status=" + status + ", totalPaidAmount=" + totalPaidAmount
+				+ ", publisher=" + publisher + ", listOfOrder=" + listOfOrder + "]";
 	}
 }

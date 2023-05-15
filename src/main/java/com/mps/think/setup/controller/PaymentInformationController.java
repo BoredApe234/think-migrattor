@@ -19,7 +19,12 @@ public class PaymentInformationController {
 	
 	@PostMapping("/getAllPaymentInformation")
 	public ResponseEntity<?> getAllPaymentInformation(@RequestBody Integer pubId){
-		return ResponseEntity.ok(paymentInformationService.getallPaymentinFormationForPublisher(pubId));
+		return ResponseEntity.ok(paymentInformationService.getallPaymentInformationForPublisher(pubId));
+	}
+	
+	@PostMapping("/getAllPaymentInformationByCustId")
+	public ResponseEntity<?> getAllPaymentInformationByCustId(@RequestBody Integer customerId){
+		return ResponseEntity.ok(paymentInformationService.getallPaymentInformationForCustomer(customerId));
 	}
 	
 	@PostMapping("/savePaymentInformation")
@@ -30,6 +35,11 @@ public class PaymentInformationController {
 	@PostMapping("/findPaymentInformationById")
 	public ResponseEntity<?> findPaymentInformationById(@RequestBody Integer id){
 		return ResponseEntity.ok(paymentInformationService.findByPaymentInfoId(id));
+	}
+	
+	@PostMapping("/getPaymentInformationByOrderId")
+	public ResponseEntity<?> getPaymentInformationByOrderId(@RequestBody Integer orderId){
+		return ResponseEntity.ok(paymentInformationService.getPaymentInformationByOrderId(orderId));
 	}
 	
 }

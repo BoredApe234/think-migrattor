@@ -1,29 +1,37 @@
 package com.mps.think.setup.vo;
 
-import com.mps.think.setup.model.OrderClass;
+import java.util.List;
+
+import com.mps.think.setup.model.ExtractFilter;
+
+import com.mps.think.setup.model.OutputSort;
 import com.mps.think.setup.model.ProcessType;
+import com.mps.think.setup.model.Queue;
 
 public class AddProcessVO {
 	
-	private Integer process_id;
+	private Integer id;
 	private ProcessType processtypeid;
 	private String mainpurpose;
 	private String description;
 	private Boolean status;
 	private Boolean active;
 	private Boolean repeating;
+	private Boolean inserts;
+	private Boolean split;
+	private Boolean autorenewal;
 	private Boolean holdormanualselect;
 	private Boolean backlabel;
 	private Boolean billing;
 	private Boolean productfullfillment;
 	private Boolean refund;
 	private Boolean renewal;
-	private String extractfilter;
+	private ExtractFilter extractfilterid;
 	private String defaultjobpriority;
-	private String outputsort;
-	private String defaultjobqueue;
+	private OutputSort outputsortid;
+	private Queue defaultjobqueueid;
 	private String sqlscript;
-	private OrderClass orderClass;
+	private List<AddProcessMappingVO> addprocessmapping;
 	private String length;
 	private Integer gps;
 	private Integer keyline;
@@ -32,11 +40,11 @@ public class AddProcessVO {
 	private String bundlethreshold;
 	private String prioritysort;
 	private Boolean picklist;
-	public Integer getProcess_id() {
-		return process_id;
+	public Integer getId() {
+		return id;
 	}
-	public void setProcess_id(Integer process_id) {
-		this.process_id = process_id;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public ProcessType getProcesstypeid() {
 		return processtypeid;
@@ -74,6 +82,24 @@ public class AddProcessVO {
 	public void setRepeating(Boolean repeating) {
 		this.repeating = repeating;
 	}
+	public Boolean getInserts() {
+		return inserts;
+	}
+	public void setInserts(Boolean inserts) {
+		this.inserts = inserts;
+	}
+	public Boolean getSplit() {
+		return split;
+	}
+	public void setSplit(Boolean split) {
+		this.split = split;
+	}
+	public Boolean getAutorenewal() {
+		return autorenewal;
+	}
+	public void setAutorenewal(Boolean autorenewal) {
+		this.autorenewal = autorenewal;
+	}
 	public Boolean getHoldormanualselect() {
 		return holdormanualselect;
 	}
@@ -110,11 +136,11 @@ public class AddProcessVO {
 	public void setRenewal(Boolean renewal) {
 		this.renewal = renewal;
 	}
-	public String getExtractfilter() {
-		return extractfilter;
+	public ExtractFilter getExtractfilterid() {
+		return extractfilterid;
 	}
-	public void setExtractfilter(String extractfilter) {
-		this.extractfilter = extractfilter;
+	public void setExtractfilterid(ExtractFilter extractfilterid) {
+		this.extractfilterid = extractfilterid;
 	}
 	public String getDefaultjobpriority() {
 		return defaultjobpriority;
@@ -122,17 +148,17 @@ public class AddProcessVO {
 	public void setDefaultjobpriority(String defaultjobpriority) {
 		this.defaultjobpriority = defaultjobpriority;
 	}
-	public String getOutputsort() {
-		return outputsort;
+	public OutputSort getOutputsortid() {
+		return outputsortid;
 	}
-	public void setOutputsort(String outputsort) {
-		this.outputsort = outputsort;
+	public void setOutputsortid(OutputSort outputsortid) {
+		this.outputsortid = outputsortid;
 	}
-	public String getDefaultjobqueue() {
-		return defaultjobqueue;
+	public Queue getDefaultjobqueueid() {
+		return defaultjobqueueid;
 	}
-	public void setDefaultjobqueue(String defaultjobqueue) {
-		this.defaultjobqueue = defaultjobqueue;
+	public void setDefaultjobqueueid(Queue defaultjobqueueid) {
+		this.defaultjobqueueid = defaultjobqueueid;
 	}
 	public String getSqlscript() {
 		return sqlscript;
@@ -140,11 +166,11 @@ public class AddProcessVO {
 	public void setSqlscript(String sqlscript) {
 		this.sqlscript = sqlscript;
 	}
-	public OrderClass getOrderClass() {
-		return orderClass;
+	public List<AddProcessMappingVO> getAddprocessmapping() {
+		return addprocessmapping;
 	}
-	public void setOrderClass(OrderClass orderClass) {
-		this.orderClass = orderClass;
+	public void setAddprocessmapping(List<AddProcessMappingVO> addprocessmapping) {
+		this.addprocessmapping = addprocessmapping;
 	}
 	public String getLength() {
 		return length;
@@ -200,7 +226,4 @@ public class AddProcessVO {
 	
 	
 	
-	
-	
-
 }

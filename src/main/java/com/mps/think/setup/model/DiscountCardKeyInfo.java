@@ -110,5 +110,11 @@ public class DiscountCardKeyInfo extends BaseEntity {
 	public void setOrderClass(OrderClass orderClass) {
 		this.orderClass = orderClass;
 	}
+
+	@Override
+	public String toString() {
+		return "DiscountCardKeyInfo [id=" + id + ", orderClass=" + orderClass + ", discountCard=" + discountCard
+				+ ", description=" + description + ", useForPkg=" + useForPkg + ", publisher=" + publisher + "]";
+	}
 	
 }

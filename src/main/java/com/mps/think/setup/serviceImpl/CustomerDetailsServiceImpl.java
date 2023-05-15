@@ -71,6 +71,11 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	@Override
 	public CustomerDetails saveCustomerDetails(CustomerDetailsVO customerDetails) {
 		CustomerDetails newCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
+		
+		if(customerDetails.getPaymentThreshold()==null || customerDetails.getPaymentThreshold().getPaymentThresholdId()==0){
+			newCustomer.setPaymentThreshold(null);
+			}
+		
 		newCustomer.setCustomerStatus(CustomerStatus.Active);
 		newCustomer.setDateUntilDeactivation(null);
 		CustomerDetails cdata = customerRepo.saveAndFlush(newCustomer);
@@ -80,6 +85,11 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	@Override
 	public CustomerDetails updateCustomerDetails(CustomerDetailsVO customerDetails) {
 		CustomerDetails updatedCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
+		
+		if(customerDetails.getPaymentThreshold()==null || customerDetails.getPaymentThreshold().getPaymentThresholdId()==0){
+			updatedCustomer.setPaymentThreshold(null);
+			}
+		
 		CustomerDetails cdata = customerRepo.saveAndFlush(updatedCustomer);
 		return cdata;
 	}

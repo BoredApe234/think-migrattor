@@ -1,5 +1,8 @@
 package com.mps.think.setup.model;
+//Model changes
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,11 +10,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
-@Table(name = "process_table")
+@Table(name = "add_process")
 public class AddProcess extends BaseEntity  {
 
 	/**
@@ -20,12 +26,12 @@ public class AddProcess extends BaseEntity  {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "process_id")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer process_id;
+	private Integer id;
 	
 	@OneToOne
-	@JoinColumn(name = "process_type_id", referencedColumnName = "p_id" )
+	@JoinColumn(name = "process_type_id", referencedColumnName = "id" )
 	private ProcessType processtypeid;
 	
 	@Column(name = "mainpurpose")
@@ -42,6 +48,15 @@ public class AddProcess extends BaseEntity  {
 	
 	@Column(name = "repeating")
 	private Boolean repeating;
+	
+	@Column(name = "inserts")
+	private Boolean inserts;
+	
+	@Column(name = "split")
+	private Boolean split;
+	
+	@Column(name = "autorenewal")
+	private Boolean autorenewal;
 	
 	@Column(name = "holdormanualselect")
 	private Boolean holdormanualselect;
@@ -61,24 +76,38 @@ public class AddProcess extends BaseEntity  {
 	@Column(name = "renewal")
 	private Boolean renewal;
 	
-	@Column(name = "extractfilter")
-	private String extractfilter;
+	@OneToOne
+	@JoinColumn(name = "extractfilter", referencedColumnName = "id" )
+	private ExtractFilter extractfilterid;
 	
 	@Column(name = "defaultjobpriority")
 	private String defaultjobpriority;
 	
-	@Column(name = "outputsort")
-	private String outputsort;
+	@OneToOne
+	@JoinColumn(name = "output_sort", referencedColumnName = "id" )
+	private OutputSort outputsortid;
 	
-	@Column(name = "defaultjobqueue")
-	private String defaultjobqueue;
+	@OneToOne
+	@JoinColumn(name = "defaultjobqueue" , referencedColumnName = "id")
+	private Queue defaultjobqueueid;
 	
 	@Column(name = "sqlscript")
 	private String sqlscript;
 	
-	@ManyToOne
-	@JoinColumn(name = "order_cls_id", referencedColumnName = "oc_id")
-	private OrderClass orderClass;
+//	@ManyToOne
+//	@JoinColumn(name = "order_cls_id", referencedColumnName = "oc_id")
+//	private OrderClass orderClass;
+	
+//	@ManyToOne
+//	@JoinColumn(name = "order_class_overview_id", referencedColumnName = "id")
+//	private OrderClassOverview orderClassOverview;
+	
+	@OneToMany(
+			mappedBy = "addProcess",
+	        cascade = CascadeType.ALL,
+	        orphanRemoval = true)
+	@JsonManagedReference
+	private List<Addprocessmapping> addprocessmapping;
 	
 	@Column(name = "length")
 	private String length;
@@ -104,12 +133,12 @@ public class AddProcess extends BaseEntity  {
 	@Column(name = "picklist")
 	private Boolean picklist;
 
-	public Integer getProcess_id() {
-		return process_id;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setProcess_id(Integer process_id) {
-		this.process_id = process_id;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public ProcessType getProcesstypeid() {
@@ -160,6 +189,30 @@ public class AddProcess extends BaseEntity  {
 		this.repeating = repeating;
 	}
 
+	public Boolean getInserts() {
+		return inserts;
+	}
+
+	public void setInserts(Boolean inserts) {
+		this.inserts = inserts;
+	}
+
+	public Boolean getSplit() {
+		return split;
+	}
+
+	public void setSplit(Boolean split) {
+		this.split = split;
+	}
+
+	public Boolean getAutorenewal() {
+		return autorenewal;
+	}
+
+	public void setAutorenewal(Boolean autorenewal) {
+		this.autorenewal = autorenewal;
+	}
+
 	public Boolean getHoldormanualselect() {
 		return holdormanualselect;
 	}
@@ -208,12 +261,12 @@ public class AddProcess extends BaseEntity  {
 		this.renewal = renewal;
 	}
 
-	public String getExtractfilter() {
-		return extractfilter;
+	public ExtractFilter getExtractfilterid() {
+		return extractfilterid;
 	}
 
-	public void setExtractfilter(String extractfilter) {
-		this.extractfilter = extractfilter;
+	public void setExtractfilterid(ExtractFilter extractfilterid) {
+		this.extractfilterid = extractfilterid;
 	}
 
 	public String getDefaultjobpriority() {
@@ -224,20 +277,20 @@ public class AddProcess extends BaseEntity  {
 		this.defaultjobpriority = defaultjobpriority;
 	}
 
-	public String getOutputsort() {
-		return outputsort;
+	public OutputSort getOutputsortid() {
+		return outputsortid;
 	}
 
-	public void setOutputsort(String outputsort) {
-		this.outputsort = outputsort;
+	public void setOutputsortid(OutputSort outputsortid) {
+		this.outputsortid = outputsortid;
 	}
 
-	public String getDefaultjobqueue() {
-		return defaultjobqueue;
+	public Queue getDefaultjobqueueid() {
+		return defaultjobqueueid;
 	}
 
-	public void setDefaultjobqueue(String defaultjobqueue) {
-		this.defaultjobqueue = defaultjobqueue;
+	public void setDefaultjobqueueid(Queue defaultjobqueueid) {
+		this.defaultjobqueueid = defaultjobqueueid;
 	}
 
 	public String getSqlscript() {
@@ -248,12 +301,12 @@ public class AddProcess extends BaseEntity  {
 		this.sqlscript = sqlscript;
 	}
 
-	public OrderClass getOrderClass() {
-		return orderClass;
+	public List<Addprocessmapping> getAddprocessmapping() {
+		return addprocessmapping;
 	}
 
-	public void setOrderClass(OrderClass orderClass) {
-		this.orderClass = orderClass;
+	public void setAddprocessmapping(List<Addprocessmapping> addprocessmapping) {
+		this.addprocessmapping = addprocessmapping;
 	}
 
 	public String getLength() {
@@ -320,14 +373,26 @@ public class AddProcess extends BaseEntity  {
 		this.picklist = picklist;
 	}
 
-	
-	
-	
-	
-	
-	
-	
+	@Override
+	public String toString() {
+		return "AddProcess [id=" + id + ", processtypeid=" + processtypeid + ", mainpurpose=" + mainpurpose
+				+ ", description=" + description + ", status=" + status + ", active=" + active + ", repeating="
+				+ repeating + ", inserts=" + inserts + ", split=" + split + ", autorenewal=" + autorenewal
+				+ ", holdormanualselect=" + holdormanualselect + ", backlabel=" + backlabel + ", billing=" + billing
+				+ ", productfullfillment=" + productfullfillment + ", refund=" + refund + ", renewal=" + renewal
+				+ ", extractfilterid=" + extractfilterid + ", defaultjobpriority=" + defaultjobpriority
+				+ ", outputsortid=" + outputsortid + ", defaultjobqueueid=" + defaultjobqueueid + ", sqlscript="
+				+ sqlscript + ", addprocessmapping=" + addprocessmapping + ", length=" + length + ", gps=" + gps
+				+ ", keyline=" + keyline + ", gracenewexpires=" + gracenewexpires + ", savecurrentgraces="
+				+ savecurrentgraces + ", bundlethreshold=" + bundlethreshold + ", prioritysort=" + prioritysort
+				+ ", picklist=" + picklist + "]";
+	}
+
 	
 	
 
+	
+	
+
+	
 }

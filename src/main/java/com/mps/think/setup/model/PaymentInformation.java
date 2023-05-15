@@ -42,6 +42,13 @@ public class PaymentInformation extends BaseEntity {
 	@Column(name = "status")
 	String status;
 	
+	@Column(name = "other_info")
+	String otherinfo;
+	
+	@OneToOne
+	@JoinColumn(name = "order_id", referencedColumnName = "order_id")
+	Order order;
+	
 	@OneToOne
 	@JoinColumn(name = "pub_id", referencedColumnName = "id")
 	Publisher publisher;
@@ -108,6 +115,29 @@ public class PaymentInformation extends BaseEntity {
 
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
+	}
+
+	public String getOtherinfo() {
+		return otherinfo;
+	}
+
+	public void setOtherinfo(String otherinfo) {
+		this.otherinfo = otherinfo;
+	}
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
+	@Override
+	public String toString() {
+		return "PaymentInformation [id=" + id + ", cardNumber=" + cardNumber + ", nameOfCardHolder=" + nameOfCardHolder
+				+ ", amount=" + amount + ", transactionId=" + transactionId + ", chargeId=" + chargeId + ", status="
+				+ status + ", otherinfo=" + otherinfo + ", order=" + order + ", publisher=" + publisher + "]";
 	}
 	
 }

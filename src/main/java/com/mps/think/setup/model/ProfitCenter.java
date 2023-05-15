@@ -136,5 +136,13 @@ public class ProfitCenter extends BaseEntity {
 		this.pubId = pubId;
 	}
 
+	@Override
+	public String toString() {
+		return "ProfitCenter [proftId=" + proftId + ", pubId=" + pubId + ", profitDescription=" + profitDescription
+				+ ", profitCenter=" + profitCenter + ", inclTaxLiab=" + inclTaxLiab + ", inclDelLiab=" + inclDelLiab
+				+ ", inclComLiab=" + inclComLiab + ", inclTaxAr=" + inclTaxAr + ", inclDelAr=" + inclDelAr
+				+ ", inclComAr=" + inclComAr + "]";
+	}
+
 
 }
