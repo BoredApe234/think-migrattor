@@ -449,6 +449,20 @@ public class EnumModelVO {
 		}
 	}
 	
+	public static enum ExemptStatus {
+		One("Not Tax Exempt"), Two("Yes Tax Exempt"), Three("Always Tax Exempt");
+
+		private final String exemptStatus;
+
+		ExemptStatus(String exemptStatus) {
+			this.exemptStatus = exemptStatus;
+		}
+
+		public String getExemptStatus() {
+			return exemptStatus;
+		}
+	}
+	
 	
 
 
