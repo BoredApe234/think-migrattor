@@ -74,7 +74,16 @@ public class AddOrderServiceImpl implements AddOrderService {
 	public Order updateOrder(Order order) throws Exception {
 //		ObjectMapper mapper = new ObjectMapper();
 		Order updateOrder = mapper.convertValue(order, Order.class);
-		if (order.getOtherAddressCustomer().getCustomerId() == 0) updateOrder.setOtherAddressCustomer(null);
+		if (order.getOtherAddressCustomer().getCustomerId() == 0) updateOrder.setOtherAddressCustomer(null);	
+		Integer parentOrderId = order.getParentOrder().getParentOrderId();
+		MultiLineItemOrder currentParent = multiLineOrderRepo.findByOrderOrderId(order.getOrderId());
+		if (parentOrderId <= 0 || currentParent.getParentOrderId().equals(currentParent.getOrder().getOrderId())) {
+			updateOrder.setParentOrder(currentParent);
+		} else {
+			currentParent.setParentOrderId(parentOrderId);
+			updateOrder.setParentOrder(currentParent);
+		}
+		updateOrder.setParentOrder(multiLineOrderRepo.findByOrderOrderId(order.getOrderId()));
 		return addOrderRepo.saveAndFlush(updateOrder);
 	}
 
