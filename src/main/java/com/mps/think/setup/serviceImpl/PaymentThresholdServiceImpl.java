@@ -16,6 +16,7 @@ import com.mps.think.setup.model.PaymentThreshold;
 import com.mps.think.setup.repo.PaymentThresholdRepo;
 import com.mps.think.setup.service.PaymentThresholdService;
 import com.mps.think.setup.vo.PaymentThresholdVO;
+
 @Service
 public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 
@@ -104,81 +105,60 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 //		return payment;
 //	}LinkedHashMap<Integer, String> amount
 	
-	
 	@Override
 	public List<HashMap<String, String>> definePayment(LinkedHashMap<Integer, String> amount, Integer paymentThresholdId) {
-		HashMap<String, String> payment = new HashMap<String, String>();
-		
-		List<HashMap<String, String>> list = null;
-		for(Map.Entry<Integer,String> entry : amount.entrySet()) {
-		String[] str=entry.getValue().split(",");
-		double invoiceAmount=Double.valueOf(str[0]);
-		double paidAmount=Double.valueOf(str[1]);
-		PaymentThreshold threshold = paymentThresholdRepo.findById(paymentThresholdId).get();
+	    List<HashMap<String, String>> list = new ArrayList<>();
 
-		double paidPercentage = (paidAmount * 100) / invoiceAmount;
-		double unPaidAmount = Math.abs(invoiceAmount - paidAmount);
-		if (paidPercentage <= threshold.getPartialThreshold()) {
-			System.out.println("1 Partial payments");
-			payment.put("paymentStatus", "Partial payments");
-			list.add(payment);
-			return list;
-		} else if (paidPercentage > threshold.getPartialThreshold() && paidPercentage < threshold.getUnderThreshold()) {
-			if ((int) unPaidAmount <= threshold.getMaxUnderpaymentForPartial()) {
-				System.out.println("2 Under payments");
-				payment.put("paymentStatus", "Under payments");
-				list.add(payment);
-				return list;
-			}
-			System.out.println("3 Partial payments");
-			payment.put("paymentStatus", "Partial payments");
-			list.add(payment);
-			return list;
-		} else if (paidPercentage >= threshold.getUnderThreshold() && paidPercentage <= threshold.getOverThreshold()) {
-			if ((int) unPaidAmount <= threshold.getMaxUnderpaymentForFull()) {
-				System.out.println("4 Full payments");
-				payment.put("paymentStatus", "Full payments");
-				list.add(payment);
-				return list;
-			} else if ((int) unPaidAmount > threshold.getMaxUnderpaymentForPartial()) {
-				System.out.println("7 Partial payments");
-				payment.put("paymentStatus", "Partial payments");
-				list.add(payment);
-				return list;
-			}
-			System.out.println("5 Under payments");
-			payment.put("paymentStatus", "Under payments");
-			list.add(payment);
-			return list;
+	    Optional<PaymentThreshold> threshold = paymentThresholdRepo.findById(paymentThresholdId);
+	    if (threshold.isPresent()) {
+	        for (Map.Entry<Integer, String> entry : amount.entrySet()) {
+	            HashMap<String, String> payment = new HashMap<>();
+	            String[] str = entry.getValue().split(",");
+	            double invoiceAmount = Double.parseDouble(str[0]);
+	            double paidAmount = Double.parseDouble(str[1]);
 
-		} else if (paidPercentage > threshold.getOverThreshold() && paidPercentage <= threshold.getRefundThreshold()) {
-			if ((int) unPaidAmount <= threshold.getMaxOverpaymentForFull()) {
-				System.out.println("6 Full payments");
-				payment.put("paymentStatus", "Full payments");
-				list.add(payment);
-				return list;
-			} else if ((int) unPaidAmount > threshold.getMaxOverpaymentForRefund()) {
-				System.out.println("7 Refund payments");
-				payment.put("paymentStatus", "Refund payments");
-				list.add(payment);
-				return list;
-			}
-			System.out.println("8 Over payments");
-			payment.put("paymentStatus", "Over payments");
-			list.add(payment);
-			return list;
-		} else if (paidPercentage > threshold.getRefundThreshold()) {
-			System.out.println("9 Refund payments");
-			payment.put("paymentStatus", "Refund payments");
-			list.add(payment);
-			return list;
-		}
-		payment.put("paymentStatus", "Not have vaild payment");
-		list.add(payment);
-		}
-		return list;
-		
+	            double paidPercentage = (paidAmount * 100) / invoiceAmount;
+	            double unPaidAmount = Math.abs(invoiceAmount - paidAmount);
+
+	            String paymentStatus;
+
+	            if (paidPercentage <= threshold.get().getPartialThreshold()) {
+	                paymentStatus = "Partial payments";
+	            } else if (paidPercentage < threshold.get().getUnderThreshold()) {
+	                if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForPartial()) {
+	                    paymentStatus = "Under payments";
+	                } else {
+	                    paymentStatus = "Partial payments";
+	                }
+	            } else if (paidPercentage <= threshold.get().getOverThreshold()) {
+	                if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForFull()) {
+	                    paymentStatus = "Full payments";
+	                } else if ((int) unPaidAmount > threshold.get().getMaxUnderpaymentForPartial()) {
+	                    paymentStatus = "Partial payments";
+	                } else {
+	                    paymentStatus = "Under payments";
+	                }
+	            } else if (paidPercentage <= threshold.get().getRefundThreshold()) {
+	                if ((int) unPaidAmount <= threshold.get().getMaxOverpaymentForFull()) {
+	                    paymentStatus = "Full payments";
+	                } else if ((int) unPaidAmount > threshold.get().getMaxOverpaymentForRefund()) {
+	                    paymentStatus = "Refund payments";
+	                } else {
+	                    paymentStatus = "Over payments";
+	                }
+	            } else {
+	                paymentStatus = "Refund payments";
+	            }
+
+	            payment.put("paymentStatus", paymentStatus);
+	            list.add(payment);
+	        }
+	    }
+
+	    return list;
 	}
+
+
 	@Override
 	public PaymentThreshold DeletePaymentThreshold(Integer id) {
 		PaymentThreshold remove = paymentThresholdRepo.findById(id).get();
@@ -190,21 +170,21 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 
 	@Override
 	public List<PaymentThreshold> defaultStatus(PaymentThresholdVO paymentThresholdVO) {
-		List<PaymentThreshold> list=paymentThresholdRepo.findByPublisherId(paymentThresholdVO.getPublisher().getId());
+		List<PaymentThreshold> list = paymentThresholdRepo.findByPublisherId(paymentThresholdVO.getPublisher().getId());
 		ObjectMapper obj = new ObjectMapper();
-		PaymentThreshold pThresholdnew,thresh;
-		List<PaymentThreshold> response=new ArrayList<>();
-		for(PaymentThreshold pthreshold:list) {
-			if(Objects.equals(paymentThresholdVO.getPaymentThresholdId(), pthreshold.getPaymentThresholdId())) {
+		PaymentThreshold pThresholdnew, thresh;
+		List<PaymentThreshold> response = new ArrayList<>();
+		for (PaymentThreshold pthreshold : list) {
+			if (Objects.equals(paymentThresholdVO.getPaymentThresholdId(), pthreshold.getPaymentThresholdId())) {
 				pThresholdnew = obj.convertValue(pthreshold, PaymentThreshold.class);
 				pThresholdnew.setStatus(true);
-				thresh=paymentThresholdRepo.saveAndFlush(pThresholdnew);
+				thresh = paymentThresholdRepo.saveAndFlush(pThresholdnew);
 				response.add(thresh);
-			}else {
-			pThresholdnew = obj.convertValue(pthreshold, PaymentThreshold.class);
-			pThresholdnew.setStatus(false);
-			thresh=paymentThresholdRepo.saveAndFlush(pThresholdnew);
-			response.add(thresh);
+			} else {
+				pThresholdnew = obj.convertValue(pthreshold, PaymentThreshold.class);
+				pThresholdnew.setStatus(false);
+				thresh = paymentThresholdRepo.saveAndFlush(pThresholdnew);
+				response.add(thresh);
 			}
 		}
 		return response;
