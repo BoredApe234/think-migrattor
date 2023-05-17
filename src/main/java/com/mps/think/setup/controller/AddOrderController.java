@@ -57,6 +57,12 @@ public class AddOrderController {
 		return ResponseEntity.ok(addOrderService.getAllOrderByCustomerId(customerId, PageRequest.of(page, size, Sort.by("orderId").descending())));
 	}
 	
+	@GetMapping("/getAllOrderByCustomerIdandOrderId/{customerId}{orderId}")
+	public ResponseEntity<?> getAllOrderByCustomerId(@RequestParam(required = true) Integer customerId, @RequestParam(required = true) Integer orderId, @RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) throws Exception {
+		return ResponseEntity.ok(addOrderService.getAllOrderByCustomerId(customerId, orderId, PageRequest.of(page, size)));
+	}
+	
 	@GetMapping("/findAllPaymentStatus")
 	public ResponseEntity<?> getAllPaymentStatus() {
 		return ResponseEntity.ok(PaymentStatus.values());
