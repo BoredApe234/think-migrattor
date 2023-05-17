@@ -43,4 +43,21 @@ public class ReportsController {
 		return ResponseEntity.ok(reportsService.getAllCustomerSearchReport(customerId, fname, lname, initialName, email, company, department, country, state, city, zipCode, PageRequest.of(page, size)));
 	}
 	
+	 @GetMapping("/getAllCancelledSubscriptions") 
+	 public ResponseEntity<?> getAllCancelledSubscriptions(@RequestParam(required = false) String orderFrom, @RequestParam(required = false) String orderTill,
+				@RequestParam(required = false) String currencyType,@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws ParseException{
+		 
+		 Date ordersFromDate = (orderFrom == null || orderFrom.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(orderFrom);
+			Date ordersTillDate = (orderTill == null || orderTill.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(orderTill);
+		 return ResponseEntity.ok(reportsService.getAllCancelledSubscriptions(ordersFromDate, ordersTillDate, currencyType, PageRequest.of(page, size)));
+	 }
+	 
+	 @GetMapping("/getAllCustomerSalesList") 
+	 public ResponseEntity<?> getAllCustomerSalesList(@RequestParam(required = false) String oredrStart,
+				@RequestParam(required = false) String orderEnd,@RequestParam(required = false)String orderType,@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws ParseException{
+		 
+		 Date ordersFromDate = (oredrStart == null || oredrStart.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(oredrStart);
+			Date ordersTillDate = (orderEnd == null || orderEnd.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(orderEnd);
+		 return ResponseEntity.ok(reportsService.getAllCustomerSalesList(ordersFromDate, ordersTillDate, orderType, PageRequest.of(page, size)));
+	 }
 }

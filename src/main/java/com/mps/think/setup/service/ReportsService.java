@@ -5,8 +5,10 @@ import java.util.Date;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.mps.think.setup.model.CancelOrder;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.vo.EnumModelVO.Currency;
 
 public interface ReportsService {
 
@@ -16,5 +18,9 @@ public interface ReportsService {
 	Page<CustomerDetails>getAllCustomerSearchReport(Integer customerId, String fname, String lname, String initialName,
 			String email, String company, String department, String country, String state, String city, Integer zipCode, Pageable page);
 	
+    Page<CancelOrder>getAllCancelledSubscriptions(Date orderFrom, Date orderTill, String currencyType, Pageable page);
+    
+	Page<Order> getAllCustomerSalesList(Date oredrStart, Date orderEnd, String orderType, Pageable page);
+
 
 }

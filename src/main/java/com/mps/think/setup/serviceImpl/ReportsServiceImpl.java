@@ -8,9 +8,11 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.mps.think.setup.model.CancelOrder;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.repo.AddOrderRepo;
+import com.mps.think.setup.repo.CancelOrderRepo;
 import com.mps.think.setup.repo.CustomerDetailsRepo;
 import com.mps.think.setup.service.ReportsService;
 
@@ -22,6 +24,12 @@ public class ReportsServiceImpl implements ReportsService {
 	
 	@Autowired
 	private CustomerDetailsRepo customerDetailsRepo;
+	
+	@Autowired
+	private CancelOrderRepo cancelOrderRepo;
+	
+	@Autowired
+	private AddOrderRepo addOrderRepo;
 
 	@Override
 	public Page<Order> getAllOrderReports(String orderStatus, Date ordersFrom, Date ordersTill, Integer customerId,
@@ -39,5 +47,25 @@ public class ReportsServiceImpl implements ReportsService {
 		return customerDetailsRepo.findCustomerSearchReport(customerId, fname, lname, initialName, email,
 				                                             company, department, country, state, city, zipCode, page);
 	}
+
+	@Override
+	public Page<CancelOrder> getAllCancelledSubscriptions(Date orderFrom, Date orderTill, String currencyType,
+			Pageable page) {
+		if (orderFrom == null) orderFrom = new Date(0);
+		if (orderTill == null) orderTill = new Date();
+		return cancelOrderRepo.findAllCancelledSubscriptions(orderFrom, orderTill, currencyType, "%" + "subscription" + "%", page);
+	}
+
+	@Override
+	public Page<Order> getAllCustomerSalesList(Date oredrStart, Date orderEnd, String orderType,
+			Pageable page) {
+		if (oredrStart == null) oredrStart = new Date(0);
+		if (orderEnd == null) orderEnd = new Date();
+		return addOrderRepo.findAllCustomerSalesList(oredrStart, orderEnd, orderType, page);
+	}
+
+	
+
+	
 	
 }
