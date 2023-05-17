@@ -12,9 +12,9 @@ public interface CancelOrderService {
 	
 	public List<CancelOrder> getAllCancelOrder();
 	
-	public CancelOrderVO saveCancelOrder(CancelOrderVO cancelOrder);
+	public CancelOrder saveCancelOrder(CancelOrderVO cancelOrder);
 	
-	public CancelOrderVO updateCancelOrder(CancelOrderVO cancelOrder);
+	public CancelOrder updateCancelOrder(CancelOrderVO cancelOrder);
 	
 	public CancelOrder findbyCancelOrderId(Integer cancelOrder);
 
