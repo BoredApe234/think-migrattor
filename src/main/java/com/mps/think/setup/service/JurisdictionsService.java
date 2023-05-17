@@ -9,9 +9,9 @@ public interface JurisdictionsService {
 	
 	public List<Jurisdictions> findAllJurisdictions();
 
-	public JurisdictionsVO saveJurisdictions(JurisdictionsVO jurisdictions);
+	public Jurisdictions saveJurisdictions(JurisdictionsVO jurisdictions);
 
-	public JurisdictionsVO updateJurisdictions(JurisdictionsVO jurisdictions);
+	public Jurisdictions updateJurisdictions(JurisdictionsVO jurisdictions);
 
 	public Jurisdictions findbyId(Integer id);
 	
