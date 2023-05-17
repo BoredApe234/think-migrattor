@@ -5,6 +5,7 @@ import java.util.Arrays;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -126,6 +127,11 @@ public class AddOrderServiceImpl implements AddOrderService {
 		Optional<Order> order = addOrderRepo.findById(id);
 		if (order.isPresent()) return order.get();
 		return null;
+	}
+
+	@Override
+	public Page<Order> getAllOrderByCustomerId(Integer customerId, Integer orderId, Pageable page) throws Exception {
+		return addOrderRepo.fetchOrdersForPaymentsByCustomerIdPrioGivenOrderId(customerId, orderId, page);
 	}
 
 	
