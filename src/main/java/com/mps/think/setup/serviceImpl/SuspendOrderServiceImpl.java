@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -79,7 +80,7 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 				suspendOrderRepo.saveAndFlush(nonSuspendedOrderDet);
 			} else {
 				throw new OrdersNotSuspended("orders with ids: " + nonSuspendedOrderDet.getOrdersToSuspend().stream().map(o -> 
-				o.getOrder().getOrderId()).toList() + " did not get suspended");
+				o.getOrder().getOrderId()).collect(Collectors.toList()) + " did not get suspended");
 			}
 		}
 	}
@@ -95,7 +96,7 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 				suspendOrderRepo.saveAndFlush(suspendedOrdersDet);
 			} else {
 				throw new OrdersNotSuspended("orders with ids: " + suspendedOrdersDet.getOrdersToSuspend().stream().map(o -> 
-				o.getOrder().getOrderId()).toList() + " did not get activated");
+				o.getOrder().getOrderId()).collect(Collectors.toList()) + " did not get activated");
 			}
 		}
 	}
