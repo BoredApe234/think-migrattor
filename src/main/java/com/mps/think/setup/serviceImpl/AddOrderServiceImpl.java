@@ -121,8 +121,8 @@ public class AddOrderServiceImpl implements AddOrderService {
 	}
 
 	@Override
-	public Page<Order> getAllOrderByCustomerId(Integer customerId, Integer orderId, Pageable page) throws Exception {
-		return addOrderRepo.fetchOrdersForPaymentsByCustomerIdPrioGivenOrderId(customerId, orderId, page);
+	public List<Order> getAllOrderByCustomerIdAndOrderId(Integer customerId, Integer orderId) throws Exception {
+		return addOrderRepo.fetchOrdersForPaymentsByCustomerIdPrioGivenOrderId(customerId, orderId);
 	}
 
 	
