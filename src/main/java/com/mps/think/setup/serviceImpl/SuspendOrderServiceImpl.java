@@ -47,7 +47,7 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 
 	boolean suspendOrders(List<OrdersToBeSuspended> ordersToSuspend, OrderStatus statusToSet) {
 		try {
-			List<Order> orders = ordersToSuspend.stream().map(o -> o.getOrder()).toList();
+			List<Order> orders = ordersToSuspend.stream().map(o -> o.getOrder()).collect(Collectors.toList());
 			orders.forEach(o -> o.setOrderStatus(statusToSet));
 			orderRepo.saveAllAndFlush(orders);
 			return true;
@@ -59,7 +59,7 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 	
 	boolean continueOrders(List<OrdersToBeSuspended> ordersToContinue) {
 		try {
-			List<Order> orders = ordersToContinue.stream().map(o -> o.getOrder()).toList();
+			List<Order> orders = ordersToContinue.stream().map(o -> o.getOrder()).collect(Collectors.toList());
 			orders.forEach(o -> o.setOrderStatus(OrderStatus.Active));
 			orderRepo.saveAllAndFlush(orders);
 			return true;
