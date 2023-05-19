@@ -12,7 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.PaymentBreakdown;
 import com.mps.think.setup.model.PaymentThreshold;
+import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.PaymentThresholdRepo;
 import com.mps.think.setup.service.PaymentThresholdService;
 import com.mps.think.setup.vo.PaymentThresholdVO;
@@ -22,6 +25,9 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 
 	@Autowired
 	PaymentThresholdRepo paymentThresholdRepo;
+
+	@Autowired
+	AddOrderRepo addOrderRepo;
 
 	@Override
 	public List<PaymentThreshold> getAllPaymentThresholdForPublisher(Integer pubId) {
@@ -104,64 +110,79 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 //		payment.put("paymentStatus", "Not have vaild payment");
 //		return payment;
 //	}LinkedHashMap<Integer, String> amount
-	
+
 	@Override
-	public List<HashMap<String, String>> definePayment(LinkedHashMap<Integer, String> amount, Integer paymentThresholdId) {
-	    List<HashMap<String, String>> list = new ArrayList<>();
+	public List<HashMap<String, String>> definePayment(LinkedHashMap<Integer, String> amount,
+			Integer paymentThresholdId) {
+		List<HashMap<String, String>> list = new ArrayList<>();
 
-	    Optional<PaymentThreshold> threshold = paymentThresholdRepo.findById(paymentThresholdId);
-	    if (threshold.isPresent()) {
-	        for (Map.Entry<Integer, String> entry : amount.entrySet()) {
-	            HashMap<String, String> payment = new HashMap<>();
-	            String[] str = entry.getValue().split(",");
-	            double invoiceAmount = Double.parseDouble(str[0]);
-	            double paidAmount = Double.parseDouble(str[1]);
+		Optional<PaymentThreshold> threshold = paymentThresholdRepo.findById(paymentThresholdId);
+		if (threshold.isPresent()) {
+			for (Map.Entry<Integer, String> entry : amount.entrySet()) {
+				HashMap<String, String> payment = new HashMap<>();
+				String[] str = entry.getValue().split(",");
+				double invoiceAmount = Double.parseDouble(str[0]);
+				double paidAmount = Double.parseDouble(str[1]);
 
-	            double paidPercentage = (paidAmount * 100) / invoiceAmount;
-	            double unPaidAmount = Math.abs(invoiceAmount - paidAmount);
+				double paidPercentage = (paidAmount * 100) / invoiceAmount;
+				double unPaidAmount = Math.abs(invoiceAmount - paidAmount);
 
-	            String paymentStatus;
+				String paymentStatus;
 
-	            if(paidPercentage==100) {
-	            	paymentStatus = "Paid";
-	            }else if(paidPercentage==0) {
-	            	paymentStatus = "No Payment";
-	            }else if (paidPercentage <= threshold.get().getPartialThreshold()) {
-	                paymentStatus = "Partial Payment";
-	            } else if (paidPercentage < threshold.get().getUnderThreshold()) {
-	                if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForPartial()) {
-	                    paymentStatus = "Paid - Underpayment";
-	                } else {
-	                    paymentStatus = "Paid - Prorated";
-	                }
-	            } else if (paidPercentage <= threshold.get().getOverThreshold()) {
-	                if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForFull()) {
-	                    paymentStatus = "Paid - Underpayment";
-	                } else if ((int) unPaidAmount > threshold.get().getMaxUnderpaymentForPartial()) {
-	                    paymentStatus = "Partial Payment";
-	                } else {
-	                    paymentStatus = "Paid - Prorated";
-	                }
-	            } else if (paidPercentage <= threshold.get().getRefundThreshold()) {
-	                if ((int) unPaidAmount <= threshold.get().getMaxOverpaymentForFull()) {
-	                    paymentStatus = "Paid - Overpayment";
-	                } else if ((int) unPaidAmount > threshold.get().getMaxOverpaymentForRefund()) {
-	                    paymentStatus = "Refund payments";
-	                } else {
-	                    paymentStatus = "Paid - Prorated";
-	                }
-	            } else {
-	                paymentStatus = "Refund payments";
-	            }
+				if (paidPercentage == 100) {
+					paymentStatus = "Paid";
+				} else if (paidPercentage == 0) {
+					paymentStatus = "No Payment";
+				} else if (paidPercentage <= threshold.get().getPartialThreshold()) {
+					paymentStatus = "Partial Payment";
+				} else if (paidPercentage < threshold.get().getUnderThreshold()) {
+					if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForPartial()) {
+						paymentStatus = "Paid - Underpayment";
+					} else {
+						paymentStatus = "Paid - Prorated";
+					}
+				} else if (paidPercentage <= threshold.get().getOverThreshold()) {
+					if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForFull()) {
+						paymentStatus = "Paid - Underpayment";
+					} else if ((int) unPaidAmount > threshold.get().getMaxUnderpaymentForPartial()) {
+						paymentStatus = "Partial Payment";
+					} else {
+						paymentStatus = "Paid - Prorated";
+					}
+				} else if (paidPercentage <= threshold.get().getRefundThreshold()) {
+					if ((int) unPaidAmount <= threshold.get().getMaxOverpaymentForFull()) {
+						paymentStatus = "Paid - Overpayment";
+					} else if ((int) unPaidAmount > threshold.get().getMaxOverpaymentForRefund()) {
+						paymentStatus = "Refund payments";
+					} else {
+						paymentStatus = "Paid - Prorated";
+					}
+				} else {
+					paymentStatus = "Refund payments";
+				}
 
-	            payment.put("paymentStatus",entry.getKey()+","+ paymentStatus);
-	            list.add(payment);
-	        }
-	    }
+				payment.put("paymentStatus", entry.getKey() + "," + paymentStatus);
+				list.add(payment);
+			}
+		}
+		for (HashMap<String, String> updateOrder : list) {
+			for (Map.Entry<String, String> keyValue : updateOrder.entrySet()) {
+				String[] pStatus = keyValue.getValue().split(",");
+				try{
+				    Integer orderId = Integer.parseInt(pStatus[0]);
+				    Order orderDetails = addOrderRepo.findById(orderId).get();
+				    PaymentBreakdown paymentBreakdown = orderDetails.getPaymentBreakdown();
+					paymentBreakdown.setPaymentStatus(pStatus[1]);
+					orderDetails.setPaymentBreakdown(paymentBreakdown);
+					addOrderRepo.saveAndFlush(orderDetails);
+				} catch(NumberFormatException ex){ // handle your exception
+				   throw new NumberFormatException("Invalid Order Id");
+				}
+			}
+		}
 
-	    return list;
+		return list;
 	}
-
 
 	@Override
 	public PaymentThreshold DeletePaymentThreshold(Integer id) {
