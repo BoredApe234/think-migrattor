@@ -70,9 +70,11 @@ public class ChargeController {
 //		od.setPaymentBreakdown(pb);
 //		addOrderRepo.saveAndFlush(od);
 		PaymentBreakdown paymentBreakdown = orderDetails.getPaymentBreakdown();
-		paymentBreakdown.setPaymentStatus(charge.getStatus());
+		if(charge.getStatus().equals("succeeded")) {
+		paymentBreakdown.setPaymentStatus("Paid");
 		orderDetails.setPaymentBreakdown(paymentBreakdown);
 		addOrderRepo.saveAndFlush(orderDetails);
+		}
 		
 		System.out.println(chargeRequest.toString());
 		System.out.println(charge.toString());
