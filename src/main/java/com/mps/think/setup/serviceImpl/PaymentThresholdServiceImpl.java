@@ -122,35 +122,39 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 
 	            String paymentStatus;
 
-	            if (paidPercentage <= threshold.get().getPartialThreshold()) {
-	                paymentStatus = "Partial payments";
+	            if(paidPercentage==100) {
+	            	paymentStatus = "Paid";
+	            }else if(paidPercentage==0) {
+	            	paymentStatus = "No Payment";
+	            }else if (paidPercentage <= threshold.get().getPartialThreshold()) {
+	                paymentStatus = "Partial Payment";
 	            } else if (paidPercentage < threshold.get().getUnderThreshold()) {
 	                if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForPartial()) {
-	                    paymentStatus = "Under payments";
+	                    paymentStatus = "Paid - Underpayment";
 	                } else {
-	                    paymentStatus = "Partial payments";
+	                    paymentStatus = "Paid - Prorated";
 	                }
 	            } else if (paidPercentage <= threshold.get().getOverThreshold()) {
 	                if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForFull()) {
-	                    paymentStatus = "Full payments";
+	                    paymentStatus = "Paid - Underpayment";
 	                } else if ((int) unPaidAmount > threshold.get().getMaxUnderpaymentForPartial()) {
-	                    paymentStatus = "Partial payments";
+	                    paymentStatus = "Partial Payment";
 	                } else {
-	                    paymentStatus = "Under payments";
+	                    paymentStatus = "Paid - Prorated";
 	                }
 	            } else if (paidPercentage <= threshold.get().getRefundThreshold()) {
 	                if ((int) unPaidAmount <= threshold.get().getMaxOverpaymentForFull()) {
-	                    paymentStatus = "Full payments";
+	                    paymentStatus = "Paid - Overpayment";
 	                } else if ((int) unPaidAmount > threshold.get().getMaxOverpaymentForRefund()) {
 	                    paymentStatus = "Refund payments";
 	                } else {
-	                    paymentStatus = "Over payments";
+	                    paymentStatus = "Paid - Prorated";
 	                }
 	            } else {
 	                paymentStatus = "Refund payments";
 	            }
 
-	            payment.put("paymentStatus", paymentStatus);
+	            payment.put("paymentStatus",entry.getKey()+","+ paymentStatus);
 	            list.add(payment);
 	        }
 	    }
