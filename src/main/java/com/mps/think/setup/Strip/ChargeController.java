@@ -52,8 +52,9 @@ public class ChargeController {
 		chargeRequest.setDescription("Example charge");
 		if (chargeRequest.getCurrency().EUR.toString() == "EUR") {
 			chargeRequest.setCurrency(Currency.EUR);
-		}
+		}else {
 		chargeRequest.setCurrency(Currency.USD);
+		}
 		Charge charge = paymentsService.charge(chargeRequest);
 		PublicKey pk = new PublicKey();
 		pk.setId(charge.getId());
