@@ -462,6 +462,21 @@ public class EnumModelVO {
 			return exemptStatus;
 		}
 	}
+	public static enum Addressstatus {
+		One("ABUSER: Suspected Abuser"), Two("CLEARED Address Cleared"), Three("DEC Deceased"),
+		Four("DO NOT MAIL Requested Do Not Mail"), Five("DUPE Duplicate"), Six("HOLD Hold Account"),
+		Seven("NCOA NCOA Reported Undeliverable"), Eight("OPEN Open Account"), Nine("OPEN-No Mail Open Account - request no mail")
+		, Ten("SUSPEND USPS Temp Service Suspension"), Eleven("UNDEL Return Undeliverable");
+		private final String addressstatus;
+
+		Addressstatus(String addressstatus) {
+			this.addressstatus = addressstatus;
+		}
+
+		public String getAddressstatus() {
+			return addressstatus;
+		}
+	}
 	
 	
 
