@@ -29,22 +29,27 @@ public class AddressStatusController {
 	}
 	
 	@PostMapping("/saveAddressStatus")
-	public ResponseEntity<?> saveInserts(@RequestBody AddressStatusVO id) {
+	public ResponseEntity<?> saveAddressStatus(@RequestBody AddressStatusVO id) {
 		return ResponseEntity.ok(addressStatusService.saveAddressStatus(id));
 	}
 	
 	@PostMapping("/updateAddressStatus")
-	public ResponseEntity<?> updateInserts(@RequestBody AddressStatusVO id) {
+	public ResponseEntity<?> updateAddressStatus(@RequestBody AddressStatusVO id) {
 		return ResponseEntity.ok(addressStatusService.updateAddressStatus(id));	
 		}
 	
-	@PostMapping("/findbyAddressStatusId")
-	public ResponseEntity<?> findbySplitsId(@RequestBody Integer id) {
+	@PostMapping("/findbypubId")
+	public ResponseEntity<?> findAllAddressStatusByPubId(@RequestBody Integer id) {
 		return ResponseEntity.ok(addressStatusService.findAllAddressStatusByPubId(id));
 	}
 	
+	@PostMapping("/findbyAddressStatusId")
+	public ResponseEntity<?> findbyAddressStatusId(@RequestBody Integer id) {
+		return ResponseEntity.ok(addressStatusService.findbyAddressStatusId(id));
+	}
+	
 	@DeleteMapping("/deletebyAddressStatusId")
-	public ResponseEntity<?> deleteBySplitsId(@RequestBody Integer id) {
+	public ResponseEntity<?> deleteByAddressStatusId(@RequestBody Integer id) {
 		return ResponseEntity.ok(addressStatusService.deleteByAddressStatusId(id));
 	}
 	
