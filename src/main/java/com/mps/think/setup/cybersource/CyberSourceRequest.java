@@ -82,8 +82,6 @@ public class CyberSourceRequest {
 	private String phoneType;
 
 	private String verificationStatus = null;
-	
-	private Integer orderId;
 
 	public String getNumber() {
 		return number;
@@ -399,14 +397,7 @@ public class CyberSourceRequest {
 		this.verificationStatus = verificationStatus;
 	}
 	
-
-	public Integer getOrderId() {
-		return orderId;
-	}
-
-	public void setOrderId(Integer orderId) {
-		this.orderId = orderId;
-	}
+	
 
 	@Override
 	public String toString() {
@@ -423,7 +414,7 @@ public class CyberSourceRequest {
 				+ administrativeArea + ", postalCode=" + postalCode + ", county=" + county + ", country=" + country
 				+ ", district=" + district + ", buildingNumber=" + buildingNumber + ", email=" + email
 				+ ", emailDomain=" + emailDomain + ", phoneNumber=" + phoneNumber + ", phoneType=" + phoneType
-				+ ", verificationStatus=" + verificationStatus + ", orderId=" + orderId + "]";
+				+ ", verificationStatus=" + verificationStatus + "]";
 	}
 
 }
