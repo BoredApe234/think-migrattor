@@ -33,4 +33,7 @@ public interface AddOrderService {
 	
 	Order getSubOrderById(Integer id);
 	
+
+	Order updateOrderPaymentStatus(Integer orderId,String paymentStatus);
+	
 }

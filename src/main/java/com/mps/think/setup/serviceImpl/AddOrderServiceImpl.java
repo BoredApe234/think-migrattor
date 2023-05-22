@@ -20,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.MultiLineItemOrder;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderCodesSuper;
+import com.mps.think.setup.model.PaymentBreakdown;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.MultiLineItemOrderRepo;
 import com.mps.think.setup.service.AddOrderService;
@@ -132,6 +133,16 @@ public class AddOrderServiceImpl implements AddOrderService {
 	@Override
 	public List<Order> getAllOrderByCustomerIdAndOrderId(Integer customerId, Integer orderId) throws Exception {
 		return addOrderRepo.fetchOrdersForPaymentsByCustomerIdPrioGivenOrderId(customerId, orderId);
+	}
+
+	@Override
+	public Order updateOrderPaymentStatus(Integer orderId,String paymentStatus) {
+		Order orderDetails = addOrderRepo.findById(orderId).get();
+	    PaymentBreakdown paymentBreakdown = orderDetails.getPaymentBreakdown();
+		paymentBreakdown.setPaymentStatus(paymentStatus);
+		orderDetails.setPaymentBreakdown(paymentBreakdown);
+		Order od=addOrderRepo.saveAndFlush(orderDetails);
+		return od;
 	}
 
 	

@@ -40,6 +40,11 @@ public class AddOrderController {
 		return ResponseEntity.ok(addOrderService.updateOrder(order));
 	}
 	
+	@PutMapping("/updateOrderPaymentStatus")
+	public ResponseEntity<?> updateOrderPaymentStatus(@RequestParam Integer orderId,String paymentStatus) throws Exception {
+		return ResponseEntity.ok(addOrderService.updateOrderPaymentStatus(orderId, paymentStatus));
+	}
+	
 	@GetMapping("/getAllOrders")
 	public ResponseEntity<?> getAllOrders(@RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "5") Integer size) throws Exception {
