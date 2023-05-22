@@ -139,7 +139,7 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 					if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForPartial()) {
 						paymentStatus = "Paid - Underpayment";
 					} else {
-						paymentStatus = "Paid - Prorated";
+						paymentStatus = "Underpayment";
 					}
 				} else if (paidPercentage <= threshold.get().getOverThreshold()) {
 					if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForFull()) {
@@ -147,7 +147,7 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 					} else if ((int) unPaidAmount > threshold.get().getMaxUnderpaymentForPartial()) {
 						paymentStatus = "Partial Payment";
 					} else {
-						paymentStatus = "Paid - Prorated";
+						paymentStatus = "Underpayment";
 					}
 				} else if (paidPercentage <= threshold.get().getRefundThreshold()) {
 					if ((int) unPaidAmount <= threshold.get().getMaxOverpaymentForFull()) {
@@ -155,7 +155,7 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 					} else if ((int) unPaidAmount > threshold.get().getMaxOverpaymentForRefund()) {
 						paymentStatus = "Refund payments";
 					} else {
-						paymentStatus = "Paid - Prorated";
+						paymentStatus = "Overpayment";
 					}
 				} else {
 					paymentStatus = "Refund payments";
@@ -165,21 +165,21 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 				list.add(payment);
 			}
 		}
-		for (HashMap<String, String> updateOrder : list) {
-			for (Map.Entry<String, String> keyValue : updateOrder.entrySet()) {
-				String[] pStatus = keyValue.getValue().split(",");
-				try{
-				    Integer orderId = Integer.parseInt(pStatus[0]);
-				    Order orderDetails = addOrderRepo.findById(orderId).get();
-				    PaymentBreakdown paymentBreakdown = orderDetails.getPaymentBreakdown();
-					paymentBreakdown.setPaymentStatus(pStatus[1]);
-					orderDetails.setPaymentBreakdown(paymentBreakdown);
-					addOrderRepo.saveAndFlush(orderDetails);
-				} catch(NumberFormatException ex){ // handle your exception
-				   throw new NumberFormatException("Invalid Order Id");
-				}
-			}
-		}
+//		for (HashMap<String, String> updateOrder : list) {
+//			for (Map.Entry<String, String> keyValue : updateOrder.entrySet()) {
+//				String[] pStatus = keyValue.getValue().split(",");
+//				try{
+//				    Integer orderId = Integer.parseInt(pStatus[0]);
+//				    Order orderDetails = addOrderRepo.findById(orderId).get();
+//				    PaymentBreakdown paymentBreakdown = orderDetails.getPaymentBreakdown();
+//					paymentBreakdown.setPaymentStatus(pStatus[1]);
+//					orderDetails.setPaymentBreakdown(paymentBreakdown);
+//					addOrderRepo.saveAndFlush(orderDetails);
+//				} catch(NumberFormatException ex){ // handle your exception
+//				   throw new NumberFormatException("Invalid Order Id");
+//				}
+//			}
+//		}
 
 		return list;
 	}
