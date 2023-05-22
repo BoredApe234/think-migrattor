@@ -2,6 +2,7 @@ package com.mps.think.setup.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -41,8 +42,8 @@ public class AddOrderController {
 	}
 	
 	@PutMapping("/updateOrderPaymentStatus")
-	public ResponseEntity<?> updateOrderPaymentStatus(@RequestParam Integer orderId,String paymentStatus) throws Exception {
-		return ResponseEntity.ok(addOrderService.updateOrderPaymentStatus(orderId, paymentStatus));
+	public ResponseEntity<?> updateOrderPaymentStatus(@RequestParam Map<Integer, String> OrderPaymentStatus) throws Exception {
+		return ResponseEntity.ok(addOrderService.updateOrderPaymentStatus(OrderPaymentStatus));
 	}
 	
 	@GetMapping("/getAllOrders")

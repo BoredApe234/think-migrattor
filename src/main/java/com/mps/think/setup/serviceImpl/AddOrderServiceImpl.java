@@ -1,6 +1,7 @@
 package com.mps.think.setup.serviceImpl;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import java.util.Comparator;
@@ -136,13 +137,17 @@ public class AddOrderServiceImpl implements AddOrderService {
 	}
 
 	@Override
-	public Order updateOrderPaymentStatus(Integer orderId,String paymentStatus) {
-		Order orderDetails = addOrderRepo.findById(orderId).get();
+	public List<Order> updateOrderPaymentStatus(Map<Integer, String> OrderPaymentStatus) {
+		List<Order> list=new ArrayList<>();
+		for (Map.Entry<Integer, String> keyValue : OrderPaymentStatus.entrySet()) {
+		Order orderDetails = addOrderRepo.findById(keyValue.getKey()).get();
 	    PaymentBreakdown paymentBreakdown = orderDetails.getPaymentBreakdown();
-		paymentBreakdown.setPaymentStatus(paymentStatus);
+		paymentBreakdown.setPaymentStatus(keyValue.getValue());
 		orderDetails.setPaymentBreakdown(paymentBreakdown);
 		Order od=addOrderRepo.saveAndFlush(orderDetails);
-		return od;
+		list.add(od);
+		}
+		return list;
 	}
 
 	
