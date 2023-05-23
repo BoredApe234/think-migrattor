@@ -55,4 +55,9 @@ public class ParentChildMappingServiceImpl implements ParentChildMappingService 
 		return parentchildMappingRepo.findByParentIdPubIdId(pubId);
 	}
 
+	@Override
+	public List<ParentChildMapping> getAllParentChildMapping() {
+		return parentchildMappingRepo.findAll();
+	}
+
 }

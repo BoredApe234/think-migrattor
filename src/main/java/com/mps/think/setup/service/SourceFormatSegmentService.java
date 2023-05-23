@@ -15,4 +15,6 @@ public interface SourceFormatSegmentService {
 
 	public SourceFormatSegment findbySourceFormatSegmentId(Integer sourceFormatSegmentId);
 
+	public List<SourceFormatSegment> getAllSourceFormatSegment();
+
 }

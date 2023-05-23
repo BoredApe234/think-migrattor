@@ -22,4 +22,6 @@ public interface MakePaymentService {
 	
 	public MailTemplateVO sendPaymentLink(MailTemplateVO mailTemplateVO);
 
+	public List<MakePayment> getAllMakePayment();
+
 }

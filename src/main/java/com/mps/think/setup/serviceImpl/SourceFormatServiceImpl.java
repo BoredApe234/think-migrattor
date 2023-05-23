@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.SourceFormat;
+import com.mps.think.setup.model.SourceFormatAndAttributeMapping;
 import com.mps.think.setup.repo.SourceFormatRepo;
 import com.mps.think.setup.service.SourceFormatService;
 import com.mps.think.setup.vo.SourceFormatVo;
@@ -53,6 +54,17 @@ public class SourceFormatServiceImpl implements SourceFormatService {
 	@Override
 	public List<SourceFormat> getAllSourceFormatForPublisher(Integer pubId) {
 		return sourceFormatRepo.findBypubIdId(pubId);
+	}
+
+	@Override
+	public List<SourceFormat> getAllSourceFormat() {
+		return sourceFormatRepo.findAll();
+	}
+
+	@Override
+	public List<SourceFormatAndAttributeMapping> getAllSourceFormatAndAttributeMapping() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -17,4 +17,6 @@ public interface RenewalOfferDetailsService {
 
 	public RenewalOfferDetails findbyRenewalOfferDetailsId(Integer renewalOfferDetailsId);
 
+	public List<RenewalOfferDetails> getAllRenewalOfferDetails();
+
 }

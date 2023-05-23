@@ -76,6 +76,11 @@ public class SubscriptionCategoryServiceImpl implements SubscriptionCategoryServ
 	public List<SubscriptionCategory> findAllSubscriptionCategoryByPubId(Integer id) {
 		// TODO Auto-generated method stub
 		return subscriptionCategoryRepo.findByPubIdId(id);
+	}
+
+	@Override
+	public List<SubscriptionCategory> getAllSubscriptionCategory() {
+		return subscriptionCategoryRepo.findAll();
 	}	
 
 }

@@ -15,4 +15,6 @@ public interface CurrencyExchangeService {
 
 	public CurrencyExchange findbyId(Integer currrncyExcId);
 
+	public List<CurrencyExchange> getAllCurrencyExchange();
+
 }

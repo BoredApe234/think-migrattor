@@ -16,4 +16,6 @@ public interface OrderClassService {
 	public OrderClass findbyOrderClassId(Integer orderClassId);
 	
 	public List<OrderClass> findAllOrderClassByPubId(Integer pubId);
+
+	public List<OrderClass> getAllOrderClass();
 }

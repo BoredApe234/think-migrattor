@@ -15,4 +15,6 @@ public interface PublisherSerivce {
 
 	public Publisher findbyPublisherId(Integer id);
 
+	public List<Publisher> getAllPublisher();
+
 }

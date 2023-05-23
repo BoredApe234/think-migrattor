@@ -83,4 +83,9 @@ public class CommodityCodesServiceImpl implements CommodityCodesService {
 		return commodityCodesRepo.findByPubIdId(pubId);
 	}
 
+	@Override
+	public List<CommodityCodes> getAllCommodityCodes() {
+		return commodityCodesRepo.findAll();
+	}
+
 }

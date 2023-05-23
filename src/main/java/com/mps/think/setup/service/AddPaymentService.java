@@ -18,4 +18,6 @@ public interface AddPaymentService {
 	
 	public AddPayment findByCustomerDetailsCustomerId(Integer customerId);
 
+	public List<AddPayment> getAllAddPayment();
+
 }

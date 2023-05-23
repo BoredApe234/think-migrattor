@@ -19,7 +19,14 @@ import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.MultiLineItemOrder;
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.OrderAddressMapping;
+import com.mps.think.setup.model.OrderAuxiliaryInformation;
+import com.mps.think.setup.model.OrderCategory;
 import com.mps.think.setup.model.OrderCodesSuper;
+import com.mps.think.setup.model.OrderDeliveryOptions;
+import com.mps.think.setup.model.OrderItems;
+import com.mps.think.setup.model.OrderKeyInformation;
+import com.mps.think.setup.model.PaymentBreakdown;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.MultiLineItemOrderRepo;
 import com.mps.think.setup.service.AddOrderService;
@@ -132,6 +139,59 @@ public class AddOrderServiceImpl implements AddOrderService {
 	@Override
 	public List<Order> getAllOrderByCustomerIdAndOrderId(Integer customerId, Integer orderId) throws Exception {
 		return addOrderRepo.fetchOrdersForPaymentsByCustomerIdPrioGivenOrderId(customerId, orderId);
+	}
+
+	@Override
+	public List<Order> getAllOrder() {
+		return addOrderRepo.findAll();
+	}
+
+	@Override
+	public List<OrderCategory> getAllOrderCategory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderAddressMapping> getAllOrderAddressMapping() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderAuxiliaryInformation> getAllOrderAuxiliaryInformation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderDeliveryOptions> getAllOrderDeliveryOptions() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderItems> getAllOrderItems() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderKeyInformation> getAllOrderKeyInformation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PaymentBreakdown> getAllPaymentBreakdown() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MultiLineItemOrder> getAllMultiLineItemOrder() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	

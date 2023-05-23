@@ -19,4 +19,6 @@ public interface ValueForScAttributeService {
 	
 	public ValueForScAttribute deleteById(Integer id);
 
+	public List<ValueForScAttribute> getAllValueForScAttribute();
+
 }

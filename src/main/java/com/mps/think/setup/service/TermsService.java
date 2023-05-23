@@ -19,4 +19,6 @@ public interface TermsService {
 	
 	List<Terms> findAllTermsForPublisher(Integer pubId);
 
+	public List<Terms> getAllTerms();
+
 }

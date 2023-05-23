@@ -66,6 +66,11 @@ public class ShippingMethodServiceImpl implements ShippingMethodService {
 	public List<ShippingMethod> getAllShippingMethodsForPublisher(Integer pubId) {
 		return shippingMethodRepo.findByPublisherId(pubId);
 	}
+
+	@Override
+	public List<ShippingMethod> getAllShippingMethod() {
+		return shippingMethodRepo.findAll();
+	}
 	
 
 }

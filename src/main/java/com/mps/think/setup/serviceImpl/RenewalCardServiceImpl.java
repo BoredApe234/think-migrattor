@@ -72,4 +72,9 @@ public class RenewalCardServiceImpl implements RenewalCardService {
 		return renewalCardRepo.findByPubIdId(pubId);
 	}
 
+	@Override
+	public List<RenewalCard> getAllRenewalCard() {
+		return renewalCardRepo.findAll();
+	}
+
 }

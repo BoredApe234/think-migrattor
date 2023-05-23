@@ -99,4 +99,9 @@ public class SalesRepresentativeServiceImp implements SalesRepresentativeService
 		return salesRepresentativeRepo.findAllSalesRepresentativeByPubId(pubId);
 	}
 
+	@Override
+	public List<SalesRepresentative> getAllSalesRepresentative() {
+		return salesRepresentativeRepo.findAll();
+	}
+
 }

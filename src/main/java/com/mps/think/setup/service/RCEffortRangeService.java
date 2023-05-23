@@ -16,4 +16,7 @@ public interface RCEffortRangeService {
 	public RCEffortRange deleteRCEffortRange(Integer rcEffortRangeId);
 
 	public RCEffortRange findbyRCEffortRangeId(Integer rcEffortRangeId);
+
+
+	public List<RCEffortRange> getAllRCEffortRange();
 }

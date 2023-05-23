@@ -4,6 +4,7 @@ import java.util.List;
 
 
 import com.mps.think.setup.model.SourceCode;
+import com.mps.think.setup.model.SourceCodeAndValuesMapping;
 import com.mps.think.setup.vo.SourceCodeVO;
 
 public interface SourceCodeService {
@@ -19,5 +20,9 @@ public interface SourceCodeService {
 	public SourceCode findbySourceCodeId(Integer sourceCodeId);
 	
 	public List<SourceCode> findAllSourceCodeByPublisherId(Integer pubId);
+
+	public List<SourceCode> getAllSourceCode();
+
+	public List<SourceCodeAndValuesMapping> getAllSourceCodeAndValuesMapping();
 
 }
