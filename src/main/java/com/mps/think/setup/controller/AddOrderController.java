@@ -1,6 +1,7 @@
 package com.mps.think.setup.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -42,7 +43,7 @@ public class AddOrderController {
 	}
 	
 	@PutMapping("/updateOrderPaymentStatus")
-	public ResponseEntity<?> updateOrderPaymentStatus(@RequestParam Map<Integer, String> OrderPaymentStatus) throws Exception {
+	public ResponseEntity<?> updateOrderPaymentStatus(@RequestParam LinkedHashMap<String, String> OrderPaymentStatus) throws Exception {
 		return ResponseEntity.ok(addOrderService.updateOrderPaymentStatus(OrderPaymentStatus));
 	}
 	
