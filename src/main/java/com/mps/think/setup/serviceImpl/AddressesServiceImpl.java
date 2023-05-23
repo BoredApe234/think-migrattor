@@ -50,6 +50,7 @@ public class AddressesServiceImpl implements AddressService  {
 		data.setAddressAuxJSON(addresses.getAddressAuxJSON());
 		data.setSelectionFrom(addresses.getSelectionFrom());
 		data.setSelectionTo(addresses.getSelectionTo());
+		data.setAddressstatus(addresses.getAddressstatus());
 		addresses.setAddressId(data.getAddressId());
 		addressRepo.saveAndFlush(data);
 		addresses.setAddressId(data.getAddressId());
@@ -79,6 +80,7 @@ public class AddressesServiceImpl implements AddressService  {
 		data.setFrequency(addresses.getFrequency());
 		data.setSelectionFrom(addresses.getSelectionFrom());
 		data.setSelectionTo(addresses.getSelectionTo());
+		data.setAddressstatus(addresses.getAddressstatus());
 		data.setAddressAuxJSON(addresses.getAddressAuxJSON());
 		addressRepo.saveAndFlush(data);
 		return addresses;
