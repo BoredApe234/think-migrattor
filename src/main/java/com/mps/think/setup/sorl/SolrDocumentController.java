@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,9 +14,10 @@ import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.service.CustomerDetailsService;
 
 /**
- * Created by JavaDeveloperZone on 16-12-2017.
+ * Created by @rohit.
  */
 @RestController
+@CrossOrigin
 public class SolrDocumentController {
 	@Autowired
 	private DocumentRepository documentRepository;
