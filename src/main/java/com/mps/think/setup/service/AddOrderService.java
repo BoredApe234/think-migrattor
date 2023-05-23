@@ -1,5 +1,6 @@
 package com.mps.think.setup.service;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,6 +36,6 @@ public interface AddOrderService {
 	Order getSubOrderById(Integer id);
 	
 
-	List<Order> updateOrderPaymentStatus(Map<Integer, String> OrderPaymentStatus);
+	List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus);
 	
 }

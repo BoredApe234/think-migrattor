@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -137,18 +138,27 @@ public class AddOrderServiceImpl implements AddOrderService {
 	}
 
 	@Override
-	public List<Order> updateOrderPaymentStatus(Map<Integer, String> OrderPaymentStatus) {
-		List<Order> list=new ArrayList<>();
-		for (Map.Entry<Integer, String> keyValue : OrderPaymentStatus.entrySet()) {
-		Order orderDetails = addOrderRepo.findById(keyValue.getKey()).get();
-	    PaymentBreakdown paymentBreakdown = orderDetails.getPaymentBreakdown();
-		paymentBreakdown.setPaymentStatus(keyValue.getValue());
-		orderDetails.setPaymentBreakdown(paymentBreakdown);
-		Order od=addOrderRepo.saveAndFlush(orderDetails);
-		list.add(od);
-		}
-		return list;
+	public List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus) {
+	    List<Order> updatedOrders = new ArrayList<>();
+	    
+	    for (Map.Entry<String, String> entry : OrderPaymentStatus.entrySet()) {
+	    	String orderId = entry.getKey();
+	        String paymentStatus = entry.getValue();
+
+	        Order order = addOrderRepo.findById(Integer.valueOf(orderId)).orElse(null);
+	        
+	        if (order != null) {
+	            PaymentBreakdown paymentBreakdown = order.getPaymentBreakdown();
+	            paymentBreakdown.setPaymentStatus(paymentStatus);
+	            
+	            Order updatedOrder = addOrderRepo.save(order);
+	            updatedOrders.add(updatedOrder);
+	        }
+	    }
+	    
+	    return updatedOrders;
 	}
+
 
 	
 }
