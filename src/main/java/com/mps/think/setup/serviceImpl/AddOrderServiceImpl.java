@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -20,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.MultiLineItemOrder;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderCodesSuper;
-import com.mps.think.setup.model.SuspendOrder;
+import com.mps.think.setup.model.PaymentBreakdown;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.MultiLineItemOrderRepo;
 import com.mps.think.setup.repo.OrdersToBeSuspendedRepo;
@@ -138,6 +140,34 @@ public class AddOrderServiceImpl implements AddOrderService {
 		if (order.isPresent()) return order.get();
 		return null;
 	}
+
+	@Override
+	public List<Order> getAllOrderByCustomerIdAndOrderId(Integer customerId, Integer orderId) throws Exception {
+		return addOrderRepo.fetchOrdersForPaymentsByCustomerIdPrioGivenOrderId(customerId, orderId);
+	}
+
+	@Override
+	public List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus) {
+	    List<Order> updatedOrders = new ArrayList<>();
+	    
+	    for (Map.Entry<String, String> entry : OrderPaymentStatus.entrySet()) {
+	    	String orderId = entry.getKey();
+	        String paymentStatus = entry.getValue();
+
+	        Order order = addOrderRepo.findById(Integer.valueOf(orderId)).orElse(null);
+	        
+	        if (order != null) {
+	            PaymentBreakdown paymentBreakdown = order.getPaymentBreakdown();
+	            paymentBreakdown.setPaymentStatus(paymentStatus);
+	            
+	            Order updatedOrder = addOrderRepo.save(order);
+	            updatedOrders.add(updatedOrder);
+	        }
+	    }
+	    
+	    return updatedOrders;
+	}
+
 
 	
 }

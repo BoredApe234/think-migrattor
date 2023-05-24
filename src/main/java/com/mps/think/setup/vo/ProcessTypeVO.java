@@ -4,6 +4,7 @@ public class ProcessTypeVO {
 	
 	private Integer pid;
 	private String mainpurposelabel;
+	
 	public Integer getPid() {
 		return pid;
 	}
@@ -16,6 +17,10 @@ public class ProcessTypeVO {
 	public void setMainpurposelabel(String mainpurposelabel) {
 		this.mainpurposelabel = mainpurposelabel;
 	}
+	
+
+	
+	
 	
 	
 	

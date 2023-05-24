@@ -2,17 +2,15 @@ package com.mps.think.setup.vo;
 
 import java.util.List;
 
-import com.mps.think.setup.model.Addprocessmapping;
-import com.mps.think.setup.model.AddprocessmappingVO;
 import com.mps.think.setup.model.ExtractFilter;
-import com.mps.think.setup.model.OrderClassOverview;
+
 import com.mps.think.setup.model.OutputSort;
 import com.mps.think.setup.model.ProcessType;
 import com.mps.think.setup.model.Queue;
 
 public class AddProcessVO {
 	
-	private Integer process_id;
+	private Integer id;
 	private ProcessType processtypeid;
 	private String mainpurpose;
 	private String description;
@@ -33,7 +31,7 @@ public class AddProcessVO {
 	private OutputSort outputsortid;
 	private Queue defaultjobqueueid;
 	private String sqlscript;
-	private List<AddprocessmappingVO> addprocessmapping;
+	private List<AddProcessMappingVO> addprocessmapping;
 	private String length;
 	private Integer gps;
 	private Integer keyline;
@@ -42,11 +40,11 @@ public class AddProcessVO {
 	private String bundlethreshold;
 	private String prioritysort;
 	private Boolean picklist;
-	public Integer getProcess_id() {
-		return process_id;
+	public Integer getId() {
+		return id;
 	}
-	public void setProcess_id(Integer process_id) {
-		this.process_id = process_id;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 	public ProcessType getProcesstypeid() {
 		return processtypeid;
@@ -168,6 +166,12 @@ public class AddProcessVO {
 	public void setSqlscript(String sqlscript) {
 		this.sqlscript = sqlscript;
 	}
+	public List<AddProcessMappingVO> getAddprocessmapping() {
+		return addprocessmapping;
+	}
+	public void setAddprocessmapping(List<AddProcessMappingVO> addprocessmapping) {
+		this.addprocessmapping = addprocessmapping;
+	}
 	public String getLength() {
 		return length;
 	}
@@ -216,14 +220,9 @@ public class AddProcessVO {
 	public void setPicklist(Boolean picklist) {
 		this.picklist = picklist;
 	}
-	public List<AddprocessmappingVO> getAddprocessmapping() {
-		return addprocessmapping;
-	}
-	public void setAddprocessmapping(List<AddprocessmappingVO> addprocessmapping) {
-		this.addprocessmapping = addprocessmapping;
-	}
-
-
+	
+	
+	
 	
 	
 	

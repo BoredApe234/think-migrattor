@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "process_type")
+@Table(name = "processes")
 public class ProcessType extends BaseEntity {
 
 	/**
@@ -17,14 +17,12 @@ public class ProcessType extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@Column(name = "p_id")
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer pid;
 	
 	@Column(name = "mainpurposelabel")
 	private String mainpurposelabel;
-
-	
 
 	public Integer getPid() {
 		return pid;
@@ -47,6 +45,10 @@ public class ProcessType extends BaseEntity {
 		return "ProcessType [pid=" + pid + ", mainpurposelabel=" + mainpurposelabel + "]";
 	}
 
+	
+	
+
+	
 	
 	
 	

@@ -27,7 +27,7 @@ public class SubmitJob extends BaseEntity {
 	private Integer id;
 	
 	@OneToOne
-	@JoinColumn(name = "addProcess_id", referencedColumnName = "process_id" )
+	@JoinColumn(name = "addProcess_id", referencedColumnName = "id" )
 	private AddProcess addProcessId;
 	
 	@OneToOne

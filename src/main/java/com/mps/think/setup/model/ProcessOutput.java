@@ -24,7 +24,7 @@ public class ProcessOutput extends BaseEntity {
 	private Integer output_id;
 	
 	@ManyToOne
-	@JoinColumn(name = "addProcess_id", referencedColumnName = "process_id" )
+	@JoinColumn(name = "addProcess_id", referencedColumnName = "id" )
 	private AddProcess addProcessId;
 	
 //	@ManyToOne

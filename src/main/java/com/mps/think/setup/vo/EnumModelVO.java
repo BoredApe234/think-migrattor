@@ -405,6 +405,80 @@ public class EnumModelVO {
 			return type;
 		}
 	}
+	
+	public static enum EffortType {
+		One("Issues/Unitd Left"), Two("Issues/Unitd Left With Expire"), Three("At Birth"),
+		Four("By Package Expire Date") , Five("By Subscription Expire Date"), Six("Extract Issues/Units Left");
+
+		private final String effortType;
+
+		EffortType(String effortType) {
+			this.effortType = effortType;
+		}
+
+		public String getEffortType() {
+			return effortType;
+		}
+	}
+	
+	public static enum SendTo {
+		One("Donor"), Two("Recipient");
+
+		private final String sendTo;
+
+		SendTo(String sendTo) {
+			this.sendTo = sendTo;
+		}
+
+		public String getSendTo() {
+			return sendTo;
+		}
+	}
+	
+	public static enum Pricing {
+		One("Use Expire Date"), Two("Use Run Date");
+
+		private final String pricing;
+
+		Pricing(String pricing) {
+			this.pricing = pricing;
+		}
+
+		public String getPricing() {
+			return pricing;
+		}
+	}
+	
+	public static enum ExemptStatus {
+		One("Not Tax Exempt"), Two("Yes Tax Exempt"), Three("Always Tax Exempt");
+
+		private final String exemptStatus;
+
+		ExemptStatus(String exemptStatus) {
+			this.exemptStatus = exemptStatus;
+		}
+
+		public String getExemptStatus() {
+			return exemptStatus;
+		}
+	}
+	public static enum Addressstatus {
+		One("ABUSER: Suspected Abuser"), Two("CLEARED Address Cleared"), Three("DEC Deceased"),
+		Four("DO NOT MAIL Requested Do Not Mail"), Five("DUPE Duplicate"), Six("HOLD Hold Account"),
+		Seven("NCOA NCOA Reported Undeliverable"), Eight("OPEN Open Account"), Nine("OPEN-No Mail Open Account - request no mail")
+		, Ten("SUSPEND USPS Temp Service Suspension"), Eleven("UNDEL Return Undeliverable");
+		private final String addressstatus;
+
+		Addressstatus(String addressstatus) {
+			this.addressstatus = addressstatus;
+		}
+
+		public String getAddressstatus() {
+			return addressstatus;
+		}
+	}
+	
+	
 
 	
 

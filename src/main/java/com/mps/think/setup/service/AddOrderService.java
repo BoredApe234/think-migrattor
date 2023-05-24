@@ -1,9 +1,10 @@
 package com.mps.think.setup.service;
 
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,7 @@ public interface AddOrderService {
 	public Page<Order> getAllOrders(Pageable page) throws Exception;
 	public Order getOrderById(Integer orderId) throws Exception;
 	public Page<Order> getAllOrderByCustomerId(Integer customerId, Pageable page) throws Exception;
+	public List<Order> getAllOrderByCustomerIdAndOrderId(Integer customerId,Integer orderId) throws Exception;
 	public Order updateOrder(Order order) throws Exception;
 	public List<Order> getAllOrdersByOrderClassId(Integer ocId) throws Exception;
 	
@@ -35,5 +37,8 @@ public interface AddOrderService {
 	Page<Order> getOrdersById(Integer id, Pageable page);
 	
 	Order getSubOrderById(Integer id);
+	
+
+	List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus);
 	
 }

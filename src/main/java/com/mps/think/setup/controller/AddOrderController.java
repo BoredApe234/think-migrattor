@@ -1,7 +1,9 @@
 package com.mps.think.setup.controller;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -40,6 +42,11 @@ public class AddOrderController {
 		return ResponseEntity.ok(addOrderService.updateOrder(order));
 	}
 	
+	@PutMapping("/updateOrderPaymentStatus")
+	public ResponseEntity<?> updateOrderPaymentStatus(@RequestParam LinkedHashMap<String, String> OrderPaymentStatus) throws Exception {
+		return ResponseEntity.ok(addOrderService.updateOrderPaymentStatus(OrderPaymentStatus));
+	}
+	
 	@GetMapping("/getAllOrders")
 	public ResponseEntity<?> getAllOrders(@RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "5") Integer size) throws Exception {
@@ -56,6 +63,11 @@ public class AddOrderController {
 	public ResponseEntity<?> getAllOrderByCustomerId(@PathVariable Integer customerId, @RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "5") Integer size) throws Exception {
 		return ResponseEntity.ok(addOrderService.getAllOrderByCustomerId(customerId, PageRequest.of(page, size, Sort.by("orderId").descending())));
+	}
+	
+	@GetMapping("/getAllOrderByCustomerIdandOrderId/{customerId}{orderId}")
+	public ResponseEntity<?> getAllOrderByCustomerId(@RequestParam(required = true) Integer customerId, @RequestParam(required = true) Integer orderId) throws Exception {
+		return ResponseEntity.ok(addOrderService.getAllOrderByCustomerIdAndOrderId(customerId,orderId));
 	}
 	
 	@GetMapping("/findAllPaymentStatus")

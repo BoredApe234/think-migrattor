@@ -6,10 +6,12 @@ public class JurisdictionsVO {
 	
 	private Integer id;
 	private Publisher pubId;
+	private String countrycode;
 	private String stateCode;
 	private String city;
 	private String country;
 	private String zipCode;
+	private Boolean avatarapplicable;
 	public Integer getId() {
 		return id;
 	}
@@ -46,10 +48,25 @@ public class JurisdictionsVO {
 	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
+	public Boolean getAvatarapplicable() {
+		return avatarapplicable;
+	}
+	public void setAvatarapplicable(Boolean avatarapplicable) {
+		this.avatarapplicable = avatarapplicable;
+	}
+	public String getCountrycode() {
+		return countrycode;
+	}
+	public void setCountrycode(String countrycode) {
+		this.countrycode = countrycode;
+	}
 	@Override
 	public String toString() {
-		return "JurisdictionsVO [id=" + id + ", pubId=" + pubId + ", stateCode=" + stateCode + ", city=" + city
-				+ ", country=" + country + ", zipCode=" + zipCode + "]";
+		return "JurisdictionsVO [id=" + id + ", pubId=" + pubId + ", countrycode=" + countrycode + ", stateCode="
+				+ stateCode + ", city=" + city + ", country=" + country + ", zipCode=" + zipCode + ", avatarapplicable="
+				+ avatarapplicable + "]";
 	}
+
+
 	
 }

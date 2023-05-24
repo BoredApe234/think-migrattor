@@ -2,6 +2,7 @@ package com.mps.think.setup.vo;
 
 import java.util.Date;
 
+import com.mps.think.setup.model.Address;
 import com.mps.think.setup.vo.EnumModelVO.AddressCategory;
 import com.mps.think.setup.vo.EnumModelVO.AddressType;
 import com.mps.think.setup.vo.EnumModelVO.Frequency;
@@ -11,6 +12,8 @@ public class AddressesVO {
 	
 	private Integer addressId;
 //	private CustomerDetails cusId;
+//	private Address adId;
+	private String addressstatus;
 	private String addressName;
 	private AddressType addressType;
 	private String addressCategory;
@@ -36,6 +39,12 @@ public class AddressesVO {
 	}
 	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
+	}
+	public String getAddressstatus() {
+		return addressstatus;
+	}
+	public void setAddressstatus(String addressstatus) {
+		this.addressstatus = addressstatus;
 	}
 	public String getAddressName() {
 		return addressName;
@@ -159,19 +168,14 @@ public class AddressesVO {
 	}
 	@Override
 	public String toString() {
-		return "AddressesVO [addressId=" + addressId + ", addressName=" + addressName + ", addressType=" + addressType
-				+ ", addressCategory=" + addressCategory + ", status=" + status + ", primaryAddress=" + primaryAddress
-				+ ", name=" + name + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + ", zipCode="
-				+ zipCode + ", city=" + city + ", state=" + state + ", country=" + country + ", countryCode="
-				+ countryCode + ", phone=" + phone + ", validFrom=" + validFrom + ", validTo=" + validTo
-				+ ", frequency=" + frequency + ", selectionFrom=" + selectionFrom + ", selectionTo=" + selectionTo
-				+ ", addressAuxJSON=" + addressAuxJSON + "]";
+		return "AddressesVO [addressId=" + addressId + ", addressstatus=" + addressstatus + ", addressName="
+				+ addressName + ", addressType=" + addressType + ", addressCategory=" + addressCategory + ", status="
+				+ status + ", primaryAddress=" + primaryAddress + ", name=" + name + ", addressLine1=" + addressLine1
+				+ ", addressLine2=" + addressLine2 + ", zipCode=" + zipCode + ", city=" + city + ", state=" + state
+				+ ", country=" + country + ", countryCode=" + countryCode + ", phone=" + phone + ", validFrom="
+				+ validFrom + ", validTo=" + validTo + ", frequency=" + frequency + ", selectionFrom=" + selectionFrom
+				+ ", selectionTo=" + selectionTo + ", addressAuxJSON=" + addressAuxJSON + "]";
 	}
 	
 	
-	
-	
-	
-	
-
 }

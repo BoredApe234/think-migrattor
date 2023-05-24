@@ -1,5 +1,7 @@
 package com.mps.think.setup.controller;
 
+import java.util.LinkedHashMap;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -39,8 +41,8 @@ public class PaymentThresholdController {
 	}
 	
 	@PostMapping("/getPaymentRange")
-	public ResponseEntity<?> getPaymentRange(@RequestParam double invoiceAmount,@RequestParam double paidAmount,@RequestParam Integer paymentThresholdId){
-		return ResponseEntity.ok(paymentThresholdService.definePayment(invoiceAmount, paidAmount, paymentThresholdId));
+	public ResponseEntity<?> getPaymentRange(@RequestBody LinkedHashMap<Integer, String> amount,@RequestParam Integer paymentThresholdId){
+		return ResponseEntity.ok(paymentThresholdService.definePayment(amount, paymentThresholdId));
 	}
 	
 //	@PostMapping("/getPaymentThresholdDefId")
