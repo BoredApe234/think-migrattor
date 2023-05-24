@@ -23,6 +23,7 @@ import com.mps.think.setup.repo.ReinstateOrderRepo;
 import com.mps.think.setup.repo.SuspendOrderRepo;
 import com.mps.think.setup.service.ReinstateOrderService;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
+import com.mps.think.setup.vo.OrderCompactView;
 import com.mps.think.setup.vo.OrderSuspendView;
 import com.mps.think.setup.vo.ReinstateOrderVO;
 
@@ -86,11 +87,17 @@ public class ReinstateOrderServiceImpl implements ReinstateOrderService {
 		List<OrderSuspendView> output = new ArrayList<>();
 		for (Object[] o : ordersToReinstateForOrderId) {
 			Order order = orderRepo.findById((int)o[0]).get();
+			OrderCompactView ocv = new OrderCompactView();
+			ocv.setOrderId(order.getOrderId());
+			ocv.setParentOrderId(order.getParentOrder() != null ? order.getParentOrder().getParentOrderId() : null);
+			ocv.setCurrentOrderStatus(order.getOrderStatus());
+			ocv.setOrderCode(order.getKeyOrderInformation().getOrderCode().getOrderCodes().getOrderCode());
+			ocv.setPayment(order.getPaymentBreakdown());
+			ocv.setStartDate(order.getOrderItemsAndTerms().getValidFrom());
+			ocv.setEndDate(order.getOrderItemsAndTerms().getValidTo());
 			SuspendOrder so = suspendDetRepo.findById((int)o[1]).get();
-			order.setParentOrder(null);
-			order.setOrderAddresses(null);
 			so.setOrdersToSuspend(null);
-			output.add(new OrderSuspendView(order, so));
+			output.add(new OrderSuspendView(ocv, so));
 		}
 		return new PageImpl<>(output, ordersToReinstateForOrderId.getPageable(), ordersToReinstateForOrderId.getTotalElements());
 	}

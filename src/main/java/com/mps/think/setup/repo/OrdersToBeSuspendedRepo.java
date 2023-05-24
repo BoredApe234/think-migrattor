@@ -14,8 +14,9 @@ import com.mps.think.setup.model.OrdersToBeSuspended;
 @Repository
 public interface OrdersToBeSuspendedRepo extends JpaRepository<OrdersToBeSuspended, Integer> {
 	
-	@Query("SELECT o.order, s FROM SuspendOrder s JOIN s.ordersToSuspend o WHERE o.isReinstated IS FALSE AND o.isSuspended IS FALSE")
-	List<Object[]> findAllNonSuspendedAndNonReinstatedOrders();
+	@Query("SELECT o.order, s FROM SuspendOrder s JOIN s.ordersToSuspend o WHERE o.isReinstated IS FALSE AND o.isSuspended IS FALSE "
+			+ "AND ((:orderId IS NULL AND :suspendId IS NULL) OR (o.order.orderId = :orderId AND s.id = :suspendId))")
+	List<Object[]> findAllNonSuspendedAndNonReinstatedOrders(@Param("orderId") Integer orderId, @Param("suspendId") Integer suspendId);
 	
 	@Query("SELECT o.order, s FROM SuspendOrder s JOIN s.ordersToSuspend o WHERE o.isReinstated IS FALSE AND o.isSuspended IS TRUE")
 	List<Object[]> findAllSuspendedAndNonReinstatedOrders();
