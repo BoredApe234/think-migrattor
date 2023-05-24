@@ -16,4 +16,6 @@ public interface PaymentLinkStatusService {
 	
 	public PaymentLinkStatus findPaymentLinkStatusById(Integer id);
 	public PaymentLinkStatus findPaymentLinkStatusByOrderId(Integer orderId);
+
+	public List<PaymentLinkStatus> getAllPaymentLinkStatus();
 }

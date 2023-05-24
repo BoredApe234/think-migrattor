@@ -21,4 +21,6 @@ public interface TaxRateCategoryService {
 	
 	List<TaxRateCategory> findAllTaxRateCategoryForPublisher(Integer pubId);
 
+	public List<TaxRateCategory> getAllTaxRateCategory();
+
 }

@@ -19,4 +19,6 @@ public interface ProfitCenterService {
 	
 	public ProfitCenter deleteByproftIdId(Integer proftId);
 
+	public List<ProfitCenter> getAllProfitCenter();
+
 }

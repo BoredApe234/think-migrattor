@@ -21,4 +21,6 @@ public interface UnitBasedSubscriptionService {
 	
 	public List<UnitBasedSubscription> findAllUnitBasedSubscriptionByPubId(Integer publisherId);
 
+	public List<UnitBasedSubscription> getAllUnitBasedSubscription();
+
 }

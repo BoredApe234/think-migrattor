@@ -21,4 +21,6 @@ public interface TaxonomyService {
 	public Taxonomy deleteById(Integer id);
 	public List<Taxonomy> findAllTaxonomyByPubId(Integer publisherId);
 
+	public List<Taxonomy> getAllTaxonomy();
+
 }

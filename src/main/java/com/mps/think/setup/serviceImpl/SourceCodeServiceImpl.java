@@ -9,6 +9,7 @@ import org.webjars.NotFoundException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.SourceCode;
+import com.mps.think.setup.model.SourceCodeAndValuesMapping;
 import com.mps.think.setup.repo.SourceCodeRepo;
 import com.mps.think.setup.service.SourceCodeService;
 import com.mps.think.setup.vo.SourceCodeVO;
@@ -98,6 +99,17 @@ public class SourceCodeServiceImpl implements SourceCodeService {
 	public List<SourceCode> findAllSourceCodeByPublisherId(Integer pubId) {
 		// TODO Auto-generated method stub
 		return sourceCodeRepo.findByOcIdPubIdId(pubId);
+	}
+
+	@Override
+	public List<SourceCode> getAllSourceCode() {
+		return sourceCodeRepo.findAll();
+	}
+
+	@Override
+	public List<SourceCodeAndValuesMapping> getAllSourceCodeAndValuesMapping() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

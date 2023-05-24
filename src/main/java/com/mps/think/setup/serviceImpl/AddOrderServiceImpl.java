@@ -2,9 +2,6 @@ package com.mps.think.setup.serviceImpl;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
-
-import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,15 +10,19 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.MultiLineItemOrder;
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.OrderAddressMapping;
+import com.mps.think.setup.model.OrderAuxiliaryInformation;
+import com.mps.think.setup.model.OrderCategory;
 import com.mps.think.setup.model.OrderCodesSuper;
+import com.mps.think.setup.model.OrderDeliveryOptions;
+import com.mps.think.setup.model.OrderItems;
+import com.mps.think.setup.model.OrderKeyInformation;
 import com.mps.think.setup.model.PaymentBreakdown;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.MultiLineItemOrderRepo;
@@ -138,6 +139,60 @@ public class AddOrderServiceImpl implements AddOrderService {
 	}
 
 	@Override
+	public List<Order> getAllOrder() {
+		return addOrderRepo.findAll();
+	}
+
+	@Override
+	public List<OrderCategory> getAllOrderCategory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderAddressMapping> getAllOrderAddressMapping() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderAuxiliaryInformation> getAllOrderAuxiliaryInformation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderDeliveryOptions> getAllOrderDeliveryOptions() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderItems> getAllOrderItems() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderKeyInformation> getAllOrderKeyInformation() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<PaymentBreakdown> getAllPaymentBreakdown() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MultiLineItemOrder> getAllMultiLineItemOrder() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
 	public List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus) {
 	    List<Order> updatedOrders = new ArrayList<>();
 	    
@@ -158,7 +213,5 @@ public class AddOrderServiceImpl implements AddOrderService {
 	    
 	    return updatedOrders;
 	}
-
-
 	
 }

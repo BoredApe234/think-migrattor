@@ -67,4 +67,9 @@ public class DiscountCardKeyInfoServiceImpl implements DiscountCardKeyInfoServic
 		return discountCardKeyInfoRepo.findByOrderClassPubIdId(pubId);
 	}
 
+	@Override
+	public List<DiscountCardKeyInfo> getAllDiscountCardKeyInfo() {
+		return discountCardKeyInfoRepo.findAll();
+	}
+
 }

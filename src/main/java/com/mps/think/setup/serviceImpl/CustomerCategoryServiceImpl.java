@@ -93,4 +93,12 @@ public class CustomerCategoryServiceImpl implements CustomerCategoryService {
 		return CustomerCategoryRepo.findAllCustomerCategoryByPubId(pubId);
 	}
 
+	@Override
+	public List<CustomerCategory> getAllCustomerCategory() {
+		return CustomerCategoryRepo.findAll();
+	}
+
+	
+
+	
 }

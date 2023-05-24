@@ -64,4 +64,9 @@ public class TaxServiceImpl implements TaxService {
 		return taxTypeRepo.findByPubIdId(pubId);
 	}
 
+	@Override
+	public List<TaxType> getAllTaxType() {
+		return taxTypeRepo.findAll();
+	}
+
 }

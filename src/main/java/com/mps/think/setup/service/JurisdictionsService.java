@@ -19,4 +19,6 @@ public interface JurisdictionsService {
 	
 	List<Jurisdictions> findAllJurisdictionsForPublisher(Integer pubId);
 
+	public List<Jurisdictions> getAllJurisdictions();
+
 }

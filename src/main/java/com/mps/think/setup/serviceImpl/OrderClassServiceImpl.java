@@ -75,4 +75,9 @@ public class OrderClassServiceImpl implements OrderClassService{
 		return orderClassRepo.findAllOrderClassByPubId(pubId);
 	}
 
+	@Override
+	public List<OrderClass> getAllOrderClass() {
+		return orderClassRepo.findAll();
+	}
+
 }

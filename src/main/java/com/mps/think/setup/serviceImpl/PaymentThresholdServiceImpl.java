@@ -214,4 +214,9 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 		}
 		return response;
 	}
+
+	@Override
+	public List<PaymentThreshold> getAllPaymentThreshold() {
+		return paymentThresholdRepo.findAll();
+	}
 }

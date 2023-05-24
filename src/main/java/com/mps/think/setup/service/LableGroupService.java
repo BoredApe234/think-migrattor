@@ -20,4 +20,8 @@ public interface LableGroupService {
 	
 	public List<LableGroup> findAllLableGroupByPubId(Integer lableGroupId);
 
+	
+
+	public List<LableGroup> getAllLableGroup();
+
 }

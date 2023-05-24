@@ -71,4 +71,9 @@ public class RenewalOfferDetailsServiceImpl implements RenewalOfferDetailsServic
 		return details.get();
 	}
 
+	@Override
+	public List<RenewalOfferDetails> getAllRenewalOfferDetails() {
+		return offerDetailsRepo.findAll();
+	}
+
 }

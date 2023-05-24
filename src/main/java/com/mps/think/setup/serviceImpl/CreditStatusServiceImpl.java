@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
 import com.mps.think.setup.model.CreditStatus;
+import com.mps.think.setup.model.CurrencyExchange;
 import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.repo.CreditStatusRepo;
 import com.mps.think.setup.service.CreditStatusService;
@@ -74,5 +75,12 @@ public class CreditStatusServiceImpl implements CreditStatusService {
 	public List<CreditStatus> findcreditbyPubId(Integer pubId) {
 		return creditStatusRepo.findByPubIdId(pubId);
 	}
+
+	@Override
+	public List<CreditStatus> getAllCreditStatus() {
+		return creditStatusRepo.findAll();
+	}
+
+	
 }
 
