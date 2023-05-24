@@ -58,6 +58,11 @@ public class SourceAttributesServiceImpl implements SourceAttributesService {
 		return sourceAttributesRepo.findByPublisherId(pubid);
 	}
 
+	@Override
+	public List<SourceAttributes> getAllSourceAttributes() {
+		return sourceAttributesRepo.findAll();
+	}
+
 //	@Override
 //	public SourceAttributes findbySourceAttributeName(Integer sourceAttributeId) throws Exception {
 //		Optional<SourceAttributes> attribute = sourceAttributesRepo.findById(sourceAttributeId);

@@ -117,4 +117,27 @@ public class OrderCodesServiceImpl implements OrderCodesService {
 		return termsOutput;
 	}
 
+	@Override
+	public List<OrderCodesSuper> getAllOrderCodesSuper() {
+		return orderCodesSuperRepo.findAll();
+	}
+
+	@Override
+	public List<OrderItemDetails> getAllOrderItemDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderPackageOptions> getAllOrderOptions() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderPaymentOptions> getAllOrderPaymentOptions() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

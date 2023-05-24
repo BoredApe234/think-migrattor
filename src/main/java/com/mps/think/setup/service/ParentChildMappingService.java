@@ -17,4 +17,6 @@ public interface ParentChildMappingService {
 	
 	public List<ParentChildMapping> findAllParentChildByPublisherId(Integer pubId);
 
+	public List<ParentChildMapping> getAllParentChildMapping();
+
 }

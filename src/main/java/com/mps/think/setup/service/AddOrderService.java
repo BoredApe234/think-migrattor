@@ -8,9 +8,17 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.mps.think.setup.model.MultiLineItemOrder;
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.OrderAddressMapping;
+import com.mps.think.setup.model.OrderAuxiliaryInformation;
+import com.mps.think.setup.model.OrderCategory;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.vo.OrderSuspendView;
+import com.mps.think.setup.model.OrderDeliveryOptions;
+import com.mps.think.setup.model.OrderItems;
+import com.mps.think.setup.model.OrderKeyInformation;
+import com.mps.think.setup.model.PaymentBreakdown;
 import com.mps.think.setup.vo.OrderVO;
 
 @Service
@@ -37,8 +45,15 @@ public interface AddOrderService {
 	Page<Order> getOrdersById(Integer id, Pageable page);
 	
 	Order getSubOrderById(Integer id);
+	public List<Order> getAllOrder();
+	public List<OrderCategory> getAllOrderCategory();
+	public List<OrderAddressMapping> getAllOrderAddressMapping();
+	public List<OrderAuxiliaryInformation> getAllOrderAuxiliaryInformation();
+	public List<OrderDeliveryOptions> getAllOrderDeliveryOptions();
+	public List<OrderItems> getAllOrderItems();
+	public List<OrderKeyInformation> getAllOrderKeyInformation();
+	public List<PaymentBreakdown> getAllPaymentBreakdown();
+	public List<MultiLineItemOrder> getAllMultiLineItemOrder();
 	
-
 	List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus);
-	
 }

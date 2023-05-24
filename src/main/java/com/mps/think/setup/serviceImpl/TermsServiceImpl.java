@@ -74,4 +74,10 @@ public class TermsServiceImpl implements TermsService{
 		return termsRepo.findByPubIdId(pubId);
 	}
 
+
+	@Override
+	public List<Terms> getAllTerms() {
+		return termsRepo.findAll();
+	}
+
 }

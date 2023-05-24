@@ -13,4 +13,6 @@ public interface OrderThresholdInfoService {
 	
 	public OrderThresholdInfo findbyOrderId(Integer orderId);
 
+	public List<OrderThresholdInfo> getAllOrderThresholdInfo();
+
 }

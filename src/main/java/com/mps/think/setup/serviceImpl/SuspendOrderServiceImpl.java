@@ -110,4 +110,15 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 		return new PageImpl<>(output, orderIdAndSuspendDetId.getPageable(), orderIdAndSuspendDetId.getTotalElements());
 	}
 
+	@Override
+	public List<OrdersToBeSuspended> getAllOrdersToBeSuspended() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<SuspendOrder> getAllSuspendOrder() {
+		return suspendOrderRepo.findAll();
+	}
+
 }

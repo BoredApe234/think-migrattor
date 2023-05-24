@@ -39,6 +39,10 @@ public interface OrderCodesService {
 	
 	public List<OrderCodesSuper> getAllOrderCodesByOrderClassId(Integer ocId);
 	
-	public Set<Terms> getAllTermsForOrderCodeByIdOrderCodeId(Integer orderCodeId); 
+	public Set<Terms> getAllTermsForOrderCodeByIdOrderCodeId(Integer orderCodeId);
+	public List<OrderCodesSuper> getAllOrderCodesSuper();
+	public List<OrderItemDetails> getAllOrderItemDetails();
+	public List<OrderPackageOptions> getAllOrderOptions();
+	public List<OrderPaymentOptions> getAllOrderPaymentOptions(); 
 	
 }

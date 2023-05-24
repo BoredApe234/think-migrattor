@@ -19,4 +19,6 @@ public interface RentalStatusService {
 	
 	public RentalStatus deleteByRentalStatusId(Integer rentalStatusId);
 
+	public List<RentalStatus> getAllRentalStatus();
+
 }

@@ -54,6 +54,11 @@ public class JobQueueServiceImpl implements JobQueueService{
 		return delete;
 	}
 
+	@Override
+	public List<JobQueue> getAllJobQueue() {
+		return jobqueueRepo.findAll();
+	}
+
 	
 
 }

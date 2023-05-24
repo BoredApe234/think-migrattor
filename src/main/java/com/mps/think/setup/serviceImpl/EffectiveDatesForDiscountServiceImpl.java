@@ -74,4 +74,9 @@ public class EffectiveDatesForDiscountServiceImpl implements EffectiveDatesForDi
 		return null;
 	}
 
+	@Override
+	public List<EffectiveDatesForDiscount> getAllEffectiveDatesForDiscount() {
+		return effectiveDatesForDiscountRepo.findAll();
+	}
+
 }

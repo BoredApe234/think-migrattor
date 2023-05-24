@@ -70,4 +70,9 @@ public class AuxServiceImpl implements AuxService {
 		return auxRepo.findByPubIdId(pubId);
 	}
 
+	@Override
+	public List<AuxVariable> getAllAuxVariable() {
+		return auxRepo.findAll();
+	}
+
 }

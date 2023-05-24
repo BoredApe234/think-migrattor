@@ -65,4 +65,9 @@ public class LableGroupServiceImp implements LableGroupService {
 		return lableGroupRepo.findByPubIdId(lableGroupId);
 	}
 
+	@Override
+	public List<LableGroup> getAllLableGroup() {
+	return lableGroupRepo.findAll();
+	}
+
 }

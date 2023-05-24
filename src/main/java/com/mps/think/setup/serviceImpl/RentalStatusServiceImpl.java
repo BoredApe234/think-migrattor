@@ -73,4 +73,9 @@ public class RentalStatusServiceImpl implements RentalStatusService {
 		return 	rentalStatusRepo.findByPublisherId(pubId);
 	}
 
+	@Override
+	public List<RentalStatus> getAllRentalStatus() {
+		return rentalStatusRepo.findAll();
+	}
+
 }

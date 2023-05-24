@@ -83,4 +83,9 @@ public class OrderThresholdInfoServiceImpl implements OrderThresholdInfoService{
 		return thresholdInfoRepo.findByOrderOrderId(orderId);
 	}
 
+	@Override
+	public List<OrderThresholdInfo> getAllOrderThresholdInfo() {
+		return thresholdInfoRepo.findAll();
+	}
+
 }

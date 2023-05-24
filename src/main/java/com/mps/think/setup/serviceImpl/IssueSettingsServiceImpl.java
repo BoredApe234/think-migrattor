@@ -51,5 +51,10 @@ public class IssueSettingsServiceImpl implements IssueSettingsService{
 		return issueSettingsRepo.findByOrderClassIdPubIdId(pubId);
 	}
 
+	@Override
+	public List<IssueSettings> getAllIssueSettings() {
+		return issueSettingsRepo.findAll();
+	}
+
 	
 }

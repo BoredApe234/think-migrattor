@@ -81,4 +81,9 @@ public class ProfitCenterServiceImpl implements ProfitCenterService {
 		return profitCenterRepo.findByPubIdId(pubId);
 	}
 
+	@Override
+	public List<ProfitCenter> getAllProfitCenter() {
+		return profitCenterRepo.findAll();
+	}
+
 }

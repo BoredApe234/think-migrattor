@@ -23,4 +23,6 @@ public interface PaymentThresholdService {
 	public PaymentThreshold DeletePaymentThreshold(Integer id);
 	
 	public List<PaymentThreshold> defaultStatus(PaymentThresholdVO paymentThresholdVO);
+
+	public List<PaymentThreshold> getAllPaymentThreshold();
 }
