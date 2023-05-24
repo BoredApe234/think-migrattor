@@ -21,7 +21,7 @@ public class SuspendOrderController {
 	SuspendOrderService suspendOrderService;
 	
 	@PostMapping("/saveSuspendOrdersDetails")
-	public ResponseEntity<?> saveSuspendOrdersDetails(@RequestBody SuspendOrderVO suspendOrder) {
+	public ResponseEntity<?> saveSuspendOrdersDetails(@RequestBody SuspendOrderVO suspendOrder) throws OrdersNotSuspended, ParseException {
 		return ResponseEntity.ok(suspendOrderService.saveSuspendOrderDetails(suspendOrder));
 	}
 	

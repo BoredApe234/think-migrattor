@@ -39,10 +39,12 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 	SimpleDateFormat sdf;
 
 	@Override
-	public SuspendOrder saveSuspendOrderDetails(SuspendOrderVO suspendOrders) {
+	public SuspendOrder saveSuspendOrderDetails(SuspendOrderVO suspendOrders) throws OrdersNotSuspended, ParseException {
 		SuspendOrder suspendOrdersDet = mapper.convertValue(suspendOrders, SuspendOrder.class);
 		suspendOrdersDet.setIsSuspended(false);
-		return suspendOrderRepo.saveAndFlush(suspendOrdersDet);
+		SuspendOrder savedSuspension = suspendOrderRepo.saveAndFlush(suspendOrdersDet);
+		checkOrdersToSuspend();
+		return savedSuspension;
 	}
 
 	boolean suspendOrders(List<OrdersToBeSuspended> ordersToSuspend, OrderStatus statusToSet) {

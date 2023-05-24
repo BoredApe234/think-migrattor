@@ -10,7 +10,7 @@ import com.mps.think.setup.vo.SuspendOrderVO;
 
 public interface SuspendOrderService {
 
-	SuspendOrder saveSuspendOrderDetails(SuspendOrderVO suspendOrders);
+	SuspendOrder saveSuspendOrderDetails(SuspendOrderVO suspendOrders) throws OrdersNotSuspended, ParseException;
 	
 	void checkOrdersToSuspend() throws ParseException, OrdersNotSuspended;
 	
