@@ -21,6 +21,7 @@ import com.mps.think.setup.repo.OrdersToBeSuspendedRepo;
 import com.mps.think.setup.repo.SuspendOrderRepo;
 import com.mps.think.setup.service.SuspendOrderService;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
+import com.mps.think.setup.vo.OrderCompactView;
 import com.mps.think.setup.vo.OrderSuspendView;
 import com.mps.think.setup.vo.SuspendOrderVO;
 
@@ -46,14 +47,15 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 			o.setIsReinstated(false);
 			o.setIsSuspended(false);
 		});
-		checkOrdersToSuspend();
-		return suspendOrderRepo.saveAndFlush(suspendOrders);
+		SuspendOrder susDet = suspendOrderRepo.saveAndFlush(suspendOrders);
+		susDet.getOrdersToSuspend().forEach(o -> checkOrdersToSuspend(o.getOrder().getOrderId(), o.getSuspendOrder().getId()));
+		return susDet;
 	}
 
 	// will have to put this in scheduler
-	void checkOrdersToSuspend() {
+	void checkOrdersToSuspend(Integer orderId, Integer suspensionId) {
 		LocalDate currentDate = LocalDate.now(Clock.systemDefaultZone());
-		List<Object[]> nonSuspendedOrders = ordersToBeSuspendedRepo.findAllNonSuspendedAndNonReinstatedOrders();
+		List<Object[]> nonSuspendedOrders = ordersToBeSuspendedRepo.findAllNonSuspendedAndNonReinstatedOrders(orderId, suspensionId);
 		for (Object[] o : nonSuspendedOrders) {
 			Order order = (Order)o[0];
 			SuspendOrder suspendDetails = (SuspendOrder)o[1];
@@ -101,11 +103,17 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 		List<OrderSuspendView> output = new ArrayList<>();
 		for (Object[] o : orderIdAndSuspendDetId) {
 			Order order = orderRepo.findById((int)o[0]).get();
+			OrderCompactView ocv = new OrderCompactView();
+			ocv.setOrderId(order.getOrderId());
+			ocv.setParentOrderId(order.getParentOrder().getParentOrderId());
+			ocv.setCurrentOrderStatus(order.getOrderStatus());
+			ocv.setOrderCode(order.getKeyOrderInformation().getOrderCode().getOrderCodes().getOrderCode());
+			ocv.setPayment(order.getPaymentBreakdown());
+			ocv.setStartDate(order.getOrderItemsAndTerms().getValidFrom());
+			ocv.setEndDate(order.getOrderItemsAndTerms().getValidTo());
 			SuspendOrder suspendOrder = o[1] == null ? null : suspendOrderRepo.findById((int)o[1]).get();
-			order.setOrderAddresses(null);
-			order.setParentOrder(null);
 			if(suspendOrder != null) suspendOrder.setOrdersToSuspend(null);
-			output.add(new OrderSuspendView(order, suspendOrder));
+			output.add(new OrderSuspendView(ocv, suspendOrder));
 		}
 		return new PageImpl<>(output, orderIdAndSuspendDetId.getPageable(), orderIdAndSuspendDetId.getTotalElements());
 	}
