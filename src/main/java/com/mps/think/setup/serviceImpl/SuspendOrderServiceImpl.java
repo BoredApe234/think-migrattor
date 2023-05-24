@@ -111,6 +111,9 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 			ocv.setPayment(order.getPaymentBreakdown());
 			ocv.setStartDate(order.getOrderItemsAndTerms().getValidFrom());
 			ocv.setEndDate(order.getOrderItemsAndTerms().getValidTo());
+			ocv.setCustomerId(order.getCustomerId().getCustomerId());
+			ocv.setCustomerFirstName(order.getCustomerId().getFname());
+			ocv.setCustomerLastName(order.getCustomerId().getLname());
 			SuspendOrder suspendOrder = o[1] == null ? null : suspendOrderRepo.findById((int)o[1]).get();
 			if(suspendOrder != null) suspendOrder.setOrdersToSuspend(null);
 			output.add(new OrderSuspendView(ocv, suspendOrder));

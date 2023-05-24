@@ -20,6 +20,12 @@ public class OrderCompactView {
 	private Date startDate;
 	
 	private Date endDate;
+	
+	private Integer customerId;
+	
+	private String customerFirstName;
+	
+	private String customerLastName;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -76,7 +82,29 @@ public class OrderCompactView {
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}
-	
-	
+
+	public Integer getCustomerId() {
+		return customerId;
+	}
+
+	public void setCustomerId(Integer customerId) {
+		this.customerId = customerId;
+	}
+
+	public String getCustomerFirstName() {
+		return customerFirstName;
+	}
+
+	public void setCustomerFirstName(String customerFirstName) {
+		this.customerFirstName = customerFirstName;
+	}
+
+	public String getCustomerLastName() {
+		return customerLastName;
+	}
+
+	public void setCustomerLastName(String customerLastName) {
+		this.customerLastName = customerLastName;
+	}
 	
 }

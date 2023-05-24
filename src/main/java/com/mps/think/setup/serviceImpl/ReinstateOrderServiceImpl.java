@@ -95,6 +95,9 @@ public class ReinstateOrderServiceImpl implements ReinstateOrderService {
 			ocv.setPayment(order.getPaymentBreakdown());
 			ocv.setStartDate(order.getOrderItemsAndTerms().getValidFrom());
 			ocv.setEndDate(order.getOrderItemsAndTerms().getValidTo());
+			ocv.setCustomerId(order.getCustomerId().getCustomerId());
+			ocv.setCustomerFirstName(order.getCustomerId().getFname());
+			ocv.setCustomerLastName(order.getCustomerId().getLname());
 			SuspendOrder so = suspendDetRepo.findById((int)o[1]).get();
 			so.setOrdersToSuspend(null);
 			output.add(new OrderSuspendView(ocv, so));
