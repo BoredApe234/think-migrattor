@@ -7,7 +7,7 @@ public class OrderItemDetailsVO {
 	private Integer id;
 
 //	private Integer publisherId;
-	
+
 	private Date effectiveDate;
 
 	private String itemType;
@@ -29,7 +29,21 @@ public class OrderItemDetailsVO {
 	private String edition;
 
 	private String category;
-	
+
+	private String isbn;
+
+	private String author;
+
+	private String style;
+
+	private String size;
+
+	private String colour;
+
+	private boolean electronicDelivery;
+
+	private Date fulfilmentDate;
+
 	public Integer getId() {
 		return id;
 	}
@@ -125,5 +139,62 @@ public class OrderItemDetailsVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
+	}
+
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+
+	public String getColour() {
+		return colour;
+	}
+
+	public void setColour(String colour) {
+		this.colour = colour;
+	}
+
+	public boolean isElectronicDelivery() {
+		return electronicDelivery;
+	}
+
+	public void setElectronicDelivery(boolean electronicDelivery) {
+		this.electronicDelivery = electronicDelivery;
+	}
+
+	public Date getFulfilmentDate() {
+		return fulfilmentDate;
+	}
+
+	public void setFulfilmentDate(Date fulfilmentDate) {
+		this.fulfilmentDate = fulfilmentDate;
+	}
+
 	
 }
