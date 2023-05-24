@@ -1,106 +1,113 @@
 package com.mps.think.setup.serviceImpl;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.Clock;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.mps.think.setup.exception.OrdersNotSuspended;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrdersToBeSuspended;
 import com.mps.think.setup.model.SuspendOrder;
 import com.mps.think.setup.repo.AddOrderRepo;
+import com.mps.think.setup.repo.OrdersToBeSuspendedRepo;
 import com.mps.think.setup.repo.SuspendOrderRepo;
 import com.mps.think.setup.service.SuspendOrderService;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
+import com.mps.think.setup.vo.OrderSuspendView;
 import com.mps.think.setup.vo.SuspendOrderVO;
 
 @Service
 public class SuspendOrderServiceImpl implements SuspendOrderService {
 
 	@Autowired
-	ObjectMapper mapper;
+	private SuspendOrderRepo suspendOrderRepo;
 
 	@Autowired
-	SuspendOrderRepo suspendOrderRepo;
+	private ObjectMapper mapper;
 
 	@Autowired
-	AddOrderRepo orderRepo;
+	private OrdersToBeSuspendedRepo ordersToBeSuspendedRepo;
 
 	@Autowired
-	Date date;
-
-	@Autowired
-	SimpleDateFormat sdf;
+	private AddOrderRepo orderRepo;
 
 	@Override
-	public SuspendOrder saveSuspendOrderDetails(SuspendOrderVO suspendOrders) throws OrdersNotSuspended, ParseException {
-		SuspendOrder suspendOrdersDet = mapper.convertValue(suspendOrders, SuspendOrder.class);
-		suspendOrdersDet.setIsSuspended(false);
-		SuspendOrder savedSuspension = suspendOrderRepo.saveAndFlush(suspendOrdersDet);
+	public SuspendOrder saveSuspendOrdersDetail(SuspendOrderVO suspendOrdersDetail) {
+		SuspendOrder suspendOrders = mapper.convertValue(suspendOrdersDetail, SuspendOrder.class);
+		suspendOrders.getOrdersToSuspend().forEach(o -> {
+			o.setIsReinstated(false);
+			o.setIsSuspended(false);
+		});
 		checkOrdersToSuspend();
-		return savedSuspension;
+		return suspendOrderRepo.saveAndFlush(suspendOrders);
 	}
 
-	boolean suspendOrders(List<OrdersToBeSuspended> ordersToSuspend, OrderStatus statusToSet) {
-		try {
-			List<Order> orders = ordersToSuspend.stream().map(o -> o.getOrder()).collect(Collectors.toList());
-			orders.forEach(o -> o.setOrderStatus(statusToSet));
-			orderRepo.saveAllAndFlush(orders);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
+	// will have to put this in scheduler
+	void checkOrdersToSuspend() {
+		LocalDate currentDate = LocalDate.now(Clock.systemDefaultZone());
+		List<Object[]> nonSuspendedOrders = ordersToBeSuspendedRepo.findAllNonSuspendedAndNonReinstatedOrders();
+		for (Object[] o : nonSuspendedOrders) {
+			Order order = (Order)o[0];
+			SuspendOrder suspendDetails = (SuspendOrder)o[1];
+			LocalDate suspensionStartFrom = suspendDetails.getSuspendedfrom().toInstant().atZone(ZoneId.systemDefault())
+					.toLocalDate();
+			if (currentDate.isBefore(suspensionStartFrom))
+				continue;
+			suspendOrContinueOrder(order, suspendDetails.getSetOrderStatus());
+			OrdersToBeSuspended ordersToBeSuspendedForGivenOrderAndSuspendDetails = ordersToBeSuspendedRepo
+					.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(order.getOrderId(), suspendDetails.getId());
+			ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsSuspended(true);
+			ordersToBeSuspendedRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
 		}
 	}
-	
-	boolean continueOrders(List<OrdersToBeSuspended> ordersToContinue) {
-		try {
-			List<Order> orders = ordersToContinue.stream().map(o -> o.getOrder()).collect(Collectors.toList());
-			orders.forEach(o -> o.setOrderStatus(OrderStatus.Active));
-			orderRepo.saveAllAndFlush(orders);
-			return true;
-		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
+
+	private void suspendOrContinueOrder(Order order, OrderStatus setOrderStatus) {
+		order.setOrderStatus(setOrderStatus);
+		orderRepo.saveAndFlush(order);
+	}
+
+	// goes into scheduler
+	void checkOrdersToContinue() {
+		LocalDate currentDate = LocalDate.now(Clock.systemDefaultZone());
+		List<Object[]> allSuspendedOrders = ordersToBeSuspendedRepo.findAllSuspendedAndNonReinstatedOrders();
+		for (Object[] o : allSuspendedOrders) {
+			Order order = (Order)o[0];
+			SuspendOrder suspendDetails = (SuspendOrder)o[1];
+			LocalDate suspendedTill = suspendDetails.getSuspendedTo().toInstant().atZone(ZoneId.systemDefault())
+					.toLocalDate();
+			if (currentDate.isBefore(suspendedTill)
+					|| order.getOrderStatus().equals(OrderStatus.SUSPEND_NON_PAY))
+				continue;
+			suspendOrContinueOrder(order, OrderStatus.Active);
+			OrdersToBeSuspended ordersToBeSuspendedForGivenOrderAndSuspendDetails = ordersToBeSuspendedRepo
+					.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(order.getOrderId(), suspendDetails.getId());
+			ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsReinstated(true);
+			ordersToBeSuspendedRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
 		}
 	}
 
 	@Override
-	public void checkOrdersToSuspend() throws ParseException, OrdersNotSuspended {
-		Date currentDate = sdf.parse(sdf.format(date));
-		List<SuspendOrder> allNonSuspendedOrders = suspendOrderRepo.getAllNonSuspendedOrders(currentDate);
-		for (SuspendOrder nonSuspendedOrderDet : allNonSuspendedOrders) {
-			boolean gotSuspended = suspendOrders(nonSuspendedOrderDet.getOrdersToSuspend(), nonSuspendedOrderDet.getSetOrderStatus());
-			if (gotSuspended) {
-				nonSuspendedOrderDet.setIsSuspended(true);
-				suspendOrderRepo.saveAndFlush(nonSuspendedOrderDet);
-			} else {
-				throw new OrdersNotSuspended("orders with ids: " + nonSuspendedOrderDet.getOrdersToSuspend().stream().map(o -> 
-				o.getOrder().getOrderId()).collect(Collectors.toList()) + " did not get suspended");
-			}
+	public Page<OrderSuspendView> findOrdersByIdWithSuspensionDetails(Integer orderId, Pageable page) {
+		Integer parentOrderId = orderRepo.findById(orderId).get().getParentOrder().getParentOrderId();
+		Page<Object[]> orderIdAndSuspendDetId = suspendOrderRepo.findAllOrdersByIdWithSuspensionDet(parentOrderId, page);
+		List<OrderSuspendView> output = new ArrayList<>();
+		for (Object[] o : orderIdAndSuspendDetId) {
+			Order order = orderRepo.findById((int)o[0]).get();
+			SuspendOrder suspendOrder = o[1] == null ? null : suspendOrderRepo.findById((int)o[1]).get();
+			order.setOrderAddresses(null);
+			order.setParentOrder(null);
+			if(suspendOrder != null) suspendOrder.setOrdersToSuspend(null);
+			output.add(new OrderSuspendView(order, suspendOrder));
 		}
-	}
-
-	@Override
-	public void checkOrdersToContinue() throws ParseException, OrdersNotSuspended {
-		Date currentDate = sdf.parse(sdf.format(date));
-		List<SuspendOrder> ordersToContinue = suspendOrderRepo.getAllOrdersToContinue(currentDate);
-		for (SuspendOrder suspendedOrdersDet : ordersToContinue) {
-			boolean continued = continueOrders(suspendedOrdersDet.getOrdersToSuspend());
-			if (continued) {
-				suspendedOrdersDet.setIsSuspended(false);
-				suspendOrderRepo.saveAndFlush(suspendedOrdersDet);
-			} else {
-				throw new OrdersNotSuspended("orders with ids: " + suspendedOrdersDet.getOrdersToSuspend().stream().map(o -> 
-				o.getOrder().getOrderId()).collect(Collectors.toList()) + " did not get activated");
-			}
-		}
+		return new PageImpl<>(output, orderIdAndSuspendDetId.getPageable(), orderIdAndSuspendDetId.getTotalElements());
 	}
 
 }

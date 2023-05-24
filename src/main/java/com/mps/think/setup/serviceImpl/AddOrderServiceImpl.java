@@ -1,6 +1,7 @@
 package com.mps.think.setup.serviceImpl;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import java.util.Comparator;
@@ -10,7 +11,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -19,10 +20,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.MultiLineItemOrder;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderCodesSuper;
+import com.mps.think.setup.model.SuspendOrder;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.MultiLineItemOrderRepo;
+import com.mps.think.setup.repo.OrdersToBeSuspendedRepo;
+import com.mps.think.setup.repo.SuspendOrderRepo;
 import com.mps.think.setup.service.AddOrderService;
+import com.mps.think.setup.utils.Pair;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
+import com.mps.think.setup.vo.OrderSuspendView;
 import com.mps.think.setup.vo.OrderVO;
 
 @Service
@@ -36,6 +42,12 @@ public class AddOrderServiceImpl implements AddOrderService {
 	
 	@Autowired
 	private MultiLineItemOrderRepo multiLineOrderRepo;
+	
+	@Autowired
+	OrdersToBeSuspendedRepo ordersToSuspendRepo;
+	
+	@Autowired
+	SuspendOrderRepo suspendedOrderRepo;
 
 	@Override
 	public Order saveOrder(OrderVO order) throws Exception {
@@ -116,9 +128,8 @@ public class AddOrderServiceImpl implements AddOrderService {
 		addOrderRepo.saveAllAndFlush(orders);
 	}
 
-	public List<Order> getOrdersById(Integer id) {
-		MultiLineItemOrder order = multiLineOrderRepo.findByOrderOrderId(id);
-		return multiLineOrderRepo.findByParentOrderId(order.getParentOrderId()).stream().map(o -> o.getOrder()).collect(Collectors.toList());
+	public Page<Order> getOrdersById(Integer id, Pageable page) {
+		return multiLineOrderRepo.findOrdersByParentOrderId(addOrderRepo.findById(id).get().getParentOrder().getParentOrderId(), page);
 	}
 
 	@Override

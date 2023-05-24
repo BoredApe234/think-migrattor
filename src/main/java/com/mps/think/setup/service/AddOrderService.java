@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderCodesSuper;
+import com.mps.think.setup.vo.OrderSuspendView;
 import com.mps.think.setup.vo.OrderVO;
 
 @Service
@@ -29,7 +30,9 @@ public interface AddOrderService {
 	
 	void setAllOrdersOfCustomerInActive(Integer customerId);
 	
-	List<Order> getOrdersById(Integer id);
+//	List<Order> getOrdersById(Integer id);
+	
+	Page<Order> getOrdersById(Integer id, Pageable page);
 	
 	Order getSubOrderById(Integer id);
 	

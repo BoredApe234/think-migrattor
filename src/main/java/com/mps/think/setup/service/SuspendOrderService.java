@@ -1,17 +1,16 @@
 package com.mps.think.setup.service;
 
-import java.text.ParseException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
-import com.mps.think.setup.exception.OrdersNotSuspended;
 import com.mps.think.setup.model.SuspendOrder;
+import com.mps.think.setup.vo.OrderSuspendView;
 import com.mps.think.setup.vo.SuspendOrderVO;
 
 public interface SuspendOrderService {
-
-	SuspendOrder saveSuspendOrderDetails(SuspendOrderVO suspendOrders) throws OrdersNotSuspended, ParseException;
 	
-	void checkOrdersToSuspend() throws ParseException, OrdersNotSuspended;
+	SuspendOrder saveSuspendOrdersDetail(SuspendOrderVO suspendOrdersDetail);
 	
-	void checkOrdersToContinue() throws ParseException, OrdersNotSuspended;
+	Page<OrderSuspendView> findOrdersByIdWithSuspensionDetails(Integer orderId, Pageable page);
 	
 }
