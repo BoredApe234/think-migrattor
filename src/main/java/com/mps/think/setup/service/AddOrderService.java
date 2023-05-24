@@ -1,5 +1,6 @@
 package com.mps.think.setup.service;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -50,5 +51,7 @@ public interface AddOrderService {
 	public List<OrderKeyInformation> getAllOrderKeyInformation();
 	public List<PaymentBreakdown> getAllPaymentBreakdown();
 	public List<MultiLineItemOrder> getAllMultiLineItemOrder();
+	
+	List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus);
 	
 }

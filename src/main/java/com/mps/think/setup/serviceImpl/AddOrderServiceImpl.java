@@ -1,9 +1,11 @@
 package com.mps.think.setup.serviceImpl;
 
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import java.util.Comparator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -194,5 +196,27 @@ public class AddOrderServiceImpl implements AddOrderService {
 		return null;
 	}
 
+	
+	@Override
+	public List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus) {
+	    List<Order> updatedOrders = new ArrayList<>();
+	    
+	    for (Map.Entry<String, String> entry : OrderPaymentStatus.entrySet()) {
+	    	String orderId = entry.getKey();
+	        String paymentStatus = entry.getValue();
+
+	        Order order = addOrderRepo.findById(Integer.valueOf(orderId)).orElse(null);
+	        
+	        if (order != null) {
+	            PaymentBreakdown paymentBreakdown = order.getPaymentBreakdown();
+	            paymentBreakdown.setPaymentStatus(paymentStatus);
+	            
+	            Order updatedOrder = addOrderRepo.save(order);
+	            updatedOrders.add(updatedOrder);
+	        }
+	    }
+	    
+	    return updatedOrders;
+	}
 	
 }
