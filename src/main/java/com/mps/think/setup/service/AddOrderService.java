@@ -53,7 +53,4 @@ public interface AddOrderService {
 	public List<MultiLineItemOrder> getAllMultiLineItemOrder();
 	
 	List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus);
-	
-
-	
 }
