@@ -17,10 +17,5 @@ public interface SuspendOrderService {
 	SuspendOrder saveSuspendOrdersDetail(SuspendOrderVO suspendOrdersDetail);
 	
 	Page<OrderSuspendView> findOrdersByIdWithSuspensionDetails(Integer orderId, Pageable page);
-	void checkOrdersToContinue() throws ParseException, OrdersNotSuspended;
-
-	List<OrdersToBeSuspended> getAllOrdersToBeSuspended();
-
-	List<SuspendOrder> getAllSuspendOrder();
 	
 }
