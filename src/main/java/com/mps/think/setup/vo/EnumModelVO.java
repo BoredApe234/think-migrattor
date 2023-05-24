@@ -247,7 +247,7 @@ public class EnumModelVO {
 
 	public static enum OrderStatus {
 
-		Active("Active"), Cancelled("Cancelled"), Pending("Pending"), SUSPENDED_TEMP("Suspended-Temporary"), SUSPEND_NON_PAY("Suspend Non-Pay");;
+		Active("Active"), Cancelled("Cancelled"), Pending("Pending"), SUSPENDED_TEMP("Suspended-Temporary"), SUSPEND_NON_PAY("Suspend Non-Pay");
 
 		private final String displayOrderStatus;
 
