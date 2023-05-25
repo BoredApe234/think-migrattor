@@ -15,6 +15,8 @@ public class InventoryMapperVO {
 	private InventoryStorageLocationsVO primaryStorageLocation;
 	
 	private InventoryBulkTotalsVO bulkInventoryTotals;
+	
+	private InventoryVendorDetailsVO vendorInformation;
 
 	public InventoryGeneralInformationVO getGeneralInformation() {
 		return generalInformation;
@@ -70,6 +72,14 @@ public class InventoryMapperVO {
 
 	public void setInventoryId(Integer inventoryId) {
 		this.inventoryId = inventoryId;
+	}
+
+	public InventoryVendorDetailsVO getVendorInformation() {
+		return vendorInformation;
+	}
+
+	public void setVendorInformation(InventoryVendorDetailsVO vendorInformation) {
+		this.vendorInformation = vendorInformation;
 	}
 
 }

@@ -13,33 +13,31 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
-@Table(name = "orders_to_be_suspended")
-public class OrdersToBeSuspended extends BaseEntity {
+@Table(name = "reinstated_orders")
+public class OrdersReinstated extends BaseEntity {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
 	
 	@ManyToOne
-	@JoinColumn(name = "suspend_order_id")
-	@JsonBackReference
-	private SuspendOrder suspendOrder;
-	
-	@OneToOne
 	@JoinColumn(name = "order_id")
 	private Order order;
 	
-	@Column(name = "is_reinstated")
-	private Boolean isReinstated;
+	@ManyToOne
+	@JoinColumn(name = "reinstate_order_det_id")
+	@JsonBackReference
+	private ReinstateOrder reinstateDetails;
 	
-	@Column(name = "is_suspended")
-	private Boolean isSuspended;
+	@OneToOne
+	@JoinColumn(name = "suspend_order_det_id", referencedColumnName = "id")
+	private SuspendOrder suspendOrder;
 
 	public Integer getId() {
 		return id;
@@ -47,14 +45,6 @@ public class OrdersToBeSuspended extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public SuspendOrder getSuspendOrder() {
-		return suspendOrder;
-	}
-
-	public void setSuspendOrder(SuspendOrder suspendOrder) {
-		this.suspendOrder = suspendOrder;
 	}
 
 	public Order getOrder() {
@@ -65,20 +55,20 @@ public class OrdersToBeSuspended extends BaseEntity {
 		this.order = order;
 	}
 
-	public Boolean getIsReinstated() {
-		return isReinstated;
+	public ReinstateOrder getReinstateDetails() {
+		return reinstateDetails;
 	}
 
-	public void setIsReinstated(Boolean isReinstated) {
-		this.isReinstated = isReinstated;
+	public void setReinstateDetails(ReinstateOrder reinstateDetails) {
+		this.reinstateDetails = reinstateDetails;
 	}
 
-	public Boolean getIsSuspended() {
-		return isSuspended;
+	public SuspendOrder getSuspendOrder() {
+		return suspendOrder;
 	}
 
-	public void setIsSuspended(Boolean isSuspended) {
-		this.isSuspended = isSuspended;
+	public void setSuspendOrder(SuspendOrder suspendOrder) {
+		this.suspendOrder = suspendOrder;
 	}
-
+	
 }

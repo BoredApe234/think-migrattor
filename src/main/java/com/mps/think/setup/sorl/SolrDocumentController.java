@@ -894,16 +894,16 @@ public class SolrDocumentController {
 	return "orderPaymentOptions saved!!!";
 	}
 	
-	@GetMapping("/saveOrdersToBeSuspendedSolr")
-	public String OrdersToBeSuspendedDocuments() {
-		List<OrdersToBeSuspended> otbs = SuspendOrderService.getAllOrdersToBeSuspended();	
-	for (OrdersToBeSuspended ordersToBeSuspended : otbs) {
-		documentRepository.save(new Document("OrdersToBeSuspended" + ordersToBeSuspended.getId(),
-				"OrdersToBeSuspended" + ordersToBeSuspended.getId(), ordersToBeSuspended.toString()));
-	}
-
-	return "OrdersToBeSuspended saved!!!";
-	}
+//	@GetMapping("/saveOrdersToBeSuspendedSolr")
+//	public String OrdersToBeSuspendedDocuments() {
+//		List<OrdersToBeSuspended> otbs = SuspendOrderService.getAllOrdersToBeSuspended();	
+//	for (OrdersToBeSuspended ordersToBeSuspended : otbs) {
+//		documentRepository.save(new Document("OrdersToBeSuspended" + ordersToBeSuspended.getId(),
+//				"OrdersToBeSuspended" + ordersToBeSuspended.getId(), ordersToBeSuspended.toString()));
+//	}
+//
+//	return "OrdersToBeSuspended saved!!!";
+//	}
 	
 	@GetMapping("/saveOrderThresholdInfoSolr")
 	public String OrderThresholdInfoDocuments() {
@@ -1313,16 +1313,16 @@ public class SolrDocumentController {
 	return "SubscriptionDefKeyInfo saved!!!";
 	}
 	
-	@GetMapping("/saveSuspendOrderSolr")
-	public String SuspendOrderDocuments() {
-		List<SuspendOrder> sdki = suspendOrderService.getAllSuspendOrder();	
-	for (SuspendOrder suspendOrder : sdki) {
-		documentRepository.save(new Document("SuspendOrder" + suspendOrder.getId(),
-				"SuspendOrder" + suspendOrder.getId(), suspendOrder.toString()));
-	}
-	
-	return "SuspendOrder saved!!!";
-	}
+//	@GetMapping("/saveSuspendOrderSolr")
+//	public String SuspendOrderDocuments() {
+//		List<SuspendOrder> sdki = suspendOrderService.getAllSuspendOrder();	
+//	for (SuspendOrder suspendOrder : sdki) {
+//		documentRepository.save(new Document("SuspendOrder" + suspendOrder.getId(),
+//				"SuspendOrder" + suspendOrder.getId(), suspendOrder.toString()));
+//	}
+//	
+//	return "SuspendOrder saved!!!";
+//	}
 	
 	@GetMapping("/saveTaxonomySolr")
 	public String TaxonomyDocuments() {

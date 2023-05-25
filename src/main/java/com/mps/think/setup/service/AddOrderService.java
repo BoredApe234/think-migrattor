@@ -14,6 +14,7 @@ import com.mps.think.setup.model.OrderAddressMapping;
 import com.mps.think.setup.model.OrderAuxiliaryInformation;
 import com.mps.think.setup.model.OrderCategory;
 import com.mps.think.setup.model.OrderCodesSuper;
+import com.mps.think.setup.vo.OrderSuspendView;
 import com.mps.think.setup.model.OrderDeliveryOptions;
 import com.mps.think.setup.model.OrderItems;
 import com.mps.think.setup.model.OrderKeyInformation;
@@ -39,7 +40,9 @@ public interface AddOrderService {
 	
 	void setAllOrdersOfCustomerInActive(Integer customerId);
 	
-	List<Order> getOrdersById(Integer id);
+//	List<Order> getOrdersById(Integer id);
+	
+	Page<Order> getOrdersById(Integer id, Pageable page);
 	
 	Order getSubOrderById(Integer id);
 	public List<Order> getAllOrder();
