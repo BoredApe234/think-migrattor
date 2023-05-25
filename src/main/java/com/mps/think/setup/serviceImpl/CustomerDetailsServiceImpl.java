@@ -238,6 +238,12 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		return new PageImpl<>(output, givenCustomerOrdersAddresses.getPageable(), givenCustomerOrdersAddresses.getTotalElements());
 	}
 
+	@Override
+	public List<CustomerAddresses> getAllCustomerAddresses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
 
 

@@ -7,7 +7,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mps.think.setup.model.Address;
 import com.mps.think.setup.model.Addresses;
+import com.mps.think.setup.model.Countries;
 import com.mps.think.setup.repo.AddressesRepo;
 import com.mps.think.setup.service.AddressService;
 import com.mps.think.setup.vo.AddressesVO;
@@ -21,10 +23,7 @@ public class AddressesServiceImpl implements AddressService  {
 	@Autowired
 	CustomerDetailsServiceImpl customerDetailsServiceImpl;
 	
-	@Override
-	public List<Addresses> getAllAddress() {
-		return addressRepo.findAll();
-	}
+	
 
 	@Override
 	public AddressesVO saveAddresses(AddressesVO addresses) {
@@ -115,6 +114,17 @@ public class AddressesServiceImpl implements AddressService  {
 		address.setPrimaryAddress(true);
 		addressRepo.saveAndFlush(address);
 	}
+
+	
+
+	
+
+	@Override
+	public List<Addresses> getAllAddresses() {
+		return addressRepo.findAll();
+	}
+
+	
 	
 //	@Override
 //	public Addresses updatePrimaryAddressbyCustId(Integer customerId, Integer addressId) {

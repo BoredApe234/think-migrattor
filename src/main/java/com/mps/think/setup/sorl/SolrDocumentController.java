@@ -10,109 +10,21 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mps.think.setup.model.AddEffort;
-import com.mps.think.setup.model.AddPayment;
-import com.mps.think.setup.model.AddProcess;
-import com.mps.think.setup.model.Addprocessmapping;
-import com.mps.think.setup.model.Addresses;
-import com.mps.think.setup.model.AutoRenewal;
-import com.mps.think.setup.model.AuxVariable;
-import com.mps.think.setup.model.CancelReasons;
-import com.mps.think.setup.model.CommodityCodes;
-import com.mps.think.setup.model.CreditStatus;
-import com.mps.think.setup.model.CurrencyExchange;
-import com.mps.think.setup.model.CustomerCategory;
-import com.mps.think.setup.model.CustomerDetails;
-import com.mps.think.setup.model.DeliveryMethodOverrides;
-import com.mps.think.setup.model.DeliveryMethods;
-import com.mps.think.setup.model.DiscountCardKeyInfo;
-import com.mps.think.setup.model.EffectiveDatesForDiscount;
-import com.mps.think.setup.model.ExtractFilter;
-import com.mps.think.setup.model.Inserts;
-import com.mps.think.setup.model.InvoiceEmailsTemplet;
-import com.mps.think.setup.model.IssueGeneration;
-import com.mps.think.setup.model.IssueSettings;
-import com.mps.think.setup.model.JobQueue;
-import com.mps.think.setup.model.Jurisdictions;
-import com.mps.think.setup.model.LableFormat;
-import com.mps.think.setup.model.LableFormatGroups;
-import com.mps.think.setup.model.LableGroup;
-import com.mps.think.setup.model.LableKeyLine;
-import com.mps.think.setup.model.MakePayment;
-import com.mps.think.setup.model.MultiLineItemOrder;
-import com.mps.think.setup.model.Nth;
-import com.mps.think.setup.model.Order;
-import com.mps.think.setup.model.OrderAddressMapping;
-import com.mps.think.setup.model.OrderAuxiliaryInformation;
-import com.mps.think.setup.model.OrderCategory;
-import com.mps.think.setup.model.OrderClass;
-import com.mps.think.setup.model.OrderClassOverview;
-import com.mps.think.setup.model.OrderCodes;
-import com.mps.think.setup.model.OrderCodesSuper;
-import com.mps.think.setup.model.OrderDeliveryOptions;
-import com.mps.think.setup.model.OrderItemDetails;
-import com.mps.think.setup.model.OrderItems;
-import com.mps.think.setup.model.OrderKeyInformation;
-import com.mps.think.setup.model.OrderOptions;
-import com.mps.think.setup.model.OrderPackageOptions;
-import com.mps.think.setup.model.OrderPaymentOptions;
-import com.mps.think.setup.model.OrderThresholdInfo;
-import com.mps.think.setup.model.OrdersToBeSuspended;
-import com.mps.think.setup.model.OutputSort;
-import com.mps.think.setup.model.OutputValue;
-import com.mps.think.setup.model.ParentChildMapping;
-import com.mps.think.setup.model.PaymentBreakdown;
-import com.mps.think.setup.model.PaymentInformation;
-import com.mps.think.setup.model.PaymentLinkStatus;
-import com.mps.think.setup.model.PaymentThreshold;
-import com.mps.think.setup.model.PaymentType;
-import com.mps.think.setup.model.ProcessOutput;
-import com.mps.think.setup.model.ProcessType;
-import com.mps.think.setup.model.ProfitCenter;
-import com.mps.think.setup.model.Publisher;
-import com.mps.think.setup.model.Queue;
-import com.mps.think.setup.model.RCEffortRange;
-import com.mps.think.setup.model.RateCards;
-import com.mps.think.setup.model.RateCardsRenewals;
-import com.mps.think.setup.model.RenewalCard;
-import com.mps.think.setup.model.RenewalDefinition;
-import com.mps.think.setup.model.RenewalOfferDetails;
-import com.mps.think.setup.model.RentalStatus;
-import com.mps.think.setup.model.Repeating;
-import com.mps.think.setup.model.SalesRepresentative;
-import com.mps.think.setup.model.ShippingMethod;
-import com.mps.think.setup.model.ShippingPriceList;
-import com.mps.think.setup.model.SourceAttributeValues;
-import com.mps.think.setup.model.SourceAttributes;
-import com.mps.think.setup.model.SourceCode;
-import com.mps.think.setup.model.SourceCodeAndValuesMapping;
-import com.mps.think.setup.model.SourceFormat;
-import com.mps.think.setup.model.SourceFormatAndAttributeMapping;
-import com.mps.think.setup.model.SourceFormatSegment;
-import com.mps.think.setup.model.SpecialTaxIds;
-import com.mps.think.setup.model.Splits;
-import com.mps.think.setup.model.SubmitJob;
-import com.mps.think.setup.model.SubscriptionCategory;
-import com.mps.think.setup.model.SubscriptionDefKeyInfo;
-import com.mps.think.setup.model.SuspendOrder;
-import com.mps.think.setup.model.TaxRateCategory;
-import com.mps.think.setup.model.TaxType;
-import com.mps.think.setup.model.Taxonomy;
-import com.mps.think.setup.model.Terms;
-import com.mps.think.setup.model.TransportMode;
-import com.mps.think.setup.model.UnitBasedSubscription;
-import com.mps.think.setup.model.ValueForScAttribute;
-import com.mps.think.setup.model.VolumeGroup;
+import com.mps.think.setup.model.*;
 import com.mps.think.setup.repo.DeliveryMethodOverridesRepo;
 import com.mps.think.setup.service.AddEffortService;
 import com.mps.think.setup.service.AddOrderService;
 import com.mps.think.setup.service.AddPaymentService;
 import com.mps.think.setup.service.AddProcessService;
 import com.mps.think.setup.service.AddressService;
+import com.mps.think.setup.service.AddressStatusService;
+import com.mps.think.setup.service.AddressessService;
 import com.mps.think.setup.service.AutoRenewalService;
 import com.mps.think.setup.service.AuxService;
+import com.mps.think.setup.service.CancelOrderService;
 import com.mps.think.setup.service.CancelReasonsService;
 import com.mps.think.setup.service.CommodityCodesService;
+import com.mps.think.setup.service.CountriesService;
 import com.mps.think.setup.service.CreditStatusService;
 import com.mps.think.setup.service.CurrencyExchangeService;
 import com.mps.think.setup.service.CustomerCategoryService;
@@ -123,6 +35,7 @@ import com.mps.think.setup.service.DiscountCardKeyInfoService;
 import com.mps.think.setup.service.EffectiveDatesForDiscountService;
 import com.mps.think.setup.service.ExtractFilterService;
 import com.mps.think.setup.service.InsertService;
+import com.mps.think.setup.service.InventoryService;
 import com.mps.think.setup.service.InvoiceEmailsTempletService;
 import com.mps.think.setup.service.IssueGenerationService;
 import com.mps.think.setup.service.IssueSettingsService;
@@ -198,6 +111,9 @@ public class SolrDocumentController {
 	private AddressService addressService;
 	
 	@Autowired
+	private AddressessService addressessService;
+	
+	@Autowired
 	
 	private AddEffortService addEffortService;
 	
@@ -212,6 +128,9 @@ public class SolrDocumentController {
 	
 	@Autowired
 	private AuxService auxService;
+	
+	@Autowired
+	private CancelOrderService cancelOrderService;
 	
 	@Autowired
 	private CancelReasonsService cancelReasonsService;
@@ -427,6 +346,15 @@ public class SolrDocumentController {
 	@Autowired
 	private VolumeGroupService VolumeGroupService;
 	
+	@Autowired
+	private CountriesService countriesService;
+	
+	@Autowired
+	private AddressStatusService addressStatusService;
+	
+	
+	@Autowired
+	private InventoryService inventoryService;
 	
 	
 
@@ -479,12 +407,24 @@ public class SolrDocumentController {
 		return "CustomerDetails saved!!!";
 	}
 	
+	@GetMapping("/saveCustomerAddressesSolr")
+	public String CustomerAddressesDocuments() {
+		// Store Documents
+		List<CustomerAddresses> custAdd = customerDetailsService.getAllCustomerAddresses();
+		for (CustomerAddresses customerAddresses : custAdd) {
+			documentRepository.save(new Document("CustomerAddresses" + customerAddresses.getId(),
+					"CustomerAddresses" + customerAddresses.getId(), customerAddresses.toString()));
+		}
+
+		return "CustomerAddresses saved!!!";
+	}
+	
 	@GetMapping("/saveAddressesSolr")
 	public String AddressesDocuments() {
-		List<Addresses> add = addressService.getAllAddress();	
+		List<Addresses> add = addressService.getAllAddresses();	
 	for (Addresses addresses : add) {
 		documentRepository.save(new Document("Addresses" + addresses.getAddressId(),
-				"Address" + addresses.getAddressId(), addresses.toString()));
+				"Addresses" + addresses.getAddressId(), addresses.toString()));
 	}
 
 	return "Addresses saved!!!";
@@ -543,6 +483,17 @@ public class SolrDocumentController {
 	}
 
 	return "AuxVariable saved!!!";
+	}
+	
+	@GetMapping("/saveCancelOrderSolr")
+	public String CancelOrderDocuments() {
+		List<CancelOrder> co = cancelOrderService.getAllCancelOrder();	
+	for (CancelOrder cancelOrder : co) {
+		documentRepository.save(new Document("CancelOrder" + cancelOrder.getCancelorderId(),
+				"CancelOrder" + cancelOrder.getCancelorderId(), cancelOrder.toString()));
+	}
+
+	return "CancelOrder saved!!!";
 	}
 	
 	
@@ -1481,5 +1432,49 @@ public class SolrDocumentController {
 	}
 	
 	return "Addprocessmapping saved!!!";
+	}
+	
+	@GetMapping("/saveAddressSolr")
+	public String AddressDocuments() {
+		List<Address> adds = addressessService.getAllAddress();	
+	for (Address address : adds) {
+		documentRepository.save(new Document("Address" + address.getId(),
+				"Address" + address.getId(), address.toString()));
+	}
+	
+	return "address saved!!!";
+	}
+	
+	@GetMapping("/saveCountriesSolr")
+	public String CountriesDocuments() {
+		List<Countries> ctrys = countriesService.getAllCountries();	
+	for (Countries countries : ctrys) {
+		documentRepository.save(new Document("Countries" + countries.getId(),
+				"Countries" + countries.getId(), countries.toString()));
+	}
+	
+	return "Countries saved!!!";
+	}
+	
+	@GetMapping("/saveAddressStatusSolr")
+	public String AddressStatusDocuments() {
+		List<AddressStatus> ast = addressStatusService.getAllAddressStatus();	
+	for (AddressStatus addressStatus : ast) {
+		documentRepository.save(new Document("AddressStatus" + addressStatus.getId(),
+				"AddressStatus" + addressStatus.getId(), addressStatus.toString()));
+	}
+	
+	return "AddressStatus saved!!!";
+	}
+	
+	@GetMapping("/saveInventoryMapperSolr")
+	public String InventoryMapperDocuments() {
+		List<InventoryMapper> invm = inventoryService.getAllInventoryMapper();	
+	for (InventoryMapper inventoryMapper : invm) {
+		documentRepository.save(new Document("InventoryMapper" + inventoryMapper.getInventoryId(),
+				"InventoryMapper" + inventoryMapper.getInventoryId(), inventoryMapper.toString()));
+	}
+	
+	return "InventoryMapper saved!!!";
 	}
 }

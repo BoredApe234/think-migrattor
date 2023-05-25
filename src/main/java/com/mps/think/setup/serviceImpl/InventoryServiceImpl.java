@@ -40,4 +40,9 @@ public class InventoryServiceImpl implements InventoryService {
 		return inventoryRepository.findById(inventoryId).get();
 	}
 
+	@Override
+	public List<InventoryMapper> getAllInventoryMapper() {
+		return inventoryRepository.findAll();
+	}
+
 }
