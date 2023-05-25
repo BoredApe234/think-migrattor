@@ -34,62 +34,68 @@ public class CreditStatus extends BaseEntity {
 	
 	@Column(name="bad_credit")
 	private Integer badcredit;
+	
+	@Column(name="defaultcreditstatus")
+	private Boolean defaultcreditstatus;
 
 	public Integer getCreditId() {
 		return creditId;
 	}
 
-
 	public void setCreditId(Integer creditId) {
 		this.creditId = creditId;
 	}
-
 
 	public Publisher getPubId() {
 		return pubId;
 	}
 
-
 	public void setPubId(Publisher pubId) {
 		this.pubId = pubId;
 	}
-
 
 	public String getCreditName() {
 		return creditName;
 	}
 
-
 	public void setCreditName(String creditName) {
 		this.creditName = creditName;
 	}
-
 
 	public String getDescription() {
 		return description;
 	}
 
-
 	public void setDescription(String description) {
 		this.description = description;
 	}
-
 
 	public Integer getBadcredit() {
 		return badcredit;
 	}
 
-
 	public void setBadcredit(Integer badcredit) {
 		this.badcredit = badcredit;
 	}
 
+	public Boolean getDefaultcreditstatus() {
+		return defaultcreditstatus;
+	}
+
+	public void setDefaultcreditstatus(Boolean defaultcreditstatus) {
+		this.defaultcreditstatus = defaultcreditstatus;
+	}
 
 	@Override
 	public String toString() {
 		return "CreditStatus [creditId=" + creditId + ", pubId=" + pubId + ", creditName=" + creditName
-				+ ", description=" + description + ", badcredit=" + badcredit + "]";
+				+ ", description=" + description + ", badcredit=" + badcredit + ", defaultcreditstatus="
+				+ defaultcreditstatus + "]";
 	}
+	
+	
+
+
 
 }
 /*

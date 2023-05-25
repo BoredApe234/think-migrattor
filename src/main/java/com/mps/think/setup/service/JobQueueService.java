@@ -21,4 +21,6 @@ public interface JobQueueService {
 	
 	public JobQueue deleteById(Integer id);
 
+	public List<JobQueue> getAllJobQueue();
+
 }

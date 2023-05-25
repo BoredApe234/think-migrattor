@@ -17,4 +17,6 @@ public interface InvoiceEmailsTempletService {
 	
 	public List<InvoiceEmailsTemplet>	defaultInvoiceEmailsTamplet(Integer id,Integer pubId);
 
+	public List<InvoiceEmailsTemplet> getAllInvoiceEmailsTemplet();
+
 }

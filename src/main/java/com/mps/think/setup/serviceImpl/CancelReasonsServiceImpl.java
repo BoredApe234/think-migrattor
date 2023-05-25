@@ -80,4 +80,10 @@ public class CancelReasonsServiceImpl implements CancelReasonsService{
 		
 		return CancelReasonsRepo.findByPubId(pubId);
 	}
+
+
+	@Override
+	public List<CancelReasons> getAllCancelReasons() {
+		return CancelReasonsRepo.findAll();
+	}
 }

@@ -67,4 +67,9 @@ public class SourceAttributeValuesServiceImpl implements SourceAttributeValuesSe
 		return sourceAttributeRepo.findByPublisherId(pubid);
 	}
 
+	@Override
+	public List<SourceAttributeValues> getAllSourceAttributes() {
+		return sourceAttributeRepo.findAll();
+	}
+
 }

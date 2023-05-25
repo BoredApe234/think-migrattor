@@ -66,4 +66,9 @@ public class LableFormatServiceImp implements LableFormatService {
 		return lableFormatRepo.findByPubIdId(lableFormatId);
 	}
 
+	@Override
+	public List<LableFormat> getAllLableFormat() {
+	  return lableFormatRepo.findAll();
+	}
+
 }

@@ -20,5 +20,7 @@ public interface EffectiveDatesForDiscountService {
 	public List<EffectiveDatesForDiscount> getAllEffectiveDates();
 	
 	public EffectiveDatesForDiscount getEffectiveDateById(Integer id);
+
+	public List<EffectiveDatesForDiscount> getAllEffectiveDatesForDiscount();
 	
 }

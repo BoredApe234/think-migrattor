@@ -116,4 +116,9 @@ public class AddPaymentServiceImpl implements AddPaymentService{
 		return data;
 	}
 
+	@Override
+	public List<AddPayment> getAllAddPayment() {
+		return addPaymentRepo.findAll();
+	}
+
 }

@@ -23,5 +23,7 @@ public interface DiscountCardKeyInfoService {
 	DiscountCardKeyInfo getDiscountCardKeyInfoById(Integer id);
 	
 	public List<DiscountCardKeyInfo> findAllDiscountCardKeyInfoByPublisherId(Integer pubId);
+
+	public List<DiscountCardKeyInfo> getAllDiscountCardKeyInfo();
 	
 }

@@ -46,4 +46,9 @@ public class PaymentInformationServiceImpl implements PaymentInformationService 
 		return paymentInformationRepo.findByOrderOrderId(orderId);
 	}
 
+	@Override
+	public List<PaymentInformation> getAllPaymentInformation() {
+		return paymentInformationRepo.findAll();
+	}
+
 }

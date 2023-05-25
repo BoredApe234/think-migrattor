@@ -74,4 +74,9 @@ public class LableKeyLineServiceImpl implements LableKeyLineService {
 		return lableKeyLineRepo.findByPubIdId(lableKeyLineId);
 	}
 
+	@Override
+	public List<LableKeyLine> getAllLableKeyLine() {
+		return lableKeyLineRepo.findAll();
+	}
+
 }

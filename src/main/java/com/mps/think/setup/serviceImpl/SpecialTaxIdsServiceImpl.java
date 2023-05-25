@@ -71,4 +71,9 @@ public class SpecialTaxIdsServiceImpl implements SpecialTaxIdsService{
 		return specialTaxIdsRepo.findByPubIdId(pubId);
 	}
 
+	@Override
+	public List<SpecialTaxIds> getAllSpecialTaxIds() {
+		return specialTaxIdsRepo.findAll();
+	}
+
 }

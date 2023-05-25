@@ -15,15 +15,5 @@ public class CustomBeans {
 	public ObjectMapper createMapper() {
 		return new ObjectMapper();
 	}
-	
-	@Bean
-	public Date getCurrentDate() {
-		return new Date();
-	}
-	
-	@Bean
-	public SimpleDateFormat getSimpleDateFormat() {
-		return new SimpleDateFormat("yyyy-MM-dd");
-	}
 
 }

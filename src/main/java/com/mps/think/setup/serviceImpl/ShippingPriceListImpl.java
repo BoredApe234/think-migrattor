@@ -62,4 +62,9 @@ public class ShippingPriceListImpl implements ShippingPriceListService {
 		return shippingPriceListRepo.findByPublisherId(pubId);
 	}
 
+	@Override
+	public List<ShippingPriceList> getAllShippingPriceList() {
+		return shippingPriceListRepo.findAll();
+	}
+
 }

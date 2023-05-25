@@ -54,9 +54,6 @@ public class SuspendOrder extends BaseEntity {
 	@OneToMany(mappedBy = "suspendOrder", cascade = CascadeType.ALL)
 	@JsonManagedReference
 	private List<OrdersToBeSuspended> ordersToSuspend;
-	
-	@Column(name = "is_suspended")
-	private Boolean isSuspended;
 
 	public Integer getId() {
 		return id;
@@ -122,13 +119,4 @@ public class SuspendOrder extends BaseEntity {
 		this.ordersToSuspend = ordersToSuspend;
 	}
 
-	public Boolean getIsSuspended() {
-		return isSuspended;
-	}
-
-	public void setIsSuspended(Boolean isSuspended) {
-		this.isSuspended = isSuspended;
-	}
-
-	
 }

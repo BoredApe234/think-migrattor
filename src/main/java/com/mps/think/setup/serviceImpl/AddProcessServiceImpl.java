@@ -1,13 +1,16 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.AddProcess;
+import com.mps.think.setup.model.Addprocessmapping;
 import com.mps.think.setup.repo.AddProcessRepo;
 import com.mps.think.setup.service.AddProcessService;
 import com.mps.think.setup.vo.AddProcessVO;
@@ -48,6 +51,18 @@ public class AddProcessServiceImpl implements AddProcessService {
 		addProcessRepo.delete(delete);
 		return delete;
 	}
+
+	@Override
+	public List<Addprocessmapping> getAllAddprocessmapping() {
+		List<List<Addprocessmapping>> collect = addProcessRepo.findAll().stream().map(a -> a.getAddprocessmapping()).collect(Collectors.toList());
+		List<Addprocessmapping> output = new ArrayList<>();
+		for (List<Addprocessmapping> s : collect) {
+			output.addAll(s);
+		}
+		return output;
+	}
+
+	
 	
 //	@Override
 //	public List<AddProcess> findAllAddProcessByPId(Integer pid) {

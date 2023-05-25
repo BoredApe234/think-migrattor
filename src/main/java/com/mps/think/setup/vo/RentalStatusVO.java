@@ -14,6 +14,8 @@ public class RentalStatusVO {
 	private Integer rentName;
 	
 	private Publisher publisher;
+	
+	private Boolean defaultrentalstatus;
 
 	public Integer getRentalStatusId() {
 		return rentalStatusId;
@@ -64,11 +66,21 @@ public class RentalStatusVO {
 		this.publisher = publisher;
 	}
 
+	public Boolean getDefaultrentalstatus() {
+		return defaultrentalstatus;
+	}
+
+	public void setDefaultrentalstatus(Boolean defaultrentalstatus) {
+		this.defaultrentalstatus = defaultrentalstatus;
+	}
+
 	@Override
 	public String toString() {
 		return "RentalStatusVO [rentalStatusId=" + rentalStatusId + ", rentalcategory=" + rentalcategory
 				+ ", description=" + description + ", rentEmail=" + rentEmail + ", rentName=" + rentName
-				+ ", publisher=" + publisher + "]";
+				+ ", publisher=" + publisher + ", defaultrentalstatus=" + defaultrentalstatus + "]";
 	}
+
+
 
 }

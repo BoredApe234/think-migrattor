@@ -60,4 +60,9 @@ public class InvoiceEmailsTempletServiceImpl implements InvoiceEmailsTempletServ
 		return list;
 	}
 
+	@Override
+	public List<InvoiceEmailsTemplet> getAllInvoiceEmailsTemplet() {
+		return invoiceEmailsTempletRepo.findAll();
+	}
+
 }

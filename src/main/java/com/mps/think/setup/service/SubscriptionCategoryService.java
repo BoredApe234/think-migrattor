@@ -20,4 +20,6 @@ public interface SubscriptionCategoryService {
 	
 	public List<SubscriptionCategory> findAllSubscriptionCategoryByPubId(Integer id);
 
+	public List<SubscriptionCategory> getAllSubscriptionCategory();
+
 }

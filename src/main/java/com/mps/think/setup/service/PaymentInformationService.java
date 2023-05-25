@@ -18,4 +18,6 @@ public interface PaymentInformationService {
 	
 	public PaymentInformation getPaymentInformationByOrderId(Integer orderId);
 
+	public List<PaymentInformation> getAllPaymentInformation();
+
 }
