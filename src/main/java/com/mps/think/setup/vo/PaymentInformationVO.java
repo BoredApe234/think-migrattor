@@ -6,6 +6,8 @@ import com.mps.think.setup.model.Publisher;
 public class PaymentInformationVO {
 
 	Integer id;
+	
+	private String paymentMode;
 
 	String cardNumber;
 
@@ -32,6 +34,14 @@ public class PaymentInformationVO {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
 	}
 
 	public String getCardNumber() {
@@ -82,14 +92,6 @@ public class PaymentInformationVO {
 		this.status = status;
 	}
 
-	public Publisher getPublisher() {
-		return publisher;
-	}
-
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
-	}
-
 	public String getOtherinfo() {
 		return otherinfo;
 	}
@@ -105,5 +107,14 @@ public class PaymentInformationVO {
 	public void setOrder(Order order) {
 		this.order = order;
 	}
+
+	public Publisher getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
 
 }

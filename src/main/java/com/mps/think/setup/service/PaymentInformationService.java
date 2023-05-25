@@ -16,7 +16,7 @@ public interface PaymentInformationService {
 	
 	public Optional<PaymentInformation> findByPaymentInfoId(Integer  id);
 	
-	public PaymentInformation getPaymentInformationByOrderId(Integer orderId);
+	public List<PaymentInformation> getPaymentInformationByOrderId(Integer orderId);
 
 	public List<PaymentInformation> getAllPaymentInformation();
 
