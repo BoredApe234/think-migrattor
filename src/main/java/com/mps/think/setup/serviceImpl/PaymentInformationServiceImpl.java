@@ -42,7 +42,7 @@ public class PaymentInformationServiceImpl implements PaymentInformationService 
 	}
 
 	@Override
-	public PaymentInformation getPaymentInformationByOrderId(Integer orderId) {
+	public List<PaymentInformation> getPaymentInformationByOrderId(Integer orderId) {
 		return paymentInformationRepo.findByOrderOrderId(orderId);
 	}
 
