@@ -39,8 +39,15 @@ public class LabelLayout extends BaseEntity {
 	@Column(name = "description")
 	private String description;
 	
-	@Column(name = "customerdetails")
-	private Integer customerdetails;
+	@Column(name = "suppressed")
+	private Boolean suppressed;
+	
+	@Column(name = "truncated")
+	private Boolean truncated;
+	
+	@OneToOne
+	@JoinColumn(name = "customerdetails", referencedColumnName = "id" )
+	private CustomerDetails customerdetails;
 	
 	@Column(name = "firstname")
 	private String firstname;
@@ -103,11 +110,27 @@ public class LabelLayout extends BaseEntity {
 		this.description = description;
 	}
 
-	public Integer getCustomerdetails() {
+	public Boolean getSuppressed() {
+		return suppressed;
+	}
+
+	public void setSuppressed(Boolean suppressed) {
+		this.suppressed = suppressed;
+	}
+
+	public Boolean getTruncated() {
+		return truncated;
+	}
+
+	public void setTruncated(Boolean truncated) {
+		this.truncated = truncated;
+	}
+
+	public CustomerDetails getCustomerdetails() {
 		return customerdetails;
 	}
 
-	public void setCustomerdetails(Integer customerdetails) {
+	public void setCustomerdetails(CustomerDetails customerdetails) {
 		this.customerdetails = customerdetails;
 	}
 
@@ -170,16 +193,12 @@ public class LabelLayout extends BaseEntity {
 	@Override
 	public String toString() {
 		return "LabelLayout [id=" + id + ", pubId=" + pubId + ", lableformat=" + lableformat + ", lablegroup="
-				+ lablegroup + ", description=" + description + ", customerdetails=" + customerdetails + ", firstname="
-				+ firstname + ", company=" + company + ", address1=" + address1 + ", city=" + city + ", country="
-				+ country + ", creationdate=" + creationdate + ", active=" + active + "]";
+				+ lablegroup + ", description=" + description + ", suppressed=" + suppressed + ", truncated="
+				+ truncated + ", customerdetails=" + customerdetails + ", firstname=" + firstname + ", company="
+				+ company + ", address1=" + address1 + ", city=" + city + ", country=" + country + ", creationdate="
+				+ creationdate + ", active=" + active + "]";
 	}
 
-	
-	
-	
-	
-	
 	
 
 }

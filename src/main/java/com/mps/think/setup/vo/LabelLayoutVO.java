@@ -1,6 +1,8 @@
 package com.mps.think.setup.vo;
 
 import java.util.Date;
+
+import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.LableFormat;
 import com.mps.think.setup.model.LableGroup;
 import com.mps.think.setup.model.Publisher;
@@ -12,7 +14,9 @@ public class LabelLayoutVO {
 	private LableFormat lableformat;
 	private LableGroup lablegroup;
 	private String description;
-	private Integer customerdetails;
+	private Boolean suppressed;
+	private Boolean truncated;
+	private CustomerDetailsVO customerdetails;
 	private String firstname;
 	private String company;
 	private String address1;
@@ -20,7 +24,6 @@ public class LabelLayoutVO {
 	private String country;
 	private Date creationdate;
 	private Boolean active;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -51,10 +54,22 @@ public class LabelLayoutVO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Integer getCustomerdetails() {
+	public Boolean getSuppressed() {
+		return suppressed;
+	}
+	public void setSuppressed(Boolean suppressed) {
+		this.suppressed = suppressed;
+	}
+	public Boolean getTruncated() {
+		return truncated;
+	}
+	public void setTruncated(Boolean truncated) {
+		this.truncated = truncated;
+	}
+	public CustomerDetailsVO getCustomerdetails() {
 		return customerdetails;
 	}
-	public void setCustomerdetails(Integer customerdetails) {
+	public void setCustomerdetails(CustomerDetailsVO customerdetails) {
 		this.customerdetails = customerdetails;
 	}
 	public String getFirstname() {
@@ -102,10 +117,12 @@ public class LabelLayoutVO {
 	@Override
 	public String toString() {
 		return "LabelLayoutVO [id=" + id + ", pubId=" + pubId + ", lableformat=" + lableformat + ", lablegroup="
-				+ lablegroup + ", description=" + description + ", customerdetails=" + customerdetails + ", firstname="
-				+ firstname + ", company=" + company + ", address1=" + address1 + ", city=" + city + ", country="
-				+ country + ", creationdate=" + creationdate + ", active=" + active + "]";
+				+ lablegroup + ", description=" + description + ", suppressed=" + suppressed + ", truncated="
+				+ truncated + ", customerdetails=" + customerdetails + ", firstname=" + firstname + ", company="
+				+ company + ", address1=" + address1 + ", city=" + city + ", country=" + country + ", creationdate="
+				+ creationdate + ", active=" + active + "]";
 	}
+	
 	
 	
 	
