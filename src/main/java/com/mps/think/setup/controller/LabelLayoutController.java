@@ -19,17 +19,17 @@ public class LabelLayoutController {
 	LabelLayoutService labelLayoutService;
 	
 	@GetMapping("/getAllLabelLayout")
-	public ResponseEntity<?> getAllCountries() {
+	public ResponseEntity<?> getAllLabelLayout() {
 		return ResponseEntity.ok(labelLayoutService.getAllLabelLayout());
 	}
 	
 	@PostMapping("/saveLabelLayout")
-	public ResponseEntity<?> saveCountries(@RequestBody LabelLayoutVO id) {
+	public ResponseEntity<?> saveLabelLayout(@RequestBody LabelLayoutVO id) {
 		return ResponseEntity.ok(labelLayoutService.saveLabelLayout(id));
 	}
 	
 	@PostMapping("/updateLabelLayout")
-	public ResponseEntity<?> updateCountries(@RequestBody LabelLayoutVO id) {
+	public ResponseEntity<?> updateLabelLayout(@RequestBody LabelLayoutVO id) {
 		return ResponseEntity.ok(labelLayoutService.updateLabelLayout(id));
 	}
 	
