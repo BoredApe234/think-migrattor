@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mps.think.setup.model.Addprocessmapping;
 import com.mps.think.setup.model.OrderCodes;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.model.OrderItemDetails;
@@ -124,20 +125,26 @@ public class OrderCodesServiceImpl implements OrderCodesService {
 
 	@Override
 	public List<OrderItemDetails> getAllOrderItemDetails() {
-		// TODO Auto-generated method stub
-		return null;
+      List<OrderItemDetails> orderItem = orderCodesSuperRepo.findAll().stream().map(a -> a.getOrderItemDetails()).collect(Collectors.toList());
+		
+		return orderItem;
 	}
 
 	@Override
 	public List<OrderPackageOptions> getAllOrderOptions() {
-		// TODO Auto-generated method stub
-		return null;
+		List<OrderPackageOptions> order = orderCodesSuperRepo.findAll().stream().map(a -> a.getOrderPackageOptions()).collect(Collectors.toList());
+		
+		return order;
 	}
 
 	@Override
 	public List<OrderPaymentOptions> getAllOrderPaymentOptions() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+		List<OrderPaymentOptions> collect = orderCodesSuperRepo.findAll().stream().map(a -> a.getOrderPaymentOptions()).collect(Collectors.toList());
+//		List<OrderPaymentOptions> output = new ArrayList<>();
+//		for (List<OrderPaymentOptions> s : collect) {
+//			output.addAll(s);
+//		}
+		return collect;
 
+}
 }

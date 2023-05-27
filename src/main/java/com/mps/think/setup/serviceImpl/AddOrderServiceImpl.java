@@ -22,8 +22,10 @@ import com.mps.think.setup.model.OrderAuxiliaryInformation;
 import com.mps.think.setup.model.OrderCategory;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.model.OrderDeliveryOptions;
+import com.mps.think.setup.model.OrderItemDetails;
 import com.mps.think.setup.model.OrderItems;
 import com.mps.think.setup.model.OrderKeyInformation;
+import com.mps.think.setup.model.OrderPaymentOptions;
 import com.mps.think.setup.model.PaymentBreakdown;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.MultiLineItemOrderRepo;
@@ -161,44 +163,54 @@ public class AddOrderServiceImpl implements AddOrderService {
 
 	@Override
 	public List<OrderAddressMapping> getAllOrderAddressMapping() {
-		// TODO Auto-generated method stub
-		return null;
+		List<List<OrderAddressMapping>> orderAddressMapping = addOrderRepo.findAll().stream().map(a -> a.getOrderAddresses()).collect(Collectors.toList());
+		List<OrderAddressMapping> output = new ArrayList<>();
+		for (List<OrderAddressMapping> s : orderAddressMapping) {
+			output.addAll(s);
+		}
+		return output;
 	}
 
 	@Override
 	public List<OrderAuxiliaryInformation> getAllOrderAuxiliaryInformation() {
-		// TODO Auto-generated method stub
-		return null;
+List<OrderAuxiliaryInformation> orderAuxiliaryInformation = addOrderRepo.findAll().stream().map(m -> m.getAuxiliaryInformation()).collect(Collectors.toList());
+		
+		return orderAuxiliaryInformation;
 	}
 
 	@Override
 	public List<OrderDeliveryOptions> getAllOrderDeliveryOptions() {
-		// TODO Auto-generated method stub
-		return null;
+List<OrderDeliveryOptions> orderDeliveryOptions = addOrderRepo.findAll().stream().map(m -> m.getDeliveryAndBillingOptions()).collect(Collectors.toList());
+		
+		return orderDeliveryOptions;
 	}
 
 	@Override
 	public List<OrderItems> getAllOrderItems() {
-		// TODO Auto-generated method stub
-		return null;
+List<OrderItems> orderItems = addOrderRepo.findAll().stream().map(m -> m.getOrderItemsAndTerms()).collect(Collectors.toList());
+		
+		return orderItems;
 	}
 
 	@Override
 	public List<OrderKeyInformation> getAllOrderKeyInformation() {
-		// TODO Auto-generated method stub
-		return null;
+		List<OrderKeyInformation> orderKeyInformation = addOrderRepo.findAll().stream().map(m -> m.getKeyOrderInformation()).collect(Collectors.toList());
+		
+		return orderKeyInformation;
 	}
 
 	@Override
 	public List<PaymentBreakdown> getAllPaymentBreakdown() {
-		// TODO Auto-generated method stub
-		return null;
+		 List<PaymentBreakdown> paymentBreakdown = addOrderRepo.findAll().stream().map(m -> m.getPaymentBreakdown()).collect(Collectors.toList());
+			
+			return paymentBreakdown;
 	}
 
 	@Override
 	public List<MultiLineItemOrder> getAllMultiLineItemOrder() {
-		// TODO Auto-generated method stub
-		return null;
+		 List<MultiLineItemOrder> multiLineItemOrder = addOrderRepo.findAll().stream().map(m -> m.getParentOrder()).collect(Collectors.toList());
+			
+			return multiLineItemOrder;
 	}
 
 	

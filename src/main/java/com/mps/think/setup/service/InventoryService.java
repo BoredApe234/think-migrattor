@@ -22,7 +22,6 @@ public interface InventoryService {
 	public InventoryMapper updateInventory(InventoryMapperVO inventory);
 	public List<InventoryMapper> getAllInventory();
 	public InventoryMapper getInventoryById(Integer inventoryId);
-
 	public List<InventoryMapper> getAllInventoryMapper();
 
 	public VendorDetails createVendor(VendorDetailsVO vendor);

@@ -64,7 +64,8 @@ public class InventoryServiceImpl implements InventoryService {
 
 	public List<InventoryMapper> getAllInventoryMapper() {
 		return inventoryRepository.findAll();
-
+		
+	}
 	public VendorDetails createVendor(VendorDetailsVO vendor) {
 		return vendorRepository.saveAndFlush(mapper.convertValue(vendor, VendorDetails.class));
 	}
