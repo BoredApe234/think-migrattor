@@ -477,9 +477,5 @@ public class EnumModelVO {
 			return addressstatus;
 		}
 	}
-	
-	
-
-	
 
 }
