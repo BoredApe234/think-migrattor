@@ -58,10 +58,10 @@ public class AddOrderServiceImpl implements AddOrderService {
 	@Override
 	public Order saveOrder(OrderVO order) throws Exception {
 		Order newOrder = mapper.convertValue(order, Order.class);
-		if (order.getOtherAddressCustomer().getCustomerId() == 0) newOrder.setOtherAddressCustomer(null);
+		if (order.getOtherAddressCustomer() == null || order.getOtherAddressCustomer().getCustomerId() == 0) newOrder.setOtherAddressCustomer(null);
 		Order createdOrder = addOrderRepo.saveAndFlush(newOrder);
 		MultiLineItemOrder orderSibling = multiLineOrderRepo.findByOrderOrderId(createdOrder.getOrderId());
-		if (order.getParentOrder().getParentOrderId() == 0) {
+		if (order.getParentOrder() == null || order.getParentOrder().getParentOrderId() == 0) {
 			orderSibling.setParentOrderId(createdOrder.getOrderId());
 			multiLineOrderRepo.saveAndFlush(orderSibling);
 		} else {
@@ -92,7 +92,7 @@ public class AddOrderServiceImpl implements AddOrderService {
 	public Order updateOrder(Order order) throws Exception {
 //		ObjectMapper mapper = new ObjectMapper();
 		Order updateOrder = mapper.convertValue(order, Order.class);
-		if (order.getOtherAddressCustomer().getCustomerId() == 0) updateOrder.setOtherAddressCustomer(null);	
+		if (order.getOtherAddressCustomer() == null || order.getOtherAddressCustomer().getCustomerId() == 0) updateOrder.setOtherAddressCustomer(null);	
 		Integer parentOrderId = order.getParentOrder().getParentOrderId();
 		MultiLineItemOrder currentParent = multiLineOrderRepo.findByOrderOrderId(order.getOrderId());
 		if (parentOrderId <= 0 || currentParent.getParentOrderId().equals(currentParent.getOrder().getOrderId())) {
