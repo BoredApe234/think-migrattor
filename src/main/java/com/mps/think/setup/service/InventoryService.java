@@ -22,6 +22,8 @@ public interface InventoryService {
 	public InventoryMapper updateInventory(InventoryMapperVO inventory);
 	public List<InventoryMapper> getAllInventory();
 	public InventoryMapper getInventoryById(Integer inventoryId);
+	public List<InventoryMapper> getAllInventoryMapper();
+
 	public VendorDetails createVendor(VendorDetailsVO vendor);
 	public VendorDetails updateVendor(VendorDetailsVO vendor);
 	public Page<VendorDetails> getVendor(Pageable page);
@@ -31,5 +33,6 @@ public interface InventoryService {
 	public LocationAreaDetails createLocationArea(LocationAreaDetailsVO location);
 	public LocationAreaDetails updateLocationArea(LocationAreaDetailsVO location);
 	public Page<LocationAreaDetails> getLocationArea(Pageable page);
+
 
 }

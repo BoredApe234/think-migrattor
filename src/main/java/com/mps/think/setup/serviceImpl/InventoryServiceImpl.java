@@ -61,6 +61,11 @@ public class InventoryServiceImpl implements InventoryService {
 	}
 
 	@Override
+
+	public List<InventoryMapper> getAllInventoryMapper() {
+		return inventoryRepository.findAll();
+		
+	}
 	public VendorDetails createVendor(VendorDetailsVO vendor) {
 		return vendorRepository.saveAndFlush(mapper.convertValue(vendor, VendorDetails.class));
 	}
@@ -103,6 +108,7 @@ public class InventoryServiceImpl implements InventoryService {
 	@Override
 	public Page<LocationAreaDetails> getLocationArea(Pageable page) {
 		return locationAreaRepository.findAll(page);
+
 	}
 
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.Address;
+import com.mps.think.setup.model.Addresses;
 import com.mps.think.setup.repo.AddressRepo;
 import com.mps.think.setup.service.AddressessService;
 import com.mps.think.setup.vo.AddressVO;
@@ -18,11 +19,6 @@ public class AddressServiceImpl implements AddressessService {
 
 	@Autowired
 	private ObjectMapper mapper;
-
-	@Override
-	public List<Address> getAllAddress() {
-		return addressRepo.findAll();
-	}
 
 	@Override
 	public Address saveAddress(AddressVO address) {
@@ -50,4 +46,13 @@ public class AddressServiceImpl implements AddressessService {
 	public List<Address> findAllAddressForPublisher(Integer pubId) {
 		return addressRepo.findByPubIdId(pubId);
 	}
+
+	@Override
+	public List<Address> getAllAddress() {
+		return addressRepo.findAll();
+	}
+
+	
+
+
 }

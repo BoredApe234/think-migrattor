@@ -10,109 +10,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.mps.think.setup.model.AddEffort;
-import com.mps.think.setup.model.AddPayment;
-import com.mps.think.setup.model.AddProcess;
-import com.mps.think.setup.model.Addprocessmapping;
-import com.mps.think.setup.model.Addresses;
-import com.mps.think.setup.model.AutoRenewal;
-import com.mps.think.setup.model.AuxVariable;
-import com.mps.think.setup.model.CancelReasons;
-import com.mps.think.setup.model.CommodityCodes;
-import com.mps.think.setup.model.CreditStatus;
-import com.mps.think.setup.model.CurrencyExchange;
-import com.mps.think.setup.model.CustomerCategory;
-import com.mps.think.setup.model.CustomerDetails;
-import com.mps.think.setup.model.DeliveryMethodOverrides;
-import com.mps.think.setup.model.DeliveryMethods;
-import com.mps.think.setup.model.DiscountCardKeyInfo;
-import com.mps.think.setup.model.EffectiveDatesForDiscount;
-import com.mps.think.setup.model.ExtractFilter;
-import com.mps.think.setup.model.Inserts;
-import com.mps.think.setup.model.InvoiceEmailsTemplet;
-import com.mps.think.setup.model.IssueGeneration;
-import com.mps.think.setup.model.IssueSettings;
-import com.mps.think.setup.model.JobQueue;
-import com.mps.think.setup.model.Jurisdictions;
-import com.mps.think.setup.model.LableFormat;
-import com.mps.think.setup.model.LableFormatGroups;
-import com.mps.think.setup.model.LableGroup;
-import com.mps.think.setup.model.LableKeyLine;
-import com.mps.think.setup.model.MakePayment;
-import com.mps.think.setup.model.MultiLineItemOrder;
-import com.mps.think.setup.model.Nth;
-import com.mps.think.setup.model.Order;
-import com.mps.think.setup.model.OrderAddressMapping;
-import com.mps.think.setup.model.OrderAuxiliaryInformation;
-import com.mps.think.setup.model.OrderCategory;
-import com.mps.think.setup.model.OrderClass;
-import com.mps.think.setup.model.OrderClassOverview;
-import com.mps.think.setup.model.OrderCodes;
-import com.mps.think.setup.model.OrderCodesSuper;
-import com.mps.think.setup.model.OrderDeliveryOptions;
-import com.mps.think.setup.model.OrderItemDetails;
-import com.mps.think.setup.model.OrderItems;
-import com.mps.think.setup.model.OrderKeyInformation;
-import com.mps.think.setup.model.OrderOptions;
-import com.mps.think.setup.model.OrderPackageOptions;
-import com.mps.think.setup.model.OrderPaymentOptions;
-import com.mps.think.setup.model.OrderThresholdInfo;
-import com.mps.think.setup.model.OrdersToBeSuspended;
-import com.mps.think.setup.model.OutputSort;
-import com.mps.think.setup.model.OutputValue;
-import com.mps.think.setup.model.ParentChildMapping;
-import com.mps.think.setup.model.PaymentBreakdown;
-import com.mps.think.setup.model.PaymentInformation;
-import com.mps.think.setup.model.PaymentLinkStatus;
-import com.mps.think.setup.model.PaymentThreshold;
-import com.mps.think.setup.model.PaymentType;
-import com.mps.think.setup.model.ProcessOutput;
-import com.mps.think.setup.model.ProcessType;
-import com.mps.think.setup.model.ProfitCenter;
-import com.mps.think.setup.model.Publisher;
-import com.mps.think.setup.model.Queue;
-import com.mps.think.setup.model.RCEffortRange;
-import com.mps.think.setup.model.RateCards;
-import com.mps.think.setup.model.RateCardsRenewals;
-import com.mps.think.setup.model.RenewalCard;
-import com.mps.think.setup.model.RenewalDefinition;
-import com.mps.think.setup.model.RenewalOfferDetails;
-import com.mps.think.setup.model.RentalStatus;
-import com.mps.think.setup.model.Repeating;
-import com.mps.think.setup.model.SalesRepresentative;
-import com.mps.think.setup.model.ShippingMethod;
-import com.mps.think.setup.model.ShippingPriceList;
-import com.mps.think.setup.model.SourceAttributeValues;
-import com.mps.think.setup.model.SourceAttributes;
-import com.mps.think.setup.model.SourceCode;
-import com.mps.think.setup.model.SourceCodeAndValuesMapping;
-import com.mps.think.setup.model.SourceFormat;
-import com.mps.think.setup.model.SourceFormatAndAttributeMapping;
-import com.mps.think.setup.model.SourceFormatSegment;
-import com.mps.think.setup.model.SpecialTaxIds;
-import com.mps.think.setup.model.Splits;
-import com.mps.think.setup.model.SubmitJob;
-import com.mps.think.setup.model.SubscriptionCategory;
-import com.mps.think.setup.model.SubscriptionDefKeyInfo;
-import com.mps.think.setup.model.SuspendOrder;
-import com.mps.think.setup.model.TaxRateCategory;
-import com.mps.think.setup.model.TaxType;
-import com.mps.think.setup.model.Taxonomy;
-import com.mps.think.setup.model.Terms;
-import com.mps.think.setup.model.TransportMode;
-import com.mps.think.setup.model.UnitBasedSubscription;
-import com.mps.think.setup.model.ValueForScAttribute;
-import com.mps.think.setup.model.VolumeGroup;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mps.think.setup.model.*;
 import com.mps.think.setup.repo.DeliveryMethodOverridesRepo;
 import com.mps.think.setup.service.AddEffortService;
 import com.mps.think.setup.service.AddOrderService;
 import com.mps.think.setup.service.AddPaymentService;
 import com.mps.think.setup.service.AddProcessService;
 import com.mps.think.setup.service.AddressService;
+import com.mps.think.setup.service.AddressStatusService;
+import com.mps.think.setup.service.AddressessService;
 import com.mps.think.setup.service.AutoRenewalService;
 import com.mps.think.setup.service.AuxService;
+import com.mps.think.setup.service.CancelOrderService;
 import com.mps.think.setup.service.CancelReasonsService;
 import com.mps.think.setup.service.CommodityCodesService;
+import com.mps.think.setup.service.CountriesService;
 import com.mps.think.setup.service.CreditStatusService;
 import com.mps.think.setup.service.CurrencyExchangeService;
 import com.mps.think.setup.service.CustomerCategoryService;
@@ -123,6 +37,7 @@ import com.mps.think.setup.service.DiscountCardKeyInfoService;
 import com.mps.think.setup.service.EffectiveDatesForDiscountService;
 import com.mps.think.setup.service.ExtractFilterService;
 import com.mps.think.setup.service.InsertService;
+import com.mps.think.setup.service.InventoryService;
 import com.mps.think.setup.service.InvoiceEmailsTempletService;
 import com.mps.think.setup.service.IssueGenerationService;
 import com.mps.think.setup.service.IssueSettingsService;
@@ -189,6 +104,10 @@ import com.mps.think.setup.service.VolumeGroupService;
 @CrossOrigin
 public class SolrDocumentController {
 	@Autowired
+	ObjectMapper objectMapper;
+	
+	
+	@Autowired
 	private DocumentRepository documentRepository;
 	
 	@Autowired
@@ -196,6 +115,9 @@ public class SolrDocumentController {
 	
 	@Autowired
 	private AddressService addressService;
+	
+	@Autowired
+	private AddressessService addressessService;
 	
 	@Autowired
 	
@@ -212,6 +134,9 @@ public class SolrDocumentController {
 	
 	@Autowired
 	private AuxService auxService;
+	
+	@Autowired
+	private CancelOrderService cancelOrderService;
 	
 	@Autowired
 	private CancelReasonsService cancelReasonsService;
@@ -427,6 +352,15 @@ public class SolrDocumentController {
 	@Autowired
 	private VolumeGroupService VolumeGroupService;
 	
+	@Autowired
+	private CountriesService countriesService;
+	
+	@Autowired
+	private AddressStatusService addressStatusService;
+	
+	
+	@Autowired
+	private InventoryService inventoryService;
 	
 	
 
@@ -464,8 +398,9 @@ public class SolrDocumentController {
 		return documents;
 	}
 
-	@GetMapping("/saveCustomerDetails")
-	public String CustomerDetailsDocuments() {
+@GetMapping("/saveCustomerDetails")
+	
+	public String CustomerDetailsDocuments() throws JsonProcessingException {
 		// Store Documents
 		List<CustomerDetails> cust = customerDetailsService.getAllCustomerDetails();
 
@@ -473,140 +408,163 @@ public class SolrDocumentController {
 		// "customer", cust.toString())));
 		for (CustomerDetails customerDetails : cust) {
 			documentRepository.save(new Document("CustomerDetails" + customerDetails.getCustomerId(),
-					"customer" + customerDetails.getCustomerId(), customerDetails.toString()));
+					"customer" + customerDetails.getCustomerId(),customerDetails.toString(), objectMapper.writeValueAsString(customerDetails)));
 		}
 
 		return "CustomerDetails saved!!!";
 	}
 	
+	@GetMapping("/saveCustomerAddressesSolr")
+	public String CustomerAddressesDocuments() throws JsonProcessingException {
+		// Store Documents
+		List<CustomerAddresses> custAdd = customerDetailsService.getAllCustomerAddresses();
+		for (CustomerAddresses customerAddresses : custAdd) {
+			documentRepository.save(new Document("CustomerAddresses" + customerAddresses.getId(),
+					"customer" + customerAddresses.getId(),customerAddresses.toString(), objectMapper.writeValueAsString(customerAddresses)));
+		}
+
+		return "CustomerAddresses saved!!!";
+	}
+	
 	@GetMapping("/saveAddressesSolr")
-	public String AddressesDocuments() {
-		List<Addresses> add = addressService.getAllAddress();	
+	public String AddressesDocuments() throws JsonProcessingException {
+		List<Addresses> add = addressService.getAllAddresses();	
 	for (Addresses addresses : add) {
 		documentRepository.save(new Document("Addresses" + addresses.getAddressId(),
-				"Address" + addresses.getAddressId(), addresses.toString()));
+				"Addresses" + addresses.getAddressId(), addresses.toString(), objectMapper.writeValueAsString(addresses)));
 	}
 
 	return "Addresses saved!!!";
 }
 	
 	@GetMapping("/saveAddEffortSolr")
-	public String AddEffortDocuments() {
+	public String AddEffortDocuments() throws JsonProcessingException {
 		List<AddEffort> ae = addEffortService.getAllAddEffort();	
 	for (AddEffort addEffort : ae) {
 		documentRepository.save(new Document("AddEffort" + addEffort.getId(),
-				"Effort" + addEffort.getId(), addEffort.toString()));
+				"Effort" + addEffort.getId(), addEffort.toString(), objectMapper.writeValueAsString(addEffort)));
 	}
 
 	return "AddEffort saved!!!";
 	}
 	
 	@GetMapping("/saveAddPaymentSolr")
-	public String AddPaymentDocuments() {
+	public String AddPaymentDocuments() throws JsonProcessingException {
 		List<AddPayment> ap = addPaymentService.getAllAddPayment();	
 	for (AddPayment addPayment : ap) {
 		documentRepository.save(new Document("AddPayment" + addPayment.getId(),
-				"AddPayment" + addPayment.getId(), addPayment.toString()));
+				"AddPayment" + addPayment.getId(), addPayment.toString(), objectMapper.writeValueAsString(addPayment)));
 	}
 
 	return "AddPayment saved!!!";
 	}
 	
 	@GetMapping("/saveAddProcessSolr")
-	public String AddProcessDocuments() {
+	public String AddProcessDocuments() throws JsonProcessingException {
 		List<AddProcess> apr = addProcessService.getAllProcess();	
 	for (AddProcess addProcess : apr) {
 		documentRepository.save(new Document("AddProcess" + addProcess.getId(),
-				"AddProcess" + addProcess.getId(), addProcess.toString()));
+				"AddProcess" + addProcess.getId(), addProcess.toString(), objectMapper.writeValueAsString(addProcess)));
 	}
 
 	return "AddProcess saved!!!";
 	}
 	
 	@GetMapping("/saveAutoRenewalSolr")
-	public String AutoRenewalDocuments() {
+	public String AutoRenewalDocuments() throws JsonProcessingException {
 		List<AutoRenewal> arnl = autoRenewalService.getAllAutoRenewal();	
 	for (AutoRenewal autoRenewal : arnl) {
 		documentRepository.save(new Document("AutoRenewal" + autoRenewal.getId(),
-				"AutoRenewal" + autoRenewal.getId(), autoRenewal.toString()));
+				"AutoRenewal" + autoRenewal.getId(), autoRenewal.toString(), objectMapper.writeValueAsString(autoRenewal)));
 	}
 
 	return "AutoRenewal saved!!!";
 	}
 	
 	@GetMapping("/saveAuxVariableSolr")
-	public String AuxVariableDocuments() {
+	public String AuxVariableDocuments() throws JsonProcessingException {
 		List<AuxVariable> aux = auxService.getAllAuxVariable();	
 	for (AuxVariable auxVariable : aux) {
 		documentRepository.save(new Document("AuxVariable" + auxVariable.getAuxVarId(),
-				"auxVariable" + auxVariable.getAuxVarId(), auxVariable.toString()));
+				"auxVariable" + auxVariable.getAuxVarId(), auxVariable.toString(), objectMapper.writeValueAsString(auxVariable)));
 	}
 
 	return "AuxVariable saved!!!";
 	}
 	
+	@GetMapping("/saveCancelOrderSolr")
+	public String CancelOrderDocuments() throws JsonProcessingException {
+		List<CancelOrder> co = cancelOrderService.getAllCancelOrder();	
+	for (CancelOrder cancelOrder : co) {
+		documentRepository.save(new Document("CancelOrder" + cancelOrder.getCancelorderId(),
+				"CancelOrder" + cancelOrder.getCancelorderId(), cancelOrder.toString(), objectMapper.writeValueAsString(cancelOrder)));
+	}
+
+	return "CancelOrder saved!!!";
+	}
+	
 	
 	@GetMapping("/saveCancelReasonsSolr")
-	public String CancelReasonsDocuments() {
+	public String CancelReasonsDocuments() throws JsonProcessingException {
 		List<CancelReasons> cr = cancelReasonsService.getAllCancelReasons();	
 	for (CancelReasons cancelReasons : cr) {
 		documentRepository.save(new Document("CancelReasons" + cancelReasons.getCancelReasonsId(),
-				"CancelReasons" + cancelReasons.getCancelReasonsId(), cancelReasons.toString()));
+				"CancelReasons" + cancelReasons.getCancelReasonsId(), cancelReasons.toString(), objectMapper.writeValueAsString(cancelReasons)));
 	}
 
 	return "CancelReasons saved!!!";
 	}
 	
 	@GetMapping("/saveCommodityCodesSolr")
-	public String CommodityCodesDocuments() {
+	public String CommodityCodesDocuments() throws JsonProcessingException {
 		List<CommodityCodes> cc = commodityCodesService.getAllCommodityCodes();	
 	for (CommodityCodes commodityCodes : cc) {
 		documentRepository.save(new Document("CommodityCodes" + commodityCodes.getId(),
-				"CommodityCodes" + commodityCodes.getId(), commodityCodes.toString()));
+				"CommodityCodes" + commodityCodes.getId(), commodityCodes.toString(), objectMapper.writeValueAsString(commodityCodes)));
 	}
 
 	return "CommodityCodes saved!!!";
 	}
 	
 	@GetMapping("/saveCreditStatusSolr")
-	public String CreditStatusDocuments() {
+	public String CreditStatusDocuments() throws JsonProcessingException {
 		List<CreditStatus> cc = creditStatusService.getAllCreditStatus();	
 	for (CreditStatus creditStatus : cc) {
 		documentRepository.save(new Document("CreditStatus" + creditStatus.getCreditId(),
-				"CreditStatus" + creditStatus.getCreditId(), creditStatus.toString()));
+				"CreditStatus" + creditStatus.getCreditId(), creditStatus.toString(), objectMapper.writeValueAsString(creditStatus)));
 	}
 
 	return "CreditStatus saved!!!";
 	}
 	
 	@GetMapping("/saveCurrencyExchangeSolr")
-	public String CurrencyExchangeDocuments() {
+	public String CurrencyExchangeDocuments() throws JsonProcessingException {
 		List<CurrencyExchange> ce = currencyExchangeService.getAllCurrencyExchange();	
 	for (CurrencyExchange currencyExchange : ce) {
 		documentRepository.save(new Document("CurrencyExchange" + currencyExchange.getCurrencyExchangeId(),
-				"CurrencyExchange" + currencyExchange.getCurrencyExchangeId(), currencyExchange.toString()));
+				"CurrencyExchange" + currencyExchange.getCurrencyExchangeId(), currencyExchange.toString(), objectMapper.writeValueAsString(currencyExchange)));
 	}
 
 	return "CurrencyExchange saved!!!";
 	}
 	
 	@GetMapping("/saveCustomerCategorySolr")
-	public String CustomerCategoryDocuments() {
+	public String CustomerCategoryDocuments() throws JsonProcessingException {
 		List<CustomerCategory> cc = customerCategoryService.getAllCustomerCategory();	
 	for (CustomerCategory customerCategory : cc) {
 		documentRepository.save(new Document("CustomerCategory" + customerCategory.getCustomerCategoryId(),
-				"CustomerCategory" + customerCategory.getCustomerCategoryId(), customerCategory.toString()));
+				"CustomerCategory" + customerCategory.getCustomerCategoryId(), customerCategory.toString(), objectMapper.writeValueAsString(customerCategory)));
 	}
 
 	return "CustomerCategory saved!!!";
 	}
 	
 	@GetMapping("/saveDeliveryMethodOverridesSolr")
-	public String DeliveryMethodOverridesDocuments() {
+	public String DeliveryMethodOverridesDocuments() throws JsonProcessingException {
 		List<DeliveryMethodOverrides> dmo = deliveryMethodOverridesService.getAllDeliveryMethodOverrides();	
 	for (DeliveryMethodOverrides deliveryMethodOverrides : dmo) {
 		documentRepository.save(new Document("DeliveryMethodOverrides" + deliveryMethodOverrides.getId(),
-				"DeliveryMethodOverrides" + deliveryMethodOverrides.getId(), deliveryMethodOverrides.toString()));
+				"DeliveryMethodOverrides" + deliveryMethodOverrides.getId(), deliveryMethodOverrides.toString(), objectMapper.writeValueAsString(deliveryMethodOverrides)));
 	}
 
 	return "DeliveryMethodOverrides saved!!!";
@@ -614,330 +572,330 @@ public class SolrDocumentController {
 	
 	
 	@GetMapping("/saveDeliveryMethodsSolr")
-	public String DeliveryMethodsDocuments() {
+	public String DeliveryMethodsDocuments() throws JsonProcessingException {
 		List<DeliveryMethods> dm = DeliveryMethodsService.getAllDeliveryMethods();	
 	for (DeliveryMethods deliveryMethods : dm) {
 		documentRepository.save(new Document("DeliveryMethods" + deliveryMethods.getDeliveryMethodsId(),
-				"DeliveryMethods" + deliveryMethods.getDeliveryMethodsId(), deliveryMethods.toString()));
+				"DeliveryMethods" + deliveryMethods.getDeliveryMethodsId(), deliveryMethods.toString(), objectMapper.writeValueAsString(deliveryMethods)));
 	}
 
 	return "DeliveryMethodOverrides saved!!!";
 	}
 	
 	@GetMapping("/saveDiscountCardKeyInfoSolr")
-	public String DiscountCardKeyInfoDocuments() {
+	public String DiscountCardKeyInfoDocuments() throws JsonProcessingException {
 		List<DiscountCardKeyInfo> dcki = discountCardKeyInfoService.getAllDiscountCardKeyInfo();	
 	for (DiscountCardKeyInfo discountCardKeyInfo : dcki) {
 		documentRepository.save(new Document("DiscountCardKeyInfo" + discountCardKeyInfo.getId(),
-				"DiscountCardKeyInfo" + discountCardKeyInfo.getId(), discountCardKeyInfo.toString()));
+				"DiscountCardKeyInfo" + discountCardKeyInfo.getId(), discountCardKeyInfo.toString(), objectMapper.writeValueAsString(discountCardKeyInfo)));
 	}
 
 	return "DiscountCardKeyInfo saved!!!";
 	}
 	
 	@GetMapping("/saveEffectiveDatesForDiscountSolr")
-	public String EffectiveDatesForDiscountDocuments() {
+	public String EffectiveDatesForDiscountDocuments() throws JsonProcessingException {
 		List<EffectiveDatesForDiscount> edfd = EffectiveDatesForDiscountService.getAllEffectiveDatesForDiscount();	
 	for (EffectiveDatesForDiscount effectiveDatesForDiscount : edfd) {
 		documentRepository.save(new Document("EffectiveDatesForDiscount" + effectiveDatesForDiscount.getId(),
-				"DiscountCardKeyInfo" + effectiveDatesForDiscount.getId(), effectiveDatesForDiscount.toString()));
+				"DiscountCardKeyInfo" + effectiveDatesForDiscount.getId(), effectiveDatesForDiscount.toString(), objectMapper.writeValueAsString(effectiveDatesForDiscount)));
 	}
 
 	return "EffectiveDatesForDiscount saved!!!";
 	}
 	
 	@GetMapping("/saveExtractFilterSolr")
-	public String ExtractFilterDocuments() {
+	public String ExtractFilterDocuments() throws JsonProcessingException {
 		List<ExtractFilter> ef = extractFilterService.getAllExtractFilter();	
 	for (ExtractFilter extractFilter : ef) {
 		documentRepository.save(new Document("ExtractFilter" + extractFilter.getId(),
-				"ExtractFilter" + extractFilter.getId(), extractFilter.toString()));
+				"ExtractFilter" + extractFilter.getId(), extractFilter.toString(), objectMapper.writeValueAsString(extractFilter)));
 	}
 
 	return "ExtractFilter saved!!!";
 	}
 	
 	@GetMapping("/saveInsertsSolr")
-	public String InsertsDocuments() {
+	public String InsertsDocuments() throws JsonProcessingException {
 		List<Inserts> i = insertService.getAllInserts();	
 	for (Inserts inserts : i) {
 		documentRepository.save(new Document("Inserts" + inserts.getId(),
-				"Inserts" + inserts.getId(), inserts.toString()));
+				"Inserts" + inserts.getId(), inserts.toString(), objectMapper.writeValueAsString(inserts)));
 	}
 
 	return "Inserts saved!!!";
 	}
 	
 	@GetMapping("/saveInvoiceEmailsTempletSolr")
-	public String InvoiceEmailsTempletDocuments() {
+	public String InvoiceEmailsTempletDocuments() throws JsonProcessingException {
 		List<InvoiceEmailsTemplet> iet = InvoiceEmailsTempletService.getAllInvoiceEmailsTemplet();	
 	for (InvoiceEmailsTemplet invoiceEmailsTemplet : iet) {
 		documentRepository.save(new Document("InvoiceEmailsTemplet" + invoiceEmailsTemplet.getId(),
-				"invoiceEmailsTemplet" + invoiceEmailsTemplet.getId(), invoiceEmailsTemplet.toString()));
+				"invoiceEmailsTemplet" + invoiceEmailsTemplet.getId(), invoiceEmailsTemplet.toString(), objectMapper.writeValueAsString(invoiceEmailsTemplet)));
 	}
 
 	return "invoiceEmailsTemplet saved!!!";
 	}
 	
 	@GetMapping("/saveIssueGenerationSolr")
-	public String IssueGenerationDocuments() {
+	public String IssueGenerationDocuments() throws JsonProcessingException {
 		List<IssueGeneration> ig = issueGenerationService.getAllIssueGeneration();	
 	for (IssueGeneration issueGeneration : ig) {
 		documentRepository.save(new Document("IssueGeneration" + issueGeneration.getId(),
-				"IssueGeneration" + issueGeneration.getId(), issueGeneration.toString()));
+				"IssueGeneration" + issueGeneration.getId(), issueGeneration.toString(), objectMapper.writeValueAsString(issueGeneration)));
 	}
 
 	return "IssueGeneration saved!!!";
 	}
 	
 	@GetMapping("/saveIssueSettingsSolr")
-	public String IssueSettingsDocuments() {
+	public String IssueSettingsDocuments() throws JsonProcessingException {
 		List<IssueSettings> is = IssueSettingsService.getAllIssueSettings();	
 	for (IssueSettings issueSettings : is) {
 		documentRepository.save(new Document("IssueSettings" + issueSettings.getId(),
-				"IssueSettings" + issueSettings.getId(), issueSettings.toString()));
+				"IssueSettings" + issueSettings.getId(), issueSettings.toString(), objectMapper.writeValueAsString(issueSettings)));
 	}
 
 	return "IssueSettings saved!!!";
 	}
 	
 	@GetMapping("/saveJobQueueSolr")
-	public String JobQueueDocuments() {
+	public String JobQueueDocuments() throws JsonProcessingException {
 		List<JobQueue> jq = jobQueueService.getAllJobQueue();	
 	for (JobQueue jobQueue : jq) {
 		documentRepository.save(new Document("JobQueue" + jobQueue.getJobid(),
-				"JobQueue" + jobQueue.getJobid(), jobQueue.toString()));
+				"JobQueue" + jobQueue.getJobid(), jobQueue.toString(), objectMapper.writeValueAsString(jobQueue)));
 	}
 
 	return "JobQueue saved!!!";
 	}
 	
 	@GetMapping("/saveJurisdictionsSolr")
-	public String JurisdictionsDocuments() {
+	public String JurisdictionsDocuments() throws JsonProcessingException {
 		List<Jurisdictions> ju = JurisdictionsService.getAllJurisdictions();	
 	for (Jurisdictions jurisdictions : ju) {
 		documentRepository.save(new Document("Jurisdictions" + jurisdictions.getId(),
-				"Jurisdictions" + jurisdictions.getId(), jurisdictions.toString()));
+				"Jurisdictions" + jurisdictions.getId(), jurisdictions.toString(), objectMapper.writeValueAsString(jurisdictions)));
 	}
 
 	return "Jurisdictions saved!!!";
 	}
 	
 	@GetMapping("/saveLableFormatSolr")
-	public String LableFormatDocuments() {
+	public String LableFormatDocuments() throws JsonProcessingException {
 		List<LableFormat> lf = LableFormatService.getAllLableFormat();	
 	for (LableFormat lableFormat : lf) {
 		documentRepository.save(new Document("LableFormat" + lableFormat.getLableFormatId(),
-				"LableFormat" + lableFormat.getLableFormatId(), lableFormat.toString()));
+				"LableFormat" + lableFormat.getLableFormatId(), lableFormat.toString(), objectMapper.writeValueAsString(lableFormat)));
 	}
 
 	return "LableFormat saved!!!";
 	}
 	
 	@GetMapping("/saveLableFormatGroupsSolr")
-	public String LableFormatGroupsDocuments() {
+	public String LableFormatGroupsDocuments() throws JsonProcessingException {
 		List<LableFormatGroups> lfg = lableFormatGroupsService.getAllLableFormatGroups();	
 	for (LableFormatGroups lableFormatGroups : lfg) {
 		documentRepository.save(new Document("LableFormatGroups" + lableFormatGroups.getLableFormatGroupId(),
-				"LableFormat" + lableFormatGroups.getLableFormatGroupId(), lableFormatGroups.toString()));
+				"LableFormat" + lableFormatGroups.getLableFormatGroupId(), lableFormatGroups.toString(), objectMapper.writeValueAsString(lableFormatGroups)));
 	}
 
 	return "LableFormatGroups saved!!!";
 	}
 	
 	@GetMapping("/saveLableGroupSolr")
-	public String LableGroupDocuments() {
+	public String LableGroupDocuments() throws JsonProcessingException {
 		List<LableGroup> lg = LableGroupService.getAllLableGroup();	
 	for (LableGroup lableGroup : lg) {
 		documentRepository.save(new Document("LableGroup" + lableGroup.getLableGroupId(),
-				"LableFormat" + lableGroup.getLableGroupId(), lableGroup.toString()));
+				"LableFormat" + lableGroup.getLableGroupId(), lableGroup.toString(), objectMapper.writeValueAsString(lableGroup)));
 	}
 
 	return "LableGroup saved!!!";
 	}
 	
 	@GetMapping("/saveLableKeyLineSolr")
-	public String LableKeyLineDocuments() {
+	public String LableKeyLineDocuments() throws JsonProcessingException {
 		List<LableKeyLine> lkl = lableKeyLineService.getAllLableKeyLine();	
 	for (LableKeyLine lableKeyLine : lkl) {
 		documentRepository.save(new Document("LableKeyLine" + lableKeyLine.getLableKeylineId(),
-				"LableKeyLine" + lableKeyLine.getLableKeylineId(), lableKeyLine.toString()));
+				"LableKeyLine" + lableKeyLine.getLableKeylineId(), lableKeyLine.toString(), objectMapper.writeValueAsString(lableKeyLine)));
 	}
 
 	return "LableKeyLine saved!!!";
 	}
 	
 	@GetMapping("/saveMakePaymentSolr")
-	public String MakePaymentDocuments() {
+	public String MakePaymentDocuments() throws JsonProcessingException {
 		List<MakePayment> mp = MakePaymentService.getAllMakePayment();	
 	for (MakePayment makePayment : mp) {
 		documentRepository.save(new Document("MakePayment" + makePayment.getId(),
-				"MakePayment" + makePayment.getId(), makePayment.toString()));
+				"MakePayment" + makePayment.getId(), makePayment.toString(), objectMapper.writeValueAsString(makePayment)));
 	}
 
 	return "MakePayment saved!!!";
 	}
 	
 	@GetMapping("/saveNthSolr")
-	public String NthDocuments() {
+	public String NthDocuments() throws JsonProcessingException {
 		List<Nth> nth = NthService.getAllNth();	
 	for (Nth nth1 : nth) {
 		documentRepository.save(new Document("Nth" + nth1.getNthid(),
-				"MakePayment" + nth1.getNthid(), nth1.toString()));
+				"MakePayment" + nth1.getNthid(), nth1.toString(), objectMapper.writeValueAsString(nth1)));
 	}
 
 	return "Nth saved!!!";
 	}
 	
 	@GetMapping("/saveOrderSolr")
-	public String OrderDocuments() {
+	public String OrderDocuments() throws JsonProcessingException {
 		List<Order> o = AddOrderService.getAllOrder();	
 	for (Order order : o) {
 		documentRepository.save(new Document("Order" + order.getOrderId(),
-				"Order" + order.getOrderId(), order.toString()));
+				"Order" + order.getOrderId(), order.toString(), objectMapper.writeValueAsString(order)));
 	}
 
 	return "Order saved!!!";
 	}
 	
 	@GetMapping("/saveOrderAddressMappingSolr")
-	public String OrderAddressMappingDocuments() {
+	public String OrderAddressMappingDocuments() throws JsonProcessingException {
 		List<OrderAddressMapping> oam = AddOrderService.getAllOrderAddressMapping();	
 	for (OrderAddressMapping orderAddressMapping : oam) {
 		documentRepository.save(new Document("OrderAddressMapping" + orderAddressMapping.getId(),
-				"OrderAddressMapping" + orderAddressMapping.getId(), orderAddressMapping.toString()));
+				"OrderAddressMapping" + orderAddressMapping.getId(), orderAddressMapping.toString(), objectMapper.writeValueAsString(orderAddressMapping)));
 	}
 
 	return "OrderAddressMapping saved!!!";
 	}
 	
 	@GetMapping("/saveOrderAuxiliaryInformationSolr")
-	public String OrderAuxiliaryInformationDocuments() {
+	public String OrderAuxiliaryInformationDocuments() throws JsonProcessingException {
 		List<OrderAuxiliaryInformation> oai = AddOrderService.getAllOrderAuxiliaryInformation();	
 	for (OrderAuxiliaryInformation orderAuxiliaryInformation : oai) {
 		documentRepository.save(new Document("OrderAuxiliaryInformation" + orderAuxiliaryInformation.getId(),
-				"OrderAuxiliaryInformation" + orderAuxiliaryInformation.getId(), orderAuxiliaryInformation.toString()));
+				"OrderAuxiliaryInformation" + orderAuxiliaryInformation.getId(), orderAuxiliaryInformation.toString(), objectMapper.writeValueAsString(orderAuxiliaryInformation)));
 	}
 
 	return "OrderAuxiliaryInformation saved!!!";
 	}
 	
 	@GetMapping("/saveOrderCategorySolr")
-	public String OrderCategoryDocuments() {
+	public String OrderCategoryDocuments() throws JsonProcessingException {
 		List<OrderCategory> oc = AddOrderService.getAllOrderCategory();	
 	for (OrderCategory orderCategory : oc) {
 		documentRepository.save(new Document("OrderCategory" + orderCategory.getOrderCategoryId(),
-				"OrderCategory" + orderCategory.getOrderCategoryId(), orderCategory.toString()));
+				"OrderCategory" + orderCategory.getOrderCategoryId(), orderCategory.toString(), objectMapper.writeValueAsString(orderCategory)));
 	}
 
 	return "OrderCategory saved!!!";
 	}
 	
 	@GetMapping("/saveOrderClassSolr")
-	public String OrderClassDocuments() {
+	public String OrderClassDocuments() throws JsonProcessingException {
 		List<OrderClass> oclass = OrderClassService.getAllOrderClass();	
 	for (OrderClass orderClass : oclass) {
 		documentRepository.save(new Document("OrderClass" + orderClass.getOcId(),
-				"OrderClass" + orderClass.getOcId(), orderClass.toString()));
+				"OrderClass" + orderClass.getOcId(), orderClass.toString(), objectMapper.writeValueAsString(orderClass)));
 	}
 
 	return "OrderClass saved!!!";
 	}
 	
 	@GetMapping("/saveOrderClassOverviewSolr")
-	public String OrderClassOverviewDocuments() {
+	public String OrderClassOverviewDocuments() throws JsonProcessingException {
 		List<OrderClassOverview> oco = OrderClassOverviewService.getAllOrderClassOverview();	
 	for (OrderClassOverview orderClassOverview : oco) {
 		documentRepository.save(new Document("OrderClassOverview" + orderClassOverview.getId(),
-				"OrderClassOverview" + orderClassOverview.getId(), orderClassOverview.toString()));
+				"OrderClassOverview" + orderClassOverview.getId(), orderClassOverview.toString(), objectMapper.writeValueAsString(orderClassOverview)));
 	}
 
 	return "OrderClassOverview saved!!!";
 	}
 	
 	@GetMapping("/saveOrderCodesSolr")
-	public String OrderCodesDocuments() {
+	public String OrderCodesDocuments() throws JsonProcessingException {
 		List<OrderCodes> ocodes = orderCodesService.getAllOrderCodes();	
 	for (OrderCodes orderCodes : ocodes) {
 		documentRepository.save(new Document("OrderCodes" + orderCodes.getId(),
-				"OrderCodes" + orderCodes.getId(), orderCodes.toString()));
+				"OrderCodes" + orderCodes.getId(), orderCodes.toString(), objectMapper.writeValueAsString(orderCodes)));
 	}
 
 	return "OrderCodes saved!!!";
 	}
 	
 	@GetMapping("/saveOrderCodesSuperSolr")
-	public String OrderCodesSuperDocuments() {
+	public String OrderCodesSuperDocuments() throws JsonProcessingException {
 		List<OrderCodesSuper> ocs = orderCodesService.getAllOrderCodesSuper();	
 	for (OrderCodesSuper orderCodesSuper : ocs) {
 		documentRepository.save(new Document("OrderCodesSuper" + orderCodesSuper.getId(),
-				"OrderCodesSuper" + orderCodesSuper.getId(), orderCodesSuper.toString()));
+				"OrderCodesSuper" + orderCodesSuper.getId(), orderCodesSuper.toString(), objectMapper.writeValueAsString(orderCodesSuper)));
 	}
 
 	return "OrderCodesSuper saved!!!";
 	}
 	
 	@GetMapping("/saveOrderDeliveryOptionsSolr")
-	public String OrderDeliveryOptionsDocuments() {
+	public String OrderDeliveryOptionsDocuments() throws JsonProcessingException {
 		List<OrderDeliveryOptions> odo = AddOrderService.getAllOrderDeliveryOptions();	
 	for (OrderDeliveryOptions orderDeliveryOptions : odo) {
 		documentRepository.save(new Document("OrderDeliveryOptions" + orderDeliveryOptions.getId(),
-				"OrderDeliveryOptions" + orderDeliveryOptions.getId(), orderDeliveryOptions.toString()));
+				"OrderDeliveryOptions" + orderDeliveryOptions.getId(), orderDeliveryOptions.toString(), objectMapper.writeValueAsString(orderDeliveryOptions)));
 	}
 
 	return "OrderDeliveryOptions saved!!!";
 	}
 	
 	@GetMapping("/saveOrderItemDetailsSolr")
-	public String OrderItemDetailsDocuments() {
+	public String OrderItemDetailsDocuments() throws JsonProcessingException {
 		List<OrderItemDetails> oid = orderCodesService.getAllOrderItemDetails();	
 	for (OrderItemDetails orderItemDetails : oid) {
 		documentRepository.save(new Document("OrderItemDetails" + orderItemDetails.getId(),
-				"OrderItemDetails" + orderItemDetails.getId(), orderItemDetails.toString()));
+				"OrderItemDetails" + orderItemDetails.getId(), orderItemDetails.toString(), objectMapper.writeValueAsString(orderItemDetails)));
 	}
 
 	return "OrderItemDetails saved!!!";
 	}
 	
 	@GetMapping("/saveOrderItemsSolr")
-	public String OrderItemsDocuments() {
+	public String OrderItemsDocuments() throws JsonProcessingException {
 		List<OrderItems> oi = AddOrderService.getAllOrderItems();	
 	for (OrderItems orderItems : oi) {
 		documentRepository.save(new Document("OrderItems" + orderItems.getId(),
-				"OrderItems" + orderItems.getId(), orderItems.toString()));
+				"OrderItems" + orderItems.getId(), orderItems.toString(), objectMapper.writeValueAsString(orderItems)));
 	}
 
 	return "OrderItems saved!!!";
 	}
 	
 	@GetMapping("/saveOrderKeyInformationSolr")
-	public String OrderKeyInformationDocuments() {
+	public String OrderKeyInformationDocuments() throws JsonProcessingException {
 		List<OrderKeyInformation> oki = AddOrderService.getAllOrderKeyInformation();	
 	for (OrderKeyInformation orderKeyInformation : oki) {
 		documentRepository.save(new Document("OrderKeyInformation" + orderKeyInformation.getId(),
-				"OrderKeyInformation" + orderKeyInformation.getId(), orderKeyInformation.toString()));
+				"OrderKeyInformation" + orderKeyInformation.getId(), orderKeyInformation.toString(), objectMapper.writeValueAsString(orderKeyInformation)));
 	}
 
 	return "OrderKeyInformation saved!!!";
 	}
 	
 	@GetMapping("/saveOrderPackageOptionsSolr")
-	public String OrderPackageOptionsDocuments() {
+	public String OrderPackageOptionsDocuments() throws JsonProcessingException {
 		List<OrderPackageOptions> opo = orderCodesService.getAllOrderOptions();	
 	for (OrderPackageOptions orderPackageOptions : opo) {
 		documentRepository.save(new Document("OrderPackageOptions" + orderPackageOptions.getId(),
-				"OrderPackageOptions" + orderPackageOptions.getId(), orderPackageOptions.toString()));
+				"OrderPackageOptions" + orderPackageOptions.getId(), orderPackageOptions.toString(), objectMapper.writeValueAsString(orderPackageOptions)));
 	}
 
 	return "OrderPackageOptions saved!!!";
 	}
 	
 	@GetMapping("/saveOrderPaymentOptionsSolr")
-	public String OrderPaymentOptionsDocuments() {
+	public String OrderPaymentOptionsDocuments() throws JsonProcessingException {
 		List<OrderPaymentOptions> opayOp = orderCodesService.getAllOrderPaymentOptions();	
 	for (OrderPaymentOptions orderPaymentOptions : opayOp) {
 		documentRepository.save(new Document("OrderPaymentOptions" + orderPaymentOptions.getId(),
-				"OrderPaymentOptions" + orderPaymentOptions.getId(), orderPaymentOptions.toString()));
+				"OrderPaymentOptions" + orderPaymentOptions.getId(), orderPaymentOptions.toString(), objectMapper.writeValueAsString(orderPaymentOptions)));
 	}
 
 	return "orderPaymentOptions saved!!!";
@@ -948,392 +906,392 @@ public class SolrDocumentController {
 //		List<OrdersToBeSuspended> otbs = SuspendOrderService.getAllOrdersToBeSuspended();	
 //	for (OrdersToBeSuspended ordersToBeSuspended : otbs) {
 //		documentRepository.save(new Document("OrdersToBeSuspended" + ordersToBeSuspended.getId(),
-//				"OrdersToBeSuspended" + ordersToBeSuspended.getId(), ordersToBeSuspended.toString()));
+//				"OrdersToBeSuspended" + ordersToBeSuspended.getId(), ordersToBeSuspended.toString(), objectMapper.writeValueAsString(ordersToBeSuspended)));
 //	}
 //
 //	return "OrdersToBeSuspended saved!!!";
 //	}
 	
 	@GetMapping("/saveOrderThresholdInfoSolr")
-	public String OrderThresholdInfoDocuments() {
+	public String OrderThresholdInfoDocuments() throws JsonProcessingException {
 		List<OrderThresholdInfo> oti = orderThresholdInfoService.getAllOrderThresholdInfo();	
 	for (OrderThresholdInfo orderThresholdInfo : oti) {
 		documentRepository.save(new Document("OrdersToBeSuspended" + orderThresholdInfo.getId(),
-				"OrdersToBeSuspended" + orderThresholdInfo.getId(), orderThresholdInfo.toString()));
+				"OrdersToBeSuspended" + orderThresholdInfo.getId(), orderThresholdInfo.toString(), objectMapper.writeValueAsString(orderThresholdInfo)));
 	}
 
 	return "OrderThresholdInfo saved!!!";
 	}
 	
 	@GetMapping("/saveOutputSortSolr")
-	public String OutputSortDocuments() {
+	public String OutputSortDocuments() throws JsonProcessingException {
 		List<OutputSort> os = outputSortService.getAllOutputSort();	
 	for (OutputSort outputSort : os) {
 		documentRepository.save(new Document("OutputSort" + outputSort.getId(),
-				"OutputSort" + outputSort.getId(), outputSort.toString()));
+				"OutputSort" + outputSort.getId(), outputSort.toString(), objectMapper.writeValueAsString(outputSort)));
 	}
 
 	return "OutputSort saved!!!";
 	}
 	
 	@GetMapping("/saveOutputValueSolr")
-	public String OutputValueDocuments() {
+	public String OutputValueDocuments() throws JsonProcessingException {
 		List<OutputValue> ov = outputValueService.getAllOutputValue();	
 	for (OutputValue outputValue : ov) {
 		documentRepository.save(new Document("OutputValue" + outputValue.getId(),
-				"OutputValue" + outputValue.getId(), outputValue.toString()));
+				"OutputValue" + outputValue.getId(), outputValue.toString(), objectMapper.writeValueAsString(outputValue)));
 	}
 
 	return "OutputValue saved!!!";
 	}
 	
 	@GetMapping("/saveParentChildMappingSolr")
-	public String ParentChildMappingDocuments() {
+	public String ParentChildMappingDocuments() throws JsonProcessingException {
 		List<ParentChildMapping> pcmp = parentChildMappingService.getAllParentChildMapping();	
 	for (ParentChildMapping parentChildMapping : pcmp) {
 		documentRepository.save(new Document("ParentChildMapping" + parentChildMapping.getId(),
-				"ParentChildMapping" + parentChildMapping.getId(), parentChildMapping.toString()));
+				"ParentChildMapping" + parentChildMapping.getId(), parentChildMapping.toString(), objectMapper.writeValueAsString(parentChildMapping)));
 	}
 
 	return "ParentChildMapping saved!!!";
 	}
 	
 	@GetMapping("/savePaymentBreakdownSolr")
-	public String PaymentBreakdownDocuments() {
+	public String PaymentBreakdownDocuments() throws JsonProcessingException {
 		List<PaymentBreakdown> pbwn = AddOrderService.getAllPaymentBreakdown();	
 	for (PaymentBreakdown paymentBreakdown : pbwn) {
 		documentRepository.save(new Document("PaymentBreakdown" + paymentBreakdown.getId(),
-				"PaymentBreakdown" + paymentBreakdown.getId(), paymentBreakdown.toString()));
+				"PaymentBreakdown" + paymentBreakdown.getId(), paymentBreakdown.toString(), objectMapper.writeValueAsString(paymentBreakdown)));
 	}
 
 	return "PaymentBreakdown saved!!!";
 	}
 	
 	@GetMapping("/savePaymentInformationSolr")
-	public String PaymentInformationDocuments() {
+	public String PaymentInformationDocuments() throws JsonProcessingException {
 		List<PaymentInformation> pi = paymentInformationService.getAllPaymentInformation();	
 	for (PaymentInformation paymentInformation : pi) {
 		documentRepository.save(new Document("PaymentInformation" + paymentInformation.getId(),
-				"PaymentInformation" + paymentInformation.getId(), paymentInformation.toString()));
+				"PaymentInformation" + paymentInformation.getId(), paymentInformation.toString(), objectMapper.writeValueAsString(paymentInformation)));
 	}
 
 	return "PaymentInformation saved!!!";
 	}
 	
 	@GetMapping("/savePaymentLinkStatusSolr")
-	public String PaymentLinkStatusDocuments() {
+	public String PaymentLinkStatusDocuments() throws JsonProcessingException {
 		List<PaymentLinkStatus> pls = paymentLinkStatusService.getAllPaymentLinkStatus();	
 	for (PaymentLinkStatus paymentLinkStatus : pls) {
 		documentRepository.save(new Document("PaymentLinkStatus" + paymentLinkStatus.getId(),
-				"PaymentLinkStatus" + paymentLinkStatus.getId(), paymentLinkStatus.toString()));
+				"PaymentLinkStatus" + paymentLinkStatus.getId(), paymentLinkStatus.toString(),objectMapper.writeValueAsString(paymentLinkStatus)));
 	}
 
 	return "PaymentLinkStatus saved!!!";
 	}
 	
 	@GetMapping("/savePaymentThresholdSolr")
-	public String PaymentThresholdDocuments() {
+	public String PaymentThresholdDocuments() throws JsonProcessingException {
 		List<PaymentThreshold> pthsld = paymentThresholdService.getAllPaymentThreshold();	
 	for (PaymentThreshold paymentThreshold : pthsld) {
 		documentRepository.save(new Document("PaymentThreshold" + paymentThreshold.getPaymentThresholdId(),
-				"PaymentThreshold" + paymentThreshold.getPaymentThresholdId(), paymentThreshold.toString()));
+				"PaymentThreshold" + paymentThreshold.getPaymentThresholdId(), paymentThreshold.toString(), objectMapper.writeValueAsString(paymentThreshold)));
 	}
 
 	return "PaymentThreshold saved!!!";
 	}
 	
 	@GetMapping("/savePaymentTypeSolr")
-	public String PaymentTypeDocuments() {
+	public String PaymentTypeDocuments() throws JsonProcessingException {
 		List<PaymentType> ptype = paymentTypeService.getAllPaymentType();	
 	for (PaymentType paymentType : ptype) {
 		documentRepository.save(new Document("PaymentType" + paymentType.getId(),
-				"PaymentType" + paymentType.getId(), paymentType.toString()));
+				"PaymentType" + paymentType.getId(), paymentType.toString(), objectMapper.writeValueAsString(paymentType)));
 	}
 
 	return "PaymentType saved!!!";
 	}
 	
 	@GetMapping("/saveProcessOutputSolr")
-	public String ProcessOutputDocuments() {
+	public String ProcessOutputDocuments() throws JsonProcessingException {
 		List<ProcessOutput> po = processOutputService.getAllProcessOutput();	
 	for (ProcessOutput processOutput : po) {
 		documentRepository.save(new Document("ProcessOutput" + processOutput.getOutput_id(),
-				"ProcessOutput" + processOutput.getOutput_id(), processOutput.toString()));
+				"ProcessOutput" + processOutput.getOutput_id(), processOutput.toString(), objectMapper.writeValueAsString(processOutput)));
 	}
 
 	return "ProcessOutput saved!!!";
 	}
 	
 	@GetMapping("/saveProcessTypeSolr")
-	public String ProcessTypeDocuments() {
+	public String ProcessTypeDocuments() throws JsonProcessingException {
 		List<ProcessType> ptype = ProcessTypeService.getAllProcessType();	
 	for (ProcessType processType : ptype) {
 		documentRepository.save(new Document("ProcessType" + processType.getPid(),
-				"ProcessType" + processType.getPid(), processType.toString()));
+				"ProcessType" + processType.getPid(), processType.toString(), objectMapper.writeValueAsString(processType)));
 	}
 
 	return "ProcessType saved!!!";
 	}
 	
 	@GetMapping("/saveProfitCenterSolr")
-	public String ProfitCenterDocuments() {
+	public String ProfitCenterDocuments() throws JsonProcessingException {
 		List<ProfitCenter> pcenter = profitCenterService.getAllProfitCenter();	
 	for (ProfitCenter profitCenter : pcenter) {
 		documentRepository.save(new Document("ProfitCenter" + profitCenter.getProftId(),
-				"ProfitCenter" + profitCenter.getProftId(), profitCenter.toString()));
+				"ProfitCenter" + profitCenter.getProftId(), profitCenter.toString(), objectMapper.writeValueAsString(profitCenter)));
 	}
 
 	return "ProfitCenter saved!!!";
 	}
 	
 	@GetMapping("/savePublisherSolr")
-	public String PublisherDocuments() {
+	public String PublisherDocuments() throws JsonProcessingException {
 		List<Publisher> pub = publisherSerivce.getAllPublisher();	
 	for (Publisher publisher : pub) {
 		documentRepository.save(new Document("Publisher" + publisher.getId(),
-				"Publisher" + publisher.getId(), publisher.toString()));
+				"Publisher" + publisher.getId(), publisher.toString(), objectMapper.writeValueAsString(publisher)));
 	}
 
 	return "Publisher saved!!!";
 	}
 	
 	@GetMapping("/saveQueueSolr")
-	public String QueueDocuments() {
+	public String QueueDocuments() throws JsonProcessingException {
 		List<Queue> queue = QueueService.getAllQueue();	
 	for (Queue queue1 : queue) {
 		documentRepository.save(new Document("Queue" + queue1.getId(),
-				"Queue" + queue1.getId(), queue1.toString()));
+				"Queue" + queue1.getId(), queue1.toString(), objectMapper.writeValueAsString(queue1)));
 	}
 
 	return "Queue saved!!!";
 	}
 	
 	@GetMapping("/saveRateCardsSolr")
-	public String RateCardsDocuments() {
+	public String RateCardsDocuments() throws JsonProcessingException {
 		List<RateCards> rcard = rateCardsService.getAllRateCards();	
 	for (RateCards rateCards : rcard) {
 		documentRepository.save(new Document("RateCards" + rateCards.getRcId(),
-				"RateCards" + rateCards.getRcId(), rateCards.toString()));
+				"RateCards" + rateCards.getRcId(), rateCards.toString(), objectMapper.writeValueAsString(rateCards)));
 	}
 
 	return "RateCards saved!!!";
 	}
 	
 	@GetMapping("/saveRateCardsRenewalsSolr")
-	public String RateCardsRenewalsDocuments() {
+	public String RateCardsRenewalsDocuments() throws JsonProcessingException {
 		List<RateCardsRenewals> rcr = rateCardsRenewalsService.getAllRateCardsRenewals();	
 	for (RateCardsRenewals rateCardsRenewals : rcr) {
 		documentRepository.save(new Document("RateCardsRenewals" + rateCardsRenewals.getId(),
-				"RateCardsRenewals" + rateCardsRenewals.getId(), rateCardsRenewals.toString()));
+				"RateCardsRenewals" + rateCardsRenewals.getId(), rateCardsRenewals.toString(), objectMapper.writeValueAsString(rateCardsRenewals)));
 	}
 
 	return "RateCardsRenewals saved!!!";
 	}
 	
 	@GetMapping("/saveRCEffortRangeSolr")
-	public String RCEffortRangeDocuments() {
+	public String RCEffortRangeDocuments() throws JsonProcessingException {
 		List<RCEffortRange> rcer = rCEffortRangeService.getAllRCEffortRange();	
 	for (RCEffortRange rCEffortRange : rcer) {
 		documentRepository.save(new Document("RCEffortRange" + rCEffortRange.getId(),
-				"RCEffortRange" + rCEffortRange.getId(), rCEffortRange.toString()));
+				"RCEffortRange" + rCEffortRange.getId(), rCEffortRange.toString(), objectMapper.writeValueAsString(rCEffortRange)));
 	}
 
 	return "RCEffortRange saved!!!";
 	}
 	
 	@GetMapping("/saveRenewalCardSolr")
-	public String RenewalCardDocuments() {
+	public String RenewalCardDocuments() throws JsonProcessingException {
 		List<RenewalCard> rc = renewalCardService.getAllRenewalCard();	
-	for (RenewalCard rCEffortRange : rc) {
-		documentRepository.save(new Document("RenewalCard" + rCEffortRange.getRenewalCardId(),
-				"RenewalCard" + rCEffortRange.getRenewalCardId(), rCEffortRange.toString()));
+	for (RenewalCard renewalCard : rc) {
+		documentRepository.save(new Document("RenewalCard" + renewalCard.getRenewalCardId(),
+				"RenewalCard" + renewalCard.getRenewalCardId(), renewalCard.toString(), objectMapper.writeValueAsString(renewalCard)));
 	}
 
 	return "RenewalCard saved!!!";
 	}
 	
 	@GetMapping("/saveRenewalDefinitionSolr")
-	public String RenewalDefinitionDocuments() {
+	public String RenewalDefinitionDocuments() throws JsonProcessingException {
 		List<RenewalDefinition> rd = renewalDefinitionService.getAllRenewalDefinition();	
 	for (RenewalDefinition renewalDefinition : rd) {
 		documentRepository.save(new Document("RenewalDefinition" + renewalDefinition.getId(),
-				"RenewalDefinition" + renewalDefinition.getId(), renewalDefinition.toString()));
+				"RenewalDefinition" + renewalDefinition.getId(), renewalDefinition.toString(), objectMapper.writeValueAsString(renewalDefinition)));
 	}
 
 	return "RenewalDefinition saved!!!";
 	}
 	
 	@GetMapping("/saveRenewalOfferDetailsSolr")
-	public String RenewalOfferDetailsDocuments() {
+	public String RenewalOfferDetailsDocuments() throws JsonProcessingException {
 		List<RenewalOfferDetails> rod = renewalOfferDetailsService.getAllRenewalOfferDetails();	
 	for (RenewalOfferDetails renewalOfferDetails : rod) {
 		documentRepository.save(new Document("RenewalOfferDetails" + renewalOfferDetails.getRenewalOfferDetailsId(),
-				"RenewalOfferDetails" + renewalOfferDetails.getRenewalOfferDetailsId(), renewalOfferDetails.toString()));
+				"RenewalOfferDetails" + renewalOfferDetails.getRenewalOfferDetailsId(), renewalOfferDetails.toString(), objectMapper.writeValueAsString(renewalOfferDetails)));
 	}
 
 	return "RenewalOfferDetails saved!!!";
 	}
 	
 	@GetMapping("/saveRentalStatusSolr")
-	public String RentalStatusDocuments() {
+	public String RentalStatusDocuments() throws JsonProcessingException {
 		List<RentalStatus> rs = rentalStatusService.getAllRentalStatus();	
 	for (RentalStatus rentalStatus : rs) {
 		documentRepository.save(new Document("RentalStatus" + rentalStatus.getRentalStatusId(),
-				"RentalStatus" + rentalStatus.getRentalStatusId(), rentalStatus.toString()));
+				"RentalStatus" + rentalStatus.getRentalStatusId(), rentalStatus.toString(), objectMapper.writeValueAsString(rentalStatus)));
 	}
 
 	return "RentalStatus saved!!!";
 	}
 	
 	@GetMapping("/saveRepeatingSolr")
-	public String RepeatingDocuments() {
+	public String RepeatingDocuments() throws JsonProcessingException {
 		List<Repeating> r = repeatingService.getAllRepeating();	
 	for (Repeating repeating : r) {
 		documentRepository.save(new Document("Repeating" + repeating.getId(),
-				"Repeating" + repeating.getId(), repeating.toString()));
+				"Repeating" + repeating.getId(), repeating.toString(), objectMapper.writeValueAsString(repeating)));
 	}
 
 	return "Repeating saved!!!";
 	}
 	
 	@GetMapping("/saveSalesRepresentativeSolr")
-	public String SalesRepresentativeDocuments() {
+	public String SalesRepresentativeDocuments() throws JsonProcessingException {
 		List<SalesRepresentative> sr = salesRepresentativeService.getAllSalesRepresentative();	
 	for (SalesRepresentative salesRepresentative : sr) {
 		documentRepository.save(new Document("SalesRepresentative" + salesRepresentative.getSalesRepID(),
-				"SalesRepresentative" + salesRepresentative.getSalesRepID(), salesRepresentative.toString()));
+				"SalesRepresentative" + salesRepresentative.getSalesRepID(), salesRepresentative.toString(),  objectMapper.writeValueAsString(salesRepresentative)));
 	}
 
 	return "SalesRepresentative saved!!!";
 	}
 	
 	@GetMapping("/saveShippingMethodSolr")
-	public String ShippingMethodDocuments() {
+	public String ShippingMethodDocuments() throws JsonProcessingException {
 		List<ShippingMethod> sm = shippingMethodService.getAllShippingMethod();	
 	for (ShippingMethod shippingMethod : sm) {
 		documentRepository.save(new Document("ShippingMethod" + shippingMethod.getId(),
-				"ShippingMethod" + shippingMethod.getId(), shippingMethod.toString()));
+				"ShippingMethod" + shippingMethod.getId(), shippingMethod.toString(), objectMapper.writeValueAsString(shippingMethod)));
 	}
 
 	return "ShippingMethod saved!!!";
 	}
 	
 	@GetMapping("/saveShippingPriceListSolr")
-	public String ShippingPriceListDocuments() {
+	public String ShippingPriceListDocuments() throws JsonProcessingException {
 		List<ShippingPriceList> spl = shippingPriceListService.getAllShippingPriceList();	
 	for (ShippingPriceList shippingPriceList : spl) {
 		documentRepository.save(new Document("ShippingPriceList" + shippingPriceList.getId(),
-				"ShippingPriceList" + shippingPriceList.getId(), shippingPriceList.toString()));
+				"ShippingPriceList" + shippingPriceList.getId(), shippingPriceList.toString(), objectMapper.writeValueAsString(shippingPriceList)));
 	}
 
 	return "ShippingPriceList saved!!!";
 	}
 	
 	@GetMapping("/saveSourceAttributesSolr")
-	public String SourceAttributesDocuments() {
+	public String SourceAttributesDocuments() throws JsonProcessingException {
 		List<SourceAttributes> sa = sourceAttributesService.getAllSourceAttributes();	
 	for (SourceAttributes sourceAttributes : sa) {
 		documentRepository.save(new Document("SourceAttributes" + sourceAttributes.getId(),
-				"SourceAttributes" + sourceAttributes.getId(), sourceAttributes.toString()));
+				"SourceAttributes" + sourceAttributes.getId(), sourceAttributes.toString(), objectMapper.writeValueAsString(sourceAttributes)));
 	}
 
 	return "SourceAttributes saved!!!";
 	}
 	
 	@GetMapping("/saveSourceAttributeValuesSolr")
-	public String SourceAttributeValuesDocuments() {
+	public String SourceAttributeValuesDocuments() throws JsonProcessingException {
 		List<SourceAttributeValues> sa = sourceAttributeValuesService.getAllSourceAttributes();	
 	for (SourceAttributeValues sourceAttributeValues : sa) {
 		documentRepository.save(new Document("SourceAttributeValues" + sourceAttributeValues.getId(),
-				"SourceAttributeValues" + sourceAttributeValues.getId(), sourceAttributeValues.toString()));
+				"SourceAttributeValues" + sourceAttributeValues.getId(), sourceAttributeValues.toString(), objectMapper.writeValueAsString(sourceAttributeValues)));
 	}
 
 	return "SourceAttributeValues saved!!!";
 	}
 	
 	@GetMapping("/saveSourceCodeSolr")
-	public String SourceCodeDocuments() {
+	public String SourceCodeDocuments() throws JsonProcessingException {
 		List<SourceCode> sc = sourceCodeService.getAllSourceCode();	
 	for (SourceCode sourceCode : sc) {
 		documentRepository.save(new Document("SourceCode" + sourceCode.getSourceCodeId(),
-				"SourceCode" + sourceCode.getSourceCodeId(), sourceCode.toString()));
+				"SourceCode" + sourceCode.getSourceCodeId(), sourceCode.toString(), objectMapper.writeValueAsString(sourceCode)));
 	}
 
 	return "SourceCode saved!!!";
 	}
 	
 	@GetMapping("/saveSourceCodeAndValuesMappingSolr")
-	public String SourceCodeAndValuesMappingDocuments() {
+	public String SourceCodeAndValuesMappingDocuments() throws JsonProcessingException {
 		List<SourceCodeAndValuesMapping> scvm = sourceCodeService.getAllSourceCodeAndValuesMapping();	
 	for (SourceCodeAndValuesMapping sourceCodeAndValuesMapping : scvm) {
 		documentRepository.save(new Document("SourceCodeAndValuesMapping" + sourceCodeAndValuesMapping.getId(),
-				"SourceCodeAndValuesMapping" + sourceCodeAndValuesMapping.getId(), sourceCodeAndValuesMapping.toString()));
+				"SourceCodeAndValuesMapping" + sourceCodeAndValuesMapping.getId(), sourceCodeAndValuesMapping.toString(), objectMapper.writeValueAsString(sourceCodeAndValuesMapping)));
 	}
 
 	return "SourceCodeAndValuesMapping saved!!!";
 	}
 	
 	@GetMapping("/saveSourceFormatSolr")
-	public String SourceFormatDocuments() {
+	public String SourceFormatDocuments() throws JsonProcessingException {
 		List<SourceFormat> sf = sourceFormatService.getAllSourceFormat();	
 	for (SourceFormat sourceFormat : sf) {
 		documentRepository.save(new Document("SourceFormat" + sourceFormat.getId(),
-				"SourceFormat" + sourceFormat.getId(), sourceFormat.toString()));
+				"SourceFormat" + sourceFormat.getId(), sourceFormat.toString(), objectMapper.writeValueAsString(sourceFormat)));
 	}
 	
 	return "SourceFormat saved!!!";
 	}
 	
 	@GetMapping("/saveSourceFormatAndAttributeMappingSolr")
-	public String SourceFormatAndAttributeMappingDocuments() {
+	public String SourceFormatAndAttributeMappingDocuments() throws JsonProcessingException {
 		List<SourceFormatAndAttributeMapping> sfam = sourceFormatService.getAllSourceFormatAndAttributeMapping();	
 	for (SourceFormatAndAttributeMapping sourceFormatAndAttributeMapping : sfam) {
 		documentRepository.save(new Document("SourceFormatAndAttributeMapping" + sourceFormatAndAttributeMapping.getId(),
-				"SourceFormatAndAttributeMapping" + sourceFormatAndAttributeMapping.getId(), sourceFormatAndAttributeMapping.toString()));
+				"SourceFormatAndAttributeMapping" + sourceFormatAndAttributeMapping.getId(), sourceFormatAndAttributeMapping.toString(), objectMapper.writeValueAsString(sourceFormatAndAttributeMapping)));
 	}
 	
 	return "SourceFormatAndAttributeMapping saved!!!";
 	}
 	
 	@GetMapping("/saveSourceFormatSegmentSolr")
-	public String SourceFormatSegmentDocuments() {
+	public String SourceFormatSegmentDocuments() throws JsonProcessingException {
 		List<SourceFormatSegment> sfs = sourceFormatSegmentService.getAllSourceFormatSegment();	
 	for (SourceFormatSegment sourceFormatSegment : sfs) {
 		documentRepository.save(new Document("SourceFormatSegment" + sourceFormatSegment.getId(),
-				"SourceFormatSegment" + sourceFormatSegment.getId(), sourceFormatSegment.toString()));
+				"SourceFormatSegment" + sourceFormatSegment.getId(), sourceFormatSegment.toString(), objectMapper.writeValueAsString(sourceFormatSegment)));
 	}
 	
 	return "SourceFormatSegment saved!!!";
 	}
 	
 	@GetMapping("/saveSpecialTaxIdsSolr")
-	public String SpecialTaxIdsDocuments() {
+	public String SpecialTaxIdsDocuments() throws JsonProcessingException {
 		List<SpecialTaxIds> spclTax = specialTaxIdsService.getAllSpecialTaxIds();	
 	for (SpecialTaxIds specialTaxIds : spclTax) {
 		documentRepository.save(new Document("SpecialTaxIds" + specialTaxIds.getId(),
-				"SpecialTaxIds" + specialTaxIds.getId(), specialTaxIds.toString()));
+				"SpecialTaxIds" + specialTaxIds.getId(), specialTaxIds.toString(), objectMapper.writeValueAsString(specialTaxIds)));
 	}
 	
 	return "SpecialTaxIds saved!!!";
 	}
 	
 	@GetMapping("/saveSplitsSolr")
-	public String SplitsDocuments() {
+	public String SplitsDocuments() throws JsonProcessingException {
 		List<Splits> splt = splitsService.getAllSplits();	
 	for (Splits splits : splt) {
 		documentRepository.save(new Document("Splits" + splits.getId(),
-				"Splits" + splits.getId(), splits.toString()));
+				"Splits" + splits.getId(), splits.toString(), objectMapper.writeValueAsString(splits)));
 	}
 	
 	return "Splits saved!!!";
 	}
 	
 	@GetMapping("/saveSubmitJobSolr")
-	public String SubmitJobDocuments() {
+	public String SubmitJobDocuments() throws JsonProcessingException {
 		List<SubmitJob> sj = submitJobService.getAllSubmitJob();	
 	for (SubmitJob submitJob : sj) {
 		documentRepository.save(new Document("SubmitJob" + submitJob.getId(),
-				"SubmitJob" + submitJob.getId(), submitJob.toString()));
+				"SubmitJob" + submitJob.getId(), submitJob.toString(), objectMapper.writeValueAsString(submitJob)));
 	}
 	
 	return "SubmitJob saved!!!";
@@ -1341,22 +1299,22 @@ public class SolrDocumentController {
 	
 	
 	@GetMapping("/saveSubscriptionCategorySolr")
-	public String SubscriptionCategoryDocuments() {
+	public String SubscriptionCategoryDocuments() throws JsonProcessingException {
 		List<SubscriptionCategory> subscatgry = subscriptionCategoryService.getAllSubscriptionCategory();	
 	for (SubscriptionCategory subscriptionCategory : subscatgry) {
 		documentRepository.save(new Document("SubscriptionCategory" + subscriptionCategory.getId(),
-				"SubscriptionCategory" + subscriptionCategory.getId(), subscriptionCategory.toString()));
+				"SubscriptionCategory" + subscriptionCategory.getId(), subscriptionCategory.toString(), objectMapper.writeValueAsString(subscriptionCategory)));
 	}
 	
 	return "SubscriptionCategory saved!!!";
 	}
 	
 	@GetMapping("/saveSubscriptionDefKeyInfoSolr")
-	public String SubscriptionDefKeyInfoDocuments() {
+	public String SubscriptionDefKeyInfoDocuments() throws JsonProcessingException {
 		List<SubscriptionDefKeyInfo> sdki = subscriptionDefKeyInfoService.getAllSubscriptionDefKeyInfo();	
 	for (SubscriptionDefKeyInfo subscriptionDefKeyInfo : sdki) {
 		documentRepository.save(new Document("SubscriptionCategory" + subscriptionDefKeyInfo.getId(),
-				"SubscriptionCategory" + subscriptionDefKeyInfo.getId(), subscriptionDefKeyInfo.toString()));
+				"SubscriptionCategory" + subscriptionDefKeyInfo.getId(), subscriptionDefKeyInfo.toString(), objectMapper.writeValueAsString(subscriptionDefKeyInfo)));
 	}
 	
 	return "SubscriptionDefKeyInfo saved!!!";
@@ -1374,112 +1332,156 @@ public class SolrDocumentController {
 //	}
 	
 	@GetMapping("/saveTaxonomySolr")
-	public String TaxonomyDocuments() {
+	public String TaxonomyDocuments() throws JsonProcessingException {
 		List<Taxonomy> tnomy = taxonomyService.getAllTaxonomy();	
 	for (Taxonomy taxonomy : tnomy) {
 		documentRepository.save(new Document("Taxonomy" + taxonomy.getId(),
-				"Taxonomy" + taxonomy.getId(), taxonomy.toString()));
+				"Taxonomy" + taxonomy.getId(), taxonomy.toString(), objectMapper.writeValueAsString(taxonomy)));
 	}
 	
 	return "Taxonomy saved!!!";
 	}
 	
 	@GetMapping("/saveTaxRateCategorySolr")
-	public String TaxRateCategoryDocuments() {
+	public String TaxRateCategoryDocuments() throws JsonProcessingException {
 		List<TaxRateCategory> trc = taxRateCategoryService.getAllTaxRateCategory();	
 	for (TaxRateCategory taxRateCategory : trc) {
 		documentRepository.save(new Document("TaxRateCategory" + taxRateCategory.getId(),
-				"TaxRateCategory" + taxRateCategory.getId(), taxRateCategory.toString()));
+				"TaxRateCategory" + taxRateCategory.getId(), taxRateCategory.toString(), objectMapper.writeValueAsString(taxRateCategory)));
 	}
 	
 	return "TaxRateCategory saved!!!";
 	}
 	
 	@GetMapping("/saveTaxTypeSolr")
-	public String TaxTypeDocuments() {
+	public String TaxTypeDocuments() throws JsonProcessingException {
 		List<TaxType> tt = taxService.getAllTaxType();	
 	for (TaxType taxType : tt) {
 		documentRepository.save(new Document("TaxType" + taxType.getTaxId(),
-				"TaxType" + taxType.getTaxId(), taxType.toString()));
+				"TaxType" + taxType.getTaxId(), taxType.toString(), objectMapper.writeValueAsString(taxType)));
 	}
 	
 	return "TaxType saved!!!";
 	}
 	
 	@GetMapping("/saveTermsSolr")
-	public String TermsDocuments() {
+	public String TermsDocuments() throws JsonProcessingException {
 		List<Terms> t = termsService.getAllTerms();	
 	for (Terms terms : t) {
 		documentRepository.save(new Document("Terms" + terms.getTermsId(),
-				"Terms" + terms.getTermsId(), terms.toString()));
+				"Terms" + terms.getTermsId(), terms.toString(), objectMapper.writeValueAsString(terms)));
 	}
 	
 	return "Terms saved!!!";
 	}
 	
 	@GetMapping("/saveTransportModeSolr")
-	public String TransportModeDocuments() {
+	public String TransportModeDocuments() throws JsonProcessingException {
 		List<TransportMode> tm = transportModeService.getAllTransportMode();	
 	for (TransportMode transportMode : tm) {
 		documentRepository.save(new Document("TransportMode" + transportMode.getId(),
-				"TransportMode" + transportMode.getId(), transportMode.toString()));
+				"TransportMode" + transportMode.getId(), transportMode.toString(), objectMapper.writeValueAsString(transportMode)));
 	}
 	
 	return "TransportMode saved!!!";
 	}
 	
 	@GetMapping("/saveUnitBasedSubscriptionSolr")
-	public String UnitBasedSubscriptionDocuments() {
+	public String UnitBasedSubscriptionDocuments() throws JsonProcessingException {
 		List<UnitBasedSubscription> ubs = unitBasedSubscriptionService.getAllUnitBasedSubscription();	
 	for (UnitBasedSubscription unitBasedSubscription : ubs) {
 		documentRepository.save(new Document("UnitBasedSubscription" + unitBasedSubscription.getUbsid(),
-				"UnitBasedSubscription" + unitBasedSubscription.getUbsid(), unitBasedSubscription.toString()));
+				"UnitBasedSubscription" + unitBasedSubscription.getUbsid(), unitBasedSubscription.toString(), objectMapper.writeValueAsString(unitBasedSubscription)));
 	}
 	
 	return "UnitBasedSubscription saved!!!";
 	}
 	
 	@GetMapping("/saveValueForScAttributeSolr")
-	public String ValueForScAttributeDocuments() {
+	public String ValueForScAttributeDocuments() throws JsonProcessingException {
 		List<ValueForScAttribute> vfsa = valueForScAttributeService.getAllValueForScAttribute();	
 	for (ValueForScAttribute valueForScAttribute : vfsa) {
 		documentRepository.save(new Document("ValueForScAttribute" + valueForScAttribute.getId(),
-				"ValueForScAttribute" + valueForScAttribute.getId(), valueForScAttribute.toString()));
+				"ValueForScAttribute" + valueForScAttribute.getId(), valueForScAttribute.toString(), objectMapper.writeValueAsString(valueForScAttribute)));
 	}
 	
 	return "ValueForScAttribute saved!!!";
 	}
 	
 	@GetMapping("/saveVolumeGroupSolr")
-	public String VolumeGroupDocuments() {
+	public String VolumeGroupDocuments() throws JsonProcessingException {
 		List<VolumeGroup> vfsa = VolumeGroupService.getAllVolumeGroup();	
 	for (VolumeGroup volumeGroup : vfsa) {
 		documentRepository.save(new Document("VolumeGroup" + volumeGroup.getVolumeGroupId(),
-				"VolumeGroup" + volumeGroup.getVolumeGroupId(), volumeGroup.toString()));
+				"VolumeGroup" + volumeGroup.getVolumeGroupId(), volumeGroup.toString(), objectMapper.writeValueAsString(volumeGroup)));
 	}
 	
 	return "VolumeGroup saved!!!";
 	}
 	
 	@GetMapping("/saveMultiLineItemOrderSolr")
-	public String MultiLineItemOrderDocuments() {
+	public String MultiLineItemOrderDocuments() throws JsonProcessingException {
 		List<MultiLineItemOrder> mlio = AddOrderService.getAllMultiLineItemOrder();	
 	for (MultiLineItemOrder multiLineItemOrder : mlio) {
 		documentRepository.save(new Document("MultiLineItemOrder" + multiLineItemOrder.getId(),
-				"MultiLineItemOrder" + multiLineItemOrder.getId(), multiLineItemOrder.toString()));
+				"MultiLineItemOrder" + multiLineItemOrder.getId(), multiLineItemOrder.toString(), objectMapper.writeValueAsString(multiLineItemOrder)));
 	}
 	
 	return "MultiLineItemOrder saved!!!";
 	}
 	
 	@GetMapping("/saveAddprocessmappingSolr")
-	public String AddprocessmappingDocuments() {
+	public String AddprocessmappingDocuments() throws JsonProcessingException {
 		List<Addprocessmapping> apm = addProcessService.getAllAddprocessmapping();	
 	for (Addprocessmapping addprocessmapping : apm) {
 		documentRepository.save(new Document("Addprocessmapping" + addprocessmapping.getPmid(),
-				"Addprocessmapping" + addprocessmapping.getPmid(), addprocessmapping.toString()));
+				"Addprocessmapping" + addprocessmapping.getPmid(), addprocessmapping.toString(), objectMapper.writeValueAsString(addprocessmapping)));
 	}
 	
 	return "Addprocessmapping saved!!!";
+	}
+	
+	@GetMapping("/saveAddressSolr")
+	public String AddressDocuments() throws JsonProcessingException {
+		List<Address> adds = addressessService.getAllAddress();	
+	for (Address address : adds) {
+		documentRepository.save(new Document("Address" + address.getId(),
+				"Address" + address.getId(), address.toString(), objectMapper.writeValueAsString(address)));
+	}
+	
+	return "address saved!!!";
+	}
+	
+	@GetMapping("/saveCountriesSolr")
+	public String CountriesDocuments() throws JsonProcessingException {
+		List<Countries> ctrys = countriesService.getAllCountries();	
+	for (Countries countries : ctrys) {
+		documentRepository.save(new Document("Countries" + countries.getId(),
+				"Countries" + countries.getId(), countries.toString(), objectMapper.writeValueAsString(countries)));
+	}
+	
+	return "Countries saved!!!";
+	}
+	
+	@GetMapping("/saveAddressStatusSolr")
+	public String AddressStatusDocuments() throws JsonProcessingException {
+		List<AddressStatus> ast = addressStatusService.getAllAddressStatus();	
+	for (AddressStatus addressStatus : ast) {
+		documentRepository.save(new Document("AddressStatus" + addressStatus.getId(),
+				"AddressStatus" + addressStatus.getId(), addressStatus.toString(), objectMapper.writeValueAsString(addressStatus)));
+	}
+	
+	return "AddressStatus saved!!!";
+	}
+	
+	@GetMapping("/saveInventoryMapperSolr")
+	public String InventoryMapperDocuments() throws JsonProcessingException {
+		List<InventoryMapper> invm = inventoryService.getAllInventoryMapper();	
+	for (InventoryMapper inventoryMapper : invm) {
+		documentRepository.save(new Document("InventoryMapper" + inventoryMapper.getInventoryId(),
+				"InventoryMapper" + inventoryMapper.getInventoryId(), inventoryMapper.toString(), objectMapper.writeValueAsString(inventoryMapper)));
+	}
+	
+	return "InventoryMapper saved!!!";
 	}
 }
