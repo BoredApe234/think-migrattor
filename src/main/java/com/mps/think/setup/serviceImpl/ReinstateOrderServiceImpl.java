@@ -60,8 +60,8 @@ public class ReinstateOrderServiceImpl implements ReinstateOrderService {
 		try {
 			List<OrdersReinstated> reinstateOrders = ordersToReinstate.getOrdersToReinstate();
 			for (OrdersReinstated o : reinstateOrders) {
-				Order order = o.getOrder();
-				SuspendOrder suspendOrder = o.getSuspendOrder();
+				Order order = orderRepo.findById(o.getOrder().getOrderId()).get();
+				SuspendOrder suspendOrder = suspendDetRepo.findById(o.getSuspendOrder().getId()).get();
 				OrdersToBeSuspended ordersToBeSuspendedForGivenOrderAndSuspendDetails = suspendedOrdersRepo.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(order.getOrderId(), suspendOrder.getId());
 				ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsReinstated(true);
 				suspendedOrdersRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
