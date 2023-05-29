@@ -71,8 +71,7 @@ public class Order extends BaseEntity {
 	
 	@OneToMany(
 	        mappedBy = "order",
-	        cascade = CascadeType.ALL,
-	        orphanRemoval = true
+	        cascade = CascadeType.ALL
 	    )
 	@JsonManagedReference
 	private List<OrderAddressMapping> orderAddresses;
