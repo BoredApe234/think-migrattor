@@ -235,5 +235,34 @@ List<OrderItems> orderItems = addOrderRepo.findAll().stream().map(m -> m.getOrde
 	    
 	    return updatedOrders;
 	}
-	
+  
+//	public List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus) {
+//	    List<Order> updatedOrders = new ArrayList<>();
+//	    
+//	    for (Map.Entry<String, String> entry : OrderPaymentStatus.entrySet()) {
+//	        String orderId = entry.getKey();
+//	        String paymentStatus = entry.getValue();
+//
+//	        try {
+//	            int orderIdInt = Integer.parseInt(orderId);
+//	            Order order = addOrderRepo.findById(orderIdInt).orElse(null);
+//
+//	            if (order != null) {
+//	                PaymentBreakdown paymentBreakdown = order.getPaymentBreakdown();
+//	                paymentBreakdown.setPaymentStatus(paymentStatus);
+//
+//	                Order updatedOrder = addOrderRepo.save(order);
+//	                updatedOrders.add(updatedOrder);
+//	            }
+//	        } catch (NumberFormatException e) {
+//	            // Handle the case where the orderId cannot be parsed to an integer
+//	            // You can log an error, throw an exception, or perform appropriate error handling
+//	            // For now, we skip the current iteration of the loop
+//	            continue;
+//	        }
+//	    }
+//	    
+//	    return updatedOrders;
+//	}
+
 }
