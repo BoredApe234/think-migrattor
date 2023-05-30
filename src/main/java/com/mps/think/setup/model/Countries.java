@@ -27,24 +27,23 @@ public class Countries extends BaseEntity {
 	@JoinColumn(name = "pub_id", referencedColumnName = "id")
 	private Publisher pubId;
 	
-	@Column(name="state")
-	private String state;
+	@Column(name="country")
+	private String country;
 	
-	@Column(name="description")
-	private String description;
+	@Column(name="countrycode")
+	private String countrycode;
 	
-	@Column(name="countries")
-	private String countries;
+	@Column(name="currency")
+	private String currency;
 	
-	@Column(name="currencies")
-	private String currencies;
+	@Column(name="taxcomputation")
+	private Double taxcomputation;
 	
-	@Column(name="addressprefix")
-	private String addressprefix;
+	@Column(name="addressvalidation")
+	private String addressvalidation;
 	
-	@OneToOne
-	@JoinColumn(name = "lableFormat_id", referencedColumnName = "lable_format_id")
-	private LableFormat lableFormat;
+	@Column(name="basecurrency")
+	private Boolean basecurrency;
 
 	public Integer getId() {
 		return id;
@@ -62,60 +61,65 @@ public class Countries extends BaseEntity {
 		this.pubId = pubId;
 	}
 
-	public String getState() {
-		return state;
+	public String getCountry() {
+		return country;
 	}
 
-	public void setState(String state) {
-		this.state = state;
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getCountrycode() {
+		return countrycode;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setCountrycode(String countrycode) {
+		this.countrycode = countrycode;
 	}
 
-	public String getCountries() {
-		return countries;
+	public String getCurrency() {
+		return currency;
 	}
 
-	public void setCountries(String countries) {
-		this.countries = countries;
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
 
-	public String getCurrencies() {
-		return currencies;
+	public Double getTaxcomputation() {
+		return taxcomputation;
 	}
 
-	public void setCurrencies(String currencies) {
-		this.currencies = currencies;
+	public void setTaxcomputation(Double taxcomputation) {
+		this.taxcomputation = taxcomputation;
 	}
 
-	public String getAddressprefix() {
-		return addressprefix;
+	public String getAddressvalidation() {
+		return addressvalidation;
 	}
 
-	public void setAddressprefix(String addressprefix) {
-		this.addressprefix = addressprefix;
+	public void setAddressvalidation(String addressvalidation) {
+		this.addressvalidation = addressvalidation;
 	}
 
-	public LableFormat getLableFormat() {
-		return lableFormat;
+	public Boolean getBasecurrency() {
+		return basecurrency;
 	}
 
-	public void setLableFormat(LableFormat lableFormat) {
-		this.lableFormat = lableFormat;
+	public void setBasecurrency(Boolean basecurrency) {
+		this.basecurrency = basecurrency;
 	}
 
 	@Override
 	public String toString() {
-		return "Countries [id=" + id + ", pubId=" + pubId + ", state=" + state + ", description=" + description
-				+ ", countries=" + countries + ", currencies=" + currencies + ", addressprefix=" + addressprefix
-				+ ", lableFormat=" + lableFormat + "]";
+		return "Countries [id=" + id + ", pubId=" + pubId + ", country=" + country + ", countrycode=" + countrycode
+				+ ", currency=" + currency + ", taxcomputation=" + taxcomputation + ", addressvalidation="
+				+ addressvalidation + ", basecurrency=" + basecurrency + "]";
 	}
+	
+	
+	
+
+	
 	
 	
 
