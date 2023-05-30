@@ -35,6 +35,8 @@ public class PaymentBreakdownVO {
 	private BigDecimal shippingCharge;
 	
 	private BigDecimal netAmount;
+	
+	private Date rCardDate;
 
 	public Integer getId() {
 		return id;
@@ -92,6 +94,14 @@ public class PaymentBreakdownVO {
 		this.baseAmount = baseAmount;
 	}
 
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
 	public String getDiscount() {
 		return discount;
 	}
@@ -140,12 +150,23 @@ public class PaymentBreakdownVO {
 		this.netAmount = netAmount;
 	}
 
-	public String getCurrency() {
-		return currency;
+	public Date getrCardDate() {
+		return rCardDate;
 	}
 
-	public void setCurrency(String currency) {
-		this.currency = currency;
+	public void setrCardDate(Date rCardDate) {
+		this.rCardDate = rCardDate;
 	}
+
+	@Override
+	public String toString() {
+		return "PaymentBreakdownVO [id=" + id + ", currencyType=" + currencyType + ", rateCard=" + rateCard
+				+ ", effectiveDate=" + effectiveDate + ", paymentStatus=" + paymentStatus + ", term=" + term
+				+ ", baseAmount=" + baseAmount + ", currency=" + currency + ", discount=" + discount + ", tax=" + tax
+				+ ", grossAmount=" + grossAmount + ", commission=" + commission + ", shippingCharge=" + shippingCharge
+				+ ", netAmount=" + netAmount + ", rCardDate=" + rCardDate + "]";
+	}
+
+	
 
 }
