@@ -27,6 +27,10 @@ public class Countries extends BaseEntity {
 	@JoinColumn(name = "pub_id", referencedColumnName = "id")
 	private Publisher pubId;
 	
+	@OneToOne
+	@JoinColumn(name = "countryinfo_id", referencedColumnName = "id")
+	private CountryInfo CountryInfoId;
+	
 	@Column(name="country")
 	private String country;
 	
@@ -59,6 +63,14 @@ public class Countries extends BaseEntity {
 
 	public void setPubId(Publisher pubId) {
 		this.pubId = pubId;
+	}
+
+	public CountryInfo getCountryInfoId() {
+		return CountryInfoId;
+	}
+
+	public void setCountryInfoId(CountryInfo countryInfoId) {
+		CountryInfoId = countryInfoId;
 	}
 
 	public String getCountry() {
@@ -111,14 +123,12 @@ public class Countries extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "Countries [id=" + id + ", pubId=" + pubId + ", country=" + country + ", countrycode=" + countrycode
-				+ ", currency=" + currency + ", taxcomputation=" + taxcomputation + ", addressvalidation="
-				+ addressvalidation + ", basecurrency=" + basecurrency + "]";
+		return "Countries [id=" + id + ", pubId=" + pubId + ", CountryInfoId=" + CountryInfoId + ", country=" + country
+				+ ", countrycode=" + countrycode + ", currency=" + currency + ", taxcomputation=" + taxcomputation
+				+ ", addressvalidation=" + addressvalidation + ", basecurrency=" + basecurrency + "]";
 	}
-	
-	
-	
 
+	
 	
 	
 	
