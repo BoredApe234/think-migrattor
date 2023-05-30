@@ -22,9 +22,6 @@ public class PaymentInformation extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	Integer id;
-	// online pay,offline pay,online refund, offline refund
-	@Column(name = "payment_mode")
-	private String paymentMode;
 	
 	@Column(name = "card_number")
 	String cardNumber;
@@ -48,6 +45,9 @@ public class PaymentInformation extends BaseEntity {
 	@Column(name = "other_info")
 	String otherinfo;
 	
+	@Column(name = "payment_for_other_order")
+	String paymentForOtherOrder;
+	
 	@OneToOne
 	@JoinColumn(name = "order_id", referencedColumnName = "order_id")
 	Order order;
@@ -62,14 +62,6 @@ public class PaymentInformation extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getPaymentMode() {
-		return paymentMode;
-	}
-
-	public void setPaymentMode(String paymentMode) {
-		this.paymentMode = paymentMode;
 	}
 
 	public String getCardNumber() {
@@ -128,6 +120,14 @@ public class PaymentInformation extends BaseEntity {
 		this.otherinfo = otherinfo;
 	}
 
+	public String getPaymentForOtherOrder() {
+		return paymentForOtherOrder;
+	}
+
+	public void setPaymentForOtherOrder(String paymentForOtherOrder) {
+		this.paymentForOtherOrder = paymentForOtherOrder;
+	}
+
 	public Order getOrder() {
 		return order;
 	}
@@ -142,6 +142,14 @@ public class PaymentInformation extends BaseEntity {
 
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
+	}
+
+	@Override
+	public String toString() {
+		return "PaymentInformation [id=" + id + ", cardNumber=" + cardNumber + ", nameOfCardHolder=" + nameOfCardHolder
+				+ ", amount=" + amount + ", transactionId=" + transactionId + ", chargeId=" + chargeId + ", status="
+				+ status + ", otherinfo=" + otherinfo + ", paymentForOtherOrder=" + paymentForOtherOrder + ", order="
+				+ order + ", publisher=" + publisher + "]";
 	}
 
 	
