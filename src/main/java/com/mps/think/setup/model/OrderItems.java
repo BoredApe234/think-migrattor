@@ -65,12 +65,6 @@ public class OrderItems extends BaseEntity {
 	
 	@Column(name = "quantity_ordered")
 	private Integer quantityOrdered;
-	
-	@Column(name = "style")
-	private String style;
-	
-	@Column(name = "color")
-	private String color;
 
 	public Integer getId() {
 		return id;
@@ -184,31 +178,15 @@ public class OrderItems extends BaseEntity {
 		this.quantityOrdered = quantityOrdered;
 	}
 
-	public String getStyle() {
-		return style;
-	}
-
-	public void setStyle(String style) {
-		this.style = style;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
 	@Override
 	public String toString() {
 		return "OrderItems [id=" + id + ", issue=" + issue + ", enumeration=" + enumeration + ", copiesPerIssue="
 				+ copiesPerIssue + ", subsProdPkgDef=" + subsProdPkgDef + ", effectiveDate=" + effectiveDate
 				+ ", numOfIssues=" + numOfIssues + ", validFrom=" + validFrom + ", validTo=" + validTo
 				+ ", liabilityIssue=" + liabilityIssue + ", extendedIssue=" + extendedIssue + ", term=" + term
-				+ ", extendedByDays=" + extendedByDays + ", quantityOrdered=" + quantityOrdered + ", style=" + style
-				+ ", color=" + color + "]";
+				+ ", extendedByDays=" + extendedByDays + ", quantityOrdered=" + quantityOrdered + "]";
 	}
-
+	
+	
 	
 }
