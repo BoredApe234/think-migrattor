@@ -69,9 +69,6 @@ public class SourceCode extends BaseEntity {
 
 	@Column(name = "source_code_type")
 	private String sourceCodeType;
-	
-	@Column(name = "order_type")
-	private String orderType;
 
 	// These are dropdown fields ===============
 	// @Column(name="source_code_format")
@@ -263,14 +260,6 @@ public class SourceCode extends BaseEntity {
 
 	public void setSourceCodeAndValuesMappings(List<SourceCodeAndValuesMapping> sourceCodeAndValuesMappings) {
 		this.sourceCodeAndValuesMappings = sourceCodeAndValuesMappings;
-	}
-
-	public String getOrderType() {
-		return orderType;
-	}
-
-	public void setOrderType(String orderType) {
-		this.orderType = orderType;
 	}
 
 	
