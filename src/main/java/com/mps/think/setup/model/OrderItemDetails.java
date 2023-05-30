@@ -61,27 +61,6 @@ public class OrderItemDetails extends BaseEntity {
 	
 	@Column(name = "category")
 	private String category;
-	
-	@Column(name = "isbn")
-	private String isbn;
-	
-	@Column(name = "author")
-	private String author;
-	
-	@Column(name = "style")
-	private String style;
-	
-	@Column(name = "size")
-	private String size;
-	
-	@Column(name = "colour")
-	private String colour;
-	
-	@Column(name = "electronic_delivery")
-	private boolean electronicDelivery;
-	
-	@Column(name = "fulfilment_date")
-	private Date fulfilmentDate;
 
 	public Integer getId() {
 		return id;
@@ -179,70 +158,12 @@ public class OrderItemDetails extends BaseEntity {
 		this.category = category;
 	}
 
-	public String getIsbn() {
-		return isbn;
-	}
-
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
-	}
-
-	public String getStyle() {
-		return style;
-	}
-
-	public void setStyle(String style) {
-		this.style = style;
-	}
-
-	public String getSize() {
-		return size;
-	}
-
-	public void setSize(String size) {
-		this.size = size;
-	}
-
-	public String getColour() {
-		return colour;
-	}
-
-	public void setColour(String colour) {
-		this.colour = colour;
-	}
-
-	public boolean isElectronicDelivery() {
-		return electronicDelivery;
-	}
-
-	public void setElectronicDelivery(boolean electronicDelivery) {
-		this.electronicDelivery = electronicDelivery;
-	}
-
-	public Date getFulfilmentDate() {
-		return fulfilmentDate;
-	}
-
-	public void setFulfilmentDate(Date fulfilmentDate) {
-		this.fulfilmentDate = fulfilmentDate;
-	}
-
 	@Override
 	public String toString() {
 		return "OrderItemDetails [id=" + id + ", effectiveDate=" + effectiveDate + ", itemType=" + itemType
 				+ ", itemUrl=" + itemUrl + ", itemImage=" + itemImage + ", price=" + price + ", shippingWeight="
 				+ shippingWeight + ", commodityCode=" + commodityCode + ", graceQuanitity=" + graceQuanitity
-				+ ", media=" + media + ", edition=" + edition + ", category=" + category + ", isbn=" + isbn
-				+ ", author=" + author + ", style=" + style + ", size=" + size + ", colour=" + colour
-				+ ", electronicDelivery=" + electronicDelivery + ", fulfilmentDate=" + fulfilmentDate + "]";
+				+ ", media=" + media + ", edition=" + edition + ", category=" + category + "]";
 	}
 
 	

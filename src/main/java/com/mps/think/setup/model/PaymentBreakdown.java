@@ -37,9 +37,6 @@ public class PaymentBreakdown extends BaseEntity {
 	@JoinColumn(name = "rate_card_id", referencedColumnName = "rcId")
 	private RateCards rateCard;
 	
-	@Column(name = "rate_card_date")
-	private Date rCardDate;
-	
 	@Column(name = "effective_date")
 	private Date effectiveDate;
 	
@@ -98,14 +95,6 @@ public class PaymentBreakdown extends BaseEntity {
 		this.rateCard = rateCard;
 	}
 
-	public Date getrCardDate() {
-		return rCardDate;
-	}
-
-	public void setrCardDate(Date rCardDate) {
-		this.rCardDate = rCardDate;
-	}
-
 	public Date getEffectiveDate() {
 		return effectiveDate;
 	}
@@ -136,14 +125,6 @@ public class PaymentBreakdown extends BaseEntity {
 
 	public void setBaseAmount(BigDecimal baseAmount) {
 		this.baseAmount = baseAmount;
-	}
-
-	public String getCurrency() {
-		return currency;
-	}
-
-	public void setCurrency(String currency) {
-		this.currency = currency;
 	}
 
 	public String getDiscount() {
@@ -194,12 +175,23 @@ public class PaymentBreakdown extends BaseEntity {
 		this.netAmount = netAmount;
 	}
 
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
 	@Override
 	public String toString() {
 		return "PaymentBreakdown [id=" + id + ", currencyType=" + currencyType + ", rateCard=" + rateCard
-				+ ", rCardDate=" + rCardDate + ", effectiveDate=" + effectiveDate + ", paymentStatus=" + paymentStatus
-				+ ", term=" + term + ", baseAmount=" + baseAmount + ", currency=" + currency + ", discount=" + discount
-				+ ", tax=" + tax + ", grossAmount=" + grossAmount + ", commission=" + commission + ", shippingCharge="
-				+ shippingCharge + ", netAmount=" + netAmount + "]";
+				+ ", effectiveDate=" + effectiveDate + ", paymentStatus=" + paymentStatus + ", term=" + term
+				+ ", baseAmount=" + baseAmount + ", currency=" + currency + ", discount=" + discount + ", tax=" + tax
+				+ ", grossAmount=" + grossAmount + ", commission=" + commission + ", shippingCharge=" + shippingCharge
+				+ ", netAmount=" + netAmount + "]";
 	}
+
+	
+
 }

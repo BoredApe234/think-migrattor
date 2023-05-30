@@ -2,12 +2,11 @@ package com.mps.think.setup.vo;
 
 import java.util.Date;
 
-
 import com.mps.think.setup.model.SubscriptionDefKeyInfo;
 import com.mps.think.setup.model.Terms;
 
 public class OrderItemsVO {
-
+	
 	private Integer id;
 
 	private Integer issue;
@@ -35,10 +34,6 @@ public class OrderItemsVO {
 	private Integer extendedByDays;
 
 	private Integer quantityOrdered;
-
-	private String style;
-	
-	private String color;
 
 	public Integer getId() {
 		return id;
@@ -152,21 +147,6 @@ public class OrderItemsVO {
 		this.quantityOrdered = quantityOrdered;
 	}
 
-	public String getStyle() {
-		return style;
-	}
-
-	public void setStyle(String style) {
-		this.style = style;
-	}
-
-	public String getColor() {
-		return color;
-	}
-
-	public void setColor(String color) {
-		this.color = color;
-	}
-
+	
 	
 }
