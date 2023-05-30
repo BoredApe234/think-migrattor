@@ -19,4 +19,6 @@ public interface RateCardsService {
 	public RateCards deleteByrcId(Integer rcId);
 	
 	public List<RateCards> findAllRateCardsByPublisherId(Integer pubId);
+
+	public List<RateCards> getAllRateCards();
 }

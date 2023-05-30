@@ -21,4 +21,6 @@ public interface SalesRepresentativeService {
 	
 	public SalesRepresentative deleteBySalesRepresentativeId(Integer salesRepID);
 
+	public List<SalesRepresentative> getAllSalesRepresentative();
+
 }

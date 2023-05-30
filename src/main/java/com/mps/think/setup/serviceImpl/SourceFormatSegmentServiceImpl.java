@@ -67,4 +67,9 @@ public class SourceFormatSegmentServiceImpl implements SourceFormatSegmentServic
 		return sourceFormatSegmentRepo.findById(sourceFormatSegmentId).get();
 	}
 
+	@Override
+	public List<SourceFormatSegment> getAllSourceFormatSegment() {
+		return sourceFormatSegmentRepo.findAll();
+	}
+
 }

@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mps.think.setup.model.Addprocessmapping;
 import com.mps.think.setup.model.OrderCodes;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.model.OrderItemDetails;
@@ -117,4 +118,33 @@ public class OrderCodesServiceImpl implements OrderCodesService {
 		return termsOutput;
 	}
 
+	@Override
+	public List<OrderCodesSuper> getAllOrderCodesSuper() {
+		return orderCodesSuperRepo.findAll();
+	}
+
+	@Override
+	public List<OrderItemDetails> getAllOrderItemDetails() {
+      List<OrderItemDetails> orderItem = orderCodesSuperRepo.findAll().stream().map(a -> a.getOrderItemDetails()).collect(Collectors.toList());
+		
+		return orderItem;
+	}
+
+	@Override
+	public List<OrderPackageOptions> getAllOrderOptions() {
+		List<OrderPackageOptions> order = orderCodesSuperRepo.findAll().stream().map(a -> a.getOrderPackageOptions()).collect(Collectors.toList());
+		
+		return order;
+	}
+
+	@Override
+	public List<OrderPaymentOptions> getAllOrderPaymentOptions() {
+		List<OrderPaymentOptions> collect = orderCodesSuperRepo.findAll().stream().map(a -> a.getOrderPaymentOptions()).collect(Collectors.toList());
+//		List<OrderPaymentOptions> output = new ArrayList<>();
+//		for (List<OrderPaymentOptions> s : collect) {
+//			output.addAll(s);
+//		}
+		return collect;
+
+}
 }

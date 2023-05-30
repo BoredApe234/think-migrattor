@@ -12,5 +12,5 @@ public interface PaymentInformationRepo extends JpaRepository<PaymentInformation
 
 	List<PaymentInformation> findByPublisherId(Integer pub);
 	List<PaymentInformation> findByOrderCustomerIdCustomerId(Integer customerId);
-	PaymentInformation findByOrderOrderId(Integer orderId);
+	List<PaymentInformation> findByOrderOrderId(Integer orderId);
 }

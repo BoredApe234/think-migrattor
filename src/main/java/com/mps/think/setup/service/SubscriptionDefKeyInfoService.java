@@ -22,6 +22,8 @@ public interface SubscriptionDefKeyInfoService {
 	public SubscriptionDefKeyInfo getSubscriptionDefById(Integer id);
 	
 	public List<SubscriptionDefKeyInfo> getAllSubscriptionsByOrderCode(Integer orderCodeId);
+
+	public List<SubscriptionDefKeyInfo> getAllSubscriptionDefKeyInfo();
 	
 	
 }

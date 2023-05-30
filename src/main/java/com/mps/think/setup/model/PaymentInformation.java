@@ -22,6 +22,9 @@ public class PaymentInformation extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	Integer id;
+	// online pay,offline pay,online refund, offline refund
+	@Column(name = "payment_mode")
+	private String paymentMode;
 	
 	@Column(name = "card_number")
 	String cardNumber;
@@ -59,6 +62,14 @@ public class PaymentInformation extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
 	}
 
 	public String getCardNumber() {
@@ -109,14 +120,6 @@ public class PaymentInformation extends BaseEntity {
 		this.status = status;
 	}
 
-	public Publisher getPublisher() {
-		return publisher;
-	}
-
-	public void setPublisher(Publisher publisher) {
-		this.publisher = publisher;
-	}
-
 	public String getOtherinfo() {
 		return otherinfo;
 	}
@@ -133,11 +136,13 @@ public class PaymentInformation extends BaseEntity {
 		this.order = order;
 	}
 
-	@Override
-	public String toString() {
-		return "PaymentInformation [id=" + id + ", cardNumber=" + cardNumber + ", nameOfCardHolder=" + nameOfCardHolder
-				+ ", amount=" + amount + ", transactionId=" + transactionId + ", chargeId=" + chargeId + ", status="
-				+ status + ", otherinfo=" + otherinfo + ", order=" + order + ", publisher=" + publisher + "]";
+	public Publisher getPublisher() {
+		return publisher;
 	}
+
+	public void setPublisher(Publisher publisher) {
+		this.publisher = publisher;
+	}
+
 	
 }

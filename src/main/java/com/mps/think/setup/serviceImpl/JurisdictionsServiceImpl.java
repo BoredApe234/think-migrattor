@@ -62,5 +62,10 @@ public class JurisdictionsServiceImpl implements JurisdictionsService {
 		return jurisdictionsRepo.findByPubIdId(pubId);
 	}
 
+	@Override
+	public List<Jurisdictions> getAllJurisdictions() {
+		return jurisdictionsRepo.findAll();
+	}
+
 
 }

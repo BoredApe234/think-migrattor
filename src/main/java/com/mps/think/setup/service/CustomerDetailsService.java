@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.mps.think.setup.model.Addresses;
+import com.mps.think.setup.model.CustomerAddresses;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderAddressMapping;
@@ -46,5 +47,7 @@ public interface CustomerDetailsService {
 	Page<CustomerDetails> getOtherCustomerAddresses(Integer publisherId, Integer customerId, Pageable page);
 	
 	Page<RecentAddressVO> getRecentAddressWithTheirCustomer(Integer customerId, Pageable page) throws Exception;
+
+	public List<CustomerAddresses> getAllCustomerAddresses();
 
 }

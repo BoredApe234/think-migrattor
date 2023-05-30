@@ -60,4 +60,9 @@ public class RCEffortRangeServiceImpl implements RCEffortRangeService{
 		return details.get();
 	}
 
+	@Override
+	public List<RCEffortRange> getAllRCEffortRange() {
+		return effortRangeRepo.findAll();
+	}
+
 }

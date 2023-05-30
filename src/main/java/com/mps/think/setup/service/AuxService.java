@@ -19,4 +19,8 @@ public interface AuxService {
 	
 	public AuxVariable deleteByAuxVariableId(Integer auxId);
 
+	public List<AuxVariable> getAllAuxVariable();
+
+	
+
 }

@@ -25,5 +25,7 @@ public interface PaymentTypeService {
 	List<String> getAllCvvValues();
 	
 	Page<PaymentType> getAllPaymentTypeByPubId(Integer publisherId, Pageable page);
+
+	List<PaymentType> getAllPaymentType();
 	
 }

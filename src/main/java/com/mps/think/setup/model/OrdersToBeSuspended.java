@@ -34,6 +34,12 @@ public class OrdersToBeSuspended extends BaseEntity {
 	@OneToOne
 	@JoinColumn(name = "order_id")
 	private Order order;
+	
+	@Column(name = "is_reinstated")
+	private Boolean isReinstated;
+	
+	@Column(name = "is_suspended")
+	private Boolean isSuspended;
 
 	public Integer getId() {
 		return id;
@@ -59,6 +65,20 @@ public class OrdersToBeSuspended extends BaseEntity {
 		this.order = order;
 	}
 
-	
+	public Boolean getIsReinstated() {
+		return isReinstated;
+	}
+
+	public void setIsReinstated(Boolean isReinstated) {
+		this.isReinstated = isReinstated;
+	}
+
+	public Boolean getIsSuspended() {
+		return isSuspended;
+	}
+
+	public void setIsSuspended(Boolean isSuspended) {
+		this.isSuspended = isSuspended;
+	}
 
 }

@@ -57,4 +57,9 @@ public class CurrencyExchangeServiceImpl implements CurrencyExchangeService {
 		return currencyExchangeRepo.findById(currrncyExcId).get();
 	}
 
+	@Override
+	public List<CurrencyExchange> getAllCurrencyExchange() {
+		return currencyExchangeRepo.findAll();
+	}
+
 }

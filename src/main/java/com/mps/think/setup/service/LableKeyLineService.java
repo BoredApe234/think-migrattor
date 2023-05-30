@@ -19,4 +19,6 @@ public interface LableKeyLineService {
 	
 	public List<LableKeyLine> findAllLableKeyLineByPubId(Integer lableKeyLineId);
 
+	public List<LableKeyLine> getAllLableKeyLine();
+
 }

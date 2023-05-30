@@ -54,8 +54,9 @@ public class AddOrderController {
 	}
 	
 	@GetMapping("/getOrderById/{orderId}")
-	public ResponseEntity<?> getOrderById(@PathVariable Integer orderId) throws Exception {
-		return ResponseEntity.ok(addOrderService.getOrdersById(orderId));
+	public ResponseEntity<?> getOrderById(@PathVariable Integer orderId, @RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) throws Exception {
+		return ResponseEntity.ok(addOrderService.getOrdersById(orderId, PageRequest.of(page, size)));
 	}
 	
 	@GetMapping("/getAllOrderByCustomerId/{customerId}")
@@ -115,4 +116,5 @@ public class AddOrderController {
 		return ResponseEntity.ok(addOrderService.getSubOrderById(orderId));
 	}
 	
+
 }

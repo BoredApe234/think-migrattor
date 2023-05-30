@@ -73,4 +73,9 @@ public class VolumeGroupServiceImpl implements VolumeGroupService {
 		return volumeGroupRepo.findByPubIdId(pubId);
 	}
 
+	@Override
+	public List<VolumeGroup> getAllVolumeGroup() {
+		return volumeGroupRepo.findAll();
+	}
+
 }
