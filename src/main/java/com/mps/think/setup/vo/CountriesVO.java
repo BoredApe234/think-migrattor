@@ -1,17 +1,17 @@
 package com.mps.think.setup.vo;
-import com.mps.think.setup.model.LableFormat;
 import com.mps.think.setup.model.Publisher;
 
 public class CountriesVO {
 	
 	private Integer id;
 	private Publisher pubId;
-	private String state;
-	private String description;
-	private String countries;
-	private String currencies;
-	private String addressprefix;
-	private LableFormat lableFormat;
+	private String country;
+	private String countrycode;
+	private String currency;
+	private Double taxcomputation;
+	private String addressvalidation;
+	private Boolean basecurrency;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -24,48 +24,50 @@ public class CountriesVO {
 	public void setPubId(Publisher pubId) {
 		this.pubId = pubId;
 	}
-	public String getState() {
-		return state;
+	public String getCountry() {
+		return country;
 	}
-	public void setState(String state) {
-		this.state = state;
+	public void setCountry(String country) {
+		this.country = country;
 	}
-	public String getDescription() {
-		return description;
+	public String getCountrycode() {
+		return countrycode;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setCountrycode(String countrycode) {
+		this.countrycode = countrycode;
 	}
-	public String getCountries() {
-		return countries;
+	public String getCurrency() {
+		return currency;
 	}
-	public void setCountries(String countries) {
-		this.countries = countries;
+	public void setCurrency(String currency) {
+		this.currency = currency;
 	}
-	public String getCurrencies() {
-		return currencies;
+	public Double getTaxcomputation() {
+		return taxcomputation;
 	}
-	public void setCurrencies(String currencies) {
-		this.currencies = currencies;
+	public void setTaxcomputation(Double taxcomputation) {
+		this.taxcomputation = taxcomputation;
 	}
-	public String getAddressprefix() {
-		return addressprefix;
+	public String getAddressvalidation() {
+		return addressvalidation;
 	}
-	public void setAddressprefix(String addressprefix) {
-		this.addressprefix = addressprefix;
+	public void setAddressvalidation(String addressvalidation) {
+		this.addressvalidation = addressvalidation;
 	}
-	public LableFormat getLableFormat() {
-		return lableFormat;
+	public Boolean getBasecurrency() {
+		return basecurrency;
 	}
-	public void setLableFormat(LableFormat lableFormat) {
-		this.lableFormat = lableFormat;
+	public void setBasecurrency(Boolean basecurrency) {
+		this.basecurrency = basecurrency;
 	}
 	@Override
 	public String toString() {
-		return "CountriesVO [id=" + id + ", pubId=" + pubId + ", state=" + state + ", description=" + description
-				+ ", countries=" + countries + ", currencies=" + currencies + ", addressprefix=" + addressprefix
-				+ ", lableFormat=" + lableFormat + "]";
+		return "CountriesVO [id=" + id + ", pubId=" + pubId + ", country=" + country + ", countrycode=" + countrycode
+				+ ", currency=" + currency + ", taxcomputation=" + taxcomputation + ", addressvalidation="
+				+ addressvalidation + ", basecurrency=" + basecurrency + "]";
 	}
+	
+	
 	
 	
 
