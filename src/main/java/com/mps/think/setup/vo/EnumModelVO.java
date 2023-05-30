@@ -477,5 +477,18 @@ public class EnumModelVO {
 			return addressstatus;
 		}
 	}
+	public static enum Region {
+		One("Asia"), Two("Africa"), Three("Antarctica"), Four("Australia"), Five("Europe") , Six("North America"), Seven("South America");
+
+		private final String region;
+
+		Region(String region) {
+			this.region = region;
+		}
+
+		public String getRegion() {
+			return region;
+		}
+	}
 
 }
