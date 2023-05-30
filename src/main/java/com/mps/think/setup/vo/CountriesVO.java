@@ -1,17 +1,18 @@
 package com.mps.think.setup.vo;
+import com.mps.think.setup.model.CountryInfo;
 import com.mps.think.setup.model.Publisher;
 
 public class CountriesVO {
 	
 	private Integer id;
 	private Publisher pubId;
+	private CountryInfo CountryInfoId;
 	private String country;
 	private String countrycode;
 	private String currency;
 	private Double taxcomputation;
 	private String addressvalidation;
 	private Boolean basecurrency;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -23,6 +24,12 @@ public class CountriesVO {
 	}
 	public void setPubId(Publisher pubId) {
 		this.pubId = pubId;
+	}
+	public CountryInfo getCountryInfoId() {
+		return CountryInfoId;
+	}
+	public void setCountryInfoId(CountryInfo countryInfoId) {
+		CountryInfoId = countryInfoId;
 	}
 	public String getCountry() {
 		return country;
@@ -62,11 +69,10 @@ public class CountriesVO {
 	}
 	@Override
 	public String toString() {
-		return "CountriesVO [id=" + id + ", pubId=" + pubId + ", country=" + country + ", countrycode=" + countrycode
-				+ ", currency=" + currency + ", taxcomputation=" + taxcomputation + ", addressvalidation="
-				+ addressvalidation + ", basecurrency=" + basecurrency + "]";
+		return "CountriesVO [id=" + id + ", pubId=" + pubId + ", CountryInfoId=" + CountryInfoId + ", country="
+				+ country + ", countrycode=" + countrycode + ", currency=" + currency + ", taxcomputation="
+				+ taxcomputation + ", addressvalidation=" + addressvalidation + ", basecurrency=" + basecurrency + "]";
 	}
-	
 	
 	
 	
