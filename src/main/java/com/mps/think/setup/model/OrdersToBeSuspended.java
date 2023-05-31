@@ -40,6 +40,9 @@ public class OrdersToBeSuspended extends BaseEntity {
 	
 	@Column(name = "is_suspended")
 	private Boolean isSuspended;
+	
+	@Column(name = "is_valid")
+	private Boolean isValid;
 
 	public Integer getId() {
 		return id;
@@ -79,6 +82,14 @@ public class OrdersToBeSuspended extends BaseEntity {
 
 	public void setIsSuspended(Boolean isSuspended) {
 		this.isSuspended = isSuspended;
+	}
+
+	public Boolean getIsValid() {
+		return isValid;
+	}
+
+	public void setIsValid(Boolean isValid) {
+		this.isValid = isValid;
 	}
 
 }

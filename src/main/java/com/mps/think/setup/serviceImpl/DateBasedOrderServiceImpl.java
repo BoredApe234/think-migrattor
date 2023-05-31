@@ -14,6 +14,7 @@ import com.mps.think.setup.service.DateBasedOrderService;
 import com.mps.think.setup.vo.DateBasedOrderVO;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
 import com.mps.think.setup.vo.EnumModelVO.OrderType;
+import com.mps.think.setup.vo.OrderKeyInformationVO;
 import com.mps.think.setup.vo.OrderVO;
 
 @Service
@@ -40,6 +41,9 @@ public class DateBasedOrderServiceImpl implements DateBasedOrderService {
 		OrderVO generalOrder = mapper.convertValue(order, OrderVO.class);
 		generalOrder.setOrderType(OrderType.DateBasedSubscriptionOrder.getDisplayName());
 		generalOrder.setOrderStatus(OrderStatus.Active);
+		OrderKeyInformationVO keyOrderInformation = generalOrder.getKeyOrderInformation();
+		keyOrderInformation.setOrderStatus(OrderStatus.Active.getDisplayName());
+		generalOrder.setKeyOrderInformation(keyOrderInformation);
 		Order savedOrder = orderService.saveOrder(generalOrder);
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		return mapper.convertValue(savedOrder, DateBasedOrderVO.class);
