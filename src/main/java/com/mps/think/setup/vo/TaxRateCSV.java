@@ -1,63 +1,119 @@
 package com.mps.think.setup.vo;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 public class TaxRateCSV {
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}")
 	private String taxId;
 
 	private String registeredForTax;
 
 	private String forceTax;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String taxType;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String taxTypeDescription;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String taxRateCategory;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String taxRateCategoryDescription;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String region;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String country;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String countryCode;
 
-	private String postal_code;
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
+	private String postalCode;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String state;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String stateCode;
 
+	@NotNull@NotBlank(message = "City may not be blank")
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String city;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String county;
 
 	private String streetName;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String jurisdiction;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String commodityCode;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String commodityDescription;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")	
 	private String avataxApplies;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}*")
 	private String basicRate;
 
 	private String commodityRate;
 
 	private String jurisdictionRate;
 
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private String effectiveDateForBasicRate;
 
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private String effectiveDateForCommodityRate;
 
+	@DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+	@JsonFormat(pattern = "MM/dd/yyyy")
 	private String effectiveDateForJurisdictionRate;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}")
 	private String noTaxMessageBasicRate;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}")
 	private String noTaxMessageCommodityRate;
 
+	@NotNull@NotBlank
+	@Pattern(regexp = "{A-Za-z0-9}")
 	private String noTaxMessageJurisdictionRate;
 
 	public String getTaxId() {
@@ -140,12 +196,12 @@ public class TaxRateCSV {
 		this.countryCode = countryCode;
 	}
 
-	public String getPostal_code() {
-		return postal_code;
+	public String getPostalCode() {
+		return postalCode;
 	}
 
-	public void setPostal_code(String postal_code) {
-		this.postal_code = postal_code;
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
 	}
 
 	public String getState() {
@@ -297,7 +353,7 @@ public class TaxRateCSV {
 		return "TaxRateCSV [taxId=" + taxId + ", registeredForTax=" + registeredForTax + ", forceTax=" + forceTax
 				+ ", taxType=" + taxType + ", taxTypeDescription=" + taxTypeDescription + ", taxRateCategory="
 				+ taxRateCategory + ", taxRateCategoryDescription=" + taxRateCategoryDescription + ", region=" + region
-				+ ", country=" + country + ", countryCode=" + countryCode + ", postal_code=" + postal_code + ", state="
+				+ ", country=" + country + ", countryCode=" + countryCode + ", postalCode=" + postalCode + ", state="
 				+ state + ", stateCode=" + stateCode + ", city=" + city + ", county=" + county + ", streetName="
 				+ streetName + ", jurisdiction=" + jurisdiction + ", commodityCode=" + commodityCode
 				+ ", commodityDescription=" + commodityDescription + ", avataxApplies=" + avataxApplies + ", basicRate="
