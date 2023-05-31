@@ -89,11 +89,9 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 				if (so.getSuspendOrder().getSetOrderStatus().equals(OrderStatus.SUSPEND_NON_PAY)) {
 					OrdersToBeSuspended orderToSuspend = ordersToBeSuspendedRepo
 							.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(so.getOrder().getOrderId(),
-									so.getId());
-					if (orderToSuspend != null) {
-						orderToSuspend.setIsValid(false);
-						ordersToBeSuspendedRepo.saveAndFlush(orderToSuspend);
-					}
+									so.getSuspendOrder().getId());
+					orderToSuspend.setIsValid(false);
+					ordersToBeSuspendedRepo.saveAndFlush(orderToSuspend);
 				} else if (so.getSuspendOrder().getSetOrderStatus().equals(OrderStatus.SUSPENDED_TEMP)) {
 					LocalDate earlierTempSuspensionStart = so.getSuspendOrder().getSuspendedfrom().toInstant()
 							.atZone(ZoneId.systemDefault()).toLocalDate();
@@ -103,11 +101,9 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 							|| newPermanentSuspensionStart.isEqual(earlierTempSuspensionStart)) {
 						OrdersToBeSuspended orderToSuspend = ordersToBeSuspendedRepo
 								.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(so.getOrder().getOrderId(),
-										so.getId());
-						if (orderToSuspend != null) {
-							orderToSuspend.setIsValid(false);
-							ordersToBeSuspendedRepo.saveAndFlush(orderToSuspend);
-						}
+										so.getSuspendOrder().getId());
+						orderToSuspend.setIsValid(false);
+						ordersToBeSuspendedRepo.saveAndFlush(orderToSuspend);
 					}
 				}
 			});
@@ -133,10 +129,8 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 			suspendOrContinueOrder(order, suspendDetails.getSetOrderStatus());
 			OrdersToBeSuspended ordersToBeSuspendedForGivenOrderAndSuspendDetails = ordersToBeSuspendedRepo
 					.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(order.getOrderId(), suspendDetails.getId());
-			if (ordersToBeSuspendedForGivenOrderAndSuspendDetails != null) {
-				ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsSuspended(true);
-				ordersToBeSuspendedRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
-			}
+			ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsSuspended(true);
+			ordersToBeSuspendedRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
 			if (suspendDetails.getSetOrderStatus().equals(OrderStatus.SUSPEND_NON_PAY)) {
 				makeAllExistingTempSupensionsInvalid(order.getOrderId(), suspendDetails.getId());
 			}
@@ -147,14 +141,12 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 		List<OrdersToBeSuspended> allSuspensionsForOrder = ordersToBeSuspendedRepo
 				.findAllSuspensionForGiveOrderId(orderId);
 		for (OrdersToBeSuspended s : allSuspensionsForOrder) {
-			if (s.getId().equals(suspensionId))
+			if (s.getSuspendOrder().getId().equals(suspensionId))
 				continue;
 			OrdersToBeSuspended susDet = ordersToBeSuspendedRepo
-					.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(orderId, s.getId());
-			if (susDet != null) {
-				susDet.setIsValid(false);
-				ordersToBeSuspendedRepo.saveAndFlush(susDet);
-			}
+					.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(orderId, s.getSuspendOrder().getId());
+			susDet.setIsValid(false);
+			ordersToBeSuspendedRepo.saveAndFlush(susDet);
 		}
 	}
 
@@ -177,10 +169,8 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 			suspendOrContinueOrder(order, OrderStatus.Active);
 			OrdersToBeSuspended ordersToBeSuspendedForGivenOrderAndSuspendDetails = ordersToBeSuspendedRepo
 					.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(order.getOrderId(), suspendDetails.getId());
-			if (ordersToBeSuspendedForGivenOrderAndSuspendDetails != null) {
-				ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsReinstated(true);
-				ordersToBeSuspendedRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
-			}
+			ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsReinstated(true);
+			ordersToBeSuspendedRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
 		}
 	}
 
