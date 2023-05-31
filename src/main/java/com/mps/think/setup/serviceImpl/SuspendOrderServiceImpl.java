@@ -6,6 +6,7 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -66,8 +67,8 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 			if (flag) {
 				boolean check = checkPreviousSuspensionIfNewGivenSusIsNonPay(o);
 				if (!check)
-					throw new OrdersNotSuspended("orders : "
-							+ suspendOrders.getOrdersToSuspend().stream().map(s -> s.getOrder().getOrderId())
+					throw new OrdersNotSuspended("orders : " + suspendOrders.getOrdersToSuspend().stream()
+							.map(s -> s.getOrder().getOrderId()).collect(Collectors.toList())
 							+ " can not be put to suspension");
 			}
 			o.setIsReinstated(false);
@@ -89,8 +90,10 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 					OrdersToBeSuspended orderToSuspend = ordersToBeSuspendedRepo
 							.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(o.getOrder().getOrderId(),
 									so.getId());
-					orderToSuspend.setIsValid(false);
-					ordersToBeSuspendedRepo.saveAndFlush(orderToSuspend);
+					if (orderToSuspend != null) {
+						orderToSuspend.setIsValid(false);
+						ordersToBeSuspendedRepo.saveAndFlush(orderToSuspend);
+					}
 				} else if (so.getSuspendOrder().getSetOrderStatus().equals(OrderStatus.SUSPENDED_TEMP)) {
 					LocalDate earlierTempSuspensionStart = so.getSuspendOrder().getSuspendedfrom().toInstant()
 							.atZone(ZoneId.systemDefault()).toLocalDate();
@@ -101,8 +104,10 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 						OrdersToBeSuspended orderToSuspend = ordersToBeSuspendedRepo
 								.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(o.getOrder().getOrderId(),
 										so.getId());
-						orderToSuspend.setIsValid(false);
-						ordersToBeSuspendedRepo.saveAndFlush(orderToSuspend);
+						if (orderToSuspend != null) {
+							orderToSuspend.setIsValid(false);
+							ordersToBeSuspendedRepo.saveAndFlush(orderToSuspend);
+						}
 					}
 				}
 			});
@@ -128,8 +133,10 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 			suspendOrContinueOrder(order, suspendDetails.getSetOrderStatus());
 			OrdersToBeSuspended ordersToBeSuspendedForGivenOrderAndSuspendDetails = ordersToBeSuspendedRepo
 					.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(order.getOrderId(), suspendDetails.getId());
-			ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsSuspended(true);
-			ordersToBeSuspendedRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
+			if (ordersToBeSuspendedForGivenOrderAndSuspendDetails != null) {
+				ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsSuspended(true);
+				ordersToBeSuspendedRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
+			}
 			if (suspendDetails.getSetOrderStatus().equals(OrderStatus.SUSPEND_NON_PAY)) {
 				makeAllExistingTempSupensionsInvalid(order.getOrderId(), suspendDetails.getId());
 			}
@@ -140,11 +147,14 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 		List<OrdersToBeSuspended> allSuspensionsForOrder = ordersToBeSuspendedRepo
 				.findAllSuspensionForGiveOrderId(orderId);
 		for (OrdersToBeSuspended s : allSuspensionsForOrder) {
-			if (s.getId().equals(suspensionId)) continue;
+			if (s.getId().equals(suspensionId))
+				continue;
 			OrdersToBeSuspended susDet = ordersToBeSuspendedRepo
 					.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(orderId, s.getId());
-			susDet.setIsValid(false);
-			ordersToBeSuspendedRepo.saveAndFlush(susDet);
+			if (susDet != null) {
+				susDet.setIsValid(false);
+				ordersToBeSuspendedRepo.saveAndFlush(susDet);
+			}
 		}
 	}
 
@@ -167,8 +177,10 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 			suspendOrContinueOrder(order, OrderStatus.Active);
 			OrdersToBeSuspended ordersToBeSuspendedForGivenOrderAndSuspendDetails = ordersToBeSuspendedRepo
 					.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(order.getOrderId(), suspendDetails.getId());
-			ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsReinstated(true);
-			ordersToBeSuspendedRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
+			if (ordersToBeSuspendedForGivenOrderAndSuspendDetails != null) {
+				ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsReinstated(true);
+				ordersToBeSuspendedRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
+			}
 		}
 	}
 
