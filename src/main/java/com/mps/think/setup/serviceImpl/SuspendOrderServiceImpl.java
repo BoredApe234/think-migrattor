@@ -88,7 +88,7 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 			suspensionsForGiveOrder.forEach(so -> {
 				if (so.getSuspendOrder().getSetOrderStatus().equals(OrderStatus.SUSPEND_NON_PAY)) {
 					OrdersToBeSuspended orderToSuspend = ordersToBeSuspendedRepo
-							.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(o.getOrder().getOrderId(),
+							.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(so.getOrder().getOrderId(),
 									so.getId());
 					if (orderToSuspend != null) {
 						orderToSuspend.setIsValid(false);
@@ -102,7 +102,7 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 					if (newPermanentSuspensionStart.isBefore(earlierTempSuspensionStart)
 							|| newPermanentSuspensionStart.isEqual(earlierTempSuspensionStart)) {
 						OrdersToBeSuspended orderToSuspend = ordersToBeSuspendedRepo
-								.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(o.getOrder().getOrderId(),
+								.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(so.getOrder().getOrderId(),
 										so.getId());
 						if (orderToSuspend != null) {
 							orderToSuspend.setIsValid(false);
