@@ -6,6 +6,7 @@ import com.mps.think.setup.model.Publisher;
 public class PaymentInformationVO {
 
 	Integer id;
+	private String paymentMode;
 
 	String cardNumber;
 
@@ -34,6 +35,14 @@ public class PaymentInformationVO {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
 	}
 
 	public String getCardNumber() {
@@ -118,9 +127,10 @@ public class PaymentInformationVO {
 
 	@Override
 	public String toString() {
-		return "PaymentInformationVO [id=" + id + ", cardNumber=" + cardNumber + ", nameOfCardHolder="
-				+ nameOfCardHolder + ", amount=" + amount + ", transactionId=" + transactionId + ", chargeId="
-				+ chargeId + ", status=" + status + ", otherinfo=" + otherinfo + ", paymentForOtherOrder="
-				+ paymentForOtherOrder + ", order=" + order + ", publisher=" + publisher + "]";
+		return "PaymentInformationVO [id=" + id + ", paymentMode=" + paymentMode + ", cardNumber=" + cardNumber
+				+ ", nameOfCardHolder=" + nameOfCardHolder + ", amount=" + amount + ", transactionId=" + transactionId
+				+ ", chargeId=" + chargeId + ", status=" + status + ", otherinfo=" + otherinfo
+				+ ", paymentForOtherOrder=" + paymentForOtherOrder + ", order=" + order + ", publisher=" + publisher
+				+ "]";
 	}
 }

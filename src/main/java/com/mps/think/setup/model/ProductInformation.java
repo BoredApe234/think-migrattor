@@ -23,9 +23,6 @@ public class ProductInformation extends BaseEntity{
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "payment_mode")
-	private String paymentMode;
-	
 	@Column(name = "product")
 	private String product;
 	
@@ -74,14 +71,6 @@ public class ProductInformation extends BaseEntity{
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getPaymentMode() {
-		return paymentMode;
-	}
-
-	public void setPaymentMode(String paymentMode) {
-		this.paymentMode = paymentMode;
 	}
 
 	public String getProduct() {
@@ -190,12 +179,9 @@ public class ProductInformation extends BaseEntity{
 
 	@Override
 	public String toString() {
-		return "ProductInformation [id=" + id + ", paymentMode=" + paymentMode + ", product=" + product
-				+ ", description=" + description + ", price=" + price + ", taxonomy=" + taxonomy + ", size=" + size
-				+ ", style=" + style + ", colour=" + colour + ", inventoryID=" + inventoryID + ", orderCode="
-				+ orderCode + ", rateCard=" + rateCard + ", tagLine=" + tagLine + ", premium=" + premium
-				+ ", publisher=" + publisher + "]";
+		return "ProductInformation [id=" + id + ", product=" + product + ", description=" + description + ", price="
+				+ price + ", taxonomy=" + taxonomy + ", size=" + size + ", style=" + style + ", colour=" + colour
+				+ ", inventoryID=" + inventoryID + ", orderCode=" + orderCode + ", rateCard=" + rateCard + ", tagLine="
+				+ tagLine + ", premium=" + premium + ", publisher=" + publisher + "]";
 	}
-
-	
 }
