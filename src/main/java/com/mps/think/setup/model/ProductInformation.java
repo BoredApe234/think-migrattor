@@ -31,9 +31,9 @@ public class ProductInformation extends BaseEntity{
 	
 	@Column(name = "price")
 	private Double price;
-	
-	@Column(name = "taxonomy")
-	private String taxonomy;
+	@ManyToOne
+	@JoinColumn(name = "taxonomy", referencedColumnName = "id")
+	private Taxonomy taxonomy;
 	
 	@Column(name = "size")
 	private String size;
@@ -48,7 +48,7 @@ public class ProductInformation extends BaseEntity{
 	private String inventoryID;
 	
 	@ManyToOne
-	@JoinColumn(name = "order_ode", referencedColumnName = "id")
+	@JoinColumn(name = "order_code", referencedColumnName = "id")
 	private OrderCodesSuper orderCode;
 	
 	@ManyToOne
@@ -97,11 +97,11 @@ public class ProductInformation extends BaseEntity{
 		this.price = price;
 	}
 
-	public String getTaxonomy() {
+	public Taxonomy getTaxonomy() {
 		return taxonomy;
 	}
 
-	public void setTaxonomy(String taxonomy) {
+	public void setTaxonomy(Taxonomy taxonomy) {
 		this.taxonomy = taxonomy;
 	}
 
