@@ -23,6 +23,9 @@ public class PaymentInformation extends BaseEntity {
 	@Column(name = "id")
 	Integer id;
 	
+	@Column(name = "payment_mode")
+	private String paymentMode;
+	
 	@Column(name = "card_number")
 	String cardNumber;
 	
@@ -62,6 +65,14 @@ public class PaymentInformation extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getPaymentMode() {
+		return paymentMode;
+	}
+
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
 	}
 
 	public String getCardNumber() {
@@ -146,10 +157,11 @@ public class PaymentInformation extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "PaymentInformation [id=" + id + ", cardNumber=" + cardNumber + ", nameOfCardHolder=" + nameOfCardHolder
-				+ ", amount=" + amount + ", transactionId=" + transactionId + ", chargeId=" + chargeId + ", status="
-				+ status + ", otherinfo=" + otherinfo + ", paymentForOtherOrder=" + paymentForOtherOrder + ", order="
-				+ order + ", publisher=" + publisher + "]";
+		return "PaymentInformation [id=" + id + ", paymentMode=" + paymentMode + ", cardNumber=" + cardNumber
+				+ ", nameOfCardHolder=" + nameOfCardHolder + ", amount=" + amount + ", transactionId=" + transactionId
+				+ ", chargeId=" + chargeId + ", status=" + status + ", otherinfo=" + otherinfo
+				+ ", paymentForOtherOrder=" + paymentForOtherOrder + ", order=" + order + ", publisher=" + publisher
+				+ "]";
 	}
 
 	
