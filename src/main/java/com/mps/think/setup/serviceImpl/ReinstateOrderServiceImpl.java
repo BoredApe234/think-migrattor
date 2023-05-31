@@ -54,7 +54,7 @@ public class ReinstateOrderServiceImpl implements ReinstateOrderService {
 					.map(o -> o.getOrder().getOrderId()).collect(Collectors.toList()) + " didn't get reinstated...");
 		}
 		return reinstateOrderRepo.saveAndFlush(ordersToReinstate);
-	}
+	} 
 
 	private boolean reinstate(ReinstateOrder ordersToReinstate) {
 		try {
@@ -65,13 +65,11 @@ public class ReinstateOrderServiceImpl implements ReinstateOrderService {
 				OrdersToBeSuspended ordersToBeSuspendedForGivenOrderAndSuspendDetails = suspendedOrdersRepo.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(order.getOrderId(), suspendOrder.getId());
 				ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsReinstated(true);
 				suspendedOrdersRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
-				List<OrdersToBeSuspended> previousSuspensionDetailsOfOrder = suspendedOrdersRepo.findPreviousSuspensionDetailsOfOrder(order.getOrderId());
-				if (!previousSuspensionDetailsOfOrder.isEmpty()) {
-					order.setOrderStatus(previousSuspensionDetailsOfOrder.get(0).getSuspendOrder().getSetOrderStatus());
-				} else {
+				List<OrdersToBeSuspended> previousSuspensionDetailsOfOrder = suspendedOrdersRepo.findAllSuspensionForGiveOrderId(order.getOrderId());
+				if (previousSuspensionDetailsOfOrder.size() <= 1) {
 					order.setOrderStatus(OrderStatus.Active);
+					orderRepo.saveAndFlush(order);
 				}
-				orderRepo.saveAndFlush(order);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
