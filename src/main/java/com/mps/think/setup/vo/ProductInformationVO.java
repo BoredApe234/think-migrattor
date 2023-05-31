@@ -3,6 +3,7 @@ package com.mps.think.setup.vo;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.model.RateCards;
+import com.mps.think.setup.model.Taxonomy;
 
 public class ProductInformationVO {
 
@@ -10,7 +11,7 @@ public class ProductInformationVO {
 	private String product;
 	private String description;
 	private Double price;
-	private String taxonomy;
+	private Taxonomy taxonomy;
 	private String size;
 	private String style;
 	private String colour;
@@ -44,10 +45,10 @@ public class ProductInformationVO {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public String getTaxonomy() {
+	public Taxonomy getTaxonomy() {
 		return taxonomy;
 	}
-	public void setTaxonomy(String taxonomy) {
+	public void setTaxonomy(Taxonomy taxonomy) {
 		this.taxonomy = taxonomy;
 	}
 	public String getSize() {
