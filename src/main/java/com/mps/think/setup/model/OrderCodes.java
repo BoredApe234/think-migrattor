@@ -57,7 +57,8 @@ public class OrderCodes extends BaseEntity {
 	@Column(name = "ship_from")
 	private String shipFrom;
 	
-	
+	@Column(name = "ship_to_address")
+	private String shipToAddress;
 
 	public Integer getId() {
 		return id;
@@ -123,7 +124,6 @@ public class OrderCodes extends BaseEntity {
 		this.discountCard = discountCard;
 	}
 
-	
 	public String getShipFrom() {
 		return shipFrom;
 	}
@@ -132,13 +132,19 @@ public class OrderCodes extends BaseEntity {
 		this.shipFrom = shipFrom;
 	}
 
+	public String getShipToAddress() {
+		return shipToAddress;
+	}
+
+	public void setShipToAddress(String shipToAddress) {
+		this.shipToAddress = shipToAddress;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderCodes [id=" + id + ", orderCode=" + orderCode + ", description=" + description + ", orderType="
 				+ orderType + ", orderCodeId=" + orderCodeId + ", orderClassId=" + orderClassId + ", rateCard="
-				+ rateCard + ", discountCard=" + discountCard + ", shipFrom=" + shipFrom + "]";
+				+ rateCard + ", discountCard=" + discountCard + ", shipFrom=" + shipFrom + ", shipToAddress="
+				+ shipToAddress + "]";
 	}
-
-	
-	
 }

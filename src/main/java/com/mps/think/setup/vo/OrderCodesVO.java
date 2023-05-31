@@ -29,6 +29,8 @@ public class OrderCodesVO {
 	private String rateCard;
 	
 	private String discountCard;
+	
+	private String shipToAddress;
 
 	public Integer getId() {
 		return id;
@@ -94,5 +96,18 @@ public class OrderCodesVO {
 		this.discountCard = discountCard;
 	}
 
-	
+	public String getShipToAddress() {
+		return shipToAddress;
+	}
+
+	public void setShipToAddress(String shipToAddress) {
+		this.shipToAddress = shipToAddress;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderCodesVO [id=" + id + ", orderCode=" + orderCode + ", description=" + description + ", orderType="
+				+ orderType + ", orderCodeId=" + orderCodeId + ", orderClassId=" + orderClassId + ", rateCard="
+				+ rateCard + ", discountCard=" + discountCard + ", shipToAddress=" + shipToAddress + "]";
+	}
 }
