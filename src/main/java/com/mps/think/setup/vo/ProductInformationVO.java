@@ -8,6 +8,7 @@ import com.mps.think.setup.model.Taxonomy;
 public class ProductInformationVO {
 
 	private Integer id;
+	private String paymentMode;
 	private String product;
 	private String description;
 	private Double price;
@@ -26,6 +27,12 @@ public class ProductInformationVO {
 	}
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	public String getPaymentMode() {
+		return paymentMode;
+	}
+	public void setPaymentMode(String paymentMode) {
+		this.paymentMode = paymentMode;
 	}
 	public String getProduct() {
 		return product;
@@ -107,9 +114,12 @@ public class ProductInformationVO {
 	}
 	@Override
 	public String toString() {
-		return "ProductInformationVO [id=" + id + ", product=" + product + ", description=" + description + ", price="
-				+ price + ", taxonomy=" + taxonomy + ", size=" + size + ", style=" + style + ", colour=" + colour
-				+ ", inventoryID=" + inventoryID + ", orderCode=" + orderCode + ", rateCard=" + rateCard + ", TagLine="
-				+ TagLine + ", Premium=" + Premium + ", publisher=" + publisher + "]";
+		return "ProductInformationVO [id=" + id + ", paymentMode=" + paymentMode + ", product=" + product
+				+ ", description=" + description + ", price=" + price + ", taxonomy=" + taxonomy + ", size=" + size
+				+ ", style=" + style + ", colour=" + colour + ", inventoryID=" + inventoryID + ", orderCode="
+				+ orderCode + ", rateCard=" + rateCard + ", TagLine=" + TagLine + ", Premium=" + Premium
+				+ ", publisher=" + publisher + "]";
 	}
+	
+	
 }
