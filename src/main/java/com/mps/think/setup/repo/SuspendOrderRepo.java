@@ -14,7 +14,7 @@ public interface SuspendOrderRepo extends JpaRepository<SuspendOrder, Integer> {
 
 	@Query(value = "SELECT m.order_id, o.suspend_order_id FROM multi_line_item_order m LEFT JOIN orders_to_be_suspended o ON o.order_id = m.order_id \r\n"
 			+ "WHERE m.parent_order_id = :parentOrderId \r\n"
-			+ "UNION ALL\r\n"
+			+ "UNION \r\n"
 			+ "SELECT m.order_id, o.suspend_order_id FROM multi_line_item_order m JOIN orders_to_be_suspended o ON o.order_id = m.order_id\r\n"
 			+ "WHERE m.parent_order_id = :parentOrderId AND o.is_valid IS TRUE AND (o.is_reinstated IS NULL || o.is_reinstated IS FALSE)",
 			countQuery = "SELECT COUNT(*) AS ROW_COUNT\r\n"
@@ -23,7 +23,7 @@ public interface SuspendOrderRepo extends JpaRepository<SuspendOrder, Integer> {
 					+ "    FROM multi_line_item_order m\r\n"
 					+ "    LEFT JOIN orders_to_be_suspended o ON o.order_id = m.order_id\r\n"
 					+ "    WHERE m.parent_order_id = :parentOrderId\r\n"
-					+ "    UNION ALL\r\n"
+					+ "    UNION \r\n"
 					+ "    SELECT m.order_id, o.suspend_order_id\r\n"
 					+ "    FROM multi_line_item_order m\r\n"
 					+ "    JOIN orders_to_be_suspended o ON o.order_id = m.order_id\r\n"
