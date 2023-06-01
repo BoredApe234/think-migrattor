@@ -131,34 +131,46 @@ public class PaymentThresholdServiceImpl implements PaymentThresholdService {
 
 				if (paidPercentage == 100) {
 					paymentStatus = "Paid";
+					System.out.println("1");
 				} else if (paidPercentage == 0) {
 					paymentStatus = "No Payment";
+					System.out.println("2");
 				} else if (paidPercentage <= threshold.get().getPartialThreshold()) {
 					paymentStatus = "Partial Payment";
+					System.out.println("3");
 				} else if (paidPercentage < threshold.get().getUnderThreshold()) {
 					if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForPartial()) {
 						paymentStatus = "Paid - Underpayment";
+						System.out.println("4");
 					} else {
 						paymentStatus = "Underpayment";
+						System.out.println("5");
 					}
 				} else if (paidPercentage <= threshold.get().getOverThreshold()) {
 					if ((int) unPaidAmount <= threshold.get().getMaxUnderpaymentForFull()) {
-						paymentStatus = "Paid - Underpayment";
+						paymentStatus = "Paid - Overpayment";
+						System.out.println("6");
 					} else if ((int) unPaidAmount > threshold.get().getMaxUnderpaymentForPartial()) {
 						paymentStatus = "Partial Payment";
+						System.out.println("7");
 					} else {
 						paymentStatus = "Underpayment";
+						System.out.println("8");
 					}
 				} else if (paidPercentage <= threshold.get().getRefundThreshold()) {
 					if ((int) unPaidAmount <= threshold.get().getMaxOverpaymentForFull()) {
 						paymentStatus = "Paid - Overpayment";
+						System.out.println("9");
 					} else if ((int) unPaidAmount > threshold.get().getMaxOverpaymentForRefund()) {
 						paymentStatus = "Refund payments";
+						System.out.println("10");
 					} else {
 						paymentStatus = "Overpayment";
+						System.out.println("11");
 					}
 				} else {
 					paymentStatus = "Refund payments";
+					System.out.println("12");
 				}
 
 				payment.put("paymentStatus", entry.getKey() + "," + paymentStatus);
