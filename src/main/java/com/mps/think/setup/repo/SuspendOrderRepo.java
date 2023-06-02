@@ -12,31 +12,12 @@ import com.mps.think.setup.model.SuspendOrder;
 @Repository
 public interface SuspendOrderRepo extends JpaRepository<SuspendOrder, Integer> {
 
-	@Query(value = "SELECT m.order_id, o.suspend_order_id FROM orders_to_be_suspended o RIGHT JOIN multi_line_item_order m ON m.order_id = o.order_id WHERE m.parent_order_id = :parentOrderId AND\r\n"
-			+ "m.order_id NOT IN (SELECT o.order_id FROM orders_to_be_suspended o JOIN multi_line_item_order m ON m.order_id = o.order_id WHERE m.parent_order_id = :parentOrderId AND o.is_valid IS TRUE)\r\n"
-			+ "UNION\r\n"
-			+ "SELECT m.order_id, o.suspend_order_id FROM orders_to_be_suspended o JOIN multi_line_item_order m ON m.order_id = o.order_id WHERE m.parent_order_id = :parentOrderId AND o.is_valid IS TRUE\r\n",
-			countQuery = "SELECT COUNT(*) AS row_count\r\n"
-					+ "FROM (\r\n"
-					+ "    SELECT m.order_id, o.suspend_order_id\r\n"
-					+ "    FROM orders_to_be_suspended o\r\n"
-					+ "    RIGHT JOIN multi_line_item_order m ON m.order_id = o.order_id\r\n"
-					+ "    WHERE m.parent_order_id = :parentOrderId\r\n"
-					+ "    AND m.order_id NOT IN (\r\n"
-					+ "        SELECT o.order_id\r\n"
-					+ "        FROM orders_to_be_suspended o\r\n"
-					+ "        JOIN multi_line_item_order m ON m.order_id = o.order_id\r\n"
-					+ "        WHERE m.parent_order_id = :parentOrderId\r\n"
-					+ "        AND o.is_valid IS TRUE\r\n"
-					+ "    )\r\n"
-					+ "    UNION\r\n"
-					+ "    SELECT m.order_id, o.suspend_order_id\r\n"
-					+ "    FROM orders_to_be_suspended o\r\n"
-					+ "    JOIN multi_line_item_order m ON m.order_id = o.order_id\r\n"
-					+ "    WHERE m.parent_order_id = :parentOrderId\r\n"
-					+ "    AND o.is_valid IS TRUE\r\n"
-					+ ") AS subquery;\r\n"
-					+ "",
+	@Query(value = "SELECT m.order_id, temp.suspend_order_id FROM multi_line_item_order m LEFT JOIN "
+			+ "(SELECT * FROM orders_to_be_suspended ots WHERE ots.is_reinstated IS FALSE AND is_valid IS TRUE) AS temp\r\n"
+			+ "ON m.order_id = temp.order_id WHERE m.parent_order_id = :parentOrderId",
+			countQuery =  "SELECT COUNT(*) FROM multi_line_item_order m LEFT JOIN "
+					+ "(SELECT * FROM orders_to_be_suspended ots WHERE ots.is_reinstated IS FALSE AND is_valid IS TRUE) AS temp\r\n"
+					+ "ON m.order_id = temp.order_id WHERE m.parent_order_id = :parentOrderId", 
 			nativeQuery = true)
 	Page<Object[]> findAllOrdersByIdWithSuspensionDet(@Param("parentOrderId") Integer parentOrderId, Pageable page);
 
