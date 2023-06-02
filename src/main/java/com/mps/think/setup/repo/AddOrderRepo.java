@@ -136,6 +136,17 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	@Query(value = "SELECT o.* FROM order_parent o JOIN customer c ON c.id = o.customer_id WHERE c.id = :customerId ORDER BY o.order_id DESC LIMIT 2",
 			nativeQuery = true)
 	List<Order> fetchRecentTwoOrderByCustomerId(@Param("customerId") Integer customerId);
+
+	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation keyInfo WHERE "
+			+"(:oredrStart IS NULL OR DATE(keyInfo.orderDate) >= :oredrStart) AND "
+			+"(:orderEnd IS NULL OR DATE(keyInfo.orderDate) <= :orderEnd) AND "
+			+ "(:orderType IS NULL OR o.orderType = :orderType)") 
+					
+	public Page<Order> findAllCustomerSalesList(
+			@Param("oredrStart") Date oredrStart, 
+			@Param("orderEnd") Date orderEnd, 
+			@Param("orderType") String orderType, Pageable page);
+	
 	
 	@Query(value = "SELECT *\n"
 			+ "FROM order_parent o WHERE o.customer_id = :customerId\n"
