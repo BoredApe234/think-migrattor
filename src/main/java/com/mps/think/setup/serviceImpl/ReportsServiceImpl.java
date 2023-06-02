@@ -1,10 +1,12 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +17,7 @@ import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.CancelOrderRepo;
 import com.mps.think.setup.repo.CustomerDetailsRepo;
 import com.mps.think.setup.service.ReportsService;
+import com.mps.think.setup.vo.CancelSubscirptionReportView;
 
 @Service
 public class ReportsServiceImpl implements ReportsService {
@@ -49,11 +52,28 @@ public class ReportsServiceImpl implements ReportsService {
 	}
 
 	@Override
-	public Page<CancelOrder> getAllCancelledSubscriptions(Date orderFrom, Date orderTill, String currencyType,
+	public Page<CancelSubscirptionReportView> getAllCancelledSubscriptions(Date orderFrom, Date orderTill, String currencyType,
 			Pageable page) {
-		if (orderFrom == null) orderFrom = new Date(0);
-		if (orderTill == null) orderTill = new Date();
-		return cancelOrderRepo.findAllCancelledSubscriptions(orderFrom, orderTill, currencyType, "%" + "subscription" + "%", page);
+		Page<CancelOrder> allCancelledSubscriptions = cancelOrderRepo.findAllCancelledSubscriptions(orderFrom, orderTill, currencyType, "subscription" , page);
+		List<CancelSubscirptionReportView> output = new ArrayList<>();
+		
+		allCancelledSubscriptions.toList().forEach(c -> {
+			CancelSubscirptionReportView obj = new CancelSubscirptionReportView();
+			obj.setOrderId(c.getOrderid().getOrderId());
+			obj.setOrderCode(c.getOrderid().getKeyOrderInformation().getOrderCode().getOrderCodes().getOrderCode());
+			obj.setCancelDate(c.getDate());
+			obj.setCustomerFname(c.getOrderid().getCustomerId().getFname());
+			obj.setCustomerLname(c.getOrderid().getCustomerId().getLname());
+			obj.setPaymentInfo(c.getOrderid().getPaymentBreakdown());
+			obj.setCancelReason(c.getCancelReasonsId().getCancelReason());
+			obj.setTotalIssues(c.getOrderid().getOrderItemsAndTerms().getNumOfIssues());
+			obj.setIssuesServed(c.getOrderid().getOrderItemsAndTerms().getIssue());
+			obj.setCustomerId(c.getOrderid().getCustomerId().getCustomerId());
+			output.add(obj);
+		});
+		
+		return new PageImpl<>(output, allCancelledSubscriptions.getPageable(), allCancelledSubscriptions.getTotalElements());
+		
 	}
 
 	@Override

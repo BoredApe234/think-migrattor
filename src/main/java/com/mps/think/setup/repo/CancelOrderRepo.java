@@ -17,13 +17,13 @@ public interface CancelOrderRepo extends JpaRepository<CancelOrder ,Integer> {
 	
 	List<CancelOrder> findByOrderidOrderId(Integer id);
 	
-	@Query("SELECT c FROM CancelOrder c JOIN c.orderid o JOIN o.paymentBreakdown p WHERE o.orderType LIKE :orderType AND "
-			+ "(:currencyType IS NULL OR p.currency = :currencyType) "
-			+ "AND (:ordersFrom IS NULL OR c.date >= :ordersFrom) AND "
-			+ "(:ordersTill IS NULL OR c.date <= :ordersTill)")
+	@Query("SELECT c FROM CancelOrder c JOIN c.orderid o JOIN o.paymentBreakdown p WHERE o.orderType LIKE '%'||:orderType||'%' AND "
+			+ "(:currencyType IS NULL OR p.currency LIKE '%'||:currencyType||'%') "
+			+ "AND (:ordersFrom IS NULL OR DATE(c.date) >= :ordersFrom) AND "
+			+ "(:ordersTill IS NULL OR DATE(c.date) <= :ordersTill)")
 	public Page<CancelOrder> findAllCancelledSubscriptions(
 			  @Param("ordersFrom") Date ordersFrom, 
 			  @Param("ordersTill") Date ordersTill, 
-			  @Param("currencyType") String currencyType, String orderType, Pageable page);	  
+			  @Param("currencyType") String currencyType, @Param("orderType") String orderType, Pageable page);	  
 
 }
