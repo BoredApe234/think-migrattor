@@ -41,7 +41,7 @@ public class Countries extends BaseEntity {
 	private String currency;
 	
 	@Column(name="taxcomputation")
-	private Double taxcomputation;
+	private String taxcomputation;
 	
 	@Column(name="addressvalidation")
 	private String addressvalidation;
@@ -97,11 +97,11 @@ public class Countries extends BaseEntity {
 		this.currency = currency;
 	}
 
-	public Double getTaxcomputation() {
+	public String getTaxcomputation() {
 		return taxcomputation;
 	}
 
-	public void setTaxcomputation(Double taxcomputation) {
+	public void setTaxcomputation(String taxcomputation) {
 		this.taxcomputation = taxcomputation;
 	}
 
@@ -127,8 +127,9 @@ public class Countries extends BaseEntity {
 				+ ", countrycode=" + countrycode + ", currency=" + currency + ", taxcomputation=" + taxcomputation
 				+ ", addressvalidation=" + addressvalidation + ", basecurrency=" + basecurrency + "]";
 	}
-
 	
+	
+
 	
 	
 	

@@ -490,5 +490,33 @@ public class EnumModelVO {
 			return region;
 		}
 	}
+	
+	public static enum TaxComputation {
+		One("None"), Two("Avalara"), Three("Taxjar");
+
+		private final String taxComputation;
+
+		TaxComputation(String taxComputation) {
+			this.taxComputation = taxComputation;
+		}
+
+		public String getTaxComputation() {
+			return taxComputation;
+		}
+	}
+	
+	public static enum AddressValidation {
+		One("None"), Two("Avalara");
+
+		private final String addressValidation;
+
+		AddressValidation(String addressValidation) {
+			this.addressValidation = addressValidation;
+		}
+
+		public String getAddressValidation() {
+			return addressValidation;
+		}
+	}
 
 }
