@@ -42,6 +42,9 @@ public class RegionList extends BaseEntity {
 	@Column(name = "state")
 	private String state;
 	
+	@Column(name = "rlist")
+	private String rlist;
+	
 	@Column(name="taxcomputation")
 	private Integer taxcomputation;
 	
@@ -80,6 +83,14 @@ public class RegionList extends BaseEntity {
 		this.state = state;
 	}
 
+	public String getRlist() {
+		return rlist;
+	}
+
+	public void setRlist(String rlist) {
+		this.rlist = rlist;
+	}
+
 	public Integer getTaxcomputation() {
 		return taxcomputation;
 	}
@@ -99,9 +110,11 @@ public class RegionList extends BaseEntity {
 	@Override
 	public String toString() {
 		return "RegionList [id=" + id + ", pubId=" + pubId + ", regionListMapping=" + regionListMapping + ", state="
-				+ state + ", taxcomputation=" + taxcomputation + ", addressvalidation=" + addressvalidation + "]";
+				+ state + ", rlist=" + rlist + ", taxcomputation=" + taxcomputation + ", addressvalidation="
+				+ addressvalidation + "]";
 	}
 
+	
 	
 
 }

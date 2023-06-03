@@ -10,9 +10,9 @@ public class RegionListVO {
 	private Publisher pubId;
 	private List<RegionListMappingVO> regionListMapping;
 	private String state;
+	private String rlist;
 	private Integer taxcomputation;
 	private Integer addressvalidation;
-	
 	public Integer getId() {
 		return id;
 	}
@@ -37,6 +37,12 @@ public class RegionListVO {
 	public void setState(String state) {
 		this.state = state;
 	}
+	public String getRlist() {
+		return rlist;
+	}
+	public void setRlist(String rlist) {
+		this.rlist = rlist;
+	}
 	public Integer getTaxcomputation() {
 		return taxcomputation;
 	}
@@ -52,8 +58,10 @@ public class RegionListVO {
 	@Override
 	public String toString() {
 		return "RegionListVO [id=" + id + ", pubId=" + pubId + ", regionListMapping=" + regionListMapping + ", state="
-				+ state + ", taxcomputation=" + taxcomputation + ", addressvalidation=" + addressvalidation + "]";
+				+ state + ", rlist=" + rlist + ", taxcomputation=" + taxcomputation + ", addressvalidation="
+				+ addressvalidation + "]";
 	}
+	
 	
 	
 	
