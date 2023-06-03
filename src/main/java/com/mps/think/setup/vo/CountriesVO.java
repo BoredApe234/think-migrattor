@@ -10,9 +10,10 @@ public class CountriesVO {
 	private String country;
 	private String countrycode;
 	private String currency;
-	private Double taxcomputation;
+	private String taxcomputation;
 	private String addressvalidation;
 	private Boolean basecurrency;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -49,10 +50,10 @@ public class CountriesVO {
 	public void setCurrency(String currency) {
 		this.currency = currency;
 	}
-	public Double getTaxcomputation() {
+	public String getTaxcomputation() {
 		return taxcomputation;
 	}
-	public void setTaxcomputation(Double taxcomputation) {
+	public void setTaxcomputation(String taxcomputation) {
 		this.taxcomputation = taxcomputation;
 	}
 	public String getAddressvalidation() {
@@ -73,7 +74,6 @@ public class CountriesVO {
 				+ country + ", countrycode=" + countrycode + ", currency=" + currency + ", taxcomputation="
 				+ taxcomputation + ", addressvalidation=" + addressvalidation + ", basecurrency=" + basecurrency + "]";
 	}
-	
 	
 	
 

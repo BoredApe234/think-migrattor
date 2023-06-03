@@ -46,10 +46,10 @@ public class RegionList extends BaseEntity {
 	private String rlist;
 	
 	@Column(name="taxcomputation")
-	private Integer taxcomputation;
+	private String taxcomputation;
 	
 	@Column(name="addressvalidation")
-	private Integer addressvalidation;
+	private String addressvalidation;
 
 	public Integer getId() {
 		return id;
@@ -91,19 +91,19 @@ public class RegionList extends BaseEntity {
 		this.rlist = rlist;
 	}
 
-	public Integer getTaxcomputation() {
+	public String getTaxcomputation() {
 		return taxcomputation;
 	}
 
-	public void setTaxcomputation(Integer taxcomputation) {
+	public void setTaxcomputation(String taxcomputation) {
 		this.taxcomputation = taxcomputation;
 	}
 
-	public Integer getAddressvalidation() {
+	public String getAddressvalidation() {
 		return addressvalidation;
 	}
 
-	public void setAddressvalidation(Integer addressvalidation) {
+	public void setAddressvalidation(String addressvalidation) {
 		this.addressvalidation = addressvalidation;
 	}
 
@@ -114,6 +114,7 @@ public class RegionList extends BaseEntity {
 				+ addressvalidation + "]";
 	}
 
+	
 	
 	
 

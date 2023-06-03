@@ -11,8 +11,8 @@ public class RegionListVO {
 	private List<RegionListMappingVO> regionListMapping;
 	private String state;
 	private String rlist;
-	private Integer taxcomputation;
-	private Integer addressvalidation;
+	private String taxcomputation;
+	private String addressvalidation;
 	public Integer getId() {
 		return id;
 	}
@@ -43,16 +43,16 @@ public class RegionListVO {
 	public void setRlist(String rlist) {
 		this.rlist = rlist;
 	}
-	public Integer getTaxcomputation() {
+	public String getTaxcomputation() {
 		return taxcomputation;
 	}
-	public void setTaxcomputation(Integer taxcomputation) {
+	public void setTaxcomputation(String taxcomputation) {
 		this.taxcomputation = taxcomputation;
 	}
-	public Integer getAddressvalidation() {
+	public String getAddressvalidation() {
 		return addressvalidation;
 	}
-	public void setAddressvalidation(Integer addressvalidation) {
+	public void setAddressvalidation(String addressvalidation) {
 		this.addressvalidation = addressvalidation;
 	}
 	@Override
@@ -61,6 +61,7 @@ public class RegionListVO {
 				+ state + ", rlist=" + rlist + ", taxcomputation=" + taxcomputation + ", addressvalidation="
 				+ addressvalidation + "]";
 	}
+	
 	
 	
 	
