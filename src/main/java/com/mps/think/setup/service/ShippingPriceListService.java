@@ -18,5 +18,7 @@ public interface ShippingPriceListService {
 	public ShippingPriceList deleteShippingPriceListById(Integer id);
 	
 	List<ShippingPriceList> getAllShippingPricesForPublisher(Integer pubId);
+
+	public List<ShippingPriceList> getAllShippingPriceList();
 	
 }

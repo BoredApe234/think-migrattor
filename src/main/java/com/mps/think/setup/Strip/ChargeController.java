@@ -52,8 +52,9 @@ public class ChargeController {
 		chargeRequest.setDescription("Example charge");
 		if (chargeRequest.getCurrency().EUR.toString() == "EUR") {
 			chargeRequest.setCurrency(Currency.EUR);
-		}
+		}else {
 		chargeRequest.setCurrency(Currency.USD);
+		}
 		Charge charge = paymentsService.charge(chargeRequest);
 		PublicKey pk = new PublicKey();
 		pk.setId(charge.getId());
@@ -69,9 +70,11 @@ public class ChargeController {
 //		od.setPaymentBreakdown(pb);
 //		addOrderRepo.saveAndFlush(od);
 		PaymentBreakdown paymentBreakdown = orderDetails.getPaymentBreakdown();
-		paymentBreakdown.setPaymentStatus(charge.getStatus());
+		if(charge.getStatus().equals("succeeded")) {
+		paymentBreakdown.setPaymentStatus("Paid");
 		orderDetails.setPaymentBreakdown(paymentBreakdown);
 		addOrderRepo.saveAndFlush(orderDetails);
+		}
 		
 		System.out.println(chargeRequest.toString());
 		System.out.println(charge.toString());

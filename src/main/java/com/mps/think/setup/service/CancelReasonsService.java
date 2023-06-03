@@ -19,4 +19,6 @@ public interface CancelReasonsService {
 	
 	public CancelReasons deleteByCancelReasonsId(Integer cancelReasonsId);
 
+	public List<CancelReasons> getAllCancelReasons();
+
 }

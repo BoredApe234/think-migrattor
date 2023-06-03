@@ -1,5 +1,6 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,6 +18,9 @@ public class PaymentInformationServiceImpl implements PaymentInformationService 
 
 	@Autowired
 	PaymentInformationRepo paymentInformationRepo;
+	
+	@Autowired
+	ObjectMapper mapper;
 
 	@Override
 	public List<PaymentInformation> getallPaymentInformationForPublisher(Integer pub) {
@@ -24,11 +28,16 @@ public class PaymentInformationServiceImpl implements PaymentInformationService 
 	}
 
 	@Override
-	public PaymentInformation savePayInfo(PaymentInformationVO paymentInformationVO) {
-		ObjectMapper mapper = new ObjectMapper();
-		PaymentInformation payInfo = mapper.convertValue(paymentInformationVO, PaymentInformation.class);
-		PaymentInformation cdata = paymentInformationRepo.saveAndFlush(payInfo);
-		return cdata;
+	public List<PaymentInformation> savePayInfo(List<PaymentInformationVO> paymentInformationVO) {
+//		ObjectMapper mapper = new ObjectMapper();
+//		PaymentInformation payInfo = mapper.convertValue(paymentInformationVO, PaymentInformation.class);
+		
+		List<PaymentInformation> list=new ArrayList<>();
+		for(PaymentInformationVO pInfo:paymentInformationVO) {
+		PaymentInformation cdata = paymentInformationRepo.saveAndFlush(mapper.convertValue(pInfo, PaymentInformation.class));
+		list.add(cdata);
+		}
+		return list;
 	}
 
 	@Override
@@ -42,8 +51,13 @@ public class PaymentInformationServiceImpl implements PaymentInformationService 
 	}
 
 	@Override
-	public PaymentInformation getPaymentInformationByOrderId(Integer orderId) {
+	public List<PaymentInformation> getPaymentInformationByOrderId(Integer orderId) {
 		return paymentInformationRepo.findByOrderOrderId(orderId);
+	}
+
+	@Override
+	public List<PaymentInformation> getAllPaymentInformation() {
+		return paymentInformationRepo.findAll();
 	}
 
 }

@@ -35,6 +35,10 @@ public class CreditStatusServiceImpl implements CreditStatusService {
 		Publisher publisher=new Publisher();
 		publisher.setId(creditStatus.getPubId().getId());
 		data.setPubId(publisher);
+		data.setDefaultcreditstatus(creditStatus.getDefaultcreditstatus());
+		if(creditStatus.getDefaultcreditstatus() != null && creditStatus.getDefaultcreditstatus()) {
+			makeOtherCreditStatusFalse(creditStatus.getPubId().getId());			
+		}
 		creditStatusRepo.saveAndFlush(data);
 		creditStatus.setCreditId(data.getCreditId());
 		return creditStatus;
@@ -50,8 +54,20 @@ public class CreditStatusServiceImpl implements CreditStatusService {
 		Publisher publisher=new Publisher();
 		publisher.setId(creditStatus.getPubId().getId());
 		data.setPubId(publisher);
+		data.setDefaultcreditstatus(creditStatus.getDefaultcreditstatus());
+		if(creditStatus.getDefaultcreditstatus() != null && creditStatus.getDefaultcreditstatus()) {
+			makeOtherCreditStatusFalse(creditStatus.getPubId().getId());			
+		}
 		creditStatusRepo.saveAndFlush(data);
 		return creditStatus;
+	}
+	
+	private void makeOtherCreditStatusFalse(Integer pubId) {
+		List<CreditStatus> creditStatus = creditStatusRepo.findByPubIdId(pubId);
+		creditStatus.stream().filter(cc -> cc.getDefaultcreditstatus() == null || cc.getDefaultcreditstatus()).forEach(c -> {
+			c.setDefaultcreditstatus(false);
+		});
+		creditStatusRepo.saveAllAndFlush(creditStatus);
 	}
 
 	@Override
@@ -74,5 +90,12 @@ public class CreditStatusServiceImpl implements CreditStatusService {
 	public List<CreditStatus> findcreditbyPubId(Integer pubId) {
 		return creditStatusRepo.findByPubIdId(pubId);
 	}
+
+	@Override
+	public List<CreditStatus> getAllCreditStatus() {
+		return creditStatusRepo.findAll();
+	}
+
+	
 }
 

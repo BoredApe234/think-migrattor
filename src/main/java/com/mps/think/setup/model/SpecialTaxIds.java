@@ -28,7 +28,7 @@ public class SpecialTaxIds extends BaseEntity {
 	private String specialTaxIds;
 	
 	@Column(name = "exemptStatus")
-	private boolean exemptStatus;
+	private String exemptStatus;
 
 	public Integer getId() {
 		return id;
@@ -54,18 +54,14 @@ public class SpecialTaxIds extends BaseEntity {
 		this.specialTaxIds = specialTaxIds;
 	}
 
-	public boolean getExemptStatus() {
+	public String getExemptStatus() {
 		return exemptStatus;
 	}
 
-	public void setExemptStatus(boolean exemptStatus) {
+	public void setExemptStatus(String exemptStatus) {
 		this.exemptStatus = exemptStatus;
 	}
 
-	@Override
-	public String toString() {
-		return "SpecialTaxIds [id=" + id + ", pubId=" + pubId + ", specialTaxIds=" + specialTaxIds + ", exemptStatus="
-				+ exemptStatus + "]";
-	}
+
 
 }

@@ -150,6 +150,18 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 
 	
 	
+	@Query(value = "SELECT *\n"
+			+ "FROM order_parent o WHERE o.customer_id = :customerId\n"
+			+ "ORDER BY (o.order_id = :orderId) DESC, o.order_id ASC",
+			nativeQuery = true)
+	List<Order> fetchOrdersForPaymentsByCustomerIdPrioGivenOrderId(@Param("customerId") Integer customerId, @Param("orderId") Integer orderId);
+//	countQuery = "SELECT COUNT(*) FROM order_parent o WHERE o.customer_id = :customerId",
+	
+	@Query("SELECT o FROM Order o JOIN o.customerId c WHERE (:publisherId IS NULL OR c.publisher.id = :publisherId) AND (:customerId IS NULL OR c.customerId = :customerId) "
+			+ "AND o.orderType = :orderType GROUP BY o.orderId")
+	Page<Order> findAllOrderOfGiveType(@Param("publisherId") Integer publisherId, @Param("customerId") Integer customerId, @Param("orderType") String orderType, Pageable page);
+	
+	
 }
 
 

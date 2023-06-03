@@ -19,17 +19,17 @@ public class ProcessType extends BaseEntity {
 	@Id
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Integer pid;
 	
 	@Column(name = "mainpurposelabel")
 	private String mainpurposelabel;
 
-	public Integer getId() {
-		return id;
+	public Integer getPid() {
+		return pid;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setPid(Integer pid) {
+		this.pid = pid;
 	}
 
 	public String getMainpurposelabel() {
@@ -42,9 +42,10 @@ public class ProcessType extends BaseEntity {
 
 	@Override
 	public String toString() {
-		return "ProcessType [id=" + id + ", mainpurposelabel=" + mainpurposelabel + "]";
+		return "ProcessType [pid=" + pid + ", mainpurposelabel=" + mainpurposelabel + "]";
 	}
 
+	
 	
 
 	

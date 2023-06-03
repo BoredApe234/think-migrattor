@@ -38,6 +38,10 @@ public class OrderItems extends BaseEntity {
 	@JoinColumn(name = "subscription_id", referencedColumnName = "id")
 	private SubscriptionDefKeyInfo subsProdPkgDef;
 	
+	@OneToOne
+	@JoinColumn(name = "product_def", referencedColumnName = "id")
+	private ProductInformation productDef;
+	
 	@Column(name = "effective_date")
 	private Date effectiveDate;
 
@@ -65,6 +69,12 @@ public class OrderItems extends BaseEntity {
 	
 	@Column(name = "quantity_ordered")
 	private Integer quantityOrdered;
+	
+	@Column(name = "style")
+	private String style;
+	
+	@Column(name = "color")
+	private String color;
 
 	public Integer getId() {
 		return id;
@@ -104,6 +114,14 @@ public class OrderItems extends BaseEntity {
 
 	public void setSubsProdPkgDef(SubscriptionDefKeyInfo subsProdPkgDef) {
 		this.subsProdPkgDef = subsProdPkgDef;
+	}
+
+	public ProductInformation getProductDef() {
+		return productDef;
+	}
+
+	public void setProductDef(ProductInformation productDef) {
+		this.productDef = productDef;
 	}
 
 	public Date getEffectiveDate() {
@@ -178,15 +196,29 @@ public class OrderItems extends BaseEntity {
 		this.quantityOrdered = quantityOrdered;
 	}
 
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
 	@Override
 	public String toString() {
 		return "OrderItems [id=" + id + ", issue=" + issue + ", enumeration=" + enumeration + ", copiesPerIssue="
-				+ copiesPerIssue + ", subsProdPkgDef=" + subsProdPkgDef + ", effectiveDate=" + effectiveDate
-				+ ", numOfIssues=" + numOfIssues + ", validFrom=" + validFrom + ", validTo=" + validTo
-				+ ", liabilityIssue=" + liabilityIssue + ", extendedIssue=" + extendedIssue + ", term=" + term
-				+ ", extendedByDays=" + extendedByDays + ", quantityOrdered=" + quantityOrdered + "]";
+				+ copiesPerIssue + ", subsProdPkgDef=" + subsProdPkgDef + ", productDef=" + productDef
+				+ ", effectiveDate=" + effectiveDate + ", numOfIssues=" + numOfIssues + ", validFrom=" + validFrom
+				+ ", validTo=" + validTo + ", liabilityIssue=" + liabilityIssue + ", extendedIssue=" + extendedIssue
+				+ ", term=" + term + ", extendedByDays=" + extendedByDays + ", quantityOrdered=" + quantityOrdered
+				+ ", style=" + style + ", color=" + color + "]";
 	}
-	
-	
-	
 }

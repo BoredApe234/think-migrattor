@@ -57,4 +57,9 @@ public class TransportModeServiceImpl implements TransportModeService {
 		return transportModeRepo.findByPublisherId(pubId);
 	}
 
+	@Override
+	public List<TransportMode> getAllTransportMode() {
+		return transportModeRepo.findAll();
+	}
+
 }

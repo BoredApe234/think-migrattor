@@ -12,10 +12,12 @@ public interface PaymentInformationService {
 	
 	public List<PaymentInformation> getallPaymentInformationForCustomer(Integer customerId);
 	
-	public PaymentInformation savePayInfo(PaymentInformationVO paymentInformationVO);
+	public List<PaymentInformation> savePayInfo(List<PaymentInformationVO> paymentInformationVO);
 	
 	public Optional<PaymentInformation> findByPaymentInfoId(Integer  id);
 	
-	public PaymentInformation getPaymentInformationByOrderId(Integer orderId);
+	public List<PaymentInformation> getPaymentInformationByOrderId(Integer orderId);
+
+	public List<PaymentInformation> getAllPaymentInformation();
 
 }

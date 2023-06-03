@@ -1,28 +1,40 @@
 package com.mps.think.setup.serviceImpl;
 
 
-import java.util.Arrays;
-
-import java.util.Comparator;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-
+import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.MultiLineItemOrder;
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.OrderAddressMapping;
+import com.mps.think.setup.model.OrderAuxiliaryInformation;
+import com.mps.think.setup.model.OrderCategory;
 import com.mps.think.setup.model.OrderCodesSuper;
+import com.mps.think.setup.model.OrderDeliveryOptions;
+import com.mps.think.setup.model.OrderItemDetails;
+import com.mps.think.setup.model.OrderItems;
+import com.mps.think.setup.model.OrderKeyInformation;
+import com.mps.think.setup.model.OrderPaymentOptions;
+import com.mps.think.setup.model.PaymentBreakdown;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.MultiLineItemOrderRepo;
+import com.mps.think.setup.repo.OrdersToBeSuspendedRepo;
+import com.mps.think.setup.repo.SuspendOrderRepo;
 import com.mps.think.setup.service.AddOrderService;
+import com.mps.think.setup.utils.Pair;
 import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
+import com.mps.think.setup.vo.OrderSuspendView;
 import com.mps.think.setup.vo.OrderVO;
 
 @Service
@@ -36,14 +48,20 @@ public class AddOrderServiceImpl implements AddOrderService {
 	
 	@Autowired
 	private MultiLineItemOrderRepo multiLineOrderRepo;
+	
+	@Autowired
+	OrdersToBeSuspendedRepo ordersToSuspendRepo;
+	
+	@Autowired
+	SuspendOrderRepo suspendedOrderRepo;
 
 	@Override
 	public Order saveOrder(OrderVO order) throws Exception {
 		Order newOrder = mapper.convertValue(order, Order.class);
-		if (order.getOtherAddressCustomer().getCustomerId() == 0) newOrder.setOtherAddressCustomer(null);
+		if (order.getOtherAddressCustomer() == null || order.getOtherAddressCustomer().getCustomerId() == 0) newOrder.setOtherAddressCustomer(null);
 		Order createdOrder = addOrderRepo.saveAndFlush(newOrder);
 		MultiLineItemOrder orderSibling = multiLineOrderRepo.findByOrderOrderId(createdOrder.getOrderId());
-		if (order.getParentOrder().getParentOrderId() == 0) {
+		if (order.getParentOrder() == null || order.getParentOrder().getParentOrderId() == 0) {
 			orderSibling.setParentOrderId(createdOrder.getOrderId());
 			multiLineOrderRepo.saveAndFlush(orderSibling);
 		} else {
@@ -74,7 +92,16 @@ public class AddOrderServiceImpl implements AddOrderService {
 	public Order updateOrder(Order order) throws Exception {
 //		ObjectMapper mapper = new ObjectMapper();
 		Order updateOrder = mapper.convertValue(order, Order.class);
-		if (order.getOtherAddressCustomer().getCustomerId() == 0) updateOrder.setOtherAddressCustomer(null);
+		if (order.getOtherAddressCustomer() == null || order.getOtherAddressCustomer().getCustomerId() == 0) updateOrder.setOtherAddressCustomer(null);	
+		Integer parentOrderId = order.getParentOrder().getParentOrderId();
+		MultiLineItemOrder currentParent = multiLineOrderRepo.findByOrderOrderId(order.getOrderId());
+		if (parentOrderId <= 0 || currentParent.getParentOrderId().equals(currentParent.getOrder().getOrderId())) {
+			updateOrder.setParentOrder(currentParent);
+		} else {
+			currentParent.setParentOrderId(parentOrderId);
+			updateOrder.setParentOrder(currentParent);
+		}
+		updateOrder.setParentOrder(multiLineOrderRepo.findByOrderOrderId(order.getOrderId()));
 		return addOrderRepo.saveAndFlush(updateOrder);
 	}
 
@@ -107,9 +134,8 @@ public class AddOrderServiceImpl implements AddOrderService {
 		addOrderRepo.saveAllAndFlush(orders);
 	}
 
-	public List<Order> getOrdersById(Integer id) {
-		MultiLineItemOrder order = multiLineOrderRepo.findByOrderOrderId(id);
-		return multiLineOrderRepo.findByParentOrderId(order.getParentOrderId()).stream().map(o -> o.getOrder()).collect(Collectors.toList());
+	public Page<Order> getOrdersById(Integer id, Pageable page) {
+		return multiLineOrderRepo.findOrdersByParentOrderId(addOrderRepo.findById(id).get().getParentOrder().getParentOrderId(), page);
 	}
 
 	@Override
@@ -119,5 +145,124 @@ public class AddOrderServiceImpl implements AddOrderService {
 		return null;
 	}
 
+	@Override
+	public List<Order> getAllOrderByCustomerIdAndOrderId(Integer customerId, Integer orderId) throws Exception {
+		return addOrderRepo.fetchOrdersForPaymentsByCustomerIdPrioGivenOrderId(customerId, orderId);
+	}
+
+	@Override
+	public List<Order> getAllOrder() {
+		return addOrderRepo.findAll();
+	}
+
+	@Override
+	public List<OrderCategory> getAllOrderCategory() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<OrderAddressMapping> getAllOrderAddressMapping() {
+		List<List<OrderAddressMapping>> orderAddressMapping = addOrderRepo.findAll().stream().map(a -> a.getOrderAddresses()).collect(Collectors.toList());
+		List<OrderAddressMapping> output = new ArrayList<>();
+		for (List<OrderAddressMapping> s : orderAddressMapping) {
+			output.addAll(s);
+		}
+		return output;
+	}
+
+	@Override
+	public List<OrderAuxiliaryInformation> getAllOrderAuxiliaryInformation() {
+List<OrderAuxiliaryInformation> orderAuxiliaryInformation = addOrderRepo.findAll().stream().map(m -> m.getAuxiliaryInformation()).collect(Collectors.toList());
+		
+		return orderAuxiliaryInformation;
+	}
+
+	@Override
+	public List<OrderDeliveryOptions> getAllOrderDeliveryOptions() {
+List<OrderDeliveryOptions> orderDeliveryOptions = addOrderRepo.findAll().stream().map(m -> m.getDeliveryAndBillingOptions()).collect(Collectors.toList());
+		
+		return orderDeliveryOptions;
+	}
+
+	@Override
+	public List<OrderItems> getAllOrderItems() {
+List<OrderItems> orderItems = addOrderRepo.findAll().stream().map(m -> m.getOrderItemsAndTerms()).collect(Collectors.toList());
+		
+		return orderItems;
+	}
+
+	@Override
+	public List<OrderKeyInformation> getAllOrderKeyInformation() {
+		List<OrderKeyInformation> orderKeyInformation = addOrderRepo.findAll().stream().map(m -> m.getKeyOrderInformation()).collect(Collectors.toList());
+		
+		return orderKeyInformation;
+	}
+
+	@Override
+	public List<PaymentBreakdown> getAllPaymentBreakdown() {
+		 List<PaymentBreakdown> paymentBreakdown = addOrderRepo.findAll().stream().map(m -> m.getPaymentBreakdown()).collect(Collectors.toList());
+			
+			return paymentBreakdown;
+	}
+
+	@Override
+	public List<MultiLineItemOrder> getAllMultiLineItemOrder() {
+		 List<MultiLineItemOrder> multiLineItemOrder = addOrderRepo.findAll().stream().map(m -> m.getParentOrder()).collect(Collectors.toList());
+			
+			return multiLineItemOrder;
+	}
+
 	
+	@Override
+	public List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus) {
+	    List<Order> updatedOrders = new ArrayList<>();
+	    
+	    for (Map.Entry<String, String> entry : OrderPaymentStatus.entrySet()) {
+	    	String orderId = entry.getKey();
+	        String paymentStatus = entry.getValue();
+
+	        Order order = addOrderRepo.findById(Integer.valueOf(orderId)).orElse(null);
+	        
+	        if (order != null) {
+	            PaymentBreakdown paymentBreakdown = order.getPaymentBreakdown();
+	            paymentBreakdown.setPaymentStatus(paymentStatus);
+	            
+	            Order updatedOrder = addOrderRepo.save(order);
+	            updatedOrders.add(updatedOrder);
+	        }
+	    }
+	    
+	    return updatedOrders;
+	}
+  
+//	public List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus) {
+//	    List<Order> updatedOrders = new ArrayList<>();
+//	    
+//	    for (Map.Entry<String, String> entry : OrderPaymentStatus.entrySet()) {
+//	        String orderId = entry.getKey();
+//	        String paymentStatus = entry.getValue();
+//
+//	        try {
+//	            int orderIdInt = Integer.parseInt(orderId);
+//	            Order order = addOrderRepo.findById(orderIdInt).orElse(null);
+//
+//	            if (order != null) {
+//	                PaymentBreakdown paymentBreakdown = order.getPaymentBreakdown();
+//	                paymentBreakdown.setPaymentStatus(paymentStatus);
+//
+//	                Order updatedOrder = addOrderRepo.save(order);
+//	                updatedOrders.add(updatedOrder);
+//	            }
+//	        } catch (NumberFormatException e) {
+//	            // Handle the case where the orderId cannot be parsed to an integer
+//	            // You can log an error, throw an exception, or perform appropriate error handling
+//	            // For now, we skip the current iteration of the loop
+//	            continue;
+//	        }
+//	    }
+//	    
+//	    return updatedOrders;
+//	}
+
 }

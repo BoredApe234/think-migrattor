@@ -320,4 +320,9 @@ public class IssueGenerationServiceImpl implements IssueGenerationService {
 		return issueGenerationRepo.findByOrderClassIdPubIdId(pubId);
 	}
 
+	@Override
+	public List<IssueGeneration> getAllIssueGeneration() {
+		return issueGenerationRepo.findAll();
+	}
+
 }

@@ -74,5 +74,10 @@ public class SubscriptionDefKeyInfoServiceImpl implements SubscriptionDefKeyInfo
 		return subsRepo.findByOrderCodeId(orderCodeId);
 	}
 
+	@Override
+	public List<SubscriptionDefKeyInfo> getAllSubscriptionDefKeyInfo() {
+		return subsRepo.findAll();
+	}
+
 
 }

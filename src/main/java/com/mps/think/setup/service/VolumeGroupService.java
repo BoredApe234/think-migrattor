@@ -19,4 +19,6 @@ public interface VolumeGroupService {
 	
 	public VolumeGroup deleteByVolumeGroupId(Integer volumeGroupId);
 
+	public List<VolumeGroup> getAllVolumeGroup();
+
 }

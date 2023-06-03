@@ -1,5 +1,7 @@
 package com.mps.think.setup.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,7 +30,7 @@ public class PaymentInformationController {
 	}
 	
 	@PostMapping("/savePaymentInformation")
-	public ResponseEntity<?> savePaymentInformation(@RequestBody PaymentInformationVO paymentInformationVO){
+	public ResponseEntity<?> savePaymentInformation(@RequestBody List<PaymentInformationVO> paymentInformationVO){
 		return ResponseEntity.ok(paymentInformationService.savePayInfo(paymentInformationVO));
 	}
 	

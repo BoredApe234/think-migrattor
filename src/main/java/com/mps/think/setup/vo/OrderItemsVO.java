@@ -2,11 +2,12 @@ package com.mps.think.setup.vo;
 
 import java.util.Date;
 
+import com.mps.think.setup.model.ProductInformation;
 import com.mps.think.setup.model.SubscriptionDefKeyInfo;
 import com.mps.think.setup.model.Terms;
 
 public class OrderItemsVO {
-	
+
 	private Integer id;
 
 	private Integer issue;
@@ -16,6 +17,8 @@ public class OrderItemsVO {
 	private Integer copiesPerIssue;
 
 	private SubscriptionDefKeyInfo subsProdPkgDef;
+	
+	private ProductInformation productDef;
 
 	private Date effectiveDate;
 
@@ -34,6 +37,10 @@ public class OrderItemsVO {
 	private Integer extendedByDays;
 
 	private Integer quantityOrdered;
+
+	private String style;
+	
+	private String color;
 
 	public Integer getId() {
 		return id;
@@ -73,6 +80,14 @@ public class OrderItemsVO {
 
 	public void setSubsProdPkgDef(SubscriptionDefKeyInfo subsProdPkgDef) {
 		this.subsProdPkgDef = subsProdPkgDef;
+	}
+
+	public ProductInformation getProductDef() {
+		return productDef;
+	}
+
+	public void setProductDef(ProductInformation productDef) {
+		this.productDef = productDef;
 	}
 
 	public Date getEffectiveDate() {
@@ -147,6 +162,29 @@ public class OrderItemsVO {
 		this.quantityOrdered = quantityOrdered;
 	}
 
-	
-	
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderItemsVO [id=" + id + ", issue=" + issue + ", enumeration=" + enumeration + ", copiesPerIssue="
+				+ copiesPerIssue + ", subsProdPkgDef=" + subsProdPkgDef + ", productDef=" + productDef
+				+ ", effectiveDate=" + effectiveDate + ", numOfIssues=" + numOfIssues + ", validFrom=" + validFrom
+				+ ", validTo=" + validTo + ", liabilityIssue=" + liabilityIssue + ", extendedIssue=" + extendedIssue
+				+ ", term=" + term + ", extendedByDays=" + extendedByDays + ", quantityOrdered=" + quantityOrdered
+				+ ", style=" + style + ", color=" + color + "]";
+	}
 }

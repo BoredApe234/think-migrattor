@@ -247,7 +247,7 @@ public class EnumModelVO {
 
 	public static enum OrderStatus {
 
-		Active("Active"), Cancelled("Cancelled"), Pending("Pending");
+		Active("Active"), Cancelled("Cancelled"), Pending("Pending"), SUSPENDED_TEMP("Suspended-Temporary"), SUSPEND_NON_PAY("Suspend Non-Pay");
 
 		private final String displayOrderStatus;
 
@@ -449,9 +449,74 @@ public class EnumModelVO {
 		}
 	}
 	
-	
+	public static enum ExemptStatus {
+		One("Not Tax Exempt"), Two("Yes Tax Exempt"), Three("Always Tax Exempt");
 
+		private final String exemptStatus;
 
+		ExemptStatus(String exemptStatus) {
+			this.exemptStatus = exemptStatus;
+		}
+
+		public String getExemptStatus() {
+			return exemptStatus;
+		}
+	}
+	public static enum Addressstatus {
+		One("ABUSER: Suspected Abuser"), Two("CLEARED Address Cleared"), Three("DEC Deceased"),
+		Four("DO NOT MAIL Requested Do Not Mail"), Five("DUPE Duplicate"), Six("HOLD Hold Account"),
+		Seven("NCOA NCOA Reported Undeliverable"), Eight("OPEN Open Account"), Nine("OPEN-No Mail Open Account - request no mail")
+		, Ten("SUSPEND USPS Temp Service Suspension"), Eleven("UNDEL Return Undeliverable");
+		private final String addressstatus;
+
+		Addressstatus(String addressstatus) {
+			this.addressstatus = addressstatus;
+		}
+
+		public String getAddressstatus() {
+			return addressstatus;
+		}
+	}
+	public static enum Region {
+		One("Asia"), Two("Africa"), Three("Antarctica"), Four("Australia"), Five("Europe") , Six("North America"), Seven("South America");
+
+		private final String region;
+
+		Region(String region) {
+			this.region = region;
+		}
+
+		public String getRegion() {
+			return region;
+		}
+	}
 	
+	public static enum TaxComputation {
+		One("None"), Two("Avalara"), Three("Taxjar");
+
+		private final String taxComputation;
+
+		TaxComputation(String taxComputation) {
+			this.taxComputation = taxComputation;
+		}
+
+		public String getTaxComputation() {
+			return taxComputation;
+		}
+	}
+	
+	public static enum AddressValidation {
+		One("None"), Two("Avalara");
+
+		private final String addressValidation;
+
+		AddressValidation(String addressValidation) {
+			this.addressValidation = addressValidation;
+		}
+
+		public String getAddressValidation() {
+			return addressValidation;
+		}
+	}
 
 }

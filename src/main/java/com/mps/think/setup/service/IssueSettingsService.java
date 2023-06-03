@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.mps.think.setup.model.IssueGeneration;
 import com.mps.think.setup.model.IssueSettings;
+import com.mps.think.setup.model.JobQueue;
 import com.mps.think.setup.vo.IssueSettingsVO;
 
 public interface IssueSettingsService {
@@ -16,5 +17,9 @@ public interface IssueSettingsService {
 	public IssueSettings findbyIssueSettingId(Integer issueSettingId);
 	
 	public List<IssueSettings> getAllIssueSettingsForPublisher(Integer pubId);
+
+	public List<IssueSettings> getAllIssueSettings();
+
+	
 
 }

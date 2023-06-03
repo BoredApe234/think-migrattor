@@ -28,6 +28,9 @@ public class Jurisdictions extends BaseEntity{
 	@JoinColumn(name = "pub_id", referencedColumnName = "id" )
 	private Publisher pubId;
 	
+	@Column(name = "countrycode")
+	private String countrycode;
+	
 	@Column(name = "stateCode")
 	private String stateCode;
 
@@ -39,6 +42,9 @@ public class Jurisdictions extends BaseEntity{
 	
 	@Column(name = "zipCode")
 	private String zipCode;
+	
+	@Column(name = "avatarapplicable")
+	private Boolean avatarapplicable;
 
 	public Integer getId() {
 		return id;
@@ -88,11 +94,32 @@ public class Jurisdictions extends BaseEntity{
 		this.zipCode = zipCode;
 	}
 
+	public Boolean getAvatarapplicable() {
+		return avatarapplicable;
+	}
+
+	public void setAvatarapplicable(Boolean avatarapplicable) {
+		this.avatarapplicable = avatarapplicable;
+	}
+
+	public String getCountrycode() {
+		return countrycode;
+	}
+
+	public void setCountrycode(String countrycode) {
+		this.countrycode = countrycode;
+	}
+
 	@Override
 	public String toString() {
-		return "Jurisdictions [id=" + id + ", pubId=" + pubId + ", stateCode=" + stateCode + ", city=" + city
-				+ ", country=" + country + ", zipCode=" + zipCode + "]";
+		return "Jurisdictions [id=" + id + ", pubId=" + pubId + ", countrycode=" + countrycode + ", stateCode="
+				+ stateCode + ", city=" + city + ", country=" + country + ", zipCode=" + zipCode + ", avatarapplicable="
+				+ avatarapplicable + "]";
 	}
+
+
+
+
 
 	
 	

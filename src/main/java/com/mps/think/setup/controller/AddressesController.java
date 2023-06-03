@@ -31,7 +31,7 @@ public class AddressesController {
 	
 	@GetMapping("/getAllAddresses")
 	public ResponseEntity<?> getAllAddresses() {
-		return ResponseEntity.ok(addressService.getAllAddress());
+		return ResponseEntity.ok(addressService.getAllAddresses());
 	}
 
 	@PostMapping("/saveAddresses")

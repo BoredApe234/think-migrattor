@@ -111,4 +111,10 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 		return makePaymentRepo.findByOrderOrderId(orderId);
 	}
 
+
+	@Override
+	public List<MakePayment> getAllMakePayment() {
+	return makePaymentRepo.findAll();
+	}
+
 }
