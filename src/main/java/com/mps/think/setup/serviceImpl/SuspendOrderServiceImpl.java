@@ -115,7 +115,7 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 	}
 
 	// will have to put this in scheduler
-	void checkOrdersToSuspend(Integer orderId, Integer suspensionId) {
+	public void checkOrdersToSuspend(Integer orderId, Integer suspensionId) {
 		LocalDate currentDate = LocalDate.now(Clock.systemDefaultZone());
 		List<Object[]> nonSuspendedOrders = ordersToBeSuspendedRepo.findAllNonSuspendedAndNonReinstatedOrders(orderId,
 				suspensionId);
@@ -156,7 +156,7 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 	}
 
 	// goes into scheduler
-	void checkOrdersToContinue() {
+	public void checkOrdersToContinue() {
 		LocalDate currentDate = LocalDate.now(Clock.systemDefaultZone());
 		List<Object[]> allSuspendedOrders = ordersToBeSuspendedRepo.findAllSuspendedAndNonReinstatedOrders();
 		for (Object[] o : allSuspendedOrders) {
