@@ -10,14 +10,20 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.CancelOrder;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.PaymentInformation;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.CancelOrderRepo;
 import com.mps.think.setup.repo.CustomerDetailsRepo;
+import com.mps.think.setup.repo.PaymentInformationRepo;
 import com.mps.think.setup.service.ReportsService;
 import com.mps.think.setup.vo.CancelSubscirptionReportView;
+import com.mps.think.setup.vo.DailyCashReportView;
+import com.mps.think.setup.vo.OrderAddressMappingVO;
 
 @Service
 public class ReportsServiceImpl implements ReportsService {
@@ -33,6 +39,12 @@ public class ReportsServiceImpl implements ReportsService {
 	
 	@Autowired
 	private AddOrderRepo addOrderRepo;
+	
+	@Autowired
+	private PaymentInformationRepo paymentInfoRepo;
+	
+	@Autowired
+	private ObjectMapper mapper;
 
 	@Override
 	public Page<Order> getAllOrderReports(String orderStatus, Date ordersFrom, Date ordersTill, Integer customerId,
@@ -43,11 +55,11 @@ public class ReportsServiceImpl implements ReportsService {
 	}
 
 	@Override
-	public Page<CustomerDetails> getAllCustomerSearchReport(Integer customerId, String fname, String lname,
+	public Page<CustomerDetails> getAllCustomerSearchReport(Integer pubId, Integer customerId, String fname, String lname,
 			String initialName, String email, String company, String department, String country, String state,
 			String city, Integer zipCode, Pageable page) {
 	
-		return customerDetailsRepo.findCustomerSearchReport(customerId, fname, lname, initialName, email,
+		return customerDetailsRepo.findCustomerSearchReport(pubId, customerId, fname, lname, initialName, email,
 				                                             company, department, country, state, city, zipCode, page);
 	}
 
@@ -82,6 +94,39 @@ public class ReportsServiceImpl implements ReportsService {
 		if (oredrStart == null) oredrStart = new Date(0);
 		if (orderEnd == null) orderEnd = new Date();
 		return addOrderRepo.findAllCustomerSalesList(oredrStart, orderEnd, orderType, page);
+	}
+
+	@Override
+	public Page<DailyCashReportView> getAllDailyCashReport(Date paymentStart, Date paymentEnd, Pageable page) {
+		if (paymentStart == null) paymentStart = new Date(0);
+		if (paymentEnd == null) paymentEnd = new Date();
+//		return paymentInfoRepo.findAllDailyCashReport(paymentStart, paymentEnd, page);
+		
+		Page<PaymentInformation> allPaymentInformation = paymentInfoRepo.findAllDailyCashReport(paymentStart, paymentEnd, page);
+		List<DailyCashReportView> output1 = new ArrayList<>();
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		allPaymentInformation.toList().forEach(c -> {
+			DailyCashReportView obj = new DailyCashReportView();
+			obj.setOrderId(c.getOrder().getOrderId());
+			obj.setCommission(c.getOrder().getPaymentBreakdown().getCommission());
+			obj.setCurrency(c.getOrder().getPaymentBreakdown().getCurrency());
+			obj.setCustomerId(c.getOrder().getCustomerId().getCustomerId());
+			obj.setNetAmount(c.getOrder().getPaymentBreakdown().getNetAmount());
+			obj.setPaymentDate(c.getCreatedAt());
+			List<OrderAddressMappingVO> add = new ArrayList<>();
+			c.getOrder().getOrderAddresses().forEach(a -> {
+				OrderAddressMappingVO addVO = mapper.convertValue(a, OrderAddressMappingVO.class);
+				add.add(addVO);
+			});
+			obj.setAddresses(add);
+			obj.setShippingCharge(c.getOrder().getPaymentBreakdown().getShippingCharge());
+			obj.setTaxAmount(c.getOrder().getPaymentBreakdown().getTax());
+			obj.setTotalAmount(c.getOrder().getPaymentBreakdown().getGrossAmount());
+			output1.add(obj);
+		});
+		
+		return new PageImpl<>(output1, allPaymentInformation.getPageable(), allPaymentInformation.getTotalElements());
+		
 	}
 
 	

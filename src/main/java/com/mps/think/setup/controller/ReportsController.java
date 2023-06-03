@@ -35,12 +35,12 @@ public class ReportsController {
 	
 	@GetMapping("/getAllCustomerSearchReport")
 	
-	public ResponseEntity<?> getAllCustomerSearchReport(@RequestParam(required = false) Integer customerId, @RequestParam(required = false) String fname,
+	public ResponseEntity<?> getAllCustomerSearchReport(@RequestParam(required = false) Integer pubId, @RequestParam(required = false) Integer customerId, @RequestParam(required = false) String fname,
 			@RequestParam(required = false) String lname, @RequestParam(required = false) String initialName, @RequestParam(required = false) String email, 
 			@RequestParam(required = false) String company, @RequestParam(required = false) String department, @RequestParam(required = false) String country, 
 			@RequestParam(required = false) String state, @RequestParam(required = false) String city, @RequestParam(required = false) Integer zipCode, @RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "5") Integer size) {
-		return ResponseEntity.ok(reportsService.getAllCustomerSearchReport(customerId, fname, lname, initialName, email, company, department, country, state, city, zipCode, PageRequest.of(page, size)));
+		return ResponseEntity.ok(reportsService.getAllCustomerSearchReport(pubId, customerId, fname, lname, initialName, email, company, department, country, state, city, zipCode, PageRequest.of(page, size)));
 	}
 	
 	 @GetMapping("/getAllCancelledSubscriptions") 
@@ -59,5 +59,13 @@ public class ReportsController {
 		 Date ordersFromDate = (oredrStart == null || oredrStart.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(oredrStart);
 			Date ordersTillDate = (orderEnd == null || orderEnd.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(orderEnd);
 		 return ResponseEntity.ok(reportsService.getAllCustomerSalesList(ordersFromDate, ordersTillDate, orderType, PageRequest.of(page, size)));
+	 }
+	 @GetMapping("/getAllDailyCashReport") 
+	 public ResponseEntity<?> getAllDailyCashReport(@RequestParam(required = false) String paymentStart,
+				@RequestParam(required = false) String paymentEnd,@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws ParseException{
+		 
+		 Date paymentFromDate = (paymentStart == null || paymentStart.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(paymentStart);
+			Date paymentTillDate = (paymentEnd == null || paymentEnd.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(paymentEnd);
+		 return ResponseEntity.ok(reportsService.getAllDailyCashReport(paymentFromDate, paymentTillDate, PageRequest.of(page, size)));
 	 }
 }
