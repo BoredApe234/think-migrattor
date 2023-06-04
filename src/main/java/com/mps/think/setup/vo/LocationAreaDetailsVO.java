@@ -1,5 +1,7 @@
 package com.mps.think.setup.vo;
 
+import java.util.List;
+
 public class LocationAreaDetailsVO {
 
 	private Integer id;
@@ -10,11 +12,7 @@ public class LocationAreaDetailsVO {
 	
 	private Boolean locationIsActive;
 	
-	private String area;
-	
-	private String areaDescription;
-	
-	private Boolean areaIsActive;
+	private List<AreaDetailsVO> areaDetails;
 
 	public Integer getId() {
 		return id;
@@ -48,28 +46,12 @@ public class LocationAreaDetailsVO {
 		this.locationIsActive = locationIsActive;
 	}
 
-	public String getArea() {
-		return area;
+	public List<AreaDetailsVO> getAreaDetails() {
+		return areaDetails;
 	}
 
-	public void setArea(String area) {
-		this.area = area;
-	}
-
-	public String getAreaDescription() {
-		return areaDescription;
-	}
-
-	public void setAreaDescription(String areaDescription) {
-		this.areaDescription = areaDescription;
-	}
-
-	public Boolean getAreaIsActive() {
-		return areaIsActive;
-	}
-
-	public void setAreaIsActive(Boolean areaIsActive) {
-		this.areaIsActive = areaIsActive;
+	public void setAreaDetails(List<AreaDetailsVO> areaDetails) {
+		this.areaDetails = areaDetails;
 	}
 	
 }
