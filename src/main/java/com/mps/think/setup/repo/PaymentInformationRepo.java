@@ -18,7 +18,7 @@ public interface PaymentInformationRepo extends JpaRepository<PaymentInformation
 	List<PaymentInformation> findByPublisherId(Integer pub);
 	List<PaymentInformation> findByOrderCustomerIdCustomerId(Integer customerId);
 
-	PaymentInformation findByOrderOrderId(Integer orderId);
+	List<PaymentInformation> findByOrderOrderId(Integer orderId);
 	
 	@Query("SELECT pinfo FROM PaymentInformation pinfo WHERE DATE(pinfo.createdAt) >= :paymentStart AND DATE(pinfo.createdAt) <= :paymentEnd")
 	Page<PaymentInformation> findAllDailyCashReport(
