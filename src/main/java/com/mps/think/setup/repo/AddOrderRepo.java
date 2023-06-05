@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.PaymentInformation;
 
 @Repository
 public interface AddOrderRepo extends JpaRepository<Order, Integer> {
@@ -146,6 +147,7 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 			@Param("oredrStart") Date oredrStart, 
 			@Param("orderEnd") Date orderEnd, 
 			@Param("orderType") String orderType, Pageable page);
+
 	
 	
 	@Query(value = "SELECT *\n"
