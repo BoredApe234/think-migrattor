@@ -127,23 +127,38 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 	}
 
 
+//	@Override
+//	public SendInvoice sendInvoiceToCust(SendInvoiceVO sendInvoiceVO,MultipartFile file) throws IOException, AddressException, MessagingException {
+////			ObjectMapper obj = new ObjectMapper();
+////			 SendInvoice temp = sendInvoiceRepo.saveAndFlush(obj.convertValue(sendInvoiceVO, SendInvoice.class));
+//			SendInvoice sInvoice=new SendInvoice();
+//			sInvoice.setEmailFrom(sendInvoiceVO.getEmailFrom());
+//			sInvoice.setEmailTo(sendInvoiceVO.getEmailTo());
+//			sInvoice.setEmailCC(sendInvoiceVO.getEmailCC());
+//			sInvoice.setEmailSubject(sendInvoiceVO.getEmailSubject());
+//			sInvoice.setEmailContent(sendInvoiceVO.getEmailContent());
+//			sInvoice.setFileName(StringUtils.cleanPath(file.getOriginalFilename()));
+//			sInvoice.setFileData(file.getBytes());
+//			SendInvoice temp = sendInvoiceRepo.saveAndFlush(sInvoice);
+//			template.sendMailWithAttachment(temp.getEmailFrom(), temp.getEmailTo(),
+//					temp.getEmailCC(), temp.getEmailSubject(), temp.getEmailContent(), file.getOriginalFilename(),file.getBytes());
+//		return temp;
+//	}
 	@Override
-	public SendInvoice sendInvoiceToCust(SendInvoiceVO sendInvoiceVO,MultipartFile file) throws IOException, AddressException, MessagingException {
-		
-				template.sendMailWithAttachment(sendInvoiceVO.getEmailFrom(), sendInvoiceVO.getEmailTo(),
-						sendInvoiceVO.getEmailCC(), sendInvoiceVO.getEmailSubject(), sendInvoiceVO.getEmailContent(), file);
+	public SendInvoice sendInvoiceToCust(MultipartFile file,String emailFrom,String emailTo,String emailCC,String emailSubject, String emailContent) throws IOException, AddressException, MessagingException {
 //			ObjectMapper obj = new ObjectMapper();
 //			 SendInvoice temp = sendInvoiceRepo.saveAndFlush(obj.convertValue(sendInvoiceVO, SendInvoice.class));
 			SendInvoice sInvoice=new SendInvoice();
-			sInvoice.setEmailFrom(sendInvoiceVO.getEmailFrom());
-			sInvoice.setEmailTo(sendInvoiceVO.getEmailTo());
-			sInvoice.setEmailCC(sendInvoiceVO.getEmailCC());
-			sInvoice.setEmailSubject(sendInvoiceVO.getEmailSubject());
-			sInvoice.setEmailContent(sendInvoiceVO.getEmailContent());
+			sInvoice.setEmailFrom(emailFrom);
+			sInvoice.setEmailTo(emailTo);
+			sInvoice.setEmailCC(emailCC);
+			sInvoice.setEmailSubject(emailSubject);
+			sInvoice.setEmailContent(emailContent);
 			sInvoice.setFileName(StringUtils.cleanPath(file.getOriginalFilename()));
 			sInvoice.setFileData(file.getBytes());
 			SendInvoice temp = sendInvoiceRepo.saveAndFlush(sInvoice);
-		
+			template.sendMailWithAttachment(temp.getEmailFrom(), temp.getEmailTo(),
+					temp.getEmailCC(), temp.getEmailSubject(), temp.getEmailContent(), file.getOriginalFilename(),file.getBytes());
 		return temp;
 	}
 

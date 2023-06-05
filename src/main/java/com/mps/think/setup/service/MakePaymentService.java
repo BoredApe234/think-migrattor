@@ -7,6 +7,7 @@ import java.util.Optional;
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
 
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.mps.think.setup.model.MailTemplate;
@@ -30,8 +31,8 @@ public interface MakePaymentService {
 	
 	public MailTemplateVO sendPaymentLink(MailTemplateVO mailTemplateVO);
 	
-	public SendInvoice sendInvoiceToCust(SendInvoiceVO sendInvoiceVO,MultipartFile file) throws IOException, AddressException, MessagingException;
-
+//	public SendInvoice sendInvoiceToCust(SendInvoiceVO sendInvoiceVO,MultipartFile file) throws IOException, AddressException, MessagingException;
+	public SendInvoice sendInvoiceToCust(MultipartFile file,String emailFrom,String emailTo,String emailCC,String emailSubject, String emailContent) throws IOException, AddressException, MessagingException;
 	public List<MakePayment> getAllMakePayment();
 
 }
