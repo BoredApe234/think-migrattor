@@ -24,6 +24,7 @@ import com.mps.think.setup.service.ReportsService;
 import com.mps.think.setup.vo.CancelSubscirptionReportView;
 import com.mps.think.setup.vo.DailyCashReportView;
 import com.mps.think.setup.vo.OrderAddressMappingVO;
+import com.mps.think.setup.vo.RefundProcessReportView;
 
 @Service
 public class ReportsServiceImpl implements ReportsService {
@@ -126,6 +127,26 @@ public class ReportsServiceImpl implements ReportsService {
 		});
 		
 		return new PageImpl<>(output1, allPaymentInformation.getPageable(), allPaymentInformation.getTotalElements());
+		
+	}
+
+	@Override
+	public Page<RefundProcessReportView> getAllRefundProcessReport(Date startRefund, Date endRefund, Pageable page) {
+		if (startRefund == null) startRefund = new Date(0);
+		if (endRefund == null) endRefund = new Date();
+		
+		Page<CancelOrder> allRefundProcessReport = cancelOrderRepo.findAllRefundProcessReport(startRefund, endRefund , page);
+		List<RefundProcessReportView> refund = new ArrayList<>();
+		
+		allRefundProcessReport.toList().forEach(c -> {
+			RefundProcessReportView obj = new RefundProcessReportView();
+			obj.setOrderNumber(c.getCancelorderId());
+			obj.setRefundAmount(c.getRefundamount());
+			
+			refund.add(obj);
+		});
+		
+		return new PageImpl<>(refund, allRefundProcessReport.getPageable(), allRefundProcessReport.getTotalElements());
 		
 	}
 

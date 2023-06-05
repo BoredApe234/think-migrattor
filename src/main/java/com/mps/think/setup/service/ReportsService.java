@@ -12,6 +12,7 @@ import com.mps.think.setup.model.PaymentInformation;
 import com.mps.think.setup.vo.CancelSubscirptionReportView;
 import com.mps.think.setup.vo.DailyCashReportView;
 import com.mps.think.setup.vo.EnumModelVO.Currency;
+import com.mps.think.setup.vo.RefundProcessReportView;
 
 public interface ReportsService {
 
@@ -26,6 +27,8 @@ public interface ReportsService {
 	Page<Order> getAllCustomerSalesList(Date oredrStart, Date orderEnd, String orderType, Pageable page);
 	
 	Page<DailyCashReportView> getAllDailyCashReport(Date paymentStart, Date paymentEnd, Pageable page);
+	
+	Page<RefundProcessReportView> getAllRefundProcessReport(Date startRefund, Date endRefund, Pageable page);
 
 	
 
