@@ -1,5 +1,6 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -9,19 +10,23 @@ import javax.mail.MessagingException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.MailTemplate;
 import com.mps.think.setup.model.MakePayment;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.Publisher;
+import com.mps.think.setup.model.SendInvoice;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.MailTemplateRepo;
 import com.mps.think.setup.repo.MakePaymentRepo;
+import com.mps.think.setup.repo.SendInvoiceRepo;
 import com.mps.think.setup.service.MakePaymentService;
 import com.mps.think.setup.utils.MailTemplateUtils;
 import com.mps.think.setup.vo.MailTemplateVO;
 import com.mps.think.setup.vo.MakePaymentVO;
+import com.mps.think.setup.vo.SendInvoiceVO;
 
 @Service
 public class MakePaymentServiceImpl implements MakePaymentService {
@@ -31,6 +36,9 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 
 	@Autowired
 	MailTemplateRepo mailTemplateRepo;
+	
+	@Autowired
+	SendInvoiceRepo sendInvoiceRepo;
 	
 	@Autowired
 	AddOrderRepo addOrderRepo;
@@ -115,6 +123,24 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 	@Override
 	public List<MakePayment> getAllMakePayment() {
 	return makePaymentRepo.findAll();
+	}
+
+
+	@Override
+	public SendInvoiceVO sendInvoiceToCust(SendInvoiceVO sendInvoiceVO,MultipartFile file) {
+		try {
+			try {
+				template.sendMailWithAttachment(sendInvoiceVO.getEmailFrom(), sendInvoiceVO.getEmailTo(),
+						sendInvoiceVO.getEmailCC(), sendInvoiceVO.getEmailSubject(), sendInvoiceVO.getEmailContent(), file);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			ObjectMapper obj = new ObjectMapper();
+			 SendInvoice temp = sendInvoiceRepo.saveAndFlush(obj.convertValue(sendInvoiceVO, SendInvoice.class));
+		} catch (MessagingException e) {
+			e.printStackTrace();
+		}
+		return sendInvoiceVO;
 	}
 
 }
