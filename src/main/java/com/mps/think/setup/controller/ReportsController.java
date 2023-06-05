@@ -68,4 +68,13 @@ public class ReportsController {
 			Date paymentTillDate = (paymentEnd == null || paymentEnd.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(paymentEnd);
 		 return ResponseEntity.ok(reportsService.getAllDailyCashReport(paymentFromDate, paymentTillDate, PageRequest.of(page, size)));
 	 }
+	 
+	 @GetMapping("/getAllRefundProcessReport") 
+	 public ResponseEntity<?> getAllRefundProcessReport(@RequestParam(required = false) String startRefund,
+				@RequestParam(required = false) String endRefund,@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws ParseException{
+		 
+		 Date refundFromDate = (startRefund == null || startRefund.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(startRefund);
+			Date refundTillDate = (endRefund == null || endRefund.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(endRefund);
+		 return ResponseEntity.ok(reportsService.getAllRefundProcessReport(refundFromDate, refundTillDate, PageRequest.of(page, size)));
+	 }
 }

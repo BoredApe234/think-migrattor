@@ -24,6 +24,12 @@ public interface CancelOrderRepo extends JpaRepository<CancelOrder ,Integer> {
 	public Page<CancelOrder> findAllCancelledSubscriptions(
 			  @Param("ordersFrom") Date ordersFrom, 
 			  @Param("ordersTill") Date ordersTill, 
-			  @Param("currencyType") String currencyType, @Param("orderType") String orderType, Pageable page);	  
+			  @Param("currencyType") String currencyType, @Param("orderType") String orderType, Pageable page);
+	
+	
+@Query("select co from CancelOrder co WHERE DATE(co.date) >= :startRefund AND DATE(co.date) <= :endRefund")
+	Page<CancelOrder> findAllRefundProcessReport(
+			@Param("startRefund") Date startRefund, 
+			@Param("endRefund") Date endRefund, Pageable page);
 
 }
