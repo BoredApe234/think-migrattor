@@ -76,9 +76,10 @@ public class MakePaymentController {
             @RequestParam("emailTo") String emailTo,
             @RequestParam("emailCC") String emailCC,
             @RequestParam("emailSubject") String emailSubject,
-            @RequestParam("emailContent") String emailContent) throws AddressException, IOException, MessagingException {
+            @RequestParam("emailContent") String emailContent,
+            @RequestParam("pubId")Integer pubId) throws AddressException, IOException, MessagingException {
 		
-		return ResponseEntity.ok(makePaymentService.sendInvoiceToCust(file, emailFrom, emailTo, emailCC, emailSubject, emailContent));
+		return ResponseEntity.ok(makePaymentService.sendInvoiceToCust(file, emailFrom, emailTo, emailCC, emailSubject, emailContent,pubId));
 	}
 
 }
