@@ -18,10 +18,6 @@ public class SendInvoiceVO {
 	
 	private String emailContent;
 	
-	private String fileName;
-	
-	private byte[] fileData;
-	
 	private Publisher publisher;
 
 	public Integer getId() {
@@ -72,22 +68,6 @@ public class SendInvoiceVO {
 		this.emailContent = emailContent;
 	}
 
-	public String getFileName() {
-		return fileName;
-	}
-
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
-	}
-
-	public byte[] getFileData() {
-		return fileData;
-	}
-
-	public void setFileData(byte[] fileData) {
-		this.fileData = fileData;
-	}
-
 	public Publisher getPublisher() {
 		return publisher;
 	}
@@ -95,4 +75,6 @@ public class SendInvoiceVO {
 	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
+
+	
 }

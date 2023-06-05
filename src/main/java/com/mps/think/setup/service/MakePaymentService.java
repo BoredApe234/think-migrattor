@@ -1,7 +1,11 @@
 package com.mps.think.setup.service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,7 +30,7 @@ public interface MakePaymentService {
 	
 	public MailTemplateVO sendPaymentLink(MailTemplateVO mailTemplateVO);
 	
-	public SendInvoiceVO sendInvoiceToCust(SendInvoiceVO sendInvoiceVO,MultipartFile file);
+	public SendInvoice sendInvoiceToCust(SendInvoiceVO sendInvoiceVO,MultipartFile file) throws IOException, AddressException, MessagingException;
 
 	public List<MakePayment> getAllMakePayment();
 
