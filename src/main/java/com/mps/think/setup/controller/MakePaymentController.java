@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
+import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +19,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.gson.JsonObject;
 import com.mps.think.setup.model.MakePayment;
 import com.mps.think.setup.service.MakePaymentService;
+import com.mps.think.setup.utils.MailTemplateUtils;
 import com.mps.think.setup.vo.MailTemplateVO;
 import com.mps.think.setup.vo.MakePaymentVO;
 import com.mps.think.setup.vo.SendInvoiceVO;
@@ -28,6 +30,9 @@ public class MakePaymentController {
 	
 	@Autowired
 	MakePaymentService makePaymentService;
+	
+	@Autowired
+	MailTemplateUtils template;
 	
 	@PostMapping("/findAllMakePaymentForPublisher")
 	public ResponseEntity<?> findAllMakePaymentForPublisher(@RequestBody Integer pubId){
@@ -60,9 +65,20 @@ public class MakePaymentController {
 		return ResponseEntity.ok(makePaymentService.sendPaymentLink(mailTemplateVO));
 	}
 	
-	@PostMapping("/sendInvoice/{file}")
-	public ResponseEntity<?> sendInvoice(@RequestBody SendInvoiceVO sendInvoiceVO, @PathVariable("file") MultipartFile file) throws AddressException, IOException, MessagingException {
-		return ResponseEntity.ok(makePaymentService.sendInvoiceToCust(sendInvoiceVO, file));
+//	@PostMapping("/sendInvoiceToCust/{file}")
+//	public ResponseEntity<?> sendInvoiceToCust(@RequestParam("file") MultipartFile file,@RequestParam SendInvoiceVO sendInvoiceVO) throws AddressException, IOException, MessagingException {
+//		
+//		return ResponseEntity.ok(makePaymentService.sendInvoiceToCust(sendInvoiceVO, file));
+//	}
+	@PostMapping("/sendInvoiceToCust")
+	public ResponseEntity<?> sendInvoiceToCust(@RequestParam("file") MultipartFile file,
+            @RequestParam("emailFrom") String emailFrom,
+            @RequestParam("emailTo") String emailTo,
+            @RequestParam("emailCC") String emailCC,
+            @RequestParam("emailSubject") String emailSubject,
+            @RequestParam("emailContent") String emailContent) throws AddressException, IOException, MessagingException {
+		
+		return ResponseEntity.ok(makePaymentService.sendInvoiceToCust(file, emailFrom, emailTo, emailCC, emailSubject, emailContent));
 	}
 
 }
