@@ -1,5 +1,10 @@
 package com.mps.think.setup.controller;
 
+import java.io.IOException;
+
+import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -56,7 +61,7 @@ public class MakePaymentController {
 	}
 	
 	@PostMapping("/sendInvoice/{file}")
-	public ResponseEntity<?> sendInvoice(@RequestBody SendInvoiceVO sendInvoiceVO, @PathVariable("file") MultipartFile file) {
+	public ResponseEntity<?> sendInvoice(@RequestBody SendInvoiceVO sendInvoiceVO, @PathVariable("file") MultipartFile file) throws AddressException, IOException, MessagingException {
 		return ResponseEntity.ok(makePaymentService.sendInvoiceToCust(sendInvoiceVO, file));
 	}
 

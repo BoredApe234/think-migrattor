@@ -1,5 +1,7 @@
 package com.mps.think.setup.model;
 
+import java.util.Arrays;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -105,6 +107,14 @@ public class SendInvoice extends BaseEntity{
 		this.fileName = fileName;
 	}
 
+	public byte[] getFileData() {
+		return fileData;
+	}
+
+	public void setFileData(byte[] fileData) {
+		this.fileData = fileData;
+	}
+
 	public Publisher getPublisher() {
 		return publisher;
 	}
@@ -117,6 +127,8 @@ public class SendInvoice extends BaseEntity{
 	public String toString() {
 		return "SendInvoice [id=" + id + ", emailFrom=" + emailFrom + ", emailTo=" + emailTo + ", emailCC=" + emailCC
 				+ ", emailSubject=" + emailSubject + ", emailContent=" + emailContent + ", fileName=" + fileName
-				+ ", publisher=" + publisher + "]";
+				+ ", fileData=" + Arrays.toString(fileData) + ", publisher=" + publisher + "]";
 	}
+
+	
 }

@@ -7,11 +7,12 @@ import java.util.Map;
 import java.util.Optional;
 
 import javax.mail.MessagingException;
+import javax.mail.internet.AddressException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
-
+import org.springframework.util.StringUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.MailTemplate;
 import com.mps.think.setup.model.MakePayment;
@@ -127,20 +128,23 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 
 
 	@Override
-	public SendInvoiceVO sendInvoiceToCust(SendInvoiceVO sendInvoiceVO,MultipartFile file) {
-		try {
-			try {
+	public SendInvoice sendInvoiceToCust(SendInvoiceVO sendInvoiceVO,MultipartFile file) throws IOException, AddressException, MessagingException {
+		
 				template.sendMailWithAttachment(sendInvoiceVO.getEmailFrom(), sendInvoiceVO.getEmailTo(),
 						sendInvoiceVO.getEmailCC(), sendInvoiceVO.getEmailSubject(), sendInvoiceVO.getEmailContent(), file);
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			ObjectMapper obj = new ObjectMapper();
-			 SendInvoice temp = sendInvoiceRepo.saveAndFlush(obj.convertValue(sendInvoiceVO, SendInvoice.class));
-		} catch (MessagingException e) {
-			e.printStackTrace();
-		}
-		return sendInvoiceVO;
+//			ObjectMapper obj = new ObjectMapper();
+//			 SendInvoice temp = sendInvoiceRepo.saveAndFlush(obj.convertValue(sendInvoiceVO, SendInvoice.class));
+			SendInvoice sInvoice=new SendInvoice();
+			sInvoice.setEmailFrom(sendInvoiceVO.getEmailFrom());
+			sInvoice.setEmailTo(sendInvoiceVO.getEmailTo());
+			sInvoice.setEmailCC(sendInvoiceVO.getEmailCC());
+			sInvoice.setEmailSubject(sendInvoiceVO.getEmailSubject());
+			sInvoice.setEmailContent(sendInvoiceVO.getEmailContent());
+			sInvoice.setFileName(StringUtils.cleanPath(file.getOriginalFilename()));
+			sInvoice.setFileData(file.getBytes());
+			SendInvoice temp = sendInvoiceRepo.saveAndFlush(sInvoice);
+		
+		return temp;
 	}
 
 }
