@@ -14,6 +14,7 @@ import com.mps.think.setup.model.OrderAddressMapping;
 import com.mps.think.setup.model.OrderAuxiliaryInformation;
 import com.mps.think.setup.model.OrderCategory;
 import com.mps.think.setup.model.OrderCodesSuper;
+import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
 import com.mps.think.setup.vo.OrderSuspendView;
 import com.mps.think.setup.model.OrderDeliveryOptions;
 import com.mps.think.setup.model.OrderItems;
@@ -56,4 +57,6 @@ public interface AddOrderService {
 	public List<MultiLineItemOrder> getAllMultiLineItemOrder();
 	
 	List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus);
+	
+	List<Order> updateOrderStatus(LinkedHashMap<String, String> OrderStatus);
 }

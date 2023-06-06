@@ -235,6 +235,29 @@ List<OrderItems> orderItems = addOrderRepo.findAll().stream().map(m -> m.getOrde
 	    
 	    return updatedOrders;
 	}
+
+	@Override
+	public List<Order> updateOrderStatus(LinkedHashMap<String, String> OrderStatus) {
+
+		 List<Order> updatedOrders = new ArrayList<>();
+		    
+		    for (Map.Entry<String, String> entry : OrderStatus.entrySet()) {
+		    	String orderId = entry.getKey();
+		    	String odrStatus = entry.getValue();
+
+		        Order order = addOrderRepo.findById(Integer.valueOf(orderId)).orElse(null);
+		        
+		        if (order != null) {
+//		            OrderStatus odStatus = order.getOrderStatus();
+		            order.setOrderStatus(Enum.valueOf(OrderStatus.class, odrStatus));
+		            
+		            Order updatedOrder = addOrderRepo.save(order);
+		            updatedOrders.add(updatedOrder);
+		        }
+		    }
+		    
+		    return updatedOrders;
+	}
   
 //	public List<Order> updateOrderPaymentStatus(LinkedHashMap<String, String> OrderPaymentStatus) {
 //	    List<Order> updatedOrders = new ArrayList<>();
