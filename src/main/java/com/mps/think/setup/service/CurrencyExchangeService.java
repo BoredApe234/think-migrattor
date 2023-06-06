@@ -9,9 +9,9 @@ public interface CurrencyExchangeService {
 
 	public List<CurrencyExchange> findAllCurrencyExchange();
 
-	public CurrencyExchangeVO saveCurrencyExchange(CurrencyExchangeVO currrncyExc);
+	public CurrencyExchange saveCurrencyExchange(CurrencyExchange currrncyExc);
 
-	public CurrencyExchangeVO updateCurrencyExchange(CurrencyExchangeVO currrncyExc);
+	public CurrencyExchange updateCurrencyExchange(CurrencyExchange currrncyExc);
 
 	public CurrencyExchange findbyId(Integer currrncyExcId);
 

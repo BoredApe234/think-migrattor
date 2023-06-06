@@ -33,8 +33,8 @@ public class CurrencyExchange extends BaseEntity {
 	@Column(name = "symbol")
 	private String Symbol;
 
-	@Column(name = "Description")
-	private Integer Description;
+	@Column(name = "descriptions")
+	private String Description;
 	
 	@Column(name = "exchange_rate")
 	private Integer exchangeRate;
@@ -75,11 +75,11 @@ public class CurrencyExchange extends BaseEntity {
 		Symbol = symbol;
 	}
 
-	public Integer getDescription() {
+	public String getDescription() {
 		return Description;
 	}
 
-	public void setDescription(Integer description) {
+	public void setDescription(String description) {
 		Description = description;
 	}
 
@@ -105,5 +105,7 @@ public class CurrencyExchange extends BaseEntity {
 				+ CurrencyCode + ", Symbol=" + Symbol + ", Description=" + Description + ", exchangeRate="
 				+ exchangeRate + ", currency_Date=" + currency_Date + "]";
 	}
+
+	
 
 }
