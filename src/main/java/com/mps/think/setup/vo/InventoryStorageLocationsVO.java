@@ -4,27 +4,27 @@ public class InventoryStorageLocationsVO {
 	
 	private Integer id;
 	
-	private String location;
+	private LocationAreaDetailsVO location;
 	
-	private String areaLookup;
+	private AreaDetailsVO areaLookup;
 	
 	private String alternateArea;
 	
 	private String bin;
 
-	public String getLocation() {
+	public LocationAreaDetailsVO getLocation() {
 		return location;
 	}
 
-	public void setLocation(String location) {
+	public void setLocation(LocationAreaDetailsVO location) {
 		this.location = location;
 	}
 
-	public String getAreaLookup() {
+	public AreaDetailsVO getAreaLookup() {
 		return areaLookup;
 	}
 
-	public void setAreaLookup(String areaLookup) {
+	public void setAreaLookup(AreaDetailsVO areaLookup) {
 		this.areaLookup = areaLookup;
 	}
 

@@ -1,11 +1,17 @@
 package com.mps.think.setup.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Table(name = "location_area_details")
 @Entity
@@ -20,24 +26,19 @@ public class LocationAreaDetails extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private Integer id;
-	
+
 	@Column(name = "location")
 	private String location;
-	
+
 	@Column(name = "location_description")
 	private String locationDescription;
-	
+
 	@Column(name = "location_is_active")
 	private Boolean locationIsActive;
-	
-	@Column(name = "area")
-	private String area;
-	
-	@Column(name = "area_description")
-	private String areaDescription;
-	
-	@Column(name = "area_is_active")
-	private Boolean areaIsActive;
+
+	@OneToMany(mappedBy = "locationDetails", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private List<AreaDetails> areaDetails;
 
 	public Integer getId() {
 		return id;
@@ -71,28 +72,12 @@ public class LocationAreaDetails extends BaseEntity {
 		this.locationIsActive = locationIsActive;
 	}
 
-	public String getArea() {
-		return area;
+	public List<AreaDetails> getAreaDetails() {
+		return areaDetails;
 	}
 
-	public void setArea(String area) {
-		this.area = area;
+	public void setAreaDetails(List<AreaDetails> areaDetails) {
+		this.areaDetails = areaDetails;
 	}
 
-	public String getAreaDescription() {
-		return areaDescription;
-	}
-
-	public void setAreaDescription(String areaDescription) {
-		this.areaDescription = areaDescription;
-	}
-
-	public Boolean getAreaIsActive() {
-		return areaIsActive;
-	}
-
-	public void setAreaIsActive(Boolean areaIsActive) {
-		this.areaIsActive = areaIsActive;
-	}
-	
 }
