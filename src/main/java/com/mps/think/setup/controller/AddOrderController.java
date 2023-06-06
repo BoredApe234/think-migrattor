@@ -47,6 +47,11 @@ public class AddOrderController {
 		return ResponseEntity.ok(addOrderService.updateOrderPaymentStatus(OrderPaymentStatus));
 	}
 	
+	@PutMapping("/updateOrderStatus")
+	public ResponseEntity<?> updateOrderStatus(@RequestParam LinkedHashMap<String, String> OrderStatus) throws Exception {
+		return ResponseEntity.ok(addOrderService.updateOrderStatus(OrderStatus));
+	}
+	
 	@GetMapping("/getAllOrders")
 	public ResponseEntity<?> getAllOrders(@RequestParam(defaultValue = "0") Integer page,
 			@RequestParam(defaultValue = "5") Integer size) throws Exception {
