@@ -1,5 +1,6 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -123,6 +124,15 @@ public class AddressesServiceImpl implements AddressService  {
 	public List<Addresses> getAllAddresses() {
 		return addressRepo.findAll();
 	}
+
+	@Override
+	public List<Addresses> getTodayAndYesterdayRecords() {
+        LocalDate today = LocalDate.now();
+        LocalDate yesterday = today.minusDays(1);   
+        return addressRepo.findTodayAndYesterdayRecords(today, yesterday);
+        
+	}
+	
 
 	
 	
