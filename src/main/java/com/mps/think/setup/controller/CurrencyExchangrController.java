@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.mps.think.setup.model.CurrencyExchange;
 import com.mps.think.setup.service.CurrencyExchangeService;
 import com.mps.think.setup.vo.CurrencyExchangeVO;
 
@@ -24,12 +26,12 @@ public class CurrencyExchangrController {
 	}
 	
 	@PostMapping("/saveCurrencyExchange")
-	public ResponseEntity<?> saveCurrencyExchange(@RequestBody CurrencyExchangeVO id) {
+	public ResponseEntity<?> saveCurrencyExchange(@RequestBody CurrencyExchange id) {
 		return ResponseEntity.ok(currencyExchangeService.saveCurrencyExchange(id));
 	}
 	
 	@PostMapping("/updateCurrencyExchange")
-	public ResponseEntity<?> updateCurrencyExchange(@RequestBody CurrencyExchangeVO id) {
+	public ResponseEntity<?> updateCurrencyExchange(@RequestBody CurrencyExchange id) {
 		return ResponseEntity.ok(currencyExchangeService.updateCurrencyExchange(id));	
 		}
 	
