@@ -138,12 +138,13 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 			nativeQuery = true)
 	List<Order> fetchRecentTwoOrderByCustomerId(@Param("customerId") Integer customerId);
 
-	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation keyInfo WHERE "
+	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation keyInfo JOIN o.customerId ci WHERE (ci.publisher.id = :pubId OR :pubId IS NULL) AND "
 			+"(:oredrStart IS NULL OR DATE(keyInfo.orderDate) >= :oredrStart) AND "
 			+"(:orderEnd IS NULL OR DATE(keyInfo.orderDate) <= :orderEnd) AND "
 			+ "(:orderType IS NULL OR o.orderType = :orderType)") 
 					
 	public Page<Order> findAllCustomerSalesList(
+			@Param("pubId") Integer pubId,
 			@Param("oredrStart") Date oredrStart, 
 			@Param("orderEnd") Date orderEnd, 
 			@Param("orderType") String orderType, Pageable page);
