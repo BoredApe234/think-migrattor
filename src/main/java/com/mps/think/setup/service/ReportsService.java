@@ -5,15 +5,11 @@ import java.util.Date;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.mps.think.setup.model.CancelOrder;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.Order;
-import com.mps.think.setup.model.PaymentInformation;
 import com.mps.think.setup.vo.CancelSubscirptionReportView;
 import com.mps.think.setup.vo.CustomerDetailsVO;
-import com.mps.think.setup.vo.CustomerDetatilsReportView;
 import com.mps.think.setup.vo.DailyCashReportView;
-import com.mps.think.setup.vo.EnumModelVO.Currency;
 import com.mps.think.setup.vo.RefundProcessReportView;
 
 public interface ReportsService {
