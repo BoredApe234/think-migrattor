@@ -18,5 +18,7 @@ public interface StateandprovinceService {
 	public Stateandprovince deleteByStateandprovinceId(Integer id);
 	
 	List<Stateandprovince> findAllStateandprovinceForPublisher(Integer pubId);
+	
+	List<Stateandprovince> findAllStateandprovinceForCountry(Integer id);
 
 }

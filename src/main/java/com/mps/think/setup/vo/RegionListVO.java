@@ -9,7 +9,7 @@ public class RegionListVO {
 	private Integer id;
 	private Publisher pubId;
 	private List<RegionListMappingVO> regionListMapping;
-	private String state;
+	private List<String> state;
 	private String rlist;
 	private String taxcomputation;
 	private String addressvalidation;
@@ -31,10 +31,10 @@ public class RegionListVO {
 	public void setRegionListMapping(List<RegionListMappingVO> regionListMapping) {
 		this.regionListMapping = regionListMapping;
 	}
-	public String getState() {
+	public List<String> getState() {
 		return state;
 	}
-	public void setState(String state) {
+	public void setState(List<String> state) {
 		this.state = state;
 	}
 	public String getRlist() {
