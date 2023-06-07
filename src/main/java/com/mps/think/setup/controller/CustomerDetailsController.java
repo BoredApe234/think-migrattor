@@ -150,5 +150,11 @@ public class CustomerDetailsController {
 		return ResponseEntity.ok(
 				customerDetailsService.getOtherCustomerAddresses(publisherId, customerId, PageRequest.of(page, size)));
 	}
-
+	
+	@GetMapping("/getAllCustomerWithRecentTwoOrderCodes/{pubId}")
+	public ResponseEntity<?> findAllCustomerWithRecentTwoOrderCodes(@PathVariable("pubId") Integer pubId, @RequestParam(defaultValue = "0") Integer page, 
+			@RequestParam(defaultValue = "5") Integer size) throws Exception {
+		return ResponseEntity.ok(customerDetailsService.getAllCustomerWithRecentTwoOrderCodes(pubId, PageRequest.of(page, size)));
+	}
+	
 }

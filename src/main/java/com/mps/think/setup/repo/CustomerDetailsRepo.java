@@ -17,6 +17,7 @@ import com.mps.think.setup.model.CancelReasons;
 import com.mps.think.setup.model.CustomerAddresses;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.OrderAddressMapping;
+import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
 
 @Repository
 public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Integer> {
@@ -115,4 +116,15 @@ List<String> getAllCustomerAgentForSearch(@Param("pubId") Integer pubId, @Param(
 			@Param("initialName") String initialName, @Param("email") String email, @Param("company") String company, @Param("department") String department, @Param("country") String country, @Param("state") String state,
 			@Param("city")	String city, @Param("zipCode") Integer zipCode, @Param("page") Pageable page);
 	
+//	name, fax, email, department, countrycode, company, mobile, agnecycode, agencyname, status, ordercodes
+	@Query("SELECT c FROM CustomerDetails c WHERE (:pubId IS NULL OR c.publisher.id = :pubId) AND (:name IS NULL OR CONCAT(c.fname, ' ', c.lname) "
+			+ "LIKE '%'||:name||'%') AND (:fax IS NULL OR c.fax LIKE '%'||:fax||'%') AND (:email IS NULL OR CONCAT(c.email, ' ', c.secondaryEmail) LIKE '%'||:email||'%') "
+			+ "AND (:department IS NULL OR c.department LIKE '%'||:department||'%') AND (:countrycode IS NULL OR c.countryCode LIKE '%'||:countrycode||'%') "
+			+ "AND (:company IS NULL OR c.company LIKE '%'||:company||'%') AND (:mobile IS NULL OR CONCAT(c.mobileNumber, ' ', c.primaryPhone, ' ', c.secondaryPhone) "
+			+ "LIKE '%'||:mobile||'%') AND (:agencycode IS NULL OR c.agencycode LIKE '%'||:agencycode||'%') AND (:agencyname IS NULL OR c.agencyname LIKE '%'||:agencyname||'%') "
+			+ "AND (:status IS NULL OR c.customerStatus LIKE '%'||:status||'%') GROUP BY c.customerId")
+	Page<CustomerDetails> searchCustomerByKeys(@Param("pubId") Integer pubId, @Param("name") String name, @Param("fax") String fax, @Param("email") String email, 
+			@Param("department") String department, @Param("countrycode") String countrycode, @Param("company") String company,
+			@Param("mobile") String mobile, @Param("agencycode") String agencycode, @Param("agencyname") String agencyname, @Param("status") String status, Pageable page);
+
 }

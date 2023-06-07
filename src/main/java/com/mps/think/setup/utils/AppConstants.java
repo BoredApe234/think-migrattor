@@ -15,6 +15,8 @@ public class AppConstants {
 	public static final String Email_User_Password = "User Password";
 	public static final String Email_Semi="-:";
 	
+	public static final String customerSearchSeperator = "AND";
+	
 	public enum codeGen {
 
 		None("None"), Renewals("Renewals"), Promotions("Promotions"),MediaType("MediaType"),Year("Year");
