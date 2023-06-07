@@ -157,7 +157,7 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 			sInvoice.setFileName(StringUtils.cleanPath(file.getOriginalFilename()));
 			sInvoice.setFileData(file.getBytes());
 			Publisher pub=new Publisher();
-			pub.setId(sendInvoiceVO.getPublisher().getId());
+			pub.setId(sendInvoiceVO.getPublisher());
 			sInvoice.setPublisher(pub);
 			SendInvoice temp = sendInvoiceRepo.saveAndFlush(sInvoice);
 			template.sendMailWithAttachment(temp.getEmailFrom(), temp.getEmailTo(),
