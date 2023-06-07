@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -39,8 +40,9 @@ public class RegionList extends BaseEntity {
 	@JsonManagedReference
 	private List<RegionListMapping> regionListMapping;
 	
+	@ElementCollection
 	@Column(name = "state")
-	private String state;
+	private List<String> state;
 	
 	@Column(name = "rlist")
 	private String rlist;
@@ -75,11 +77,11 @@ public class RegionList extends BaseEntity {
 		this.regionListMapping = regionListMapping;
 	}
 
-	public String getState() {
+	public List<String> getState() {
 		return state;
 	}
 
-	public void setState(String state) {
+	public void setState(List<String> state) {
 		this.state = state;
 	}
 
@@ -114,6 +116,7 @@ public class RegionList extends BaseEntity {
 				+ addressvalidation + "]";
 	}
 
+	
 	
 	
 	

@@ -10,5 +10,7 @@ import com.mps.think.setup.model.Stateandprovince;
 public interface StateandprovinceRepo extends JpaRepository<Stateandprovince, Integer>{
 	
 	List<Stateandprovince> findByPubIdId(Integer pubId);
+	
+	List<Stateandprovince> findByCountryidId(Integer id);
 
 }
