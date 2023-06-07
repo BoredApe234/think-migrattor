@@ -1,7 +1,6 @@
 package com.mps.think.setup.vo;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.mps.think.setup.model.Publisher;
 
 public class SendInvoiceVO {
@@ -12,7 +11,7 @@ public class SendInvoiceVO {
     private String emailCC;
     private String emailSubject;
     private String emailContent;
-    private Publisher publisher;
+    private Integer publisher;
 	public Long getId() {
 		return id;
 	}
@@ -49,13 +48,11 @@ public class SendInvoiceVO {
 	public void setEmailContent(String emailContent) {
 		this.emailContent = emailContent;
 	}
-	public Publisher getPublisher() {
+	public Integer getPublisher() {
 		return publisher;
 	}
-	public void setPublisher(Publisher publisher) {
+	public void setPublisher(Integer publisher) {
 		this.publisher = publisher;
 	}
-	
-    
 }
 

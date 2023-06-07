@@ -4,19 +4,16 @@ import java.io.IOException;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.AddressException;
-import javax.websocket.server.PathParam;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.google.gson.JsonObject;
 import com.mps.think.setup.model.MakePayment;
 import com.mps.think.setup.service.MakePaymentService;
 import com.mps.think.setup.utils.MailTemplateUtils;
@@ -65,8 +62,8 @@ public class MakePaymentController {
 		return ResponseEntity.ok(makePaymentService.sendPaymentLink(mailTemplateVO));
 	}
 	
-	@PostMapping("/sendInvoiceToCust/{file}")
-	public ResponseEntity<?> sendInvoiceToCust(@RequestParam("file") MultipartFile file,@RequestBody SendInvoiceVO sendInvoiceVO) throws AddressException, IOException, MessagingException {
+	@PostMapping("/sendInvoiceToCust")
+	public ResponseEntity<?> sendInvoiceToCust(@RequestPart MultipartFile file,@RequestPart SendInvoiceVO sendInvoiceVO) throws AddressException, IOException, MessagingException {
 		
 		return ResponseEntity.ok(makePaymentService.sendInvoiceToCust(file,sendInvoiceVO));
 	}
