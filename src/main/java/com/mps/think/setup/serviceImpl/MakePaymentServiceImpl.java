@@ -145,19 +145,19 @@ public class MakePaymentServiceImpl implements MakePaymentService {
 //		return temp;
 //	}
 	@Override
-	public SendInvoice sendInvoiceToCust(MultipartFile file,String emailFrom,String emailTo,String emailCC,String emailSubject, String emailContent,Integer pubId) throws IOException, AddressException, MessagingException {
+	public SendInvoice sendInvoiceToCust(MultipartFile file,SendInvoiceVO sendInvoiceVO) throws IOException, AddressException, MessagingException {
 //			ObjectMapper obj = new ObjectMapper();
 //			 SendInvoice temp = sendInvoiceRepo.saveAndFlush(obj.convertValue(sendInvoiceVO, SendInvoice.class));
 			SendInvoice sInvoice=new SendInvoice();
-			sInvoice.setEmailFrom(emailFrom);
-			sInvoice.setEmailTo(emailTo);
-			sInvoice.setEmailCC(emailCC);
-			sInvoice.setEmailSubject(emailSubject);
-			sInvoice.setEmailContent(emailContent);
+			sInvoice.setEmailFrom(sendInvoiceVO.getEmailFrom());
+			sInvoice.setEmailTo(sendInvoiceVO.getEmailTo());
+			sInvoice.setEmailCC(sendInvoiceVO.getEmailCC());
+			sInvoice.setEmailSubject(sendInvoiceVO.getEmailSubject());
+			sInvoice.setEmailContent(sendInvoiceVO.getEmailContent());
 			sInvoice.setFileName(StringUtils.cleanPath(file.getOriginalFilename()));
 			sInvoice.setFileData(file.getBytes());
 			Publisher pub=new Publisher();
-			pub.setId(pubId);
+			pub.setId(sendInvoiceVO.getPublisher().getId());
 			sInvoice.setPublisher(pub);
 			SendInvoice temp = sendInvoiceRepo.saveAndFlush(sInvoice);
 			template.sendMailWithAttachment(temp.getEmailFrom(), temp.getEmailTo(),
