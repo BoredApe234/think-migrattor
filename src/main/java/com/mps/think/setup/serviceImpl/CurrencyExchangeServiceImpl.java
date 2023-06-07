@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.mps.think.setup.model.Countries;
 import com.mps.think.setup.model.CurrencyExchange;
 import com.mps.think.setup.model.Publisher;
 import com.mps.think.setup.repo.CurrencyExchangeRepo;
@@ -43,7 +44,9 @@ public class CurrencyExchangeServiceImpl implements CurrencyExchangeService {
 
 	@Override
 	public CurrencyExchange deleteByCurrencyExchangeId(Integer id) {
-		return currencyExchangeRepo.findById(id).get();
+		CurrencyExchange delete = findbyId(id);
+		currencyExchangeRepo.delete(delete);
+		return delete;
 	}
 
 
