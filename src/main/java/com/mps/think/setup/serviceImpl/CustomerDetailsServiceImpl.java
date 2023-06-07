@@ -239,10 +239,20 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	}
 
 	@Override
-	public List<CustomerAddresses> getAllCustomerAddresses() {
+	public List<String> findAllColumn() {
 		// TODO Auto-generated method stub
-		return null;
+		return customerRepo.findAllColumn();
 	}
+
+//	@Override
+//	public List<CustomerAddresses> getAllCustomerAddresses() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
+
+
+
 
 }
 
