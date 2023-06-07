@@ -48,7 +48,7 @@ public interface CustomerDetailsService {
 	
 	Page<RecentAddressVO> getRecentAddressWithTheirCustomer(Integer customerId, Pageable page) throws Exception;
 
-//	public List<CustomerAddresses> getAllCustomerAddresses();
+	public List<CustomerAddresses> getAllCustomerAddresses();
 	
 	public List<String> findAllColumn();
 

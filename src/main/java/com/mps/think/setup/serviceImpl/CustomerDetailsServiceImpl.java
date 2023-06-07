@@ -244,6 +244,12 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		return customerRepo.findAllColumn();
 	}
 
+	@Override
+	public List<CustomerAddresses> getAllCustomerAddresses() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 //	@Override
 //	public List<CustomerAddresses> getAllCustomerAddresses() {
 //		// TODO Auto-generated method stub
