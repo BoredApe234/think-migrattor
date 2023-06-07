@@ -2,6 +2,7 @@ package com.mps.think.setup.service;
 
 import java.util.List;
 
+import com.mps.think.setup.model.Addresses;
 import com.mps.think.setup.model.Jurisdictions;
 import com.mps.think.setup.vo.JurisdictionsVO;
 
@@ -20,5 +21,7 @@ public interface JurisdictionsService {
 	List<Jurisdictions> findAllJurisdictionsForPublisher(Integer pubId);
 
 	public List<Jurisdictions> getAllJurisdictions();
+	
+	public List<Jurisdictions> getTodayAndYesterdayRecords();
 
 }
