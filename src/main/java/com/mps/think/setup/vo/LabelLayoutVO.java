@@ -1,6 +1,5 @@
 package com.mps.think.setup.vo;
-
-import java.util.Date;
+import java.util.List;
 
 import com.mps.think.setup.model.LableFormat;
 import com.mps.think.setup.model.LableGroup;
@@ -16,14 +15,7 @@ public class LabelLayoutVO {
 	private Boolean suppressed;
 	private Boolean truncated;
 	private CustomerDetailsVO customerdetails;
-	private String firstname;
-	private String company;
-	private String address1;
-	private String city;
-	private String country;
-	private Date creationdate;
-	private Boolean active;
-
+	private List<String> column_name;
 	public Integer getId() {
 		return id;
 	}
@@ -72,55 +64,17 @@ public class LabelLayoutVO {
 	public void setCustomerdetails(CustomerDetailsVO customerdetails) {
 		this.customerdetails = customerdetails;
 	}
-	public String getFirstname() {
-		return firstname;
+	public List<String> getColumn_name() {
+		return column_name;
 	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
-	}
-	public String getCompany() {
-		return company;
-	}
-	public void setCompany(String company) {
-		this.company = company;
-	}
-	public String getAddress1() {
-		return address1;
-	}
-	public void setAddress1(String address1) {
-		this.address1 = address1;
-	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getCountry() {
-		return country;
-	}
-	public void setCountry(String country) {
-		this.country = country;
-	}
-	public Date getCreationdate() {
-		return creationdate;
-	}
-	public void setCreationdate(Date creationdate) {
-		this.creationdate = creationdate;
-	}
-	public Boolean getActive() {
-		return active;
-	}
-	public void setActive(Boolean active) {
-		this.active = active;
+	public void setColumn_name(List<String> column_name) {
+		this.column_name = column_name;
 	}
 	@Override
 	public String toString() {
 		return "LabelLayoutVO [id=" + id + ", pubId=" + pubId + ", lableformat=" + lableformat + ", lablegroup="
 				+ lablegroup + ", description=" + description + ", suppressed=" + suppressed + ", truncated="
-				+ truncated + ", customerdetails=" + customerdetails + ", firstname=" + firstname + ", company="
-				+ company + ", address1=" + address1 + ", city=" + city + ", country=" + country + ", creationdate="
-				+ creationdate + ", active=" + active + "]";
+				+ truncated + ", customerdetails=" + customerdetails + ", column_name=" + column_name + "]";
 	}
 	
 	
