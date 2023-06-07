@@ -14,7 +14,8 @@ public class LabelLayoutVO {
 	private String description;
 	private Boolean suppressed;
 	private Boolean truncated;
-	private CustomerDetailsVO customerdetails;
+//	private CustomerDetailsVO customerdetails;
+	private String display;
 	private List<String> column_name;
 	public Integer getId() {
 		return id;
@@ -58,11 +59,11 @@ public class LabelLayoutVO {
 	public void setTruncated(Boolean truncated) {
 		this.truncated = truncated;
 	}
-	public CustomerDetailsVO getCustomerdetails() {
-		return customerdetails;
+	public String getDisplay() {
+		return display;
 	}
-	public void setCustomerdetails(CustomerDetailsVO customerdetails) {
-		this.customerdetails = customerdetails;
+	public void setDisplay(String display) {
+		this.display = display;
 	}
 	public List<String> getColumn_name() {
 		return column_name;
@@ -74,9 +75,8 @@ public class LabelLayoutVO {
 	public String toString() {
 		return "LabelLayoutVO [id=" + id + ", pubId=" + pubId + ", lableformat=" + lableformat + ", lablegroup="
 				+ lablegroup + ", description=" + description + ", suppressed=" + suppressed + ", truncated="
-				+ truncated + ", customerdetails=" + customerdetails + ", column_name=" + column_name + "]";
+				+ truncated + ", display=" + display + ", column_name=" + column_name + "]";
 	}
-	
 	
 	
 	

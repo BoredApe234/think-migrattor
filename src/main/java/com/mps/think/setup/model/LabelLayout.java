@@ -45,9 +45,12 @@ public class LabelLayout extends BaseEntity {
 	@Column(name = "truncated")
 	private Boolean truncated;
 	
-	@OneToOne
-	@JoinColumn(name = "customerdetails", referencedColumnName = "id" )
-	private CustomerDetails customerdetails;
+//	@OneToOne
+//	@JoinColumn(name = "customerdetails", referencedColumnName = "id" )
+//	private CustomerDetails customerdetails;
+	
+	@Column(name = "display")
+	private String display;
 	
 	@ElementCollection
 	@Column(name = "column_name")
@@ -109,12 +112,12 @@ public class LabelLayout extends BaseEntity {
 		this.truncated = truncated;
 	}
 
-	public CustomerDetails getCustomerdetails() {
-		return customerdetails;
+	public String getDisplay() {
+		return display;
 	}
 
-	public void setCustomerdetails(CustomerDetails customerdetails) {
-		this.customerdetails = customerdetails;
+	public void setDisplay(String display) {
+		this.display = display;
 	}
 
 	public List<String> getColumn_name() {
@@ -129,28 +132,10 @@ public class LabelLayout extends BaseEntity {
 	public String toString() {
 		return "LabelLayout [id=" + id + ", pubId=" + pubId + ", lableformat=" + lableformat + ", lablegroup="
 				+ lablegroup + ", description=" + description + ", suppressed=" + suppressed + ", truncated="
-				+ truncated + ", customerdetails=" + customerdetails + ", column_name=" + column_name + "]";
+				+ truncated + ", display=" + display + ", column_name=" + column_name + "]";
 	}
-	
-	
-//	@Column(name = "company")
-//	private String company;
-//	
-//	@Column(name = "address1")
-//	private String address1;
-//	
-//	@Column(name = "city")
-//	private String city;
-//	
-//	@Column(name = "country")
-//	private String country;
-//	
-//	@Column(name = "creationdate")
-//	private Date creationdate;
-//	
-//	@Column(name = "active")
-//	private Boolean active;
 
+	
 	
 	
 
