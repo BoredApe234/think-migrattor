@@ -13,7 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Table(name = "currency_exchange")
+@Table(name = "curr_exchange")
 @Entity
 public class CurrencyExchange extends BaseEntity {
 
