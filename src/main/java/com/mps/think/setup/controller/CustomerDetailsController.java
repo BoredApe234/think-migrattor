@@ -35,6 +35,10 @@ public class CustomerDetailsController {
 	public ResponseEntity<?> getAllCustomerDetails() {
 		return ResponseEntity.ok(customerDetailsService.getAllCustomerDetails());
 	}
+	@GetMapping("/getAllCustomercolumns")
+	public ResponseEntity<?> findAllColumn() {
+		return ResponseEntity.ok(customerDetailsService.findAllColumn());
+	}
 
 //	@GetMapping("/getAllCustomersForSearch")
 //	public ResponseEntity<?> getAllCustomerDetailsForSearch(@RequestParam(required = false) String firstName,
