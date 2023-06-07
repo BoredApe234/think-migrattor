@@ -65,21 +65,21 @@ public class MakePaymentController {
 		return ResponseEntity.ok(makePaymentService.sendPaymentLink(mailTemplateVO));
 	}
 	
-//	@PostMapping("/sendInvoiceToCust/{file}")
-//	public ResponseEntity<?> sendInvoiceToCust(@RequestParam("file") MultipartFile file,@RequestParam SendInvoiceVO sendInvoiceVO) throws AddressException, IOException, MessagingException {
-//		
-//		return ResponseEntity.ok(makePaymentService.sendInvoiceToCust(sendInvoiceVO, file));
-//	}
-	@PostMapping("/sendInvoiceToCust")
-	public ResponseEntity<?> sendInvoiceToCust(@RequestParam("file") MultipartFile file,
-            @RequestParam("emailFrom") String emailFrom,
-            @RequestParam("emailTo") String emailTo,
-            @RequestParam("emailCC") String emailCC,
-            @RequestParam("emailSubject") String emailSubject,
-            @RequestParam("emailContent") String emailContent,
-            @RequestParam("pubId")Integer pubId) throws AddressException, IOException, MessagingException {
+	@PostMapping("/sendInvoiceToCust/{file}")
+	public ResponseEntity<?> sendInvoiceToCust(@RequestParam("file") MultipartFile file,@RequestBody SendInvoiceVO sendInvoiceVO) throws AddressException, IOException, MessagingException {
 		
-		return ResponseEntity.ok(makePaymentService.sendInvoiceToCust(file, emailFrom, emailTo, emailCC, emailSubject, emailContent,pubId));
+		return ResponseEntity.ok(makePaymentService.sendInvoiceToCust(file,sendInvoiceVO));
 	}
+//	@PostMapping("/sendInvoiceToCust")
+//	public ResponseEntity<?> sendInvoiceToCust(@RequestParam("file") MultipartFile file,
+//            @RequestParam("emailFrom") String emailFrom,
+//            @RequestParam("emailTo") String emailTo,
+//            @RequestParam("emailCC") String emailCC,
+//            @RequestParam("emailSubject") String emailSubject,
+//            @RequestParam("emailContent") String emailContent,
+//            @RequestParam("pubId")Integer pubId) throws AddressException, IOException, MessagingException {
+//		
+//		return ResponseEntity.ok(makePaymentService.sendInvoiceToCust(file, emailFrom, emailTo, emailCC, emailSubject, emailContent,pubId));
+//	}
 
 }
