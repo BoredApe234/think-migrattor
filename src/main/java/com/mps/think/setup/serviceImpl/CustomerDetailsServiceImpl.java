@@ -170,7 +170,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 			customer.setDateUntilDeactivation(new Date());
 			customerRepo.saveAndFlush(customer);
 			// set all the orders of curr customer inactive
-//			orderService.setAllOrdersOfCustomerInActive(customerVO.getCustomerId());
+			orderService.setAllOrdersOfCustomerInActive(customerVO.getCustomerId());
 			// set all the address of curr customer inactive
 			List<Addresses> customerAddresses = customer.getCustomerAddresses().stream().map(ca -> ca.getAddress()).collect(Collectors.toList());
 			customerAddresses.forEach(a -> a.setStatus(Status.Inactive));
