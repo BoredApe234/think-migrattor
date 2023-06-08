@@ -32,7 +32,9 @@ import com.mps.think.setup.repo.AddressesRepo;
 import com.mps.think.setup.repo.CustomerDetailsRepo;
 import com.mps.think.setup.service.AddOrderService;
 import com.mps.think.setup.service.CustomerDetailsService;
+import com.mps.think.setup.utils.AppConstants;
 import com.mps.think.setup.vo.CustomerDetailsVO;
+import com.mps.think.setup.vo.CustomerWithTwoOrderCodes;
 import com.mps.think.setup.vo.EnumModelVO;
 import com.mps.think.setup.vo.RecentAddressVO;
 import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
@@ -53,7 +55,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Autowired
 	private AddressesRepo addressRepo;
-	
+
 	@Autowired
 	private ObjectMapper mapper;
 
@@ -71,11 +73,12 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	@Override
 	public CustomerDetails saveCustomerDetails(CustomerDetailsVO customerDetails) {
 		CustomerDetails newCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
-		
-		if(customerDetails.getPaymentThreshold()==null || customerDetails.getPaymentThreshold().getPaymentThresholdId()==0){
+
+		if (customerDetails.getPaymentThreshold() == null
+				|| customerDetails.getPaymentThreshold().getPaymentThresholdId() == 0) {
 			newCustomer.setPaymentThreshold(null);
-			}
-		
+		}
+
 		newCustomer.setCustomerStatus(CustomerStatus.Active);
 		newCustomer.setDateUntilDeactivation(null);
 		CustomerDetails cdata = customerRepo.saveAndFlush(newCustomer);
@@ -85,11 +88,12 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	@Override
 	public CustomerDetails updateCustomerDetails(CustomerDetailsVO customerDetails) {
 		CustomerDetails updatedCustomer = mapper.convertValue(customerDetails, CustomerDetails.class);
-		
-		if(customerDetails.getPaymentThreshold()==null || customerDetails.getPaymentThreshold().getPaymentThresholdId()==0){
+
+		if (customerDetails.getPaymentThreshold() == null
+				|| customerDetails.getPaymentThreshold().getPaymentThresholdId() == 0) {
 			updatedCustomer.setPaymentThreshold(null);
-			}
-		
+		}
+
 		CustomerDetails cdata = customerRepo.saveAndFlush(updatedCustomer);
 		return cdata;
 	}
@@ -108,6 +112,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Override
 	public Page<CustomerDetails> getAllCustomerDetailsForSearch(Integer pubId, String search, Pageable page) {
+		if (search.contains("=")) return searchCustomerUsingKeyValue(pubId.equals(0) ? null : pubId, search, page);
 		return customerRepo.getAllCustomerDetailsForSearchSingle(pubId.equals(0) ? null : pubId, search, page);
 	}
 
@@ -135,7 +140,8 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Override
 	public Order getRecentOrderOfCustomer(Integer customerId) throws Exception {
-		Optional<Order> order = orderRepo.findByCustomerIdCustomerId(customerId).stream().max(Comparator.comparingInt(Order::getOrderId));
+		Optional<Order> order = orderRepo.findByCustomerIdCustomerId(customerId).stream()
+				.max(Comparator.comparingInt(Order::getOrderId));
 		if (order.isPresent()) {
 			return order.get();
 		}
@@ -148,10 +154,10 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	}
 
 	@Override
-	public List<String> getAllCustomerAgentForSearch(Integer publisher ,String agencyname) {
+	public List<String> getAllCustomerAgentForSearch(Integer publisher, String agencyname) {
 		return customerRepo.getAllCustomerAgentForSearch(publisher, agencyname);
 	}
-	
+
 	public CustomerDetails updateCustomerStatus(CustomerDetailsVO customerVO) {
 
 		Optional<CustomerDetails> customerDetails = customerRepo.findById(customerVO.getCustomerId());
@@ -172,13 +178,14 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 			// set all the orders of curr customer inactive
 			orderService.setAllOrdersOfCustomerInActive(customerVO.getCustomerId());
 			// set all the address of curr customer inactive
-			List<Addresses> customerAddresses = customer.getCustomerAddresses().stream().map(ca -> ca.getAddress()).collect(Collectors.toList());
+			List<Addresses> customerAddresses = customer.getCustomerAddresses().stream().map(ca -> ca.getAddress())
+					.collect(Collectors.toList());
 			customerAddresses.forEach(a -> a.setStatus(Status.Inactive));
 			addressRepo.saveAllAndFlush(customerAddresses);
 		}
-		
+
 		return customer;
-		
+
 	}
 
 	@Override
@@ -190,34 +197,38 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	public Page<CustomerDetails> getOtherCustomerAddresses(Integer publisherId, Integer customerId, Pageable page) {
 		return customerRepo.findOtherCustomer(publisherId, customerId, page);
 	}
-	
+
 	public String fetchCustomerName(CustomerDetails customer) {
 		String name = customer.getFname();
 		name += customer.getLname() != null ? " " + customer.getLname() : "";
 		return name.trim();
 	}
-	
+
 	public CustomerDetails getCustomerByAddressId(Integer addressId) {
 		List<Integer> customers = customerRepo.findCustomerNameFromAddressId(addressId);
-		if (customers.isEmpty()) return null;
+		if (customers.isEmpty())
+			return null;
 		Optional<CustomerDetails> cus = customerRepo.findById(customers.get(0));
 		return cus.isPresent() ? cus.get() : null;
 	}
 
-	
 	/*
-	 * the code below using if else-if and else for every OrderAddressMapping, though we can only use the code of else block to fetch the customer by providing the addressId 
-	 * but as per out condition an order can hold its customer addresses + one other customer addresses so if and else-if condition will check those
-	 * tow specific customer addresses only but, if any unknown address comes out the else condition is there to find the particular customer by 
-	 * using that address's id (which will perform a little longer operation) so almost every time the code will go through if and else-if condition
-	 * only and it is more efficient to find customer if there is only 2 customers.
+	 * the code below using if else-if and else for every OrderAddressMapping,
+	 * though we can only use the code of else block to fetch the customer by
+	 * providing the addressId but as per out condition an order can hold its
+	 * customer addresses + one other customer addresses so if and else-if condition
+	 * will check those tow specific customer addresses only but, if any unknown
+	 * address comes out the else condition is there to find the particular customer
+	 * by using that address's id (which will perform a little longer operation) so
+	 * almost every time the code will go through if and else-if condition only and
+	 * it is more efficient to find customer if there is only 2 customers.
 	 * 
 	 */
-	
+
 	@Override
-	public Page<RecentAddressVO> getRecentAddressWithTheirCustomer(Integer customerId,
-			Pageable page) throws Exception {
-		Page<OrderAddressMapping> givenCustomerOrdersAddresses = customerRepo.findAllRecentAddressOfCustomerBasedOnOrder(customerId, page);		
+	public Page<RecentAddressVO> getRecentAddressWithTheirCustomer(Integer customerId, Pageable page) throws Exception {
+		Page<OrderAddressMapping> givenCustomerOrdersAddresses = customerRepo
+				.findAllRecentAddressOfCustomerBasedOnOrder(customerId, page);
 		List<RecentAddressVO> output = new ArrayList<>();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		for (OrderAddressMapping oam : givenCustomerOrdersAddresses) {
@@ -227,15 +238,17 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 			recentAdd.setOrderAddressMapping(mapper.convertValue(oam, OrderAddressMappingVO.class));
 			if (customerRepo.checkGivenAddressIsOfCustomer(cus1.getCustomerId(), oam.getAddress().getAddressId()) > 0) {
 				recentAdd.setCustomerName(fetchCustomerName(cus1));
-			} else if (cus2 != null && customerRepo.checkGivenAddressIsOfCustomer(cus2.getCustomerId(), oam.getAddress().getAddressId()) > 0) {
+			} else if (cus2 != null && customerRepo.checkGivenAddressIsOfCustomer(cus2.getCustomerId(),
+					oam.getAddress().getAddressId()) > 0) {
 				recentAdd.setCustomerName(fetchCustomerName(cus2));
 			} else {
 				CustomerDetails randomCustomer = getCustomerByAddressId(oam.getAddress().getAddressId());
 				recentAdd.setCustomerName(randomCustomer != null ? fetchCustomerName(randomCustomer) : "");
-			}		
+			}
 			output.add(recentAdd);
 		}
-		return new PageImpl<>(output, givenCustomerOrdersAddresses.getPageable(), givenCustomerOrdersAddresses.getTotalElements());
+		return new PageImpl<>(output, givenCustomerOrdersAddresses.getPageable(),
+				givenCustomerOrdersAddresses.getTotalElements());
 	}
 
 	@Override
@@ -250,19 +263,53 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		return null;
 	}
 
+	
+//	CustomerStatus getCustomerStatus(String status) {
+//		for (CustomerStatus cs : CustomerStatus.values()) {
+//			if (cs.getCustomerStatus().equalsIgnoreCase(status)) return cs;
+//		}
+//		return null;
+//	}
+	
+	// name, fax, email, department, countrycode, company, mobile, agnecycode,
+	// agencyname, status, ordercode
+	public Page<CustomerDetails> searchCustomerUsingKeyValue(Integer pubId, String searchStream, Pageable page) {
+		String[] inputSplit = searchStream.trim().split(" " + AppConstants.customerSearchSeperator + " ");
+		Map<String, Object> keys = new HashMap<>();
+		for (String keyValue : inputSplit) {
+			String k = keyValue.split("=")[0].trim();
+			Object v = keyValue.split("=")[1];
+			keys.put(k.toLowerCase(), v);
+		}
+		return customerRepo.searchCustomerByKeys(pubId,
+				keys.getOrDefault("name", null) != null ? ((String) keys.get("name")).trim() : null,
+				keys.getOrDefault("fax", null) != null ? ((String) keys.get("fax")).trim() : null,
+				keys.getOrDefault("email", null) != null ? ((String) keys.get("email")).trim() : null,
+				keys.getOrDefault("department", null) != null ? ((String) keys.get("department")).trim() : null,
+				keys.getOrDefault("countrycode", null) != null ? ((String) keys.get("countrycode")).trim() : null,
+				keys.getOrDefault("company", null) != null ? ((String) keys.get("company")).trim() : null,
+				keys.getOrDefault("mobile", null) != null ? ((String) keys.get("mobile")).trim() : null,
+				keys.getOrDefault("agnecycode", null) != null ? ((String) keys.get("agnecycode")).trim() : null,
+				keys.getOrDefault("agencyname", null) != null ? ((String) keys.get("agencyname")).trim() : null,
+				keys.getOrDefault("status", null) != null ? ((String) keys.get("status")).trim() : null, page);
+	}
+
+	@Override
+	public Page<CustomerWithTwoOrderCodes> getAllCustomerWithRecentTwoOrderCodes(Integer pubId, Pageable page) throws Exception {
+		Page<CustomerDetails> customers = findAllCustomerByPubId(pubId, page);
+		List<CustomerWithTwoOrderCodes> output = new ArrayList<>();
+		for (CustomerDetails c : customers) {
+			CustomerWithTwoOrderCodes customerNOrderCodes = new CustomerWithTwoOrderCodes();
+			customerNOrderCodes.setCustomer(c);
+			customerNOrderCodes.setOrderCodes(fetchRecentTwoOrderCode(c.getCustomerId()).stream().map(o -> o.getOrderCodes()).collect(Collectors.toList()));
+			output.add(customerNOrderCodes);
+		}
+		return new PageImpl<>(output, customers.getPageable(), customers.getTotalElements());
+	}
 //	@Override
 //	public List<CustomerAddresses> getAllCustomerAddresses() {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
 
-
-
-
-
 }
-
-
-
-
-
