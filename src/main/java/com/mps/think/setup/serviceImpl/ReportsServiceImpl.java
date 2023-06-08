@@ -22,8 +22,12 @@ import com.mps.think.setup.repo.CustomerDetailsRepo;
 import com.mps.think.setup.repo.PaymentInformationRepo;
 import com.mps.think.setup.service.ReportsService;
 import com.mps.think.setup.vo.CancelSubscirptionReportView;
+import com.mps.think.setup.vo.CustomerDetailsVO;
 import com.mps.think.setup.vo.DailyCashReportView;
+import com.mps.think.setup.vo.EnumModelVO;
 import com.mps.think.setup.vo.OrderAddressMappingVO;
+import com.mps.think.setup.vo.RefundProcessReportView;
+import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
 
 @Service
 public class ReportsServiceImpl implements ReportsService {
@@ -64,9 +68,9 @@ public class ReportsServiceImpl implements ReportsService {
 	}
 
 	@Override
-	public Page<CancelSubscirptionReportView> getAllCancelledSubscriptions(Date orderFrom, Date orderTill, String currencyType,
+	public Page<CancelSubscirptionReportView> getAllCancelledSubscriptions(Integer pubId, Date orderFrom, Date orderTill, String currencyType,
 			Pageable page) {
-		Page<CancelOrder> allCancelledSubscriptions = cancelOrderRepo.findAllCancelledSubscriptions(orderFrom, orderTill, currencyType, "subscription" , page);
+		Page<CancelOrder> allCancelledSubscriptions = cancelOrderRepo.findAllCancelledSubscriptions(pubId, orderFrom, orderTill, currencyType, "subscription" , page);
 		List<CancelSubscirptionReportView> output = new ArrayList<>();
 		
 		allCancelledSubscriptions.toList().forEach(c -> {
@@ -89,20 +93,20 @@ public class ReportsServiceImpl implements ReportsService {
 	}
 
 	@Override
-	public Page<Order> getAllCustomerSalesList(Date oredrStart, Date orderEnd, String orderType,
+	public Page<Order> getAllCustomerSalesList(Integer pubId, Date oredrStart, Date orderEnd, String orderType,
 			Pageable page) {
 		if (oredrStart == null) oredrStart = new Date(0);
 		if (orderEnd == null) orderEnd = new Date();
-		return addOrderRepo.findAllCustomerSalesList(oredrStart, orderEnd, orderType, page);
+		return addOrderRepo.findAllCustomerSalesList(pubId, oredrStart, orderEnd, orderType, page);
 	}
 
 	@Override
-	public Page<DailyCashReportView> getAllDailyCashReport(Date paymentStart, Date paymentEnd, Pageable page) {
+	public Page<DailyCashReportView> getAllDailyCashReport(Integer pubId, Date paymentStart, Date paymentEnd, Pageable page) {
 		if (paymentStart == null) paymentStart = new Date(0);
 		if (paymentEnd == null) paymentEnd = new Date();
 //		return paymentInfoRepo.findAllDailyCashReport(paymentStart, paymentEnd, page);
 		
-		Page<PaymentInformation> allPaymentInformation = paymentInfoRepo.findAllDailyCashReport(paymentStart, paymentEnd, page);
+		Page<PaymentInformation> allPaymentInformation = paymentInfoRepo.findAllDailyCashReport(pubId, paymentStart, paymentEnd, page);
 		List<DailyCashReportView> output1 = new ArrayList<>();
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 		allPaymentInformation.toList().forEach(c -> {
@@ -128,6 +132,46 @@ public class ReportsServiceImpl implements ReportsService {
 		return new PageImpl<>(output1, allPaymentInformation.getPageable(), allPaymentInformation.getTotalElements());
 		
 	}
+
+	@Override
+	public Page<RefundProcessReportView> getAllRefundProcessReport(Integer pubId, Date startRefund, Date endRefund, Pageable page) {
+		if (startRefund == null) startRefund = new Date(0);
+		if (endRefund == null) endRefund = new Date();
+		
+		Page<CancelOrder> allRefundProcessReport = cancelOrderRepo.findAllRefundProcessReport(pubId, startRefund, endRefund , page);
+		List<RefundProcessReportView> refund = new ArrayList<>();
+		
+		allRefundProcessReport.toList().forEach(c -> {
+			RefundProcessReportView obj = new RefundProcessReportView();
+			obj.setOrderNumber(c.getCancelorderId());
+			obj.setRefundAmount(c.getRefundamount());
+			
+			refund.add(obj);
+		});
+		
+		return new PageImpl<>(refund, allRefundProcessReport.getPageable(), allRefundProcessReport.getTotalElements());
+		
+	}
+
+	@Override
+	public Page<CustomerDetailsVO> getAllCustomerDetatilsReport(Integer pubId, String status, Pageable page) {
+		EnumModelVO.CustomerStatus csStatus = null;
+		CustomerStatus[] values = CustomerStatus.values();
+		for (CustomerStatus cs : values) {
+			if (cs.getCustomerStatus().equalsIgnoreCase(status)) {
+				csStatus = cs;
+				break;
+			}
+		}
+		Page<CustomerDetails> allCustomerDetails = customerDetailsRepo.findAllCustomerDetatilsReport(pubId, csStatus , page);
+		List<CustomerDetailsVO> cdr = new ArrayList<>();
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		allCustomerDetails.toList().forEach(c -> cdr.add(mapper.convertValue(c, CustomerDetailsVO.class)));
+		return new PageImpl<>(cdr, allCustomerDetails.getPageable(), allCustomerDetails.getTotalElements());
+	}
+
+	
+	
 
 	
 

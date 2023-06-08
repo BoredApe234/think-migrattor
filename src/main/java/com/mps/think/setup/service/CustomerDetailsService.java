@@ -52,5 +52,6 @@ public interface CustomerDetailsService {
 	public List<CustomerAddresses> getAllCustomerAddresses();
 	
 	Page<CustomerWithTwoOrderCodes> getAllCustomerWithRecentTwoOrderCodes(Integer pubId, Pageable page) throws Exception;
+	public List<String> findAllColumn();
 
 }

@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Table(name = "inventory_storage_locations")
@@ -21,11 +23,13 @@ public class InventoryStorageLocations extends BaseEntity {
 	@Column(name = "id")
 	private Integer id;
 	
-	@Column(name = "location")
-	private String location;
+	@OneToOne
+	@JoinColumn(name = "location", referencedColumnName = "id" )
+	private LocationAreaDetails location;
 	
-	@Column(name = "area_lookup")
-	private String areaLookup;
+	@OneToOne
+	@JoinColumn(name = "areaLookup", referencedColumnName = "id" )
+	private AreaDetails areaLookup;
 	
 	@Column(name = "alternate_area")
 	private String alternateArea;
@@ -39,22 +43,6 @@ public class InventoryStorageLocations extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public String getAreaLookup() {
-		return areaLookup;
-	}
-
-	public void setAreaLookup(String areaLookup) {
-		this.areaLookup = areaLookup;
 	}
 
 	public String getAlternateArea() {
@@ -71,6 +59,22 @@ public class InventoryStorageLocations extends BaseEntity {
 
 	public void setBin(String bin) {
 		this.bin = bin;
+	}
+
+	public LocationAreaDetails getLocation() {
+		return location;
+	}
+
+	public void setLocation(LocationAreaDetails location) {
+		this.location = location;
+	}
+
+	public AreaDetails getAreaLookup() {
+		return areaLookup;
+	}
+
+	public void setAreaLookup(AreaDetails areaLookup) {
+		this.areaLookup = areaLookup;
 	}
 
 	@Override

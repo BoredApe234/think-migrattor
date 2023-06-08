@@ -1,5 +1,6 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,6 +66,13 @@ public class JurisdictionsServiceImpl implements JurisdictionsService {
 	@Override
 	public List<Jurisdictions> getAllJurisdictions() {
 		return jurisdictionsRepo.findAll();
+	}
+
+	@Override
+	public List<Jurisdictions> getTodayAndYesterdayRecords() {
+		 LocalDate today = LocalDate.now();
+	     LocalDate yesterday = today.minusDays(1);
+		return jurisdictionsRepo.findTodayAndYesterdayRecords(today, yesterday);
 	}
 
 

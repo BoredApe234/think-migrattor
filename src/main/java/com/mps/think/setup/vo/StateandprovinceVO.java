@@ -7,7 +7,7 @@ public class StateandprovinceVO {
 	
 	private Integer id;
 	private Publisher pubId;
-	private CountryInfo CountryInfoId;
+	private CountryInfo countryid;
 	private String country;
 	private String state;
 	private String statecode;
@@ -19,11 +19,17 @@ public class StateandprovinceVO {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public CountryInfo getCountryInfoId() {
-		return CountryInfoId;
+	public Publisher getPubId() {
+		return pubId;
 	}
-	public void setCountryInfoId(CountryInfo countryInfoId) {
-		CountryInfoId = countryInfoId;
+	public void setPubId(Publisher pubId) {
+		this.pubId = pubId;
+	}
+	public CountryInfo getCountryid() {
+		return countryid;
+	}
+	public void setCountryid(CountryInfo countryid) {
+		this.countryid = countryid;
 	}
 	public String getCountry() {
 		return country;
@@ -55,20 +61,12 @@ public class StateandprovinceVO {
 	public void setAddressvalidation(String addressvalidation) {
 		this.addressvalidation = addressvalidation;
 	}
-	public Publisher getPubId() {
-		return pubId;
-	}
-	public void setPubId(Publisher pubId) {
-		this.pubId = pubId;
-	}
 	@Override
 	public String toString() {
-		return "StateandprovinceVO [id=" + id + ", pubId=" + pubId + ", CountryInfoId=" + CountryInfoId + ", country="
-				+ country + ", state=" + state + ", statecode=" + statecode + ", taxcomputation=" + taxcomputation
+		return "StateandprovinceVO [id=" + id + ", pubId=" + pubId + ", countryid=" + countryid + ", country=" + country
+				+ ", state=" + state + ", statecode=" + statecode + ", taxcomputation=" + taxcomputation
 				+ ", addressvalidation=" + addressvalidation + "]";
 	}
-
-	
 	
 
 }

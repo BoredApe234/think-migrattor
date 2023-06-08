@@ -252,6 +252,12 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 	}
 
 	@Override
+	public List<String> findAllColumn() {
+		// TODO Auto-generated method stub
+		return customerRepo.findAllColumn();
+	}
+
+	@Override
 	public List<CustomerAddresses> getAllCustomerAddresses() {
 		// TODO Auto-generated method stub
 		return null;
@@ -300,5 +306,10 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 		}
 		return new PageImpl<>(output, customers.getPageable(), customers.getTotalElements());
 	}
+//	@Override
+//	public List<CustomerAddresses> getAllCustomerAddresses() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

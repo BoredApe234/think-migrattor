@@ -17,7 +17,7 @@ import com.mps.think.setup.model.CancelReasons;
 import com.mps.think.setup.model.CustomerAddresses;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.OrderAddressMapping;
-import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
+import com.mps.think.setup.vo.EnumModelVO;
 
 @Repository
 public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Integer> {
@@ -67,6 +67,9 @@ public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Inte
 
 //	@Query(value="SELECT * FROM customer where pub_id=:pubId",nativeQuery = true)
 //	public Page<CustomerDetails> findAllCustomerByPubId(@Param("pubId") Integer pubId, Sort sort);
+	
+	@Query(value="SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'think_setup_new' AND TABLE_NAME = 'customer';",nativeQuery = true)
+	public List<String> findAllColumn();
 
 	Page<CustomerDetails> findByPublisherId(Integer pubId, Pageable page);
 	
@@ -106,7 +109,7 @@ List<String> getAllCustomerAgentForSearch(@Param("pubId") Integer pubId, @Param(
 	List<Integer> findCustomerNameFromAddressId(@Param("addressId") Integer addressId);
 	
 	@Query("SELECT c FROM CustomerDetails c JOIN c.customerAddresses cam JOIN cam.address a WHERE "
-			+ "(c.publisher.id = :pubId OR :pubId IS NULL) And (c.customerId = :customerId OR :customerId IS NULL) AND (c.fname LIKE '%'||:fname||'%' OR :fname IS NULL) AND "
+			+ "(c.publisher.id = :pubId OR :pubId IS NULL) AND (c.customerId = :customerId OR :customerId IS NULL) AND (c.fname LIKE '%'||:fname||'%' OR :fname IS NULL) AND "
 			+ "(c.lname LIKE '%'||:lname||'%' OR :lname IS NULL) AND (c.initialName LIKE '%'||:initialName||'%' OR :initialName IS NULL) AND "
 			+ "(c.email LIKE '%'||:email||'%' OR :email IS NULL) AND (c.company LIKE '%'||:company||'%' OR :company IS NULL) AND "
 			+ "(c.department LIKE '%'||:department||'%' OR :department IS NULL) AND (a.state LIKE '%'||:state||'%' OR :state IS NULL) AND "
@@ -115,6 +118,10 @@ List<String> getAllCustomerAgentForSearch(@Param("pubId") Integer pubId, @Param(
 	Page<CustomerDetails>findCustomerSearchReport(@Param("pubId") Integer pubId, @Param("customerId")Integer customerId, @Param("fname") String fname, @Param("lname") String lname,
 			@Param("initialName") String initialName, @Param("email") String email, @Param("company") String company, @Param("department") String department, @Param("country") String country, @Param("state") String state,
 			@Param("city")	String city, @Param("zipCode") Integer zipCode, @Param("page") Pageable page);
+
+	@Query("SELECT c FROM CustomerDetails c WHERE (:pubId IS NULL OR c.publisher.id = :pubId) AND (:status IS NULL OR :status = c.customerStatus)")
+	public Page<CustomerDetails> findAllCustomerDetatilsReport(@Param("pubId") Integer pubId, 
+			@Param("status") EnumModelVO.CustomerStatus status, Pageable page);
 	
 //	name, fax, email, department, countrycode, company, mobile, agnecycode, agencyname, status, ordercodes
 	@Query("SELECT c FROM CustomerDetails c WHERE (:pubId IS NULL OR c.publisher.id = :pubId) AND (:name IS NULL OR CONCAT(c.fname, ' ', c.lname) "

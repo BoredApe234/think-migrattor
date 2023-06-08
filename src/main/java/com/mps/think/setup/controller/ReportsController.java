@@ -44,28 +44,45 @@ public class ReportsController {
 	}
 	
 	 @GetMapping("/getAllCancelledSubscriptions") 
-	 public ResponseEntity<?> getAllCancelledSubscriptions(@RequestParam(required = false) String orderFrom, @RequestParam(required = false) String orderTill,
+	 public ResponseEntity<?> getAllCancelledSubscriptions(@RequestParam(required = false) Integer pubId, @RequestParam(required = false) String orderFrom, @RequestParam(required = false) String orderTill,
 				@RequestParam(required = false) String currencyType,@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws ParseException{
 		 
 		 Date ordersFromDate = (orderFrom == null || orderFrom.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(orderFrom);
 			Date ordersTillDate = (orderTill == null || orderTill.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(orderTill);
-		 return ResponseEntity.ok(reportsService.getAllCancelledSubscriptions(ordersFromDate, ordersTillDate, currencyType, PageRequest.of(page, size)));
+		 return ResponseEntity.ok(reportsService.getAllCancelledSubscriptions(pubId, ordersFromDate, ordersTillDate, currencyType, PageRequest.of(page, size)));
 	 }
 	 
 	 @GetMapping("/getAllCustomerSalesList") 
-	 public ResponseEntity<?> getAllCustomerSalesList(@RequestParam(required = false) String oredrStart,
+	 public ResponseEntity<?> getAllCustomerSalesList(@RequestParam(required = false) Integer pubId, @RequestParam(required = false) String oredrStart,
 				@RequestParam(required = false) String orderEnd,@RequestParam(required = false)String orderType,@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws ParseException{
 		 
 		 Date ordersFromDate = (oredrStart == null || oredrStart.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(oredrStart);
 			Date ordersTillDate = (orderEnd == null || orderEnd.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(orderEnd);
-		 return ResponseEntity.ok(reportsService.getAllCustomerSalesList(ordersFromDate, ordersTillDate, orderType, PageRequest.of(page, size)));
+		 return ResponseEntity.ok(reportsService.getAllCustomerSalesList(pubId, ordersFromDate, ordersTillDate, orderType, PageRequest.of(page, size)));
 	 }
 	 @GetMapping("/getAllDailyCashReport") 
-	 public ResponseEntity<?> getAllDailyCashReport(@RequestParam(required = false) String paymentStart,
+	 public ResponseEntity<?> getAllDailyCashReport(@RequestParam(required = false) Integer pubId, @RequestParam(required = false) String paymentStart,
 				@RequestParam(required = false) String paymentEnd,@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws ParseException{
 		 
 		 Date paymentFromDate = (paymentStart == null || paymentStart.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(paymentStart);
 			Date paymentTillDate = (paymentEnd == null || paymentEnd.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(paymentEnd);
-		 return ResponseEntity.ok(reportsService.getAllDailyCashReport(paymentFromDate, paymentTillDate, PageRequest.of(page, size)));
+		 return ResponseEntity.ok(reportsService.getAllDailyCashReport(pubId, paymentFromDate, paymentTillDate, PageRequest.of(page, size)));
+	 }
+	 
+	 @GetMapping("/getAllRefundProcessReport") 
+	 public ResponseEntity<?> getAllRefundProcessReport(@RequestParam(required = false) Integer pubId, @RequestParam(required = false) String startRefund,
+				@RequestParam(required = false) String endRefund,@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws ParseException{
+		 
+		 Date refundFromDate = (startRefund == null || startRefund.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(startRefund);
+			Date refundTillDate = (endRefund == null || endRefund.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(endRefund);
+		 return ResponseEntity.ok(reportsService.getAllRefundProcessReport(pubId, refundFromDate, refundTillDate, PageRequest.of(page, size)));
+	 }
+	 
+	 @GetMapping("/getAllCustomerDetatilsReport") 
+	 public ResponseEntity<?> getAllCustomerDetatilsReport(@RequestParam(required = false) Integer pubId,
+				@RequestParam(required = false) String status,@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws ParseException{
+		 
+		 
+		 return ResponseEntity.ok(reportsService.getAllCustomerDetatilsReport(pubId, status, PageRequest.of(page, size)));
 	 }
 }

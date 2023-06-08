@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
@@ -11,7 +13,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-@Table(name = "currency_exchange")
+@Table(name = "curr_exchange")
 @Entity
 public class CurrencyExchange extends BaseEntity {
 
@@ -21,6 +23,7 @@ public class CurrencyExchange extends BaseEntity {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@Column(name = "curr_id")
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer currencyExchangeId;
 
 	@OneToOne
@@ -33,8 +36,8 @@ public class CurrencyExchange extends BaseEntity {
 	@Column(name = "symbol")
 	private String Symbol;
 
-	@Column(name = "Description")
-	private Integer Description;
+	@Column(name = "descriptions")
+	private String Description;
 	
 	@Column(name = "exchange_rate")
 	private Integer exchangeRate;
@@ -75,11 +78,11 @@ public class CurrencyExchange extends BaseEntity {
 		Symbol = symbol;
 	}
 
-	public Integer getDescription() {
+	public String getDescription() {
 		return Description;
 	}
 
-	public void setDescription(Integer description) {
+	public void setDescription(String description) {
 		Description = description;
 	}
 
@@ -105,5 +108,7 @@ public class CurrencyExchange extends BaseEntity {
 				+ CurrencyCode + ", Symbol=" + Symbol + ", Description=" + Description + ", exchangeRate="
 				+ exchangeRate + ", currency_Date=" + currency_Date + "]";
 	}
+
+	
 
 }
