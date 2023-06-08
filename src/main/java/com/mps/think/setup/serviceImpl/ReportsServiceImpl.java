@@ -97,7 +97,7 @@ public class ReportsServiceImpl implements ReportsService {
 			Pageable page) {
 		if (oredrStart == null) oredrStart = new Date(0);
 		if (orderEnd == null) orderEnd = new Date();
-		return addOrderRepo.findAllCustomerSalesList(pubId, oredrStart, orderEnd, orderType.trim(), page);
+		return addOrderRepo.findAllCustomerSalesList(pubId, oredrStart, orderEnd, orderType != null ? orderType.trim() : null, page);
 	}
 
 	@Override
