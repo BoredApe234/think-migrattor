@@ -141,7 +141,7 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation keyInfo JOIN o.customerId ci WHERE (ci.publisher.id = :pubId OR :pubId IS NULL) AND "
 			+"(:oredrStart IS NULL OR DATE(keyInfo.orderDate) >= :oredrStart) AND "
 			+"(:orderEnd IS NULL OR DATE(keyInfo.orderDate) <= :orderEnd) AND "
-			+ "(:orderType IS NULL OR o.orderType = :orderType)") 
+			+ "(:orderType IS NULL OR o.orderType LIKE '%'||:orderType||'%')") 
 					
 	public Page<Order> findAllCustomerSalesList(
 			@Param("pubId") Integer pubId,
