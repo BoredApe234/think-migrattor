@@ -75,6 +75,13 @@ public class OrderItems extends BaseEntity {
 	
 	@Column(name = "color")
 	private String color;
+	
+	@OneToOne
+	@JoinColumn(name = "generated_issue", referencedColumnName = "id")
+	private IssueGeneration generatedIssue;
+	
+	@Column(name = "n_issues_left")
+	private Integer nIssuesLeft;
 
 	public Integer getId() {
 		return id;
@@ -212,13 +219,19 @@ public class OrderItems extends BaseEntity {
 		this.color = color;
 	}
 
-	@Override
-	public String toString() {
-		return "OrderItems [id=" + id + ", issue=" + issue + ", enumeration=" + enumeration + ", copiesPerIssue="
-				+ copiesPerIssue + ", subsProdPkgDef=" + subsProdPkgDef + ", productDef=" + productDef
-				+ ", effectiveDate=" + effectiveDate + ", numOfIssues=" + numOfIssues + ", validFrom=" + validFrom
-				+ ", validTo=" + validTo + ", liabilityIssue=" + liabilityIssue + ", extendedIssue=" + extendedIssue
-				+ ", term=" + term + ", extendedByDays=" + extendedByDays + ", quantityOrdered=" + quantityOrdered
-				+ ", style=" + style + ", color=" + color + "]";
+	public IssueGeneration getGeneratedIssue() {
+		return generatedIssue;
+	}
+
+	public void setGeneratedIssue(IssueGeneration generatedIssue) {
+		this.generatedIssue = generatedIssue;
+	}
+
+	public Integer getnIssuesLeft() {
+		return nIssuesLeft;
+	}
+
+	public void setnIssuesLeft(Integer nIssuesLeft) {
+		this.nIssuesLeft = nIssuesLeft;
 	}
 }

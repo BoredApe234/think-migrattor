@@ -2,6 +2,7 @@ package com.mps.think.setup.vo;
 
 import java.util.Date;
 
+import com.mps.think.setup.model.IssueGeneration;
 import com.mps.think.setup.model.ProductInformation;
 import com.mps.think.setup.model.SubscriptionDefKeyInfo;
 import com.mps.think.setup.model.Terms;
@@ -42,6 +43,10 @@ public class OrderItemsVO {
 	
 	private String color;
 
+	private IssueGeneration generatedIssue;
+	
+	private Integer nIssuesLeft;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -178,13 +183,19 @@ public class OrderItemsVO {
 		this.color = color;
 	}
 
-	@Override
-	public String toString() {
-		return "OrderItemsVO [id=" + id + ", issue=" + issue + ", enumeration=" + enumeration + ", copiesPerIssue="
-				+ copiesPerIssue + ", subsProdPkgDef=" + subsProdPkgDef + ", productDef=" + productDef
-				+ ", effectiveDate=" + effectiveDate + ", numOfIssues=" + numOfIssues + ", validFrom=" + validFrom
-				+ ", validTo=" + validTo + ", liabilityIssue=" + liabilityIssue + ", extendedIssue=" + extendedIssue
-				+ ", term=" + term + ", extendedByDays=" + extendedByDays + ", quantityOrdered=" + quantityOrdered
-				+ ", style=" + style + ", color=" + color + "]";
+	public IssueGeneration getGeneratedIssue() {
+		return generatedIssue;
+	}
+
+	public void setGeneratedIssue(IssueGeneration generatedIssue) {
+		this.generatedIssue = generatedIssue;
+	}
+
+	public Integer getnIssuesLeft() {
+		return nIssuesLeft;
+	}
+
+	public void setnIssuesLeft(Integer nIssuesLeft) {
+		this.nIssuesLeft = nIssuesLeft;
 	}
 }
