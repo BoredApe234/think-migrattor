@@ -85,4 +85,21 @@ public class ReportsController {
 		 
 		 return ResponseEntity.ok(reportsService.getAllCustomerDetatilsReport(pubId, status, PageRequest.of(page, size)));
 	 }
+	 
+	 @GetMapping("/getAllAgencyDetailsReport") 
+	 public ResponseEntity<?> getAllAgencyDetailsReport(@RequestParam(required = false) Integer pubId,
+				@RequestParam(required = false) String status,@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws ParseException{
+		 
+		 
+		 return ResponseEntity.ok(reportsService.getAllAgencyDetailsReport(pubId, status, PageRequest.of(page, size)));
+	 }
+	 
+	 @GetMapping("/getAllSalesListByOrderViewReport") 
+	 public ResponseEntity<?> getAllSalesListByOrderViewReport(@RequestParam(required = false) Integer pubId, @RequestParam(required = false) String orderStartDate,
+				@RequestParam(required = false) String orderEndDate, @RequestParam(required = false) String orderType, @RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) throws ParseException{
+		 
+		 Date orderFromDate = (orderStartDate == null || orderStartDate.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(orderStartDate);
+			Date orderTillDate = (orderEndDate == null || orderEndDate.isEmpty()) ? null : new SimpleDateFormat("dd/MM/yyyy").parse(orderEndDate);
+		 return ResponseEntity.ok(reportsService.getAllSalesListByOrderViewReport(pubId, orderFromDate, orderTillDate, orderType, PageRequest.of(page, size)));
+	 }
 }

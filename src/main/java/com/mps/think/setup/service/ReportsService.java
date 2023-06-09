@@ -11,6 +11,7 @@ import com.mps.think.setup.vo.CancelSubscirptionReportView;
 import com.mps.think.setup.vo.CustomerDetailsVO;
 import com.mps.think.setup.vo.DailyCashReportView;
 import com.mps.think.setup.vo.RefundProcessReportView;
+import com.mps.think.setup.vo.SalesListByOrderView;
 
 public interface ReportsService {
 
@@ -29,6 +30,10 @@ public interface ReportsService {
 	Page<RefundProcessReportView> getAllRefundProcessReport(Integer pubId, Date startRefund, Date endRefund, Pageable page);
 
 	Page<CustomerDetailsVO> getAllCustomerDetatilsReport(Integer pubId, String status, Pageable page);
+	
+	Page<CustomerDetailsVO> getAllAgencyDetailsReport(Integer pubId, String status, Pageable page);
+	
+	Page<SalesListByOrderView> getAllSalesListByOrderViewReport(Integer pubId, Date orderStartDate, Date orderEndDate, String orderType, Pageable page);
 
 	
 

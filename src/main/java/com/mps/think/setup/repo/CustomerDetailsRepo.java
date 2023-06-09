@@ -18,6 +18,7 @@ import com.mps.think.setup.model.CustomerAddresses;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.OrderAddressMapping;
 import com.mps.think.setup.vo.EnumModelVO;
+import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
 
 @Repository
 public interface CustomerDetailsRepo extends JpaRepository<CustomerDetails, Integer> {
@@ -122,6 +123,12 @@ List<String> getAllCustomerAgentForSearch(@Param("pubId") Integer pubId, @Param(
 	@Query("SELECT c FROM CustomerDetails c WHERE (:pubId IS NULL OR c.publisher.id = :pubId) AND (:status IS NULL OR :status = c.customerStatus)")
 	public Page<CustomerDetails> findAllCustomerDetatilsReport(@Param("pubId") Integer pubId, 
 			@Param("status") EnumModelVO.CustomerStatus status, Pageable page);
+
+	
+	@Query("SELECT c FROM CustomerDetails c WHERE (:pubId IS NULL OR c.publisher.id = :pubId) AND (:status IS NULL OR :status = c.customerStatus)")
+	public Page<CustomerDetails> findAllAgencyDetailsReport(@Param("pubId") Integer pubId,
+			@Param("status") EnumModelVO.CustomerStatus status, Pageable page);
+
 	
 //	name, fax, email, department, countrycode, company, mobile, agnecycode, agencyname, status, ordercodes
 	@Query("SELECT c FROM CustomerDetails c WHERE (:pubId IS NULL OR c.publisher.id = :pubId) AND (:name IS NULL OR CONCAT(c.fname, ' ', c.lname) "
