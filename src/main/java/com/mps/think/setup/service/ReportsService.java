@@ -15,7 +15,7 @@ import com.mps.think.setup.vo.SalesListByOrderView;
 
 public interface ReportsService {
 
-	Page<Order> getAllOrderReports(String orderStatus, Date ordersFrom, Date ordersTill, Integer customerId,
+	Page<Order> getAllOrderReports(Integer pubId, String orderStatus, Date ordersFrom, Date ordersTill, Integer customerId,
 			String customerName, Pageable page);
 	
 	Page<CustomerDetails>getAllCustomerSearchReport(Integer pubId, Integer customerId, String fname, String lname, String initialName,
