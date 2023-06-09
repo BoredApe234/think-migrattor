@@ -161,4 +161,13 @@ public class CustomerDetailsController {
 		return ResponseEntity.ok(customerDetailsService.getAllCustomerWithRecentTwoOrderCodes(pubId, PageRequest.of(page, size)));
 	}
 	
+	
+	@GetMapping("/getSearchedCustomersWithTwoRecentOrderCodes")
+	public ResponseEntity<?> getSearchedCustomersWithTwoRecentOrderCodes(@RequestParam(required = true) Integer pubId,
+			@RequestParam(required = false) String search, @RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) throws Exception {
+		return ResponseEntity
+				.ok(customerDetailsService.getSearchedCustomersWithTwoRecentOrderCodes(pubId, search, PageRequest.of(page, size, Sort.by("customerId").descending())));
+	}
+	
 }
