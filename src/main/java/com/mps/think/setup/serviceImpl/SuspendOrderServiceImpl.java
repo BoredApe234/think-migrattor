@@ -62,7 +62,7 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 	@Override
 	public SuspendOrder saveSuspendOrdersDetail(SuspendOrderVO suspendOrdersDetail) {
 		SuspendOrder suspendOrders = mapper.convertValue(suspendOrdersDetail, SuspendOrder.class);
-		boolean flag = suspendOrders.getSetOrderStatus().equals(OrderStatus.SUSPEND_NON_PAY);
+		boolean flag = suspendOrders.getSetOrderStatus().equals(OrderStatus.suspend_for_nonpayment);
 		suspendOrders.getOrdersToSuspend().forEach(o -> {
 			if (flag) {
 				boolean check = checkPreviousSuspensionIfNewGivenSusIsNonPay(o);
@@ -86,13 +86,13 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 			List<OrdersToBeSuspended> suspensionsForGiveOrder = ordersToBeSuspendedRepo
 					.findAllSuspensionForGiveOrderId(o.getOrder().getOrderId());
 			suspensionsForGiveOrder.forEach(so -> {
-				if (so.getSuspendOrder().getSetOrderStatus().equals(OrderStatus.SUSPEND_NON_PAY)) {
+				if (so.getSuspendOrder().getSetOrderStatus().equals(OrderStatus.suspend_for_nonpayment)) {
 					OrdersToBeSuspended orderToSuspend = ordersToBeSuspendedRepo
 							.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(so.getOrder().getOrderId(),
 									so.getSuspendOrder().getId());
 					orderToSuspend.setIsValid(false);
 					ordersToBeSuspendedRepo.saveAndFlush(orderToSuspend);
-				} else if (so.getSuspendOrder().getSetOrderStatus().equals(OrderStatus.SUSPENDED_TEMP)) {
+				} else if (so.getSuspendOrder().getSetOrderStatus().equals(OrderStatus.temporary_suspend)) {
 					LocalDate earlierTempSuspensionStart = so.getSuspendOrder().getSuspendedfrom().toInstant()
 							.atZone(ZoneId.systemDefault()).toLocalDate();
 					LocalDate newPermanentSuspensionStart = o.getSuspendOrder().getSuspendedfrom().toInstant()
@@ -131,7 +131,7 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 					.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(order.getOrderId(), suspendDetails.getId());
 			ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsSuspended(true);
 			ordersToBeSuspendedRepo.saveAndFlush(ordersToBeSuspendedForGivenOrderAndSuspendDetails);
-			if (suspendDetails.getSetOrderStatus().equals(OrderStatus.SUSPEND_NON_PAY)) {
+			if (suspendDetails.getSetOrderStatus().equals(OrderStatus.suspend_for_nonpayment)) {
 				makeAllExistingTempSupensionsInvalid(order.getOrderId(), suspendDetails.getId());
 			}
 		}
@@ -150,7 +150,7 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 		}
 	}
 
-	private void suspendOrContinueOrder(Order order, OrderStatus setOrderStatus) {
+	private void suspendOrContinueOrder(Order order, String setOrderStatus) {
 		order.setOrderStatus(setOrderStatus);
 		orderRepo.saveAndFlush(order);
 	}
@@ -164,9 +164,9 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 			SuspendOrder suspendDetails = (SuspendOrder) o[1];
 			LocalDate suspendedTill = suspendDetails.getSuspendedTo().toInstant().atZone(ZoneId.systemDefault())
 					.toLocalDate();
-			if (currentDate.isBefore(suspendedTill) || order.getOrderStatus().equals(OrderStatus.SUSPEND_NON_PAY))
+			if (currentDate.isBefore(suspendedTill) || order.getOrderStatus().equals(OrderStatus.suspend_for_nonpayment))
 				continue;
-			suspendOrContinueOrder(order, OrderStatus.Active);
+			suspendOrContinueOrder(order, suspendDetails.getCurrentOrderStatus());
 			OrdersToBeSuspended ordersToBeSuspendedForGivenOrderAndSuspendDetails = ordersToBeSuspendedRepo
 					.getOrdersToBeSuspendedForGivenOrderAndSuspendDetails(order.getOrderId(), suspendDetails.getId());
 			ordersToBeSuspendedForGivenOrderAndSuspendDetails.setIsReinstated(true);
@@ -199,6 +199,11 @@ public class SuspendOrderServiceImpl implements SuspendOrderService {
 			output.add(new OrderSuspendView(ocv, suspendOrder));
 		}
 		return new PageImpl<>(output, orderIdAndSuspendDetId.getPageable(), orderIdAndSuspendDetId.getTotalElements());
+	}
+	
+	
+	public List<SuspendOrder> getAllSuspensions() {
+		return suspendOrderRepo.findAll();
 	}
 
 }

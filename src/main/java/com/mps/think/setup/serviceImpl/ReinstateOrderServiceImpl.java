@@ -69,7 +69,7 @@ public class ReinstateOrderServiceImpl implements ReinstateOrderService {
 				}
 				List<OrdersToBeSuspended> previousSuspensionDetailsOfOrder = suspendedOrdersRepo.findAllSuspensionForGiveOrderId(order.getOrderId());
 				if (previousSuspensionDetailsOfOrder.size() <= 1) {
-					order.setOrderStatus(OrderStatus.Active);
+					order.setOrderStatus(suspendOrder.getCurrentOrderStatus());
 					orderRepo.saveAndFlush(order);
 				}
 			}
@@ -103,6 +103,10 @@ public class ReinstateOrderServiceImpl implements ReinstateOrderService {
 			output.add(new OrderSuspendView(ocv, so));
 		}
 		return new PageImpl<>(output, ordersToReinstateForOrderId.getPageable(), ordersToReinstateForOrderId.getTotalElements());
+	}
+	
+	public List<ReinstateOrder> findAllReintate() {
+		return reinstateOrderRepo.findAll();
 	}
 
 }

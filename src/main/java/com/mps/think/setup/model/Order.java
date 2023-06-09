@@ -45,9 +45,12 @@ public class Order extends BaseEntity {
 	@Column(name = "order_type")
 	private String orderType;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "orderStatus")
-	private OrderStatus orderStatus;
+//	@Enumerated(EnumType.STRING)
+//	@Column(name = "orderStatus")
+//	private OrderStatus orderStatus;
+	
+	@Column(name= "order_status")
+	private String orderStatus;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "key_order_information_id", referencedColumnName = "id" )
@@ -118,14 +121,6 @@ public class Order extends BaseEntity {
 
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
-	}
-
-	public OrderStatus getOrderStatus() {
-		return orderStatus;
-	}
-
-	public void setOrderStatus(OrderStatus orderStatus) {
-		this.orderStatus = orderStatus;
 	}
 
 	public OrderKeyInformation getKeyOrderInformation() {
@@ -201,6 +196,14 @@ public class Order extends BaseEntity {
 				+ paymentBreakdown + ", deliveryAndBillingOptions=" + deliveryAndBillingOptions + ", orderAddresses="
 				+ orderAddresses + ", auxiliaryInformation=" + auxiliaryInformation + ", otherAddressCustomer="
 				+ otherAddressCustomer + ", parentOrder=" + parentOrder + "]";
+	}
+
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 	
 }

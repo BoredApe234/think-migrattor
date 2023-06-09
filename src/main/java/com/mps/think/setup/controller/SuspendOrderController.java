@@ -24,6 +24,9 @@ public class SuspendOrderController {
 	@Autowired
 	SuspendOrderService suspendOrderService;
 	
+//	@Autowired
+//	SuspendOrderServiceImpl imp;
+	
 	@PostMapping("/saveSuspendOrdersDetails")
 	public ResponseEntity<?> saveSuspendOrdersDetails(@RequestBody SuspendOrderVO suspendOrder) {
 		return ResponseEntity.ok(suspendOrderService.saveSuspendOrdersDetail(suspendOrder));
@@ -46,5 +49,10 @@ public class SuspendOrderController {
 			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) {
 		return ResponseEntity.ok(suspendOrderService.findOrdersByIdWithSuspensionDetails(orderId, PageRequest.of(page, size)));
 	}
+
+//	@GetMapping("/getAllSus")
+//	public ResponseEntity<?> getAllSus() {
+//		return ResponseEntity.ok(imp.getAllSuspensions());
+//	}
 
 }

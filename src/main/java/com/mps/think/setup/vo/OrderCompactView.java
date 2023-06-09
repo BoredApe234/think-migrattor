@@ -11,7 +11,7 @@ public class OrderCompactView {
 	
 	private Integer parentOrderId;
 	
-	private OrderStatus currentOrderStatus;
+	private String currentOrderStatus;
 	
 	private String orderCode;
 	
@@ -41,14 +41,6 @@ public class OrderCompactView {
 
 	public void setParentOrderId(Integer parentOrderId) {
 		this.parentOrderId = parentOrderId;
-	}
-
-	public OrderStatus getCurrentOrderStatus() {
-		return currentOrderStatus;
-	}
-
-	public void setCurrentOrderStatus(OrderStatus currentOrderStatus) {
-		this.currentOrderStatus = currentOrderStatus;
 	}
 
 	public String getOrderCode() {
@@ -105,6 +97,14 @@ public class OrderCompactView {
 
 	public void setCustomerLastName(String customerLastName) {
 		this.customerLastName = customerLastName;
+	}
+
+	public String getCurrentOrderStatus() {
+		return currentOrderStatus;
+	}
+
+	public void setCurrentOrderStatus(String currentOrderStatus) {
+		this.currentOrderStatus = currentOrderStatus;
 	}
 	
 }

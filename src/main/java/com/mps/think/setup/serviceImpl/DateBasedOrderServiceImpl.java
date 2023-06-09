@@ -40,9 +40,9 @@ public class DateBasedOrderServiceImpl implements DateBasedOrderService {
 		
 		OrderVO generalOrder = mapper.convertValue(order, OrderVO.class);
 		generalOrder.setOrderType(OrderType.DateBasedSubscriptionOrder.getDisplayName());
-		generalOrder.setOrderStatus(OrderStatus.Active);
+		generalOrder.setOrderStatus(OrderStatus.order_placed.getDisplayName());
 		OrderKeyInformationVO keyOrderInformation = generalOrder.getKeyOrderInformation();
-		keyOrderInformation.setOrderStatus(OrderStatus.Active.getDisplayName());
+		keyOrderInformation.setOrderStatus(OrderStatus.order_placed.getDisplayName());
 		generalOrder.setKeyOrderInformation(keyOrderInformation);
 		Order savedOrder = orderService.saveOrder(generalOrder);
 		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);

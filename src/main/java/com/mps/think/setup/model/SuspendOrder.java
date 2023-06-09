@@ -31,13 +31,13 @@ public class SuspendOrder extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "current_order_status")
-	private OrderStatus currentOrderStatus;
+	private String currentOrderStatus;
 	
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "set_order_status")
-	private OrderStatus setOrderStatus;
+	private String setOrderStatus;
 	
 	@Column(name = "reason_for_suspension")
 	private String reasonForSuspension;
@@ -61,22 +61,6 @@ public class SuspendOrder extends BaseEntity {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public OrderStatus getCurrentOrderStatus() {
-		return currentOrderStatus;
-	}
-
-	public void setCurrentOrderStatus(OrderStatus currentOrderStatus) {
-		this.currentOrderStatus = currentOrderStatus;
-	}
-
-	public OrderStatus getSetOrderStatus() {
-		return setOrderStatus;
-	}
-
-	public void setSetOrderStatus(OrderStatus setOrderStatus) {
-		this.setOrderStatus = setOrderStatus;
 	}
 
 	public String getReasonForSuspension() {
@@ -117,6 +101,22 @@ public class SuspendOrder extends BaseEntity {
 
 	public void setOrdersToSuspend(List<OrdersToBeSuspended> ordersToSuspend) {
 		this.ordersToSuspend = ordersToSuspend;
+	}
+
+	public String getCurrentOrderStatus() {
+		return currentOrderStatus;
+	}
+
+	public void setCurrentOrderStatus(String currentOrderStatus) {
+		this.currentOrderStatus = currentOrderStatus;
+	}
+
+	public String getSetOrderStatus() {
+		return setOrderStatus;
+	}
+
+	public void setSetOrderStatus(String setOrderStatus) {
+		this.setOrderStatus = setOrderStatus;
 	}
 
 }
