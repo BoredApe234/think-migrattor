@@ -112,7 +112,7 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 
 	@Override
 	public Page<CustomerDetails> getAllCustomerDetailsForSearch(Integer pubId, String search, Pageable page) {
-		if (search.contains("=")) return searchCustomerUsingKeyValue(pubId.equals(0) ? null : pubId, search, page);
+		if (search != null && search.contains("=")) return searchCustomerUsingKeyValue(pubId.equals(0) ? null : pubId, search, page);
 		return customerRepo.getAllCustomerDetailsForSearchSingle(pubId.equals(0) ? null : pubId, search, page);
 	}
 
@@ -311,5 +311,18 @@ public class CustomerDetailsServiceImpl implements CustomerDetailsService {
 //		// TODO Auto-generated method stub
 //		return null;
 //	}
+
+	@Override
+	public Page<CustomerWithTwoOrderCodes> getSearchedCustomersWithTwoRecentOrderCodes(Integer pubId, String keyword, Pageable page) throws Exception {
+		Page<CustomerDetails> allCustomerDetailsForSearch = getAllCustomerDetailsForSearch(pubId, keyword, page);
+		List<CustomerWithTwoOrderCodes> output = new ArrayList<>();
+		for (CustomerDetails cd : allCustomerDetailsForSearch) {
+			CustomerWithTwoOrderCodes cusAndOrderCodes = new CustomerWithTwoOrderCodes();
+			cusAndOrderCodes.setCustomer(cd);
+			cusAndOrderCodes.setOrderCodes(fetchRecentTwoOrderCode(cd.getCustomerId()).stream().map(oc -> oc.getOrderCodes()).collect(Collectors.toList()));
+			output.add(cusAndOrderCodes);
+		}
+		return new PageImpl<>(output, allCustomerDetailsForSearch.getPageable(), allCustomerDetailsForSearch.getTotalElements());
+	}
 
 }
