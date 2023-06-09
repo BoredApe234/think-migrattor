@@ -9,9 +9,9 @@ public class SuspendOrderVO {
 
 	private Integer id;
 	
-	private OrderStatus currentOrderStatus;
+	private String currentOrderStatus;
 
-	private OrderStatus setOrderStatus;
+	private String setOrderStatus;
 
 	private String reasonForSuspension;
 
@@ -29,22 +29,6 @@ public class SuspendOrderVO {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public OrderStatus getCurrentOrderStatus() {
-		return currentOrderStatus;
-	}
-
-	public void setCurrentOrderStatus(OrderStatus currentOrderStatus) {
-		this.currentOrderStatus = currentOrderStatus;
-	}
-
-	public OrderStatus getSetOrderStatus() {
-		return setOrderStatus;
-	}
-
-	public void setSetOrderStatus(OrderStatus setOrderStatus) {
-		this.setOrderStatus = setOrderStatus;
 	}
 
 	public String getReasonForSuspension() {
@@ -85,6 +69,22 @@ public class SuspendOrderVO {
 
 	public void setOrdersToSuspend(List<OrdersToBeSuspendedVO> ordersToSuspend) {
 		this.ordersToSuspend = ordersToSuspend;
+	}
+
+	public String getCurrentOrderStatus() {
+		return currentOrderStatus;
+	}
+
+	public void setCurrentOrderStatus(String currentOrderStatus) {
+		this.currentOrderStatus = currentOrderStatus;
+	}
+
+	public String getSetOrderStatus() {
+		return setOrderStatus;
+	}
+
+	public void setSetOrderStatus(String setOrderStatus) {
+		this.setOrderStatus = setOrderStatus;
 	}
 
 }

@@ -129,7 +129,7 @@ public class AddOrderServiceImpl implements AddOrderService {
 	public void setAllOrdersOfCustomerInActive(Integer customerId) {
 		List<Order> orders = addOrderRepo.findByCustomerIdCustomerId(customerId);
 		orders.forEach(o -> {
-			o.setOrderStatus(OrderStatus.Cancelled);
+			o.setOrderStatus(OrderStatus.cancel_for_nonpayment.getDisplayName());
 		});
 		addOrderRepo.saveAllAndFlush(orders);
 	}
@@ -249,7 +249,7 @@ List<OrderItems> orderItems = addOrderRepo.findAll().stream().map(m -> m.getOrde
 		        
 		        if (order != null) {
 //		            OrderStatus odStatus = order.getOrderStatus();
-		            order.setOrderStatus(Enum.valueOf(OrderStatus.class, odrStatus));
+		            order.setOrderStatus(Enum.valueOf(OrderStatus.class, odrStatus).getDisplayName());
 		            
 		            Order updatedOrder = addOrderRepo.save(order);
 		            updatedOrders.add(updatedOrder);

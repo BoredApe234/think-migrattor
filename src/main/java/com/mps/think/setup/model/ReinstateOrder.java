@@ -31,9 +31,9 @@ public class ReinstateOrder extends BaseEntity {
 	@Column(name = "id")
 	private Integer id;
 
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "current_order_status")
-	private OrderStatus currentOrderStatus;
+	private String currentOrderStatus;
 
 	@Column(name = "suspended_from")
 	private Date suspendedFrom;
@@ -88,12 +88,12 @@ public class ReinstateOrder extends BaseEntity {
 		this.ordersToReinstate = ordersToReinstate;
 	}
 
-	public OrderStatus getCurrentOrderStatus() {
-		return currentOrderStatus;
+	public void setCurrentOrderStatus(String currentOrderStatus) {
+		this.currentOrderStatus = currentOrderStatus;
 	}
 
-	public void setCurrentOrderStatus(OrderStatus currentOrderStatus) {
-		this.currentOrderStatus = currentOrderStatus;
+	public String getCurrentOrderStatus() {
+		return currentOrderStatus;
 	}
 	
 }

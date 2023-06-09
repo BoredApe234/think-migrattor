@@ -247,7 +247,14 @@ public class EnumModelVO {
 
 	public static enum OrderStatus {
 
-		Active("Active"), Cancelled("Cancelled"), Pending("Pending"), SUSPENDED_TEMP("Suspended-Temporary"), SUSPEND_NON_PAY("Suspend Non-Pay");
+//		Active("Active"), Cancelled("Cancelled"), Pending("Pending"), SUSPENDED_TEMP("Suspended-Temporary"), SUSPEND_NON_PAY("Suspend Non-Pay");
+		
+		order_placed("order placed"), active_shipping("active/shipping"),
+		cancel_for_nonpayment("cancel for nonpayment"), cancel_customer_request("cancel - customer request"),
+		cancel_waiting_credit_card_authorization("cancel/waiting credit card authorization"),
+		partial_shipment("partial shipment"),shipped_complete("shipped complete"),grace("grace"),
+		suspend_for_nonpayment("suspend for nonpayment"),temporary_suspend("temporary suspend"),hold_for_payment("hold for payment"),
+		suspend_not_deliverable("suspend not deliverable");
 
 		private final String displayOrderStatus;
 

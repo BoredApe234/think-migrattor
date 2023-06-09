@@ -16,7 +16,7 @@ public class OrderVO {
 	
 	private String orderType;
 	
-	private OrderStatus orderStatus;
+	private String orderStatus;
 	
 	private OrderKeyInformationVO keyOrderInformation;
 	
@@ -64,14 +64,6 @@ public class OrderVO {
 
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
-	}
-
-	public OrderStatus getOrderStatus() {
-		return orderStatus;
-	}
-
-	public void setOrderStatus(OrderStatus orderStatus) {
-		this.orderStatus = orderStatus;
 	}
 
 	public OrderKeyInformationVO getKeyOrderInformation() {
@@ -136,6 +128,14 @@ public class OrderVO {
 
 	public void setParentOrder(MultiLineItemOrderVO parentOrder) {
 		this.parentOrder = parentOrder;
+	}
+
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 	

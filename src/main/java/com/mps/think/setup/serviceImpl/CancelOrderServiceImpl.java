@@ -36,7 +36,8 @@ public class CancelOrderServiceImpl implements CancelOrderService {
 	public CancelOrder saveCancelOrder(CancelOrderVO cancelOrder) {
 		CancelOrder cod = cancelOrderRepo.saveAndFlush(mapper.convertValue(cancelOrder, CancelOrder.class));
 		Order order = cod.getOrderid();
-		order.setOrderStatus(OrderStatus.Cancelled);
+//		if (cancelOrder.getCancelReasonsId().getCancelReason())
+		order.setOrderStatus(OrderStatus.cancel_customer_request.getDisplayName());
 		orderRepo.saveAndFlush(order);
 		return cod;
 	}

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.mps.think.setup.service.ReinstateOrderService;
+import com.mps.think.setup.serviceImpl.ReinstateOrderServiceImpl;
 import com.mps.think.setup.vo.ReinstateOrderVO;
 
 @RestController
@@ -20,6 +21,9 @@ public class ReinstateOrderController {
 
 	@Autowired
 	private ReinstateOrderService reinstateOrderService;
+	
+//	@Autowired
+//	ReinstateOrderServiceImpl imp;
 	
 	@PostMapping("/saveReinstateOrdersDetail")
 	public ResponseEntity<?> saveReinstateOrdersDetail(@RequestBody ReinstateOrderVO reinstateOrder) {
@@ -31,5 +35,10 @@ public class ReinstateOrderController {
 			@RequestParam(defaultValue = "0") Integer page, @RequestParam(defaultValue = "5") Integer size) {
 		return ResponseEntity.ok(reinstateOrderService.getAllOrdersToReinstateByOrderId(orderId, PageRequest.of(page, size)));
 	}
+	
+//	@GetMapping("/getAllReins")
+//	public ResponseEntity<?> getAllReins() {
+//		return ResponseEntity.ok(imp.findAllReintate());
+//	}
 	
 }

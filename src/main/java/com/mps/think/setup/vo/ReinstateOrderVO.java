@@ -9,7 +9,7 @@ public class ReinstateOrderVO {
 
 	private Integer id;
 
-	private OrderStatus currentOrderStatus;
+	private String currentOrderStatus;
 
 	private Date suspendedFrom;
 
@@ -59,11 +59,11 @@ public class ReinstateOrderVO {
 		this.ordersToReinstate = ordersToReinstate;
 	}
 
-	public OrderStatus getCurrentOrderStatus() {
+	public String getCurrentOrderStatus() {
 		return currentOrderStatus;
 	}
 
-	public void setCurrentOrderStatus(OrderStatus currentOrderStatus) {
+	public void setCurrentOrderStatus(String currentOrderStatus) {
 		this.currentOrderStatus = currentOrderStatus;
 	}
 
