@@ -24,12 +24,14 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	
 	public List<Order> findByOrderClassOcId(Integer ocId) throws Exception;
 
-	@Query("SELECT o FROM Order o JOIN o.customerId cus JOIN o.keyOrderInformation keyInfo WHERE "
+	@Query("SELECT o FROM Order o JOIN o.customerId cus JOIN o.keyOrderInformation keyInfo WHERE (cus.publisher.id = :pubId OR :pubId IS NULL) AND"
 			+ "(o.orderStatus LIKE '%'||:orderStatus||'%' OR :orderStatus IS NULL) "
 			+ "AND ((keyInfo.orderDate >= :ordersFrom AND keyInfo.orderDate <= :ordersTill) OR (:ordersFrom IS NULL OR :ordersTill IS NULL)) "
 			+ "AND (cus.customerId LIKE '%'||:customerId||'%' OR :customerId IS NULL) "
 			+ "AND (CONCAT(cus.fname, ' ', cus.lname) LIKE '%'||:customerName||'%' OR :customerName IS NULL)")
-	public Page<Order> findAllOrdersForReport(@Param("orderStatus") String orderStatus,
+	public Page<Order> findAllOrdersForReport(
+			                                  @Param("pubId") Integer pubId, 
+			                                  @Param("orderStatus") String orderStatus,
 											  @Param("ordersFrom") Date ordersFrom, 
 											  @Param("ordersTill") Date ordersTill, 
 											  @Param("customerId") Integer customerId, 

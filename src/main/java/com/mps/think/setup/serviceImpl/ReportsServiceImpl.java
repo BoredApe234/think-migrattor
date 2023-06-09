@@ -52,11 +52,11 @@ public class ReportsServiceImpl implements ReportsService {
 	private ObjectMapper mapper;
 
 	@Override
-	public Page<Order> getAllOrderReports(String orderStatus, Date ordersFrom, Date ordersTill, Integer customerId,
+	public Page<Order> getAllOrderReports(Integer pubId, String orderStatus, Date ordersFrom, Date ordersTill, Integer customerId,
 			String customerName, Pageable page) {
 		if (ordersFrom == null) ordersFrom = new Date(0);
 		if (ordersTill == null) ordersTill = new Date();
-		return orderRepo.findAllOrdersForReport(orderStatus, ordersFrom, ordersTill, customerId, customerName, page);
+		return orderRepo.findAllOrdersForReport(pubId, orderStatus, ordersFrom, ordersTill, customerId, customerName, page);
 	}
 
 	@Override
