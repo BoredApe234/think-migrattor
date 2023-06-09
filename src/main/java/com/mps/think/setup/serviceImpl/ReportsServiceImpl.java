@@ -27,6 +27,7 @@ import com.mps.think.setup.vo.DailyCashReportView;
 import com.mps.think.setup.vo.EnumModelVO;
 import com.mps.think.setup.vo.OrderAddressMappingVO;
 import com.mps.think.setup.vo.RefundProcessReportView;
+import com.mps.think.setup.vo.SalesListByOrderView;
 import com.mps.think.setup.vo.EnumModelVO.CustomerStatus;
 
 @Service
@@ -170,11 +171,65 @@ public class ReportsServiceImpl implements ReportsService {
 		return new PageImpl<>(cdr, allCustomerDetails.getPageable(), allCustomerDetails.getTotalElements());
 	}
 
-	
-	
+	@Override
+	public Page<CustomerDetailsVO> getAllAgencyDetailsReport(Integer pubId, String status, Pageable page) {
+		EnumModelVO.CustomerStatus csStatus = null;
+		CustomerStatus[] values = CustomerStatus.values();
+		for (CustomerStatus cs : values) {
+			if (cs.getCustomerStatus().equalsIgnoreCase(status)) {
+				csStatus = cs;
+				break;
+			}
+	}
+		
+		Page<CustomerDetails> allAgencyDetailsReport = customerDetailsRepo.findAllAgencyDetailsReport(pubId, csStatus , page);
+		List<CustomerDetailsVO> cdr = new ArrayList<>();
+		mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+		allAgencyDetailsReport.toList().forEach(c -> cdr.add(mapper.convertValue(c, CustomerDetailsVO.class)));
+		return new PageImpl<>(cdr, allAgencyDetailsReport.getPageable(), allAgencyDetailsReport.getTotalElements());
+	}
 
-	
-
-	
-	
+	@Override
+	public Page<SalesListByOrderView> getAllSalesListByOrderViewReport(Integer pubId, Date orderStartDate,
+			Date orderEndDate, String orderType, Pageable page) {
+		if (orderStartDate == null) orderStartDate = new Date(0);
+		if (orderEndDate == null) orderEndDate = new Date();
+//		return paymentInfoRepo.findAllDailyCashReport(paymentStart, paymentEnd, page);
+		
+		Page<Order> allSalesListByOrderViewReport = addOrderRepo.findAllSalesListByOrderViewReport(pubId, orderStartDate, orderEndDate, orderType, page);
+		List<SalesListByOrderView> sov = new ArrayList<>();
+		
+		allSalesListByOrderViewReport.toList().forEach(c -> {
+			SalesListByOrderView obj = new SalesListByOrderView();
+			obj.setOrderId(c.getOrderId());
+			obj.setOrderDate(c.getKeyOrderInformation().getOrderDate());
+			obj.setFname(c.getCustomerId().getFname());
+			obj.setLname(c.getCustomerId().getLname());
+			obj.setInitialName(c.getCustomerId().getInitialName());
+			obj.setNetAmount(c.getPaymentBreakdown().getNetAmount());
+			obj.setTax(c.getPaymentBreakdown().getTax());
+			obj.setCommission(c.getPaymentBreakdown().getCommission());
+			obj.setGrossAmount(c.getPaymentBreakdown().getGrossAmount());
+			obj.setOrderStatus(c.getOrderStatus());
+			obj.setPaymentStatus(c.getPaymentBreakdown().getPaymentStatus());
+			
+			sov.add(obj);
+		});
+		
+		return new PageImpl<>(sov, allSalesListByOrderViewReport.getPageable(), allSalesListByOrderViewReport.getTotalElements());
+		
+	}
 }
+
+	
+	
+
+	
+
+	
+	
+
+
+
+	
+		

@@ -161,6 +161,17 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	@Query("SELECT o FROM Order o JOIN o.customerId c WHERE (:publisherId IS NULL OR c.publisher.id = :publisherId) AND (:customerId IS NULL OR c.customerId = :customerId) "
 			+ "AND o.orderType = :orderType GROUP BY o.orderId")
 	Page<Order> findAllOrderOfGiveType(@Param("publisherId") Integer publisherId, @Param("customerId") Integer customerId, @Param("orderType") String orderType, Pageable page);
+
+	
+	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation keyInfo JOIN o.customerId ci WHERE (ci.publisher.id = :pubId OR :pubId IS NULL) AND "
+			+ "(:orderStartDate IS NULL OR DATE(keyInfo.orderDate) >= :orderStartDate) AND "
+			+ "(:orderEndDate IS NULL OR DATE(keyInfo.orderDate) <= :orderEndDate) AND "
+			+ "(:orderType IS NULL OR o.orderType LIKE '%'||:orderType||'%')")
+	public Page<Order> findAllSalesListByOrderViewReport(
+			@Param("pubId") Integer pubId, 
+			@Param("orderStartDate") Date orderStartDate,
+			@Param("orderEndDate") Date orderEndDate,
+			@Param("orderType") String orderType, Pageable page);
 	
 	
 }
