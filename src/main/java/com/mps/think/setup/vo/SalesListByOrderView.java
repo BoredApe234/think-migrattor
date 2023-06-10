@@ -25,7 +25,7 @@ public class SalesListByOrderView {
     
     private BigDecimal grossAmount;
     
-    public OrderStatus orderStatus;
+    public String orderStatus;
     
 	
     public String getFname() {
@@ -105,22 +105,20 @@ public class SalesListByOrderView {
 		this.grossAmount = grossAmount;
 	}
 
-
-
-	public OrderStatus getOrderStatus() {
-		return orderStatus;
-	}
-
-	public void setOrderStatus(OrderStatus orderStatus) {
-		this.orderStatus = orderStatus;
-	}
-
 	public String getPaymentStatus() {
 		return paymentStatus;
 	}
 
 	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
+	}
+
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
     
     
