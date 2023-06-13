@@ -8,6 +8,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 
 @Entity
@@ -19,6 +20,7 @@ public class RowsInLables {
 	private Long id;
 
 	@ElementCollection(fetch = FetchType.EAGER)
+	@OrderColumn
 	private List<String> columnValues;
 
 	public Long getId() {
