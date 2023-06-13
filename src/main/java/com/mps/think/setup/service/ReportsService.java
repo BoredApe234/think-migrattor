@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.vo.CancelSubscirptionReportView;
+import com.mps.think.setup.vo.CreditCardDeclinedView;
 import com.mps.think.setup.vo.CustomerDetailsVO;
 import com.mps.think.setup.vo.DailyCashReportView;
 import com.mps.think.setup.vo.RefundProcessReportView;
@@ -34,7 +35,8 @@ public interface ReportsService {
 	Page<CustomerDetailsVO> getAllAgencyDetailsReport(Integer pubId, String status, Pageable page);
 	
 	Page<SalesListByOrderView> getAllSalesListByOrderViewReport(Integer pubId, Date orderStartDate, Date orderEndDate, String orderType, Pageable page);
-
+    
+	Page<CreditCardDeclinedView>getAllCreditCardDeclinedViewReport(Integer pubId, Date paymentStartDate, Date paymentEndDate, Pageable page);
 	
 
 	

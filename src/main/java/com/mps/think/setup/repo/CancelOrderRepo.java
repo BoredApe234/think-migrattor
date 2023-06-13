@@ -19,8 +19,8 @@ public interface CancelOrderRepo extends JpaRepository<CancelOrder ,Integer> {
 	
 	@Query("SELECT c FROM CancelOrder c JOIN c.orderid o JOIN o.paymentBreakdown p JOIN o.customerId ci WHERE (ci.publisher.id = :pubId OR :pubId IS NULL) AND (o.orderType LIKE '%'||:orderType||'%') AND "
 			+ "(:currencyType IS NULL OR p.currency LIKE '%'||:currencyType||'%') "
-			+ "AND (:ordersFrom IS NULL OR DATE(c.date) >= :ordersFrom) AND "
-			+ "(:ordersTill IS NULL OR DATE(c.date) <= :ordersTill)")
+			+ "AND (:ordersFrom IS NULL OR DATE(c.createdAt) >= :ordersFrom) AND "
+			+ "(:ordersTill IS NULL OR DATE(c.createdAt) <= :ordersTill)")
 	public Page<CancelOrder> findAllCancelledSubscriptions(
 			  @Param("pubId") Integer pubId,
 			  @Param("ordersFrom") Date ordersFrom, 
@@ -28,7 +28,7 @@ public interface CancelOrderRepo extends JpaRepository<CancelOrder ,Integer> {
 			  @Param("currencyType") String currencyType, @Param("orderType") String orderType, Pageable page);
 	
 	
-@Query("select co from CancelOrder co JOIN co.orderid oid JOIN oid.customerId cid WHERE (cid.publisher.id = :pubId OR :pubId IS NULL) AND (DATE(co.date) >= :startRefund AND DATE(co.date) <= :endRefund)")
+@Query("select co from CancelOrder co JOIN co.orderid oid JOIN oid.customerId cid WHERE (cid.publisher.id = :pubId OR :pubId IS NULL) AND (DATE(co.createdAt) >= :startRefund AND DATE(co.createdAt) <= :endRefund)")
 	Page<CancelOrder> findAllRefundProcessReport(
 			 @Param("pubId") Integer pubId,
 			@Param("startRefund") Date startRefund, 
