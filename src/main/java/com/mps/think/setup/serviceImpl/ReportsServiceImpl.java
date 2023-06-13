@@ -14,14 +14,17 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.CancelOrder;
 import com.mps.think.setup.model.CustomerDetails;
+import com.mps.think.setup.model.MakePayment;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.PaymentInformation;
 import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.CancelOrderRepo;
 import com.mps.think.setup.repo.CustomerDetailsRepo;
+import com.mps.think.setup.repo.MakePaymentRepo;
 import com.mps.think.setup.repo.PaymentInformationRepo;
 import com.mps.think.setup.service.ReportsService;
 import com.mps.think.setup.vo.CancelSubscirptionReportView;
+import com.mps.think.setup.vo.CreditCardDeclinedView;
 import com.mps.think.setup.vo.CustomerDetailsVO;
 import com.mps.think.setup.vo.DailyCashReportView;
 import com.mps.think.setup.vo.EnumModelVO;
@@ -50,6 +53,9 @@ public class ReportsServiceImpl implements ReportsService {
 	
 	@Autowired
 	private ObjectMapper mapper;
+	
+	@Autowired
+	private MakePaymentRepo makePaymentRepo;
 
 	@Override
 	public Page<Order> getAllOrderReports(Integer pubId, String orderStatus, Date ordersFrom, Date ordersTill, Integer customerId,
@@ -219,9 +225,37 @@ public class ReportsServiceImpl implements ReportsService {
 		return new PageImpl<>(sov, allSalesListByOrderViewReport.getPageable(), allSalesListByOrderViewReport.getTotalElements());
 		
 	}
-}
 
-	
+	@Override
+	public Page<CreditCardDeclinedView> getAllCreditCardDeclinedViewReport(Integer pubId, Date paymentStartDate,
+			Date paymentEndDate, Pageable page) {
+		if (paymentStartDate == null) paymentStartDate = new Date(0);
+		if (paymentEndDate == null) paymentEndDate = new Date();
+
+		
+		Page<MakePayment> allCreditCardDeclinedViewReport = makePaymentRepo.findAllCreditCardDeclinedViewReport(pubId, paymentStartDate, paymentEndDate,  page);
+		List<CreditCardDeclinedView> ccdv = new ArrayList<>();
+		
+		allCreditCardDeclinedViewReport.toList().forEach(c -> {
+			CreditCardDeclinedView obj = new CreditCardDeclinedView();
+			obj.setPaymentDate(c.getCreatedAt());
+			obj.setOrderId(c.getOrder().getOrderId());
+			obj.setCreditCardNumber(c.getCard());
+			obj.setCreditCardExpiryDate(c.getExpiryDate());
+			obj.setBaseAmount(c.getBaseAmount());
+			obj.setNameOfCustomer(c.getNameOfCustomer());
+			obj.setCustomerNumber(c.getOrder().getCustomerId().getCustomerId());
+			obj.setCurrency(c.getOrder().getPaymentBreakdown().getCurrencyType());
+			
+			ccdv.add(obj);
+			
+	});
+		return new PageImpl<>(ccdv, allCreditCardDeclinedViewReport.getPageable(), allCreditCardDeclinedViewReport.getTotalElements());
+		
+		
+	}
+
+}
 	
 
 	
