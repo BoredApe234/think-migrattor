@@ -525,5 +525,19 @@ public class EnumModelVO {
 			return addressValidation;
 		}
 	}
+	
+	public static enum StateCode {
+		One("Canada"), Two("US"), Three("UK");
+
+		private final String stateCode;
+
+		StateCode(String stateCode) {
+			this.stateCode = stateCode;
+		}
+
+		public String getStateCode() {
+			return stateCode;
+		}
+	}
 
 }
