@@ -27,22 +27,22 @@ public class InventoryController {
 	@Autowired
 	private InventoryService inventoryService;
 
-	@GetMapping("/inventory")
+	@GetMapping("/getInventory")
 	public ResponseEntity<?> getAllInventory() {
 		return ResponseEntity.ok(inventoryService.getAllInventory());
 	}
 
-	@GetMapping("/inventory/{inventoryId}")
+	@GetMapping("/getInventoryById/{inventoryId}")
 	public ResponseEntity<?> getInventoryById(@PathVariable Integer inventoryId) {
 		return ResponseEntity.ok(inventoryService.getInventoryById(inventoryId));
 	}
 
-	@PostMapping("/inventory")
+	@PostMapping("/saveInventory")
 	public ResponseEntity<?> saveInventory(@Valid @RequestBody InventoryMapperVO inventory) {
 		return ResponseEntity.ok(inventoryService.saveInventory(inventory));
 	}
 
-	@PutMapping("/inventory")
+	@PutMapping("/updateInventory")
 	public ResponseEntity<?> updateInventory(@Valid @RequestBody InventoryMapperVO inventory) {
 		return ResponseEntity.ok(inventoryService.updateInventory(inventory));
 	}
