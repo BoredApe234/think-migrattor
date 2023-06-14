@@ -118,7 +118,7 @@ public class EnumModelVO {
 
 	public static enum AddressType {
 
-		Business("Business"), Residential("Residential");
+		Business("Business"), Residential("Residential"), Other("Other");
 
 		private final String displayAddressType;
 

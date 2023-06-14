@@ -19,7 +19,7 @@ public class AddressesVO {
 	private String name;
 	private String addressLine1;
 	private String addressLine2;
-	private Integer zipCode;
+	private String zipCode;
 	private String city;
 	private String state;
 	private String country;
@@ -85,10 +85,10 @@ public class AddressesVO {
 	public void setAddressLine2(String addressLine2) {
 		this.addressLine2 = addressLine2;
 	}
-	public Integer getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
-	public void setZipCode(Integer zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 	public String getCity() {

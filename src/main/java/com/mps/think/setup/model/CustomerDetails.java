@@ -35,7 +35,7 @@ public class CustomerDetails  extends BaseEntity{
 	
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer customerId;
 	
 //	@Enumerated(EnumType.STRING)
@@ -46,11 +46,11 @@ public class CustomerDetails  extends BaseEntity{
 	@Column(name = "think_category")
 	private String thinkCategory;
 	
-	@NotBlank
+//	@NotBlank
 	@Column(name = "salutation")
 	private String salutation;
 	
-	@NotBlank
+//	@NotBlank
 	@Column(name = "fname")
 	private String fname;
 	
@@ -471,6 +471,12 @@ public class CustomerDetails  extends BaseEntity{
 
 	public void setDateUntilDeactivation(Date dateUntilDeactivation) {
 		this.dateUntilDeactivation = dateUntilDeactivation;
+	}
+
+	@Override
+	public String toString() {
+		return "CustomerDetails [customerId=" + customerId + ", fname=" + fname + ", lname=" + lname + ", company="
+				+ company + ", email=" + email + "]";
 	}
 	
 	

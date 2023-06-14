@@ -65,7 +65,7 @@ public class Addresses  extends BaseEntity{
 	private String addressLine2;
 	
 	@Column(name = "zipCode" )
-	private Integer zipCode;
+	private String zipCode;
 	
 	@Column(name = "city")
 	private String city;
@@ -174,11 +174,11 @@ public class Addresses  extends BaseEntity{
 		this.addressLine2 = addressLine2;
 	}
 
-	public Integer getZipCode() {
+	public String getZipCode() {
 		return zipCode;
 	}
 
-	public void setZipCode(Integer zipCode) {
+	public void setZipCode(String zipCode) {
 		this.zipCode = zipCode;
 	}
 
