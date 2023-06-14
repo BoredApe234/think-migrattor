@@ -1,5 +1,6 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -7,7 +8,9 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mps.think.setup.model.Address;
 import com.mps.think.setup.model.Addresses;
+import com.mps.think.setup.model.Countries;
 import com.mps.think.setup.repo.AddressesRepo;
 import com.mps.think.setup.service.AddressService;
 import com.mps.think.setup.vo.AddressesVO;
@@ -21,10 +24,7 @@ public class AddressesServiceImpl implements AddressService  {
 	@Autowired
 	CustomerDetailsServiceImpl customerDetailsServiceImpl;
 	
-	@Override
-	public List<Addresses> getAllAddress() {
-		return addressRepo.findAll();
-	}
+	
 
 	@Override
 	public AddressesVO saveAddresses(AddressesVO addresses) {
@@ -50,6 +50,7 @@ public class AddressesServiceImpl implements AddressService  {
 		data.setAddressAuxJSON(addresses.getAddressAuxJSON());
 		data.setSelectionFrom(addresses.getSelectionFrom());
 		data.setSelectionTo(addresses.getSelectionTo());
+		data.setAddressstatus(addresses.getAddressstatus());
 		addresses.setAddressId(data.getAddressId());
 		addressRepo.saveAndFlush(data);
 		addresses.setAddressId(data.getAddressId());
@@ -79,6 +80,7 @@ public class AddressesServiceImpl implements AddressService  {
 		data.setFrequency(addresses.getFrequency());
 		data.setSelectionFrom(addresses.getSelectionFrom());
 		data.setSelectionTo(addresses.getSelectionTo());
+		data.setAddressstatus(addresses.getAddressstatus());
 		data.setAddressAuxJSON(addresses.getAddressAuxJSON());
 		addressRepo.saveAndFlush(data);
 		return addresses;
@@ -113,6 +115,26 @@ public class AddressesServiceImpl implements AddressService  {
 		address.setPrimaryAddress(true);
 		addressRepo.saveAndFlush(address);
 	}
+
+	
+
+	
+
+	@Override
+	public List<Addresses> getAllAddresses() {
+		return addressRepo.findAll();
+	}
+
+	@Override
+	public List<Addresses> getTodayAndYesterdayRecords() {
+        LocalDate today = LocalDate.now();
+        LocalDate yesterday = today.minusDays(1);   
+        return addressRepo.findTodayAndYesterdayRecords(today, yesterday);
+        
+	}
+	
+
+	
 	
 //	@Override
 //	public Addresses updatePrimaryAddressbyCustId(Integer customerId, Integer addressId) {

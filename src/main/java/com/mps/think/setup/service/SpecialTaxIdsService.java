@@ -22,4 +22,6 @@ public interface SpecialTaxIdsService {
 
 	List<SpecialTaxIds> findAllSpecialTaxIdsForPublisher(Integer pubId);
 
+	public List<SpecialTaxIds> getAllSpecialTaxIds();
+
 }

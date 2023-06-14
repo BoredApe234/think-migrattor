@@ -25,4 +25,6 @@ public interface IssueGenerationService {
 	public List<IssueGeneration> deleteIssueById(Integer[] issueId);
 
 	public List<IssueGeneration> getAllIssueGenerationForPublisher(Integer pubId);
+
+	public List<IssueGeneration> getAllIssueGeneration();
 }

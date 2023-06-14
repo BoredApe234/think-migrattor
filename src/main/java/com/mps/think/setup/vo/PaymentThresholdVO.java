@@ -1,6 +1,5 @@
 package com.mps.think.setup.vo;
 
-import com.mps.think.setup.model.PaymentThresholdDef;
 import com.mps.think.setup.model.Publisher;
 
 public class PaymentThresholdVO {
@@ -33,8 +32,12 @@ public class PaymentThresholdVO {
 
 	private boolean underpaymentOverrides;
 	
-	private PaymentThresholdDef paymentThresholdDef;
+	private String paymentThresholdCode;
 
+	private String paymentThresholdDescription;
+	
+	private boolean status;
+	
 	public Integer getPaymentThresholdId() {
 		return paymentThresholdId;
 	}
@@ -147,14 +150,29 @@ public class PaymentThresholdVO {
 		this.underpaymentOverrides = underpaymentOverrides;
 	}
 
-	public PaymentThresholdDef getPaymentThresholdDef() {
-		return paymentThresholdDef;
+	public String getPaymentThresholdCode() {
+		return paymentThresholdCode;
 	}
 
-	public void setPaymentThresholdDef(PaymentThresholdDef paymentThresholdDef) {
-		this.paymentThresholdDef = paymentThresholdDef;
+	public void setPaymentThresholdCode(String paymentThresholdCode) {
+		this.paymentThresholdCode = paymentThresholdCode;
 	}
 
+	public String getPaymentThresholdDescription() {
+		return paymentThresholdDescription;
+	}
+
+	public void setPaymentThresholdDescription(String paymentThresholdDescription) {
+		this.paymentThresholdDescription = paymentThresholdDescription;
+	}
+
+	public boolean isStatus() {
+		return status;
+	}
+
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
 
 	
 }

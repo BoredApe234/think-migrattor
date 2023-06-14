@@ -18,4 +18,6 @@ public interface LableFormatGroupsService {
 	
 	public List<LableFormatGroups> findAllLableFormatGroupsByPubId(Integer lableFormatId);
 
+	public List<LableFormatGroups> getAllLableFormatGroups();
+
 }

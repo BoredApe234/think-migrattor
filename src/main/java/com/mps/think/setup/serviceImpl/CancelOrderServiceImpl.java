@@ -8,9 +8,12 @@ import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.CancelOrder;
+import com.mps.think.setup.model.Order;
+import com.mps.think.setup.repo.AddOrderRepo;
 import com.mps.think.setup.repo.CancelOrderRepo;
 import com.mps.think.setup.service.CancelOrderService;
 import com.mps.think.setup.vo.CancelOrderVO;
+import com.mps.think.setup.vo.EnumModelVO.OrderStatus;
 
 @Service
 public class CancelOrderServiceImpl implements CancelOrderService {
@@ -18,27 +21,30 @@ public class CancelOrderServiceImpl implements CancelOrderService {
 	@Autowired
 	private CancelOrderRepo cancelOrderRepo;
 	
+	@Autowired
+	private AddOrderRepo orderRepo;
+	
+	@Autowired
+	private ObjectMapper mapper;
+	
 	@Override
 	public List<CancelOrder> getAllCancelOrder() {
 		return cancelOrderRepo.findAll();
 	}
 
 	@Override
-	public CancelOrderVO saveCancelOrder(CancelOrderVO cancelOrder) {
-		ObjectMapper mapper = new ObjectMapper();
-		CancelOrder newCancelOrder = mapper.convertValue(cancelOrder, CancelOrder.class);
-		CancelOrder data=cancelOrderRepo.saveAndFlush(newCancelOrder);
-		newCancelOrder.setCancelorderId(data.getCancelorderId());
-		return cancelOrder;
+	public CancelOrder saveCancelOrder(CancelOrderVO cancelOrder) {
+		CancelOrder cod = cancelOrderRepo.saveAndFlush(mapper.convertValue(cancelOrder, CancelOrder.class));
+		Order order = cod.getOrderid();
+//		if (cancelOrder.getCancelReasonsId().getCancelReason())
+		order.setOrderStatus(OrderStatus.cancel_customer_request.getDisplayName());
+		orderRepo.saveAndFlush(order);
+		return cod;
 	}
 	
 	@Override
-	public CancelOrderVO updateCancelOrder(CancelOrderVO cancelOrder) {
-		ObjectMapper mapper = new ObjectMapper();
-		CancelOrder cancelOrderToUpdate = mapper.convertValue(cancelOrder, CancelOrder.class);
-		CancelOrder data=cancelOrderRepo.saveAndFlush(cancelOrderToUpdate);
-		cancelOrder.setCancelorderId(data.getCancelorderId());
-		return cancelOrder;
+	public CancelOrder updateCancelOrder(CancelOrderVO cancelOrder) {
+		return cancelOrderRepo.saveAndFlush(mapper.convertValue(cancelOrder, CancelOrder.class));
 	}
 	
 	@Override

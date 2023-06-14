@@ -34,6 +34,9 @@ public class RentalStatus extends BaseEntity {
 	@Column(name = "rent_name")
 	private Integer rentName;
 	
+	@Column(name = "defaultrentalstatus")
+	private Boolean defaultrentalstatus;
+	
 	@OneToOne
 	@JoinColumn(name = "pub_id", referencedColumnName = "id" )
 	private Publisher publisher;
@@ -54,15 +57,6 @@ public class RentalStatus extends BaseEntity {
 		this.rentalcategory = rentalcategory;
 	}
 
-	public Integer getRentEmail() {
-		return rentEmail;
-	}
-
-	public void setRentEmail(Integer rentEmail) {
-		this.rentEmail = rentEmail;
-	}
-
-	
 	public String getDescription() {
 		return description;
 	}
@@ -71,12 +65,28 @@ public class RentalStatus extends BaseEntity {
 		this.description = description;
 	}
 
+	public Integer getRentEmail() {
+		return rentEmail;
+	}
+
+	public void setRentEmail(Integer rentEmail) {
+		this.rentEmail = rentEmail;
+	}
+
 	public Integer getRentName() {
 		return rentName;
 	}
 
 	public void setRentName(Integer rentName) {
 		this.rentName = rentName;
+	}
+
+	public Boolean getDefaultrentalstatus() {
+		return defaultrentalstatus;
+	}
+
+	public void setDefaultrentalstatus(Boolean defaultrentalstatus) {
+		this.defaultrentalstatus = defaultrentalstatus;
 	}
 
 	public Publisher getPublisher() {
@@ -91,7 +101,10 @@ public class RentalStatus extends BaseEntity {
 	public String toString() {
 		return "RentalStatus [rentalStatusId=" + rentalStatusId + ", rentalcategory=" + rentalcategory
 				+ ", description=" + description + ", rentEmail=" + rentEmail + ", rentName=" + rentName
-				+ ", publisher=" + publisher + "]";
+				+ ", defaultrentalstatus=" + defaultrentalstatus + ", publisher=" + publisher + "]";
 	}
+
+	
+	
 
 }

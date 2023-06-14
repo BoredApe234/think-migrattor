@@ -27,7 +27,7 @@ public class SubmitJob extends BaseEntity {
 	private Integer id;
 	
 	@OneToOne
-	@JoinColumn(name = "addProcess_id", referencedColumnName = "process_id" )
+	@JoinColumn(name = "addProcess_id", referencedColumnName = "id" )
 	private AddProcess addProcessId;
 	
 	@OneToOne
@@ -332,6 +332,20 @@ public class SubmitJob extends BaseEntity {
 
 	public void setProformaorders(Boolean proformaorders) {
 		this.proformaorders = proformaorders;
+	}
+
+	@Override
+	public String toString() {
+		return "SubmitJob [id=" + id + ", addProcessId=" + addProcessId + ", processOutputId=" + processOutputId
+				+ ", jobdescription=" + jobdescription + ", runjoblocally=" + runjoblocally + ", jobnotes=" + jobnotes
+				+ ", defaultjobqueue=" + defaultjobqueue + ", priority=" + priority + ", sendeffort=" + sendeffort
+				+ ", startdate=" + startdate + ", dropdate=" + dropdate + ", cutoffdate=" + cutoffdate + ", holdjob="
+				+ holdjob + ", holdoutput=" + holdoutput + ", holdupdate=" + holdupdate + ", holdformanualselect="
+				+ holdformanualselect + ", volumegroup=" + volumegroup + ", billingdate=" + billingdate + ", none="
+				+ none + ", normal=" + normal + ", detailed=" + detailed + ", orderClass=" + orderClass
+				+ ", closeissue=" + closeissue + ", labelgroup=" + labelgroup + ", keyline=" + keyline
+				+ ", gracenewexpires=" + gracenewexpires + ", servecurrentgraces=" + servecurrentgraces
+				+ ", proformaorders=" + proformaorders + "]";
 	}
 	
 	

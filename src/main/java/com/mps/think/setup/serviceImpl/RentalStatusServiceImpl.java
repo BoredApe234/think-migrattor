@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.webjars.NotFoundException;
 
+import com.mps.think.setup.model.CreditStatus;
 import com.mps.think.setup.model.RentalStatus;
 import com.mps.think.setup.repo.RentalStatusRepo;
 import com.mps.think.setup.service.RentalStatusService;
@@ -34,6 +35,10 @@ public class RentalStatusServiceImpl implements RentalStatusService {
 		data.setRentEmail(rentalStatusVO.getRentEmail());
 		data.setDescription(rentalStatusVO.getDescription());
 		data.setPublisher(rentalStatusVO.getPublisher());
+		data.setDefaultrentalstatus(rentalStatusVO.getDefaultrentalstatus());
+		if(rentalStatusVO.getDefaultrentalstatus() != null && rentalStatusVO.getDefaultrentalstatus()) {
+			makeOtherRentalStatusFalse(rentalStatusVO.getPublisher().getId());			
+		}
 		rentalStatusRepo.saveAndFlush(data);
 		data.setRentalStatusId(rentalStatusVO.getRentalStatusId());
 		return rentalStatusVO;
@@ -48,8 +53,20 @@ public class RentalStatusServiceImpl implements RentalStatusService {
 		data.setRentEmail(rentalStatusVO.getRentEmail());
 		data.setDescription(rentalStatusVO.getDescription());
 		data.setPublisher(rentalStatusVO.getPublisher());
+		data.setDefaultrentalstatus(rentalStatusVO.getDefaultrentalstatus());
+		if(rentalStatusVO.getDefaultrentalstatus() != null && rentalStatusVO.getDefaultrentalstatus()) {
+			makeOtherRentalStatusFalse(rentalStatusVO.getPublisher().getId());			
+		}
 		rentalStatusRepo.saveAndFlush(data);
 		return rentalStatusVO;
+	}
+	
+	private void makeOtherRentalStatusFalse(Integer pubId) {
+		List<RentalStatus> rentalStatusVO = rentalStatusRepo.findByPublisherId(pubId);
+		rentalStatusVO.stream().filter(cc -> cc.getDefaultrentalstatus() == null || cc.getDefaultrentalstatus()).forEach(c -> {
+			c.setDefaultrentalstatus(false);
+		});
+		rentalStatusRepo.saveAllAndFlush(rentalStatusVO);
 	}
 
 	@Override
@@ -71,6 +88,11 @@ public class RentalStatusServiceImpl implements RentalStatusService {
 	@Override
 	public List<RentalStatus> findRentalStatusByPubId(Integer pubId) {
 		return 	rentalStatusRepo.findByPublisherId(pubId);
+	}
+
+	@Override
+	public List<RentalStatus> getAllRentalStatus() {
+		return rentalStatusRepo.findAll();
 	}
 
 }

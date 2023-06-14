@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.mps.think.setup.model.Order;
+import com.mps.think.setup.model.PaymentInformation;
 
 @Repository
 public interface AddOrderRepo extends JpaRepository<Order, Integer> {
@@ -23,12 +24,14 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	
 	public List<Order> findByOrderClassOcId(Integer ocId) throws Exception;
 
-	@Query("SELECT o FROM Order o JOIN o.customerId cus JOIN o.keyOrderInformation keyInfo WHERE "
+	@Query("SELECT o FROM Order o JOIN o.customerId cus JOIN o.keyOrderInformation keyInfo WHERE (cus.publisher.id = :pubId OR :pubId IS NULL) AND"
 			+ "(o.orderStatus LIKE '%'||:orderStatus||'%' OR :orderStatus IS NULL) "
 			+ "AND ((keyInfo.orderDate >= :ordersFrom AND keyInfo.orderDate <= :ordersTill) OR (:ordersFrom IS NULL OR :ordersTill IS NULL)) "
 			+ "AND (cus.customerId LIKE '%'||:customerId||'%' OR :customerId IS NULL) "
 			+ "AND (CONCAT(cus.fname, ' ', cus.lname) LIKE '%'||:customerName||'%' OR :customerName IS NULL)")
-	public Page<Order> findAllOrdersForReport(@Param("orderStatus") String orderStatus,
+	public Page<Order> findAllOrdersForReport(
+			                                  @Param("pubId") Integer pubId, 
+			                                  @Param("orderStatus") String orderStatus,
 											  @Param("ordersFrom") Date ordersFrom, 
 											  @Param("ordersTill") Date ordersTill, 
 											  @Param("customerId") Integer customerId, 
@@ -86,12 +89,13 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	 * term -> term in order item and terms
 	 * rc -> rate card in payment breakdown
 	 * cusCat -> customer category in customer
+	 * pthres -> paymentThreshold in customer details
 	 * 
 	*/
 	
 	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation keyInfo JOIN o.orderItemsAndTerms oitem JOIN o.paymentBreakdown pay JOIN o.deliveryAndBillingOptions dbil "
 			+ "JOIN o.auxiliaryInformation auxInfo LEFT JOIN o.orderAddresses oadd LEFT JOIN oadd.address a LEFT JOIN o.customerId c LEFT JOIN o.orderClass ocls JOIN keyInfo.orderCode ocs "
-			+ "JOIN ocs.orderCodes oc JOIN keyInfo.sourceCode sc JOIN oitem.subsProdPkgDef subdef JOIN oitem.term term JOIN pay.rateCard rc JOIN c.customerCategory cusCat WHERE "
+			+ "JOIN ocs.orderCodes oc JOIN keyInfo.sourceCode sc JOIN oitem.subsProdPkgDef subdef JOIN oitem.term term JOIN pay.rateCard rc JOIN c.customerCategory cusCat LEFT JOIN c.paymentThreshold pthres WHERE "
 			+ "((c.publisher.id = :pubId OR :pubId IS NULL) AND (c.customerId = :customerId OR :customerId IS NULL) AND ((o.orderId LIKE '%'||:keyword||'%') OR (o.orderType LIKE '%'||:keyword||'%') "
 			+ "OR (o.orderStatus LIKE '%'||:keyword||'%') OR (keyInfo.orderCategory LIKE '%'||:keyword||'%') OR (keyInfo.orderStatus LIKE '%'||:keyword||'%') "
 			+ "OR (keyInfo.orderDate LIKE '%'||:keyword||'%') OR (keyInfo.purchaseOrder LIKE '%'||:keyword||'%') OR (keyInfo.agent LIKE '%'||:keyword||'%') "
@@ -115,7 +119,7 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 			+ "OR (c.salesRepresentative LIKE '%'||:keyword||'%') OR (c.creditStatus LIKE '%'||:keyword||'%') OR (c.fax LIKE '%'||:keyword||'%') OR (c.institutionalId LIKE '%'||:keyword||'%') "
 			+ "OR (c.parentInstitutionalId LIKE '%'||:keyword||'%') OR (c.chargeTaxOn LIKE '%'||:keyword||'%') OR (c.paymentOptions LIKE '%'||:keyword||'%') OR (c.configurationOptionsforOrders LIKE '%'||:keyword||'%') "
 			+ "OR (c.newOrderCommission LIKE '%'||:keyword||'%') OR (c.renewalCommission LIKE '%'||:keyword||'%') "
-			+ "OR (c.paymentThreshold LIKE '%'||:keyword||'%') OR (c.custAuxFieldJSON LIKE '%'||:keyword||'%') OR (ocls.orderClassName LIKE '%'||:keyword||'%') "
+			+ "OR (pthres.paymentThresholdCode LIKE '%'||:keyword||'%') OR (c.custAuxFieldJSON LIKE '%'||:keyword||'%') OR (ocls.orderClassName LIKE '%'||:keyword||'%') "
 			+ "OR (ocls.ocType LIKE '%'||:keyword||'%') OR (oc.orderCode LIKE '%'||:keyword||'%') OR (oc.description LIKE '%'||:keyword||'%') "
 			+ "OR (oc.orderType LIKE '%'||:keyword||'%') OR (oc.orderCodeId LIKE '%'||:keyword||'%') OR (oc.orderClassId LIKE '%'||:keyword||'%') "
 			+ "OR (sc.sourceCode LIKE '%'||:keyword||'%') OR (sc.sourceCodeType LIKE '%'||:keyword||'%') OR (sc.description LIKE '%'||:keyword||'%') OR (subdef.subscriptionDefCode LIKE '%'||:keyword||'%') "
@@ -131,6 +135,44 @@ public interface AddOrderRepo extends JpaRepository<Order, Integer> {
 	
 	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation k RIGHT JOIN o.customerId c WHERE (c.customerId = :customerId) AND (k.orderDate LIKE '%'||:year||'%') GROUP BY o.orderId")
 	List<Order> findOrderCountForCustomerInYear(@Param("customerId") Integer customerId, @Param("year") String year);
+	
+	@Query(value = "SELECT o.* FROM order_parent o JOIN customer c ON c.id = o.customer_id WHERE c.id = :customerId ORDER BY o.order_id DESC LIMIT 2",
+			nativeQuery = true)
+	List<Order> fetchRecentTwoOrderByCustomerId(@Param("customerId") Integer customerId);
+
+	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation keyInfo JOIN o.customerId ci WHERE (ci.publisher.id = :pubId OR :pubId IS NULL) AND "
+			+"(:oredrStart IS NULL OR DATE(keyInfo.orderDate) >= :oredrStart) AND "
+			+"(:orderEnd IS NULL OR DATE(keyInfo.orderDate) <= :orderEnd) AND "
+			+ "(:orderType IS NULL OR o.orderType LIKE '%'||:orderType||'%')") 
+	public Page<Order> findAllCustomerSalesList(
+			@Param("pubId") Integer pubId,
+			@Param("oredrStart") Date oredrStart, 
+			@Param("orderEnd") Date orderEnd, 
+			@Param("orderType") String orderType, Pageable page);
+
+	
+	@Query(value = "SELECT *\n"
+			+ "FROM order_parent o WHERE o.customer_id = :customerId\n"
+			+ "ORDER BY (o.order_id = :orderId) DESC, o.order_id ASC",
+			nativeQuery = true)
+	List<Order> fetchOrdersForPaymentsByCustomerIdPrioGivenOrderId(@Param("customerId") Integer customerId, @Param("orderId") Integer orderId);
+//	countQuery = "SELECT COUNT(*) FROM order_parent o WHERE o.customer_id = :customerId",
+	
+	@Query("SELECT o FROM Order o JOIN o.customerId c WHERE (:publisherId IS NULL OR c.publisher.id = :publisherId) AND (:customerId IS NULL OR c.customerId = :customerId) "
+			+ "AND o.orderType = :orderType GROUP BY o.orderId")
+	Page<Order> findAllOrderOfGiveType(@Param("publisherId") Integer publisherId, @Param("customerId") Integer customerId, @Param("orderType") String orderType, Pageable page);
+
+	
+	@Query("SELECT o FROM Order o JOIN o.keyOrderInformation keyInfo JOIN o.customerId ci WHERE (ci.publisher.id = :pubId OR :pubId IS NULL) AND "
+			+ "(:orderStartDate IS NULL OR DATE(keyInfo.orderDate) >= :orderStartDate) AND "
+			+ "(:orderEndDate IS NULL OR DATE(keyInfo.orderDate) <= :orderEndDate) AND "
+			+ "(:orderType IS NULL OR o.orderType LIKE '%'||:orderType||'%')")
+	public Page<Order> findAllSalesListByOrderViewReport(
+			@Param("pubId") Integer pubId, 
+			@Param("orderStartDate") Date orderStartDate,
+			@Param("orderEndDate") Date orderEndDate,
+			@Param("orderType") String orderType, Pageable page);
+	
 	
 }
 

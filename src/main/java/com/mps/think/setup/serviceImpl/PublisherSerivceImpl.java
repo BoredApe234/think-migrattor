@@ -78,4 +78,9 @@ public class PublisherSerivceImpl implements PublisherSerivce {
 		return cs.get();
 	}
 
+	@Override
+	public List<Publisher> getAllPublisher() {
+		return publisherRepo.findAll();
+	}
+
 }

@@ -47,6 +47,10 @@ public class InventoryMapper extends BaseEntity {
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "bulk_inventory_totals_id", referencedColumnName = "id" )
 	private InventoryBulkTotals bulkInventoryTotals;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "vendor_information_id", referencedColumnName = "id" )
+	private InventoryVendorDetails vendorInformation;
 
 	public Integer getInventoryId() {
 		return inventoryId;
@@ -102,6 +106,22 @@ public class InventoryMapper extends BaseEntity {
 
 	public void setBulkInventoryTotals(InventoryBulkTotals bulkInventoryTotals) {
 		this.bulkInventoryTotals = bulkInventoryTotals;
+	}
+
+	public InventoryVendorDetails getVendorInformation() {
+		return vendorInformation;
+	}
+
+	public void setVendorInformation(InventoryVendorDetails vendorInformation) {
+		this.vendorInformation = vendorInformation;
+	}
+
+	@Override
+	public String toString() {
+		return "InventoryMapper [inventoryId=" + inventoryId + ", generalInformation=" + generalInformation
+				+ ", unitInformation=" + unitInformation + ", orderSettings=" + orderSettings + ", inventoryTotals="
+				+ inventoryTotals + ", primaryStorageLocation=" + primaryStorageLocation + ", bulkInventoryTotals="
+				+ bulkInventoryTotals + "]";
 	}
 
 }

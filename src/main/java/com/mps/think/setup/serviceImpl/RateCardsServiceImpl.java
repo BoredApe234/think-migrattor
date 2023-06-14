@@ -77,4 +77,9 @@ public class RateCardsServiceImpl implements RateCardsService {
 		// TODO Auto-generated method stub
 		return rateCardsRepo.findByOcIdPubIdId(pubId);
 	}
+
+	@Override
+	public List<RateCards> getAllRateCards() {
+		return rateCardsRepo.findAll();
+	}
 }

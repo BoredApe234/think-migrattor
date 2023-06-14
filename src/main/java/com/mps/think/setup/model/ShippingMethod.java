@@ -66,5 +66,11 @@ public class ShippingMethod extends BaseEntity {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return "ShippingMethod [id=" + id + ", shippingMethod=" + shippingMethod + ", description=" + description
+				+ ", publisher=" + publisher + "]";
+	}
+
 	
 }

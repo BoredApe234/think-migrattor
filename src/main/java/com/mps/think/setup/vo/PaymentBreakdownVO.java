@@ -16,7 +16,7 @@ public class PaymentBreakdownVO {
 
 	private Date effectiveDate;
 
-	private PaymentStatus paymentStatus;
+	private String paymentStatus;
 
 	private String term;
 
@@ -24,7 +24,7 @@ public class PaymentBreakdownVO {
 	
 	private String currency;
 
-	private BigDecimal discount;
+	private String discount;
 
 	private BigDecimal tax;
 
@@ -35,6 +35,8 @@ public class PaymentBreakdownVO {
 	private BigDecimal shippingCharge;
 	
 	private BigDecimal netAmount;
+	
+	private Date rCardDate;
 
 	public Integer getId() {
 		return id;
@@ -68,11 +70,11 @@ public class PaymentBreakdownVO {
 		this.effectiveDate = effectiveDate;
 	}
 
-	public PaymentStatus getPaymentStatus() {
+	public String getPaymentStatus() {
 		return paymentStatus;
 	}
 
-	public void setPaymentStatus(PaymentStatus paymentStatus) {
+	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
 
@@ -92,11 +94,19 @@ public class PaymentBreakdownVO {
 		this.baseAmount = baseAmount;
 	}
 
-	public BigDecimal getDiscount() {
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public String getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(BigDecimal discount) {
+	public void setDiscount(String discount) {
 		this.discount = discount;
 	}
 
@@ -140,12 +150,23 @@ public class PaymentBreakdownVO {
 		this.netAmount = netAmount;
 	}
 
-	public String getCurrency() {
-		return currency;
+	public Date getrCardDate() {
+		return rCardDate;
 	}
 
-	public void setCurrency(String currency) {
-		this.currency = currency;
+	public void setrCardDate(Date rCardDate) {
+		this.rCardDate = rCardDate;
 	}
+
+	@Override
+	public String toString() {
+		return "PaymentBreakdownVO [id=" + id + ", currencyType=" + currencyType + ", rateCard=" + rateCard
+				+ ", effectiveDate=" + effectiveDate + ", paymentStatus=" + paymentStatus + ", term=" + term
+				+ ", baseAmount=" + baseAmount + ", currency=" + currency + ", discount=" + discount + ", tax=" + tax
+				+ ", grossAmount=" + grossAmount + ", commission=" + commission + ", shippingCharge=" + shippingCharge
+				+ ", netAmount=" + netAmount + ", rCardDate=" + rCardDate + "]";
+	}
+
+	
 
 }

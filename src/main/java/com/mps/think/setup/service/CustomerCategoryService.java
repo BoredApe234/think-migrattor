@@ -19,4 +19,7 @@ public interface CustomerCategoryService {
 	
 	public CustomerCategory deleteByCustomerCategoryId(Integer customerCategoryId);
 
+	
+	public List<CustomerCategory> getAllCustomerCategory();
+
 }

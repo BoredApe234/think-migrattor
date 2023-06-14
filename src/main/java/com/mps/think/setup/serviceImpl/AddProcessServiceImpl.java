@@ -1,13 +1,16 @@
 package com.mps.think.setup.serviceImpl;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mps.think.setup.model.AddProcess;
+import com.mps.think.setup.model.Addprocessmapping;
 import com.mps.think.setup.repo.AddProcessRepo;
 import com.mps.think.setup.service.AddProcessService;
 import com.mps.think.setup.vo.AddProcessVO;
@@ -17,6 +20,9 @@ public class AddProcessServiceImpl implements AddProcessService {
 	
 	@Autowired
 	private AddProcessRepo addProcessRepo;
+	
+	@Autowired
+	private ObjectMapper mapper;
 
 	@Override
 	public List<AddProcess> getAllProcess() {
@@ -24,21 +30,13 @@ public class AddProcessServiceImpl implements AddProcessService {
 	}
 
 	@Override
-	public AddProcessVO saveProcess(AddProcessVO process) {
-		ObjectMapper mapper = new ObjectMapper();
-		AddProcess newAddProcess = mapper.convertValue(process, AddProcess.class);
-		AddProcess data=addProcessRepo.saveAndFlush(newAddProcess);
-		process.setProcess_id(data.getProcess_id());
-		return process;
+	public AddProcess saveProcess(AddProcessVO process) {
+	return addProcessRepo.saveAndFlush(mapper.convertValue(process, AddProcess.class));
 	}
 
 	@Override
-	public AddProcessVO updateProcess(AddProcessVO process) {
-		ObjectMapper mapper = new ObjectMapper();
-		AddProcess updateAddProcess = mapper.convertValue(process, AddProcess.class);
-		AddProcess data=addProcessRepo.saveAndFlush(updateAddProcess);
-		process.setProcess_id(data.getProcess_id());
-		return process;
+	public AddProcess updateProcess(AddProcessVO process) {
+		return  addProcessRepo.saveAndFlush(mapper.convertValue(process, AddProcess.class));
 	}
 
 	@Override
@@ -53,10 +51,22 @@ public class AddProcessServiceImpl implements AddProcessService {
 		addProcessRepo.delete(delete);
 		return delete;
 	}
-	
+
 	@Override
-	public List<AddProcess> findAllAddProcessByPId(Integer pid) {
-		return addProcessRepo.findByprocesstypeidPid(pid);
+	public List<Addprocessmapping> getAllAddprocessmapping() {
+		List<List<Addprocessmapping>> collect = addProcessRepo.findAll().stream().map(a -> a.getAddprocessmapping()).collect(Collectors.toList());
+		List<Addprocessmapping> output = new ArrayList<>();
+		for (List<Addprocessmapping> s : collect) {
+			output.addAll(s);
+		}
+		return output;
 	}
+
+	
+	
+//	@Override
+//	public List<AddProcess> findAllAddProcessByPId(Integer pid) {
+//		return addProcessRepo.findByprocesstypeidPid(pid);
+//	}
 
 }

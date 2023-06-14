@@ -1,0 +1,73 @@
+package com.mps.think.setup.vo;
+
+import java.util.List;
+import com.mps.think.setup.model.Publisher;
+
+
+public class RegionListVO {
+	
+	private Integer id;
+	private Publisher pubId;
+	private List<RegionListMappingVO> regionListMapping;
+	private List<String> state;
+	private String rlist;
+	private String taxcomputation;
+	private String addressvalidation;
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Publisher getPubId() {
+		return pubId;
+	}
+	public void setPubId(Publisher pubId) {
+		this.pubId = pubId;
+	}
+	public List<RegionListMappingVO> getRegionListMapping() {
+		return regionListMapping;
+	}
+	public void setRegionListMapping(List<RegionListMappingVO> regionListMapping) {
+		this.regionListMapping = regionListMapping;
+	}
+	public List<String> getState() {
+		return state;
+	}
+	public void setState(List<String> state) {
+		this.state = state;
+	}
+	public String getRlist() {
+		return rlist;
+	}
+	public void setRlist(String rlist) {
+		this.rlist = rlist;
+	}
+	public String getTaxcomputation() {
+		return taxcomputation;
+	}
+	public void setTaxcomputation(String taxcomputation) {
+		this.taxcomputation = taxcomputation;
+	}
+	public String getAddressvalidation() {
+		return addressvalidation;
+	}
+	public void setAddressvalidation(String addressvalidation) {
+		this.addressvalidation = addressvalidation;
+	}
+	@Override
+	public String toString() {
+		return "RegionListVO [id=" + id + ", pubId=" + pubId + ", regionListMapping=" + regionListMapping + ", state="
+				+ state + ", rlist=" + rlist + ", taxcomputation=" + taxcomputation + ", addressvalidation="
+				+ addressvalidation + "]";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+
+}

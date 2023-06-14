@@ -247,7 +247,14 @@ public class EnumModelVO {
 
 	public static enum OrderStatus {
 
-		Active("Active"), Cancelled("Cancelled"), Pending("Pending");
+//		Active("Active"), Cancelled("Cancelled"), Pending("Pending"), SUSPENDED_TEMP("Suspended-Temporary"), SUSPEND_NON_PAY("Suspend Non-Pay");
+		
+		order_placed("order placed"), active_shipping("active/shipping"),
+		cancel_for_nonpayment("cancel for nonpayment"), cancel_customer_request("cancel - customer request"),
+		cancel_waiting_credit_card_authorization("cancel/waiting credit card authorization"),
+		partial_shipment("partial shipment"),shipped_complete("shipped complete"),grace("grace"),
+		suspend_for_nonpayment("suspend for nonpayment"),temporary_suspend("temporary suspend"),hold_for_payment("hold for payment"),
+		suspend_not_deliverable("suspend not deliverable");
 
 		private final String displayOrderStatus;
 
@@ -363,6 +370,174 @@ public class EnumModelVO {
 			return cvv;
 		}
 	
+	}
+	public static enum Mode {
+		One("Print"), Two("File"), Three("Window"), Four("Unused");
+
+		private final String mode;
+
+		Mode(String mode) {
+			this.mode = mode;
+		}
+
+		public String getMode() {
+			return mode;
+		}
+	}
+	
+	public static enum Interval {
+		Minute("Minute"), Day("Day"), Month("Month");
+
+		private final String interval;
+
+		Interval(String interval) {
+			this.interval = interval;
+		}
+
+		public String getInterval() {
+			return interval;
+		}
+	}
+	
+	public static enum Type {
+		One("By Issues"), Two("By Volume Group"), Three("Requal");
+
+		private final String type;
+
+		Type(String type) {
+			this.type = type;
+		}
+
+		public String getType() {
+			return type;
+		}
+	}
+	
+	public static enum EffortType {
+		One("Issues/Unitd Left"), Two("Issues/Unitd Left With Expire"), Three("At Birth"),
+		Four("By Package Expire Date") , Five("By Subscription Expire Date"), Six("Extract Issues/Units Left");
+
+		private final String effortType;
+
+		EffortType(String effortType) {
+			this.effortType = effortType;
+		}
+
+		public String getEffortType() {
+			return effortType;
+		}
+	}
+	
+	public static enum SendTo {
+		One("Donor"), Two("Recipient");
+
+		private final String sendTo;
+
+		SendTo(String sendTo) {
+			this.sendTo = sendTo;
+		}
+
+		public String getSendTo() {
+			return sendTo;
+		}
+	}
+	
+	public static enum Pricing {
+		One("Use Expire Date"), Two("Use Run Date");
+
+		private final String pricing;
+
+		Pricing(String pricing) {
+			this.pricing = pricing;
+		}
+
+		public String getPricing() {
+			return pricing;
+		}
+	}
+	
+	public static enum ExemptStatus {
+		One("Not Tax Exempt"), Two("Yes Tax Exempt"), Three("Always Tax Exempt");
+
+		private final String exemptStatus;
+
+		ExemptStatus(String exemptStatus) {
+			this.exemptStatus = exemptStatus;
+		}
+
+		public String getExemptStatus() {
+			return exemptStatus;
+		}
+	}
+	public static enum Addressstatus {
+		One("ABUSER: Suspected Abuser"), Two("CLEARED Address Cleared"), Three("DEC Deceased"),
+		Four("DO NOT MAIL Requested Do Not Mail"), Five("DUPE Duplicate"), Six("HOLD Hold Account"),
+		Seven("NCOA NCOA Reported Undeliverable"), Eight("OPEN Open Account"), Nine("OPEN-No Mail Open Account - request no mail")
+		, Ten("SUSPEND USPS Temp Service Suspension"), Eleven("UNDEL Return Undeliverable");
+		private final String addressstatus;
+
+		Addressstatus(String addressstatus) {
+			this.addressstatus = addressstatus;
+		}
+
+		public String getAddressstatus() {
+			return addressstatus;
+		}
+	}
+	public static enum Region {
+		One("Asia"), Two("Africa"), Three("Antarctica"), Four("Australia"), Five("Europe") , Six("North America"), Seven("South America");
+
+		private final String region;
+
+		Region(String region) {
+			this.region = region;
+		}
+
+		public String getRegion() {
+			return region;
+		}
+	}
+	
+	public static enum TaxComputation {
+		One("None"), Two("Avalara"), Three("Taxjar");
+
+		private final String taxComputation;
+
+		TaxComputation(String taxComputation) {
+			this.taxComputation = taxComputation;
+		}
+
+		public String getTaxComputation() {
+			return taxComputation;
+		}
+	}
+	
+	public static enum AddressValidation {
+		One("None"), Two("Avalara");
+
+		private final String addressValidation;
+
+		AddressValidation(String addressValidation) {
+			this.addressValidation = addressValidation;
+		}
+
+		public String getAddressValidation() {
+			return addressValidation;
+		}
+	}
+	
+	public static enum StateCode {
+		One("Canada"), Two("US"), Three("UK");
+
+		private final String stateCode;
+
+		StateCode(String stateCode) {
+			this.stateCode = stateCode;
+		}
+
+		public String getStateCode() {
+			return stateCode;
+		}
 	}
 
 }

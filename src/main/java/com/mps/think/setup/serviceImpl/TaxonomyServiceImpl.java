@@ -74,6 +74,11 @@ public class TaxonomyServiceImpl implements TaxonomyService {
 		// TODO Auto-generated method stub
 		return taxonomyRepo.findByPubIdId(publisherId);
 	}
+
+	@Override
+	public List<Taxonomy> getAllTaxonomy() {
+		return taxonomyRepo.findAll();
+	}
 	
 
 }

@@ -59,4 +59,9 @@ public class ValueForScAttributeServiceImpl implements ValueForScAttributeServic
 		return todelete;
 	}
 
+	@Override
+	public List<ValueForScAttribute> getAllValueForScAttribute() {
+		return valueForScAttributeRepo.findAll();
+	}
+
 }

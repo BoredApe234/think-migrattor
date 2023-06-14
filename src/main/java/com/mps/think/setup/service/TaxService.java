@@ -19,4 +19,6 @@ public interface TaxService {
 	
 	List<TaxType> findAllTaxTypeForPublisher(Integer pubId);
 
+	public List<TaxType> getAllTaxType();
+
 }

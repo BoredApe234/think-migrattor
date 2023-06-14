@@ -38,6 +38,10 @@ public class OrderItems extends BaseEntity {
 	@JoinColumn(name = "subscription_id", referencedColumnName = "id")
 	private SubscriptionDefKeyInfo subsProdPkgDef;
 	
+	@OneToOne
+	@JoinColumn(name = "product_def", referencedColumnName = "id")
+	private ProductInformation productDef;
+	
 	@Column(name = "effective_date")
 	private Date effectiveDate;
 
@@ -65,6 +69,19 @@ public class OrderItems extends BaseEntity {
 	
 	@Column(name = "quantity_ordered")
 	private Integer quantityOrdered;
+	
+	@Column(name = "style")
+	private String style;
+	
+	@Column(name = "color")
+	private String color;
+	
+	@OneToOne
+	@JoinColumn(name = "generated_issue", referencedColumnName = "id")
+	private IssueGeneration generatedIssue;
+	
+	@Column(name = "n_issues_left")
+	private Integer nIssuesLeft;
 
 	public Integer getId() {
 		return id;
@@ -104,6 +121,14 @@ public class OrderItems extends BaseEntity {
 
 	public void setSubsProdPkgDef(SubscriptionDefKeyInfo subsProdPkgDef) {
 		this.subsProdPkgDef = subsProdPkgDef;
+	}
+
+	public ProductInformation getProductDef() {
+		return productDef;
+	}
+
+	public void setProductDef(ProductInformation productDef) {
+		this.productDef = productDef;
 	}
 
 	public Date getEffectiveDate() {
@@ -177,7 +202,36 @@ public class OrderItems extends BaseEntity {
 	public void setQuantityOrdered(Integer quantityOrdered) {
 		this.quantityOrdered = quantityOrdered;
 	}
-	
-	
-	
+
+	public String getStyle() {
+		return style;
+	}
+
+	public void setStyle(String style) {
+		this.style = style;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
+	public IssueGeneration getGeneratedIssue() {
+		return generatedIssue;
+	}
+
+	public void setGeneratedIssue(IssueGeneration generatedIssue) {
+		this.generatedIssue = generatedIssue;
+	}
+
+	public Integer getnIssuesLeft() {
+		return nIssuesLeft;
+	}
+
+	public void setnIssuesLeft(Integer nIssuesLeft) {
+		this.nIssuesLeft = nIssuesLeft;
+	}
 }

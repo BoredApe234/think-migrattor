@@ -1,12 +1,12 @@
 package com.mps.think.setup.model;
-
+// model changes
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,15 +23,21 @@ public class ProcessOutput extends BaseEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer output_id;
 	
-	@OneToOne
-	@JoinColumn(name = "addProcess_id", referencedColumnName = "process_id" )
+	@ManyToOne
+	@JoinColumn(name = "addProcess_id", referencedColumnName = "id" )
 	private AddProcess addProcessId;
 	
-	@Column(name = "type")
-	private String type;
+//	@ManyToOne
+//	@JoinColumn(name = "order_cls_id", referencedColumnName = "oc_id")
+//	private OrderClass orderClass;
 	
-	@Column(name = "output")
-	private String output;
+	@ManyToOne
+	@JoinColumn(name = "order_cls_overview", referencedColumnName = "id")
+	private OrderClassOverview orderClassOverview;
+	
+	@ManyToOne
+	@JoinColumn(name = "output", referencedColumnName = "id")
+	private OutputValue outputValue;
 	
 	@Column(name = "mode")
 	private String mode;
@@ -79,20 +85,20 @@ public class ProcessOutput extends BaseEntity {
 		this.addProcessId = addProcessId;
 	}
 
-	public String getType() {
-		return type;
+//	public OrderClass getOrderClass() {
+//		return orderClass;
+//	}
+//
+//	public void setOrderClass(OrderClass orderClass) {
+//		this.orderClass = orderClass;
+//	}
+
+	public OutputValue getOutputValue() {
+		return outputValue;
 	}
 
-	public void setType(String type) {
-		this.type = type;
-	}
-
-	public String getOutput() {
-		return output;
-	}
-
-	public void setOutput(String output) {
-		this.output = output;
+	public void setOutputValue(OutputValue outputValue) {
+		this.outputValue = outputValue;
 	}
 
 	public String getMode() {
@@ -174,13 +180,26 @@ public class ProcessOutput extends BaseEntity {
 	public void setParametervalue(String parametervalue) {
 		this.parametervalue = parametervalue;
 	}
+
+	public OrderClassOverview getOrderClassOverview() {
+		return orderClassOverview;
+	}
+
+	public void setOrderClassOverview(OrderClassOverview orderClassOverview) {
+		this.orderClassOverview = orderClassOverview;
+	}
+
+	@Override
+	public String toString() {
+		return "ProcessOutput [output_id=" + output_id + ", addProcessId=" + addProcessId + ", orderClassOverview="
+				+ orderClassOverview + ", outputValue=" + outputValue + ", mode=" + mode + ", outputfilename="
+				+ outputfilename + ", apendjobId=" + apendjobId + ", outputfileformat=" + outputfileformat
+				+ ", installmentplan=" + installmentplan + ", def=" + def + ", test=" + test + ", effort=" + effort
+				+ ", auditreport=" + auditreport + ", parametervalue=" + parametervalue + "]";
+	}
 	
 	
 
-	
-	
-	
-	
-	
+		
 
 }

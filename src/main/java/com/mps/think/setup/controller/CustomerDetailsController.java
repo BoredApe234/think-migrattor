@@ -35,6 +35,10 @@ public class CustomerDetailsController {
 	public ResponseEntity<?> getAllCustomerDetails() {
 		return ResponseEntity.ok(customerDetailsService.getAllCustomerDetails());
 	}
+	@GetMapping("/getAllCustomercolumns")
+	public ResponseEntity<?> findAllColumn() {
+		return ResponseEntity.ok(customerDetailsService.findAllColumn());
+	}
 
 //	@GetMapping("/getAllCustomersForSearch")
 //	public ResponseEntity<?> getAllCustomerDetailsForSearch(@RequestParam(required = false) String firstName,
@@ -150,5 +154,20 @@ public class CustomerDetailsController {
 		return ResponseEntity.ok(
 				customerDetailsService.getOtherCustomerAddresses(publisherId, customerId, PageRequest.of(page, size)));
 	}
-
+	
+	@GetMapping("/getAllCustomerWithRecentTwoOrderCodes/{pubId}")
+	public ResponseEntity<?> findAllCustomerWithRecentTwoOrderCodes(@PathVariable("pubId") Integer pubId, @RequestParam(defaultValue = "0") Integer page, 
+			@RequestParam(defaultValue = "5") Integer size) throws Exception {
+		return ResponseEntity.ok(customerDetailsService.getAllCustomerWithRecentTwoOrderCodes(pubId, PageRequest.of(page, size)));
+	}
+	
+	
+	@GetMapping("/getSearchedCustomersWithTwoRecentOrderCodes")
+	public ResponseEntity<?> getSearchedCustomersWithTwoRecentOrderCodes(@RequestParam(required = true) Integer pubId,
+			@RequestParam(required = false) String search, @RequestParam(defaultValue = "0") Integer page,
+			@RequestParam(defaultValue = "5") Integer size) throws Exception {
+		return ResponseEntity
+				.ok(customerDetailsService.getSearchedCustomersWithTwoRecentOrderCodes(pubId, search, PageRequest.of(page, size, Sort.by("customerId").descending())));
+	}
+	
 }

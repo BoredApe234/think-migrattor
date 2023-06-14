@@ -3,6 +3,7 @@ package com.mps.think.setup.service;
 import java.util.List;
 
 import com.mps.think.setup.model.RenewalCard;
+import com.mps.think.setup.model.RenewalDefinition;
 import com.mps.think.setup.vo.RenewalCardVO;
 
 public interface RenewalCardService {
@@ -17,4 +18,8 @@ public interface RenewalCardService {
 	public RenewalCard findbyRenewalCardId(Integer renewalCardId);
 	
 	public List<RenewalCard> getAllRenewalCardForPublisher(Integer pubId);
+
+	public List<RenewalCard> getAllRenewalCard();
+
+	
 }

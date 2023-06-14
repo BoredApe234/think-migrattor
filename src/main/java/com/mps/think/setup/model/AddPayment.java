@@ -37,7 +37,7 @@ public class AddPayment extends BaseEntity{
 	private boolean selectCreditCardWithToken;
 	
 	@Column(name="credit_card")
-	private long creditCard;
+	private String creditCard;
 	
 	@Column(name="token")
 	private String token;
@@ -97,11 +97,11 @@ public class AddPayment extends BaseEntity{
 		this.selectCreditCardWithToken = selectCreditCardWithToken;
 	}
 
-	public long getCreditCard() {
+	public String getCreditCard() {
 		return creditCard;
 	}
 
-	public void setCreditCard(long creditCard) {
+	public void setCreditCard(String creditCard) {
 		this.creditCard = creditCard;
 	}
 

@@ -9,6 +9,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -36,6 +38,13 @@ public class Addresses  extends BaseEntity{
 //	@OneToOne
 //	@JoinColumn(name = "cus_id", referencedColumnName = "customerId")
 //	private CustomerDetails cusId;
+	
+//	@OneToOne
+//	@JoinColumn(name = "address_status_id", referencedColumnName = "id")
+//	private Address adId;
+	
+	@Column(name = "addressstatus")
+	private String addressstatus;
 	
 	@NotBlank
 	@Column(name = "addressName")
@@ -108,6 +117,14 @@ public class Addresses  extends BaseEntity{
 
 	public void setAddressId(Integer addressId) {
 		this.addressId = addressId;
+	}
+
+	public String getAddressstatus() {
+		return addressstatus;
+	}
+
+	public void setAddressstatus(String addressstatus) {
+		this.addressstatus = addressstatus;
 	}
 
 	public String getAddressName() {
@@ -272,20 +289,15 @@ public class Addresses  extends BaseEntity{
 
 	@Override
 	public String toString() {
-		return "Addresses [addressId=" + addressId + ", addressName=" + addressName + ", addressType=" + addressType
-				+ ", addressCategory=" + addressCategory + ", status=" + status + ", primaryAddress=" + primaryAddress
-				+ ", name=" + name + ", addressLine1=" + addressLine1 + ", addressLine2=" + addressLine2 + ", zipCode="
-				+ zipCode + ", city=" + city + ", state=" + state + ", country=" + country + ", countryCode="
-				+ countryCode + ", phone=" + phone + ", validFrom=" + validFrom + ", validTo=" + validTo
-				+ ", frequency=" + frequency + ", selectionFrom=" + selectionFrom + ", selectionTo=" + selectionTo
-				+ ", addressAuxJSON=" + addressAuxJSON + "]";
+		return "Addresses [addressId=" + addressId + ", addressstatus=" + addressstatus + ", addressName=" + addressName
+				+ ", addressType=" + addressType + ", addressCategory=" + addressCategory + ", status=" + status
+				+ ", primaryAddress=" + primaryAddress + ", name=" + name + ", addressLine1=" + addressLine1
+				+ ", addressLine2=" + addressLine2 + ", zipCode=" + zipCode + ", city=" + city + ", state=" + state
+				+ ", country=" + country + ", countryCode=" + countryCode + ", phone=" + phone + ", validFrom="
+				+ validFrom + ", validTo=" + validTo + ", frequency=" + frequency + ", selectionFrom=" + selectionFrom
+				+ ", selectionTo=" + selectionTo + ", addressAuxJSON=" + addressAuxJSON + "]";
 	}
-	
-	
 
 	
-
-	
-
 		
 }

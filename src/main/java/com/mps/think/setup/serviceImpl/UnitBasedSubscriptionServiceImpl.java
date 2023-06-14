@@ -71,6 +71,11 @@ public class UnitBasedSubscriptionServiceImpl implements UnitBasedSubscriptionSe
 		return unitBasedSubscriptionRepo.findByPubIdId(publisherId);
 	}
 
+	@Override
+	public List<UnitBasedSubscription> getAllUnitBasedSubscription() {
+		return unitBasedSubscriptionRepo.findAll();
+	}
+
 	
 	
 

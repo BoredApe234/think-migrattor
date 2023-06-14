@@ -37,12 +37,15 @@ public class PaymentBreakdown extends BaseEntity {
 	@JoinColumn(name = "rate_card_id", referencedColumnName = "rcId")
 	private RateCards rateCard;
 	
+	@Column(name = "rate_card_date")
+	private Date rCardDate;
+	
 	@Column(name = "effective_date")
 	private Date effectiveDate;
 	
-	@Enumerated(EnumType.STRING)
+//	@Enumerated(EnumType.STRING)
 	@Column(name = "payment_status")
-	private PaymentStatus paymentStatus;
+	private String paymentStatus;
 	
 	@Column(name = "term")
 	private String term;
@@ -54,7 +57,7 @@ public class PaymentBreakdown extends BaseEntity {
 	private String currency;
 	
 	@Column(name = "discount")
-	private BigDecimal discount;
+	private String discount;
 	
 	@Column(name = "tax")
 	private BigDecimal tax;
@@ -95,6 +98,14 @@ public class PaymentBreakdown extends BaseEntity {
 		this.rateCard = rateCard;
 	}
 
+	public Date getrCardDate() {
+		return rCardDate;
+	}
+
+	public void setrCardDate(Date rCardDate) {
+		this.rCardDate = rCardDate;
+	}
+
 	public Date getEffectiveDate() {
 		return effectiveDate;
 	}
@@ -103,11 +114,11 @@ public class PaymentBreakdown extends BaseEntity {
 		this.effectiveDate = effectiveDate;
 	}
 
-	public PaymentStatus getPaymentStatus() {
+	public String getPaymentStatus() {
 		return paymentStatus;
 	}
 
-	public void setPaymentStatus(PaymentStatus paymentStatus) {
+	public void setPaymentStatus(String paymentStatus) {
 		this.paymentStatus = paymentStatus;
 	}
 
@@ -127,11 +138,19 @@ public class PaymentBreakdown extends BaseEntity {
 		this.baseAmount = baseAmount;
 	}
 
-	public BigDecimal getDiscount() {
+	public String getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(String currency) {
+		this.currency = currency;
+	}
+
+	public String getDiscount() {
 		return discount;
 	}
 
-	public void setDiscount(BigDecimal discount) {
+	public void setDiscount(String discount) {
 		this.discount = discount;
 	}
 
@@ -175,14 +194,12 @@ public class PaymentBreakdown extends BaseEntity {
 		this.netAmount = netAmount;
 	}
 
-	public String getCurrency() {
-		return currency;
+	@Override
+	public String toString() {
+		return "PaymentBreakdown [id=" + id + ", currencyType=" + currencyType + ", rateCard=" + rateCard
+				+ ", rCardDate=" + rCardDate + ", effectiveDate=" + effectiveDate + ", paymentStatus=" + paymentStatus
+				+ ", term=" + term + ", baseAmount=" + baseAmount + ", currency=" + currency + ", discount=" + discount
+				+ ", tax=" + tax + ", grossAmount=" + grossAmount + ", commission=" + commission + ", shippingCharge="
+				+ shippingCharge + ", netAmount=" + netAmount + "]";
 	}
-
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
-
-	
-
 }

@@ -20,4 +20,6 @@ public interface LableFormatService {
 	
 	public List<LableFormat> findAllLableFormatByPubId(Integer lableFormatId);
 
+	public List<LableFormat> getAllLableFormat();
+
 }

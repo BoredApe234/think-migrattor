@@ -64,5 +64,11 @@ public class OrderPackageOptions extends BaseEntity {
 	public void setPackageOnly(Boolean packageOnly) {
 		this.packageOnly = packageOnly;
 	}
+
+	@Override
+	public String toString() {
+		return "OrderPackageOptions [id=" + id + ", premiumOptions=" + premiumOptions + ", shipPremium=" + shipPremium
+				+ ", packageOnly=" + packageOnly + "]";
+	}
 	
 }

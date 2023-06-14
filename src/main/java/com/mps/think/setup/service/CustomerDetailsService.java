@@ -7,11 +7,13 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import com.mps.think.setup.model.Addresses;
+import com.mps.think.setup.model.CustomerAddresses;
 import com.mps.think.setup.model.CustomerDetails;
 import com.mps.think.setup.model.Order;
 import com.mps.think.setup.model.OrderAddressMapping;
 import com.mps.think.setup.model.OrderCodesSuper;
 import com.mps.think.setup.vo.CustomerDetailsVO;
+import com.mps.think.setup.vo.CustomerWithTwoOrderCodes;
 import com.mps.think.setup.vo.RecentAddressVO;
 
 public interface CustomerDetailsService {
@@ -46,5 +48,12 @@ public interface CustomerDetailsService {
 	Page<CustomerDetails> getOtherCustomerAddresses(Integer publisherId, Integer customerId, Pageable page);
 	
 	Page<RecentAddressVO> getRecentAddressWithTheirCustomer(Integer customerId, Pageable page) throws Exception;
+
+	public List<CustomerAddresses> getAllCustomerAddresses();
+	
+	Page<CustomerWithTwoOrderCodes> getAllCustomerWithRecentTwoOrderCodes(Integer pubId, Pageable page) throws Exception;
+	public List<String> findAllColumn();
+	
+	Page<CustomerWithTwoOrderCodes> getSearchedCustomersWithTwoRecentOrderCodes(Integer pubId, String keyword, Pageable page) throws Exception;
 
 }

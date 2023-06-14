@@ -69,6 +69,9 @@ public class SourceCode extends BaseEntity {
 
 	@Column(name = "source_code_type")
 	private String sourceCodeType;
+	
+	@Column(name = "order_type")
+	private String orderType;
 
 	// These are dropdown fields ===============
 	// @Column(name="source_code_format")
@@ -262,16 +265,13 @@ public class SourceCode extends BaseEntity {
 		this.sourceCodeAndValuesMappings = sourceCodeAndValuesMappings;
 	}
 
-	@Override
-	public String toString() {
-		return "SourceCode [sourceCodeId=" + sourceCodeId + ", ocId=" + ocId + ", description=" + description
-				+ ", orderCode=" + orderCode + ", order_code_type=" + order_code_type + ", quantity=" + quantity
-				+ ", isActive=" + isActive + ", state_Break=" + state_Break + ", cost=" + cost + ", isGenerated="
-				+ isGenerated + ", generic_agency=" + generic_agency + ", is_ddp=" + is_ddp + ", sourceCode="
-				+ sourceCode + ", sourceCodeType=" + sourceCodeType + ", sourceCodeFormat=" + sourceCodeFormat
-				+ ", rateCards=" + rateCards + ", discountCardKeyInfo=" + discountCardKeyInfo + ", renewalCard="
-				+ renewalCard + ", shippingPriceList=" + shippingPriceList + ", sourceCodeAndValuesMappings="
-				+ sourceCodeAndValuesMappings + "]";
+	public String getOrderType() {
+		return orderType;
 	}
 
+	public void setOrderType(String orderType) {
+		this.orderType = orderType;
+	}
+
+	
 }

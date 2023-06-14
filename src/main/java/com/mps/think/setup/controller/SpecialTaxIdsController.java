@@ -1,5 +1,8 @@
 package com.mps.think.setup.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +15,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mps.think.setup.service.SpecialTaxIdsService;
 import com.mps.think.setup.vo.SpecialTaxIdsVO;
+import com.mps.think.setup.vo.EnumModelVO.ExemptStatus;
+import com.mps.think.setup.vo.EnumModelVO.ItemType;
 
 @RestController
 @CrossOrigin
@@ -49,6 +54,14 @@ public class SpecialTaxIdsController {
 	@PostMapping("/findAllSpecialTaxIdsForPublisher")
 	public ResponseEntity<?> findAllSpecialTaxIdsForPublisher(@RequestBody Integer pubId) {
 		return ResponseEntity.ok(stis.findAllSpecialTaxIdsForPublisher(pubId));
+	}
+	@GetMapping("/findAllexemptStatus")
+	public ResponseEntity<?> getAllExemptStatus() {
+		List<String> list= new ArrayList<>();
+		for(ExemptStatus data:ExemptStatus.values()) {
+			list.add(data.getExemptStatus());
+		}
+		return ResponseEntity.ok(list);
 	}
 	
 }

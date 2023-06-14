@@ -15,7 +15,7 @@ public class CurrencyExchangeVO {
 
 	private String Symbol;
 
-	private Integer Description;
+	private String Description;
 
 	private Integer exchangeRate;
 
@@ -54,11 +54,11 @@ public class CurrencyExchangeVO {
 		Symbol = symbol;
 	}
 
-	public Integer getDescription() {
+	public String getDescription() {
 		return Description;
 	}
 
-	public void setDescription(Integer description) {
+	public void setDescription(String description) {
 		Description = description;
 	}
 
@@ -84,5 +84,7 @@ public class CurrencyExchangeVO {
 				+ CurrencyCode + ", Symbol=" + Symbol + ", Description=" + Description + ", exchangeRate="
 				+ exchangeRate + ", currency_Date=" + currency_Date + "]";
 	}
+
+	
 
 }

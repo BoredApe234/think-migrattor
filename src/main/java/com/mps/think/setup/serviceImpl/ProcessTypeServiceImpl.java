@@ -16,6 +16,9 @@ public class ProcessTypeServiceImpl  implements ProcessTypeService{
 	
 	@Autowired
 	private ProcessTypeRepo processTypeRepo;
+	
+	@Autowired
+	private ObjectMapper mapper;
 
 	@Override
 	public List<ProcessType> getAllProcessType() {
@@ -23,32 +26,24 @@ public class ProcessTypeServiceImpl  implements ProcessTypeService{
 	}
 
 	@Override
-	public ProcessTypeVO saveProcessType(ProcessTypeVO processType) {
-		ObjectMapper mapper = new ObjectMapper();
-		ProcessType newProcessType = mapper.convertValue(processType, ProcessType.class);
-		ProcessType data=processTypeRepo.saveAndFlush(newProcessType);
-		processType.setPid(data.getPid());
-		return processType;
+	public ProcessType saveProcessType(ProcessTypeVO processType) {
+	    return processTypeRepo.saveAndFlush(mapper.convertValue(processType, ProcessType.class));
 	}
 
 	@Override
-	public ProcessTypeVO updateProcessType(ProcessTypeVO processType) {
-		ObjectMapper mapper = new ObjectMapper();
-		ProcessType updateProcessType = mapper.convertValue(processType, ProcessType.class);
-		ProcessType data=processTypeRepo.saveAndFlush(updateProcessType);
-		processType.setPid(data.getPid());
-		return processType;
+	public ProcessType updateProcessType(ProcessTypeVO processType) {
+	    return processTypeRepo.saveAndFlush(mapper.convertValue(processType, ProcessType.class));
 	}
 
 	@Override
-	public ProcessType findbyProcessTypeId(Integer p_Id) {
-		Optional<ProcessType> cr = processTypeRepo.findById(p_Id);
+	public ProcessType findbyProcessTypeId(Integer id) {
+		Optional<ProcessType> cr = processTypeRepo.findById(id);
 		return cr.get();
 	}
 
 	@Override
-	public ProcessType deleteByProcessTypeId(Integer p_Id) {
-		ProcessType delete = findbyProcessTypeId(p_Id);
+	public ProcessType deleteByProcessTypeId(Integer id) {
+		ProcessType delete = findbyProcessTypeId(id);
 		processTypeRepo.delete(delete);
 		return delete;
 	}

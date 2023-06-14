@@ -45,9 +45,12 @@ public class Order extends BaseEntity {
 	@Column(name = "order_type")
 	private String orderType;
 	
-	@Enumerated(EnumType.STRING)
-	@Column(name = "orderStatus")
-	private OrderStatus orderStatus;
+//	@Enumerated(EnumType.STRING)
+//	@Column(name = "orderStatus")
+//	private OrderStatus orderStatus;
+	
+	@Column(name= "order_status")
+	private String orderStatus;
 	
 	@OneToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name = "key_order_information_id", referencedColumnName = "id" )
@@ -71,8 +74,7 @@ public class Order extends BaseEntity {
 	
 	@OneToMany(
 	        mappedBy = "order",
-	        cascade = CascadeType.ALL,
-	        orphanRemoval = true
+	        cascade = CascadeType.ALL
 	    )
 	@JsonManagedReference
 	private List<OrderAddressMapping> orderAddresses;
@@ -84,6 +86,10 @@ public class Order extends BaseEntity {
 	@ManyToOne
 	@JoinColumn(name = "other_addresses_customer", referencedColumnName = "id")
 	private CustomerDetails otherAddressCustomer;
+	
+	@OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+	@JsonManagedReference
+	private MultiLineItemOrder parentOrder;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -115,14 +121,6 @@ public class Order extends BaseEntity {
 
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
-	}
-
-	public OrderStatus getOrderStatus() {
-		return orderStatus;
-	}
-
-	public void setOrderStatus(OrderStatus orderStatus) {
-		this.orderStatus = orderStatus;
 	}
 
 	public OrderKeyInformation getKeyOrderInformation() {
@@ -181,6 +179,31 @@ public class Order extends BaseEntity {
 		this.otherAddressCustomer = otherAddressCustomer;
 	}
 
-	
+	public MultiLineItemOrder getParentOrder() {
+		return parentOrder;
+	}
 
+	public void setParentOrder(MultiLineItemOrder parentOrder) {
+		this.parentOrder = parentOrder;
+
+	}
+
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", customerId=" + customerId + ", orderClass=" + orderClass
+				+ ", orderType=" + orderType + ", orderStatus=" + orderStatus + ", keyOrderInformation="
+				+ keyOrderInformation + ", orderItemsAndTerms=" + orderItemsAndTerms + ", paymentBreakdown="
+				+ paymentBreakdown + ", deliveryAndBillingOptions=" + deliveryAndBillingOptions + ", orderAddresses="
+				+ orderAddresses + ", auxiliaryInformation=" + auxiliaryInformation + ", otherAddressCustomer="
+				+ otherAddressCustomer + ", parentOrder=" + parentOrder + "]";
+	}
+
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
+	}
+	
 }

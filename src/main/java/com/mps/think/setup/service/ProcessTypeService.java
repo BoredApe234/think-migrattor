@@ -11,13 +11,13 @@ public interface ProcessTypeService {
 	
 	public List<ProcessType> getAllProcessType();
 
-	public ProcessTypeVO saveProcessType(ProcessTypeVO processType);
+	public ProcessType saveProcessType(ProcessTypeVO processType);
 
-	public ProcessTypeVO updateProcessType(ProcessTypeVO processType);
+	public ProcessType updateProcessType(ProcessTypeVO processType);
 
-	public ProcessType findbyProcessTypeId(Integer p_Id);
+	public ProcessType findbyProcessTypeId(Integer id);
 	
-	public ProcessType deleteByProcessTypeId(Integer p_Id);
+	public ProcessType deleteByProcessTypeId(Integer id);
 	
 	
 

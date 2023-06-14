@@ -1,6 +1,7 @@
 package com.mps.think.setup.service;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,9 +16,13 @@ public interface PaymentThresholdService {
 	
 	public PaymentThreshold updatePaymentThreshold(PaymentThresholdVO paymentThresholdVO);
 	
-	public Optional<PaymentThreshold> findByPaymentThresholdId(Integer id);
+	public PaymentThreshold findByPaymentThresholdId(Integer id);
 	
-	public HashMap<String, String> definePayment(double invoiceAmount, double paidAmount, Integer paymentThresholdId);
+	public List<HashMap<String, String>> definePayment(LinkedHashMap<Integer, String> amount, Integer paymentThresholdId);
+		
+	public PaymentThreshold DeletePaymentThreshold(Integer id);
 	
-	public PaymentThreshold findByPaymentThresholdDefId(Integer id);
+	public List<PaymentThreshold> defaultStatus(PaymentThresholdVO paymentThresholdVO);
+
+	public List<PaymentThreshold> getAllPaymentThreshold();
 }

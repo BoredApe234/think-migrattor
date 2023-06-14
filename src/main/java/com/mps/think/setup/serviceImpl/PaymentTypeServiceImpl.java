@@ -81,4 +81,9 @@ public class PaymentTypeServiceImpl implements PaymentTypeService {
 		return paymentTypeRepo.findByPublisherIdOrderByIdDesc(publisherId, page);
 	}
 
+	@Override
+	public List<PaymentType> getAllPaymentType() {
+		return paymentTypeRepo.findAll();
+	}
+
 }

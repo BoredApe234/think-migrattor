@@ -15,6 +15,8 @@ public class AppConstants {
 	public static final String Email_User_Password = "User Password";
 	public static final String Email_Semi="-:";
 	
+	public static final String customerSearchSeperator = "AND";
+	
 	public enum codeGen {
 
 		None("None"), Renewals("Renewals"), Promotions("Promotions"),MediaType("MediaType"),Year("Year");
@@ -83,4 +85,17 @@ public class AppConstants {
 	    @Override public String toString() { return displayName; }
 	}
 	
+	public enum ExtractFilterTableName {
+		Customer("customer"), Volume_Group("Volume Group"), Addresses("addresses"), Order_Items("Order Items"), 
+		 Subscription_Def_Table("subscription Def Table");
+		private String displayName;
+
+		ExtractFilterTableName(String displayName) {
+	        this.displayName = displayName;
+	    }
+
+	    public String displayName() { return displayName; }
+
+	    @Override public String toString() { return displayName; }
+	}
 }

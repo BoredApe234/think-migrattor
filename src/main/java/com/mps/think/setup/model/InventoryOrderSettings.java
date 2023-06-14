@@ -95,4 +95,11 @@ public class InventoryOrderSettings extends BaseEntity {
 		this.lastShipment = lastShipment;
 	}
 
+	@Override
+	public String toString() {
+		return "InventoryOrderSettings [id=" + id + ", packageNumbers=" + packageNumbers + ", unitPerPackage="
+				+ unitPerPackage + ", disallowAsSample=" + disallowAsSample + ", minimumForSamples=" + minimumForSamples
+				+ ", reorderPrint=" + reorderPrint + ", lastShipment=" + lastShipment + "]";
+	}
+
 }

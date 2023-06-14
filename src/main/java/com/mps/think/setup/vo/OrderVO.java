@@ -16,7 +16,7 @@ public class OrderVO {
 	
 	private String orderType;
 	
-	private OrderStatus orderStatus;
+	private String orderStatus;
 	
 	private OrderKeyInformationVO keyOrderInformation;
 	
@@ -31,6 +31,8 @@ public class OrderVO {
 	private OrderAuxiliaryInformationVO auxiliaryInformation;
 	
 	private CustomerDetailsVO otherAddressCustomer;
+	
+	private MultiLineItemOrderVO parentOrder;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -62,14 +64,6 @@ public class OrderVO {
 
 	public void setOrderType(String orderType) {
 		this.orderType = orderType;
-	}
-
-	public OrderStatus getOrderStatus() {
-		return orderStatus;
-	}
-
-	public void setOrderStatus(OrderStatus orderStatus) {
-		this.orderStatus = orderStatus;
 	}
 
 	public OrderKeyInformationVO getKeyOrderInformation() {
@@ -126,6 +120,22 @@ public class OrderVO {
 
 	public void setOtherAddressCustomer(CustomerDetailsVO otherAddressCustomer) {
 		this.otherAddressCustomer = otherAddressCustomer;
+	}
+
+	public MultiLineItemOrderVO getParentOrder() {
+		return parentOrder;
+	}
+
+	public void setParentOrder(MultiLineItemOrderVO parentOrder) {
+		this.parentOrder = parentOrder;
+	}
+
+	public String getOrderStatus() {
+		return orderStatus;
+	}
+
+	public void setOrderStatus(String orderStatus) {
+		this.orderStatus = orderStatus;
 	}
 
 	

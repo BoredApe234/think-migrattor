@@ -35,9 +35,21 @@ public class CustomerCategoryServiceImpl implements CustomerCategoryService {
 		data.setPubId(publisher);
 		data.setThinkCategory(customerCategory.getThinkCategory());
 		data.setCustCategory(customerCategory.getCustCategory());
+		data.setDefaultcc(customerCategory.getDefaultcc());
+		if(customerCategory.getDefaultcc() != null && customerCategory.getDefaultcc()) {
+			makeOtherCustomerCategoriesFalse(customerCategory.getPubId().getId());			
+		}
 		CustomerCategoryRepo.saveAndFlush(data);
 		customerCategory.setCustomerCategoryId(data.getCustomerCategoryId());	
 		return customerCategory;
+	}
+	
+	private void makeOtherCustomerCategoriesFalse(Integer pubId) {
+		List<CustomerCategory> customerCategories = CustomerCategoryRepo.findAllCustomerCategoryByPubId(pubId);
+		customerCategories.stream().filter(cc -> cc.getDefaultcc() == null || cc.getDefaultcc()).forEach(c -> {
+			c.setDefaultcc(false);
+		});
+		CustomerCategoryRepo.saveAllAndFlush(customerCategories);
 	}
 
 	@Override
@@ -50,13 +62,18 @@ public class CustomerCategoryServiceImpl implements CustomerCategoryService {
 		data.setPubId(publisher);
 		data.setThinkCategory(customerCategory.getThinkCategory());
 		data.setCustCategory(customerCategory.getCustCategory());
+		data.setDefaultcc(customerCategory.getDefaultcc());
+		if(customerCategory.getDefaultcc() != null && customerCategory.getDefaultcc()) {
+			makeOtherCustomerCategoriesFalse(customerCategory.getPubId().getId());			
+		}
 		CustomerCategoryRepo.saveAndFlush(data);
 		return customerCategory;
 	}
 
+
 	@Override
 	public CustomerCategory findbyCustomerCategoryId(Integer customerCategoryId) {
-		Optional<CustomerCategory> cc =CustomerCategoryRepo.findById(customerCategoryId);
+		Optional<CustomerCategory> cc = CustomerCategoryRepo.findById(customerCategoryId);
 		
 		if(!cc.isPresent()) {
 			throw new NotFoundException("Customer category Id : "+customerCategoryId+" does not exist!");
@@ -76,4 +93,12 @@ public class CustomerCategoryServiceImpl implements CustomerCategoryService {
 		return CustomerCategoryRepo.findAllCustomerCategoryByPubId(pubId);
 	}
 
+	@Override
+	public List<CustomerCategory> getAllCustomerCategory() {
+		return CustomerCategoryRepo.findAll();
+	}
+
+	
+
+	
 }
